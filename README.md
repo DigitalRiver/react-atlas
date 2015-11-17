@@ -1,24 +1,9 @@
-# React Toolbox
-
-[![npm version](https://img.shields.io/npm/v/react-toolbox.svg?style=flat-square)](https://www.npmjs.com/package/react-toolbox)
-[![Build Status](http://img.shields.io/travis/react-toolbox/react-toolbox/master.svg?style=flat-square)](https://travis-ci.org/react-toolbox/react-toolbox)
-[![NPM Status](http://img.shields.io/npm/dm/react-toolbox.svg?style=flat-square)](https://www.npmjs.org/package/react-toolbox)
-[![react-toolbox channel on discord](https://img.shields.io/badge/discord-%23react--toolbox%20%40%20reactiflux-61dafb.svg?style=flat-square)](https://discord.gg/0ZcbPKXt5bW9FLzM)
-[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/javivelasco)
-
-React Toolbox is a set of [React](http://facebook.github.io/react/) components that implement [Google's Material Design specification](https://www.google.com/design/spec/material-design/introduction.html). It's powered by [CSS Modules](https://github.com/css-modules/css-modules) and harmoniously integrates with your [Webpack](http://webpack.github.io/) workflow. You can take a tour through our documentation website and try the components live!
-
-## Installation
-
-React Toolbox can be installed as an [npm package](https://www.npmjs.org/package/react-toolbox);
-
-```
-npm install --save react-toolbox
-```
+# React Atlas
+React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). WE liked the way the hierarchy and the way the components were built. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic. We hope that React Atlas will be that tool.
 
 ## Usage
 
-Although there are other ways to use React Toolbox, the recommended way is to create a Webpack workflow with [Babel Loader](https://github.com/babel/babel-loader), [CSS Loader](https://github.com/webpack/css-loader) and [SASS Loader](https://github.com/jtangelder/sass-loader). A good starting point is [React Hot Webpack Boilerplate](https://github.com/gaearon/react-hot-boilerplate).
+Although there are other ways to use React Atlas, right now, the recommended way is to create a Webpack workflow with [Babel Loader](https://github.com/babel/babel-loader), [CSS Loader](https://github.com/webpack/css-loader) and [SASS Loader](https://github.com/jtangelder/sass-loader). A good starting point is [React Hot Webpack Boilerplate](https://github.com/gaearon/react-hot-boilerplate).
 
 Once you have the workflow ready, you can just require and use the components:
 
@@ -86,14 +71,15 @@ If you browse the resulting markup you will see *data attributes* like `data-rol
 
 ## Authors and Contributors
 
-The project is being initially developed and maintained by [Javier Velasco](http://javivelasco.com) and [Javier Jiménez](http://soyjavi.com) and the [contribution scene](https://github.com/react-toolbox/react-toolbox/graphs/contributors) is just getting warm. We want to create reference components so any contribution is very welcome.
+The project is being initially developed and maintained by the DR UX team. We want to create reference components so any contribution is very welcome.
 
 To work in the project you'd need a `node` version with ES6 syntax. Although the project is built using Babel we use some ES6 features in the development server. Also, the packages has been tested with `node 4.2.1`. Consider using [nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n) to handle different node versions!
 
-To start documentation site locally:
+We reccomend forking this repo to your personal profile, then cloning your fork, and then adding this main repo as your upstream.
+
+Once you have done that, you can run the docs server locally by doing the following commands:
 
 ```
-git clone https://github.com/react-toolbox/react-toolbox.git
 cd docs/
 npm install 
 npm start
