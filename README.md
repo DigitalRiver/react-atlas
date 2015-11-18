@@ -27,7 +27,7 @@ The previous code creates a React button component based on a React Atlas button
 
 ## Customization
 
-Since React Toolbox styles are written in CSS it's pretty easy to customize your components. We have several ways:
+Since React Toolbox styles are written in CSS it's pretty easy to customize your components:
 
 ### Via `className` property
 
