@@ -38,7 +38,7 @@ const Home = () => (
       </p>
 
       <Link to='/components'>
-        <Button label='Try it now!' kind='raised' accent />
+        <Button label='Try it now!' raised accent />
       </Link>
     </section>
 
@@ -47,10 +47,6 @@ const Home = () => (
       <ul className={style.authors}>
       {
         authors.map((author, index) => {
-          author.actions.map((action) => {
-            const url = `https:\\\\${ action.label }.com\\${ author.subtitle }`;
-            action.onClick = () => { window.open(url.toLowerCase(), '_blank'); };
-          });
           return <Card key={index} {...author} />;
         })
       }

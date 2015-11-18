@@ -27,16 +27,16 @@ class SnackbarTest extends React.Component {
       <section>
         <h5>Snackbars & Toasts</h5>
         <p>lorem ipsum...</p>
-        <Button label='Show snackbar' kind='raised' onClick={this.handleClick} />
+        <Button label='Show snackbar' primary raised onClick={this.handleClick} />
         <Snackbar
-          action='Dismiss'
+          action='Hide'
           active={this.state.active}
           icon='question-answer'
           label='Snackbar action cancel'
           timeout={2}
           onClick={this.handleSnackbarClick}
           onTimeout={this.handleSnackbarTimeout}
-          type='cancel'
+          type='warning'
         />
       </section>
     );
