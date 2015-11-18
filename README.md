@@ -1,54 +1,33 @@
 # React Atlas
-React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). WE liked the way the hierarchy and the way the components were built. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic. We hope that React Atlas will be that tool.
+React Atlas is a React component library, with a focus on supplying Admin Interface tools. The goal of this repo to is to eventually be the library that can power most of Digital River's complex admin interfaces. With this in mind, we need a fast, generic, composable library that can be dropped into a project and 'just work'.
+
+## Why?
+React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). We liked the hierarchy and the way the components were built. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic. We hope that React Atlas will be that tool.
 
 ## Usage
 
-Although there are other ways to use React Atlas, right now, the recommended way is to create a Webpack workflow with [Babel Loader](https://github.com/babel/babel-loader), [CSS Loader](https://github.com/webpack/css-loader) and [SASS Loader](https://github.com/jtangelder/sass-loader). A good starting point is [React Hot Webpack Boilerplate](https://github.com/gaearon/react-hot-boilerplate).
+For inital development and release, we are focusing on a nodejs with webpack environment. As we continue to develop React Atlas we will bring in examples and boilerplates to show it working with other build systems (JSPM, Browserify, UMD, etc.).
 
-Once you have the workflow ready, you can just require and use the components:
+With webpack in mind, we reccomend using [Babel Loader](https://github.com/babel/babel-loader), [CSS Loader](https://github.com/webpack/css-loader) and [SASS Loader](https://github.com/jtangelder/sass-loader). We are working toward dropping the Sass and Webpack dependency as soon as it makes sense for us internally. A good starting point is for a webpack workflow is [React Hot Webpack Boilerplate](https://github.com/gaearon/react-hot-boilerplate).
+
+Requiring and using the components is as simple as:
 
 ```jsx
 import React from 'react';
-import Button from 'react-toolbox/lib/button';
+import {Button} from 'react-atlas';
 
-const CustomButton = () => (
-  <Button label="Hello world" raised accent />
+const someButton = () => (
+  <Button label="Some Text" />
 );
 
-export default CustomButton;
+export default someButton;
 ```
 
-The previous code creates a React button component based on React toolbox button. It's important to notice that requiring a module from the exposed root of the package will import the **SASS** of the component. 
-
-We encourage you to work with webpack but if you want to use React Toolbox in an old fashioned way you must generate a build with all the css and javascript and include it in your `index.html`. Then you can use the components exposed in the `window` object.
-
-## App component
-
-There are some components in React Toolbox that requires special positioning. For example, `Dialog` and `Drawer` components block the scroll showing a fixed positioned overlay. To handle these cases, React Toolbox needs some styling in your root node. This can be achieved wrapping your app with a non intrusive `App` wrapper component:
-
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ToolboxApp from 'react-toolbox/lib/app';
-import App from './my-app';
-
-ReactDOM.render(
-  <ToolboxApp>
-    <App />
-  </ToolboxApp>
-, document.getElementById('app'));
-
-```
+The previous code creates a React button component based on a React Atlas button. It's important to notice that requiring a module from the exposed root of the package will import the **SASS** of the component. We are working to change this as soon as possible, and hope to get away from SASS to help enable this library to be environment agnostic.
 
 ## Customization
 
 Since React Toolbox styles are written in CSS it's pretty easy to customize your components. We have several ways:
-
-### Via React Toolbox Loader
-
-Thanks to the power of SASS, all components in React Toolbox are configured from a variables file. The best way to customize your build is to create a custom configuration SASS file overriding configuration variables like colors or sizes.
-
-With [toolbox-loader](https://github.com/react-toolbox/toolbox-loader) you can tell webpack where your configuration file is and it will prepend your config to each SASS build. This will result in your customized CSS for React Toolbox Components. For now you can browse the configuration files and override what you want. 
 
 ### Via `className` property
 
@@ -69,15 +48,10 @@ If you browse the resulting markup you will see *data attributes* like `data-rol
 }
 ```
 
-## Authors and Contributors
+We will be thinking hard about styling going forward and this workflow may change. We want to make overriding the React Atlas styles as simple as possible. Something like [React Themeable](https://github.com/markdalgleish/react-themeable) may be used.
 
-The project is being initially developed and maintained by the DR UX team. We want to create reference components so any contribution is very welcome.
-
-To work in the project you'd need a `node` version with ES6 syntax. Although the project is built using Babel we use some ES6 features in the development server. Also, the packages has been tested with `node 4.2.1`. Consider using [nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n) to handle different node versions!
-
-We reccomend forking this repo to your personal profile, then cloning your fork, and then adding this main repo as your upstream.
-
-Once you have done that, you can run the docs server locally by doing the following commands:
+## Local Docs
+Run the docs server locally by doing the following commands:
 
 ```
 cd docs/
@@ -86,6 +60,14 @@ npm start
 ```
 
 Local documentation will be available at http://localhost:8081/
+
+## Authors and Contributors
+
+The project is being initially developed and maintained by the DR UX team.
+
+If you are interested in contributing to the project, please read our [Contributing Guidelines](https://github.digitalriverws.net/ux/react-atlas/blob/master/CONTRIBUTING.md)
+
+This project is developed on Node 4.2.2+. Look into using [nvm-windows](https://github.com/coreybutler/nvm-windows) or [n](https://github.com/tj/n) to handle different node versions.
 
 ## License 
 This project is licensed under the terms of the [MIT license](https://github.com/react-toolbox/react-toolbox/blob/master/LICENSE).
