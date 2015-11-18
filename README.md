@@ -71,3 +71,12 @@ This project is developed on Node 4.2.2+. Look into using [nvm-windows](https://
 
 ## License 
 This project is licensed under the terms of the [MIT license](https://github.com/react-toolbox/react-toolbox/blob/master/LICENSE).
+
+## Atlas?
+When think about Web Design and Web Development, we came across the art of map making - [Cartography](https://en.wikipedia.org/wiki/Cartography).
+
+>Cartography (from Greek χάρτης khartēs, "map"; and γράφειν graphein, "write") is the study and practice of making maps. Combining science, aesthetics, and technique, cartography builds on the premise that reality can be modeled in ways that communicate spatial information effectively.
+
+After reading about it more, we realized that as Web Designer and Developers, we are essentially modern-day map makers. We combine technology and design to build flat screens that communicate information in a fixed space. With this reasoning in our heads, we decided on Atlas. Atlas is defined as a collection(or a _library_ if you will) of maps. What better name for a library of components that will be used to compose and display complex interfaces/maps?
+
+Plus you know, there's this cool Titan in Greek mythology that literally holds up the world named Atlas.
