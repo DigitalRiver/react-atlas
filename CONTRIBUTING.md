@@ -4,7 +4,7 @@
 
 ### Development
 1. Fork repo to your personal profile
-2. Clone your forked to your machine
+2. Clone your forked repo to your machine
 3. Go inside newly cloned directory and `git remote add upstream git@github.digitalriverws.net:ux/react-atlas.git`
 4. run `npm install`
 5. run `npm start`
