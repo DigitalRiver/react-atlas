@@ -17,15 +17,15 @@ const ButtonTest = () => (
     </Button>
     <Button icon='bookmark' label='Bookmark' accent />
     <Button icon='bookmark' label='Bookmark' raised primary />
-    <Button icon='inbox' label='Inbox' flat />
+    <Button icon='inbox' label='Inbox' outline />
     <Button icon='add' floating />
     <Button icon='add' floating primary />
     <Button icon='add' floating primary disabled />
     <Button icon='add' floating accent mini />
     <Button icon='mood' toggle />
     <Button toggle primary><GithubIcon /></Button>
-    <Button icon='add' label='Add this' flat primary />
-    <Button icon='add' label='Add this' flat disabled />
+    <Button icon='add' label='Add this' outline primary />
+    <Button icon='add' label='Add this' outline disabled />
     <Button icon='bookmark' label='Bookmark' raised primary loading />
   </section>
 );

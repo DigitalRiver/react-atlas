@@ -40,9 +40,6 @@
   > * {
     pointer-events: none;
   }
-  [data-react-toolbox="ripple"] {
-    overflow: hidden;
-  }
 }
 
 %squared {
@@ -65,7 +62,7 @@
   cursor: auto;
 }
 
-.flat {
+.outline {
   @extend %button;
   @extend %squared;
   background: transparent;
@@ -100,9 +97,6 @@
     line-height: $button-height;
     vertical-align: middle;
   }
-  [data-react-toolbox="ripple"] {
-    border-radius: 50%;
-  }
 }
 
 .raised {
@@ -123,40 +117,12 @@
   }
 }
 
-.floating {
-  @extend %button;
-  width: $button-floating-height;
-  height: $button-floating-height;
-  font-size: $button-floating-font-size;
-  background: $button-solid-background-color;
-  border-radius: 50%;
-  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, .12),
-              0 1px 1px 0 rgba(0, 0, 0, .24);
-  &:active {
-    @include shadow-4dp();
-  }
-  &:focus:not(:active) {
-    @include focus-shadow();
-  }
-  &[disabled] {
-    @extend %disabled;
-    @include shadow-2dp();
-    background-color: $button-solid-disabled-background-color;
-  }
-  .icon {
-    line-height: $button-floating-height;
-  }
-  [data-react-toolbox="ripple"] {
-    border-radius: 50%;
-  }
-}
-
 .primary:not([disabled]) {
   &.raised, &.floating {
     color: $button-primary-color-contrast;
     background: $button-primary-color;
   }
-  &.flat, &.toggle {
+  &.outline, &.toggle {
     color: $button-primary-color;
     &:hover {
       background: $button-primary-color-hover;
@@ -168,11 +134,11 @@
 }
 
 .accent:not([disabled]) {
-  &.raised, &.floating {
+  &.raised {
     color: $button-accent-color-contrast;
     background-color: $button-accent-color;
   }
-  &.flat, &.toggle {
+  &.outline, &.toggle {
     color: $button-accent-color;
     &:hover {
       background: $button-accent-color-hover;
@@ -184,11 +150,11 @@
 }
 
 .neutral:not([disabled]) {
-  &.raised, &.floating {
+  &.raised {
     color: $button-neutral-color-contrast;
     background-color: $button-neutral-color;
   }
-  &.flat, &.toggle {
+  &.outline, &.toggle {
     color: $button-neutral-color-contrast;
     &:hover {
       background: $button-neutral-color-hover;
@@ -196,14 +162,5 @@
     &:focus:not(:active) {
       background: $button-neutral-color-hover;
     }
-  }
-}
-
-.mini.floating {
-  width: $button-floating-height-mini;
-  height: $button-floating-height-mini;
-  font-size: $button-floating-mini-font-size;
-  .icon {
-    line-height: $button-floating-height-mini;
   }
 }
