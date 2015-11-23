@@ -80,6 +80,7 @@
     "phantomjs-polyfill": "0.0.1",
     "postcss-loader": "^0.7.0",
     "react": "^0.14",
+    "react-a11y": "^0.2.8",
     "react-addons-css-transition-group": "^0.14.0",
     "react-addons-test-utils": "^0.14.0",
     "react-dom": "^0.14.0",
