@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import FontIcon from '../font_icon';
 import Tooltip from '../tooltip';
 import style from './style';
@@ -29,6 +30,11 @@ class Button extends React.Component {
     loading: false,
     mini: false,
     primary: false,
+    secondary: false,
+    success: false,
+    warning: false,
+    danger: false,
+    link: false,
     raised: false,
     toggle: false
   };
@@ -46,11 +52,31 @@ class Button extends React.Component {
   render () {
 
     const {accent, outline, href, icon, label, loading, mini,
-           primary, raised, toggle, tooltip, ...others} = this.props;
+           primary, raised, tooltip, secondary, success, warning, danger, link, ...others} = this.props;
     const element = href ? 'a' : 'button';
-    const level = primary ? 'primary' : accent ? 'accent' : 'neutral';
-    const shape = outline ? 'outline' : raised ? 'raised' : toggle ? 'toggle' : 'outline';
-    let className = `${style[shape]} ${style[level]}`;
+    let className;
+
+    if (outline) {
+      className = classNames({
+        [style.root]: true,
+        [style.primary_outline]: outline,
+        [style.secondary_outline]: secondary,
+        [style.success_outline]: success,
+        [style.warning_outline]: warning,
+        [style.danger_outline]: danger,
+        [style.link_outline]: link
+      });
+    } else {
+      className = classNames({
+        [style.root]: true,
+        [style.secondary]: secondary,
+        [style.success]: success,
+        [style.warning]: warning,
+        [style.danger]: danger,
+        [style.link]: link
+      });
+    }
+
 
     if (this.props.className) className += ` ${this.props.className}`;
     if (mini) className += ` ${style.mini}`;

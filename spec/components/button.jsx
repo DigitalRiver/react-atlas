@@ -12,21 +12,18 @@ const ButtonTest = () => (
     <h5>Buttons</h5>
     <p>lorem ipsum...</p>
 
-    <Button href='http://github.com/javivelasco' target='_blank' raised>
-      <GithubIcon /> Github
-    </Button>
-    <Button icon='bookmark' label='Bookmark' accent />
-    <Button icon='bookmark' label='Bookmark' raised primary />
-    <Button icon='inbox' label='Inbox' outline />
-    <Button icon='add' floating />
-    <Button icon='add' floating primary />
-    <Button icon='add' floating primary disabled />
-    <Button icon='add' floating accent mini />
-    <Button icon='mood' toggle />
-    <Button toggle primary><GithubIcon /></Button>
-    <Button icon='add' label='Add this' outline primary />
-    <Button icon='add' label='Add this' outline disabled />
-    <Button icon='bookmark' label='Bookmark' raised primary loading />
+    <Button label='Button'/>
+    <Button label='Secondary' secondary />
+    <Button label='Success' success />
+    <Button label='Warning' warning />
+    <Button label='Danger' danger />
+    <Button label='Link' link />
+    <Button label='Button' outline primary />
+    <Button label='Secondary' secondary />
+    <Button label='Success' success outline />
+    <Button label='Warning' warning outline />
+    <Button label='Danger' danger outline />
+    <Button label='Link' link outline />
   </section>
 );
 
