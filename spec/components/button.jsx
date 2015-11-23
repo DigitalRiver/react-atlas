@@ -12,44 +12,44 @@ const ButtonTest = () => (
     <h5>Buttons</h5>
 
     <p>Regular Buttons</p>
-    <Button label='Button'/>
-    <Button label='Secondary' secondary />
-    <Button label='Success' success />
-    <Button label='Warning' warning />
-    <Button label='Danger' danger />
-    <Button label='Link' link />
+    <Button label='Button' style={{'margin': '0 5px'}} />
+    <Button label='Secondary' secondary style={{'margin': '0 5px'}} />
+    <Button label='Success' success style={{'margin': '0 5px'}} />
+    <Button label='Warning' warning style={{'margin': '0 5px'}} />
+    <Button label='Danger' danger style={{'margin': '0 5px'}} />
+    <Button label='Link' link style={{'margin': '0 5px'}} />
 
     <p>Disabled Regular Buttons</p>
-    <Button label='Button' disabled />
-    <Button label='Secondary' disabled secondary />
-    <Button label='Success' disabled success />
-    <Button label='Warning' disabled warning />
-    <Button label='Danger' disabled danger />
-    <Button label='Link' disabled link />
+    <Button label='Button' disabled style={{'margin': '0 5px'}} />
+    <Button label='Secondary' disabled secondary style={{'margin': '0 5px'}} />
+    <Button label='Success' disabled success style={{'margin': '0 5px'}} />
+    <Button label='Warning' disabled warning style={{'margin': '0 5px'}} />
+    <Button label='Danger' disabled danger style={{'margin': '0 5px'}} />
+    <Button label='Link' disabled link style={{'margin': '0 5px'}} />
 
     <p>Outline Buttons</p>
-    <Button label='Button' outline primary />
-    <Button label='Secondary' secondary />
-    <Button label='Success' success outline />
-    <Button label='Warning' warning outline />
-    <Button label='Danger' danger outline />
-    <Button label='Link' link outline />
+    <Button label='Button' outline primary style={{'margin': '0 5px'}} />
+    <Button label='Secondary' secondary style={{'margin': '0 5px'}} />
+    <Button label='Success' success outline style={{'margin': '0 5px'}} />
+    <Button label='Warning' warning outline style={{'margin': '0 5px'}} />
+    <Button label='Danger' danger outline style={{'margin': '0 5px'}} />
+    <Button label='Link' link outline style={{'margin': '0 5px'}} />
 
     <p>Disabled Outline Buttons</p>
-    <Button label='Button' disabled outline primary />
-    <Button label='Secondary' disabled secondary />
-    <Button label='Success' disabled success outline />
-    <Button label='Warning' disabled warning outline />
-    <Button label='Danger' disabled danger outline />
-    <Button label='Link' disabled link outline />
+    <Button label='Button' disabled outline primary style={{'margin': '0 5px'}} />
+    <Button label='Secondary' disabled secondary style={{'margin': '0 5px'}} />
+    <Button label='Success' disabled success outline style={{'margin': '0 5px'}} />
+    <Button label='Warning' disabled warning outline style={{'margin': '0 5px'}} />
+    <Button label='Danger' disabled danger outline style={{'margin': '0 5px'}} />
+    <Button label='Link' disabled link outline style={{'margin': '0 5px'}} />
 
     <p>Large Buttons</p>
-    <Button label='Button' large primary />
-    <Button label='Secondary' large secondary />
+    <Button label='Button' large primary style={{'margin': '0 5px'}} />
+    <Button label='Secondary' large secondary style={{'margin': '0 5px'}} />
 
     <p>Small Buttons</p>
-    <Button label='Button' small primary />
-    <Button label='Secondary' small secondary />
+    <Button label='Button' small primary style={{'margin': '0 5px'}} />
+    <Button label='Secondary' small secondary style={{'margin': '0 5px'}} />
 
     <p>Block Level Buttons</p>
     <Button label='Button' block primary />
