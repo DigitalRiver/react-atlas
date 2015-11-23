@@ -1,8 +1,8 @@
 /*colors*/
 /*primary*/
 $primary: #0275d8;
-$primary-active: #025aa5;
-$primary-active-border: #01549b;
+$primary-active: darken($primary, 10%);
+$primary-active-border: darken($primary, 12%);
 /*secondary*/
 $secondary: #373a3c;
 $secondary-border: #ccc;
@@ -10,16 +10,16 @@ $secondary-active: #e6e6e6;
 $secondary-active-border: #adadad;
 /*success*/
 $success: #5cb85c;
-$success-active: #449d44;
-$success-active-border: #419641;
+$success-active: darken($success, 10%);
+$success-active-border: darken($success, 12%);
 /*warning*/
 $warning: #f0ad4e;
-$warning-active: #ec971f;
-$warning-active-border: #eb9316;
+$warning-active: darken($warning, 10%);
+$warning-active-border: darken($warning, 12%);
 /*danger*/
 $danger: #d9534f;
-$danger-active: #c9302c;
-$danger-active-border: #c12e2a;
+$danger-active: darken($danger, 10%);
+$danger-active-border: darken($danger, 10%);
 /*link*/
 $link: #0275d8;
 $link-active: #014c8c;
