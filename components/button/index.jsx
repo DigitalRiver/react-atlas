@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
 import FontIcon from '../font_icon';
 import Tooltip from '../tooltip';
 import style from './style';
@@ -57,43 +57,47 @@ class Button extends React.Component {
     const {accent, outline, href, icon, label, loading, mini,
            primary, raised, tooltip, secondary, success, warning, danger, link, large, small, block, disabled, ...others} = this.props;
     const element = href ? 'a' : 'button';
-    let className = classNames({
-        [style.root]: true,
-        [style.large]: large,
-        [style.small]: small,
-        [style.block]: block,
-        [style.disabled]: disabled
+    var cx = classNames.bind(style);
+    let className = cx({
+        root: true,
+        large: large,
+        small: small,
+        block: block,
+        disabled: disabled
     });
 
     if (outline) {
-      className += ' '+ classNames({
-        [style.primary_outline]: outline,
-        [style.secondary_outline]: secondary,
-        [style.success_outline]: success,
-        [style.warning_outline]: warning,
-        [style.danger_outline]: danger,
-        [style.link_outline]: link
+      className += ' '+ cx({
+        primary_outline: outline,
+        secondary_outline: secondary,
+        success_outline: success,
+        warning_outline: warning,
+        danger_outline: danger,
+        link_outline: link
       });
     } else {
-      className += ' '+ classNames({
-        [style.secondary]: secondary,
-        [style.success]: success,
-        [style.warning]: warning,
-        [style.danger]: danger,
-        [style.link]: link
+      className += ' '+ cx({
+        secondary: secondary,
+        success: success,
+        warning: warning,
+        danger: danger,
+        link: link
       });
     }
 
     if (this.props.className) className += ` ${this.props.className}`;
-    if (mini) className += ` ${style.mini}`;
-
+    let role;
+    if (element === 'a') {
+      role = 'button';
+    }
     const props = {
       ...others,
       href,
       className,
       disabled: disabled || this.props.loading,
       onMouseDown: this.handleMouseDown,
-      onTouchStart: this.handleTouchStart
+      onTouchStart: this.handleTouchStart,
+      role: role
     };
 
     return React.createElement(element, props,
