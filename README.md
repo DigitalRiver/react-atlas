@@ -51,9 +51,16 @@ If you browse the resulting markup you will see *data attributes* like `data-rol
 We will be thinking hard about styling going forward and this workflow may change. We want to make overriding the React Atlas styles as simple as possible. Something like [React Themeable](https://github.com/markdalgleish/react-themeable) may be used.
 
 ## Local Docs
-Run the docs server locally by doing the following commands:
 
 ```
+=======
+To work in the project you'd need a `node` version with ES6 syntax. Although the project is built using Babel we use some ES6 features in the development server. Also, the packages has been tested with `node 4.2.1`. Consider using [nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n) to handle different node versions!
+
+To start documentation site locally you'd need to install dependencies from the main package and also dependencies from the docs subproject:
+
+```
+git clone https://github.com/react-toolbox/react-toolbox.git
+npm install
 cd docs/
 npm install 
 npm start

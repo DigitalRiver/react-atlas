@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import style from './style';
 import FontIcon from '../font_icon';
 import Tooltip from '../tooltip';
@@ -18,6 +19,8 @@ class Input extends React.Component {
     onFocus: React.PropTypes.func,
     onKeyPress: React.PropTypes.func,
     required: React.PropTypes.bool,
+    tooltip: React.PropTypes.string,
+    tooltipDelay: React.PropTypes.number,
     type: React.PropTypes.string,
     value: React.PropTypes.any
   };
@@ -52,14 +55,19 @@ class Input extends React.Component {
   }
 
   render () {
-    let className = style.root;
-    let labelClassName = style.label;
-    if (this.props.error) className += ` ${style.errored}`;
-    if (this.props.disabled) className += ` ${style.disabled}`;
-    if (this.props.className) className += ` ${this.props.className}`;
-    if (this.props.type === 'hidden') className += ` ${style.hidden}`;
-    if (this.props.icon) className += ` ${style['with-icon']}`;
-    if (!this.props.floating) labelClassName += ` ${style.fixed}`;
+    const className = classNames({
+      [style.root]: true,
+      [style.errored]: this.props.error,
+      [style.disabled]: this.props.disabled,
+      [this.props.className]: this.props.className,
+      [style.hidden]: this.props.type === 'hidden',
+      [style['with-icon']]: this.props.icon
+    });
+
+    const labelClassName = classNames({
+      [style.label]: true,
+      [style.fixed]: !this.props.floating
+    });
 
     return (
       <div data-react-toolbox='input' className={className}>
@@ -68,7 +76,7 @@ class Input extends React.Component {
         <span className={style.bar}></span>
         { this.props.label ? <label className={labelClassName}>{this.props.label}</label> : null }
         { this.renderUnderline() }
-        { this.props.tooltip ? <Tooltip label={this.props.tooltip}/> : null }
+        { this.props.tooltip ? <Tooltip label={this.props.tooltip} delay={this.props.tooltipDelay}/> : null }
       </div>
     );
   }

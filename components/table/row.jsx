@@ -1,6 +1,6 @@
 import React from 'react';
 import Checkbox from '../checkbox';
-import utils from '../utils';
+import utils from '../utils/utils';
 import style from './style';
 
 class TableRow extends React.Component {
@@ -8,6 +8,7 @@ class TableRow extends React.Component {
     data: React.PropTypes.object,
     onChange: React.PropTypes.func,
     onSelect: React.PropTypes.func,
+    selectable: React.PropTypes.bool,
     selected: React.PropTypes.bool
   };
 
@@ -17,7 +18,7 @@ class TableRow extends React.Component {
   };
 
   renderSelectCell () {
-    if (this.props.onSelect) {
+    if (this.props.selectable) {
       return (
         <td className={style.selectable}>
           <Checkbox checked={this.props.selected} onChange={this.props.onSelect} />
