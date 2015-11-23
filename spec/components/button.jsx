@@ -10,20 +10,30 @@ const GithubIcon = () => (
 const ButtonTest = () => (
   <section>
     <h5>Buttons</h5>
-    <p>lorem ipsum...</p>
 
+    <p>Regular Buttons</p>
     <Button label='Button'/>
     <Button label='Secondary' secondary />
     <Button label='Success' success />
     <Button label='Warning' warning />
     <Button label='Danger' danger />
     <Button label='Link' link />
+
+    <p>Outline Buttons</p>
     <Button label='Button' outline primary />
     <Button label='Secondary' secondary />
     <Button label='Success' success outline />
     <Button label='Warning' warning outline />
     <Button label='Danger' danger outline />
     <Button label='Link' link outline />
+
+    <p>Large Buttons</p>
+    <Button label='Button' large primary />
+    <Button label='Secondary' large secondary />
+
+    <p>Small Buttons</p>
+    <Button label='Button' small primary />
+    <Button label='Secondary' small secondary />
   </section>
 );
 

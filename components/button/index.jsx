@@ -36,7 +36,9 @@ class Button extends React.Component {
     danger: false,
     link: false,
     raised: false,
-    toggle: false
+    toggle: false,
+    large: false,
+    small: false
   };
 
   handleMouseDown = (event) => {
@@ -52,7 +54,7 @@ class Button extends React.Component {
   render () {
 
     const {accent, outline, href, icon, label, loading, mini,
-           primary, raised, tooltip, secondary, success, warning, danger, link, ...others} = this.props;
+           primary, raised, tooltip, secondary, success, warning, danger, link, large, small, ...others} = this.props;
     const element = href ? 'a' : 'button';
     let className;
 
@@ -64,7 +66,9 @@ class Button extends React.Component {
         [style.success_outline]: success,
         [style.warning_outline]: warning,
         [style.danger_outline]: danger,
-        [style.link_outline]: link
+        [style.link_outline]: link,
+        [style.large]: large,
+        [style.small]: small
       });
     } else {
       className = classNames({
@@ -73,7 +77,9 @@ class Button extends React.Component {
         [style.success]: success,
         [style.warning]: warning,
         [style.danger]: danger,
-        [style.link]: link
+        [style.link]: link,
+        [style.large]: large,
+        [style.small]: small
       });
     }
 
