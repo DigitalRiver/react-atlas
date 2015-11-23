@@ -34,6 +34,10 @@ const ButtonTest = () => (
     <p>Small Buttons</p>
     <Button label='Button' small primary />
     <Button label='Secondary' small secondary />
+
+    <p>Block Level Buttons</p>
+    <Button label='Button' block primary />
+    <Button label='Secondary' block secondary />
   </section>
 );
 

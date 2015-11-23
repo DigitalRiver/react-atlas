@@ -54,7 +54,7 @@ class Button extends React.Component {
   render () {
 
     const {accent, outline, href, icon, label, loading, mini,
-           primary, raised, tooltip, secondary, success, warning, danger, link, large, small, ...others} = this.props;
+           primary, raised, tooltip, secondary, success, warning, danger, link, large, small, block, ...others} = this.props;
     const element = href ? 'a' : 'button';
     let className;
 
@@ -68,7 +68,8 @@ class Button extends React.Component {
         [style.danger_outline]: danger,
         [style.link_outline]: link,
         [style.large]: large,
-        [style.small]: small
+        [style.small]: small,
+        [style.block]: block
       });
     } else {
       className = classNames({
@@ -79,7 +80,8 @@ class Button extends React.Component {
         [style.danger]: danger,
         [style.link]: link,
         [style.large]: large,
-        [style.small]: small
+        [style.small]: small,
+        [style.block]: block
       });
     }
 

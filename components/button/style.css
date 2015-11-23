@@ -164,3 +164,9 @@
     line-height: 1.5;
     border-radius: .2rem;
 }
+
+/*block style*/
+.block {
+    display: block;
+    width: 100%;
+}
