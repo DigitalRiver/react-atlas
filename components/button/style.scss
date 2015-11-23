@@ -178,6 +178,13 @@ $link-active: #014c8c;
   }
 }
 
+.disabled{
+  cursor: not-allowed;
+  opacity: .65;
+  pointer-events: none;
+  text-decoration: none;
+}
+
 /*button sizes*/
 .large {
     padding: .75rem 1.25rem;

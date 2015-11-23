@@ -19,6 +19,14 @@ const ButtonTest = () => (
     <Button label='Danger' danger />
     <Button label='Link' link />
 
+    <p>Disabled Regular Buttons</p>
+    <Button label='Button' disabled />
+    <Button label='Secondary' disabled secondary />
+    <Button label='Success' disabled success />
+    <Button label='Warning' disabled warning />
+    <Button label='Danger' disabled danger />
+    <Button label='Link' disabled link />
+
     <p>Outline Buttons</p>
     <Button label='Button' outline primary />
     <Button label='Secondary' secondary />
@@ -26,6 +34,14 @@ const ButtonTest = () => (
     <Button label='Warning' warning outline />
     <Button label='Danger' danger outline />
     <Button label='Link' link outline />
+
+    <p>Disabled Outline Buttons</p>
+    <Button label='Button' disabled outline primary />
+    <Button label='Secondary' disabled secondary />
+    <Button label='Success' disabled success outline />
+    <Button label='Warning' disabled warning outline />
+    <Button label='Danger' disabled danger outline />
+    <Button label='Link' disabled link outline />
 
     <p>Large Buttons</p>
     <Button label='Button' large primary />

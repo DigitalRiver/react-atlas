@@ -38,7 +38,8 @@ class Button extends React.Component {
     raised: false,
     toggle: false,
     large: false,
-    small: false
+    small: false,
+    disabled: false
   };
 
   handleMouseDown = (event) => {
@@ -54,13 +55,14 @@ class Button extends React.Component {
   render () {
 
     const {accent, outline, href, icon, label, loading, mini,
-           primary, raised, tooltip, secondary, success, warning, danger, link, large, small, block, ...others} = this.props;
+           primary, raised, tooltip, secondary, success, warning, danger, link, large, small, block, disabled, ...others} = this.props;
     const element = href ? 'a' : 'button';
     let className = classNames({
         [style.root]: true,
         [style.large]: large,
         [style.small]: small,
-        [style.block]: block
+        [style.block]: block,
+        [style.disabled]: disabled
     });
 
     if (outline) {
@@ -89,7 +91,7 @@ class Button extends React.Component {
       ...others,
       href,
       className,
-      disabled: this.props.disabled || this.props.loading,
+      disabled: disabled || this.props.loading,
       onMouseDown: this.handleMouseDown,
       onTouchStart: this.handleTouchStart
     };
