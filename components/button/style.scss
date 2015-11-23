@@ -1,24 +1,28 @@
 /*colors*/
 /*primary*/
-@value primary: #0275d8;
-@value primary-active: #025aa5;
-@value primary-active-border: #01549b;
+$primary: #0275d8;
+$primary-active: #025aa5;
+$primary-active-border: #01549b;
+/*secondary*/
+$secondary: #373a3c;
+$secondary-border: #ccc;
+$secondary-active: #e6e6e6;
+$secondary-active-border: #adadad;
 /*success*/
-@value success: #5cb85c;
-@value success-active: #449d44;
-@value success-active-border: #419641;
+$success: #5cb85c;
+$success-active: #449d44;
+$success-active-border: #419641;
 /*warning*/
-@value warning: #f0ad4e;
-@value warning-active: #ec971f;
-@value warning-active-border: #eb9316;
+$warning: #f0ad4e;
+$warning-active: #ec971f;
+$warning-active-border: #eb9316;
 /*danger*/
-@value danger: #d9534f;
-@value danger-active: #c9302c;
-@value danger-active-border: #c12e2a;
+$danger: #d9534f;
+$danger-active: #c9302c;
+$danger-active-border: #c12e2a;
 /*link*/
-@value link: #0275d8;
-@value link-active: #014c8c;
-
+$link: #0275d8;
+$link-active: #014c8c;
 
 /*Main button formatting*/
 
@@ -34,7 +38,7 @@
   touch-action: manipulation;
   cursor: pointer;
   user-select: none;
-  border: 1px solid primary;
+  border: 1px solid $primary;
   border-radius: .25rem;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -43,52 +47,52 @@
   -webkit-appearance: button;
   text-transform: none;
   color: #fff;
-  background-color: primary;
+  background-color: $primary;
   &:hover, &.active {
-    background-color: primary-active;
-    border-color: primary-active-border;
+    background-color: $primary-active;
+    border-color: $primary-active-border;
   }
 }
 
 /*Main Styles*/
 
 .secondary {
-  color: #373a3c;
+  color: $secondary;
   background-color: #fff;
-  border-color: #ccc;
+  border-color: $secondary-border;
   &:hover, &.active {
-    background-color: #e6e6e6;
-    border-color: #adadad;
+    background-color: $secondary-active;
+    border-color: $secondary-active-border;
   }
 }
 
 .success {
   color: #fff;
-  background-color: success;
-  border-color: success;
+  background-color: $success;
+  border-color: $success;
   &:hover, &.active {
-    background-color: success-active;
-    border-color: success-active-border;
+    background-color: $success-active;
+    border-color: $success-active-border;
   }
 }
 
 .warning {
   color: #fff;
-  background-color: warning;
-  border-color: warning;
+  background-color: $warning;
+  border-color: $warning;
   &:hover, &.active {
-    background-color: warning-active;
-    border-color: warning-active-border;
+    background-color: $warning-active;
+    border-color: $warning-active-border;
   }
 }
 
 .danger {
   color: #fff;
-  background-color: danger;
-  border-color: danger;
+  background-color: $danger;
+  border-color: $danger;
   &:hover, &.active {
-    background-color: danger-active;
-    border-color: danger-active-border;
+    background-color: $danger-active;
+    border-color: $danger-active-border;
   }
 }
 
@@ -96,10 +100,10 @@
   border-color: transparent;
   background-color: transparent;
   font-weight: 400;
-  color: primary;
+  color: $primary;
   border-radius: 0;
   &:hover, &.active {
-    color: link-active;
+    color: $link-active;
     text-decoration: underline;
     border-color: transparent;
     background-color: transparent;
@@ -109,68 +113,68 @@
 /*Outline styles*/
 
 .primary_outline {
-  color: primary;
+  color: $primary;
   background-color: transparent;
-  border-color: primary;
+  border-color: $primary;
   &:hover, &.active {
     color: #fff;
-    background-color: primary;
-    border-color: primary;
+    background-color: $primary;
+    border-color: $primary;
   }
 }
 
 .secondary_outline {
-  color: #ccc;
+  color: $secondary-border;
   background-color: transparent;
-  border-color: #ccc;
+  border-color: $secondary-border;
   &:hover, &.active {
     color: #fff;
-    background-color: #ccc;
-    border-color: #ccc;
+    background-color: $secondary-border;
+    border-color: $secondary-border;
   }
 }
 
 .success_outline {
-  color: success;
+  color: $success;
   background-color: transparent;
-  border-color: success;
+  border-color: $success;
   &:hover, &.active {
     color: #fff;
-    background-color: success;
-    border-color: success;
+    background-color: $success;
+    border-color: $success;
   }
 }
 
 .warning_outline {
-  color: warning;
+  color: $warning;
   background-color: transparent;
-  border-color: warning;
+  border-color: $warning;
   &:hover, &.active {
     color: #fff;
-    background-color: warning;
-    border-color: warning;
+    background-color: $warning;
+    border-color: $warning;
   }
 }
 
 .danger_outline {
-  color: danger;
+  color: $danger;
   background-color: transparent;
-  border-color: danger;
+  border-color: $danger;
   &:hover, &.active {
     color: #fff;
-    background-color: danger;
-    border-color: danger;
+    background-color: $danger;
+    border-color: $danger;
   }
 }
 
 .link_outline {
-  color: link;
+  color: $link;
   background-color: transparent;
-  border-color: link;
+  border-color: $link;
   &:hover, &.active {
     color: #fff;
-    background-color: link;
-    border-color: link;
+    background-color: $link;
+    border-color: $link;
   }
 }
 

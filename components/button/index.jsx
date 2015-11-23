@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import FontIcon from '../font_icon';
 import Tooltip from '../tooltip';
-import style from './style.css';
+import style from './style';
 import events from '../utils/events';
 
 class Button extends React.Component {
