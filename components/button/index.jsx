@@ -56,35 +56,31 @@ class Button extends React.Component {
     const {accent, outline, href, icon, label, loading, mini,
            primary, raised, tooltip, secondary, success, warning, danger, link, large, small, block, ...others} = this.props;
     const element = href ? 'a' : 'button';
-    let className;
+    let className = classNames({
+        [style.root]: true,
+        [style.large]: large,
+        [style.small]: small,
+        [style.block]: block
+    });
 
     if (outline) {
-      className = classNames({
-        [style.root]: true,
+      className += ' '+ classNames({
         [style.primary_outline]: outline,
         [style.secondary_outline]: secondary,
         [style.success_outline]: success,
         [style.warning_outline]: warning,
         [style.danger_outline]: danger,
-        [style.link_outline]: link,
-        [style.large]: large,
-        [style.small]: small,
-        [style.block]: block
+        [style.link_outline]: link
       });
     } else {
-      className = classNames({
-        [style.root]: true,
+      className += ' '+ classNames({
         [style.secondary]: secondary,
         [style.success]: success,
         [style.warning]: warning,
         [style.danger]: danger,
-        [style.link]: link,
-        [style.large]: large,
-        [style.small]: small,
-        [style.block]: block
+        [style.link]: link
       });
     }
-
 
     if (this.props.className) className += ` ${this.props.className}`;
     if (mini) className += ` ${style.mini}`;

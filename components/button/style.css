@@ -1,3 +1,27 @@
+/*colors*/
+/*primary*/
+@value primary: #0275d8;
+@value primary-active: #025aa5;
+@value primary-active-border: #01549b;
+/*success*/
+@value success: #5cb85c;
+@value success-active: #449d44;
+@value success-active-border: #419641;
+/*warning*/
+@value warning: #f0ad4e;
+@value warning-active: #ec971f;
+@value warning-active-border: #eb9316;
+/*danger*/
+@value danger: #d9534f;
+@value danger-active: #c9302c;
+@value danger-active-border: #c12e2a;
+/*link*/
+@value link: #0275d8;
+@value link-active: #014c8c;
+
+
+/*Main button formatting*/
+
 .root {
   display: inline-block;
   padding: .375rem 1rem;
@@ -10,7 +34,7 @@
   touch-action: manipulation;
   cursor: pointer;
   user-select: none;
-  border: 1px solid #0275d8;
+  border: 1px solid primary;
   border-radius: .25rem;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -19,10 +43,10 @@
   -webkit-appearance: button;
   text-transform: none;
   color: #fff;
-  background-color: #0275d8;
-  &:hover {
-    background-color: #025aa5;
-    border-color: #01549b;
+  background-color: primary;
+  &:hover, &.active {
+    background-color: primary-active;
+    border-color: primary-active-border;
   }
 }
 
@@ -32,7 +56,7 @@
   color: #373a3c;
   background-color: #fff;
   border-color: #ccc;
-  &:hover {
+  &:hover, &.active {
     background-color: #e6e6e6;
     border-color: #adadad;
   }
@@ -40,31 +64,31 @@
 
 .success {
   color: #fff;
-  background-color: #5cb85c;
-  border-color: #5cb85c;
-  &:hover {
-    background-color: #449d44;
-    border-color: #419641;
+  background-color: success;
+  border-color: success;
+  &:hover, &.active {
+    background-color: success-active;
+    border-color: success-active-border;
   }
 }
 
 .warning {
   color: #fff;
-  background-color: #f0ad4e;
-  border-color: #f0ad4e;
-  &:hover {
-    background-color: #ec971f;
-    border-color: #eb9316;
+  background-color: warning;
+  border-color: warning;
+  &:hover, &.active {
+    background-color: warning-active;
+    border-color: warning-active-border;
   }
 }
 
 .danger {
   color: #fff;
-  background-color: #d9534f;
-  border-color: #d9534f;
-  &:hover {
-    background-color: #c9302c;
-    border-color: #c12e2a;
+  background-color: danger;
+  border-color: danger;
+  &:hover, &.active {
+    background-color: danger-active;
+    border-color: danger-active-border;
   }
 }
 
@@ -72,10 +96,10 @@
   border-color: transparent;
   background-color: transparent;
   font-weight: 400;
-  color: #0275d8;
+  color: primary;
   border-radius: 0;
-  &:hover {
-    color: #014c8c;
+  &:hover, &.active {
+    color: link-active;
     text-decoration: underline;
     border-color: transparent;
     background-color: transparent;
@@ -85,13 +109,13 @@
 /*Outline styles*/
 
 .primary_outline {
-  color: #0275d8;
+  color: primary;
   background-color: transparent;
-  border-color: #0275d8;
-  &:hover {
+  border-color: primary;
+  &:hover, &.active {
     color: #fff;
-    background-color: #0275d8;
-    border-color: #0275d8;
+    background-color: primary;
+    border-color: primary;
   }
 }
 
@@ -99,7 +123,7 @@
   color: #ccc;
   background-color: transparent;
   border-color: #ccc;
-  &:hover {
+  &:hover, &.active {
     color: #fff;
     background-color: #ccc;
     border-color: #ccc;
@@ -107,46 +131,46 @@
 }
 
 .success_outline {
-  color: #5cb85c;
+  color: success;
   background-color: transparent;
-  border-color: #5cb85c;
-  &:hover {
+  border-color: success;
+  &:hover, &.active {
     color: #fff;
-    background-color: #5cb85c;
-    border-color: #5cb85c;
+    background-color: success;
+    border-color: success;
   }
 }
 
 .warning_outline {
-  color: #f0ad4e;
+  color: warning;
   background-color: transparent;
-  border-color: #f0ad4e;
-  &:hover {
+  border-color: warning;
+  &:hover, &.active {
     color: #fff;
-    background-color: #f0ad4e;
-    border-color: #f0ad4e;
+    background-color: warning;
+    border-color: warning;
   }
 }
 
 .danger_outline {
-  color: #d9534f;
+  color: danger;
   background-color: transparent;
-  border-color: #d9534f;
-  &:hover {
+  border-color: danger;
+  &:hover, &.active {
     color: #fff;
-    background-color: #d9534f;
-    border-color: #d9534f;
+    background-color: danger;
+    border-color: danger;
   }
 }
 
 .link_outline {
-  color: #0275d8;
+  color: link;
   background-color: transparent;
-  border-color: #0275d8;
-  &:hover {
+  border-color: link;
+  &:hover, &.active {
     color: #fff;
-    background-color: #0275d8;
-    border-color: #0275d8;
+    background-color: link;
+    border-color: link;
   }
 }
 
