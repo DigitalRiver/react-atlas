@@ -12,7 +12,7 @@ const ButtonTest = () => (
     <h5>Buttons</h5>
 
     <p>Regular Buttons</p>
-    <Button label='Button' style={{'margin': '0 5px'}} />
+    <Button label='Button' primary style={{'margin': '0 5px'}} />
     <Button label='Secondary' secondary style={{'margin': '0 5px'}} />
     <Button label='Success' success style={{'margin': '0 5px'}} />
     <Button label='Warning' warning style={{'margin': '0 5px'}} />

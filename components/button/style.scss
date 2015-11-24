@@ -19,7 +19,7 @@ $warning-active-border: darken($warning, 12%);
 /*danger*/
 $danger: #d9534f;
 $danger-active: darken($danger, 10%);
-$danger-active-border: darken($danger, 10%);
+$danger-active-border: darken($danger, 12%);
 /*link*/
 $link: #0275d8;
 $link-active: #014c8c;
@@ -27,6 +27,7 @@ $link-active: #014c8c;
 /*Main button formatting*/
 
 .root {
+  composes: white from '../colors-text.css';
   display: inline-block;
   padding: .375rem 1rem;
   font-size: 1rem;
@@ -45,7 +46,7 @@ $link-active: #014c8c;
   -ms-user-select: none;
   margin: 0;
   text-transform: none;
-  color: #fff;
+  border-color: $primary;
   background-color: $primary;
   &:hover, &.active {
     background-color: $primary-active;
@@ -55,8 +56,13 @@ $link-active: #014c8c;
 
 /*Main Styles*/
 
+.primary {
+  composes: root;
+}
+
 .secondary {
-  color: $secondary;
+  composes: root;
+  composes: secondary from '../colors-text.css';
   background-color: #fff;
   border-color: $secondary-border;
   &:hover, &.active {
@@ -66,7 +72,8 @@ $link-active: #014c8c;
 }
 
 .success {
-  color: #fff;
+  composes: root;
+  composes: white from '../colors-text.css';
   background-color: $success;
   border-color: $success;
   &:hover, &.active {
@@ -76,7 +83,8 @@ $link-active: #014c8c;
 }
 
 .warning {
-  color: #fff;
+  composes: root;
+  composes: white from '../colors-text.css';
   background-color: $warning;
   border-color: $warning;
   &:hover, &.active {
@@ -86,7 +94,8 @@ $link-active: #014c8c;
 }
 
 .danger {
-  color: #fff;
+  composes: root;
+  composes: white from '../colors-text.css';
   background-color: $danger;
   border-color: $danger;
   &:hover, &.active {
@@ -96,10 +105,11 @@ $link-active: #014c8c;
 }
 
 .link {
+  composes: root;
+  composes: primary from '../colors-text.css';
   border-color: transparent;
   background-color: transparent;
   font-weight: 400;
-  color: $primary;
   border-radius: 0;
   &:hover, &.active {
     color: $link-active;
@@ -112,7 +122,8 @@ $link-active: #014c8c;
 /*Outline styles*/
 
 .primary_outline {
-  color: $primary;
+  composes: root;
+  composes: primary from "../colors-text.css";
   background-color: transparent;
   border-color: $primary;
   &:hover, &.active {
@@ -123,6 +134,7 @@ $link-active: #014c8c;
 }
 
 .secondary_outline {
+  composes: root;
   color: $secondary-border;
   background-color: transparent;
   border-color: $secondary-border;
@@ -134,7 +146,8 @@ $link-active: #014c8c;
 }
 
 .success_outline {
-  color: $success;
+  composes: root;
+  composes: success from "../colors-text.css";
   background-color: transparent;
   border-color: $success;
   &:hover, &.active {
@@ -145,7 +158,8 @@ $link-active: #014c8c;
 }
 
 .warning_outline {
-  color: $warning;
+  composes: root;
+  composes: warning from "../colors-text.css";
   background-color: transparent;
   border-color: $warning;
   &:hover, &.active {
@@ -156,7 +170,8 @@ $link-active: #014c8c;
 }
 
 .danger_outline {
-  color: $danger;
+  composes: root;
+  composes: danger from "../colors-text.css";
   background-color: transparent;
   border-color: $danger;
   &:hover, &.active {
@@ -167,7 +182,8 @@ $link-active: #014c8c;
 }
 
 .link_outline {
-  color: $link;
+  composes: root;
+  composes: primary from "../colors-text.css";
   background-color: transparent;
   border-color: $link;
   &:hover, &.active {
@@ -177,7 +193,8 @@ $link-active: #014c8c;
   }
 }
 
-.disabled{
+.disabled {
+  composes: root;
   cursor: not-allowed;
   opacity: .65;
   pointer-events: none;
@@ -186,6 +203,7 @@ $link-active: #014c8c;
 
 /*button sizes*/
 .large {
+  composes: root;
     padding: .75rem 1.25rem;
     font-size: 1.25rem;
     line-height: 1.333333;
@@ -193,6 +211,7 @@ $link-active: #014c8c;
 }
 
 .small {
+  composes: root;
     padding: .25rem .75rem;
     font-size: .85rem;
     line-height: 1.5;

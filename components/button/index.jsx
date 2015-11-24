@@ -59,7 +59,6 @@ class Button extends React.Component {
     const element = href ? 'a' : 'button';
     var cx = classNames.bind(style);
     let className = cx({
-        root: true,
         large: large,
         small: small,
         block: block,
@@ -77,6 +76,7 @@ class Button extends React.Component {
       });
     } else {
       className += ' '+ cx({
+        primary: primary,
         secondary: secondary,
         success: success,
         warning: warning,
