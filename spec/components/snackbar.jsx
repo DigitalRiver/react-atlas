@@ -3,6 +3,10 @@ import Button from '../../components/button';
 import Snackbar from '../../components/snackbar';
 
 class SnackbarTest extends React.Component {
+  state = {
+    active: false
+  };
+
   handleSnackbarClick = () => {
     this.setState({active: false});
   };
@@ -15,10 +19,6 @@ class SnackbarTest extends React.Component {
     this.setState({active: true});
   };
 
-  state = {
-    active: false
-  };
-
   render () {
     return (
       <section>
@@ -28,7 +28,7 @@ class SnackbarTest extends React.Component {
         <Snackbar
           action='Hide'
           active={this.state.active}
-          icon='question-answer'
+          icon='question_answer'
           label='Snackbar action cancel'
           timeout={2000}
           onClick={this.handleSnackbarClick}

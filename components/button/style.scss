@@ -29,10 +29,15 @@ $link-active: #014c8c;
 .root {
   composes: white from '../colors-text.css';
   display: inline-block;
+<<<<<<< HEAD
   padding: .375rem 1rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -46,11 +51,15 @@ $link-active: #014c8c;
   -ms-user-select: none;
   margin: 0;
   text-transform: none;
-  border-color: $primary;
   background-color: $primary;
   &:hover, &.active {
     background-color: $primary-active;
     border-color: $primary-active-border;
+  }
+  &[disabled] {
+    color: $button-disabled-text-color;
+    pointer-events: none;
+    cursor: auto;
   }
 }
 

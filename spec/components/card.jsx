@@ -1,39 +1,230 @@
 import React from 'react';
-import Card from '../../components/card';
+import Button, { IconButton } from '../../components/button';
+import Card, { CardActions, CardMedia, CardText, CardTitle } from '../../components/card';
+import style from '../style';
 
-class CardTest extends React.Component {
-  onClick = () => {
-    console.log('onClick', arguments);
-  };
+const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.';
 
-  onActionClick () {
-    console.log('onClick', arguments);
-  }
+const Spacer = () => <div style={{display: 'flex', flex: '1 1 auto'}}/>;
+const CardList = ({children}) => <ul className={style.cardsGroup}>{children}</ul>;
+const CardListItem = ({component, name}) => (
+  <li className={style.cardItem}>
+    <div className={style.cardItemContent}>{component}</div>
+    <div className={style.cardItemName}>{name}</div>
+  </li>
+);
 
-  render () {
-    const text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
-    const actions = [
-      { label: 'Save', icon: 'add', className: 'flat accent', onClick: this.onActionClick.bind(this) },
-      { label: 'Close', className: 'flat', onClick: this.onActionClick.bind(this) }];
+const cards = {
+  basic: [{
+    name: 'Basic Card',
+    component: (
+      <Card className={style.card}>
+        <CardTitle
+          title="Title goes here"
+          subtitle="Subtitle here"
+        />
+        <CardText>{dummyText}</CardText>
+        <CardActions>
+          <Button label="Action 1" />
+          <Button label="Action 2" />
+        </CardActions>
+      </Card>
+    )
+  }, {
+    name: 'Raised Card',
+    component: (
+      <Card raised className={style.card}>
+        <CardTitle
+          title="Title goes here"
+          subtitle="Subtitle here"
+        />
+        <CardText>{dummyText}</CardText>
+        <CardActions>
+          <Button label="Action 1" />
+          <Button label="Action 2" />
+        </CardActions>
+      </Card>
+    )
+  }],
+  media: [{
+    name: '16:9 Card Media Area',
+    component: (
+      <Card className={style.card}>
+        <CardMedia
+          aspectRatio="wide"
+          className={style.primary}
+        >
+          <CardTitle>Basic Card</CardTitle>
+        </CardMedia>
+        <CardTitle subtitle="You can also use a subtitle like this" />
+        <CardText>{dummyText}</CardText>
+      </Card>
+    )
+  }, {
+    name: '16:9 Card Media Image',
+    component: (
+      <Card className={style.card}>
+        <CardMedia
+          aspectRatio="wide"
+          image="https://placeimg.com/800/450/nature"
+        />
+          <CardTitle
+            title="Title goes here"
+            subtitle="Subtitle here"
+          />
+        <CardText>{dummyText}</CardText>
+      </Card>
+    )
+  }, {
+    name: 'Square Media Card',
+    component: (
+      <Card className={style.card}>
+        <CardMedia
+          contentOverlay
+          aspectRatio="square"
+          image="https://placeimg.com/700/700/nature"
+        >
+          <CardTitle
+            title="Title goes here"
+            subtitle="Subtitle here"
+          />
+          <CardActions>
+            <Button inverse label="Action 1" />
+            <Button inverse label="Action 2" />
+          </CardActions>
+        </CardMedia>
+      </Card>
+    )
+  }],
+  avatar: [{
+    name: 'Avatar Card Title',
+    component: (
+      <Card className={style.card}>
+        <CardTitle
+          avatar="https://placeimg.com/80/80/animals"
+          title="Avatar Card"
+          subtitle="An awesome basic card"
+        />
+        <CardMedia
+          aspectRatio="wide"
+          image="https://placeimg.com/800/450/nature"
+        />
+        <CardActions style={{ justifyContent: 'flex-end' }}>
+          <IconButton icon="share" />
+          <IconButton icon="favorite" />
+        </CardActions>
+      </Card>
+    )
+  }, {
+    name: 'Video in a card',
+    component: (
+      <Card className={style.card}>
+        <CardTitle
+          avatar="https://placeimg.com/80/80/animals"
+          title="Avatar Card"
+          subtitle="An awesome basic card"
+        />
+        <CardMedia
+          aspectRatio="wide"
+        >
+          <iframe width="1280" height="720" src="https://www.youtube.com/embed/sGbxmsDFVnE?rel=0&amp;showinfo=0" frameBorder="0" allowFullScreen></iframe>
+        </CardMedia>
+        <CardActions style={{ justifyContent: 'flex-end' }}>
+          <IconButton icon="report_problem" />
+          <Spacer/>
+          <IconButton icon="share" />
+          <IconButton icon="favorite" />
+        </CardActions>
+      </Card>
+    )
+  }],
+  horizontal: [{
+    name: 'Alternative Layout Example',
+    component: (
+      <Card className={style.card}>
+        <div className={style.cardRow}>
+          <CardTitle
+            title="Title goes here"
+            subtitle="Subtitle here"
+          />
+          <CardMedia
+            className={style.media}
+            image="https://placeimg.com/400/400/nature"
+          />
+        </div>
+        <CardActions>
+          <Button label="Action 1" />
+          <Button label="Action 2" />
+        </CardActions>
+      </Card>
+    )
+  }, {
+    name: 'Another Variation',
+    component: (
+      <Card>
+        <div className={style.cardRow}>
+          <CardTitle
+            title="Title goes here"
+            subtitle="Subtitle here"
+          />
+          <CardMedia
+            className={style.mediaLarge}
+            image="https://placeimg.com/400/400/nature"
+          />
+        </div>
+      </Card>
+    )
+  }],
+  small: [{
+    name: 'Small Media Card',
+    component: (
+      <Card>
+        <CardMedia
+          aspectRatio="square"
+          image="https://placeimg.com/400/400/nature"
+        >
+          <CardTitle>Test</CardTitle>
+        </CardMedia>
+        <CardActions style={{justifyContent: 'center'}}>
+          <IconButton icon="thumb_down" />
+          <IconButton icon="thumb_up" />
+          <IconButton icon="turned_in_not" />
+        </CardActions>
+      </Card>
+    )
+  }, {
+    name: 'Small Media Controls',
+    component: (
+      <Card style={{width: '140px'}}>
+        <CardMedia
+          contentOverlay
+          aspectRatio="square"
+          image="https://placeimg.com/280/280/people"
+        >
+          <CardActions style={{justifyContent: 'center'}}>
+            <IconButton inverse icon="fast_rewind" />
+            <IconButton inverse icon="play_arrow" />
+            <IconButton inverse icon="fast_forward" />
+          </CardActions>
+        </CardMedia>
+      </Card>
+    )
+  }]
+};
 
-    return (
-      <section>
-        <h5>Cards</h5>
-        <Card title='Default Card' />
-        <Card title='Default Card loading' loading />
-        <Card type='wide' title='Wide card' />
-        <Card title='Default Card with text' text={text} />
-        <Card title='Default Card with actions' actions={actions} />
-        <Card title='Default Card with text and image' text={text} image='https://avatars2.githubusercontent.com/u/559654?v=3&s=460' />
-        <Card title='Default Card with text, image and color' text={text} color='#e91e63' image='https://avatars2.githubusercontent.com/u/559654?v=3&s=460' />
-        <Card title='Default Card with text, image and color' text={text} color='#00bcd4' image='https://avatars2.githubusercontent.com/u/1634922?v=3&s=460' />
-        <Card title='Default Card with text, color and onClick event' text={text} color='#e91e63' onClick={this.onClick} />
-        <Card type='wide' title='Wide Card loading with text, color and onClick event' text={text} color='#e91e63' onClick={this.onClick} loading />
-        <Card type='image' title='javivelasco.jpg' image='https://avatars2.githubusercontent.com/u/1634922?v=3&s=460' />
-        <Card type='event' title='Featured event: May 24, 2016 7-11pm' color='#00bcd4' />
-      </section>
-    );
-  }
-}
+const CardTest = () => (
+  <section>
+    <h5>Cards</h5>
+    <p>You have multiple options for cards. Combine different subcomponents to create your own:</p>
+
+    <div className={style.cards}>
+      {Object.keys(cards).map((key) => (
+        <CardList key={key}>
+          {cards[key].map((demo, i) => <CardListItem key={key + i} {...demo} />)}
+        </CardList>
+      ))}
+    </div>
+  </section>
+);
 
 export default CardTest;
