@@ -49,12 +49,12 @@
     cursor: pointer;
     background-color: $list-item-hover-color;
   }
-  &.with-legend {
+  &.withLegend {
     height: $list-item-min-height-legend;
   }
   &.disabled {
     pointer-events: none;
-    &:not(.checkbox-item) {
+    &:not(.checkboxItem) {
       opacity: .5;
     }
     > .checkbox > [data-role='label'] {

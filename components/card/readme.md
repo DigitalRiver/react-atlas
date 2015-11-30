@@ -1,38 +1,105 @@
 # Card
 
-A [card](https://www.google.com/design/spec/components/cards.html) is a piece of paper with unique related data that serves as an entry point to more detailed information. For example, a card could contain a photo, text, and a link about a single subject.
+A [Card](https://www.google.com/design/spec/components/cards.html) is a piece of paper with unique related data that serves as an entry point to more detailed information. For example, a card could contain a photo, text, and a link about a single subject.
+
+Cards are composed of multiple subcomponents in React Toolbox. You can combine each of the subcomponents to create all different Material Design Cards given in the spec.
 
 <!-- example -->
 ```jsx
-import Card from 'react-toolbox/lib/card';
+import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
 
-const actions = [
-  { label: 'Play', icon: 'play-arrow'},
-  { label: 'Close' }
-];
+const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.';
 
 const TestCards = () => (
-  <Card
-    image='http://pitchfork-cdn.s3.amazonaws.com/longform/221/Deerhunter-Fading-Frontier640.jpg'
-    text='A Deerhunter album rollout usually coincides with some pithy and provocative statements from Bradford Cox on pop culture...'
-    title='Deerhunter - Fading Frontier'
-    color="rgba(0,0,0,.4)"
-    actions={actions}
-  />
+  <Card style={{width: '350px'}}>
+    <CardTitle
+      avatar="https://placeimg.com/80/80/animals"
+      title="Avatar style title"
+      subtitle="Subtitle here"
+    />
+    <CardMedia
+      aspectRatio="wide"
+      image="https://placeimg.com/800/450/nature"
+    />
+    <CardTitle
+      title="Title goes here"
+      subtitle="Subtitle here"
+    />
+    <CardText>{dummyText}</CardText>
+    <CardActions>
+      <Button label="Action 1" />
+      <Button label="Action 2" />
+    </CardActions>
+  </Card>
 );
+
+return <TestCards />;
 ```
 
-## Properties
+<!--component-docgen-start-->
 
-| Name              | Type          | Default         | Description|
+## Card
+
+The base card component. This acts as the main card container
+that all subcomponents are placed within.
+
+### Properties
+| Name | Type | Default | Description |
 |:-----|:-----|:-----|:-----|
-| `actions`       | `Array`        |               | Array of objects describing actions. These actions will be rendered as buttons and the object fields will be transferred to those.|
-| `className`     | `String`        |     `''`            | Sets a class to give customized styles to the card.|
-| `color`         | `String`        |                 | Sets HEX or RGBA color to add a colored layer to the heading.|
-| `image`         | `String`        |                 | URL to sets a background image in the heading.|
-| `loading`       | `Boolean`       | `false`                | If true, component will be disabled and showing a loading animation.|
-| `onClick`       | `Function`      |                 | Callback function that is fired when the components's is clicked. It also will display a ripple effect on click. |
-| `subtitle`      | `String`        |                 | Sets a complementary smaller text under the title.|
-| `text`          | `String`        |                 | Sets a complementary text display as a card description.|
-| `title`         | `String`        |           | Sets the title of the card.|
-| `type`          | `String`        | `default`          | Type of the component to display general modifications. It can be `wide` for a larger card, `image` if it's an image card or `event` which shows just a title on top. |
+| `children` | `any` |  | Child components, usually Card subcomponents. |
+| `className` | `string` |  | Additional class(es) for custom styling. |
+| `raised` | `bool` |  | Increases the shadow depth to appear elevated. |
+
+## CardTitle
+A versatile title block that can be used in
+various places on the card, including the media
+area. This component can also display an avatar next
+to the title content.
+
+### Properties
+| Name | Type | Default | Description |
+|:-----|:-----|:-----|:-----|
+| `avatar` | `union`(`string`,`element`) |  |  |
+| `children` | `union`(`string`,`element`,`array`) |  | Children to pass through the component. |
+| `className` | `string` |  | Additional class(es) for custom styling. |
+| `subtitle` | `string` |  |  |
+| `title` | `string` |  |  |
+
+## CardMedia
+
+Used for displaying media such as images or videos
+on a card. Can also be used with a solid background
+color instead of an image.
+
+### Properties
+| Name | Type | Default | Description |
+|:-----|:-----|:-----|:-----|
+| `aspectRatio` | `enum`(`'wide'`,`'square'`) |  | Forces a 16:9 or 1:1 aspect ratio respectively. Unset, the media area will have a flexible height. |
+| `children` | `any` |  | Usually an image/video element or a `<CardTitle>` component. |
+| `className` | `string` |  | Additional class(es) for custom styling. |
+| `color` | `string` |  | Sets the background color |
+| `contentOverlay` | `bool` |  | Creates a dark overlay underneath the child components. |
+| `image` | `union`(`string`,`element`) |  | Can be used instead of children. Accepts an element or a URL string. |
+
+## CardText
+Basic card content container. Good for
+small descriptions or other supplementary text.
+
+### Properties
+| Name | Type | Default | Description |
+|:-----|:-----|:-----|:-----|
+| `children` | `any` |  | Children to pass through the component. |
+| `className` | `string` |  | Additional class(es) for custom styling. |
+
+## CardActions
+
+This component is used as a container for supplemental
+card actions. Supplemental actions within the card are
+explicitly called out using icons, text, and UI controls,
+typically placed at the bottom of the card.
+
+### Properties
+| Name | Type | Default | Description |
+|:-----|:-----|:-----|:-----|
+| `children` | `any` |  | Children to pass through the component. |
+| `className` | `string` |  | Additional class(es) for custom styling. |

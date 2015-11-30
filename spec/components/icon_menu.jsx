@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuItem, IconMenu } from '../../components/menu';
+import { MenuItem, IconMenu, MenuDivider } from '../../components/menu';
 
 class IconMenuTest extends React.Component {
   state = {
@@ -29,19 +29,20 @@ class IconMenuTest extends React.Component {
         <h5>Icon Menus</h5>
         <p>Although a menu can be used indepently with any component, we are providing a common use case with the icon menu.</p>
         <IconMenu
-          icon='more-vert'
+          icon='more_vert'
           position='auto'
-          iconRipple={true}
-          menuRipple={true}
+          iconRipple
+          menuRipple
           onShow={this.handleShow}
           onHide={this.handleHide}
           onSelect={this.handleSelect}
-          selectable={true}
+          selectable
           selected={this.state.selected}
         >
           <MenuItem onClick={this.handleItem} value='refresh' caption='Refresh' />
           <MenuItem value='help' caption='Help & Feedback' />
           <MenuItem value='settings' caption='Settings' />
+          <MenuDivider />
           <MenuItem value='signout' caption='Sign out' disabled />
         </IconMenu>
       </section>

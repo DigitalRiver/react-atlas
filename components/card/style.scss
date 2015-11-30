@@ -1,112 +1,117 @@
 @import "../base";
 @import "./config";
 
-.figure {
-  position: relative;
+.card {
+  @include shadow-2dp();
   display: flex;
-  min-height: $card-title-height;
+  width: 100%;
   flex-direction: column;
-  justify-content: flex-end;
+  overflow: hidden;
+  font-size: $card-font-size;
+  background: $card-background-color;
+  border-radius: .2 * $unit;
+  &.raised {
+    @include shadow-8dp();
+  }
+  [data-react-toolbox="avatar"] {
+    display: block;
+  }
+}
+
+.cardMedia {
+  position: relative;
+  height: 0;
+  background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  > *:not(.overflow) {
-    z-index: $z-index-normal;
-    font-weight: $font-weight-normal;
+  &.wide, &.square {
+    width: 100%;
+    .content > iframe, .content > video, .content > img {
+      max-width: 100%;
+    }
   }
-  > .overflow {
+  &.wide {
+    padding-top: 56.25%;
+  }
+  &.square {
+    padding-top: 100%;
+  }
+  .content {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 0;
+    display: flex;
     width: 100%;
     height: 100%;
-    opacity: .75;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
   }
-}
-
-.text {
-  font-size: $font-size-small;
-  line-height: $font-size-big;
-  color: $color-text-secondary;
-}
-
-.navigation {
-  padding: $card-navigation-offset;
-  > * {
-    min-width: 0;
-    padding-right: $card-navigation-offset;
-    padding-left: $card-navigation-offset;
-  }
-}
-
-.ripple {
-  background-color: $color-text-secondary;
-}
-
-.root {
-  @include shadow-2dp();
-  position: relative;
-  display: flex;
-  width: $card-width-normal;
-  flex-direction: column;
-  overflow: hidden;
-  vertical-align: top;
-  background: $color-background;
-  > *:not(.navigation) {
-    padding: $card-offset;
-  }
-  &:not(.color) > *:not(.figure), > *:not(:last-child) {
-    box-shadow: 0 1px $color-divider;
-  }
-}
-
-.touch {
-  cursor: pointer;
-}
-
-.contrast {
-  .figure {
-    color: $card-color-white;
-    text-shadow: 0;
-  }
-  .ripple {
-    background-color: $card-color-white;
-  }
-}
-
-.loading {
-  pointer-events: none;
-  cursor: none;
-  filter: grayscale(100%);
-  .ripple {
-    @include ripple-loading(cardloading, 2 * $card-width-normal, 2 * $card-width-normal);
-    width: 2 * $card-width-normal;
-    height: 2 * $card-width-normal;
-    animation-name: cardloading;
-  }
-}
-
-.image {
-  &, .figure {
-    height: $card-width-normal;
-  }
-  .figure {
-    padding: 0;
-    > h5 {
-      padding: $card-offset;
-      font-size: $font-size-small;
-      font-weight: $font-weight-bold;
+  .contentOverlay {
+    .cardTitle, .cardActions, .cardText {
       background-color: $card-text-overlay;
     }
   }
 }
 
-.event {
-  .figure {
-    justify-content: flex-start;
+.cardTitle {
+  display: flex;
+  align-items: center;
+  .avatar {
+    margin-right: 1.3 * $unit;
+  }
+  .subtitle {
+    color: $color-text-secondary;
+  }
+  &.large {
+    padding: $card-padding-lg $card-padding ($card-padding - .2 * $unit);
+    .title {
+      @include typo-headline();
+      line-height: 1.25;
+    }
+  }
+  &.small {
+    padding: $card-padding;
+    .title {
+      @include typo-body-2(false, true);
+      line-height: 1.4;
+    }
+    .subtitle {
+      font-weight: 500;
+      line-height: 1.4;
+    }
+  }
+  .cardMedia & {
+    .title, .subtitle {
+      color: $card-color-white;
+    }
   }
 }
 
-.wide {
-  width: $card-width-large;
+.cardTitle, .cardText {
+  padding: ($card-padding - .2 * $unit) $card-padding;
+  &:last-child {
+    padding-bottom: $card-padding-lg;
+  }
+  + .cardText {
+    padding-top: 0;
+  }
+}
+
+.cardActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: $card-padding-sm;
+  [data-react-toolbox="button"] {
+    min-width: 0;
+    padding: 0 $card-padding-sm;
+    margin: 0 $card-padding-sm / 2;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }

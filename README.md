@@ -52,9 +52,7 @@ We will be thinking hard about styling going forward and this workflow may chang
 
 ## Local Docs
 
-```
-=======
-To work in the project you'd need a `node` version with ES6 syntax. Although the project is built using Babel we use some ES6 features in the development server. Also, the packages has been tested with `node 4.2.1`. Consider using [nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n) to handle different node versions!
+To work in the project you'd need a `node` version supporting ES6 syntax. Although the project is built using Babel we use some ES6 features in the development server. Also, the packages has been tested with `node 4.2.1`. Consider using [nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n) to handle different node versions!
 
 To start documentation site locally you'd need to install dependencies from the main package and also dependencies from the docs subproject:
 
