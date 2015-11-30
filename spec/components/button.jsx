@@ -39,7 +39,7 @@ const ButtonTest = () => (
     <Button href="#" label='Link' disabled link outline style={{'margin': '0 5px'}} />
 
     <p>Large Buttons</p>
-    <Button label='Button' large primary style={{'margin': '0 5px'}} />
+    <Button label='Button' large style={{'margin': '0 5px'}} />
     <Button label='Secondary' large secondary style={{'margin': '0 5px'}} />
 
     <p>Small Buttons</p>
@@ -47,7 +47,7 @@ const ButtonTest = () => (
     <Button label='Secondary' small secondary style={{'margin': '0 5px'}} />
 
     <p>Block Level Buttons</p>
-    <Button label='Button' block primary />
+    <Button label='Button' block  />
     <Button label='Secondary' block secondary />
   </section>
 );

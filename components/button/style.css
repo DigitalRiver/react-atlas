@@ -13,7 +13,7 @@
   composes: btn-outline from '../basscss.css';
 }
 
-//default button variant
+/*default button variant*/
 .primary {
   composes: default_btn;
   composes: bg-blue from '../basscss.css';
@@ -39,8 +39,7 @@
   composes: blue from '../basscss.css';
   border-color: transparent;
   background-color: transparent;
-  border-radius: 0;
-  &:hover, &.active {
+  &:hover {
     text-decoration: underline;
     border-color: transparent;
     background-color: transparent;
@@ -96,23 +95,17 @@
 
 /*button sizes*/
 .large {
-  composes: root;
-  padding: .75rem 1.25rem;
   font-size: 1.25rem;
   line-height: 1.333333;
-  border-radius: .3rem;
 }
 
 .small {
-  composes: root;
-  padding: .25rem .75rem;
   font-size: .85rem;
   line-height: 1.5;
-  border-radius: .2rem;
 }
 
 /*block style*/
 .block {
-    display: block;
+    composes: block from '../basscss.css';
     width: 100%;
 }
