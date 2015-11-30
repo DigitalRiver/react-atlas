@@ -1,208 +1,93 @@
-/*colors*/
-/*primary*/
-$primary: #0275d8;
-$primary-active: darken($primary, 10%);
-$primary-active-border: darken($primary, 12%);
-/*secondary*/
-$secondary: #373a3c;
-$secondary-border: #ccc;
-$secondary-active: #e6e6e6;
-$secondary-active-border: #adadad;
-/*success*/
-$success: #5cb85c;
-$success-active: darken($success, 10%);
-$success-active-border: darken($success, 12%);
-/*warning*/
-$warning: #f0ad4e;
-$warning-active: darken($warning, 10%);
-$warning-active-border: darken($warning, 12%);
-/*danger*/
-$danger: #d9534f;
-$danger-active: darken($danger, 10%);
-$danger-active-border: darken($danger, 12%);
-/*link*/
-$link: #0275d8;
-$link-active: #014c8c;
-
-/*Main button formatting*/
-
-.root {
-  composes: white from '../colors-text.css';
-  display: inline-block;
-  padding: .375rem 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  user-select: none;
-  border: 1px solid $primary;
-  border-radius: .25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  margin: 0;
-  text-transform: none;
-  background-color: $primary;
-  &:hover, &.active {
-    background-color: $primary-active;
-    border-color: $primary-active-border;
-  }
-  &[disabled] {
-    color: $button-disabled-text-color;
-    pointer-events: none;
-    cursor: auto;
-  }
-}
-
 /*Main Styles*/
-
-.primary {
-  composes: root;
+.root{
+  composes: btn from '../basscss.css';
 }
 
-.secondary {
+.default_btn {
   composes: root;
-  composes: secondary from '../colors-text.css';
-  background-color: #fff;
-  border-color: $secondary-border;
-  &:hover, &.active {
-    background-color: $secondary-active;
-    border-color: $secondary-active-border;
-  }
+  composes: btn-primary from '../basscss.css'
+}
+
+.outline {
+  composes: root;
+  composes: btn-outline from '../basscss.css';
+}
+
+//default button variant
+.primary {
+  composes: default_btn;
+  composes: bg-blue from '../basscss.css';
 }
 
 .success {
-  composes: root;
-  composes: white from '../colors-text.css';
-  background-color: $success;
-  border-color: $success;
-  &:hover, &.active {
-    background-color: $success-active;
-    border-color: $success-active-border;
-  }
+  composes: default_btn;
+  composes: bg-green from '../basscss.css';
 }
 
 .warning {
-  composes: root;
-  composes: white from '../colors-text.css';
-  background-color: $warning;
-  border-color: $warning;
-  &:hover, &.active {
-    background-color: $warning-active;
-    border-color: $warning-active-border;
-  }
+  composes: default_btn;
+  composes: bg-orange from '../basscss.css';
 }
 
 .danger {
-  composes: root;
-  composes: white from '../colors-text.css';
-  background-color: $danger;
-  border-color: $danger;
-  &:hover, &.active {
-    background-color: $danger-active;
-    border-color: $danger-active-border;
-  }
+  composes: default_btn;
+  composes: bg-red from '../basscss.css';
 }
 
 .link {
-  composes: root;
-  composes: primary from '../colors-text.css';
+  composes: default_btn;
+  composes: blue from '../basscss.css';
   border-color: transparent;
   background-color: transparent;
-  font-weight: 400;
   border-radius: 0;
   &:hover, &.active {
-    color: $link-active;
     text-decoration: underline;
     border-color: transparent;
     background-color: transparent;
+    box-shadow: none;
   }
 }
 
 /*Outline styles*/
 
 .primary_outline {
-  composes: root;
-  composes: primary from "../colors-text.css";
+  composes: outline;
+  composes: blue from '../basscss.css';
+}
+
+.secondary {
+  composes: outline;
+  composes: gray from '../basscss.css';
   background-color: transparent;
-  border-color: $primary;
-  &:hover, &.active {
-    color: #fff;
-    background-color: $primary;
-    border-color: $primary;
-  }
 }
 
 .secondary_outline {
-  composes: root;
-  color: $secondary-border;
-  background-color: transparent;
-  border-color: $secondary-border;
-  &:hover, &.active {
-    color: #fff;
-    background-color: $secondary-border;
-    border-color: $secondary-border;
-  }
+  composes: outline;
+  composes: gray from '../basscss.css';
 }
 
 .success_outline {
-  composes: root;
-  composes: success from "../colors-text.css";
-  background-color: transparent;
-  border-color: $success;
-  &:hover, &.active {
-    color: #fff;
-    background-color: $success;
-    border-color: $success;
-  }
+  composes: outline;
+  composes: green from '../basscss.css';
 }
 
 .warning_outline {
-  composes: root;
-  composes: warning from "../colors-text.css";
-  background-color: transparent;
-  border-color: $warning;
-  &:hover, &.active {
-    color: #fff;
-    background-color: $warning;
-    border-color: $warning;
-  }
+  composes: outline;
+  composes: orange from '../basscss.css';
 }
 
 .danger_outline {
-  composes: root;
-  composes: danger from "../colors-text.css";
-  background-color: transparent;
-  border-color: $danger;
-  &:hover, &.active {
-    color: #fff;
-    background-color: $danger;
-    border-color: $danger;
-  }
+  composes: outline;
+  composes: red from '../basscss.css';
 }
 
 .link_outline {
-  composes: root;
-  composes: primary from "../colors-text.css";
+  composes: outline;
+  composes: blue from '../basscss.css';
   background-color: transparent;
-  border-color: $link;
-  &:hover, &.active {
-    color: #fff;
-    background-color: $link;
-    border-color: $link;
-  }
 }
 
 .disabled {
-  composes: root;
   cursor: not-allowed;
   opacity: .65;
   pointer-events: none;
@@ -212,18 +97,18 @@ $link-active: #014c8c;
 /*button sizes*/
 .large {
   composes: root;
-    padding: .75rem 1.25rem;
-    font-size: 1.25rem;
-    line-height: 1.333333;
-    border-radius: .3rem;
+  padding: .75rem 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.333333;
+  border-radius: .3rem;
 }
 
 .small {
   composes: root;
-    padding: .25rem .75rem;
-    font-size: .85rem;
-    line-height: 1.5;
-    border-radius: .2rem;
+  padding: .25rem .75rem;
+  font-size: .85rem;
+  line-height: 1.5;
+  border-radius: .2rem;
 }
 
 /*block style*/

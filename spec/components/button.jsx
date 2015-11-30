@@ -7,7 +7,7 @@ const ButtonTest = () => (
     <h5>Buttons</h5>
 
     <p>Regular Buttons</p>
-    <Button label='Button' primary style={{'margin': '0 5px'}} />
+    <Button label='Button' style={{'margin': '0 5px'}} />
     <Button label='Secondary' secondary style={{'margin': '0 5px'}} />
     <Button label='Success' success style={{'margin': '0 5px'}} />
     <Button label='Warning' warning style={{'margin': '0 5px'}} />
@@ -15,7 +15,7 @@ const ButtonTest = () => (
     <Button href="#" label='Link' link style={{'margin': '0 5px'}} />
 
     <p>Disabled Regular Buttons</p>
-    <Button label='Button' disabled style={{'margin': '0 5px'}} />
+    <Button label='Button' disabled primary style={{'margin': '0 5px'}} />
     <Button label='Secondary' disabled secondary style={{'margin': '0 5px'}} />
     <Button label='Success' disabled success style={{'margin': '0 5px'}} />
     <Button label='Warning' disabled warning style={{'margin': '0 5px'}} />
@@ -24,7 +24,7 @@ const ButtonTest = () => (
 
     <p>Outline Buttons</p>
     <Button label='Button' outline primary style={{'margin': '0 5px'}} />
-    <Button label='Secondary' secondary style={{'margin': '0 5px'}} />
+    <Button label='Secondary' outline secondary style={{'margin': '0 5px'}} />
     <Button label='Success' success outline style={{'margin': '0 5px'}} />
     <Button label='Warning' warning outline style={{'margin': '0 5px'}} />
     <Button label='Danger' danger outline style={{'margin': '0 5px'}} />
@@ -32,7 +32,7 @@ const ButtonTest = () => (
 
     <p>Disabled Outline Buttons</p>
     <Button label='Button' disabled outline primary style={{'margin': '0 5px'}} />
-    <Button label='Secondary' disabled secondary style={{'margin': '0 5px'}} />
+    <Button label='Secondary' disabled secondary outline style={{'margin': '0 5px'}} />
     <Button label='Success' disabled success outline style={{'margin': '0 5px'}} />
     <Button label='Warning' disabled warning outline style={{'margin': '0 5px'}} />
     <Button label='Danger' disabled danger outline style={{'margin': '0 5px'}} />

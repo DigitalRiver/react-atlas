@@ -42,7 +42,6 @@ class Button extends React.Component {
   };
 
   handleMouseDown = (event) => {
-    events.pauseEvent(event);
     if (this.props.onMouseDown) this.props.onMouseDown(event);
   };
 
@@ -50,15 +49,10 @@ class Button extends React.Component {
     this.refs.button.blur();
   };
 
-  handleTouchStart = (event) => {
-    events.pauseEvent(event);
-    if (this.props.onTouchStart) this.props.onTouchStart(event);
-  };
-
   render () {
 
     const {accent, outline, href, icon, label, loading, mini,
-           primary, raised, tooltip, secondary, success, warning, danger, link, large, small, block, disabled, ...others} = this.props;
+           primary, raised, tooltip, secondary, success, warning, danger, link, large, small, block, disabled, children, ...others} = this.props;
     const element = href ? 'a' : 'button';
     var cx = classNames.bind(style);
     let className = cx({
@@ -70,8 +64,9 @@ class Button extends React.Component {
 
     if (outline) {
       className += ' '+ cx({
-        primary_outline: outline,
-        secondary_outline: secondary,
+        outline: true,
+        primary_outline: primary,
+        secondary: secondary,
         success_outline: success,
         warning_outline: warning,
         danger_outline: danger,
@@ -79,7 +74,8 @@ class Button extends React.Component {
       });
     } else {
       className += ' '+ cx({
-        primary: primary,
+        root: true,
+        primary: !secondary,
         secondary: secondary,
         success: success,
         warning: warning,

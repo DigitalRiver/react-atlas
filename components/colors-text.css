@@ -1,822 +1,301 @@
-/*//-- Color definitions taken from Material Design Lite*/
+/*//Color definitions taken from Material Design Lite*/
 
 /*// Red*/
-.red-50 {
-    color: rgb(255, 235, 238);
-}
-.red-100 {
-    color: rgb(255, 205, 210);
-}
-.red-200 {
-    color: rgb(239, 154, 154);
-}
-.red-300 {
-    color: rgb(229, 115, 115);
-}
-.red-500 {
-    color: rgb(244,67,54);
-}
-.red-600 {
-    color: rgb(229,57,53);
-}
-.red-700 {
-    color: rgb(211,47,47);
-}
-.red-800 {
-    color: rgb(198,40,40);
-}
-.red-900 {
-    color: rgb(183,28,28);
-}
-.red-a100 {
-    color: rgb(255,138,128);
-}
-.red-a200 {
-    color: rgb(255,82,82);
-}
-.red-a400 {
-    color: rgb(255,23,68);
-}
-.red-a700 {
-    color: rgb(213,0,0);
-}
+@value red-50: rgb(255, 235, 238);
+@value red-100: rgb(255, 205, 210);
+@value red-200: rgb(239, 154, 154);
+@value red-300: rgb(229, 115, 115);
+@value red-500: rgb(244, 67, 54);
+@value red-600: rgb(229, 57, 53);
+@value red-700: rgb(211, 47, 47);
+@value red-800: rgb(198, 40, 40);
+@value red-900: rgb(183, 28, 28);
+@value red-a100: rgb(255, 138, 128);
+@value red-a200: rgb(255, 82, 82);
+@value red-a400: rgb(255, 23, 68);
+@value red-a700: rgb(213, 0, 0);
 
-   /*// Pink*/
-.pink-50 {
-    color: rgb(252,228,236);
-}
-.pink-100 {
-    color: rgb(248,187,208);
-}
-.pink-200 {
-    color: rgb(244,143,177);
-}
-.pink-300 {
-    color: rgb(240,98,146);
-}
-.pink-400 {
-    color: rgb(236,64,122);
-}
-.pink-500 {
-    color: rgb(233,30,99);
-}
-.pink-600 {
-    color: rgb(216,27,96);
-}
-.pink-700 {
-    color: rgb(194,24,91);
-}
-.pink-800 {
-    color: rgb(173,20,87);
-}
-.pink-900 {
-    color: rgb(136,14,79);
-}
-.pink-a100 {
-    color: rgb(255,128,171);
-}
-.pink-a200 {
-    color: rgb(255,64,129);
-}
-.pink-a400 {
-    color: rgb(245,0,87);
-}
-.pink-a700 {
-    color: rgb(197,17,98);
-}
+/*// Pink*/
+@value pink-50: rgb(252, 228, 236);
+@value pink-100: rgb(248, 187, 208);
+@value pink-200: rgb(244, 143, 177);
+@value pink-300: rgb(240, 98, 146);
+@value pink-400: rgb(236, 64, 122);
+@value pink-500: rgb(233, 30, 99);
+@value pink-600: rgb(216, 27, 96);
+@value pink-700: rgb(194, 24, 91);
+@value pink-800: rgb(173, 20, 87);
+@value pink-900: rgb(136, 14, 79);
+@value pink-a100: rgb(255, 128, 171);
+@value pink-a200: rgb(255, 64, 129);
+@value pink-a400: rgb(245, 0, 87);
+@value pink-a700: rgb(197, 17, 98);
 
-   /*// Purple*/
-.purple-50 {
-    color: rgb(243,229,245);
-}
-.purple-100 {
-    color: rgb(225,190,231);
-}
-.purple-200 {
-    color: rgb(206,147,216);
-}
-.purple-300 {
-    color: rgb(186,104,200);
-}
-.purple-400 {
-    color: rgb(171,71,188);
-}
-.purple-500 {
-    color: rgb(156,39,176);
-}
-.purple-600 {
-    color: rgb(142,36,170);
-}
-.purple-700 {
-    color: rgb(123,31,162);
-}
-.purple-800 {
-    color: rgb(106,27,154);
-}
-.purple-900 {
-    color: rgb(74,20,140);
-}
-.purple-a100 {
-    color: rgb(234,128,252);
-}
-.purple-a200 {
-    color: rgb(224,64,251);
-}
-.purple-a400 {
-    color: rgb(213,0,249);
-}
-.purple-a700 {
-    color: rgb(170, 0, 255);
-}
+/*// Purple*/
+@value purple-50: rgb(243, 229, 245);
+@value purple-100: rgb(225, 190, 231);
+@value purple-200: rgb(206, 147, 216);
+@value purple-300: rgb(186, 104, 200);
+@value purple-400: rgb(171, 71, 188);
+@value purple-500: rgb(156, 39, 176);
+@value purple-600: rgb(142, 36, 170);
+@value purple-700: rgb(123, 31, 162);
+@value purple-800: rgb(106, 27, 154);
+@value purple-900: rgb(74, 20, 140);
+@value purple-a100: rgb(234, 128, 252);
+@value purple-a200: rgb(224, 64, 251);
+@value purple-a400: rgb(213, 0, 249);
+@value purple-a700: rgb(170, 0, 255);
 
 /*//Deep Purple */
-.deep-purple-50 {
-    color: rgb(237,231,246);
-}
-.deep-purple-100 {
-    color: rgb(209,196,233);
-}
-.deep-purple-200 {
-    color: rgb(179,157,219);
-}
-.deep-purple-300 {
-    color: rgb(149,117,205);
-}
-.deep-purple-400 {
-    color: rgb(126,87,194);
-}
-.deep-purple-500 {
-    color: rgb(103,58,183);
-}
-.deep-purple-600 {
-    color: rgb(94,53,177);
-}
-.deep-purple-700 {
-    color: rgb(81,45,168);
-}
-.deep-purple-800 {
-    color: rgb(69,39,160);
-}
-.deep-purple-900 {
-    color: rgb(49,27,146);
-}
-.deep-purple-a100 {
-    color: rgb(179,136,255);
-}
-.deep-purple-a200 {
-    color: rgb(124,77,255);
-}
-.deep-purple-a400 {
-    color: rgb(101,31,255);
-}
-.deep-purple-a700 {
-    color: rgb(98, 0, 234);
-}
+@value deep-purple-50: rgb(237, 231, 246);
+@value deep-purple-100: rgb(209, 196, 233);
+@value deep-purple-200: rgb(179, 157, 219);
+@value deep-purple-300: rgb(149, 117, 205);
+@value deep-purple-400: rgb(126, 87, 194);
+@value deep-purple-500: rgb(103, 58, 183);
+@value deep-purple-600: rgb(94, 53, 177);
+@value deep-purple-700: rgb(81, 45, 168);
+@value deep-purple-800: rgb(69, 39, 160);
+@value deep-purple-900: rgb(49, 27, 146);
+@value deep-purple-a100: rgb(179, 136, 255);
+@value deep-purple-a200: rgb(124, 77, 255);
+@value deep-purple-a400: rgb(101, 31, 255);
+@value deep-purple-a700: rgb(98, 0, 234);
 
 /*// Indigo*/
-.indigo-50 {
-   color: rgb(232,234,246);
-}
-.indigo-100 {
-    color: rgb(197,202,233);
-}
-.indigo-200 {
-    color: rgb(159,168,218);
-}
-.indigo-300 {
-    color: rgb(121,134,203);
-}
-.indigo-400 {
-    color: rgb(92,107,192);
-}
-.indigo-500 {
-    color: rgb(63,81,181);
-}
-.indigo-600 {
-    color: rgb(57,73,171);
-}
-.indigo-700 {
-    color: rgb(48,63,159);
-}
-.indigo-800 {
-    color: rgb(40,53,147);
-}
-.indigo-900 {
-    color: rgb(26,35,126);
-}
-.indigo-a100 {
-    color: rgb(140,158,255);
-}
-.indigo-a200 {
-    color: rgb(83,109,254);
-}
-.indigo-a400 {
-    color: rgb(61,90,254);
-}
-.indigo-a700 {
-    color: rgb(48, 79, 254);
-}
+@value indigo-50: rgb(232, 234, 246);
+@value indigo-100: rgb(197, 202, 233);
+@value indigo-200: rgb(159, 168, 218);
+@value indigo-300: rgb(121, 134, 203);
+@value indigo-400: rgb(92, 107, 192);
+@value indigo-500: rgb(63, 81, 181);
+@value indigo-600: rgb(57, 73, 171);
+@value indigo-700: rgb(48, 63, 159);
+@value indigo-800: rgb(40, 53, 147);
+@value indigo-900: rgb(26, 35, 126);
+@value indigo-a100: rgb(140, 158, 255);
+@value indigo-a200: rgb(83, 109, 254);
+@value indigo-a400: rgb(61, 90, 254);
+@value indigo-a700: rgb(48, 79, 254);
 
 /*// Blue*/
-.blue-50{
-   color: rgb(227,242,253);
-}
-.blue-100 {
-    color: rgb(187,222,251);
-}
-.blue-200 {
-    color: rgb(144,202,249);
-}
-.blue-300 {
-    color: rgb(100,181,246);
-}
-.blue-400 {
-    color: rgb(66,165,245);
-}
-.blue-500 {
-    color: rgb(33,150,243);
-}
-.blue-600 {
-    color: rgb(30,136,229);
-}
-.blue-700 {
-    color: rgb(25,118,210);
-}
-.blue-800 {
-    color: rgb(21,101,192);
-}
-.blue-900 {
-    color: rgb(13,71,161);
-}
-.blue-a100 {
-    color: rgb(130,177,255);
-}
-.blue-a200 {
-    color: rgb(68,138,255);
-}
-.blue-a400 {
-    color: rgb(41,121,255);
-}
-.blue-a700 {
-    color: rgb(41, 98, 255);
-}
+@value blue-50: rgb(227, 242, 253);
+@value blue-100: rgb(187, 222, 251);
+@value blue-200: rgb(144, 202, 249);
+@value blue-300: rgb(100, 181, 246);
+@value blue-400: rgb(66, 165, 245);
+@value blue-500: rgb(33, 150, 243);
+@value blue-600: rgb(30, 136, 229);
+@value blue-700: rgb(25, 118, 210);
+@value blue-800: rgb(21, 101, 192);
+@value blue-900: rgb(13, 71, 161);
+@value blue-a100: rgb(130, 177, 255);
+@value blue-a200: rgb(68, 138, 255);
+@value blue-a400: rgb(41, 121, 255);
+@value blue-a700: rgb(41, 98, 255);
 
 /*// Light Blue*/
-.light-blue-50{
-    color: rgb(225,245,254);
-}
-.light-blue-100 {
-    color: rgb(179,229,252);
-}
-.light-blue-200 {
-    color: rgb(129,212,250);
-}
-.light-blue-300 {
-    color: rgb(79,195,247);
-}
-.light-blue-400 {
-    color: rgb(41,182,246);
-}
-.light-blue-500 {
-    color: rgb(3,169,244);
-}
-.light-blue-600 {
-    color: rgb(3,155,229);
-}
-.light-blue-700 {
-    color: rgb(2,136,209);
-}
-.light-blue-800 {
-    color: rgb(2,119,189);
-}
-.light-blue-900 {
-    color: rgb(1,87,155);
-}
-.light-blue-a100 {
-    color: rgb(128,216,255);
-}
-.light-blue-a200 {
-    color: rgb(64,196,255);
-}
-.light-blue-a400 {
-    color: rgb(0,176,255);
-}
-.light-blue-a700 {
-    color: rgb(0, 145, 234);
-}
+@value light-blue-50: rgb(225, 245, 254);
+@value light-blue-100: rgb(179, 229, 252);
+@value light-blue-200: rgb(129, 212, 250);
+@value light-blue-300: rgb(79, 195, 247);
+@value light-blue-400: rgb(41, 182, 246);
+@value light-blue-500: rgb(3, 169, 244);
+@value light-blue-600: rgb(3, 155, 229);
+@value light-blue-700: rgb(2, 136, 209);
+@value light-blue-800: rgb(2, 119, 189);
+@value light-blue-900: rgb(1, 87, 155);
+@value light-blue-a100: rgb(128, 216, 255);
+@value light-blue-a200: rgb(64, 196, 255);
+@value light-blue-a400: rgb(0, 176, 255);
+@value light-blue-a700: rgb(0, 145, 234);
 
 /*// Cyan*/
-.cyan-50 {
-   color: rgb(224,247,250);
-}
-.cyan-100 {
-    color: rgb(178,235,242);
-}
-.cyan-200 {
-    color: rgb(128,222,234);
-}
-.cyan-300 {
-    color: rgb(77,208,225);
-}
-.cyan-400 {
-    color: rgb(38,198,218);
-}
-.cyan-500 {
-    color: rgb(0,188,212);
-}
-.cyan-600 {
-    color: rgb(0,172,193);
-}
-.cyan-700 {
-    color: rgb(0,151,167);
-}
-.cyan-800 {
-    color: rgb(0,131,143);
-}
-.cyan-900 {
-    color: rgb(0,96,100);
-}
-.cyan-a100 {
-    color: rgb(132,255,255);
-}
-.cyan-a200 {
-    color: rgb(24,255,255);
-}
-.cyan-a400 {
-    color: rgb(0,229,255);
-}
-.cyan-a700 {
-    color: rgb(0, 184, 212);
-}
+@value cyan-50: rgb(224, 247, 250);
+@value cyan-100: rgb(178, 235, 242);
+@value cyan-200: rgb(128, 222, 234);
+@value cyan-300: rgb(77, 208, 225);
+@value cyan-400: rgb(38, 198, 218);
+@value cyan-500: rgb(0, 188, 212);
+@value cyan-600: rgb(0, 172, 193);
+@value cyan-700: rgb(0, 151, 167);
+@value cyan-800: rgb(0, 131, 143);
+@value cyan-900: rgb(0, 96, 100);
+@value cyan-a100: rgb(132, 255, 255);
+@value cyan-a200: rgb(24, 255, 255);
+@value cyan-a400: rgb(0, 229, 255);
+@value cyan-a700: rgb(0, 184, 212);
 
 /*// Teal */
-.teal-50 {
-    color: rgb(224,242,241);
-
-}
-.teal-100 {
-    color: rgb(178,223,219);
-}
-.teal-200 {
-    color: rgb(128,203,196);
-}
-.teal-300 {
-    color: rgb(77,182,172);
-}
-.teal-400 {
-    color: rgb(38,166,154);
-}
-.teal-500 {
-    color: rgb(0,150,136);
-}
-.teal-600 {
-    color: rgb(0,137,123);
-}
-.teal-700 {
-    color: rgb(0,121,107);
-}
-.teal-800 {
-    color: rgb(0,105,92);
-}
-.teal-900 {
-    color: rgb(0,77,64);
-}
-.teal-a100 {
-    color: rgb(167,255,235);
-}
-.teal-a200 {
-    color: rgb(100,255,218);
-}
-.teal-a400 {
-    color: rgb(29,233,182);
-}
-.teal-a700 {
-    color: rgb(0, 191, 165);
-}
+@value teal-50: rgb(224, 242, 241);
+@value teal-100: rgb(178, 223, 219);
+@value teal-200: rgb(128, 203, 196);
+@value teal-300: rgb(77, 182, 172);
+@value teal-400: rgb(38, 166, 154);
+@value teal-500: rgb(0, 150, 136);
+@value teal-600: rgb(0, 137, 123);
+@value teal-700: rgb(0, 121, 107);
+@value teal-800: rgb(0, 105, 92);
+@value teal-900: rgb(0, 77, 64);
+@value teal-a100: rgb(167, 255, 235);
+@value teal-a200: rgb(100, 255, 218);
+@value teal-a400: rgb(29, 233, 182);
+@value teal-a700: rgb(0, 191, 165);
 
 /*// Green*/
-.green-50 {
-   color: rgb(232,245,233);
-}
-.green-100 {
-    color: rgb(200,230,201);
-}
-.green-200 {
-    color: rgb(165,214,167);
-}
-.green-300 {
-    color: rgb(129,199,132);
-}
-.green-400 {
-    color: rgb(102,187,106);
-}
-.green-500 {
-    color: rgb(76,175,80);
-}
-.green-600 {
-    color: rgb(67,160,71);
-}
-.green-700 {
-    color: rgb(56,142,60);
-}
-.green-800 {
-    color: rgb(46,125,50);
-}
-.green-900 {
-    color: rgb(27,94,32);
-}
-.green-a100 {
-    color: rgb(185,246,202);
-}
-.green-a200 {
-    color: rgb(105,240,174);
-}
-.green-a400 {
-    color: rgb(0,230,118);
-}
-.green-a700 {
-    color: rgb(0, 200, 83);
-}
+@value green-50: rgb(232, 245, 233);
+@value green-100: rgb(200, 230, 201);
+@value green-200: rgb(165, 214, 167);
+@value green-300: rgb(129, 199, 132);
+@value green-400: rgb(102, 187, 106);
+@value green-500: rgb(76, 175, 80);
+@value green-600: rgb(67, 160, 71);
+@value green-700: rgb(56, 142, 60);
+@value green-800: rgb(46, 125, 50);
+@value green-900: rgb(27, 94, 32);
+@value green-a100: rgb(185, 246, 202);
+@value green-a200: rgb(105, 240, 174);
+@value green-a400: rgb(0, 230, 118);
+@value green-a700: rgb(0, 200, 83);
 
 /*// Green*/
-.light-green-50 {
-    color: rgb(241,248,233);
-}
-.light-green-100 {
-    color: rgb(220,237,200);
-}
-.light-green-200 {
-    color: rgb(197,225,165);
-}
-.light-green-300 {
-    color: rgb(174,213,129);
-}
-.light-green-400 {
-    color: rgb(156,204,101);
-}
-.light-green-500 {
-    color: rgb(139,195,74);
-}
-.light-green-600 {
-    color: rgb(124,179,66);
-}
-.light-green-700 {
-    color: rgb(104,159,56);
-}
-.light-green-800 {
-    color: rgb(85,139,47);
-}
-.light-green-900 {
-    color: rgb(51,105,30);
-}
-.light-green-a100 {
-    color: rgb(204,255,144);
-}
-.light-green-a200 {
-    color: rgb(178,255,89);
-}
-.light-green-a400 {
-    color: rgb(118,255,3);
-}
-.light-green-a700 {
-    color: rgb(100, 221, 23);
-}
+@value light-green-50: rgb(241, 248, 233);
+@value light-green-100: rgb(220, 237, 200);
+@value light-green-200: rgb(197, 225, 165);
+@value light-green-300: rgb(174, 213, 129);
+@value light-green-400: rgb(156, 204, 101);
+@value light-green-500: rgb(139, 195, 74);
+@value light-green-600: rgb(124, 179, 66);
+@value light-green-700: rgb(104, 159, 56);
+@value light-green-800: rgb(85, 139, 47);
+@value light-green-900: rgb(51, 105, 30);
+@value light-green-a100: rgb(204, 255, 144);
+@value light-green-a200: rgb(178, 255, 89);
+@value light-green-a400: rgb(118, 255, 3);
+@value light-green-a700: rgb(100, 221, 23);
 
 /*// Lime*/
-.lime-50 {
-   color: rgb(249,251,231);
-}
-.lime-100 {
-    color: rgb(240,244,195);
-}
-.lime-200 {
-    color: rgb(230,238,156);
-}
-.lime-300 {
-    color: rgb(220,231,117);
-}
-.lime-400 {
-    color: rgb(212,225,87);
-}
-.lime-500 {
-    color: rgb(205,220,57);
-}
-.lime-600 {
-    color: rgb(192,202,51);
-}
-.lime-700 {
-    color: rgb(175,180,43);
-}
-.lime-800 {
-    color: rgb(158,157,36);
-}
-.lime-900 {
-    color: rgb(130,119,23);
-}
-.lime-a100 {
-    color: rgb(244,255,129);
-}
-.lime-a200 {
-    color: rgb(238,255,65);
-}
-.lime-a400 {
-    color: rgb(198,255,0);
-}
-.lime-a700 {
-    color: rgb(174, 234, 0);
-}
+@value lime-50: rgb(249, 251, 231);
+@value lime-100: rgb(240, 244, 195);
+@value lime-200: rgb(230, 238, 156);
+@value lime-300: rgb(220, 231, 117);
+@value lime-400: rgb(212, 225, 87);
+@value lime-500: rgb(205, 220, 57);
+@value lime-600: rgb(192, 202, 51);
+@value lime-700: rgb(175, 180, 43);
+@value lime-800: rgb(158, 157, 36);
+@value lime-900: rgb(130, 119, 23);
+@value lime-a100: rgb(244, 255, 129);
+@value lime-a200: rgb(238, 255, 65);
+@value lime-a400: rgb(198, 255, 0);
+@value lime-a700: rgb(174, 234, 0);
 
 /*// Yellow*/
-.yellow-50 {
-    color: rgb(255,253,231);
-}
-.yellow-100 {
-    color: rgb(255,249,196);
-}
-.yellow-200 {
-    color: rgb(255,245,157);
-}
-.yellow-300 {
-    color: rgb(255,241,118);
-}
-.yellow-400 {
-    color: rgb(255,238,88);
-}
-.yellow-500 {
-    color: rgb(255,235,59);
-}
-.yellow-600 {
-    color: rgb(253,216,53);
-}
-.yellow-700 {
-    color: rgb(251,192,45);
-}
-.yellow-800 {
-    color: rgb(249,168,37);
-}
-.yellow-900 {
-    color: rgb(245,127,23);
-}
-.yellow-a100 {
-    color: rgb(255,255,141);
-}
-.yellow-a200 {
-    color: rgb(255,255,0);
-}
-.yellow-a400 {
-    color: rgb(255,234,0);
-}
-.yellow-a700 {
-    color: rgb(255, 214, 0);
-}
+@value yellow-50: rgb(255, 253, 231);
+@value yellow-100: rgb(255, 249, 196);
+@value yellow-200: rgb(255, 245, 157);
+@value yellow-300: rgb(255, 241, 118);
+@value yellow-400: rgb(255, 238, 88);
+@value yellow-500: rgb(255, 235, 59);
+@value yellow-600: rgb(253, 216, 53);
+@value yellow-700: rgb(251, 192, 45);
+@value yellow-800: rgb(249, 168, 37);
+@value yellow-900: rgb(245, 127, 23);
+@value yellow-a100: rgb(255, 255, 141);
+@value yellow-a200: rgb(255, 255, 0);
+@value yellow-a400: rgb(255, 234, 0);
+@value yellow-a700: rgb(255, 214, 0);
 
 /*// Amber*/
-.amber-50 {
-    color: rgb(255,248,225);
-}
-.amber-100 {
-    color: rgb(255,236,179);
-}
-.amber-200 {
-    color: rgb(255,224,130);
-}
-.amber-300 {
-    color: rgb(255,213,79);
-}
-.amber-400 {
-    color: rgb(255,202,40);
-}
-.amber-500 {
-    color: rgb(255,193,7);
-}
-.amber-600 {
-    color: rgb(255,179,0);
-}
-.amber-700 {
-    color: rgb(255,160,0);
-}
-.amber-800 {
-    color: rgb(255,143,0);
-}
-.amber-900 {
-    color: rgb(255,111,0);
-}
-.amber-a100 {
-    color: rgb(255,229,127);
-}
-.amber-a200 {
-    color: rgb(255,215,64);
-}
-.amber-a400 {
-    color: rgb(255,196,0);
-}
-.amber-a700 {
-    color: rgb(255, 171, 0);
-}
+@value amber-50: rgb(255, 248, 225);
+@value amber-100: rgb(255, 236, 179);
+@value amber-200: rgb(255, 224, 130);
+@value amber-300: rgb(255, 213, 79);
+@value amber-400: rgb(255, 202, 40);
+@value amber-500: rgb(255, 193, 7);
+@value amber-600: rgb(255, 179, 0);
+@value amber-700: rgb(255, 160, 0);
+@value amber-800: rgb(255, 143, 0);
+@value amber-900: rgb(255, 111, 0);
+@value amber-a100: rgb(255, 229, 127);
+@value amber-a200: rgb(255, 215, 64);
+@value amber-a400: rgb(255, 196, 0);
+@value amber-a700: rgb(255, 171, 0);
 
 /*// Orange */
-.orange-50 {
-    color: rgb(255,243,224);
-}
-.orange-100 {
-    color: rgb(255,224,178);
-}
-.orange-200 {
-    color: rgb(255,204,128);
-}
-.orange-300 {
-    color: rgb(255,183,77);
-}
-.orange-400 {
-    color: rgb(255,167,38);
-}
-.orange-500 {
-    color: rgb(255,152,0);
-}
-.orange-600 {
-    color: rgb(251,140,0);
-}
-.orange-700 {
-    color: rgb(245,124,0);
-}
-.orange-800 {
-    color: rgb(239,108,0);
-}
-.orange-900 {
-    color: rgb(230,81,0);
-}
-.orange-a100 {
-    color: rgb(255,209,128);
-}
-.orange-a200 {
-    color: rgb(255,171,64);
-}
-.orange-a400 {
-    color: rgb(255,145,0);
-}
-.orange-a700 {
-    color: rgb(255, 109, 0);
-}
+@value orange-50: rgb(255, 243, 224);
+@value orange-100: rgb(255, 224, 178);
+@value orange-200: rgb(255, 204, 128);
+@value orange-300: rgb(255, 183, 77);
+@value orange-400: rgb(255, 167, 38);
+@value orange-500: rgb(255, 152, 0);
+@value orange-600: rgb(251, 140, 0);
+@value orange-700: rgb(245, 124, 0);
+@value orange-800: rgb(239, 108, 0);
+@value orange-900: rgb(230, 81, 0);
+@value orange-a100: rgb(255, 209, 128);
+@value orange-a200: rgb(255, 171, 64);
+@value orange-a400: rgb(255, 145, 0);
+@value orange-a700: rgb(255, 109, 0);
 
 /*// Deep Orange*/
-.deep-orange-50 {
-   color: rgb(251,233,231);
-}
-.deep-orange-100 {
-    color: rgb(255,204,188);
-}
-.deep-orange-200 {
-    color: rgb(255,171,145);
-}
-.deep-orange-300 {
-    color: rgb(255,138,101);
-}
-.deep-orange-400 {
-    color: rgb(255,112,67);
-}
-.deep-orange-500 {
-    color: rgb(255,87,34);
-}
-.deep-orange-600 {
-    color: rgb(244,81,30);
-}
-.deep-orange-700 {
-    color: rgb(230,74,25);
-}
-.deep-orange-800 {
-    color: rgb(216,67,21);
-}
-.deep-orange-900 {
-    color: rgb(191,54,12);
-}
-.deep-orange-a100 {
-    color: rgb(255,158,128);
-}
-.deep-orange-a200 {
-    color: rgb(255,110,64);
-}
-.deep-orange-a400 {
-    color: rgb(255,61,0);
-}
-.deep-orange-a700 {
-    color: rgb(221, 44, 0);
-}
+@value deep-orange-50: rgb(251, 233, 231);
+@value deep-orange-100: rgb(255, 204, 188);
+@value deep-orange-200: rgb(255, 171, 145);
+@value deep-orange-300: rgb(255, 138, 101);
+@value deep-orange-400: rgb(255, 112, 67);
+@value deep-orange-500: rgb(255, 87, 34);
+@value deep-orange-600: rgb(244, 81, 30);
+@value deep-orange-700: rgb(230, 74, 25);
+@value deep-orange-800: rgb(216, 67, 21);
+@value deep-orange-900: rgb(191, 54, 12);
+@value deep-orange-a100: rgb(255, 158, 128);
+@value deep-orange-a200: rgb(255, 110, 64);
+@value deep-orange-a400: rgb(255, 61, 0);
+@value deep-orange-a700: rgb(221, 44, 0);
 
 /*// Brown*/
-.brown-50 {
-   color: rgb(239,235,233);
-}
-.brown-100 {
-    color: rgb(215,204,200);
-}
-.brown-200 {
-    color: rgb(188,170,164);
-}
-.brown-300 {
-    color: rgb(161,136,127);
-}
-.brown-400 {
-    color: rgb(141,110,99);
-}
-.brown-500 {
-    color: rgb(121,85,72);
-}
-.brown-600 {
-    color: rgb(109,76,65);
-}
-.brown-700 {
-    color: rgb(93,64,55);
-}
-.brown-800 {
-    color: rgb(78,52,46);
-}
-.brown-900 {
-    color: rgb(62, 39, 35);
-}
+@value brown-50: rgb(239, 235, 233);
+@value brown-100: rgb(215, 204, 200);
+@value brown-200: rgb(188, 170, 164);
+@value brown-300: rgb(161, 136, 127);
+@value brown-400: rgb(141, 110, 99);
+@value brown-500: rgb(121, 85, 72);
+@value brown-600: rgb(109, 76, 65);
+@value brown-700: rgb(93, 64, 55);
+@value brown-800: rgb(78, 52, 46);
+@value brown-900: rgb(62, 39, 35);
 
 /*// Grey */
-.grey-50 {
-    color: rgb(250,250,250);
-}
-.grey-100 {
-    color: rgb(245,245,245);
-}
-.grey-200 {
-    color: rgb(238,238,238);
-}
-.grey-300 {
-    color: rgb(224,224,224);
-}
-.grey-400 {
-    color: rgb(189,189,189);
-}
-.grey-500 {
-    color: rgb(158,158,158);
-}
-.grey-600 {
-    color: rgb(117,117,117);
-}
-.grey-700 {
-    color: rgb(97,97,97);
-}
-.grey-800 {
-    color: rgb(66,66,66);
-}
-.grey-900 {
-    color: rgb(33, 33, 33);
-}
+@value grey-50: rgb(250, 250, 250);
+@value grey-100: rgb(245, 245, 245);
+@value grey-200: rgb(238, 238, 238);
+@value grey-300: rgb(224, 224, 224);
+@value grey-400: rgb(189, 189, 189);
+@value grey-500: rgb(158, 158, 158);
+@value grey-600: rgb(117, 117, 117);
+@value grey-700: rgb(97, 97, 97);
+@value grey-800: rgb(66, 66, 66);
+@value grey-900: rgb(33, 33, 33);
 
 /*// Blue Grey*/
-.blue-grey-50 {
-   color: rgb(236,239,241);
-}
-.blue-grey-100 {
-    color: rgb(207,216,220);
-}
-.blue-grey-200 {
-    color: rgb(176,190,197);
-}
-.blue-grey-300 {
-    color: rgb(144,164,174);
-}
-.blue-grey-400 {
-    color: rgb(120,144,156);
-}
-.blue-grey-500 {
-    color: rgb(96,125,139);
-}
-.blue-grey-600 {
-    color: rgb(84,110,122);
-}
-.blue-grey-700 {
-    color: rgb(69,90,100);
-}
-.blue-grey-800 {
-    color: rgb(55,71,79);
-}
-.blue-grey-900 {
-    color: rgb(38, 50, 56);
-}
+@value blue-grey-50: rgb(236, 239, 241);
+@value blue-grey-100: rgb(207, 216, 220);
+@value blue-grey-200: rgb(176, 190, 197);
+@value blue-grey-300: rgb(144, 164, 174);
+@value blue-grey-400: rgb(120, 144, 156);
+@value blue-grey-500: rgb(96, 125, 139);
+@value blue-grey-600: rgb(84, 110, 122);
+@value blue-grey-700: rgb(69, 90, 100);
+@value blue-grey-800: rgb(55, 71, 79);
+@value blue-grey-900: rgb(38, 50, 56);
+@value black-text: rgb(0, 0, 0);
+@value white-text: rgb(255, 255, 255);
 
-.black {
-    color: rgb(0, 0, 0);
-}
-.white {
-    color: rgb(255, 255, 255);
-}
-
-.primary {
-    color: #0275d8;
-}
-.secondary {
-    color: #373a3c;
-}
-.success {
-    color: #5cb85c;
-}
-.warning {
-    color: #f0ad4e;
-}
-.danger {
-    color: #d9534f
-}
+/*// General*/
+@value primary: #0275d8;
+@value secondary: #373a3c;
+@value success: #5cb85c;
+@value warning: #f0ad4e;
+@value danger: #d9534f;
