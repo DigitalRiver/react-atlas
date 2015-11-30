@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import FontIcon from '../font_icon';
 import Tooltip from '../tooltip';
-import style from './style';
+import style from './style.css';
 
 class Button extends React.Component {
   static propTypes = {
