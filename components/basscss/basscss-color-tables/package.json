@@ -1,0 +1,75 @@
+{
+  "_args": [
+    [
+      "basscss-color-tables@^1.0.2",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-color-tables@>=1.0.2 <2.0.0",
+  "_id": "basscss-color-tables@1.0.2",
+  "_inCache": true,
+  "_location": "/basscss-color-tables",
+  "_nodeVersion": "0.12.0",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "2.5.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-color-tables",
+    "raw": "basscss-color-tables@^1.0.2",
+    "rawSpec": "^1.0.2",
+    "scope": null,
+    "spec": ">=1.0.2 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-color-tables/-/basscss-color-tables-1.0.2.tgz",
+  "_shasum": "c124dc79283fb9df01eb8843a685e1226427265c",
+  "_shrinkwrap": null,
+  "_spec": "basscss-color-tables@^1.0.2",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/color-tables/issues"
+  },
+  "dependencies": {
+    "basscss-defaults": "^2.0.1"
+  },
+  "description": "Table color styles module for Basscss",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "c124dc79283fb9df01eb8843a685e1226427265c",
+    "tarball": "http://registry.npmjs.org/basscss-color-tables/-/basscss-color-tables-1.0.2.tgz"
+  },
+  "gitHead": "b5980b7e59d2e7e1cc94d1af493c5ab7549bd08b",
+  "homepage": "https://github.com/basscss/color-tables",
+  "installable": true,
+  "keywords": [
+    "Basscss",
+    "CSS",
+    "OOCSS",
+    "Rework"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-color-tables",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basscss/color-tables.git"
+  },
+  "scripts": {},
+  "version": "1.0.2"
+}

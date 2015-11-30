@@ -1,0 +1,74 @@
+{
+  "_args": [
+    [
+      "basscss-btn-primary@^1.0.0",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-btn-primary@>=1.0.0 <2.0.0",
+  "_id": "basscss-btn-primary@1.0.0",
+  "_inCache": true,
+  "_location": "/basscss-btn-primary",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "2.7.4",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-btn-primary",
+    "raw": "basscss-btn-primary@^1.0.0",
+    "rawSpec": "^1.0.0",
+    "scope": null,
+    "spec": ">=1.0.0 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-btn-primary/-/basscss-btn-primary-1.0.0.tgz",
+  "_shasum": "3d499772d06da5dd407cad9d01c39a1604a63586",
+  "_shrinkwrap": null,
+  "_spec": "basscss-btn-primary@^1.0.0",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/btn-primary/issues"
+  },
+  "dependencies": {},
+  "description": "Solid button color style module for Basscss",
+  "devDependencies": {
+    "basscss-defaults": "^2.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "3d499772d06da5dd407cad9d01c39a1604a63586",
+    "tarball": "http://registry.npmjs.org/basscss-btn-primary/-/basscss-btn-primary-1.0.0.tgz"
+  },
+  "gitHead": "c4b25704577b079ceacbce53d5e41c85ef016918",
+  "homepage": "https://github.com/basscss/btn-primary",
+  "installable": true,
+  "keywords": [
+    "basscss",
+    "css",
+    "oocss"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-btn-primary",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basscss/btn-primary.git"
+  },
+  "scripts": {},
+  "version": "1.0.0"
+}

@@ -1,0 +1,73 @@
+{
+  "_args": [
+    [
+      "basscss-align@^1.0.0",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-align@>=1.0.0 <2.0.0",
+  "_id": "basscss-align@1.0.0",
+  "_inCache": true,
+  "_location": "/basscss-align",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "2.7.4",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-align",
+    "raw": "basscss-align@^1.0.0",
+    "rawSpec": "^1.0.0",
+    "scope": null,
+    "spec": ">=1.0.0 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-align/-/basscss-align-1.0.0.tgz",
+  "_shasum": "cb3c3b9e29163e59b7d7674f08b4a0096b8ac1b2",
+  "_shrinkwrap": null,
+  "_spec": "basscss-align@^1.0.0",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/align/issues"
+  },
+  "dependencies": {},
+  "description": "Vertical align utilities module for Basscss",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "cb3c3b9e29163e59b7d7674f08b4a0096b8ac1b2",
+    "tarball": "http://registry.npmjs.org/basscss-align/-/basscss-align-1.0.0.tgz"
+  },
+  "gitHead": "6663834e7ddd50312c5395e535e81fb4fdc58f72",
+  "homepage": "https://github.com/basscss/align",
+  "installable": true,
+  "keywords": [
+    "basscss",
+    "css",
+    "oocss",
+    "utility"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-align",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basscss/align.git"
+  },
+  "scripts": {},
+  "version": "1.0.0"
+}

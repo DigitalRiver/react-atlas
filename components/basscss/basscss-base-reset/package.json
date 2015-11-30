@@ -1,0 +1,73 @@
+{
+  "_args": [
+    [
+      "basscss-base-reset@^2.0.2",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-base-reset@>=2.0.2 <3.0.0",
+  "_id": "basscss-base-reset@2.0.2",
+  "_inCache": true,
+  "_location": "/basscss-base-reset",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "3.0.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-base-reset",
+    "raw": "basscss-base-reset@^2.0.2",
+    "rawSpec": "^2.0.2",
+    "scope": null,
+    "spec": ">=2.0.2 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-base-reset/-/basscss-base-reset-2.0.2.tgz",
+  "_shasum": "f5542fe733695e8fef3263607333dd9109d47844",
+  "_shrinkwrap": null,
+  "_spec": "basscss-base-reset@^2.0.2",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/base-reset/issues"
+  },
+  "dependencies": {},
+  "description": "Base element reset for Basscss",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "f5542fe733695e8fef3263607333dd9109d47844",
+    "tarball": "http://registry.npmjs.org/basscss-base-reset/-/basscss-base-reset-2.0.2.tgz"
+  },
+  "gitHead": "cf097f215274cd01f5e381e18eac50123af4af90",
+  "homepage": "https://github.com/basscss/base-reset",
+  "installable": true,
+  "keywords": [
+    "Basscss",
+    "CSS",
+    "OOCSS",
+    "Rework"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-base-reset",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basscss/base-reset.git"
+  },
+  "scripts": {},
+  "version": "2.0.2"
+}

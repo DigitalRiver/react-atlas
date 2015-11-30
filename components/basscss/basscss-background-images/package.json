@@ -1,0 +1,77 @@
+{
+  "_args": [
+    [
+      "basscss-background-images@0.0.9",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-background-images@0.0.9",
+  "_id": "basscss-background-images@0.0.9",
+  "_inCache": true,
+  "_location": "/basscss-background-images",
+  "_nodeVersion": "0.12.0",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "2.5.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-background-images",
+    "raw": "basscss-background-images@0.0.9",
+    "rawSpec": "0.0.9",
+    "scope": null,
+    "spec": "0.0.9",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-background-images/-/basscss-background-images-0.0.9.tgz",
+  "_shasum": "e7662311921dd4aa6feb8786a348f5a0a57590ac",
+  "_shrinkwrap": null,
+  "_spec": "basscss-background-images@0.0.9",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "basscss": {
+    "category": "utility",
+    "optional": true
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/background-images/issues"
+  },
+  "dependencies": {},
+  "description": "Background image utilities module for Basscss",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "e7662311921dd4aa6feb8786a348f5a0a57590ac",
+    "tarball": "http://registry.npmjs.org/basscss-background-images/-/basscss-background-images-0.0.9.tgz"
+  },
+  "gitHead": "b0186fb499bdbe6c9bc9948afc4aafa17ec0747b",
+  "homepage": "https://github.com/basscss/background-images",
+  "installable": true,
+  "keywords": [
+    "Basscss",
+    "CSS",
+    "OOCSS",
+    "Rework"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-background-images",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basscss/background-images.git"
+  },
+  "scripts": {},
+  "version": "0.0.9"
+}

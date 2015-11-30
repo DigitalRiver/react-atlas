@@ -1,0 +1,75 @@
+{
+  "_args": [
+    [
+      "basscss-background-colors@^1.1.1",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-background-colors@>=1.1.1 <2.0.0",
+  "_id": "basscss-background-colors@1.1.1",
+  "_inCache": true,
+  "_location": "/basscss-background-colors",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "3.1.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-background-colors",
+    "raw": "basscss-background-colors@^1.1.1",
+    "rawSpec": "^1.1.1",
+    "scope": null,
+    "spec": ">=1.1.1 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-background-colors/-/basscss-background-colors-1.1.1.tgz",
+  "_shasum": "0f67cd9882047325e8600e875cd42fc436a34ae4",
+  "_shrinkwrap": null,
+  "_spec": "basscss-background-colors@^1.1.1",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/background-colors/issues"
+  },
+  "dependencies": {
+    "basscss-defaults": "^2.1.1"
+  },
+  "description": "Background color styles module for Basscss",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "0f67cd9882047325e8600e875cd42fc436a34ae4",
+    "tarball": "http://registry.npmjs.org/basscss-background-colors/-/basscss-background-colors-1.1.1.tgz"
+  },
+  "gitHead": "324bd9334749e709ceb8a87a91bf5beef0fae99e",
+  "homepage": "https://github.com/basscss/background-colors",
+  "installable": true,
+  "keywords": [
+    "basscss",
+    "css",
+    "oocss"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-background-colors",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basscss/background-colors.git"
+  },
+  "scripts": {},
+  "style": "index.css",
+  "version": "1.1.1"
+}

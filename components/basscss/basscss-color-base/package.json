@@ -1,0 +1,74 @@
+{
+  "_args": [
+    [
+      "basscss-color-base@^2.0.0",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-color-base@>=2.0.0 <3.0.0",
+  "_id": "basscss-color-base@2.0.0",
+  "_inCache": true,
+  "_location": "/basscss-color-base",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "2.7.4",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-color-base",
+    "raw": "basscss-color-base@^2.0.0",
+    "rawSpec": "^2.0.0",
+    "scope": null,
+    "spec": ">=2.0.0 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-color-base/-/basscss-color-base-2.0.0.tgz",
+  "_shasum": "9b55e02313dc11189cfdae56e3316a43f84f20d4",
+  "_shrinkwrap": null,
+  "_spec": "basscss-color-base@^2.0.0",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/color-base/issues"
+  },
+  "dependencies": {
+    "basscss-defaults": "^2.0.1"
+  },
+  "description": "Base element color styles module for Basscss",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "9b55e02313dc11189cfdae56e3316a43f84f20d4",
+    "tarball": "http://registry.npmjs.org/basscss-color-base/-/basscss-color-base-2.0.0.tgz"
+  },
+  "gitHead": "04a73cb64a37fe4d3b5bb7dd7443a8cabd05ca47",
+  "homepage": "https://github.com/basscss/color-base",
+  "installable": true,
+  "keywords": [
+    "basscss",
+    "css",
+    "oocss"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-color-base",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basscss/color-base.git"
+  },
+  "scripts": {},
+  "version": "2.0.0"
+}

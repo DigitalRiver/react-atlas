@@ -1,0 +1,75 @@
+{
+  "_args": [
+    [
+      "basscss-base-typography@^2.0.1",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-base-typography@>=2.0.1 <3.0.0",
+  "_id": "basscss-base-typography@2.0.1",
+  "_inCache": true,
+  "_location": "/basscss-base-typography",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "3.0.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-base-typography",
+    "raw": "basscss-base-typography@^2.0.1",
+    "rawSpec": "^2.0.1",
+    "scope": null,
+    "spec": ">=2.0.1 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-base-typography/-/basscss-base-typography-2.0.1.tgz",
+  "_shasum": "64a3a2ed68ee1c402ddefe62be2343ebecf1ee99",
+  "_shrinkwrap": null,
+  "_spec": "basscss-base-typography@^2.0.1",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/base-typography/issues"
+  },
+  "dependencies": {
+    "basscss-defaults": "^2.0.1"
+  },
+  "description": "Base typography styles for Basscss",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "64a3a2ed68ee1c402ddefe62be2343ebecf1ee99",
+    "tarball": "http://registry.npmjs.org/basscss-base-typography/-/basscss-base-typography-2.0.1.tgz"
+  },
+  "gitHead": "2ca812f10292d008d42ae485fa63c3c500e7f968",
+  "homepage": "https://github.com/basscss/base-typography",
+  "installable": true,
+  "keywords": [
+    "Basscss",
+    "CSS",
+    "OOCSS",
+    "Rework"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-base-typography",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basscss/base-typography.git"
+  },
+  "scripts": {},
+  "version": "2.0.1"
+}

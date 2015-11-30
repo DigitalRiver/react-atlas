@@ -1,0 +1,74 @@
+{
+  "_args": [
+    [
+      "basscss-type-scale@^1.0.0",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-type-scale@>=1.0.0 <2.0.0",
+  "_id": "basscss-type-scale@1.0.0",
+  "_inCache": true,
+  "_location": "/basscss-type-scale",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "2.7.4",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-type-scale",
+    "raw": "basscss-type-scale@^1.0.0",
+    "rawSpec": "^1.0.0",
+    "scope": null,
+    "spec": ">=1.0.0 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-type-scale/-/basscss-type-scale-1.0.0.tgz",
+  "_shasum": "1d5d3539ae7713333e7e9c04910ad31f6a8d6d9a",
+  "_shrinkwrap": null,
+  "_spec": "basscss-type-scale@^1.0.0",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/type-scale/issues"
+  },
+  "dependencies": {
+    "basscss-defaults": "^2.0.1"
+  },
+  "description": "Type scale utility styles for Basscss",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "1d5d3539ae7713333e7e9c04910ad31f6a8d6d9a",
+    "tarball": "http://registry.npmjs.org/basscss-type-scale/-/basscss-type-scale-1.0.0.tgz"
+  },
+  "gitHead": "4c5289b97846a2bd51ba1e931bac79c271f19b8f",
+  "homepage": "https://github.com/basscss/type-scale",
+  "installable": true,
+  "keywords": [
+    "basscss",
+    "css",
+    "oocss"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-type-scale",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basscss/type-scale.git"
+  },
+  "scripts": {},
+  "version": "1.0.0"
+}

@@ -1,0 +1,75 @@
+{
+  "_args": [
+    [
+      "basscss-highlight@^0.1.0",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-highlight@>=0.1.0 <0.2.0",
+  "_id": "basscss-highlight@0.1.0",
+  "_inCache": true,
+  "_location": "/basscss-highlight",
+  "_nodeVersion": "0.12.0",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "2.5.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-highlight",
+    "raw": "basscss-highlight@^0.1.0",
+    "rawSpec": "^0.1.0",
+    "scope": null,
+    "spec": ">=0.1.0 <0.2.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-highlight/-/basscss-highlight-0.1.0.tgz",
+  "_shasum": "5299dafdd5e6a2a788cac68e6a8cdc2a447051c2",
+  "_shrinkwrap": null,
+  "_spec": "basscss-highlight@^0.1.0",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/jxnblk/basscss-highlight/issues"
+  },
+  "dependencies": {
+    "colors.css": "^2.0.4"
+  },
+  "description": "Highlight.js module for Basscss",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "5299dafdd5e6a2a788cac68e6a8cdc2a447051c2",
+    "tarball": "http://registry.npmjs.org/basscss-highlight/-/basscss-highlight-0.1.0.tgz"
+  },
+  "gitHead": "543ac2421ab2cf1319d0cc215ec5da2f23f9fb54",
+  "homepage": "https://github.com/jxnblk/basscss-highlight",
+  "installable": true,
+  "keywords": [
+    "Basscss",
+    "CSS",
+    "OOCSS",
+    "Rework"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-highlight",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jxnblk/basscss-highlight.git"
+  },
+  "scripts": {},
+  "version": "0.1.0"
+}

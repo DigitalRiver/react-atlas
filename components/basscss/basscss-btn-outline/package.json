@@ -1,0 +1,74 @@
+{
+  "_args": [
+    [
+      "basscss-btn-outline@^1.0.0",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-btn-outline@>=1.0.0 <2.0.0",
+  "_id": "basscss-btn-outline@1.0.0",
+  "_inCache": true,
+  "_location": "/basscss-btn-outline",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "2.7.4",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-btn-outline",
+    "raw": "basscss-btn-outline@^1.0.0",
+    "rawSpec": "^1.0.0",
+    "scope": null,
+    "spec": ">=1.0.0 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-btn-outline/-/basscss-btn-outline-1.0.0.tgz",
+  "_shasum": "c7eaa339a8dac4f2b9a620fa6b51018e589a7d24",
+  "_shrinkwrap": null,
+  "_spec": "basscss-btn-outline@^1.0.0",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/btn-outline/issues"
+  },
+  "dependencies": {},
+  "description": "Outline button color style module for Basscss",
+  "devDependencies": {
+    "basscss-defaults": "^2.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "c7eaa339a8dac4f2b9a620fa6b51018e589a7d24",
+    "tarball": "http://registry.npmjs.org/basscss-btn-outline/-/basscss-btn-outline-1.0.0.tgz"
+  },
+  "gitHead": "655eade3ea92ee5f2be7e1b4280321cc5560cfbe",
+  "homepage": "https://github.com/basscss/btn-outline",
+  "installable": true,
+  "keywords": [
+    "basscss",
+    "css",
+    "oocss"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-btn-outline",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basscss/btn-outline.git"
+  },
+  "scripts": {},
+  "version": "1.0.0"
+}

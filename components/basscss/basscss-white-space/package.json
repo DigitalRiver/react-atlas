@@ -1,0 +1,75 @@
+{
+  "_args": [
+    [
+      "basscss-white-space@^1.1.2",
+      "C:\\dev\\basscss"
+    ]
+  ],
+  "_from": "basscss-white-space@>=1.1.2 <2.0.0",
+  "_id": "basscss-white-space@1.1.2",
+  "_inCache": true,
+  "_location": "/basscss-white-space",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "email": "jxnblk@gmail.com",
+    "name": "jxnblk"
+  },
+  "_npmVersion": "3.0.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "basscss-white-space",
+    "raw": "basscss-white-space@^1.1.2",
+    "rawSpec": "^1.1.2",
+    "scope": null,
+    "spec": ">=1.1.2 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-white-space/-/basscss-white-space-1.1.2.tgz",
+  "_shasum": "baad21b14c6f5e3f0b9568c1eba74d075263eaea",
+  "_shrinkwrap": null,
+  "_spec": "basscss-white-space@^1.1.2",
+  "_where": "C:\\dev\\basscss",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/utility-white-space/issues"
+  },
+  "dependencies": {
+    "basscss-defaults": "^2.0.1"
+  },
+  "description": "White space margin and padding utilities module for Basscss",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "baad21b14c6f5e3f0b9568c1eba74d075263eaea",
+    "tarball": "http://registry.npmjs.org/basscss-white-space/-/basscss-white-space-1.1.2.tgz"
+  },
+  "gitHead": "9fa631073f6e77d58dca8d87fe6cbaec158aadc6",
+  "homepage": "https://github.com/basscss/utility-white-space",
+  "installable": true,
+  "keywords": [
+    "Basscss",
+    "CSS",
+    "OOCSS",
+    "Rework"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "jxnblk",
+      "email": "jxnblk@gmail.com"
+    }
+  ],
+  "name": "basscss-white-space",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basscss/utility-white-space.git"
+  },
+  "scripts": {},
+  "version": "1.1.2"
+}
