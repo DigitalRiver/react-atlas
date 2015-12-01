@@ -1,0 +1,111 @@
+/*Main Styles*/
+.root{
+  composes: btn from '../basscss.css'
+}
+
+.default_btn {
+  composes: root;
+  composes: btn-primary from '../basscss.css'
+}
+
+.outline {
+  composes: root;
+  composes: btn-outline from '../basscss.css';
+}
+
+/*default button variant*/
+.primary {
+  composes: default_btn;
+  composes: bg-blue from '../colors.css';
+}
+
+.success {
+  composes: default_btn;
+  composes: bg-green from '../colors.css';
+}
+
+.warning {
+  composes: default_btn;
+  composes: bg-orange from '../colors.css';
+}
+
+.danger {
+  composes: default_btn;
+  composes: bg-red from '../colors.css';
+}
+
+.link {
+  composes: default_btn;
+  composes: blue from '../colors.css';
+  border-color: transparent;
+  background-color: transparent;
+  &:hover {
+    text-decoration: underline;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+/*Outline styles*/
+
+.primary_outline {
+  composes: outline;
+  composes: blue from '../colors.css';
+}
+
+.secondary {
+  composes: outline;
+  composes: gray from '../colors.css';
+  background-color: transparent;
+}
+
+.secondary_outline {
+  composes: outline;
+  composes: gray from '../colors.css';
+}
+
+.success_outline {
+  composes: outline;
+  composes: green from '../colors.css';
+}
+
+.warning_outline {
+  composes: outline;
+  composes: orange from '../colors.css';
+}
+
+.danger_outline {
+  composes: outline;
+  composes: red from '../colors.css';
+}
+
+.link_outline {
+  composes: outline;
+  composes: blue from '../colors.css';
+  background-color: transparent;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: .65;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+/*button sizes*/
+.large {
+  font-size: 1.25rem;
+  line-height: 1.333333;
+}
+
+.small {
+  font-size: .85rem;
+  line-height: 1.5;
+}
+
+/*block style*/
+.block {
+    composes: block from '../basscss.css';
+    width: 100%;
+}

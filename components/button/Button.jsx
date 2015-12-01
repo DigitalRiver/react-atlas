@@ -1,8 +1,8 @@
 import React from 'react';
-import ClassNames from 'classnames';
+import classNames from 'classnames/bind';
 import FontIcon from '../font_icon';
-import Ripple from '../ripple';
-import style from './style';
+import Tooltip from '../tooltip';
+import style from './style.css';
 
 class Button extends React.Component {
   static propTypes = {
@@ -10,8 +10,7 @@ class Button extends React.Component {
     children: React.PropTypes.node,
     className: React.PropTypes.string,
     disabled: React.PropTypes.bool,
-    flat: React.PropTypes.bool,
-    floating: React.PropTypes.bool,
+    outline: React.PropTypes.bool,
     href: React.PropTypes.string,
     icon: React.PropTypes.string,
     inverse: React.PropTypes.bool,
@@ -19,23 +18,30 @@ class Button extends React.Component {
     mini: React.PropTypes.bool,
     primary: React.PropTypes.bool,
     raised: React.PropTypes.bool,
-    ripple: React.PropTypes.bool,
+    tooltip: React.PropTypes.string,
+    tooltipDelay: React.PropTypes.number,
     type: React.PropTypes.string
   };
 
   static defaultProps = {
     accent: false,
     className: '',
-    flat: false,
-    floating: false,
+    outline: false,
+    loading: false,
     mini: false,
     primary: false,
+    secondary: false,
+    success: false,
+    warning: false,
+    danger: false,
+    link: false,
     raised: false,
-    ripple: true
+    large: false,
+    small: false,
+    disabled: false
   };
 
   handleMouseDown = (event) => {
-    if (this.refs.ripple) this.refs.ripple.start(event);
     if (this.props.onMouseDown) this.props.onMouseDown(event);
   };
 
@@ -44,30 +50,57 @@ class Button extends React.Component {
   };
 
   render () {
-    const { accent, children, className, flat, floating, href, icon,
-            inverse, label, mini, primary, raised, ripple, ...others} = this.props;
+
+    const {accent, outline, href, icon, label, loading, mini,
+           primary, raised, tooltip, secondary, success, warning, danger, link, large, small, block, disabled, children, ...others} = this.props;
     const element = href ? 'a' : 'button';
-    const level = primary ? 'primary' : accent ? 'accent' : 'neutral';
-    const shape = flat ? 'flat' : raised ? 'raised' : floating ? 'floating' : 'flat';
+    var cx = classNames.bind(style);
+    let className = cx({
+        large: large,
+        small: small,
+        block: block,
+        disabled: disabled
+    });
 
-    const classes = ClassNames([ style[shape], style[level] ], {
-      [style.mini]: mini,
-      [style.inverse]: inverse
-    }, className);
+    if (outline) {
+      className += ' '+ cx({
+        primary_outline: !secondary && !success && !warning && !danger && !link,
+        secondary: secondary,
+        success_outline: success,
+        warning_outline: warning,
+        danger_outline: danger,
+        link_outline: link
+      });
+    } else {
+      className += ' '+ cx({
+        primary: !secondary && !success && !warning && !danger && !link,
+        secondary: secondary,
+        success: success,
+        warning: warning,
+        danger: danger,
+        link: link
+      });
+    }
 
+    if (this.props.className) className += ` ${this.props.className}`;
+    let role;
+    if (element === 'a') {
+      role = 'button';
+    }
     const props = {
       ...others,
       href,
-      ref: 'button',
-      className: classes,
-      disabled: this.props.disabled,
+      className,
+      disabled: disabled || this.props.loading,
       onMouseDown: this.handleMouseDown,
+      onTouchStart: this.handleTouchStart,
       onMouseUp: this.handleMouseUp,
+      role: role,
       'data-react-toolbox': 'button'
     };
 
     return React.createElement(element, props,
-      ripple ? <Ripple ref='ripple' /> : null,
+      tooltip ? <Tooltip className={style.tooltip} label={tooltip}/> : null,
       icon ? <FontIcon className={style.icon} value={icon}/> : null,
       label,
       children
