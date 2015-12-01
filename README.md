@@ -99,9 +99,18 @@ cd ..
 npm run start
 ```
 Spec page will be at ```localhost:3001```
+### A Note on CSS
+While the original project that React Altas was forked from used SASS for it's css, we are trying our best to eventually remove that dependency. SASS is great, but there are a few reasons behind this move:
+  - Being a superset of CSS, SASS effectively becomes it's own Domain Specific Language(DSL) with it's own quirks and syntax to learn. Effectively, SASS is to CSS what CoffeeScript is to Javascipt. Not a bad thing, but rather an unnecessary thing.
+  - The CSS Spec is ever evolving and now includes native [CSS variables](http://www.w3.org/TR/css-variables/) and is already supporte din Firefox, with Edge and Chrome currently in development.
+  - PostCSS/CSSNext allows use to have much of the same functionality that SASS provides, but allows use to write in the 'future' of the actual CSS spec. This means the styles we implement, while still using PostCSS as a preprocessor, are no longer part of a DSL, but rather they are actual in-spec CSS.
 
 ### What the hell is this 'composes' stuff in CSS?
-That is [CSS Modules](https://github.com/css-modules/css-modules). CSS Modules allow locally scoped CSS which helps solve a lot of problems inherit in regular Global CSS. This is an important aspect of the library, and if you wish to contribute, it will be very beneficial for you to read the following articles on CSS Modules to help wrap your head around why it is so awesome:
+That is [CSS Modules](https://github.com/css-modules/css-modules).
+
+Okay, so we just talked about why we want to get away from DSLs in our CSS, and then we say that we're using a kind of DSL anyways. We get it. But hear us out.
+
+First, the API surface area of CSS Modules is extremely small. In regards to CSS syntax, it add only 'composes'. Everything else it does is behind the scenes. The primary focus of CSS Modules is to allow locally scoped CSS. This is a big deal and helps solve a lot of problems inherit in regular Globally Scoped CSS. This is an important aspect of the library, and if you wish to contribute, it will be very beneficial for you to read the following articles on CSS Modules to help wrap your head around why it is so awesome:
  - [The End of Global CSS](https://medium.com/seek-ui-engineering/the-end-of-global-css-90d2a4a06284)
  - [CSS Modules - Welcome to the Future](http://glenmaddern.com/articles/css-modules)
  - [CSS Modules Demo](https://css-modules.github.io/webpack-demo/)
