@@ -74,6 +74,32 @@ If you are interested in contributing to the project, please read our [Contribut
 
 This project is developed on Node 4.2.2+. Look into using [nvm-windows](https://github.com/coreybutler/nvm-windows) or [n](https://github.com/tj/n) to handle different node versions.
 
+## Set-Up/Installation for Development
+
+### Windows Users
+If running on windows, Follow these steps to ensure you don't run into any 'node-gyp' issues:
+
+Install VC++ Build Tools Technical Preview
+
+>:bulb: [Windows 7 only] requires .NET Framework 4.5.1
+
+Install Python 2.7, and add it to your PATH, ```npm config set python python2.7```
+
+Launch cmd, ```npm config set msvs_version 2015``` --global (this is instead of npm install [package name] --msvs_version=2015 every time.)
+
+### Clone and start Spec/Style guide page
+The following commands will clone the repo down, install npm dependencies and start the specs/style guide page.
+```
+git clone git@github.digitalriverws.net:ux/react-atlas.git
+cd react-atlas
+npm install
+cd docs/
+npm install 
+cd ..
+npm run start
+```
+Spec page will be at ```localhost:3001```
+
 ## License 
 This project is licensed under the terms of the [MIT license](https://github.com/react-toolbox/react-toolbox/blob/master/LICENSE).
 
