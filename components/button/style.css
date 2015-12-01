@@ -1,6 +1,6 @@
 /*Main Styles*/
 .root{
-  composes: btn from '../basscss.css';
+  composes: btn from '../basscss.css'
 }
 
 .default_btn {
@@ -16,27 +16,27 @@
 /*default button variant*/
 .primary {
   composes: default_btn;
-  composes: bg-blue from '../basscss.css';
+  composes: bg-blue from '../colors.css';
 }
 
 .success {
   composes: default_btn;
-  composes: bg-green from '../basscss.css';
+  composes: bg-green from '../colors.css';
 }
 
 .warning {
   composes: default_btn;
-  composes: bg-orange from '../basscss.css';
+  composes: bg-orange from '../colors.css';
 }
 
 .danger {
   composes: default_btn;
-  composes: bg-red from '../basscss.css';
+  composes: bg-red from '../colors.css';
 }
 
 .link {
   composes: default_btn;
-  composes: blue from '../basscss.css';
+  composes: blue from '../colors.css';
   border-color: transparent;
   background-color: transparent;
   &:hover {
@@ -51,38 +51,38 @@
 
 .primary_outline {
   composes: outline;
-  composes: blue from '../basscss.css';
+  composes: blue from '../colors.css';
 }
 
 .secondary {
   composes: outline;
-  composes: gray from '../basscss.css';
+  composes: gray from '../colors.css';
   background-color: transparent;
 }
 
 .secondary_outline {
   composes: outline;
-  composes: gray from '../basscss.css';
+  composes: gray from '../colors.css';
 }
 
 .success_outline {
   composes: outline;
-  composes: green from '../basscss.css';
+  composes: green from '../colors.css';
 }
 
 .warning_outline {
   composes: outline;
-  composes: orange from '../basscss.css';
+  composes: orange from '../colors.css';
 }
 
 .danger_outline {
   composes: outline;
-  composes: red from '../basscss.css';
+  composes: red from '../colors.css';
 }
 
 .link_outline {
   composes: outline;
-  composes: blue from '../basscss.css';
+  composes: blue from '../colors.css';
   background-color: transparent;
 }
 

@@ -64,8 +64,7 @@ class Button extends React.Component {
 
     if (outline) {
       className += ' '+ cx({
-        outline: true,
-        primary_outline: primary,
+        primary_outline: !secondary && !success && !warning && !danger && !link,
         secondary: secondary,
         success_outline: success,
         warning_outline: warning,
@@ -74,8 +73,7 @@ class Button extends React.Component {
       });
     } else {
       className += ' '+ cx({
-        root: true,
-        primary: !secondary,
+        primary: !secondary && !success && !warning && !danger && !link,
         secondary: secondary,
         success: success,
         warning: warning,
