@@ -110,7 +110,7 @@ That is [CSS Modules](https://github.com/css-modules/css-modules).
 
 Okay, so we just talked about why we want to get away from DSLs in our CSS, and then we say that we're using a kind of DSL anyways. We get it. But hear us out.
 
-First, the API surface area of CSS Modules is extremely small. In regards to CSS syntax, it add only 'composes'. Everything else it does is behind the scenes. The primary focus of CSS Modules is to allow locally scoped CSS. This is a big deal and helps solve a lot of problems inherit in regular Globally Scoped CSS. This is an important aspect of the library, and if you wish to contribute, it will be very beneficial for you to read the following articles on CSS Modules to help wrap your head around why it is so awesome:
+First, the API surface area of CSS Modules is extremely small. In regards to CSS syntax, it adds only 'composes'. Everything else it does is behind the scenes. The primary focus of CSS Modules is to allow locally scoped CSS. This is a big deal and helps solve a lot of problems inherit in regular Globally Scoped CSS. This is an important aspect of the library, and if you wish to contribute, it will be very beneficial for you to read the following articles on CSS Modules to help wrap your head around why it is so awesome:
  - [The End of Global CSS](https://medium.com/seek-ui-engineering/the-end-of-global-css-90d2a4a06284)
  - [CSS Modules - Welcome to the Future](http://glenmaddern.com/articles/css-modules)
  - [CSS Modules Demo](https://css-modules.github.io/webpack-demo/)
@@ -120,7 +120,7 @@ First, the API surface area of CSS Modules is extremely small. In regards to CSS
 This project is licensed under the terms of the [MIT license](https://github.com/react-toolbox/react-toolbox/blob/master/LICENSE).
 
 ## Atlas?
-When think about Web Design and Web Development, we came across the art of map making - [Cartography](https://en.wikipedia.org/wiki/Cartography).
+When thinking about Web Design and Web Development, we came across the art of map making - [Cartography](https://en.wikipedia.org/wiki/Cartography).
 
 >Cartography (from Greek χάρτης khartēs, "map"; and γράφειν graphein, "write") is the study and practice of making maps. Combining science, aesthetics, and technique, cartography builds on the premise that reality can be modeled in ways that communicate spatial information effectively.
 
