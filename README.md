@@ -101,9 +101,9 @@ npm run start
 Spec page will be at ```localhost:3001```
 ### A Note on CSS
 While the original project that React Altas was forked from used SASS for it's css, we are trying our best to eventually remove that dependency. SASS is great, but there are a few reasons behind this move:
-  - Being a superset of CSS, SASS effectively becomes it's own Domain Specific Language(DSL) with it's own quirks and syntax to learn. Effectively, SASS is to CSS what CoffeeScript is to Javascipt. Not a bad thing, but rather an unnecessary thing.
-  - The CSS Spec is ever evolving and now includes native [CSS variables](http://www.w3.org/TR/css-variables/) and is already supporte din Firefox, with Edge and Chrome currently in development.
-  - PostCSS/CSSNext allows use to have much of the same functionality that SASS provides, but allows use to write in the 'future' of the actual CSS spec. This means the styles we implement, while still using PostCSS as a preprocessor, are no longer part of a DSL, but rather they are actual in-spec CSS.
+  - Being a superset of CSS, SASS effectively becomes it's own Domain Specific Language(DSL) with it's own quirks and syntax to learn. Effectively, SASS is to CSS what CoffeeScript is to Javascipt. Not a bad thing, it has it's benefits for sure. But since this is a library, we want to be as generic and close to spec as possible.
+  - The CSS Spec is ever evolving and now includes native [CSS variables](http://www.w3.org/TR/css-variables/) among many other great improvements.
+  - PostCSS/CSSNext allows use to have much of the same functionality that SASS provides, but allows use to write in the 'future' of the actual CSS spec. This means the styles we implement, while still using PostCSS as a preprocessor, are no longer part of a DSL, but rather they are actual in-spec CSS. PostCSS/CSSNext is to CSS what Babel is to Javascript.
 
 ### What the hell is this 'composes' stuff in CSS?
 That is [CSS Modules](https://github.com/css-modules/css-modules).
