@@ -87,7 +87,7 @@ If running on windows, Follow these steps to ensure you don't run into any 'node
 
 Launch cmd, ```npm config set msvs_version 2015``` --global 
 
-### Clone and start Spec/Style guide page
+### Clone and Start Spec/Style Guide Page
 The following commands will clone the repo down, install npm dependencies and start the specs/style guide page.
 ```
 git clone git@github.digitalriverws.net:ux/react-atlas.git
