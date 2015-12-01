@@ -100,6 +100,13 @@ npm run start
 ```
 Spec page will be at ```localhost:3001```
 
+### What the hell is this 'composes' stuff in CSS?
+That is [CSS Modules](https://github.com/css-modules/css-modules). CSS Modules allow locally scoped CSS which helps solve a lot of problems inherit in regular Global CSS. This is an important aspect of the library, and if you wish to contribute, it will be very beneficial for you to read the following articles on CSS Modules to help wrap your head around why it is so awesome:
+ - [The End of Global CSS](https://medium.com/seek-ui-engineering/the-end-of-global-css-90d2a4a06284)
+ - [CSS Modules - Welcome to the Future](http://glenmaddern.com/articles/css-modules)
+ - [CSS Modules Demo](https://css-modules.github.io/webpack-demo/)
+ - [Interoperable CSS](http://glenmaddern.com/articles/interoperable-css) <- the low-level 'guts' of CSS Modules for those interested
+
 ## License 
 This project is licensed under the terms of the [MIT license](https://github.com/react-toolbox/react-toolbox/blob/master/LICENSE).
 
