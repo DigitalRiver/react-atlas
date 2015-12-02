@@ -64,7 +64,7 @@ npm install
 npm start
 ```
 
-Local documentation will be available at http://localhost:8081/
+Local documentation will be available at http://localhost:3001/
 
 ## Authors and Contributors
 
@@ -98,7 +98,7 @@ npm install
 cd ..
 npm run start
 ```
-Spec page will be at ```localhost:3001```
+Spec page will be at ```http://localhost:3001/```
 ### A Note on CSS
 While the original project that React Altas was forked from used SASS for it's css, we are trying our best to eventually remove that dependency. SASS is great, but there are a few reasons behind this move:
   - Being a superset of CSS, SASS effectively becomes it's own Domain Specific Language(DSL) with it's own quirks and syntax to learn. Effectively, SASS is to CSS what CoffeeScript is to Javascipt. Not a bad thing, it has it's benefits for sure. But since this is a library, we want to be as generic and close to spec as possible.
