@@ -118,6 +118,9 @@ First, the API surface area of CSS Modules is extremely small. In regards to CSS
 
 Because we are using CSS Modules we decided that a CSS framework with [Atomic CSS Principals](https://www.lucidchart.com/techblog/2014/01/31/atomic-css-tool-set/) would be the most benefical base for use to compose from. After some research we ended up picking [Basscss](http://www.basscss.com/) for it's small size, modularity and generic out-of-the-box look. In the future we will most liekly end up pulling all of Basscss into a higher level within the project to allow more flexibilty as we extend into complex components. But for now Basscss is a dependency of React Atlas.
 
+### ClassNames Package
+we use the [Classnames](https://github.com/JedWatson/classnames) by [Jed Watson](https://github.com/JedWatson) inside our components to concatenate class name strings. Please look into the Classname package and learn how to use it effectively to apply classes to components in our project.
+
 ## License 
 This project is licensed under the terms of the [MIT license](https://github.com/react-toolbox/react-toolbox/blob/master/LICENSE).
 
