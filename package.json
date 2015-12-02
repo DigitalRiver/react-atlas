@@ -59,6 +59,7 @@
     "babel-plugin-react-transform": "^1.1.1",
     "basscss": "^7.0.0",
     "bluebird": "^3.0.5",
+    "classnames": "^2.2.1",
     "core-js": "^1.2.6",
     "cpx": "^1.2.1",
     "cross-env": "^1.0.4",
