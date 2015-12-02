@@ -9,3 +9,4 @@ tests.webpack.js
 webpack.config.*
 docs
 spec
+tools
