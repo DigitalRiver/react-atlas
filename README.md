@@ -79,7 +79,7 @@ This project is developed on Node 4.2.2+. Look into using [nvm-windows](https://
 ### Windows Users
 If running on windows, Follow these steps to ensure you don't run into any 'node-gyp' issues:
 
-[Install VC++ Build Tools Technical Preview](https://www.microsoft.com/en-us/download/details.aspx?id=49512)
+[Install VC++ Build Tools Technical Preview](https://www.microsoft.com/en-us/download/confirmation.aspx?id=49983)
 
 >:bulb: [Windows 7 only] requires [.NET Framework 4.5.1](http://www.microsoft.com/en-us/download/details.aspx?id=40773)
 
