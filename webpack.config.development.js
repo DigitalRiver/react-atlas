@@ -19,33 +19,6 @@ module.exports = {
     publicPath: '/build/'
   },
   resolve: {
-    alias: {
-      "basscss-base": "basscss-base",
-      "basscss-utilities": "basscss-utilities",
-      "basscss-base-reset": "basscss-base-reset",
-      "basscss-base-forms": "basscss-base-forms",
-      "basscss-base-tables": "basscss-base-tables",
-      "basscss-base-typography": "basscss-base-typography",
-      "basscss-color-base": "basscss-color-base",
-      "basscss-color-forms": "basscss-color-forms",
-      "basscss-color-tables": "basscss-color-tables",
-      "basscss-btn": "basscss-btn",
-      "basscss-btn-primary": "basscss-btn-primary",
-      "basscss-btn-outline": "basscss-btn-outline",
-      "basscss-type-scale": "basscss-type-scale",
-      "basscss-utility-typography": "basscss-utility-typography",
-      "basscss-utility-layout": "basscss-utility-layout",
-      "basscss-align": "basscss-align",
-      "basscss-white-space": "basscss-white-space",
-      "basscss-positions": "basscss-positions",
-      "basscss-responsive-states": "basscss-responsive-states",
-      "basscss-grid": "basscss-grid",
-      "flex-object": "flex-object",
-      "basscss-borders": "basscss-borders",
-      "basscss-colors": "basscss-colors",
-      "basscss-background-colors": "basscss-background-colors",
-      "basscss-defaults": "basscss-defaults"
-    },
     extensions: ['', '.jsx', '.scss', '.js', '.json']
   },
   module: {
