@@ -7,6 +7,8 @@ karma.conf.js
 server.js
 tests.webpack.js
 webpack.config.*
+jsconfig.json
+CONTRIBUTING.md
 docs
 spec
 tools
