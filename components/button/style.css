@@ -106,6 +106,6 @@
 
 /*block style*/
 .block {
-    composes: block from '../basscss.css';
+    composes: block from 'layout.css';
     width: 100%;
 }

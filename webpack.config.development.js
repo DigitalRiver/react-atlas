@@ -22,7 +22,10 @@ module.exports = {
     extensions: ['', '.jsx', '.scss', '.js', '.json'],
     alias: {
       "colors.css$": path.join(__dirname,"components", "styles", "colors.css")
-    }
+    },
+    root: [
+      path.join(__dirname,"components", "styles")
+    ]
   },
   module: {
     loaders: [
