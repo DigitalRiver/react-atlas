@@ -16,27 +16,27 @@
 /*default button variant*/
 .primary {
   composes: default_btn;
-  composes: bg-blue from '../colors.css';
+  composes: bg-blue from 'colors.css';
 }
 
 .success {
   composes: default_btn;
-  composes: bg-green from '../colors.css';
+  composes: bg-green from 'colors.css';
 }
 
 .warning {
   composes: default_btn;
-  composes: bg-orange from '../colors.css';
+  composes: bg-orange from 'colors.css';
 }
 
 .danger {
   composes: default_btn;
-  composes: bg-red from '../colors.css';
+  composes: bg-red from 'colors.css';
 }
 
 .link {
   composes: default_btn;
-  composes: blue from '../colors.css';
+  composes: blue from 'colors.css';
   border-color: transparent;
   background-color: transparent;
   &:hover {
@@ -51,38 +51,38 @@
 
 .primary_outline {
   composes: outline;
-  composes: blue from '../colors.css';
+  composes: blue from 'colors.css';
 }
 
 .secondary {
   composes: outline;
-  composes: gray from '../colors.css';
+  composes: gray from 'colors.css';
   background-color: transparent;
 }
 
 .secondary_outline {
   composes: outline;
-  composes: gray from '../colors.css';
+  composes: gray from 'colors.css';
 }
 
 .success_outline {
   composes: outline;
-  composes: green from '../colors.css';
+  composes: green from 'colors.css';
 }
 
 .warning_outline {
   composes: outline;
-  composes: orange from '../colors.css';
+  composes: orange from 'colors.css';
 }
 
 .danger_outline {
   composes: outline;
-  composes: red from '../colors.css';
+  composes: red from 'colors.css';
 }
 
 .link_outline {
   composes: outline;
-  composes: blue from '../colors.css';
+  composes: blue from 'colors.css';
   background-color: transparent;
 }
 

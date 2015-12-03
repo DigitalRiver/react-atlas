@@ -19,7 +19,10 @@ module.exports = {
     publicPath: '/build/'
   },
   resolve: {
-    extensions: ['', '.jsx', '.scss', '.js', '.json']
+    extensions: ['', '.jsx', '.scss', '.js', '.json'],
+    alias: {
+      "colors.css$": path.join(__dirname,"components", "styles", "colors.css")
+    }
   },
   module: {
     loaders: [
