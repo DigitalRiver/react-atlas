@@ -1,0 +1,19 @@
+.base {
+  composes: relative from '../basscss.css';
+}
+
+.tooltip {
+  composes: absolute white bold center block bg-gray p1 mt1 mb1 h5 from '../basscss.css';
+  composes: top-100 left-50 from '../positions.css';
+  z-index: 200;
+  max-width: 17rem;
+  line-height: 1.4rem;
+  border-radius: .2rem;
+  transition:  cubic-bezier(0.4, 0, 0.2, 1) .06s transform;
+  transform: scale(0) translateX(-50%);
+  transform-origin: top left;
+  text-transform: none;
+}
+.tooltip.active {
+  transform: scale(1) translateX(-50%);
+}

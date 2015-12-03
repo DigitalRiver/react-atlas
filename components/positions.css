@@ -1,0 +1,48 @@
+.top-100 {
+    top: 100%;
+}
+.top-75 {
+    top: 75%;
+}
+.top-50 {
+    top: 50%;
+}
+.top-25 {
+    top: 25%;
+}
+.bottom-100 {
+    bottom: 100%;
+}
+.bottom-75 {
+    bottom: 75%;
+}
+.bottom-50 {
+    bottom: 50%;
+}
+.bottom-25 {
+    bottom: 25%;
+}
+.left-100 {
+    left: 100%;
+}
+.left-75 {
+    left: 75%;
+}
+.left-50 {
+    left: 50%;
+}
+.left-25 {
+    left: 25%;
+}
+.right-100 {
+    right: 100%;
+}
+.right-75 {
+    right: 75%;
+}
+.right-50 {
+    right: 50%;
+}
+.right-25 {
+    right: 25%;
+}
