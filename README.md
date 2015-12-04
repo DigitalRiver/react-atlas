@@ -102,7 +102,7 @@ Spec page will be at ```http://localhost:3001/```
 ### A Note on CSS
 While the original project that React Altas was forked from used SASS for it's css, we are trying our best to eventually remove that dependency. SASS is great, but there are a few reasons behind this move:
   - Being a superset of CSS, SASS effectively becomes it's own Domain Specific Language(DSL) with it's own quirks and syntax to learn. Effectively, SASS is to CSS what CoffeeScript is to Javascipt. Not a bad thing, it has it's benefits for sure. But since this is a library, we want to be as generic and close to spec as possible.
-  - The CSS Spec is ever evolving and now includes native [CSS variables](http://www.w3.org/TR/css-variables/) among many other great improvements.
+  - [The CSS Spec is ever evolving](http://cssnext.io/features/) and now includes native [CSS variables](http://www.w3.org/TR/css-variables/) among many other great improvements.
   - [PostCSS](https://github.com/postcss/postcss) and [CSSNext](http://cssnext.io/) allow us to have much of the same functionality that SASS provides, but allows use to write in the 'future' of the actual CSS spec. This means the styles we implement, while still using a preprocessor in the form of PostCSS, are no longer part of a DSL, but rather they are actual in-spec CSS. PostCSS/CSSNext is to CSS what Babel is to Javascript.
 
 ### What the hell is this 'composes' stuff in CSS?
