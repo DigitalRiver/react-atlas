@@ -25,6 +25,8 @@
 .muted { opacity: .5 }
 
 /*Background Colors*/
+.bg-transparent { background-color: transparent }
+
 .bg-black  { background-color: var(--black) }
 .bg-gray   { background-color: var(--gray) }
 .bg-silver { background-color: var(--silver) }
@@ -56,6 +58,7 @@
 .bg-lighten-4 { background-color: var(--lighten-4) }
 
 /* Border Colors */
+.border-transparent  { border-color: transparent }
 
 .border-black  { border-color: var(--black) }
 .border-gray   { border-color: var(--gray) }

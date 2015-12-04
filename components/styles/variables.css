@@ -1,4 +1,5 @@
 /*media query breaks*/
+/*might take this out, as i think we want a col/row component instead...not sure*/
 @custom-media --breakpoint-sm (min-width: 40em);
 @custom-media --breakpoint-md (min-width: 52em);
 @custom-media --breakpoint-lg (min-width: 64em);
@@ -50,7 +51,7 @@
   --form-field-padding-y: .5rem;
   --form-field-padding-x: .5rem;
   --button-font-size: inherit;
-  --button-font-weight: bold;
+  --button-font-weight: normal;
   --button-line-height: 1.125rem;
   --button-padding-y: .5rem;
   --button-padding-x: 1rem;
