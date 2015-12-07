@@ -2,7 +2,7 @@ const pkg = require('./package');
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
-const precss = require("precss");
+const cssnext = require("postcss-cssnext");
 const imports = require("postcss-import");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -19,13 +19,7 @@ module.exports = {
     publicPath: '/build/'
   },
   resolve: {
-    extensions: ['', '.jsx', '.scss', '.js', '.json'],
-    alias: {
-      "colors.css$": path.join(__dirname,"components", "styles", "colors.css")
-    },
-    root: [
-      path.join(__dirname,"components", "styles")
-    ]
+    extensions: ['', '.jsx', '.scss', '.js', '.json']
   },
   module: {
     loaders: [
@@ -43,7 +37,7 @@ module.exports = {
       }
     ]
   },
-  postcss: [imports, precss, autoprefixer],
+  postcss: [imports, cssnext, autoprefixer],
   plugins: [
     new ExtractTextPlugin('spec.css', { allChunks: true }),
     new webpack.HotModuleReplacementPlugin(),
