@@ -1,7 +1,7 @@
 import React from 'react';
-import ClassNames from 'classnames';
+import classNames from 'classnames/bind';
 import Ripple from '../ripple';
-import style from './style';
+import style from './style.css';
 import events from '../utils/events';
 
 class RadioButton extends React.Component {
@@ -51,8 +51,12 @@ class RadioButton extends React.Component {
   }
 
   render () {
-    const labelClassName = ClassNames(style[this.props.disabled ? 'disabled' : 'field'], this.props.className);
-    const radioClassName = style[this.props.checked ? 'radio-checked' : 'radio'];
+    var cx = classNames.bind(style);
+
+    let labelClassName = cx({
+      root: true,
+      className: true
+    });
 
     return (
       <label className={labelClassName} onClick={this.handleClick}>
@@ -64,9 +68,6 @@ class RadioButton extends React.Component {
           onClick={this.handleInputClick}
           type='radio'
         />
-        <span role='radio' className={radioClassName} onMouseDown={this.handleMouseDown}>
-          <Ripple ref='ripple' role='ripple' className={style.ripple} spread={3} centered />
-        </span>
         {this.props.label ? <span className={style.text}>{this.props.label}</span> : null}
       </label>
     );
