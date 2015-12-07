@@ -46,13 +46,14 @@ const Tooltip = (ComposedComponent) => class extends React.Component {
     const {children, className, tooltip, tooltipDelay, tooltipHideOnClick, ...other} = this.props;
     const cx = classNames.bind(style);
     let composedClassName = cx({
-      base: true,
-      className: true
+      base: true
     });
     let tooltipClassName = cx({
       tooltip: true,
       active: this.state.active
     });
+
+    composedClassName += ` ${className}`;
 
     return (
       <ComposedComponent

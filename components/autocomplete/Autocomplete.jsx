@@ -69,10 +69,10 @@ class Autocomplete extends React.Component {
   };
 
   handleQueryKeyUp = (event) => {
-    if (event.which === 13 && this.state.active) this.select(this.state.active, event);
+    if (event.which === 13 && this.state.active) this._select(this.state.active, event);
     if (event.which === 27) this.refs.input.blur();
     if ([40, 38].indexOf(event.which) !== -1) {
-      const suggestionsKeys = [...this.suggestions().keys()];
+      const suggestionsKeys = [...this._suggestions().keys()];
       let index = suggestionsKeys.indexOf(this.state.active) + (event.which === 40 ? +1 : -1);
       if (index < 0) index = suggestionsKeys.length - 1;
       if (index >= suggestionsKeys.length) index = 0;
@@ -96,14 +96,14 @@ class Autocomplete extends React.Component {
   }
 
   query (key) {
-    return !this.props.multiple && this.props.value ? this.source().get(key) : '';
+    return !this.props.multiple && this.props.value ? this._source().get(key) : '';
   }
 
-  suggestions () {
+  _suggestions () {
     const suggestions = new Map();
     const query = this.state.query.toLowerCase().trim() || '';
-    const values = this.values();
-    for (const [key, value] of this.source()) {
+    const values = this._values();
+    for (const [key, value] of this._source()) {
       if (!values.has(key) && value.toLowerCase().trim().startsWith(query)) {
         suggestions.set(key, value);
       }
@@ -111,7 +111,7 @@ class Autocomplete extends React.Component {
     return suggestions;
   }
 
-  source () {
+  _source () {
     const { source } = this.props;
     if (source.hasOwnProperty('length')) {
       return new Map(source.map((item) => [item, item]));
@@ -120,31 +120,31 @@ class Autocomplete extends React.Component {
     }
   }
 
-  values () {
+  _values () {
     const valueMap = new Map();
     const values = this.props.multiple ? this.props.value : [this.props.value];
-    for (const [k, v] of this.source()) {
+    for (const [k, v] of this._source()) {
       if (values.indexOf(k) !== -1) valueMap.set(k, v);
     }
     return valueMap;
   }
 
-  select (key, event) {
+  _select (key, event) {
     events.pauseEvent(event);
-    const values = this.values(this.props.value);
+    const values = this._values(this.props.value);
     this.handleChange([key, ...values.keys()], event);
   }
 
-  unselect (key, event) {
-    const values = this.values(this.props.value);
+  _unselect (key, event) {
+    const values = this._values(this.props.value);
     values.delete(key);
     this.handleChange([...values.keys()], event);
   }
 
   renderSelected () {
     if (this.props.multiple) {
-      const selectedItems = [...this.values()].map(([key, value]) => {
-        return <li key={key} className={style.value} onClick={this.unselect.bind(this, key)}>{value}</li>;
+      const selectedItems = [...this._values()].map(([key, value]) => {
+        return <li key={key} className={style.value} onClick={this._unselect.bind(this, key)}>{value}</li>;
       });
 
       return <ul className={style.values}>{selectedItems}</ul>;
@@ -152,13 +152,13 @@ class Autocomplete extends React.Component {
   }
 
   renderSuggestions () {
-    const suggestions = [...this.suggestions()].map(([key, value]) => {
+    const suggestions = [...this._suggestions()].map(([key, value]) => {
       const className = ClassNames(style.suggestion, {[style.active]: this.state.active === key});
       return (
         <li
           key={key}
           className={className}
-          onMouseDown={this.select.bind(this, key)}
+          onMouseDown={this._select.bind(this, key)}
           onMouseOver={this.handleSuggestionHover.bind(this, key)}
         >
           {value}
