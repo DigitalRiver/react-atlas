@@ -20,7 +20,8 @@ class RadioButton extends React.Component {
   static defaultProps = {
     checked: false,
     className: '',
-    disabled: false
+    disabled: false,
+    inline: false
   };
 
   handleChange = (event) => {
@@ -38,10 +39,6 @@ class RadioButton extends React.Component {
     events.pauseEvent(event);
   };
 
-  handleMouseDown = (event) => {
-    if (!this.props.disabled) this.refs.ripple.start(event);
-  };
-
   blur () {
     this.refs.input.blur();
   }
@@ -51,12 +48,24 @@ class RadioButton extends React.Component {
   }
 
   render () {
+    const {checked, className, disabled, inline} = this.props;
+
     var cx = classNames.bind(style);
 
     let labelClassName = cx({
-      root: true,
-      className: true
+      radio: true,
+      className: true,
+      inline: inline,
+      disabled: disabled
     });
+
+    let radioClassName = cx({
+
+    });
+
+    const props = {
+      disabled: disabled || this.props.loading
+    }
 
     return (
       <label className={labelClassName} onClick={this.handleClick}>
@@ -68,7 +77,7 @@ class RadioButton extends React.Component {
           onClick={this.handleInputClick}
           type='radio'
         />
-        {this.props.label ? <span className={style.text}>{this.props.label}</span> : null}
+        {this.props.label ? <span className={style.text}> {this.props.label}</span> : null}
       </label>
     );
   }

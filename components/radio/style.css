@@ -1,0 +1,19 @@
+.root{
+	display: block;
+	margin-bottom: .5em;
+}
+
+.radio{
+	composes: root;
+
+}
+
+.inline{
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.disabled{
+	composes: root;
+	color: #999;
+}
