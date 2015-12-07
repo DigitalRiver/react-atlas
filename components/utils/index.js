@@ -3,4 +3,4 @@ import prefixer from './prefixer';
 import time from './time';
 import utils from './utils';
 
-export default {events, prefixer, time, utils};
+export {events, prefixer, time, utils};

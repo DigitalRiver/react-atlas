@@ -15,6 +15,6 @@
   transform-origin: top left;
   text-transform: none;
 }
-.tooltip.active {
+.active {
   transform: scale(1) translateX(-50%);
 }
