@@ -6,10 +6,6 @@ const cssnext = require("postcss-cssnext");
 const postcssImport = require("postcss-import");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-//{
-//        test: /(\.css)$/,
-//        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]--[hash:base64:5]!postcss')
-//      },
 
 module.exports = {
   context: __dirname,
@@ -38,7 +34,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css?sourceMap&modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]!postcss' }
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]!postcss')
+      }
     ]
   },
   postcss: function (webpack) {

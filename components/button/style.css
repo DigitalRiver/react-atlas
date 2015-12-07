@@ -4,7 +4,6 @@
 .base {
   composes: m0 py1 px2 inline-block align-middle from '../styles/layout.css';
   composes: border from '../styles/borders.css';
-  composes: bg-transparent border-transparent from '../styles/colors.css';
   composes: no-decoration from '../styles/typography.css';
   cursor: pointer;
   line-height: 1.125rem;
@@ -13,15 +12,10 @@
     .base:hover {
       text-decoration: none;
     }
-    .base:focus {
-      outline: none;
-      border-color: var(--darken-2);
-      box-shadow: 0 0 0 3px var(--darken-3);
-    }
 
 .default_btn {
   composes: base;
-  composes: white bg-blue from '../styles/colors.css';
+  composes: white border-transparent from '../styles/colors.css';
   composes: rounded from '../styles/borders.css';
 }
     .default_btn:hover {
@@ -38,6 +32,7 @@
 
 .outline {
   composes: base;
+  composes: bg-transparent from '../styles/colors.css';
   composes: rounded from '../styles/borders.css';
   border-color: currentColor;
 }
@@ -75,8 +70,9 @@
 }
 
 .link {
-  composes: blue border-transparent from '../styles/colors.css';
   composes: default_btn;
+  composes: blue border-transparent from '../styles/colors.css';
+  composes: border-none from '../styles/borders.css';
   background-color: transparent;
 }
     .link:hover{
