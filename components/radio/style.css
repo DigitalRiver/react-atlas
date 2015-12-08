@@ -1,18 +1,15 @@
-.root{
-}
-
 .radio{
-	composes: root;
 	display: block;
 	margin-bottom: .5em;
-	composes: blue from '../colors.css';
 }
 
 .inline{
+	composes: inline-block from '../styles/layout.css';
+	display: inline-block;
 	margin-right: 1em;
 }
 
 .disabled{
-	composes: root;
+	composes: radio;
 	color: #999;
 }

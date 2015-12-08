@@ -59,6 +59,8 @@ class RadioButton extends React.Component {
       
     });
 
+    if(this.props.className) labelClassName += ` ${this.props.className}`
+
     const props = {
       disabled: disabled || this.props.loading
     }
