@@ -54,19 +54,15 @@ class RadioButton extends React.Component {
 
     let labelClassName = cx({
       radio: true,
-      className: true,
       inline: inline,
-      disabled: disabled
-    });
-
-    let radioClassName = cx({
-
+      disabled: disabled,
+      
     });
 
     const props = {
       disabled: disabled || this.props.loading
     }
-
+    
     return (
       <label className={labelClassName} onClick={this.handleClick}>
         <input

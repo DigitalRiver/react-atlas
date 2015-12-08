@@ -1,0 +1,10 @@
+.root{
+	composes: flex from '../basscss.css';
+	composes: flex-wrap from '../basscss.css';
+	composes: border from '../basscss.css';
+}
+
+.card{
+	composes: root;
+	composes: rounded-right from '../basscss.css';
+}
