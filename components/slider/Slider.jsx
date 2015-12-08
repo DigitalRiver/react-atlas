@@ -102,7 +102,7 @@ class Slider extends React.Component {
 
   handleResize = (event, callback) => {
     const {left, right} = ReactDOM.findDOMNode(this.refs.progressbar).getBoundingClientRect();
-    const cb = callback || () => {};
+    const cb = callback || function() {};
     this.setState({sliderStart: left, sliderLength: right - left}, cb);
   };
 

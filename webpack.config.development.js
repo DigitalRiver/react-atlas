@@ -2,9 +2,10 @@ const pkg = require('./package');
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
-const precss = require("precss");
-const imports = require("postcss-import");
+const cssnext = require("postcss-cssnext");
+const postcssImport = require("postcss-import");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 module.exports = {
   context: __dirname,
@@ -19,33 +20,6 @@ module.exports = {
     publicPath: '/build/'
   },
   resolve: {
-    alias: {
-      "basscss-base": "basscss-base",
-      "basscss-utilities": "basscss-utilities",
-      "basscss-base-reset": "basscss-base-reset",
-      "basscss-base-forms": "basscss-base-forms",
-      "basscss-base-tables": "basscss-base-tables",
-      "basscss-base-typography": "basscss-base-typography",
-      "basscss-color-base": "basscss-color-base",
-      "basscss-color-forms": "basscss-color-forms",
-      "basscss-color-tables": "basscss-color-tables",
-      "basscss-btn": "basscss-btn",
-      "basscss-btn-primary": "basscss-btn-primary",
-      "basscss-btn-outline": "basscss-btn-outline",
-      "basscss-type-scale": "basscss-type-scale",
-      "basscss-utility-typography": "basscss-utility-typography",
-      "basscss-utility-layout": "basscss-utility-layout",
-      "basscss-align": "basscss-align",
-      "basscss-white-space": "basscss-white-space",
-      "basscss-positions": "basscss-positions",
-      "basscss-responsive-states": "basscss-responsive-states",
-      "basscss-grid": "basscss-grid",
-      "flex-object": "flex-object",
-      "basscss-borders": "basscss-borders",
-      "basscss-colors": "basscss-colors",
-      "basscss-background-colors": "basscss-background-colors",
-      "basscss-defaults": "basscss-defaults"
-    },
     extensions: ['', '.jsx', '.scss', '.js', '.json']
   },
   module: {
@@ -53,18 +27,26 @@ module.exports = {
       {
         test: /(\.js|\.jsx)$/,
         exclude: /(node_modules)/,
-        loader: 'babel'
+        loader: 'babel-loader'
       }, {
         test: /(\.scss)$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[path]__[local]!sass?sourceMap')
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]--[hash:base64:5]!sass?sourceMap')
       },
-       {
-        test: /(\.css)$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[path]__[local]!postcss')
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]!postcss')
       }
     ]
   },
-  postcss: [imports, precss, autoprefixer],
+  postcss: function (webpack) {
+    return [
+      postcssImport({
+        addDependencyTo: webpack
+      }),
+      cssnext,
+      autoprefixer
+    ];
+  },
   plugins: [
     new ExtractTextPlugin('spec.css', { allChunks: true }),
     new webpack.HotModuleReplacementPlugin(),

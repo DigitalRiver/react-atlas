@@ -1,6 +1,6 @@
 import React from 'react';
-import ClassNames from 'classnames';
-import style from './style';
+import classNames from 'classnames/bind';
+import style from './style.css';
 
 const Tooltip = (ComposedComponent) => class extends React.Component {
   static propTypes = {
@@ -44,10 +44,16 @@ const Tooltip = (ComposedComponent) => class extends React.Component {
 
   render () {
     const {children, className, tooltip, tooltipDelay, tooltipHideOnClick, ...other} = this.props;
-    const composedClassName = ClassNames(style.root, className);
-    const tooltipClassName = ClassNames(style.tooltip, {
-      [style.active]: this.state.active
+    const cx = classNames.bind(style);
+    let composedClassName = cx({
+      base: true
     });
+    let tooltipClassName = cx({
+      tooltip: true,
+      active: this.state.active
+    });
+
+    composedClassName += ` ${className}`;
 
     return (
       <ComposedComponent

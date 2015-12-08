@@ -1,0 +1,20 @@
+.base {
+  composes: relative from '../styles/layout.css';
+}
+
+.tooltip {
+  composes: absolute center block p1 mt1 mb1 top-100 left-50 from '../styles/layout.css';
+  composes: white bg-gray from '../styles/colors.css';
+  composes: bold h5 from '../styles/typography.css';
+  z-index: 200;
+  max-width: 17rem;
+  line-height: 1.4rem;
+  border-radius: .2rem;
+  transition:  cubic-bezier(0.4, 0, 0.2, 1) .06s transform;
+  transform: scale(0) translateX(-50%);
+  transform-origin: top left;
+  text-transform: none;
+}
+.active {
+  transform: scale(1) translateX(-50%);
+}

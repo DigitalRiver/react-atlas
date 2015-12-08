@@ -102,7 +102,7 @@ Spec page will be at ```http://localhost:3001/```
 ### A Note on CSS
 While the original project that React Altas was forked from used SASS for it's css, we are trying our best to eventually remove that dependency. SASS is great, but there are a few reasons behind this move:
   - Being a superset of CSS, SASS effectively becomes it's own Domain Specific Language(DSL) with it's own quirks and syntax to learn. Effectively, SASS is to CSS what CoffeeScript is to Javascipt. Not a bad thing, it has it's benefits for sure. But since this is a library, we want to be as generic and close to spec as possible.
-  - The CSS Spec is ever evolving and now includes native [CSS variables](http://www.w3.org/TR/css-variables/) among many other great improvements.
+  - [The CSS Spec is ever evolving](http://cssnext.io/features/) and now includes native [CSS variables](http://www.w3.org/TR/css-variables/) among many other great improvements.
   - [PostCSS](https://github.com/postcss/postcss) and [CSSNext](http://cssnext.io/) allow us to have much of the same functionality that SASS provides, but allows use to write in the 'future' of the actual CSS spec. This means the styles we implement, while still using a preprocessor in the form of PostCSS, are no longer part of a DSL, but rather they are actual in-spec CSS. PostCSS/CSSNext is to CSS what Babel is to Javascript.
 
 ### What the hell is this 'composes' stuff in CSS?
@@ -116,7 +116,10 @@ First, the API surface area of CSS Modules is extremely small. In regards to CSS
  - [CSS Modules Demo](https://css-modules.github.io/webpack-demo/)
  - [Interoperable CSS](http://glenmaddern.com/articles/interoperable-css) <- the low-level 'guts' of CSS Modules for those interested
 
-Because we are using CSS Modules we decided that a CSS framework with [Atomic CSS Principals](https://www.lucidchart.com/techblog/2014/01/31/atomic-css-tool-set/) would be the most benefical base for use to compose from. After some research we ended up picking [Basscss](http://www.basscss.com/) for it's small size, modularity and generic out-of-the-box look. In the future we will most liekly end up pulling all of Basscss into a higher level within the project to allow more flexibilty as we extend into complex components. But for now Basscss is a dependency of React Atlas.
+Because we are using CSS Modules we decided that a CSS framework with Atomic CSS Principals [[1](https://www.lucidchart.com/techblog/2014/01/31/atomic-css-tool-set/)] [[2](http://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/)] would be the most benefical base for use to compose from. After some research we ended up picking [Basscss](http://www.basscss.com/) for it's small size, modularity and generic out-of-the-box look. In the future we will most liekly end up pulling all of Basscss into a higher level within the project to allow more flexibilty as we extend into complex components. But for now Basscss is a dependency of React Atlas.
+
+### ClassNames Package
+we use the [Classnames](https://github.com/JedWatson/classnames) by [Jed Watson](https://github.com/JedWatson) inside our components to concatenate class name strings. Please look into the Classname package and learn how to use it effectively to apply classes to components in our project.
 
 ## License 
 This project is licensed under the terms of the [MIT license](https://github.com/react-toolbox/react-toolbox/blob/master/LICENSE).
