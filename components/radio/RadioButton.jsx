@@ -48,7 +48,7 @@ class RadioButton extends React.Component {
   }
 
   render () {
-    const {checked, className, disabled, inline} = this.props;
+    const {checked, className, disabled, inline, name} = this.props;
 
     var cx = classNames.bind(style);
 
@@ -64,6 +64,7 @@ class RadioButton extends React.Component {
       <label className={labelClassName}>
         <input
           {...this.props}
+          name={this.props.name}
           onChange={this._handleChange}
           onClick={this._handleClick}
           onBlur={this._handleBlur}
