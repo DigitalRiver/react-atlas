@@ -86,7 +86,7 @@ Also, check out [our wiki](https://github.digitalriverws.net/ux/react-atlas/wiki
 
 This project is developed on Node 4.2.2+. Look into using [nvm-windows](https://github.com/coreybutler/nvm-windows) or [n](https://github.com/tj/n) to handle different node versions.
 
-## Set-Up/Installation for Development
+## Set-Up/Installation for Development and Contributing
 
 ### Windows Users
 If running on windows, Follow these steps to ensure you don't run into any 'node-gyp' issues:
