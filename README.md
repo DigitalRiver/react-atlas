@@ -72,6 +72,8 @@ The project is being initially developed and maintained by the DR UX team.
 
 If you are interested in contributing to the project, please read our [Contributing Guidelines](https://github.digitalriverws.net/ux/react-atlas/blob/master/CONTRIBUTING.md)
 
+Also, check out [our wiki](https://github.digitalriverws.net/ux/react-atlas/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
+
 This project is developed on Node 4.2.2+. Look into using [nvm-windows](https://github.com/coreybutler/nvm-windows) or [n](https://github.com/tj/n) to handle different node versions.
 
 ## Set-Up/Installation for Development
