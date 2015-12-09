@@ -15,3 +15,6 @@
 10. push your changes
 11. create a PR with a link to the original issue
 12. wait patiently :-)
+
+## Questions?
+Checkout out [our wiki](https://github.digitalriverws.net/ux/react-atlas/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
