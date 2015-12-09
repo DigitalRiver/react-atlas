@@ -1,0 +1,11 @@
+.block{
+	composes: block marg-b-1 from '../styles/layout.css';
+}
+
+.inline{
+	composes: inline-block marg-r-2 from '../styles/layout.css';
+}
+
+.disabled{
+	composes: gray from '../styles/colors.css';
+}

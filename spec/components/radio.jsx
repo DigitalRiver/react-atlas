@@ -28,8 +28,8 @@ class RadioGroupTest extends React.Component {
         <RadioGroup name='comic' value={this.state.value} onChange={this.handleChange}>
           <RadioButton label='The Walking Dead' value='thewalkingdead'/>
           <RadioButton label='From Hell' value='fromhell' disabled/>
-          <RadioButton label='V for a Vendetta' value='vvendetta' onFocus={this.handleFocus}/>
-          <RadioButton label='Watchmen' value='watchmen' onBlur={this.handleBlur}/>
+          <RadioButton label='V for a Vendetta' value='vvendetta' className="someClassIMadeUp" inline onFocus={this.handleFocus}/>
+          <RadioButton label='Watchmen' value='watchmen' inline onBlur={this.handleBlur}/>
         </RadioGroup>
       </section>
     );

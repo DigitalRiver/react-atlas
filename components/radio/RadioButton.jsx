@@ -1,8 +1,6 @@
 import React from 'react';
-import ClassNames from 'classnames';
-import Ripple from '../ripple';
-import style from './style';
-import events from '../utils/events';
+import classNames from 'classnames/bind';
+import style from './style.css';
 
 class RadioButton extends React.Component {
   static propTypes = {
@@ -13,6 +11,7 @@ class RadioButton extends React.Component {
     name: React.PropTypes.string,
     onBlur: React.PropTypes.func,
     onChange: React.PropTypes.func,
+    onClick: React.PropTypes.func,
     onFocus: React.PropTypes.func,
     value: React.PropTypes.any
   };
@@ -20,54 +19,58 @@ class RadioButton extends React.Component {
   static defaultProps = {
     checked: false,
     className: '',
-    disabled: false
+    disabled: false,
+    inline: false
   };
 
-  handleChange = (event) => {
+  _handleChange = (event) => {
     if (!this.props.checked && this.props.onChange) {
       this.props.onChange(event, this);
     }
   };
 
-  handleClick = (event) => {
-    events.pauseEvent(event);
-    if (!this.props.disabled) this.handleChange(event);
+  _handleClick = (event) => {
+    if (!this.props.disabled && this.props.onClick) {
+      this.props.onClick(event, this);
+    }
   };
 
-  handleInputClick = (event) => {
-    events.pauseEvent(event);
-  };
-
-  handleMouseDown = (event) => {
-    if (!this.props.disabled) this.refs.ripple.start(event);
-  };
-
-  blur () {
-    this.refs.input.blur();
+  _handleBlur = (event) => {
+    if (!this.props.disabled && this.props.onBlur) {
+      this.props.onBlur(event, this);
+    }
   }
 
-  focus () {
-    this.refs.input.focus();
+  _handleFocus = (event) => {
+    if (!this.props.disabled && this.props.onFocus) {
+      this.props.onFocus(event, this);
+    }
   }
 
   render () {
-    const labelClassName = ClassNames(style[this.props.disabled ? 'disabled' : 'field'], this.props.className);
-    const radioClassName = style[this.props.checked ? 'radio-checked' : 'radio'];
+    const {checked, className, disabled, inline} = this.props;
 
+    var cx = classNames.bind(style);
+
+    let labelClassName = cx({
+      block: !inline,
+      inline: inline,
+      disabled: disabled
+    });
+
+    if(this.props.className) labelClassName += ` ${this.props.className}`
+    
     return (
-      <label className={labelClassName} onClick={this.handleClick}>
+      <label className={labelClassName}>
         <input
           {...this.props}
-          ref='input'
-          className={style.input}
-          onChange={this.handleChange}
-          onClick={this.handleInputClick}
+          onChange={this._handleChange}
+          onClick={this._handleClick}
+          onBlur={this._handleBlur}
+          onFocus={this._handleFocus}
           type='radio'
         />
-        <span role='radio' className={radioClassName} onMouseDown={this.handleMouseDown}>
-          <Ripple ref='ripple' role='ripple' className={style.ripple} spread={3} centered />
-        </span>
-        {this.props.label ? <span className={style.text}>{this.props.label}</span> : null}
+        {this.props.label ? <span> {this.props.label}</span> : null}
       </label>
     );
   }
