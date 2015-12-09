@@ -2,9 +2,9 @@
 
 /*Main Styles*/
 .base {
-  composes: m0 py1 px2 inline-block align-middle from '../styles/layout.css';
+  composes: marg-0 pad-v-1 pad-h-2 inline-block align-middle from '../styles/layout.css';
   composes: border from '../styles/borders.css';
-  composes: no-decoration from '../styles/typography.css';
+  composes: decoration-none from '../styles/typography.css';
   cursor: pointer;
   line-height: 1.125rem;
   -webkit-appearance: none;
@@ -120,7 +120,7 @@
 }
 
 .disabled {
-  composes: no-decoration from '../styles/typography.css';
+  composes: decoration-none from '../styles/typography.css';
   cursor: not-allowed;
   opacity: .65;
   pointer-events: none;

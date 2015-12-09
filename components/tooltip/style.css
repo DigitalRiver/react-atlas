@@ -3,7 +3,7 @@
 }
 
 .tooltip {
-  composes: absolute block p1 mt1 mb1 top-100 left-50 from '../styles/layout.css';
+  composes: absolute block pad-1 marg-t-1 marg-b-1 top-100 left-50 from '../styles/layout.css';
   composes: bold from '../styles/typography.css';
   composes: white bg-gray from '../styles/colors.css';
   z-index: 200;
