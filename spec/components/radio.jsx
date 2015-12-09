@@ -25,7 +25,7 @@ class RadioGroupTest extends React.Component {
         <h5>Radio Button</h5>
         <p style={{marginBottom: '10px'}}>Lorem ipsum...</p>
 
-        <RadioGroup name='comic' value={this.state.value} onChange={this.handleChange}>
+        <RadioGroup name='comic'>
           <RadioButton label='The Walking Dead' value='thewalkingdead'/>
           <RadioButton label='From Hell' value='fromhell' disabled/>
           <RadioButton label='V for a Vendetta' value='vvendetta' className="someClassIMadeUp" inline onFocus={this.handleFocus}/>
