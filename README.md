@@ -6,7 +6,7 @@ React Atlas originally started off as a fork of [React Toolbox](https://github.c
 
 ## Requirements
 This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.digitalriverws.net/ux/react-atlas/wiki/Decisions#a-note-on-css)). At minimum your application will need to have the following packages to correct interpret and use our library:
-- [PostCSS](https://github.com/postcss/postcss)
+- [PostCSS](https://github.com/postcss/postcss) With following plugins:
   - [PostCSS Import](https://github.com/postcss/postcss-import)
   - [CSS Next](https://github.com/cssnext/postcss-cssnext)
 - A way to interpret CSS Modules, could be any of the following depending on your environment:
