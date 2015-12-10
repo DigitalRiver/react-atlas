@@ -14,6 +14,7 @@ import Dropdown from './components/dropdown';
 import IconMenu from './components/icon_menu';
 import Input from './components/input';
 import List from './components/list';
+import Media from './components/media';
 import Menu from './components/menu';
 import Pickers from './components/pickers';
 import Progress from './components/progress';
@@ -54,6 +55,7 @@ const Root = () => (
     <IconMenu />
     <Input />
     <List />
+    <Media />
     <Menu />
     <Pickers />
     <Progress />

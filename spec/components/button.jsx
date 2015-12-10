@@ -1,6 +1,6 @@
 import React from 'react';
 import GithubIcon from './github_icon';
-import { Button, IconButton } from '../../components/button';
+import { Button } from '../../components/button';
 
 const ButtonTest = () => (
   <section>
