@@ -1,23 +1,18 @@
 import React, { PropTypes } from 'react';
-import ClassNames from 'classnames';
-import style from './style';
+import classNames from 'classnames/bind';
+import style from './style.css';
 
-const Card = ({children, className, raised, ...other}) => {
-  const classes = ClassNames(style.card, {
-    [style.raised]: raised
-  }, className);
+const Card = ({children}) => {
+  const cx = classNames.bind(style);
+  let className = cx({
+    "card": true
+  });
 
-  return (
-    <div className={classes} {...other}>
-      {children}
-    </div>
-  );
+  return <div className={className}>{children}</div>;
 };
 
 Card.propTypes = {
   children: PropTypes.any,
-  className: PropTypes.string,
-  raised: PropTypes.bool
 };
 
 export default Card;
