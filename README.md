@@ -4,11 +4,22 @@ React Atlas is a React component library, with a focus on supplying Admin Interf
 ## Why?
 React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). We liked the hierarchy and the way the components were built. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic. We hope that React Atlas will be that tool.
 
+## Requirements
+This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.digitalriverws.net/ux/react-atlas/wiki/Decisions#a-note-on-css)). At minimum your application will need to have the following packages to correct interpret and use our library:
+- [PostCSS](https://github.com/postcss/postcss), with following plugins:
+  - [PostCSS Import](https://github.com/postcss/postcss-import)
+  - [CSS Next](https://github.com/cssnext/postcss-cssnext)
+- A way to interpret CSS Modules, could be any of the following depending on your environment:
+  - [Webpack CSS Loader](https://github.com/webpack/css-loader)
+  - [PostCSS Modules](https://github.com/outpunk/postcss-modules)
+  - [CSS Modules Require Hook](https://github.com/css-modules/css-modules-require-hook)
+- [Node 4.2.x](https://nodejs.org/en/)
+
 ## Usage
 
 For inital development and release, we are focusing on a nodejs with webpack environment. As we continue to develop React Atlas we will bring in examples and boilerplates to show it working with other build systems (JSPM, Browserify, UMD, etc.).
 
-With webpack in mind, we reccomend using [Babel Loader](https://github.com/babel/babel-loader), [CSS Loader](https://github.com/webpack/css-loader) and [SASS Loader](https://github.com/jtangelder/sass-loader) (for now, SASS will be removed from this project soon. We are working toward dropping the Sass and Webpack dependency as soon as it makes sense for us internally. A good starting point is for a webpack workflow is [React Hot Webpack Boilerplate](https://github.com/gaearon/react-hot-boilerplate).
+With webpack in mind, we reccomend using [Babel Loader](https://github.com/babel/babel-loader), [CSS Loader](https://github.com/webpack/css-loader), [PostCSS Loader](https://github.com/postcss/postcss-loader) and [SASS Loader](https://github.com/jtangelder/sass-loader) (for now, SASS will be removed from this project soon. We are working toward dropping the Sass and Webpack dependency as soon as it makes sense for us internally. A good starting point is for a webpack workflow is [React Hot Webpack Boilerplate](https://github.com/gaearon/react-hot-boilerplate).
 
 Requiring and using the components is as simple as:
 
@@ -72,9 +83,10 @@ The project is being initially developed and maintained by the DR UX team.
 
 If you are interested in contributing to the project, please read our [Contributing Guidelines](https://github.digitalriverws.net/ux/react-atlas/blob/master/CONTRIBUTING.md)
 
-This project is developed on Node 4.2.2+. Look into using [nvm-windows](https://github.com/coreybutler/nvm-windows) or [n](https://github.com/tj/n) to handle different node versions.
+## [Read the Wiki](https://github.digitalriverws.net/ux/react-atlas/wiki)
+Check out [our wiki](https://github.digitalriverws.net/ux/react-atlas/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
 
-## Set-Up/Installation for Development
+## Set-Up/Installation for Development and Contributing
 
 ### Windows Users
 If running on windows, Follow these steps to ensure you don't run into any 'node-gyp' issues:
@@ -99,27 +111,6 @@ cd ..
 npm run start
 ```
 Spec page will be at ```http://localhost:3001/```
-### A Note on CSS
-While the original project that React Altas was forked from used SASS for it's css, we are trying our best to eventually remove that dependency. SASS is great, but there are a few reasons behind this move:
-  - Being a superset of CSS, SASS effectively becomes it's own Domain Specific Language(DSL) with it's own quirks and syntax to learn. Effectively, SASS is to CSS what CoffeeScript is to Javascipt. Not a bad thing, it has it's benefits for sure. But since this is a library, we want to be as generic and close to spec as possible.
-  - [The CSS Spec is ever evolving](http://cssnext.io/features/) and now includes native [CSS variables](http://www.w3.org/TR/css-variables/) among many other great improvements.
-  - [PostCSS](https://github.com/postcss/postcss) and [CSSNext](http://cssnext.io/) allow us to have much of the same functionality that SASS provides, but allows use to write in the 'future' of the actual CSS spec. This means the styles we implement, while still using a preprocessor in the form of PostCSS, are no longer part of a DSL, but rather they are actual in-spec CSS. PostCSS/CSSNext is to CSS what Babel is to Javascript.
-
-### What the hell is this 'composes' stuff in CSS?
-That is [CSS Modules](https://github.com/css-modules/css-modules).
-
-Okay, so we just talked about why we want to get away from DSLs in our CSS, and then we say that we're using a kind of DSL anyways. We get it. But hear us out.
-
-First, the API surface area of CSS Modules is extremely small. In regards to CSS syntax, it adds only 'composes'. Everything else it does is behind the scenes. The primary focus of CSS Modules is to allow locally scoped CSS. This is a big deal and helps solve a lot of problems inherit in regular Globally Scoped CSS. This is an important aspect of the library, and if you wish to contribute, it will be very beneficial for you to read the following articles on CSS Modules to help wrap your head around why it is so awesome:
- - [The End of Global CSS](https://medium.com/seek-ui-engineering/the-end-of-global-css-90d2a4a06284)
- - [CSS Modules - Welcome to the Future](http://glenmaddern.com/articles/css-modules)
- - [CSS Modules Demo](https://css-modules.github.io/webpack-demo/)
- - [Interoperable CSS](http://glenmaddern.com/articles/interoperable-css) <- the low-level 'guts' of CSS Modules for those interested
-
-Because we are using CSS Modules we decided that a CSS framework with Atomic CSS Principals [[1](https://www.lucidchart.com/techblog/2014/01/31/atomic-css-tool-set/)] [[2](http://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/)] would be the most benefical base for use to compose from. After some research we ended up picking [Basscss](http://www.basscss.com/) for it's small size, modularity and generic out-of-the-box look. In the future we will most liekly end up pulling all of Basscss into a higher level within the project to allow more flexibilty as we extend into complex components. But for now Basscss is a dependency of React Atlas.
-
-### ClassNames Package
-we use the [Classnames](https://github.com/JedWatson/classnames) by [Jed Watson](https://github.com/JedWatson) inside our components to concatenate class name strings. Please look into the Classname package and learn how to use it effectively to apply classes to components in our project.
 
 ## License 
 This project is licensed under the terms of the [MIT license](https://github.com/react-toolbox/react-toolbox/blob/master/LICENSE).
