@@ -13,6 +13,7 @@ This project uses CSS Modules and CSS Next for styling. To process this we use P
   - [Webpack CSS Loader](https://github.com/webpack/css-loader)
   - [PostCSS Modules](https://github.com/outpunk/postcss-modules)
   - [CSS Modules Require Hook](https://github.com/css-modules/css-modules-require-hook)
+- [Node 4.2.x](https://nodejs.org/en/)
 
 ## Usage
 
@@ -82,9 +83,8 @@ The project is being initially developed and maintained by the DR UX team.
 
 If you are interested in contributing to the project, please read our [Contributing Guidelines](https://github.digitalriverws.net/ux/react-atlas/blob/master/CONTRIBUTING.md)
 
-Also, check out [our wiki](https://github.digitalriverws.net/ux/react-atlas/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
-
-This project is developed on Node 4.2.2+. Look into using [nvm-windows](https://github.com/coreybutler/nvm-windows) or [n](https://github.com/tj/n) to handle different node versions.
+## [Read the Wiki](https://github.digitalriverws.net/ux/react-atlas/wiki)
+Check out [our wiki](https://github.digitalriverws.net/ux/react-atlas/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
 
 ## Set-Up/Installation for Development and Contributing
 
