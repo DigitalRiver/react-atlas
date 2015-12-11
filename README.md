@@ -78,10 +78,9 @@ npm start
 Local documentation will be available at http://localhost:3001/
 
 ## Authors and Contributors
+Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.digitalriverws.net/ux/react-atlas/blob/master/CONTRIBUTING.md)***
 
 The project is being initially developed and maintained by the DR UX team.
-
-If you are interested in contributing to the project, please read our [Contributing Guidelines](https://github.digitalriverws.net/ux/react-atlas/blob/master/CONTRIBUTING.md)
 
 ## [Read the Wiki](https://github.digitalriverws.net/ux/react-atlas/wiki)
 Check out [our wiki](https://github.digitalriverws.net/ux/react-atlas/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
