@@ -1,7 +1,7 @@
 import React from 'react';
-import ClassNames from 'classnames';
+import classNames from 'classnames/bind';
 import FontIcon from '../font_icon';
-import style from './style';
+import style from './style.css';
 
 class Input extends React.Component {
   static propTypes = {
@@ -38,7 +38,7 @@ class Input extends React.Component {
 
   renderInput () {
     const {multiline, value, ...others} = this.props;
-    const className = ClassNames(style.input, {[style.filled]: value});
+    const className = classNames(style.input, {[style.filled]: value});
 
     return React.createElement(multiline ? 'textarea' : 'input', {
       ...others,
@@ -62,18 +62,23 @@ class Input extends React.Component {
     const { children, disabled, error, floating, icon,
             label: labelText, maxLength, multiline, type, value, ...others} = this.props;
     const length = maxLength && value ? value.length : 0;
-    const labelClassName = ClassNames(style.label, {[style.fixed]: !floating});
+    const labelClassName = classNames(style.label, {[style.fixed]: !floating});
 
-    const className = ClassNames(style.root, {
+    const className = classNames(style.root, {
       [style.disabled]: disabled,
       [style.errored]: error,
       [style.hidden]: type === 'hidden',
       [style.withIcon]: icon
     }, this.props.className);
 
+    let cx = classNames.bind(style);
+    const classes = cx([
+
+      ]);
+
     const InputElement = React.createElement(multiline ? 'textarea' : 'input', {
       ...others,
-      className: ClassNames(style.input, {[style.filled]: value}),
+      className: classNames(style.input, {[style.filled]: value}),
       onChange: this.handleChange,
       ref: 'input',
       role: 'input',

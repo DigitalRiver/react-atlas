@@ -1,5 +1,6 @@
 .block{
 	composes: block marg-b-1 from '../styles/layout.css';
+	line-height: 30px;
 }
 
 .inline{
@@ -8,4 +9,12 @@
 
 .disabled{
 	composes: gray from '../styles/colors.css';
+}
+
+.addon{
+	height: 46px;
+	padding: 10px 16px;
+	font-size: 18px;
+	line-height: 1.3333333;
+	border-radius: 6px;
 }
