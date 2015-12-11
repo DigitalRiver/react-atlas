@@ -1,6 +1,6 @@
 .card {
 	composes: marg-b-2 pad-2 from '../styles/layout.css';
-	composes: bg-white from '../styles/colors.css';
 	composes: rounded from '../styles/borders.css';
+	composes: bg-white from '../styles/colors.css';
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.075), 0 0 0 1px rgba(0,0,0,0.1);
 }

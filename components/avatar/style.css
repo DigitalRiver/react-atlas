@@ -1,0 +1,33 @@
+.avatar {
+  composes: relative inline-block overflow-hidden from '../styles/layout.css';
+  composes: circle from '../styles/borders.css';
+  composes: center from '../styles/typography.css';
+  composes: white bg-gray from '../styles/colors.css';
+  width: 4rem;
+  height: 4rem;
+  font-size: 2.4rem;
+}
+
+.avatar > :global(svg) {
+  width: 2.5rem;
+  height: 4rem;
+  fill: currentColor;
+}
+
+.avatar > :global(img) {
+  max-width: 100%;
+  height: auto;
+}
+
+.image {
+  composes: absolute block width-100 height-100 from '../styles/layout.css';
+  composes: circle from '../styles/borders.css';
+  composes: bg-transparent from '../styles/colors.css';
+  background-position: center;
+  background-size: cover;
+}
+
+.letter {
+  composes: block width-100 from '../styles/layout.css';
+  line-height: 4rem;
+}
