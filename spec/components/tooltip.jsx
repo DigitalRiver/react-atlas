@@ -12,10 +12,10 @@ const TooltipTest = () => (
     <h5>Tooltip</h5>
     <p>Give information on :hover</p>
     <TooltipButton label='Bookmark' icon='bookmark' raised primary tooltip='Bookmark Tooltip' tooltipDelay={1000} />
-    <TooltipButton icon='add' floating accent tooltip='Floating Tooltip' />
+    <TooltipButton icon='add' floating tooltip='Floating Tooltip test setse tse tse tse t setse' />
     <TooltipButton icon='add' floating disabled tooltip='Floating can not be shown' />
-    <TooltipInput tooltip='lorem ipsum...' />
-    <p>Lorem ipsum dolor sit amet, <TooltipStrong tooltip='This is a auto show tooltip'>consectetur</TooltipStrong> adipiscing elit.</p>
+    <TooltipInput tooltip='lorem ipsum...' position='bottom' />
+    <p>Lorem ipsum dolor sit amet, <TooltipStrong position='bottom' tooltip='This is a auto show tooltip'>consectetur</TooltipStrong> adipiscing elit.</p>
   </section>
 );
 
