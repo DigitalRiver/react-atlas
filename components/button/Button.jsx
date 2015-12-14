@@ -1,45 +1,10 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import FontIcon from '../font_icon';
 import Tooltip from '../tooltip';
 import style from './style.css';
 
 class Button extends React.Component {
-  static propTypes = {
-    accent: React.PropTypes.bool,
-    children: React.PropTypes.node,
-    className: React.PropTypes.string,
-    disabled: React.PropTypes.bool,
-    outline: React.PropTypes.bool,
-    href: React.PropTypes.string,
-    icon: React.PropTypes.string,
-    inverse: React.PropTypes.bool,
-    label: React.PropTypes.string,
-    mini: React.PropTypes.bool,
-    primary: React.PropTypes.bool,
-    raised: React.PropTypes.bool,
-    tooltip: React.PropTypes.string,
-    tooltipDelay: React.PropTypes.number,
-    type: React.PropTypes.string
-  };
-
-  static defaultProps = {
-    accent: false,
-    className: '',
-    outline: false,
-    loading: false,
-    mini: false,
-    primary: false,
-    secondary: false,
-    success: false,
-    warning: false,
-    danger: false,
-    link: false,
-    raised: false,
-    large: false,
-    small: false,
-    disabled: false
-  };
 
   handleMouseDown = (event) => {
     if (this.props.onMouseDown) this.props.onMouseDown(event);
@@ -107,5 +72,41 @@ class Button extends React.Component {
     );
   }
 }
+
+Button.propTypes = {
+  accent: React.PropTypes.bool,
+  children: React.PropTypes.node,
+  className: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  outline: React.PropTypes.bool,
+  href: React.PropTypes.string,
+  icon: React.PropTypes.string,
+  inverse: React.PropTypes.bool,
+  label: React.PropTypes.string,
+  mini: React.PropTypes.bool,
+  primary: React.PropTypes.bool,
+  raised: React.PropTypes.bool,
+  tooltip: React.PropTypes.string,
+  tooltipDelay: React.PropTypes.number,
+  type: React.PropTypes.string
+};
+
+Button.defaultProps = {
+  accent: false,
+  className: '',
+  outline: false,
+  loading: false,
+  mini: false,
+  primary: false,
+  secondary: false,
+  success: false,
+  warning: false,
+  danger: false,
+  link: false,
+  raised: false,
+  large: false,
+  small: false,
+  disabled: false
+};
 
 export default Button;
