@@ -6,9 +6,9 @@ import style from './style.css';
 
 const Dialog = (props) => {
   const {body, navigation, active, base, button, title, type} = this.props;
-  const cx = classNames.bind(style);
-  const actions = props.actions.map((action, idx) => {
-    const className = cx({
+  let cx = classNames.bind(style);
+  let actions = props.actions.map((action, idx) => {
+    let className = cx({
       button: true,
       [action.className]: action.className
     });

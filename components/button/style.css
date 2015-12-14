@@ -15,8 +15,8 @@
 
 .default_btn {
   composes: base;
-  composes: white border-transparent from '../styles/colors.css';
   composes: rounded from '../styles/borders.css';
+  composes: white border-transparent from '../styles/colors.css';
 }
     .default_btn:hover {
       box-shadow: inset 0 0 0 20rem var(--darken-1);
@@ -32,8 +32,8 @@
 
 .outline {
   composes: base;
-  composes: bg-transparent from '../styles/colors.css';
   composes: rounded from '../styles/borders.css';
+  composes: bg-transparent from '../styles/colors.css';
   border-color: currentColor;
 }
     .outline:hover{
@@ -71,8 +71,8 @@
 
 .link {
   composes: default_btn;
-  composes: blue border-transparent from '../styles/colors.css';
   composes: border-none from '../styles/borders.css';
+  composes: blue border-transparent from '../styles/colors.css';
   background-color: transparent;
 }
     .link:hover{

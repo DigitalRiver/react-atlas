@@ -1,7 +1,7 @@
 .base {
-  composes: flex from "../styles/flex.css";
-  composes: white from "../styles/colors.css";
-  composes: rounded from "../styles/borders.css";
+  composes: flex from '../styles/flex.css';
+  border-radius: 50%;
+  color: #fff;
   max-width: 96vw;
   max-height: 96vh;
   flex-direction: column;
@@ -31,20 +31,20 @@
 }
 
 .title {
-  composes: marg-b-3 from "../styles/layout.css";
-  composes: black from "../styles/colors.css";
+  composes: marg-b-3 from '../styles/layout.css';
+  composes: black from '../styles/colors.css';
   flex-grow: 0;
 }
 
 .body {
-  composes: pad-2 from "../styles/layout.css";
-  composes: gray from "../styles/colors.css";
+  composes: pad-2 from '../styles/layout.css';
+  composes: gray from '../styles/colors.css';
   flex-grow: 2;
   overflow-y: auto;
 }
 
 .navigation {
-  composes: pad-1 right-align from "../styles/layout.css";
+  composes: pad-1 right-align from '../styles/layout.css';
   flex-grow: 0;
 }
 
