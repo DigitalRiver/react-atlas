@@ -31,8 +31,6 @@ const Tooltip = (ComposedComponent) => class extends React.Component {
     return (
       <ComposedComponent
         {...other}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
         data-tooltip={tooltip}
         className={tooltipClasses}
       >
