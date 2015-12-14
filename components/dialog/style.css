@@ -1,0 +1,53 @@
+.base {
+  composes: flex from '../styles/flex.css';
+  border-radius: 50%;
+  color: #fff;
+  max-width: 96vw;
+  max-height: 96vh;
+  flex-direction: column;
+  box-shadow: 0 19px 60px rgba(0,0,0,0.30), 0 15px 20px rgba(0,0,0,0.22);
+  opacity: 0;
+  transition-delay: .07s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: .35s;
+  transition-property: opacity, transform;
+  transform: translateY(-4rem);
+}
+.base.active {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.small {
+  width: 30vw;
+}
+
+.normal {
+  width: 50vw;
+}
+
+.large {
+  width: 96vw;
+}
+
+.title {
+  composes: marg-b-3 from '../styles/layout.css';
+  composes: black from '../styles/colors.css';
+  flex-grow: 0;
+}
+
+.body {
+  composes: pad-2 from '../styles/layout.css';
+  composes: gray from '../styles/colors.css';
+  flex-grow: 2;
+  overflow-y: auto;
+}
+
+.navigation {
+  composes: pad-1 right-align from '../styles/layout.css';
+  flex-grow: 0;
+}
+
+.button {
+  composes: pad-h-1 marg-l-1 from '../styles/layout.css';
+}

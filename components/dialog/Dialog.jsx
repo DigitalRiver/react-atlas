@@ -1,31 +1,39 @@
 import React from 'react';
-import ClassNames from 'classnames';
+import classNames from 'classnames/bind';
 import Button from '../button';
 import Overlay from '../overlay';
-import style from './style.scss';
+import style from './style.css';
 
 const Dialog = (props) => {
-  const actions = props.actions.map((action, idx) => {
-    const className = ClassNames(style.button, {[action.className]: action.className});
+  const {body, navigation, active, base, button, title, type} = this.props;
+  let cx = classNames.bind(style);
+  let actions = props.actions.map((action, idx) => {
+    let className = cx({
+      button: true,
+      [action.className]: action.className
+    });
     return <Button key={idx} {...action} className={className} />;
   });
 
-  const className = ClassNames([ style.root, style[props.type] ], {
-    [style.active]: props.active
-  }, props.className);
+  let className = cx({
+    base: true,
+    type: props.type,
+    active: props.active,
+    [props.className]: true
+  });
 
   return (
-    <Overlay active={props.active} onClick={props.onOverlayClick}>
-      <div data-react-toolbox='dialog' className={className}>
-        <section role='body' className={style.body}>
-          {props.title ? <h6 className={style.title}>{props.title}</h6> : null}
-          {props.children}
-        </section>
-        <nav role='navigation' className={style.navigation}>
-          {actions}
-        </nav>
-      </div>
-    </Overlay>
+      <Overlay active={props.active} onClick={props.onOverlayClick}>
+        <div data-react-toolbox='dialog' className={className}>
+          <section role='body' className={body}>
+            {props.title ? <h6 className={title}>{props.title}</h6> : null}
+            {props.children}
+          </section>
+          <nav role='navigation' className={navigation}>
+            {actions}
+          </nav>
+        </div>
+      </Overlay>
   );
 };
 
