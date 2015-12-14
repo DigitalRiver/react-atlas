@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import style from './style.css';
 
 const propTypes = {
-  children: React.PropTypes.any,
-  className: React.PropTypes.string,
-  tooltip: React.PropTypes.string,
-  tooltipDelay: React.PropTypes.number,
-  tooltipHideOnClick: React.PropTypes.bool
+  children: PropTypes.any,
+  className: PropTypes.string,
+  tooltip: PropTypes.string,
+  tooltipDelay: PropTypes.number,
+  tooltipHideOnClick: PropTypes.bool
 };
 
 const defaultProps = {
   className: ''
 };
 
-const Tooltip = (ComposedComponent) => class extends React.Component {
+const Tooltip = (ComposedComponent) => class extends Component {
   render () {
     const {children, position, tooltip, ...other} = this.props;
 
