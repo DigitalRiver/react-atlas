@@ -49,5 +49,5 @@
 }
 
 .button {
-  composes: min-width pad-h-1 marg-l-1 from '../styles/layout.css';
+  composes: pad-h-1 marg-l-1 from '../styles/layout.css';
 }

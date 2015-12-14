@@ -4,22 +4,6 @@ import Button from '../button';
 import Overlay from '../overlay';
 import style from './style.css';
 
-const propTypes = {
-  actions: React.PropTypes.array,
-  active: React.PropTypes.bool,
-  children: React.PropTypes.node,
-  className: React.PropTypes.string,
-  onOverlayClick: React.PropTypes.func,
-  title: React.PropTypes.string,
-  type: React.PropTypes.string
-};
-
-const defaultProps = {
-  actions: [],
-  active: false,
-  type: 'normal'
-};
-
 const Dialog = (props) => {
   const {body, navigation, active, base, button, title, type} = this.props;
   const cx = classNames.bind(style);
@@ -53,7 +37,20 @@ const Dialog = (props) => {
   );
 };
 
+Dialog.propTypes = {
+  actions: React.PropTypes.array,
+  active: React.PropTypes.bool,
+  children: React.PropTypes.node,
+  className: React.PropTypes.string,
+  onOverlayClick: React.PropTypes.func,
+  title: React.PropTypes.string,
+  type: React.PropTypes.string
+};
 
-
+Dialog.defaultProps = {
+  actions: [],
+  active: false,
+  type: 'normal'
+};
 
 export default Dialog;
