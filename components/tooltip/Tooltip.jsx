@@ -7,7 +7,7 @@ let cx = classNames.bind(style);
 const Tooltip = (ComposedComponent) => class extends React.Component {
 
   render () {
-    const {children, position, tooltip, tooltipDelay, tooltipHideOnClick, ...other} = this.props;
+    const {children, position, tooltip, ...other} = this.props;
 
     let tooltipClasses = cx({
       ["tooltip"]: true,
@@ -40,7 +40,7 @@ Tooltip.propTypes = {
 };
 
 Tooltip.defaultProps = {
-    className: ''
-  };
+  className: ''
+};
 
 export default Tooltip;
