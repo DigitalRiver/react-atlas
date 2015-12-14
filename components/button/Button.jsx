@@ -4,6 +4,42 @@ import FontIcon from '../font_icon';
 import Tooltip from '../tooltip';
 import style from './style.css';
 
+const propTypes = {
+  accent: React.PropTypes.bool,
+  children: React.PropTypes.node,
+  className: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  outline: React.PropTypes.bool,
+  href: React.PropTypes.string,
+  icon: React.PropTypes.string,
+  inverse: React.PropTypes.bool,
+  label: React.PropTypes.string,
+  mini: React.PropTypes.bool,
+  primary: React.PropTypes.bool,
+  raised: React.PropTypes.bool,
+  tooltip: React.PropTypes.string,
+  tooltipDelay: React.PropTypes.number,
+  type: React.PropTypes.string
+};
+
+const defaultProps = {
+  accent: false,
+  className: '',
+  outline: false,
+  loading: false,
+  mini: false,
+  primary: false,
+  secondary: false,
+  success: false,
+  warning: false,
+  danger: false,
+  link: false,
+  raised: false,
+  large: false,
+  small: false,
+  disabled: false
+};
+
 class Button extends React.Component {
 
   handleMouseDown = (event) => {
@@ -73,40 +109,8 @@ class Button extends React.Component {
   }
 }
 
-Button.propTypes = {
-  accent: React.PropTypes.bool,
-  children: React.PropTypes.node,
-  className: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  outline: React.PropTypes.bool,
-  href: React.PropTypes.string,
-  icon: React.PropTypes.string,
-  inverse: React.PropTypes.bool,
-  label: React.PropTypes.string,
-  mini: React.PropTypes.bool,
-  primary: React.PropTypes.bool,
-  raised: React.PropTypes.bool,
-  tooltip: React.PropTypes.string,
-  tooltipDelay: React.PropTypes.number,
-  type: React.PropTypes.string
-};
+Button.propTypes = propTypes;
 
-Button.defaultProps = {
-  accent: false,
-  className: '',
-  outline: false,
-  loading: false,
-  mini: false,
-  primary: false,
-  secondary: false,
-  success: false,
-  warning: false,
-  danger: false,
-  link: false,
-  raised: false,
-  large: false,
-  small: false,
-  disabled: false
-};
+Button.defaultProps = defaultProps;
 
 export default Button;
