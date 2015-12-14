@@ -5,21 +5,21 @@ import Tooltip from '../tooltip';
 import style from './style.css';
 
 const propTypes = {
-  accent: React.PropTypes.bool,
-  children: React.PropTypes.node,
-  className: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  outline: React.PropTypes.bool,
-  href: React.PropTypes.string,
-  icon: React.PropTypes.string,
-  inverse: React.PropTypes.bool,
-  label: React.PropTypes.string,
-  mini: React.PropTypes.bool,
-  primary: React.PropTypes.bool,
-  raised: React.PropTypes.bool,
-  tooltip: React.PropTypes.string,
-  tooltipDelay: React.PropTypes.number,
-  type: React.PropTypes.string
+  accent: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  outline: PropTypes.bool,
+  href: PropTypes.string,
+  icon: PropTypes.string,
+  inverse: PropTypes.bool,
+  label: PropTypes.string,
+  mini: PropTypes.bool,
+  primary: PropTypes.bool,
+  raised: PropTypes.bool,
+  tooltip: PropTypes.string,
+  tooltipDelay: PropTypes.number,
+  type: PropTypes.string
 };
 
 const defaultProps = {
@@ -40,7 +40,7 @@ const defaultProps = {
   disabled: false
 };
 
-class Button extends React.Component {
+class Button extends Component {
 
   handleMouseDown = (event) => {
     if (this.props.onMouseDown) this.props.onMouseDown(event);
@@ -54,8 +54,11 @@ class Button extends React.Component {
 
     const {accent, outline, href, icon, label, loading, mini,
            primary, raised, tooltip, secondary, success, warning, danger, link, large, small, block, disabled, children, ...others} = this.props;
+
     const element = href ? 'a' : 'button';
-    var cx = classNames.bind(style);
+
+    let cx = classNames.bind(style);
+
     let className = cx({
         large: large,
         small: small,
