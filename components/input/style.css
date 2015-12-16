@@ -1,6 +1,6 @@
 .input{
-	composes: width-100 left marg-l-1 marg-b-2 relative block pad-1 from '../styles/layout.css';
-	composes: border-gray from '../styles/colors.css';
+	composes: width-100 left marg-l-1 marg-b-2 relative block pad-1 from '../styles.css';
+	composes: border-gray from '../styles.css';
 	height: 2.4em;
 	border-radius: 0.3em;
 }
@@ -13,16 +13,16 @@
 }
 
 .placeholder{
-	padding: 0px .75em 0px .75em;
+	padding: 0 .75em 0 .75em;
 }
 
 .error{
 	composes: input;
-	composes: red from '../styles/colors.css';
+	composes: red from '../styles.css';
 }
 
 .label{
-	composes: inline-block marg-b-1 pad-h-1 from '../styles/layout.css';
+	composes: inline-block marg-b-1 pad-h-1 from '../styles.css';
 	font-size: 0.9rem;
 	font-weight: 500;
 	color: #777;

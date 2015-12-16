@@ -1,5 +1,5 @@
 .base {
-    composes: relative width-100 from '../styles/layout.css';
+    composes: relative width-100 from '../styles.css';
     height: 0;
     background-repeat: no-repeat;
     background-position: center center;

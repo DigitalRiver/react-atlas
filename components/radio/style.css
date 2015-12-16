@@ -1,14 +1,14 @@
 .block{
-	composes: block marg-b-1 from '../styles/layout.css';
+	composes: block marg-b-1 from '../styles.css';
 	line-height: 30px;
 }
 
 .inline{
-	composes: inline-block marg-r-2 from '../styles/layout.css';
+	composes: inline-block marg-r-2 from '../styles.css';
 }
 
 .disabled{
-	composes: gray from '../styles/colors.css';
+	composes: gray from '../styles.css';
 }
 
 .addon{
