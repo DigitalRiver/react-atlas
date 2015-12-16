@@ -5,7 +5,7 @@ import Overlay from '../overlay';
 import style from './style.css';
 
 const Dialog = (props) => {
-  const {body, navigation, active, base, button, title, type} = this.props;
+  const {body, navigation, active, base, button, title, type} = props;
   let cx = classNames.bind(style);
   let actions = props.actions.map((action, idx) => {
     let className = cx({
