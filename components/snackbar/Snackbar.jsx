@@ -24,7 +24,7 @@ class Snackbar extends Component {
 
     let children = React.Children.map(this.props.children, (child) => {
         if (typeof child === 'string') {
-          return <span className="RA_Snackbar_Text">{child}</span>
+          return <span className={style.text}>{child}</span>
         }
         return child;
     });
