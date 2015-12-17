@@ -1,6 +1,7 @@
 @import './variables.css';
 
 /*Utility layout*/
+.inherit      { display: inherit }
 .inline       { display: inline }
 .block        { display: block }
 .inline-block { display: inline-block }

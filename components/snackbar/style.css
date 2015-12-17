@@ -1,0 +1,25 @@
+@import '../styles/variables.css';
+
+.root {
+    composes: fixed bottom-0 z4 pad-h-3 pad-v-2 marg-h-auto marg-t-2 from '../styles.css';
+    composes: flex flex-center from '../styles.css';
+    composes: white bg-black from '../styles.css';
+    composes: rounded from '../styles.css';
+    right: var(--space-3);
+    left: var(--space-3);
+    transition: all .35s cubic-bezier(0.4, 0, 0.2, 1) .35s;
+}
+
+.root:not(.active) {
+    transform: translateY(100%);
+}
+
+.active {
+    transform: translateY(0%);
+}
+
+:global(.RA_Snackbar_Text) {
+    margin-left: 1rem;
+    flex-grow: 1;
+    font-size: 1rem;
+}
