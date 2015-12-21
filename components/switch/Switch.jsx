@@ -1,6 +1,6 @@
 import React from 'react';
-import Ripple from '../ripple';
-import style from './style';
+import style from './style.css';
+import classNames from 'classnames/bind';
 import events from '../utils/events';
 
 class Switch extends React.Component {
@@ -29,49 +29,20 @@ class Switch extends React.Component {
     }
   };
 
-  handleInputClick = (event) => {
-    events.pauseEvent(event);
-  };
-
-  handleMouseDown = (event) => {
-    if (!this.props.disabled) this.refs.ripple.start(event);
-  };
-
-  blur () {
-    this.refs.input.blur();
-  }
-
-  focus () {
-    this.refs.input.focus();
-  }
-
   render () {
-    let labelClassName = style[this.props.disabled ? 'disabled' : 'field'];
     const switchClassName = style[this.props.checked ? 'on' : 'off'];
     if (this.props.className) labelClassName += ` ${this.props.className}`;
 
+    const {checked, className, disabled, inline, name, slider, handle} = this.props;
+    var cx = classNames.bind(style);
+
     return (
-      <label
-        data-react-toolbox='checkbox'
-        className={labelClassName}
-        onClick={this.handleChange}
-      >
-        <input
-          {...this.props}
-          ref='input'
-          checked={this.props.checked}
-          className={style.input}
-          onChange={this.handleChange}
-          onClick={this.handleInputClick}
-          type='checkbox'
-        />
-        <span role='switch' className={switchClassName}>
-          <span role='thumb' className={style.thumb} onMouseDown={this.handleMouseDown}>
-            <Ripple ref='ripple' role='ripple' className={style.ripple} spread={2.4} centered />
-          </span>
-        </span>
-        {this.props.label ? <span className={style.text}>{this.props.label}</span> : null}
+      <label className={style.slider}>
+        <input className={style.input} type="checkbox"></input>
+        <span className={style.handle}></span>
       </label>
+
+
     );
   }
 }
