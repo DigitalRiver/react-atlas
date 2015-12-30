@@ -26,4 +26,8 @@
   padding-left: 0;
 }
 
+/* Title Typogrophy */
+.head-weight { font-weight: var(--heading-font-weight, bold) }
+.head-font-family { font-weight: var(--heading-font-family, --font-family) }
+.head-line-height { line-height: var(--heading-line-height, 1.25) }
 .decoration-none { text-decoration: none }
