@@ -1,45 +1,37 @@
 .slider {
-  overflow:hidden;
-  width: 70px;
-  height:32px;
-  cursor:pointer;
-  background: #d8d9db;
-  margin: 20px;
-  display: block;
-  border-radius: 20px;
-  position:relative;
-  z-index:1;
+    composes: relative block z1 overflow-hidden pointer from '../styles.css';
+    composes: bg-silver from '../styles.css';
+    width: 70px;
+    height: 32px;
+    margin: 20px;
+    border-radius: 20px;
 }
 
 .input {
-    display:none;
+    composes: display-none from '../styles.css';
 }
 
 .input:checked + .handle{
-    left:40px;
+    left: 40px;
 }
 
 .handle {
-  width:32px;
-  height:32px;
-  border-radius: 50%;
-  background: white;
-  display:block;
-  position:absolute;
-  top: 0px;
-  left:0px;
-  box-shadow: 0 0 6px 3px rgba(0,0,0,0.3);
-  transition:left 0.2s;
+    composes: absolute block circle top-0 left-0 from '../styles.css';
+    composes: bg-white from '../styles.css';
+    width: 32px;
+    height: 32px;
+    box-shadow: 0 0 6px 3px rgba(0,0,0,0.3);
+    transition: left 0.2s;
 }
 
 input:checked + .handle::before {
     content: " ";
-    display:block;
-    background:#4cd864;
+    display: block;
+    background: #4cd864;
     width: 80px;
     height: 32px;
     position: absolute;
     left: -70px;
-    z-index:-1;
-    transition:left 0.2s;
+    z-index: -1;
+    transition: left 0.2s;
  }

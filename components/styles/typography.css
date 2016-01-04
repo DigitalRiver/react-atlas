@@ -26,6 +26,8 @@
   padding-left: 0;
 }
 
+.pointer { cursor: pointer }
+
 /* Title Typogrophy */
 .head-weight { font-weight: var(--heading-font-weight, bold) }
 .head-font-family { font-weight: var(--heading-font-family, --font-family) }

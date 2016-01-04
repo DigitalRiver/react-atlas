@@ -7,6 +7,7 @@
 .inline-block { display: inline-block }
 .table        { display: table }
 .table-cell   { display: table-cell }
+.display-none { dispaly: none }
 
 .overflow-hidden { overflow: hidden }
 .overflow-scroll { overflow: scroll }
