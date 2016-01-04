@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import style from './style.css';
+import style from './switch.css';
 import classNames from 'classnames/bind';
 
 const propTypes = {

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ClassNames from 'classnames/bind';
 import Overlay from '../overlay';
-import style from './style.css';
+import style from './snackbar.css';
 
 const propTypes = {
     active: PropTypes.bool,

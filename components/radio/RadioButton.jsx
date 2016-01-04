@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import style from './style.css';
+import style from './radio.css';
 
 class RadioButton extends React.Component {
   static propTypes = {

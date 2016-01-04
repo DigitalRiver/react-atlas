@@ -2,9 +2,9 @@
 
 /*Main Styles*/
 .base {
-  composes: marg-0 pad-v-1 pad-h-2 inline-block align-middle from '../styles/layout.css';
-  composes: border from '../styles/borders.css';
-  composes: decoration-none from '../styles/typography.css';
+  composes: marg-0 pad-v-1 pad-h-2 inline-block align-middle from '../styles.css';
+  composes: border from '../styles.css';
+  composes: decoration-none from '../styles.css';
   cursor: pointer;
   line-height: 1.125rem;
   -webkit-appearance: none;

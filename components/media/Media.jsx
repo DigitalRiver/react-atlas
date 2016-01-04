@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import ClassNames from 'classnames/bind';
-import style from './style.css';
+import style from './media.css';
 
 const cx = ClassNames.bind(style);
 

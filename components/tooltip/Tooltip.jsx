@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import style from './style.css';
+import style from './tooltip.css';
 
 const propTypes = {
   inline: PropTypes.bool,

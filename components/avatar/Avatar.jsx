@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import FontIcon from '../font_icon';
-import style from './style.css';
+import style from './avatar.css';
 
 const Avatar = ({children, className, icon, image, title, ...other}) => {
 

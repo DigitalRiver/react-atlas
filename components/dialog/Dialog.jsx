@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import Button from '../button';
 import Overlay from '../overlay';
-import style from './style.css';
+import style from './dialog.css';
 
 const Dialog = (props) => {
     const {body, navigation, active, base, button, title, type, children} = props;

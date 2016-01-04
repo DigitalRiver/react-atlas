@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import style from './style.css';
+import style from './input.css';
 
 const propTypes = {
     "disabled": PropTypes.bool,

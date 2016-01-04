@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import FontIcon from '../font_icon';
 import Tooltip from '../tooltip';
-import style from './style.css';
+import style from './button.css';
 
 const propTypes = {
   accent: PropTypes.bool,

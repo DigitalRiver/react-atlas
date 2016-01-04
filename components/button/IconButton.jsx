@@ -2,7 +2,7 @@ import React from 'react';
 import ClassNames from 'classnames';
 import FontIcon from '../font_icon';
 import Ripple from '../ripple';
-import style from './style.css';
+import style from './button.css';
 
 class Button extends React.Component {
   static propTypes = {
