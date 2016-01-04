@@ -59,6 +59,7 @@
     "babel-preset-stage-1": "^6.3.13",
     "babel-plugin-react-transform": "beta",
     "basscss": "^7.0.0",
+    "blacklist": "^1.1.2",
     "bluebird": "^3.0.5",
     "classnames": "^2.2.1",
     "core-js": "^1.2.6",
