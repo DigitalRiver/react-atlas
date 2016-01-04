@@ -33,7 +33,7 @@ class Tooltip extends Component {
     tooltipClasses = tooltipClasses ? tooltipClasses : '';
 
     let element = inline ? 'span' : 'div';
-    
+
     const props = {
       ['data-tooltip']: tooltip,
       className: style.block + ' ' +tooltipClasses
