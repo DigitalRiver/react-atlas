@@ -2,7 +2,11 @@
 /* Base styles for the element that has a tooltip */
 .tooltip {
   position: relative;
-  cursor: pointer;
+  display: inline-block;
+}
+
+.block {
+  composes: inline-block from '../styles.css';
 }
 
 /* Base styles for the entire tooltip */
