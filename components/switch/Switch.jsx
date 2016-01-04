@@ -34,10 +34,15 @@ class Switch extends React.Component {
     if (this.props.className) labelClassName += ` ${this.props.className}`;
 
     const {checked, className, disabled, inline, name, slider, handle} = this.props;
-    var cx = classNames.bind(style);
+    const cx = classNames.bind(style);
+
+    let labelClassname = cx ({
+      slider: true,
+      className: true
+    });
 
     return (
-      <label className={style.slider}>
+      <label className={labelClassname}>
         <input className={style.input} type="checkbox"></input>
         <span className={style.handle}></span>
       </label>

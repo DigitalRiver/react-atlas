@@ -17,7 +17,7 @@ class SwitchTest extends React.Component {
       <section>
         <h5>Switches</h5>
         <p style={{marginBottom: '10px'}}>This is more beautiful than the old fashion checkboxes...</p>
-        <Switch/>
+        <Switch className='donker' />
       </section>
     );
   }

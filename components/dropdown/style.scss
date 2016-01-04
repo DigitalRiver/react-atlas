@@ -1,6 +1,6 @@
 @import "../base";
 @import "./config";
-@import "../input/config";
+
 
 .root {
   position: relative;
@@ -79,15 +79,15 @@
   display: block;
   > span {
     display: inline-block;
-    height: $input-field-height;
-    font-size: $input-field-font-size;
-    line-height: $input-field-height;
+    height: 2.88rem;
+    font-size: 1.6rem;
+    line-height: 2.88rem;
   }
   > :not(span) {
     margin: ($dropdown-offset / 2) 0;
   }
   &:after {
-    $size: ($input-field-height / 7);
+    $size: (2.88rem / 7);
     $border: $size solid transparent;
     position: absolute;
     right: ($dropdown-offset / 2);
