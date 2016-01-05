@@ -13,6 +13,15 @@
 .overflow-scroll { overflow: scroll }
 .overflow-auto   { overflow: auto }
 
+.overflow-x-hidden { overflow: hidden }
+.overflow-y-hidden { overflow: hidden }
+
+.overflow-x-scroll { overflow: scroll }
+.overflow-y-scroll { overflow: scroll }
+
+.overflow-x-auto { overflow: auto }
+.overflow-y-auto { overflow: auto }
+
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -29,6 +38,8 @@
 
 .width-100 { width: 100% }
 .height-100 { height: 100% }
+
+.width-inherit { width: inherit }
 
 /*Alignment*/
 .align-baseline { vertical-align: baseline }
