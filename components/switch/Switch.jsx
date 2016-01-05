@@ -18,7 +18,11 @@ class Switch extends React.Component {
   static defaultProps = {
     checked: false,
     className: '',
-    disabled: false
+    disabled: false,
+    small: false,
+    medium: false, 
+    large: false
+
   };
 
   handleChange = (event) => {
@@ -33,16 +37,38 @@ class Switch extends React.Component {
     const switchClassName = style[this.props.checked ? 'on' : 'off'];
     if (this.props.className) labelClassName += ` ${this.props.className}`;
 
-    const {checked, className, disabled, inline, name, slider, handle} = this.props;
+    const {checked, className, disabled, inline, name, slider, handle, small, medium, large} = this.props;
+
     var cx = classNames.bind(style);
 
+    let labelClassName = cx({
+      sliderSmall: small,
+      sliderMedium: medium,
+      sliderLarge: large,
+      disabled: disabled
+    });
+
+    let inputClassName = cx({
+      inputSmall: small,
+      inputMedium: medium,
+      inputLarge: large
+    });
+
+    let spanClassName = cx({
+      handleSmall: small,
+      handleMedium: medium,
+      handleLarge: large
+    });
+
+    const props = {
+      className
+    }
+
     return (
-      <label className={style.slider}>
-        <input className={style.input} type="checkbox"></input>
-        <span className={style.handle}></span>
+      <label className={labelClassName}>
+        <input className={inputClassName} type="checkbox"></input>
+        <span className={spanClassName}></span>
       </label>
-
-
     );
   }
 }

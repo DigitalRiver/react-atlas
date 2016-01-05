@@ -1,27 +1,37 @@
 .slider {
   overflow:hidden;
-  width: 70px;
-  height:32px;
   cursor:pointer;
   background: #d8d9db;
-  margin: 20px;
   display: block;
-  border-radius: 20px;
   position:relative;
   z-index:1;
 }
 
-.input {
-    display:none;
+.sliderSmall{
+  composes: slider;
+  width: 42px;
+  height:24px;
+  margin: 12px;
+  border-radius: 12px;
 }
 
-.input:checked + .handle{
-    left:40px;
+.sliderMedium{
+  composes: slider;
+  width: 70px;
+  height:32px;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.sliderLarge{
+  composes: slider;
+  width: 105px;
+  height: 48px;
+  margin: 30px;
+  border-radius: 30px;
 }
 
 .handle {
-  width:32px;
-  height:32px;
   border-radius: 50%;
   background: white;
   display:block;
@@ -32,14 +42,57 @@
   transition:left 0.2s;
 }
 
-input:checked + .handle::before {
+.handleSmall{
+  composes: handle;
+  width: 19.2px;
+  height: 19.2px;
+}
+
+.handleMedium{
+  composes: handle;
+  width: 32px;
+  height: 32px;
+}
+
+.handleLarge{
+  composes: handle;
+  width: 48px;
+  height: 48px;
+
+}
+
+.input {
+    display:none;
+}
+
+.input:checked + .handle{
+    left:40px;
+}
+
+.input:checked + .handle::before {
     content: " ";
     display:block;
     background:#4cd864;
-    width: 80px;
-    height: 32px;
     position: absolute;
-    left: -70px;
     z-index:-1;
     transition:left 0.2s;
+    left: -70px;
  }
+
+.inputSmall{
+  composes: input;
+    width: 48px;
+    height: 19.2px;
+}
+
+.inputMedium{
+  composes: input;
+    width: 80px;
+    height: 32px;
+}
+
+.inputLarge{
+  composes: input;
+    width: 120px;
+    height: 48px;
+}
