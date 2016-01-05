@@ -19,27 +19,27 @@ const defaultProps = {
   };
 
 class Input extends Component {
-  render () {
-    const { disabled, labelText, maxLength, multiline, type, value, ...others} = this.props;
+    render () {
+        const { disabled, labelText, maxLength, multiline, type, value, ...others} = this.props;
 
-    let cx = classNames.bind(style);
+        let cx = classNames.bind(style);
 
-    let inputClassName = cx({
-      "input": true,
-      "disabled": disabled,
-      "multiline": multiline,
-      "value": value
-    });
+        let inputClassName = cx({
+          "input": true,
+          "disabled": disabled,
+          "multiline": multiline,
+          "value": value
+        });
 
-    if(this.props.className) inputClassName += ` ${this.props.className}`;
+        if(this.props.className) inputClassName += ` ${this.props.className}`;
 
-    return (
-      <div data-react-toolbox='input'>
-        <label className={style.label} {...this.props} >{labelText}</label>
-        <input className={inputClassName} {...this.props} onChange={this.props.onChange} type={type} ref='input'/>
-      </div>
-    );
-  }
+        return (
+          <div data-react-toolbox='input'>
+            <label className={style.label} {...this.props} >{labelText}</label>
+            <input className={inputClassName} {...this.props} onChange={this.props.onChange} type={type} />
+          </div>
+        );
+    }
 }
 
 Input.propTypes = propTypes;
