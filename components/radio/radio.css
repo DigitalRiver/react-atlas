@@ -1,4 +1,4 @@
-.block{
+.block {
 	composes: block marg-b-1 from '../styles.css';
 	line-height: 30px;
 }
@@ -7,11 +7,11 @@
 	composes: inline-block marg-r-2 from '../styles.css';
 }
 
-.disabled{
+.disabled {
 	composes: gray from '../styles.css';
 }
 
-.addon{
+.addon {
 	height: 46px;
 	padding: 10px 16px;
 	font-size: 18px;
