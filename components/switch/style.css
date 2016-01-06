@@ -10,7 +10,7 @@
 .sliderSmall{
   composes: slider;
   width: 42px;
-  height:24px;
+  height: 19.2px;
   margin: 12px;
   border-radius: 12px;
 }
@@ -65,11 +65,21 @@
     display:none;
 }
 
-.input:checked + .handle{
+/*
+  Distance the button translates left to right
+*/
+
+.inputSmall:checked + .handle{
+    left:24px;
+}
+.inputMedium:checked + .handle{
     left:40px;
 }
+.inputLarge:checked + .handle{
+    left:60px;
+}
 
-.input:checked + .handle::before {
+.inputSmall:checked + .handle::before {
     content: " ";
     display:block;
     background:#4cd864;
@@ -79,6 +89,25 @@
     left: -70px;
  }
 
+.inputMedium:checked + .handle::before {
+    content: " ";
+    display:block;
+    background:#4cd864;
+    position: absolute;
+    z-index:-1;
+    transition:left 0.2s;
+    left: -70px;
+ }
+
+ .inputLarge:checked + .handle::before {
+    content: " ";
+    display:block;
+    background:#4cd864;
+    position: absolute;
+    z-index:-1;
+    transition:left 0.2s;
+    left: -70px;
+ }
 .inputSmall{
   composes: input;
     width: 48px;
