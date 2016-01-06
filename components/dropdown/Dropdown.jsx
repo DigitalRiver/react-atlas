@@ -1,24 +1,8 @@
 import React from 'react';
-import ClassNames from 'classnames';
-import style from './style';
+import classNames from 'classnames/bind';
+import style from './dropdown.css';
 
 class Dropdown extends React.Component {
-  static propTypes = {
-    auto: React.PropTypes.bool,
-    className: React.PropTypes.string,
-    disabled: React.PropTypes.bool,
-    label: React.PropTypes.string,
-    onChange: React.PropTypes.func,
-    source: React.PropTypes.array.isRequired,
-    template: React.PropTypes.func,
-    value: React.PropTypes.string
-  };
-
-  static defaultProps = {
-    auto: true,
-    className: '',
-    disabled: false
-  };
 
   state = {
     active: false,
@@ -52,34 +36,55 @@ class Dropdown extends React.Component {
   renderItem (item, idx) {
     const className = item.value === this.props.value ? style.selected : null;
     return (
-      <li key={idx} className={className} onMouseDown={this.handleSelect.bind(this, item.value)}>
-        {this.props.template ? this.props.template(item) : item.label}
-      </li>
+        <li key={idx} className={className} onMouseDown={this.handleSelect.bind(this, item.value)}>
+          {this.props.template ? this.props.template(item) : item.label}
+        </li>
     );
   }
 
   render () {
+    const {label, template, active, base, button, title, type} = this.props;
     const selected = this.getSelectedItem();
-    const className = ClassNames(style.root, {
-      [style.up]: this.state.up,
-      [style.active]: this.state.active,
-      [style.disabled]: this.props.disabled
-    }, this.props.className);
+    let cx = classNames.bind(style);
+
+    let className = cx({
+      base: true,
+      up: this.state.up,
+      active: this.state.active,
+      disabled: this.props.disabled
+    });
 
     return (
-      <div data-react-toolbox='dropdown' className={className}>
-        {this.props.label ? <label className={style.label}>{this.props.label}</label> : null}
+        <div data-react-toolbox='dropdown' className={className}>
+          {label ? <label className={style.label}>{label}</label> : null}
 
-        <ul ref='values' className={style.values}>
-          {this.props.source.map(this.renderItem.bind(this))}
-        </ul>
+          <ul ref='values' className={style.values}>
+            {this.props.source.map(this.renderItem.bind(this))}
+          </ul>
 
-        <div ref='value' className={style.value} onClick={this.handleClick}>
-          {this.props.template ? this.props.template(selected) : <span>{selected.label}</span>}
+          <div ref='value' className={style.value} onClick={this.handleClick}>
+            {template ? template(selected) : <span>{selected.label}</span>}
+          </div>
         </div>
-      </div>
     );
   }
-}
+};
+
+Dropdown.propTypes = {
+  auto: React.PropTypes.bool,
+  className: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  label: React.PropTypes.string,
+  onChange: React.PropTypes.func,
+  source: React.PropTypes.array.isRequired,
+  template: React.PropTypes.func,
+  value: React.PropTypes.string
+};
+
+Dropdown.defaultProps = {
+  auto: true,
+  className: '',
+  disabled: false
+};
 
 export default Dropdown;
