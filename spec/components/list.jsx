@@ -1,9 +1,9 @@
-import React from 'react';
-import { ListCheckbox, ListSubHeader, List, ListItem, ListDivider } from '../../components/list';
+import React from "react";
+import { ListCheckbox, ListSubHeader, List, ListItem, ListDivider } from "../../components/list";
 
 const listStyle = {
-  border: '1px solid #EEE',
-  display: 'inline-block',
+  border: "1px solid #EEE",
+  display: "inline-block",
   minWidth: 340
 };
 
@@ -27,11 +27,11 @@ class ListTest extends React.Component {
         <p>This list can be used inside a Drawer for a list of options or as navigation.</p>
         <div style={listStyle}>
           <List selectable ripple>
-            <ListSubHeader caption='Contacts' />
-            <ListItem caption='Inbox' leftIcon='inbox' />
-            <ListItem caption='Outbox' leftIcon='send' />
-            <ListItem caption='Trash' leftIcon='delete' />
-            <ListItem caption='Spam' leftIcon='report' />
+            <ListSubHeader caption="Contacts" />
+            <ListItem caption="Inbox" leftIcon="inbox" />
+            <ListItem caption="Outbox" leftIcon="send" />
+            <ListItem caption="Trash" leftIcon="delete" />
+            <ListItem caption="Spam" leftIcon="report" />
           </List>
         </div>
 
@@ -39,30 +39,30 @@ class ListTest extends React.Component {
         <p>Useful for a list of contacts or similar.</p>
         <div style={listStyle}>
           <List selectable ripple>
-            <ListSubHeader caption='Contacts' />
+            <ListSubHeader caption="Contacts" />
             <ListItem
-              avatar='https://pbs.twimg.com/profile_images/614407428/s6pTalMzZs-nusCGWqoV.0_400x400.jpeg'
-              caption='Alfonso Rocha'
-              legend='Product Manager at Fon'
-              rightIcon='star'
+              avatar="https://pbs.twimg.com/profile_images/614407428/s6pTalMzZs-nusCGWqoV.0_400x400.jpeg"
+              caption="Alfonso Rocha"
+              legend="Product Manager at Fon"
+              rightIcon="star"
             />
             <ListItem
-              avatar='https://pbs.twimg.com/profile_images/459485216499720192/ufS4YGOY_400x400.png'
-              caption='Javi Velasco'
-              legend='Frontend engineer at Socialbro'
-              rightIcon='star'
+              avatar="https://pbs.twimg.com/profile_images/459485216499720192/ufS4YGOY_400x400.png"
+              caption="Javi Velasco"
+              legend="Frontend engineer at Socialbro"
+              rightIcon="star"
             />
             <ListItem
-              avatar='https://avatars2.githubusercontent.com/u/559654?v=3&s=460'
-              caption='Javi Jiménez'
-              legend='Frontend engineer at MediaSmart'
-              rightIcon='star'
+              avatar="https://avatars2.githubusercontent.com/u/559654?v=3&s=460"
+              caption="Javi Jiménez"
+              legend="Frontend engineer at MediaSmart"
+              rightIcon="star"
             />
             <ListItem
-              avatar='https://pbs.twimg.com/profile_images/477103691506282499/bsIaPEiM_400x400.jpeg'
-              caption='Tobias Van Schneider'
-              legend='Designer at Spotify'
-              rightIcon='star'
+              avatar="https://pbs.twimg.com/profile_images/477103691506282499/bsIaPEiM_400x400.jpeg"
+              caption="Tobias Van Schneider"
+              legend="Designer at Spotify"
+              rightIcon="star"
             />
           </List>
         </div>
@@ -71,30 +71,30 @@ class ListTest extends React.Component {
         <p>It can be used to embed little checkboxes in the list. These behave as checkboxes.</p>
         <div style={listStyle}>
           <List>
-            <ListSubHeader caption='General' />
-            <ListItem caption='Profile Photo' legend='Change your Google+ profile photo' />
-            <ListItem disabled caption='Show your status' legend='Your status is visible to everyone you use with' />
+            <ListSubHeader caption="General" />
+            <ListItem caption="Profile Photo" legend="Change your Google+ profile photo" />
+            <ListItem disabled caption="Show your status" legend="Your status is visible to everyone you use with" />
           </List>
           <ListDivider />
           <List>
-            <ListSubHeader caption='Hangout notifications' />
+            <ListSubHeader caption="Hangout notifications" />
             <ListCheckbox
-              caption='Notifications'
+              caption="Notifications"
               checked={this.state.checkbox1}
-              legend='Allow notifications'
-              onChange={this.handleCheckboxChange.bind(this, 'checkbox1')}
+              legend="Allow notifications"
+              onChange={this.handleCheckboxChange.bind(this, "checkbox1")}
             />
             <ListCheckbox
-              caption='Sound'
+              caption="Sound"
               checked={this.state.checkbox2}
-              legend='Hangouts message'
-              onChange={this.handleCheckboxChange.bind(this, 'checkbox2')}
+              legend="Hangouts message"
+              onChange={this.handleCheckboxChange.bind(this, "checkbox2")}
             />
             <ListCheckbox
-              caption='Video sounds'
+              caption="Video sounds"
               checked
               disabled
-              legend='Hangouts video call'
+              legend="Hangouts video call"
             />
           </List>
         </div>
@@ -104,24 +104,24 @@ class ListTest extends React.Component {
         <div style={listStyle}>
           <List>
             <ListItem
-              avatar='https://pbs.twimg.com/profile_images/614407428/s6pTalMzZs-nusCGWqoV.0_400x400.jpeg'
-              caption='Alfonso Rocha'
-              rightIcon='mail'
+              avatar="https://pbs.twimg.com/profile_images/614407428/s6pTalMzZs-nusCGWqoV.0_400x400.jpeg"
+              caption="Alfonso Rocha"
+              rightIcon="mail"
             />
             <ListItem
-              avatar='https://pbs.twimg.com/profile_images/459485216499720192/ufS4YGOY_400x400.png'
-              caption='Javi Velasco'
-              rightIcon='mail'
+              avatar="https://pbs.twimg.com/profile_images/459485216499720192/ufS4YGOY_400x400.png"
+              caption="Javi Velasco"
+              rightIcon="mail"
             />
             <ListItem
-              avatar='https://avatars2.githubusercontent.com/u/559654?v=3&s=460'
-              caption='Javi Jiménez'
-              rightIcon='mail'
+              avatar="https://avatars2.githubusercontent.com/u/559654?v=3&s=460"
+              caption="Javi Jiménez"
+              rightIcon="mail"
             />
             <ListItem
-              avatar='https://pbs.twimg.com/profile_images/477103691506282499/bsIaPEiM_400x400.jpeg'
-              caption='Tobias Van Schneider'
-              rightIcon='mail'
+              avatar="https://pbs.twimg.com/profile_images/477103691506282499/bsIaPEiM_400x400.jpeg"
+              caption="Tobias Van Schneider"
+              rightIcon="mail"
             />
           </List>
         </div>
@@ -130,12 +130,12 @@ class ListTest extends React.Component {
         <p>The most simple list.</p>
         <div style={listStyle}>
           <List>
-            <ListItem caption='Alfonso Rocha' />
-            <ListItem caption='Javi Velasco' />
-            <ListItem caption='Javi Jiménez' />
-            <ListItem caption='Tobias Van Schneider' />
+            <ListItem caption="Alfonso Rocha" />
+            <ListItem caption="Javi Velasco" />
+            <ListItem caption="Javi Jiménez" />
+            <ListItem caption="Tobias Van Schneider" />
             <ListDivider />
-            <ListItem caption='Other people' />
+            <ListItem caption="Other people" />
           </List>
         </div>
       </section>

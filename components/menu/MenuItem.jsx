@@ -42,7 +42,7 @@ class MenuItem extends React.Component {
 
     return (
       <li
-        data-react-toolbox='menu-item'
+        data-react-toolbox="menu-item"
         className={className}
         onClick={this.handleClick}
         onMouseDown={this.handleMouseDown}
@@ -50,7 +50,7 @@ class MenuItem extends React.Component {
         {this.props.icon ? <FontIcon value={this.props.icon} className={style.icon}/> : null}
         <span className={style.caption}>{this.props.caption}</span>
         {this.props.shortcut ? <small className={style.shortcut}>{this.props.shortcut}</small> : null}
-        {this.props.ripple ? <Ripple ref='ripple' className={style.ripple} spread={2.5} /> : null}
+        {this.props.ripple ? <Ripple ref="ripple" className={style.ripple} spread={2.5} /> : null}
       </li>
     );
   }

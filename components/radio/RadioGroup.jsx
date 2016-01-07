@@ -1,15 +1,14 @@
 import React from 'react';
-import RadioButton from './RadioButton';
 
 class RadioGroup extends React.Component {
   static propTypes = {
     children: React.PropTypes.node,
     className: React.PropTypes.string,
-    name: React.PropTypes.string,
+    name: React.PropTypes.string
   };
 
   static defaultProps = {
-    className: '',
+    className: ''
   };
 
   renderRadioButtons = () => {
@@ -18,7 +17,7 @@ class RadioGroup extends React.Component {
           "name": this.props.name
         });
     });
-  }
+  };
 
   render () {
     return (

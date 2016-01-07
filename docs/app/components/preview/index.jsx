@@ -6,43 +6,42 @@ import style from './style';
 
 const ERROR_TIMEOUT = 500;
 
-const Preview = React.createClass({
-  propTypes: {
+const propTypes = {
     className: React.PropTypes.string,
     code: React.PropTypes.string.isRequired,
     scope: React.PropTypes.object
-  },
+  };
 
-  getDefaultProps () {
-    return {
-      className: '',
-      scope: { React, ...ReactToolbox }
-    };
-  },
+const defaultProps = {
+    className: '',
+    scope: { React, ...ReactToolbox }
+};
 
-  getInitialState () {
-    return {
-      error: null
-    };
-  },
+class Preview extends React.Component {
+  constructor (props) {
+        super(props);
+        this.state = {
+            error: null
+        };
+    }
 
   componentDidMount () {
     this.executeCode();
-  },
+  }
 
   componentDidUpdate (prevProps) {
     clearTimeout(this.timeoutID);
     if (this.props.code !== prevProps.code) {
       this.executeCode();
     }
-  },
+  }
 
-  setTimeout () {
+  setTimeout = () => {
     clearTimeout(this.timeoutID);
     this.timeoutID = setTimeout(...arguments);
-  },
+  };
 
-  compileCode () {
+  compileCode = () => {
     const code = `
       (function (${Object.keys(this.props.scope).join(', ')}, mountNode) {
         ${this.props.code}
@@ -50,15 +49,15 @@ const Preview = React.createClass({
     return babel.transform(code, {
       optional: ['es7.classProperties', 'es7.exportExtensions']
     }).code;
-  },
+  };
 
-  buildScope (mountNode) {
+  buildScope = (mountNode) => {
     return Object.keys(this.props.scope).map((key) => {
       return this.props.scope[key];
     }).concat(mountNode);
-  },
+  };
 
-  executeCode () {
+  executeCode = () => {
     const mountNode = this.refs.mount;
     const scope = this.buildScope(mountNode);
 
@@ -82,7 +81,7 @@ const Preview = React.createClass({
         this.setState({error: err.toString()});
       }, ERROR_TIMEOUT);
     }
-  },
+  };
 
   render () {
     let className = style.preview;
@@ -95,6 +94,9 @@ const Preview = React.createClass({
       </div>
     );
   }
-});
+}
+
+Preview.propTypes = propTypes;
+Preview.defaultProps = defaultProps;
 
 export default Preview;

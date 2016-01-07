@@ -2,20 +2,31 @@ import React, { PropTypes, Component } from 'react';
 import ClassNames from 'classnames/bind';
 import style from './media.css';
 
-const cx = ClassNames.bind(style);
+const propTypes = {
+	aspectRatio: PropTypes.oneOf([ 'wide', 'square' ]),
+	children: PropTypes.any,
+	className: PropTypes.string,
+	color: PropTypes.string,
+	contentOverlay: PropTypes.bool,
+	image: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element
+	])
+};
 
 class Media extends Component {
   render () {
     const { aspectRatio, children, className, color, contentOverlay, image, ...other } = this.props;
+    const cx = ClassNames.bind(style);
     let classes = cx({
-      wide: aspectRatio == 'wide',
-      square: aspectRatio == 'square'
+      wide: aspectRatio === 'wide',
+      square: aspectRatio === 'square'
     });
 
 	if (className) classes += ` ${className}`;
 
-	let innerClass = cx({
-	  content: true
+	const innerClass = cx({
+      content: true
 	});
 
     const bgStyle = {
@@ -32,16 +43,6 @@ class Media extends Component {
   }
 }
 
-Media.propTypes = {
-	aspectRatio: PropTypes.oneOf([ 'wide', 'square' ]),
-	children: PropTypes.any,
-	className: PropTypes.string,
-	color: PropTypes.string,
-	contentOverlay: PropTypes.bool,
-	image: PropTypes.oneOfType([
-	  PropTypes.string,
-	  PropTypes.element
-	])
-};
+Media.propTypes = propTypes;
 
 export default Media;

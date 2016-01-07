@@ -1,9 +1,9 @@
-import React from 'react';
-import DatePickerDialog from './DatePickerDialog';
-import events from '../utils/events';
-import Input from '../input';
-import style from './style';
-import time from '../utils/time';
+import React from "react";
+import DatePickerDialog from "./DatePickerDialog";
+import events from "../utils/events";
+import Input from "../input";
+import style from "./style";
+import time from "../utils/time";
 
 class DatePicker extends React.Component {
   static propTypes = {
@@ -37,13 +37,13 @@ class DatePicker extends React.Component {
     const date = value ? `${value.getDate()} ${time.getFullMonth(value)} ${value.getFullYear()}` : null;
 
     return (
-      <div data-toolbox='date-picker'>
+      <div data-toolbox="date-picker">
         <Input
           className={style.input}
           onMouseDown={this.handleInputMouseDown}
           label={this.props.label}
           readOnly
-          type='text'
+          type="text"
           value={date}
         />
         <DatePickerDialog

@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ClassNames from 'classnames';
-import prefixer from '../utils/prefixer';
-import style from './style';
+import React from "react";
+import ReactDOM from "react-dom";
+import ClassNames from "classnames";
+import prefixer from "../utils/prefixer";
+import style from "./style";
 
 class Ripple extends React.Component {
   static propTypes = {
@@ -14,7 +14,7 @@ class Ripple extends React.Component {
 
   static defaultProps = {
     centered: false,
-    className: '',
+    className: "",
     loading: false,
     spread: 2
   };
@@ -28,14 +28,14 @@ class Ripple extends React.Component {
   };
 
   handleEnd = () => {
-    document.removeEventListener(this.touch ? 'touchend' : 'mouseup', this.handleEnd);
+    document.removeEventListener(this.touch ? "touchend" : "mouseup", this.handleEnd);
     this.setState({active: false});
   };
 
   start = ({pageX, pageY}, touch = false) => {
     if (!this._isTouchRippleReceivingMouseEvent(touch)) {
       this.touch = touch;
-      document.addEventListener(this.touch ? 'touchend' : 'mouseup', this.handleEnd);
+      document.addEventListener(this.touch ? "touchend" : "mouseup", this.handleEnd);
       const {top, left, width} = this._getDescriptor(pageX, pageY);
       this.setState({active: false, restarting: true, top, left, width}, () => {
         this.refs.ripple.offsetWidth;  //eslint-disable-line no-unused-expressions
@@ -68,14 +68,14 @@ class Ripple extends React.Component {
       }, rippleStyle);
     }
 
-    const className = ClassNames(style[this.props.loading ? 'loading' : 'normal'], {
+    const className = ClassNames(style[this.props.loading ? "loading" : "normal"], {
       [style.active]: this.state.active,
       [style.restarting]: this.state.restarting
     }, this.props.className);
 
     return (
-      <span data-react-toolbox='ripple' className={style.wrapper}>
-        <span ref='ripple' role='ripple' className={className} style={rippleStyle} />
+      <span data-react-toolbox="ripple" className={style.wrapper}>
+        <span ref="ripple" role="ripple" className={className} style={rippleStyle} />
       </span>
     );
   }

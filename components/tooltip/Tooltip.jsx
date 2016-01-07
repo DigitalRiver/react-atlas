@@ -8,7 +8,8 @@ const propTypes = {
   className: PropTypes.string,
   tooltip: PropTypes.string,
   tooltipDelay: PropTypes.number,
-  tooltipHideOnClick: PropTypes.bool
+  tooltipHideOnClick: PropTypes.bool,
+  position: PropTypes.string
 };
 
 const defaultProps = {
@@ -19,24 +20,24 @@ class Tooltip extends Component {
   render () {
     const {children, position, tooltip, inline, ...other} = this.props;
 
-    let cx = classNames.bind(style);
+    const cx = classNames.bind(style);
     let tooltipClasses;
     if (!children.props.disabled) {
       tooltipClasses = cx({
         ["tooltip"]: true,
         ["tooltip-top"]: position !== 'left' && position !== 'bottom' && position !== 'right',
-        ["tooltip-left"]: position == 'left',
-        ["tooltip-bottom"]: position == 'bottom',
-        ["tooltip-right"]: position == 'right'
+        ["tooltip-left"]: position === 'left',
+        ["tooltip-bottom"]: position === 'bottom',
+        ["tooltip-right"]: position === 'right'
       });
     }
     tooltipClasses = tooltipClasses ? tooltipClasses : '';
 
-    let element = inline ? 'span' : 'div';
+    const element = inline ? 'span' : 'div';
 
     const props = {
       ['data-tooltip']: tooltip,
-      className: style.block + ' ' +tooltipClasses
+      className: style.block + ' ' + tooltipClasses
     };
 
     return React.createElement(element, props, children);

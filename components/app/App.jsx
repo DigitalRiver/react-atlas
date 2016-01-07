@@ -2,7 +2,7 @@ import React from 'react';
 import style from './style';
 
 const App = ({className, children}) => (
-  <div data-react-toolbox='app' className={`${style.root} ${className}`}>
+  <div data-react-toolbox="app" className={`${style.root} ${className}`}>
     {children}
   </div>
 );

@@ -10,7 +10,7 @@ const TableHead = ({model, onSelect, selectable, selected}) => {
 
   if (selectable) {
     selectCell = (
-      <th key='select' className={style.selectable}>
+      <th key="select" className={style.selectable}>
         <Checkbox onChange={onSelect} checked={selected} />
       </th>
     );

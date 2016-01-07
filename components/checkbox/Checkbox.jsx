@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import ClassNames from 'classnames/bind';
-import blacklist from 'blacklist';
 import style from './checkbox.css';
 
 const propTypes = {
@@ -13,15 +12,13 @@ const propTypes = {
 };
 
 class Checkbox extends Component {
-  render() {
+  render () {
       const {title, label, disabled, inline, className, ...props} = this.props;
-
-      let cx = ClassNames.bind(style);
-
-      let componentClass = cx({
+      const cx = ClassNames.bind(style);
+      const componentClass = cx({
           "block": !inline,
-          "inline": inline,
-          "disabled": disabled,
+          inline,
+          disabled,
           [className]: className
       });
 

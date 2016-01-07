@@ -84,7 +84,7 @@ class Table extends React.Component {
     let className = style.root;
     if (this.props.className) className += ` ${this.props.className}`;
     return (
-      <table data-react-toolbox='table' className={className}>
+      <table data-react-toolbox="table" className={className}>
         {this.renderHead()}
         {this.renderBody()}
       </table>

@@ -1,15 +1,15 @@
-import React from 'react';
-import CssTransitionGroup from 'react-addons-css-transition-group';
-import { SlideLeft, SlideRight } from '../animations';
-import { IconButton } from '../button';
-import CalendarMonth from './CalendarMonth';
-import time from '../utils/time';
-import utils from '../utils/utils';
-import style from './style.calendar';
+import React from "react";
+import CssTransitionGroup from "react-addons-css-transition-group";
+import { SlideLeft, SlideRight } from "../animations";
+import { IconButton } from "../button";
+import CalendarMonth from "./CalendarMonth";
+import time from "../utils/time";
+import utils from "../utils/utils";
+import style from "./style.calendar";
 
 class Calendar extends React.Component {
   static propTypes = {
-    display: React.PropTypes.oneOf(['months', 'years']),
+    display: React.PropTypes.oneOf(["months", "years"]),
     maxDate: React.PropTypes.object,
     minDate: React.PropTypes.object,
     onChange: React.PropTypes.func,
@@ -18,7 +18,7 @@ class Calendar extends React.Component {
   };
 
   static defaultProps = {
-    display: 'months',
+    display: "months",
     selectedDate: new Date()
   };
 
@@ -58,13 +58,13 @@ class Calendar extends React.Component {
 
   renderYear (year) {
     const props = {
-      className: year === this.state.viewDate.getFullYear() ? style.active : '',
+      className: year === this.state.viewDate.getFullYear() ? style.active : "",
       key: year,
       onClick: this.handleYearClick.bind(this, year)
     };
 
     if (year === this.state.viewDate.getFullYear()) {
-      props.ref = 'activeYear';
+      props.ref = "activeYear";
     }
 
     return <li {...props}>{year}</li>;
@@ -79,11 +79,11 @@ class Calendar extends React.Component {
   }
 
   renderMonths () {
-    const animation = this.state.direction === 'left' ? SlideLeft : SlideRight;
+    const animation = this.state.direction === "left" ? SlideLeft : SlideRight;
     return (
-      <div data-react-toolbox='calendar'>
-        <IconButton className={style.prev} icon='chevron_left' onClick={this.changeViewMonth.bind(this, 'left', -1)} />
-        <IconButton className={style.next} icon='chevron_right' onClick={this.changeViewMonth.bind(this, 'right', 1)} />
+      <div data-react-toolbox="calendar">
+        <IconButton className={style.prev} icon="chevron_left" onClick={this.changeViewMonth.bind(this, "left", -1)} />
+        <IconButton className={style.next} icon="chevron_right" onClick={this.changeViewMonth.bind(this, "right", 1)} />
         <CssTransitionGroup transitionName={animation} transitionEnterTimeout={350} transitionLeaveTimeout={350}>
           <CalendarMonth
             key={this.state.viewDate.getMonth()}
@@ -101,7 +101,7 @@ class Calendar extends React.Component {
   render () {
     return (
       <div className={style.root}>
-        {this.props.display === 'months' ? this.renderMonths() : this.renderYears()}
+        {this.props.display === "months" ? this.renderMonths() : this.renderYears()}
       </div>
     );
   }
