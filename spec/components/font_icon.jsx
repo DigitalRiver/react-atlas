@@ -6,11 +6,11 @@ const FontIconTest = () => (
     <h2>Font Icon</h2>
     <p>lorem ipsum...</p>
 
-    <FontIcon value="add"/>
-    <FontIcon value="access_alarm"/>
-    <FontIcon value="explore"/>
-    <FontIcon value="zoom_in"/>
-    <FontIcon value="input"/>
+    <FontIcon value="plus"/>
+    <FontIcon value="clock-o"/>
+    <FontIcon value="compass"/>
+    <FontIcon value="search-plus"/>
+    <FontIcon value="sign-in"/>
   </section>
 );
 

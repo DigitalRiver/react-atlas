@@ -33,7 +33,7 @@ class SnackbarTest extends React.Component {
           onTimeout={this.handleSnackbarTimeout}
           type="cancel"
         >
-          <FontIcon value="question_answer" />
+          <FontIcon value="comments" />
           Snackbar action cancel
           <Button onClick={this.handleSnackbarClick}>Hide</Button>
         </Snackbar>

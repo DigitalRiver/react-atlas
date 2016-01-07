@@ -13,10 +13,10 @@ const TooltipTest = () => (
       <Button label="Bookmark" icon="bookmark" primary />
     </Tooltip>
     <Tooltip tooltip="Floating Tooltip test setse tse tse tse t setse" >
-      <Button icon="add" primary />
+      <Button icon="plus" primary />
     </Tooltip>
     <Tooltip tooltip="Floating can not be shown">
-      <Button icon="add" disabled primary />
+      <Button icon="plus" disabled primary />
     </Tooltip>
     <br />
     <br />

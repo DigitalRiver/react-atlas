@@ -11,6 +11,7 @@ import Checkbox from './components/checkbox';
 import Dialog from './components/dialog';
 import Drawer from './components/drawer';
 import Dropdown from './components/dropdown';
+import FontIconTest from './components/font_icon';
 import IconMenu from './components/icon_menu';
 import Input from './components/input';
 import List from './components/list';
@@ -49,6 +50,7 @@ const Root = () => (
     <Button />
     <Card />
     <Checkbox />
+    <FontIconTest />
     <Dialog />
     <Drawer />
     <Dropdown />

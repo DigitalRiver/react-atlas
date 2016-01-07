@@ -43,7 +43,7 @@
     "components"
   ],
   "license": "MIT",
-  "peerDependencies": {
+  "dependencies": {
     "classnames": "^2.2.0",
     "react": "^0.14",
     "react-dom": "^0.14.0",
@@ -94,6 +94,7 @@
     "react-addons-test-utils": "^0.14.0",
     "react-docgen": "^2.4.0",
     "react-dom": "^0.14.0",
+    "react-icon-base": "^1.0.0",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.1.1",
