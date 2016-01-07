@@ -1,3 +1,7 @@
+/*
+  The circle
+*/
+
 .slider {
   overflow:hidden;
   cursor:pointer;
@@ -31,6 +35,9 @@
   border-radius: 30px;
 }
 
+/*
+  the off color
+*/
 .handle {
   border-radius: 50%;
   background: white;
@@ -79,7 +86,11 @@
     left:60px;
 }
 
-.inputSmall:checked + .handle::before {
+/*
+  On color
+*/
+
+.input:checked + .handleSmall::before{
     content: " ";
     display:block;
     background:#4cd864;
@@ -87,41 +98,107 @@
     z-index:-1;
     transition:left 0.2s;
     left: -70px;
+    width: 80px;
+    height: 19.2px;
  }
 
-.inputMedium:checked + .handle::before {
+.input:checked + .handleMedium::before{
     content: " ";
     display:block;
     background:#4cd864;
     position: absolute;
     z-index:-1;
-    transition:left 0.2s;
+    transition-property:left 0.2s;
+    transition-timing-function: linear;
     left: -70px;
+    width: 80px;
+    height: 32px;
  }
 
- .inputLarge:checked + .handle::before {
+ .input:checked + .handleLarge::before{
     content: " ";
     display:block;
     background:#4cd864;
     position: absolute;
     z-index:-1;
-    transition:left 0.2s;
+    transition: left 0.2s;
     left: -70px;
+    width: 100px;
+    height: 48px;
  }
+
 .inputSmall{
   composes: input;
-    width: 48px;
-    height: 19.2px;
 }
 
 .inputMedium{
   composes: input;
-    width: 80px;
-    height: 32px;
 }
 
 .inputLarge{
   composes: input;
-    width: 120px;
-    height: 48px;
+}
+
+/*
+  background green
+*/
+
+.backg{
+  display: none;
+}
+
+.backg:checked + .handle{
+    left:40px;
+}
+
+.backg:checked + .handle::before{
+    content: " ";
+    display:block;
+    background:#4cd864;
+    position: absolute;
+    z-index:-1;
+    transition:left 0.2s;
+    left: -70px;
+    width: 80px;
+    height: 32px;
+}
+
+/*
+  colors
+*/
+
+.black{
+  composes: bg-black from '../styles.css';
+}
+
+.gray{
+  composes: bg-gray from '../styles.css';
+}
+
+.silver{
+  composes: bg-silver from '../styles.css';
+}
+
+.white{
+  composes: bg-white from '../styles.css';
+}
+
+.blue{
+  composes: bg-blue from '../styles.css';
+}
+
+.green{
+  composes: bg-green from '../styles.css';
+}
+
+.yellow{
+  composes: bg-yellow from '../styles.css';
+}
+
+.red{
+  composes: bg-red from '../styles.css';
+}
+
+.purple{
+  composes: bg-purple from '../styles.css';
 }
