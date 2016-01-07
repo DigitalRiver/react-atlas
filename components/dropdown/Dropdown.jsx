@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import style from './dropdown.css';
 
 const propTypes = {
-  auto: React.PropTypes.bool,
-  className: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  label: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  source: React.PropTypes.array.isRequired,
-  template: React.PropTypes.func,
-  value: React.PropTypes.string
+  auto: PropTypes.bool,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  label: PropTypes.string,
+  onChange: PropTypes.func,
+  source: PropTypes.array.isRequired,
+  template: PropTypes.func,
+  value: PropTypes.string
 };
 
 const defaultProps = {
@@ -19,7 +19,7 @@ const defaultProps = {
   disabled: false
 };
 
-class Dropdown extends React.Component {
+class Dropdown extends Component {
 
   constructor(props) {
     super(props);
