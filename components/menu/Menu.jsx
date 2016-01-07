@@ -160,7 +160,7 @@ class Menu extends React.Component {
     return (
       <div className={className} style={this.getRootStyle()}>
         {this.props.outline ? <div className={style.outline} style={outlineStyle}></div> : null}
-        <ul ref='menu' className={style.menu} style={this.getMenuStyle()}>
+        <ul ref="menu" className={style.menu} style={this.getMenuStyle()}>
           {this.renderItems()}
         </ul>
       </div>

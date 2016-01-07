@@ -23,11 +23,11 @@ const defaultProps = {
 };
 
 class Col extends Component {
-	constructor(props) {
+	constructor (props) {
         super(props);
         this.state = {
             windowWidth: (typeof window !== 'undefined') ? window.innerWidth : 0
-        }
+        };
     }
 
     componentDidMount () {
@@ -43,11 +43,11 @@ class Col extends Component {
 		});
 	};
 
-	render() {
-		let { basis, gutter, xs, sm, md, lg } = this.props;
-		let { windowWidth } = this.state;
+	render () {
+		const { basis, gutter, xs, sm, md, lg } = this.props;
+		const { windowWidth } = this.state;
 
-		let columnStyle = {
+		const columnStyle = {
 			minHeight: 1,
 			paddingLeft: (gutter / 2),
 			paddingRight: (gutter / 2)
@@ -83,7 +83,7 @@ class Col extends Component {
 			columnStyle.width = A.fractions[columnStyle.width];
 		}
 
-		let props = blacklist(this.props, 'basis', 'gutter', 'style', 'xs', 'sm', 'md', 'lg');
+		const props = blacklist(this.props, 'basis', 'gutter', 'style', 'xs', 'sm', 'md', 'lg');
 
 		return <div style={Object.assign(columnStyle, this.props.style)} {...props} />;
 	}

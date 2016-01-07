@@ -1,35 +1,52 @@
-import React from 'react';
-import classNames from 'classnames/bind';
-import Button from '../button';
-import Overlay from '../overlay';
-import style from './dialog.css';
+import React, { PropTypes } from 'react';
+import classNames from "classnames/bind";
+import Button from "../button";
+import Overlay from "../overlay";
+import style from "./dialog.css";
+
+const propTypes = {
+    actions: PropTypes.array,
+    active: PropTypes.bool,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    onOverlayClick: PropTypes.func,
+    title: PropTypes.string,
+    type: PropTypes.string,
+    body: PropTypes.string
+};
+
+const defaultProps = {
+    actions: [],
+    active: false,
+    type: "normal"
+};
 
 const Dialog = (props) => {
-    const {body, navigation, active, base, button, title, type, children} = props;
-    let cx = classNames.bind(style);
-    let actions = props.actions.map((action, idx) => {
-        let className = cx({
+    const {body, active, title, type, children} = props;
+    const cx = classNames.bind(style);
+    const actions = props.actions.map((action, idx) => {
+        const buttonClassName = cx({
             button: true,
             [action.className]: action.className
         });
-        return <Button key={idx} {...action} className={className} />;
+        return <Button key={idx} {...action} className={buttonClassName} />;
     });
 
-    let className = cx({
+    const className = cx({
         base: true,
-        type: props.type,
-        active: props.active,
+        type,
+        active,
         [props.className]: true
     });
 
     return (
-        <Overlay active={props.active} onClick={props.onOverlayClick}>
-            <div data-react-toolbox='dialog' className={className}>
-                <section role='body' className={body}>
-                    {props.title ? <h6 className={style.title}>{props.title}</h6> : null}
-                    {props.children}
+        <Overlay active={active} onClick={props.onOverlayClick}>
+            <div data-react-toolbox="dialog" className={className}>
+                <section role="body" className={body}>
+                    {title ? <h6 className={style.title}>{title}</h6> : null}
+                    {children}
                 </section>
-                <nav role='navigation' className={style.navigation}>
+                <nav role="navigation" className={style.navigation}>
                     {actions}
                 </nav>
             </div>
@@ -37,21 +54,9 @@ const Dialog = (props) => {
     );
 };
 
-Dialog.propTypes = {
-    actions: React.PropTypes.array,
-    active: React.PropTypes.bool,
-    children: React.PropTypes.node,
-    className: React.PropTypes.string,
-    onOverlayClick: React.PropTypes.func,
-    title: React.PropTypes.string,
-    type: React.PropTypes.string
-};
+Dialog.propTypes = propTypes;
 
-Dialog.defaultProps = {
-    actions: [],
-    active: false,
-    type: 'normal'
-};
+Dialog.defaultProps = defaultProps;
 
 export default Dialog;
 

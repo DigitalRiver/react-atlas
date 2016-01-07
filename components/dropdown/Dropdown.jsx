@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import style from './dropdown.css';
 
+
 class Dropdown extends React.Component {
 
   state = {
@@ -68,7 +69,7 @@ class Dropdown extends React.Component {
         </div>
     );
   }
-};
+}
 
 Dropdown.propTypes = {
   auto: React.PropTypes.bool,

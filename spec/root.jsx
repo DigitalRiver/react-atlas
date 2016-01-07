@@ -38,7 +38,7 @@ const Root = () => (
       <ButtonToolbox
         accent
         className={style.github}
-        icon='web'
+        icon="web"
         floating
         onClick={_hrefProject}
       />

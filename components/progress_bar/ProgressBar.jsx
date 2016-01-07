@@ -1,7 +1,7 @@
-import React from 'react';
-import ClassNames from 'classnames';
-import style from './style';
-import prefixer from '../utils/prefixer';
+import React from "react";
+import ClassNames from "classnames";
+import style from "./style";
+import prefixer from "../utils/prefixer";
 
 class ProgressBar extends React.Component {
   static propTypes = {
@@ -11,18 +11,18 @@ class ProgressBar extends React.Component {
     min: React.PropTypes.number,
     mode: React.PropTypes.string,
     multicolor: React.PropTypes.bool,
-    type: React.PropTypes.oneOf(['linear', 'circular']),
+    type: React.PropTypes.oneOf(["linear", "circular"]),
     value: React.PropTypes.number
   };
 
   static defaultProps = {
     buffer: 0,
-    className: '',
+    className: "",
     max: 100,
     min: 0,
-    mode: 'indeterminate',
+    mode: "indeterminate",
     multicolor: false,
-    type: 'linear',
+    type: "linear",
     value: 0
   };
 
@@ -33,13 +33,13 @@ class ProgressBar extends React.Component {
   }
 
   circularStyle () {
-    if (this.props.mode !== 'indeterminate') {
+    if (this.props.mode !== "indeterminate") {
       return {strokeDasharray: `${2 * Math.PI * 25 * this.calculateRatio(this.props.value)}, 400`};
     }
   }
 
   linearStyle () {
-    if (this.props.mode !== 'indeterminate') {
+    if (this.props.mode !== "indeterminate") {
       return {
         buffer: prefixer({transform: `scaleX(${this.calculateRatio(this.props.buffer)})`}),
         value: prefixer({transform: `scaleX(${this.calculateRatio(this.props.value)})`})
@@ -52,7 +52,7 @@ class ProgressBar extends React.Component {
   renderCircular () {
     return (
       <svg className={style.circle}>
-        <circle className={style.path} style={this.circularStyle()} cx='30' cy='30' r='25' />
+        <circle className={style.path} style={this.circularStyle()} cx="30" cy="30" r="25" />
       </svg>
     );
   }
@@ -61,8 +61,8 @@ class ProgressBar extends React.Component {
     const {buffer, value} = this.linearStyle();
     return (
       <div>
-        <span ref='buffer' data-ref='buffer' className={style.buffer} style={buffer}></span>
-        <span ref='value' data-ref='value' className={style.value} style={value}></span>
+        <span ref="buffer" data-ref="buffer" className={style.buffer} style={buffer}></span>
+        <span ref="value" data-ref="value" className={style.value} style={value}></span>
       </div>
     );
   }
@@ -75,13 +75,13 @@ class ProgressBar extends React.Component {
 
     return (
       <div
-        data-react-toolbox='progress-bar'
+        data-react-toolbox="progress-bar"
         aria-valuenow={this.props.value}
         aria-valuemin={this.props.min}
         aria-valuemax={this.props.max}
         className={className}
       >
-        {this.props.type === 'circular' ? this.renderCircular() : this.renderLinear()}
+        {this.props.type === "circular" ? this.renderCircular() : this.renderLinear()}
       </div>
     );
   }

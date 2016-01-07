@@ -3,10 +3,10 @@ import blacklist from 'blacklist';
 import A from '../constants';
 
 const propTypes = {
-	children: React.PropTypes.node.isRequired,
-	className: React.PropTypes.string,
-	gutter: React.PropTypes.number,
-	style: React.PropTypes.object
+	children: PropTypes.node.isRequired,
+	className: PropTypes.string,
+	gutter: PropTypes.number,
+	style: PropTypes.object
 };
 
 const defaultProps = {
@@ -14,9 +14,9 @@ const defaultProps = {
 };
 
 class Row extends Component {
-	render() {
-		let { gutter } = this.props;
-		let rowStyle = {
+	render () {
+		const { gutter } = this.props;
+		const rowStyle = {
 			display: 'flex',
 			flexWrap: 'wrap',
 			msFlexWrap: 'wrap',
@@ -25,7 +25,7 @@ class Row extends Component {
 			marginRight: (gutter / -2)
 		};
 
-		let props = blacklist(this.props, 'className', 'gutter', 'style');
+		const props = blacklist(this.props, 'className', 'gutter', 'style');
 
 		return (
 			<div {...props} style={Object.assign(rowStyle, this.props.style)} className={this.props.className} />

@@ -65,7 +65,7 @@ class TableRow extends React.Component {
     });
 
     return (
-      <tr data-react-toolbox-table='row' className={className}>
+      <tr data-react-toolbox-table="row" className={className}>
         {this.renderSelectCell()}
         {this.renderCells()}
       </tr>

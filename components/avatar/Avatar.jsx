@@ -1,33 +1,33 @@
-import React, {PropTypes} from 'react';
-import FontIcon from '../font_icon';
-import style from './avatar.css';
+import React, {PropTypes} from "react";
+import FontIcon from "../font_icon";
+import style from "./avatar.css";
 
 const Avatar = ({children, className, icon, image, title, ...other}) => {
-
-  if (React.Children.count(children) == 1 && typeof children == 'string'){
-    children = <span className={style.letter}>{children[0]}</span>;
+  let kids = children;
+  if (React.Children.count(children) === 1 && typeof children === "string"){
+    kids = <span className={style.letter}>{children[0]}</span>;
   }
 
   let avatar = null;
 
-  if (typeof image === 'string') {
-    avatar = <img className={style.image} src={image} title={title} />
+  if (typeof image === "string") {
+    avatar = <img className={style.image} src={image} title={title} />;
   } else if (image){
     avatar = image;
-  } else if (typeof icon === 'string'){
-    avatar = <FontIcon className={style.letter} value={icon} />
+  } else if (typeof icon === "string"){
+    avatar = <FontIcon className={style.letter} value={icon} />;
   } else if (icon){
     avatar = icon;
   } else if (title) {
-    avatar = <span className={style.letter}>{title[0]}</span>
+    avatar = <span className={style.letter}>{title[0]}</span>;
   }
 
   let classes = style.avatar;
   if (className) classes += ` ${className}`;
 
   return (
-    <div data-react-toolbox='avatar' className={classes} {...other}>
-      {children}
+    <div data-react-toolbox="avatar" className={classes} {...other}>
+      {kids}
       {avatar}
     </div>
   );

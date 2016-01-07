@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import style from './radio.css';
 
-class RadioButton extends React.Component {
+class RadioButton extends Component {
   static propTypes = {
-    checked: React.PropTypes.bool,
-    className: React.PropTypes.string,
-    disabled: React.PropTypes.bool,
-    label: React.PropTypes.string,
-    name: React.PropTypes.string,
-    onBlur: React.PropTypes.func,
-    onChange: React.PropTypes.func,
-    onClick: React.PropTypes.func,
-    onFocus: React.PropTypes.func,
-    value: React.PropTypes.any
+    checked: PropTypes.string,
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    inline: PropTypes.bool,
+    label: PropTypes.string,
+    name: PropTypes.string,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func,
+    onClick: PropTypes.func,
+    onFocus: PropTypes.func,
+    value: PropTypes.any
   };
 
   static defaultProps = {
@@ -39,39 +40,38 @@ class RadioButton extends React.Component {
     if (!this.props.disabled && this.props.onBlur) {
       this.props.onBlur(event, this);
     }
-  }
+  };
 
   _handleFocus = (event) => {
     if (!this.props.disabled && this.props.onFocus) {
       this.props.onFocus(event, this);
     }
-  }
+  };
 
   render () {
-    const {checked, className, disabled, inline, name} = this.props;
+    const {className, disabled, inline, name, label} = this.props;
 
-    var cx = classNames.bind(style);
+    const cx = classNames.bind(style);
 
-    let labelClassName = cx({
+    const labelClassName = cx({
       block: !inline,
-      inline: inline,
-      disabled: disabled
+      inline,
+      disabled,
+      className
     });
 
-    if(this.props.className) labelClassName += ` ${this.props.className}`
-    
     return (
       <label className={labelClassName}>
         <input
           {...this.props}
-          name={this.props.name}
+          name={name}
           onChange={this._handleChange}
           onClick={this._handleClick}
           onBlur={this._handleBlur}
           onFocus={this._handleFocus}
-          type='radio'
+          type="radio"
         />
-        {this.props.label ? <span> {this.props.label}</span> : null}
+        {label ? <span> {label}</span> : null}
       </label>
     );
   }
