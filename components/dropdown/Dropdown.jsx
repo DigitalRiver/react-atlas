@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import style from './dropdown.css';
 
