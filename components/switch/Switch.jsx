@@ -51,26 +51,21 @@ class Switch extends React.Component {
       disabled
     });
 
-    var black = "#000000";
-    var divStyle = {
-      background: black
-    };
-
-    var offColor2 = {
+    var offColorStyle = {
       background: offColor
     };
-    var onColor2 = {
+    var onColorStyle = {
         background: onColor
     };
 
-    var buttonColor2 = {
+    var buttonColorStyle = {
       background: buttonColor
     };
 
     return (
-      <label className={labelClassName} style={onColor2}>
-        <input className={inputClassName} style={offColor2} type="checkbox" />
-        <span className={spanClassName} style={buttonColor2}></span>
+      <label className={labelClassName} style={offColorStyle}>
+        <input className={inputClassName} style={onColorStyle} type="checkbox" />
+        <span className={spanClassName} style={buttonColorStyle}></span>
       </label>
     );
   }

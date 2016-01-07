@@ -140,30 +140,6 @@
 }
 
 /*
-  background green
-*/
-
-.backg{
-  display: none;
-}
-
-.backg:checked + .handle{
-    left:40px;
-}
-
-.backg:checked + .handle::before{
-    content: " ";
-    display:block;
-    background:#4cd864;
-    position: absolute;
-    z-index:-1;
-    transition:left 0.2s;
-    left: -70px;
-    width: 80px;
-    height: 32px;
-}
-
-/*
   colors
 */
 
