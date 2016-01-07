@@ -2,13 +2,32 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import style from './dropdown.css';
 
+const propTypes = {
+  auto: React.PropTypes.bool,
+  className: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  label: React.PropTypes.string,
+  onChange: React.PropTypes.func,
+  source: React.PropTypes.array.isRequired,
+  template: React.PropTypes.func,
+  value: React.PropTypes.string
+};
+
+const defaultProps = {
+  auto: true,
+  className: '',
+  disabled: false
+};
 
 class Dropdown extends React.Component {
 
-  state = {
-    active: false,
-    up: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false,
+      up: false
+    }
+  }
 
   handleClick = (event) => {
     const client = event.target.getBoundingClientRect();
@@ -71,21 +90,8 @@ class Dropdown extends React.Component {
   }
 }
 
-Dropdown.propTypes = {
-  auto: React.PropTypes.bool,
-  className: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  label: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  source: React.PropTypes.array.isRequired,
-  template: React.PropTypes.func,
-  value: React.PropTypes.string
-};
+Dropdown.propTypes = propTypes;
 
-Dropdown.defaultProps = {
-  auto: true,
-  className: '',
-  disabled: false
-};
+Dropdown.defaultProps = defaultProps;
 
 export default Dropdown;
