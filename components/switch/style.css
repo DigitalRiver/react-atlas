@@ -1,27 +1,44 @@
+/*
+  The circle
+*/
+
 .slider {
   overflow:hidden;
-  width: 70px;
-  height:32px;
   cursor:pointer;
   background: #d8d9db;
-  margin: 20px;
   display: block;
-  border-radius: 20px;
   position:relative;
   z-index:1;
 }
 
-.input {
-    display:none;
+.sliderSmall{
+  composes: slider;
+  width: 42px;
+  height: 19.2px;
+  margin: 12px;
+  border-radius: 12px;
 }
 
-.input:checked + .handle{
-    left:40px;
-}
-
-.handle {
-  width:32px;
+.sliderMedium{
+  composes: slider;
+  width: 70px;
   height:32px;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.sliderLarge{
+  composes: slider;
+  width: 105px;
+  height: 48px;
+  margin: 30px;
+  border-radius: 30px;
+}
+
+/*
+  the off color
+*/
+.handle {
   border-radius: 50%;
   background: white;
   display:block;
@@ -32,14 +49,132 @@
   transition:left 0.2s;
 }
 
-input:checked + .handle::before {
+.handleSmall{
+  composes: handle;
+  width: 19.2px;
+  height: 19.2px;
+}
+
+.handleMedium{
+  composes: handle;
+  width: 32px;
+  height: 32px;
+}
+
+.handleLarge{
+  composes: handle;
+  width: 48px;
+  height: 48px;
+
+}
+
+.input {
+    display:none;
+}
+
+/*
+  Distance the button translates left to right
+*/
+
+.inputSmall:checked + .handle{
+    left:24px;
+}
+.inputMedium:checked + .handle{
+    left:40px;
+}
+.inputLarge:checked + .handle{
+    left:60px;
+}
+
+/*
+  On color
+*/
+
+.input:checked + .handleSmall::before{
     content: " ";
     display:block;
     background:#4cd864;
-    width: 80px;
-    height: 32px;
     position: absolute;
-    left: -70px;
     z-index:-1;
     transition:left 0.2s;
+    left: -70px;
+    width: 80px;
+    height: 19.2px;
  }
+
+.input:checked + .handleMedium::before{
+    content: " ";
+    display:block;
+    background:#4cd864;
+    position: absolute;
+    z-index:-1;
+    transition-property:left 0.2s;
+    transition-timing-function: linear;
+    left: -70px;
+    width: 80px;
+    height: 32px;
+ }
+
+ .input:checked + .handleLarge::before{
+    content: " ";
+    display:block;
+    background:#4cd864;
+    position: absolute;
+    z-index:-1;
+    transition: left 0.2s;
+    left: -70px;
+    width: 100px;
+    height: 48px;
+ }
+
+.inputSmall{
+  composes: input;
+}
+
+.inputMedium{
+  composes: input;
+}
+
+.inputLarge{
+  composes: input;
+}
+
+/*
+  colors
+*/
+
+.black{
+  composes: bg-black from '../styles.css';
+}
+
+.gray{
+  composes: bg-gray from '../styles.css';
+}
+
+.silver{
+  composes: bg-silver from '../styles.css';
+}
+
+.white{
+  composes: bg-white from '../styles.css';
+}
+
+.blue{
+  composes: bg-blue from '../styles.css';
+}
+
+.green{
+  composes: bg-green from '../styles.css';
+}
+
+.yellow{
+  composes: bg-yellow from '../styles.css';
+}
+
+.red{
+  composes: bg-red from '../styles.css';
+}
+
+.purple{
+  composes: bg-purple from '../styles.css';
+}
