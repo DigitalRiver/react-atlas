@@ -1,6 +1,6 @@
-import React from 'react';
-import DatePicker from '../../components/date_picker';
-import TimePicker from '../../components/time_picker';
+import React from "react";
+import DatePicker from "../../components/date_picker";
+import TimePicker from "../../components/time_picker";
 
 
 const datetime = new Date(2015, 10, 16);
@@ -28,29 +28,29 @@ class PickersTest extends React.Component {
         <p>Date pickers and time pickers with Material flavour.</p>
 
         <DatePicker
-          label='Birthdate'
-          onChange={this.handleChange.bind(this, 'date1')}
+          label="Birthdate"
+          onChange={this.handleChange.bind(this, "date1")}
           value={this.state.date1}
         />
 
         <DatePicker
-          label='Expiration date'
+          label="Expiration date"
           maxDate={max_datetime}
           minDate={min_datetime}
-          onChange={this.handleChange.bind(this, 'date2')}
+          onChange={this.handleChange.bind(this, "date2")}
           value={this.state.date2}
         />
 
         <TimePicker
-          label='Start time'
-          onChange={this.handleChange.bind(this, 'time1')}
+          label="Start time"
+          onChange={this.handleChange.bind(this, "time1")}
           value={this.state.time1}
         />
 
         <TimePicker
-          format='ampm'
-          label='Finishing time'
-          onChange={this.handleChange.bind(this, 'time2')}
+          format="ampm"
+          label="Finishing time"
+          onChange={this.handleChange.bind(this, "time2")}
           value={this.state.time2}
         />
       </section>

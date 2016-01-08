@@ -1,44 +1,48 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import style from './style.css';
+import style from './tooltip.css';
 
 const propTypes = {
+  inline: PropTypes.bool,
   children: PropTypes.any,
   className: PropTypes.string,
   tooltip: PropTypes.string,
   tooltipDelay: PropTypes.number,
-  tooltipHideOnClick: PropTypes.bool
+  tooltipHideOnClick: PropTypes.bool,
+  position: PropTypes.string
 };
 
 const defaultProps = {
   className: ''
 };
 
-const Tooltip = (ComposedComponent) => class extends Component {
+class Tooltip extends Component {
   render () {
-    const {children, position, tooltip, ...other} = this.props;
+    const {children, position, tooltip, inline, ...other} = this.props;
 
-    let cx = classNames.bind(style);
+    const cx = classNames.bind(style);
+    let tooltipClasses;
+    if (!children.props.disabled) {
+      tooltipClasses = cx({
+        ["tooltip"]: true,
+        ["tooltip-top"]: position !== 'left' && position !== 'bottom' && position !== 'right',
+        ["tooltip-left"]: position === 'left',
+        ["tooltip-bottom"]: position === 'bottom',
+        ["tooltip-right"]: position === 'right'
+      });
+    }
+    tooltipClasses = tooltipClasses ? tooltipClasses : '';
 
-    let tooltipClasses = cx({
-      ["tooltip"]: true,
-      ["tooltip-top"]: position !== 'left' &&  position !== 'bottom' && position !== 'right',
-      ["tooltip-left"]: position == 'left',
-      ["tooltip-bottom"]: position == 'bottom',
-      ["tooltip-right"]: position == 'right'
-    });
+    const element = inline ? 'span' : 'div';
 
-    return (
-      <ComposedComponent
-        {...other}
-        data-tooltip={tooltip}
-        className={tooltipClasses}
-      >
-        {children ? children : null}
-      </ComposedComponent>
-    );
+    const props = {
+      ['data-tooltip']: tooltip,
+      className: style.block + ' ' + tooltipClasses
+    };
+
+    return React.createElement(element, props, children);
   }
-};
+}
 
 Tooltip.propTypes = propTypes;
 

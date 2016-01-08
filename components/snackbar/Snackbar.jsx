@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import ClassNames from 'classnames/bind';
 import Overlay from '../overlay';
-import style from './style.css';
+import style from './snackbar.css';
 
 const propTypes = {
     active: PropTypes.bool,
     className: PropTypes.string,
-    timeout: PropTypes.number
+    timeout: PropTypes.number,
+    onTimeout: PropTypes.func,
+    children: PropTypes.node
 };
 
 class Snackbar extends Component {
@@ -22,22 +24,22 @@ class Snackbar extends Component {
   render () {
     const { active } = this.props;
 
-    let children = React.Children.map(this.props.children, (child) => {
+    const children = React.Children.map(this.props.children, (child) => {
         if (typeof child === 'string') {
-          return <span className={style.text}>{child}</span>
+          return <span className={style.text}>{child}</span>;
         }
         return child;
     });
 
-    let cx = ClassNames.bind(style);
-    let className = cx({
+    const cx = ClassNames.bind(style);
+    const className = cx({
       root: true,
-      active: active
+      active
     }, this.props.className);
 
     return (
       <Overlay active={active} opacity={0}>
-        <div data-react-toolbox='snackbar' className={className}>
+        <div data-react-toolbox="snackbar" className={className}>
           {children}
         </div>
       </Overlay>

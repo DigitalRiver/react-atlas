@@ -1,5 +1,5 @@
-import React from 'react';
-import ProgressBar from '../../components/progress_bar';
+import React from "react";
+import ProgressBar from "../../components/progress_bar";
 
 const initialState = {
   progress: 0,
@@ -41,12 +41,12 @@ class ProgressBarTest extends React.Component {
     return (
       <section>
         <h5>Progress bars</h5>
-        <p style={{margin: '10px auto'}}>Determinate</p>
-        <ProgressBar mode='determinate' value={this.state.progress} buffer={this.state.buffer}/>
-        <p style={{margin: '10px auto'}}>Indeterminate...</p>
-        <ProgressBar mode='indeterminate'/>
-        <p style={{margin: '10px auto'}}>Circular</p>
-        <ProgressBar type='circular' mode='indeterminate'/>
+        <p style={{margin: "10px auto"}}>Determinate</p>
+        <ProgressBar mode="determinate" value={this.state.progress} buffer={this.state.buffer}/>
+        <p style={{margin: "10px auto"}}>Indeterminate...</p>
+        <ProgressBar mode="indeterminate"/>
+        <p style={{margin: "10px auto"}}>Circular</p>
+        <ProgressBar type="circular" mode="indeterminate"/>
       </section>
     );
   }

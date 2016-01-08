@@ -51,7 +51,7 @@
       "beforeColon": false,
       "afterColon": true
     }],
-    "quotes": [2, "single", "avoid-escape"],
+    "jsx-quotes": [1, "prefer-double"],
     "max-depth": [0, 4],
     "max-len": [0, 80, 4],
     "max-nested-callbacks": [0, 2],
@@ -208,7 +208,7 @@
     "yoda": [2, "never", {
       "exceptRange": true
     }],
-    "babel/object-shorthand": [2],
+    "babel/object-shorthand": [2, "methods"],
     "react/display-name": 0,
     "react/jsx-boolean-value": 1,
     "react/jsx-closing-bracket-location": 0,
@@ -227,6 +227,7 @@
     "react/no-did-update-set-state": 1,
     "react/no-multi-comp": 0,
     "react/no-unknown-property": 1,
+    "react/prefer-es6-class": [1, "always"],
     "react/prop-types": [2, {"ignore": ["onMouseDown", "onTouchStart"]}],
     "react/react-in-jsx-scope": 1,
     "react/require-extension": 1,

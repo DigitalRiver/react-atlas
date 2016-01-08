@@ -105,7 +105,7 @@ class Hand extends React.Component {
 
     return (
       <div className={className} style={handStyle}>
-        <div ref='knob' className={style.knob}></div>
+        <div ref="knob" className={style.knob}></div>
       </div>
     );
   }

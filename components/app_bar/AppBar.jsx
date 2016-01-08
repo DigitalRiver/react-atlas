@@ -9,7 +9,7 @@ const AppBar = (props) => {
   }, props.className);
 
   return (
-    <header className={className} data-react-toolbox='app-bar'>
+    <header className={className} data-react-toolbox="app-bar">
       {props.children}
     </header>
   );

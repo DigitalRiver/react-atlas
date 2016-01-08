@@ -11,7 +11,7 @@ const MainAppBar = (props) => {
 
   return (
     <AppBar className={className} flat fixed>
-      <Link to='/'>
+      <Link to="/">
         <Logo className={style.logo} />
       </Link>
       <Navigation activeClassName={style.active} className={style.navigation}/>

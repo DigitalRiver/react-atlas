@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import FontIcon from '../font_icon';
 import Tooltip from '../tooltip';
-import style from './style.css';
+import style from './button.css';
 
 const propTypes = {
   accent: PropTypes.bool,
@@ -14,12 +14,21 @@ const propTypes = {
   icon: PropTypes.string,
   inverse: PropTypes.bool,
   label: PropTypes.string,
+  loading: PropTypes.bool,
   mini: PropTypes.bool,
   primary: PropTypes.bool,
   raised: PropTypes.bool,
   tooltip: PropTypes.string,
   tooltipDelay: PropTypes.number,
-  type: PropTypes.string
+  type: PropTypes.string,
+  secondary: PropTypes.bool,
+  success: PropTypes.bool,
+  warning: PropTypes.bool,
+  danger: PropTypes.bool,
+  link: PropTypes.bool,
+  large: PropTypes.bool,
+  small: PropTypes.bool,
+  block: PropTypes.bool
 };
 
 const defaultProps = {
@@ -57,32 +66,32 @@ class Button extends Component {
 
     const element = href ? 'a' : 'button';
 
-    let cx = classNames.bind(style);
+    const cx = classNames.bind(style);
 
     let className = cx({
-        large: large,
-        small: small,
-        block: block,
-        disabled: disabled
+        large,
+        small,
+        block,
+        disabled
     });
 
     if (outline) {
-      className += ' '+ cx({
+      className += ' ' + cx({
         primary_outline: !secondary && !success && !warning && !danger && !link,
-        secondary: secondary,
+        secondary,
         success_outline: success,
         warning_outline: warning,
         danger_outline: danger,
         link_outline: link
       });
     } else {
-      className += ' '+ cx({
+      className += ' ' + cx({
         primary: !secondary && !success && !warning && !danger && !link,
-        secondary: secondary,
-        success: success,
-        warning: warning,
-        danger: danger,
-        link: link
+        secondary,
+        success,
+        warning,
+        danger,
+        link
       });
     }
 
@@ -99,7 +108,7 @@ class Button extends Component {
       onMouseDown: this.handleMouseDown,
       onTouchStart: this.handleTouchStart,
       onMouseUp: this.handleMouseUp,
-      role: role,
+      role,
       'data-react-toolbox': 'button'
     };
 

@@ -1,7 +1,7 @@
-import React from 'react';
-import Tab from './Tab';
-import TabContent from './TabContent';
-import style from './style';
+import React from "react";
+import Tab from "./Tab";
+import TabContent from "./TabContent";
+import style from "./style";
 
 class Tabs extends React.Component {
   static propTypes = {
@@ -89,8 +89,8 @@ class Tabs extends React.Component {
     if (this.props.className) className += ` ${this.props.className}`;
 
     return (
-      <div ref='tabs' className={className}>
-        <nav className={style.navigation} ref='navigation'>
+      <div ref="tabs" className={className}>
+        <nav className={style.navigation} ref="navigation">
           {this.renderHeaders(headers)}
         </nav>
         <span className={style.pointer} style={this.state.pointer} />

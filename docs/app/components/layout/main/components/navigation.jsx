@@ -1,18 +1,16 @@
-import React from 'react';
-import { History } from 'react-router';
-import { List, ListItem } from 'react-toolbox';
-import components from '../modules/components';
-import style from './navigation.scss';
+import React from "react";
+import { List, ListItem } from "react-toolbox";
+import components from "../modules/components";
+import style from "./navigation.scss";
 
-const MainNavigation = React.createClass({
-  propTypes: {
-    active: React.PropTypes.bool,
-    className: React.PropTypes.string
-  },
+const propTypes = {
+  active: React.PropTypes.bool,
+  className: React.PropTypes.string
+};
 
-  mixins: [History],
+class MainNavigation extends React.Component {
 
-  renderDrawerItems () {
+  renderDrawerItems = () => {
     return Object.keys(components).map((key) => {
       const ToolboxComponent = components[key];
       const to = this.context.history.createHref(ToolboxComponent.path);
@@ -31,7 +29,7 @@ const MainNavigation = React.createClass({
         />
       );
     });
-  },
+  };
 
   render () {
     let className = style.root;
@@ -48,6 +46,10 @@ const MainNavigation = React.createClass({
       </aside>
     );
   }
-});
+}
+
+MainNavigation.contextTypes = { history: React.PropTypes.history };
+
+MainNavigation.propTypes = propTypes;
 
 export default MainNavigation;

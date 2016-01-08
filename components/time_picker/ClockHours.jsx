@@ -81,7 +81,7 @@ class Hours extends React.Component {
             active={is24hr ? selected : (selected % 12 || 12)}
           />
           {this.renderInnerFace(radius - spacing * innerSpacing)}
-          <Hand ref='hand'
+          <Hand ref="hand"
             angle={selected * step}
             length={(this.state.inner ? radius - spacing * innerSpacing : radius) - spacing}
             onMove={this.handleHandMove}

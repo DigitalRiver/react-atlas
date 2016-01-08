@@ -2,8 +2,8 @@ const pkg = require('./package');
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
-const cssnext = require("postcss-cssnext");
-const postcssImport = require("postcss-import");
+const cssnext = require('postcss-cssnext');
+const postcssImport = require('postcss-import');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
@@ -38,10 +38,10 @@ module.exports = {
       }
     ]
   },
-  postcss: function (webpack) {
+  postcss (bundler) {
     return [
       postcssImport({
-        addDependencyTo: webpack
+        addDependencyTo: bundler
       }),
       cssnext,
       autoprefixer

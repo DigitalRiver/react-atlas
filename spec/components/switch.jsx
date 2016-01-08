@@ -15,7 +15,6 @@ class SwitchTest extends React.Component {
   render () {
     return (
       <section>
-
         <h5>Toggle Switches</h5>
         <p style={{marginBottom: '10px'}}></p>
         <Switch />
