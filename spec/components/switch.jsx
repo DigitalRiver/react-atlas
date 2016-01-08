@@ -21,8 +21,19 @@ class SwitchTest extends React.Component {
         <Switch />
 
         <h5>Toggle Switch Colors</h5>
+        <span>On Switch Color</span>
         <p style={{marginBottom: '10px'}}></p>
-        <Switch onColor="blue" offColor="black" buttonColor='red'/>
+        <Switch onColor="black"/>
+
+        <h5>Toggle Switch Colors</h5>
+        <span>Off Switch Color</span>
+        <p style={{marginBottom: '10px'}}></p>
+        <Switch offColor="black"/>
+
+        <h5>Toggle Switch Colors</h5>
+        <span>Switch Button Color</span>
+        <p style={{marginBottom: '10px'}}></p>
+        <Switch buttonColor='black'/>
 
         <h5>Switches Small</h5>
         <p style={{marginBottom: '10px'}}></p>
@@ -30,7 +41,6 @@ class SwitchTest extends React.Component {
 
 
         <h5>Switches Medium</h5>
-        <p style={{marginBottom: '10px'}}></p>
         <Switch medium checked />
 
 
