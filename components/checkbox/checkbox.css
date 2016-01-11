@@ -1,0 +1,26 @@
+.base {
+    composes: marg-b-1 from '../styles.css';
+}
+
+.block {
+    composes: base;
+    composes: block from '../styles.css';
+}
+
+.inline {
+    composes: base;
+    composes: inline-block marg-r-2 from '../styles.css';
+}
+
+.disabled {
+    composes: gray from '../styles.css';
+}
+
+.label {
+    composes: marg-l-1 from '../styles.css';
+}
+
+.input {
+    composes: relative from '../styles.css';
+    top: -1px;
+}

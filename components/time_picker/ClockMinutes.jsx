@@ -45,7 +45,7 @@ class Minutes extends React.Component {
           twoDigits
           active={this.props.selected}
         />
-        <Hand ref='hand'
+        <Hand ref="hand"
           className={minutes.indexOf(this.props.selected) === -1 ? style.small : ''}
           angle={this.props.selected * step}
           length={this.props.radius - this.props.spacing}

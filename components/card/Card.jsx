@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import style from './style.css';
+import style from './card.css';
 
 const Card = ({children}) => {
   const cx = classNames.bind(style);
-  let className = cx({
+  const className = cx({
     "card": true
   });
 
@@ -12,7 +12,7 @@ const Card = ({children}) => {
 };
 
 Card.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.any
 };
 
 export default Card;

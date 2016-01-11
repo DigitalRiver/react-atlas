@@ -1,21 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Button } from 'react-toolbox';
-import Appbar from '../../../components/appbar';
-import Markdown from '../../../components/markdown';
-import Playground from './components/playground';
-import MainNavigation from './components/navigation';
-import BaseDocs from './modules/components.md';
-import components from './modules/components.js';
-import style from './style';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Button } from "react-toolbox";
+import Appbar from "../../../components/appbar";
+import Markdown from "../../../components/markdown";
+import Playground from "./components/playground";
+import MainNavigation from "./components/navigation";
+import BaseDocs from "./modules/components.md";
+import components from "./modules/components.js";
+import style from "./style";
 
 const LoadExampleButton = (props) => {
   return (
     <Button
       raised
       accent
-      icon='code'
-      label='Load in playground'
+      icon="code"
+      label="Load in playground"
       onClick={props.onClick}
     />
   );
@@ -43,7 +43,7 @@ class Main extends React.Component {
     this.renderExampleLoaders();
   }
 
-  LOAD_EXAMPLE_CLASS = 'js-load-in-playground playground-button';
+  LOAD_EXAMPLE_CLASS = "js-load-in-playground playground-button";
 
   handlePlayGroundClick = () => {
     this.setState({ playground: !this.state.playground});
@@ -67,7 +67,7 @@ class Main extends React.Component {
 
   resolveMarkdown () {
     const PLACEHOLDER = /<!-- example -->/g;
-    const NODE = `<span class='${style['load-button']} ${this.LOAD_EXAMPLE_CLASS}'></span>`;
+    const NODE = `<span class='${style["load-button"]} ${this.LOAD_EXAMPLE_CLASS}'></span>`;
     if (this.props.params.component) {
       return components[this.props.params.component].docs.replace(PLACEHOLDER, NODE);
     } else {
@@ -78,7 +78,7 @@ class Main extends React.Component {
   render () {
     let className = style.root;
     const docs = this.resolveMarkdown();
-    if (this.state.playground) className += ` ${style['with-playground']}`;
+    if (this.state.playground) className += ` ${style["with-playground"]}`;
 
     return (
       <div className={className}>
@@ -86,13 +86,13 @@ class Main extends React.Component {
         <Button
           accent
           floating
-          className={style['playground-button']}
-          icon={this.state.playground ? 'close' : 'code'}
+          className={style["playground-button"]}
+          icon={this.state.playground ? "close" : "code"}
           onClick={this.handlePlayGroundClick}
         />
         <MainNavigation className={style.navigation} />
         <Markdown className={style.documentation} markdown={docs}/>
-        <Playground ref='playground' className={style.playground} />
+        <Playground ref="playground" className={style.playground} />
       </div>
     );
   }

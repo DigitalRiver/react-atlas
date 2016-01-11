@@ -1,13 +1,13 @@
-import React from 'react';
-import style from './style';
-import time from '../utils/time';
-import Clock from './Clock';
-import Dialog from '../dialog';
+import React from "react";
+import style from "./style";
+import time from "../utils/time";
+import Clock from "./Clock";
+import Dialog from "../dialog";
 
 class TimePickerDialog extends React.Component {
   static propTypes = {
     active: React.PropTypes.bool,
-    format: React.PropTypes.oneOf(['24hr', 'ampm']),
+    format: React.PropTypes.oneOf(["24hr", "ampm"]),
     onDismiss: React.PropTypes.func,
     onSelect: React.PropTypes.func,
     value: React.PropTypes.object
@@ -15,12 +15,12 @@ class TimePickerDialog extends React.Component {
 
   static defaultProps = {
     active: false,
-    format: '24hr',
+    format: "24hr",
     value: new Date()
   };
 
   state = {
-    display: 'hours',
+    display: "hours",
     displayTime: this.props.value
   };
 
@@ -47,12 +47,12 @@ class TimePickerDialog extends React.Component {
   };
 
   actions = [
-    { label: 'Cancel', className: style.button, onClick: this.props.onDismiss },
-    { label: 'Ok', className: style.button, onClick: this.handleSelect }
+    { label: "Cancel", className: style.button, onClick: this.props.onDismiss },
+    { label: "Ok", className: style.button, onClick: this.handleSelect }
   ];
 
   formatHours () {
-    if (this.props.format === 'ampm') {
+    if (this.props.format === "ampm") {
       return this.state.displayTime.getHours() % 12 || 12;
     } else {
       return this.state.displayTime.getHours();
@@ -60,7 +60,7 @@ class TimePickerDialog extends React.Component {
   }
 
   renderAMPMLabels () {
-    if (this.props.format === 'ampm') {
+    if (this.props.format === "ampm") {
       return (
         <div className={style.ampm}>
           <span className={style.am} onClick={this.toggleTimeMode}>AM</span>
@@ -77,17 +77,17 @@ class TimePickerDialog extends React.Component {
     return (
       <Dialog active={this.props.active} className={className} actions={this.actions}>
         <header className={style.header}>
-          <span className={style.hours} onClick={this.switchDisplay.bind(this, 'hours')}>
-            {('0' + this.formatHours()).slice(-2)}
+          <span className={style.hours} onClick={this.switchDisplay.bind(this, "hours")}>
+            {("0" + this.formatHours()).slice(-2)}
           </span>
           <span className={style.separator}>:</span>
-          <span className={style.minutes} onClick={this.switchDisplay.bind(this, 'minutes')}>
-            {('0' + this.state.displayTime.getMinutes()).slice(-2)}
+          <span className={style.minutes} onClick={this.switchDisplay.bind(this, "minutes")}>
+            {("0" + this.state.displayTime.getMinutes()).slice(-2)}
           </span>
           {this.renderAMPMLabels()}
         </header>
         <Clock
-          ref='clock'
+          ref="clock"
           display={this.state.display}
           format={this.props.format}
           time={this.state.displayTime}

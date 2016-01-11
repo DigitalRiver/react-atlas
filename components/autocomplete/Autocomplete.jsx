@@ -1,20 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ClassNames from 'classnames';
-import Input from '../input';
-import events from '../utils/events';
-import style from './style';
+import React from "react";
+import ReactDOM from "react-dom";
+import ClassNames from "classnames";
+import Input from "../input";
+import events from "../utils/events";
+import style from "./style";
 
 const POSITION = {
-  AUTO: 'auto',
-  DOWN: 'down',
-  UP: 'up'
+  AUTO: "auto",
+  DOWN: "down",
+  UP: "up"
 };
 
 class Autocomplete extends React.Component {
   static propTypes = {
     className: React.PropTypes.string,
-    direction: React.PropTypes.oneOf(['auto', 'up', 'down']),
+    direction: React.PropTypes.oneOf(["auto", "up", "down"]),
     disabled: React.PropTypes.bool,
     error: React.PropTypes.string,
     label: React.PropTypes.string,
@@ -25,8 +25,8 @@ class Autocomplete extends React.Component {
   };
 
   static defaultProps = {
-    className: '',
-    direction: 'auto',
+    className: "",
+    direction: "auto",
     multiple: true,
     source: {}
   };
@@ -65,7 +65,7 @@ class Autocomplete extends React.Component {
 
   handleQueryFocus = () => {
     this.refs.suggestions.scrollTop = 0;
-    this.setState({active: '', focus: true});
+    this.setState({active: "", focus: true});
   };
 
   handleQueryKeyUp = (event) => {
@@ -85,23 +85,23 @@ class Autocomplete extends React.Component {
   };
 
   calculateDirection () {
-    if (this.props.direction === 'auto') {
+    if (this.props.direction === "auto") {
       const client = ReactDOM.findDOMNode(this.refs.input).getBoundingClientRect();
       const screen_height = window.innerHeight || document.documentElement.offsetHeight;
       const up = client.top > ((screen_height / 2) + client.height);
-      return up ? 'up' : 'down';
+      return up ? "up" : "down";
     } else {
       return this.props.direction;
     }
   }
 
   query (key) {
-    return !this.props.multiple && this.props.value ? this._source().get(key) : '';
+    return !this.props.multiple && this.props.value ? this._source().get(key) : "";
   }
 
   _suggestions () {
     const suggestions = new Map();
-    const query = this.state.query.toLowerCase().trim() || '';
+    const query = this.state.query.toLowerCase().trim() || "";
     const values = this._values();
     for (const [key, value] of this._source()) {
       if (!values.has(key) && value.toLowerCase().trim().startsWith(query)) {
@@ -113,7 +113,7 @@ class Autocomplete extends React.Component {
 
   _source () {
     const { source } = this.props;
-    if (source.hasOwnProperty('length')) {
+    if (source.hasOwnProperty("length")) {
       return new Map(source.map((item) => [item, item]));
     } else {
       return new Map(Object.keys(source).map((key) => [key, source[key]]));
@@ -166,8 +166,8 @@ class Autocomplete extends React.Component {
       );
     });
 
-    const className = ClassNames(style.suggestions, {[style.up]: this.state.direction === 'up'});
-    return <ul ref='suggestions' className={className}>{suggestions}</ul>;
+    const className = ClassNames(style.suggestions, {[style.up]: this.state.direction === "up"});
+    return <ul ref="suggestions" className={className}>{suggestions}</ul>;
   }
 
   render () {
@@ -177,14 +177,14 @@ class Autocomplete extends React.Component {
     }, this.props.className);
 
     return (
-      <div data-react-toolbox='autocomplete' className={className}>
+      <div data-react-toolbox="autocomplete" className={className}>
         {this.props.label ? <label className={style.label}>{this.props.label}</label> : null}
         {this.renderSelected()}
         <Input
-          ref='input'
+          ref="input"
           {...this.props}
           className={style.input}
-          label=''
+          label=""
           onBlur={this.handleQueryBlur}
           onChange={this.handleQueryChange}
           onFocus={this.handleQueryFocus}

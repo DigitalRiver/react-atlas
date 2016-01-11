@@ -1,22 +1,22 @@
-import React from 'react';
-import style from './style.clock';
-import time from '../utils/time';
-import Hours from './ClockHours';
-import Minutes from './ClockMinutes';
+import React from "react";
+import style from "./style.clock";
+import time from "../utils/time";
+import Hours from "./ClockHours";
+import Minutes from "./ClockMinutes";
 
 class Clock extends React.Component {
   static propTypes = {
     className: React.PropTypes.string,
-    display: React.PropTypes.oneOf(['hours', 'minutes']),
-    format: React.PropTypes.oneOf(['24hr', 'ampm']),
+    display: React.PropTypes.oneOf(["hours", "minutes"]),
+    format: React.PropTypes.oneOf(["24hr", "ampm"]),
     onChange: React.PropTypes.func,
     time: React.PropTypes.object
   };
 
   static defaultProps = {
-    className: '',
-    display: 'hours',
-    format: '24hr',
+    className: "",
+    display: "hours",
+    format: "24hr",
     time: new Date()
   };
 
@@ -26,12 +26,12 @@ class Clock extends React.Component {
   };
 
   componentDidMount () {
-    window.addEventListener('resize', this.handleCalculateShape);
+    window.addEventListener("resize", this.handleCalculateShape);
     this.handleCalculateShape();
   }
 
   componentWillUnmount () {
-    window.removeEventListener('resize', this.handleCalculateShape);
+    window.removeEventListener("resize", this.handleCalculateShape);
   }
 
   handleHourChange = (hours) => {
@@ -55,8 +55,8 @@ class Clock extends React.Component {
   };
 
   adaptHourToFormat (hour) {
-    if (this.props.format === 'ampm') {
-      if (time.getTimeMode(this.props.time) === 'pm') {
+    if (this.props.format === "ampm") {
+      if (time.getTimeMode(this.props.time) === "pm") {
         return hour < 12 ? hour + 12 : hour;
       } else {
         return hour === 12 ? 0 : hour;
@@ -93,10 +93,10 @@ class Clock extends React.Component {
 
   render () {
     return (
-      <div data-react-toolbox='clock' className={style.root}>
-        <div ref='wrapper' className={style.wrapper} style={{height: this.state.radius * 2}}>
-          {this.props.display === 'hours' ? this.renderHours() : null}
-          {this.props.display === 'minutes' ? this.renderMinutes() : null}
+      <div data-react-toolbox="clock" className={style.root}>
+        <div ref="wrapper" className={style.wrapper} style={{height: this.state.radius * 2}}>
+          {this.props.display === "hours" ? this.renderHours() : null}
+          {this.props.display === "minutes" ? this.renderMinutes() : null}
         </div>
       </div>
     );

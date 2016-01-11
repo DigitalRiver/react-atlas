@@ -1,5 +1,5 @@
-import React from 'react';
-import style from './style.css';
+import React, { Component, PropTypes } from 'react';
+import style from './switch.css';
 import classNames from 'classnames/bind';
 
 class Switch extends React.Component {
@@ -17,11 +17,10 @@ class Switch extends React.Component {
     buttonColor: React.PropTypes.string
   };
 
-  static defaultProps = {
+ const defaultProps = {
     checked: false,
     className: '',
     disabled: false,
-
   };  
 
   render () {
@@ -78,5 +77,8 @@ class Switch extends React.Component {
     );
   }
 }
+
+Switch.propTypes = propTypes;
+Switch.defaultProps = defaultProps;
 
 export default Switch;

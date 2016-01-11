@@ -1,0 +1,7 @@
+@import './variables.css';
+
+/* Cursor Options */
+.cursor-pointer { cursor: pointer }
+.cursor-normal { cursor: normal }
+
+.pointer-events-none { pointer-events: none }

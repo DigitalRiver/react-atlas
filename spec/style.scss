@@ -1,6 +1,5 @@
 @import "../components/commons";
-@import "../components/app_bar/config";
-@import "../components/button/config";
+
 
 $offset: 1.8 * $unit;
 
@@ -31,8 +30,8 @@ $offset: 1.8 * $unit;
 
 .github {
   position: fixed;
-  top: $appbar-height - ($button-floating-height / 2);
-  right: $button-floating-height / 2;
+  top: 6.4rem - (5.6rem / 2);
+  right: 5.6rem / 2;
   z-index: $z-index-higher;
 }
 

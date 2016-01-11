@@ -46,7 +46,7 @@ class IconMenu extends React.Component {
           ripple={this.props.iconRipple}
         />
         <Menu
-          ref='menu'
+          ref="menu"
           onHide={this.props.onHide}
           onSelect={this.props.onSelect}
           onShow={this.props.onShow}

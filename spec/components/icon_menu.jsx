@@ -1,5 +1,5 @@
-import React from 'react';
-import { MenuItem, IconMenu, MenuDivider } from '../../components/menu';
+import React from "react";
+import { MenuItem, IconMenu, MenuDivider } from "../../components/menu";
 
 class IconMenuTest extends React.Component {
   state = {
@@ -7,20 +7,20 @@ class IconMenuTest extends React.Component {
   };
 
   handleShow = () => {
-    console.log('Showing menu...');
+    console.log("Showing menu...");
   };
 
   handleHide = () => {
-    console.log('Hiding menu...');
+    console.log("Hiding menu...");
   };
 
   handleSelect = (value) => {
-    console.log('Option selected', value);
+    console.log("Option selected", value);
     this.setState({selected: value});
   };
 
   handleItem = () => {
-    console.log('Refresh clicked');
+    console.log("Refresh clicked");
   };
 
   render () {
@@ -29,8 +29,8 @@ class IconMenuTest extends React.Component {
         <h5>Icon Menus</h5>
         <p>Although a menu can be used indepently with any component, we are providing a common use case with the icon menu.</p>
         <IconMenu
-          icon='more_vert'
-          position='auto'
+          icon="more_vert"
+          position="auto"
           iconRipple
           menuRipple
           onShow={this.handleShow}
@@ -39,11 +39,11 @@ class IconMenuTest extends React.Component {
           selectable
           selected={this.state.selected}
         >
-          <MenuItem onClick={this.handleItem} value='refresh' caption='Refresh' />
-          <MenuItem value='help' caption='Help & Feedback' />
-          <MenuItem value='settings' caption='Settings' />
+          <MenuItem onClick={this.handleItem} value="refresh" caption="Refresh" />
+          <MenuItem value="help" caption="Help & Feedback" />
+          <MenuItem value="settings" caption="Settings" />
           <MenuDivider />
-          <MenuItem value='signout' caption='Sign out' disabled />
+          <MenuItem value="signout" caption="Sign out" disabled />
         </IconMenu>
       </section>
     );

@@ -1,22 +1,17 @@
-import React from 'react';
-import ClassNames from 'classnames';
-import Button from '../button';
-import FontIcon from '../font_icon';
+import React, { Component, PropTypes } from 'react';
+import ClassNames from 'classnames/bind';
 import Overlay from '../overlay';
-import style from './style';
+import style from './snackbar.css';
 
-class Snackbar extends React.Component {
-  static propTypes = {
-    action: React.PropTypes.string,
-    active: React.PropTypes.bool,
-    className: React.PropTypes.string,
-    icon: React.PropTypes.string,
-    label: React.PropTypes.string.isRequired,
-    onClick: React.PropTypes.func,
-    onTimeout: React.PropTypes.func,
-    timeout: React.PropTypes.number,
-    type: React.PropTypes.string
-  };
+const propTypes = {
+    active: PropTypes.bool,
+    className: PropTypes.string,
+    timeout: PropTypes.number,
+    onTimeout: PropTypes.func,
+    children: PropTypes.node
+};
+
+class Snackbar extends Component {
 
   componentDidUpdate () {
     if (this.props.active && this.props.timeout) {
@@ -27,21 +22,31 @@ class Snackbar extends React.Component {
   }
 
   render () {
-    const {action, active, icon, label, onClick, type } = this.props;
-    const className = ClassNames([style.root, style[type]], {
-      [style.active]: active
+    const { active } = this.props;
+
+    const children = React.Children.map(this.props.children, (child) => {
+        if (typeof child === 'string') {
+          return <span className={style.text}>{child}</span>;
+        }
+        return child;
+    });
+
+    const cx = ClassNames.bind(style);
+    const className = cx({
+      root: true,
+      active
     }, this.props.className);
 
     return (
       <Overlay active={active} opacity={0}>
-        <div data-react-toolbox='snackbar' className={className}>
-          {icon ? <FontIcon value={icon} className={style.icon} /> : null}
-          <span className={style.label}>{label}</span>
-          {action ? <Button className={style.button} label={action} onClick={onClick}/> : null}
+        <div data-react-toolbox="snackbar" className={className}>
+          {children}
         </div>
       </Overlay>
     );
   }
 }
+
+Snackbar.propTypes = propTypes;
 
 export default Snackbar;

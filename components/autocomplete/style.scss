@@ -1,6 +1,6 @@
 @import "../base";
 @import "./config";
-@import "../input/config";
+
 
 .root {
   position: relative;
@@ -17,7 +17,7 @@
   }
   &.errored {
     .suggestions {
-      margin-top: - $input-underline-height;
+      margin-top: - 2rem;
     }
   }
 }
