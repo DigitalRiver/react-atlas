@@ -29,7 +29,7 @@ class Switch extends React.Component {
 
     var cx = classNames.bind(style);
 
-    let labelClassName = cx({
+    let offClassName = cx({
       sliderSmall: small && !medium && !large,
       sliderMedium: !small && !large,
       sliderLarge: large && !medium && !small,
@@ -43,16 +43,23 @@ class Switch extends React.Component {
       disabled
     });
 
-    let spanClassName = cx({
+    let buttonClassName = cx({
       handleSmall: small && !medium && !large,
       handleMedium: !small && !large,
       handleLarge: large && !medium && !small,
       disabled
     });
 
+    let onClassName = cx({
+      onColorSmall: small && !medium && !large,
+      onColorMedium: !small && !large,
+      onColorLarge: large && !medium && !small
+    });
+
     var offColorStyle = {
       background: offColor
     };
+
     var onColorStyle = {
         background: onColor
     };
@@ -62,9 +69,10 @@ class Switch extends React.Component {
     };
 
     return (
-      <label className={labelClassName} style={offColorStyle}>
+      <label className={offClassName} style={offColorStyle}>
         <input className={inputClassName} style={onColorStyle} type="checkbox" />
-        <span className={spanClassName} style={buttonColorStyle}></span>
+        <div className={buttonClassName} style={buttonColorStyle}></div>
+        <div className={onClassName} style={onColorStyle}></div>
       </label>
     );
   }

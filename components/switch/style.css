@@ -90,6 +90,47 @@
   On color
 */
 
+.onColor{
+  background: red;
+  position: relative;
+  z-index:-1;
+  left: -32px;
+}
+
+.onColorSmall{
+  composes: onColor;
+  width: 19.2px;
+  height: 19.2px;
+}
+
+.onColorMedium{
+  composes: onColor;
+  width: 32px;
+  height: 32px;
+}
+
+.onColorLarge{
+  composes: onColor;
+  width: 48px;
+  height: 48px;
+}
+
+.input:checked ~ .onColorSmall{
+    width: 100px;
+    transition: 0.2s;
+}
+
+.input:checked ~ .onColorMedium{
+    width: 100px;
+    transition: 0.2s;
+}
+
+.input:checked ~ .onColorLarge{
+    width: 140px;
+    transition: 0.2s;
+}
+
+/**
 .input:checked + .handleSmall::before{
     content: " ";
     display:block;
@@ -126,6 +167,8 @@
     width: 100px;
     height: 48px;
  }
+
+**/
 
 .inputSmall{
   composes: input;
