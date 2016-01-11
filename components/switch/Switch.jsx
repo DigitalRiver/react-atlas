@@ -2,26 +2,26 @@ import React, { Component, PropTypes } from 'react';
 import style from './switch.css';
 import classNames from 'classnames/bind';
 
-class Switch extends React.Component {
-  static propTypes = {
-    checked: React.PropTypes.bool,
+const propTypes = {
     className: React.PropTypes.string,
     disabled: React.PropTypes.bool,
-    label: React.PropTypes.string,
     name: React.PropTypes.string,
     onBlur: React.PropTypes.func,
     onChange: React.PropTypes.func,
-    onFocus: React.PropTypes.func,
     onColor: React.PropTypes.string,
     offColor: React.PropTypes.string,
     buttonColor: React.PropTypes.string
   };
 
- const defaultProps = {
+const defaultProps = {
     checked: false,
     className: '',
     disabled: false,
   };  
+
+class Switch extends React.Component {
+
+
 
   render () {
  
