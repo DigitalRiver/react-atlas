@@ -1,6 +1,6 @@
 import React from "react";
 import ClassNames from "classnames";
-import FontIcon from "../font_icon";
+
 import Ripple from "../ripple";
 import style from "./button.css";
 
@@ -53,7 +53,7 @@ class Button extends React.Component {
 
     return React.createElement(element, props,
       ripple ? <Ripple ref="ripple" centered /> : null,
-      icon ? <FontIcon className={style.icon} value={icon}/> : children
+      children
     );
   }
 }
