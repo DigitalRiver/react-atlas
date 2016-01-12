@@ -2,44 +2,43 @@
 
 On/off switches toggle the state of a single settings option. The option that the switch controls, as well as the state it’s in, should be made clear from the corresponding inline label. Switches take on the same visual properties of the radio button.
 
+EXAMPLE:
 <!-- example -->
 ```jsx
-import Switch from 'react-toolbox/lib/switch';
+        <h5>Toggle Switches</h5>
+        <p style={{marginBottom: '10px'}}></p>
+        <Switch />
 
-class SwitchTest extends React.Component {
-  state = {
-    switch: [true, false, false]
-  };
+        <h5>Toggle Switch Colors</h5>
 
-  handleChange = (index, value) => {
-    const state = this.state.switch;
-    state[index] = value;
-    this.setState({switch: state});
-  };
+        <span>On Switch Color</span>
+        <p style={{marginBottom: '10px'}}></p>
+        <Switch onColor="black"/>
 
-  render () {
-    return (
-      <section>
-        <Switch
-          checked={this.state.switch[0]}
-          label="Push notifications"
-          onChange={this.handleChange.bind(this, 0)}
-        />
-        <Switch
-          checked={this.state.switch[1]}
-          label="Mail notifications"
-          onChange={this.handleChange.bind(this, 1)}
-        />
-        <Switch
-          checked={this.state.switch[2]}
-          disabled
-          label="Nothing, thanks"
-          onChange={this.handleChange.bind(this, 2)}
-        />
-      </section>
-    );
-  }
-}
+        <span>Off Switch Color</span>
+        <p style={{marginBottom: '10px'}}></p>
+        <Switch offColor="black"/>
+
+        <span>Button Switch Color</span>
+        <p style={{marginBottom: '10px'}}></p>
+        <Switch buttonColor='black'/>
+
+        <h5>Disabled</h5>
+        <p style={{marginBottom: '10px'}}></p>
+        <Switch disabled/>
+
+        <h5>Switch sizes</h5>
+        <span>Small</span>
+        <p style={{marginBottom: '10px'}}></p>
+        <Switch small/>
+
+
+        <span>Medium</span>
+        <Switch medium checked />
+
+        <span>Large</span>
+        <p style={{marginBottom: '10px'}}></p>
+        <Switch large/>
 ```
 
 ## Properties
@@ -47,10 +46,8 @@ class SwitchTest extends React.Component {
 | Name              | Type          | Default         | Description|
 |:-----|:-----|:-----|:-----|
 | `checked`      | `Boolean`   | `false` | If true, the switch will be enabled.|
-| `className`    | `String`   | `''`  | Sets a class to give custom styles to the switch.|
 | `disabled`     | `Boolean`  | `false`  | If true, component will be disabled.|
-| `label`        | `String`   |       | The text string to use for the floating label element.|
 | `name`         | `String`   |        | The text string used as name of the input.|
-| `onBlur`       | `Function` |        | Callback function that is fired when when the switch is blurred.|
-| `onChange`     | `Function` |        | Callback function that is fired when the components's value changes.|
-| `onFocus`      | `Function`  |        | Callback function fire when the switch is focused.|
+| `onColor`      | `String`   | #4cd864| The color of the Switch when state is on.|
+| `offColor`     | `String`   | #d8d9db| The color of the Switch when state if off.|
+| `buttonColor`  | `String`   |   white| The color of the toggle button.|
