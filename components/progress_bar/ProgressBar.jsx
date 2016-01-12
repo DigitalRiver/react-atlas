@@ -1,30 +1,10 @@
-import React from "react";
-import ClassNames from "classnames";
-import style from "./style";
-import prefixer from "../utils/prefixer";
+import React from 'react';
+import classNames from 'classnames/bind';
+import style from './progressBar.css';
+import prefixer from '../utils/prefixer';
 
+//TODO Change this to a self contained component from the current version that requires too much logic in the parent component
 class ProgressBar extends React.Component {
-  static propTypes = {
-    buffer: React.PropTypes.number,
-    className: React.PropTypes.string,
-    max: React.PropTypes.number,
-    min: React.PropTypes.number,
-    mode: React.PropTypes.string,
-    multicolor: React.PropTypes.bool,
-    type: React.PropTypes.oneOf(["linear", "circular"]),
-    value: React.PropTypes.number
-  };
-
-  static defaultProps = {
-    buffer: 0,
-    className: "",
-    max: 100,
-    min: 0,
-    mode: "indeterminate",
-    multicolor: false,
-    type: "linear",
-    value: 0
-  };
 
   calculateRatio (value) {
     if (value < this.props.min) return 0;
@@ -68,17 +48,18 @@ class ProgressBar extends React.Component {
   }
 
   render () {
-    const className = ClassNames(style[this.props.type], {
-      [style[this.props.mode]]: this.props.mode,
-      [style.multicolor]: this.props.multicolor
-    }, this.props.className);
+    const {buffer, type, mode, value, min, max, ...props} = this.props;
+    const cx = classNames.bind(style);
+    const className = cx({
+      [this.props.type]: this.props.type,
+      [this.props.mode]: this.props.mode,
+    });
 
     return (
-      <div
-        data-react-toolbox="progress-bar"
-        aria-valuenow={this.props.value}
-        aria-valuemin={this.props.min}
-        aria-valuemax={this.props.max}
+      <div data-react-toolbox='progress-bar'
+        aria-valuenow={value}
+        aria-valuemin={min}
+        aria-valuemax={max}
         className={className}
       >
         {this.props.type === "circular" ? this.renderCircular() : this.renderLinear()}
@@ -86,5 +67,27 @@ class ProgressBar extends React.Component {
     );
   }
 }
+
+ProgressBar.propTypes = {
+  buffer: React.PropTypes.number,
+  className: React.PropTypes.string,
+  max: React.PropTypes.number,
+  min: React.PropTypes.number,
+  mode: React.PropTypes.string,
+  multicolor: React.PropTypes.bool,
+  type: React.PropTypes.oneOf(['linear', 'circular']),
+  value: React.PropTypes.number
+};
+
+ProgressBar.defaultProps = {
+  buffer: 0,
+  className: '',
+  max: 100,
+  min: 0,
+  mode: 'indeterminate',
+  multicolor: false,
+  type: 'linear',
+  value: 0
+};
 
 export default ProgressBar;
