@@ -3,36 +3,73 @@ import style from './switch.css';
 import classNames from 'classnames/bind';
 
 const propTypes = {
-    checked: PropTypes.bool,
-    className: PropTypes.string,
-    disabled: PropTypes.bool,
-    label: PropTypes.string,
-    name: PropTypes.string,
-    onBlur: PropTypes.func,
-    onChange: PropTypes.func,
-    onFocus: PropTypes.func
+    disabled: React.PropTypes.bool,
+    name: React.PropTypes.string,
+    onColor: React.PropTypes.string,
+    offColor: React.PropTypes.string,
+    buttonColor: React.PropTypes.string
   };
 
- const defaultProps = {
+const defaultProps = {
     checked: false,
     className: '',
-    disabled: false
-  };
+    disabled: false,
+  };  
 
-class Switch extends Component {
+class Switch extends React.Component {
+
+
+
   render () {
-    const {checked, className, disabled, inline, name, slider, handle} = this.props;
+ 
+    const {checked,  disabled, inline, name, slider, small, medium, large, onColor, offColor, buttonColor} = this.props;
 
-    const cx = classNames.bind(style);
-    let labelClassname = cx({
-      slider: true,
-      [className]: true
+    var cx = classNames.bind(style);
+
+    let offClassName = cx({
+      sliderSmall: small && !medium && !large,
+      sliderMedium: !small && !large,
+      sliderLarge: large && !medium && !small,
+      disabled
     });
 
+    let inputClassName = cx({
+      inputSmall: small && !medium && !large,
+      inputMedium: !small && !large,
+      inputLarge: large && !medium && !small,
+      disabled
+    });
+
+    let buttonClassName = cx({
+      handleSmall: small && !medium && !large,
+      handleMedium: !small && !large,
+      handleLarge: large && !medium && !small,
+      disabled
+    });
+
+    let onClassName = cx({
+      onColorSmall: small && !medium && !large,
+      onColorMedium: !small && !large,
+      onColorLarge: large && !medium && !small
+    });
+
+    var offColorStyle = {
+      background: offColor
+    };
+
+    var onColorStyle = {
+        background: onColor
+    };
+
+    var buttonColorStyle = {
+      background: buttonColor
+    };
+
     return (
-      <label className={labelClassname}>
-        <input className={style.input} type="checkbox"></input>
-        <span className={style.handle}></span>
+      <label className={offClassName} style={offColorStyle}>
+        <input className={inputClassName} style={onColorStyle} type="checkbox" />
+        <div className={buttonClassName} style={buttonColorStyle}></div>
+        <div className={onClassName} style={onColorStyle}></div>
       </label>
     );
   }
