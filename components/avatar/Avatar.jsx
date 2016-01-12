@@ -1,5 +1,5 @@
 import React, {PropTypes} from "react";
-import FontIcon from "../font_icon";
+
 import style from "./avatar.css";
 
 const Avatar = ({children, className, icon, image, title, ...other}) => {
@@ -14,8 +14,6 @@ const Avatar = ({children, className, icon, image, title, ...other}) => {
     avatar = <img className={style.image} src={image} title={title} />;
   } else if (image){
     avatar = image;
-  } else if (typeof icon === "string"){
-    avatar = <FontIcon className={style.letter} value={icon} />;
   } else if (icon){
     avatar = icon;
   } else if (title) {
