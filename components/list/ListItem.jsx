@@ -1,6 +1,5 @@
 import React from "react";
 import ClassNames from "classnames";
-import FontIcon from "../font_icon";
 import ListItemContent from "./ListItemContent";
 import Ripple from "../ripple";
 import style from "./style";
@@ -47,11 +46,11 @@ class ListItem extends React.Component {
 
     return (
       <span className={className}>
-        {this.props.leftIcon ? <FontIcon className={`${style.icon} ${style.left}`} value={this.props.leftIcon} /> : null}
+        {this.props.leftIcon ? <span className={`${style.icon} ${style.left}`} value={this.props.leftIcon}></span> : null}
         {this.props.avatar ? <img className={style.avatar} src={this.props.avatar} /> : null}
         <ListItemContent caption={this.props.caption} legend={this.props.legend} />
         {this.props.ripple ? <Ripple ref="ripple" className={style.ripple} spread={2} /> : null}
-        {this.props.rightIcon ? <FontIcon className={`${style.icon} ${style.right}`} value={this.props.rightIcon} /> : null}
+        {this.props.rightIcon ? <span className={`${style.icon} ${style.right}`} value={this.props.rightIcon}></span> : null}
       </span>
     );
   }

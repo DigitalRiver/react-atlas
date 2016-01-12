@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../components/button";
-import FontIcon from "../../components/font_icon";
+
 import Snackbar from "../../components/snackbar";
 
 class SnackbarTest extends React.Component {
@@ -33,7 +33,7 @@ class SnackbarTest extends React.Component {
           onTimeout={this.handleSnackbarTimeout}
           type="cancel"
         >
-          <FontIcon value="comments" />
+
           Snackbar action cancel
           <Button onClick={this.handleSnackbarClick}>Hide</Button>
         </Snackbar>

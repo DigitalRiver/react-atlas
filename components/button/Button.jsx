@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import FontIcon from '../font_icon';
 import Tooltip from '../tooltip';
 import style from './button.css';
 
@@ -114,7 +113,6 @@ class Button extends Component {
 
     return React.createElement(element, props,
       tooltip ? <Tooltip className={style.tooltip} label={tooltip}/> : null,
-      icon ? <FontIcon className={style.icon} value={icon}/> : null,
       label,
       children
     );

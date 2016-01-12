@@ -1,5 +1,4 @@
 import React from 'react';
-import FontIcon from '../font_icon';
 import Ripple from '../ripple';
 import style from './style.menu_item';
 
@@ -47,7 +46,7 @@ class MenuItem extends React.Component {
         onClick={this.handleClick}
         onMouseDown={this.handleMouseDown}
       >
-        {this.props.icon ? <FontIcon value={this.props.icon} className={style.icon}/> : null}
+        {this.props.icon ? <span value={this.props.icon} className={style.icon}></span> : null}
         <span className={style.caption}>{this.props.caption}</span>
         {this.props.shortcut ? <small className={style.shortcut}>{this.props.shortcut}</small> : null}
         {this.props.ripple ? <Ripple ref="ripple" className={style.ripple} spread={2.5} /> : null}
