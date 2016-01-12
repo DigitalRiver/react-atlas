@@ -3,11 +3,8 @@ import style from './switch.css';
 import classNames from 'classnames/bind';
 
 const propTypes = {
-    className: React.PropTypes.string,
     disabled: React.PropTypes.bool,
     name: React.PropTypes.string,
-    onBlur: React.PropTypes.func,
-    onChange: React.PropTypes.func,
     onColor: React.PropTypes.string,
     offColor: React.PropTypes.string,
     buttonColor: React.PropTypes.string
@@ -25,7 +22,7 @@ class Switch extends React.Component {
 
   render () {
  
-    const {checked, className, disabled, inline, name, slider, small, medium, large, onColor, offColor, buttonColor} = this.props;
+    const {checked,  disabled, inline, name, slider, small, medium, large, onColor, offColor, buttonColor} = this.props;
 
     var cx = classNames.bind(style);
 

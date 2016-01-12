@@ -130,6 +130,14 @@
     transition: 0.2s;
 }
 
+.disabled{
+  composes: decoration-none from '../styles.css';
+  cursor: not-allowed;
+  opacity: .65;
+  pointer-events: none;
+  
+}
+
 /**
 .input:checked + .handleSmall::before{
     content: " ";
