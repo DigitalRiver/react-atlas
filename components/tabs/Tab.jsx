@@ -1,5 +1,5 @@
 import React from 'react';
-import ClassNames from 'classnames';
+import ClassNames from 'classnames/bind';
 import style from './style';
 
 const propTypes = {
@@ -33,15 +33,18 @@ class Tab extends React.Component {
   };
 
   render () {
-    const className = ClassNames(style.label, {
-      [style.active]: this.props.active,
-      [style.hidden]: this.props.hidden,
-      [style.disabled]: this.props.disabled
+    let {active, hidden, disabled, label} = this.props;
+    const cx = ClassNames.bind(style);
+    const className = cx({
+      label: true,
+      active,
+      hidden,
+      disabled
     }, this.props.className);
 
     return (
       <label className={className} onClick={this._handleClick}>
-        {this.props.label}
+        {label}
       </label>
     );
   }
