@@ -1,30 +1,28 @@
 import React from 'react';
 import style from './style';
 
-class TabContent extends React.Component {
-  static propTypes = {
-    active: React.PropTypes.bool,
-    children: React.PropTypes.node,
-    className: React.PropTypes.string,
-    tabIndex: React.PropTypes.number
-  };
+const propTypes = {
+  active: React.PropTypes.bool,
+  children: React.PropTypes.node,
+  className: React.PropTypes.string,
+  tabIndex: React.PropTypes.number
+};
 
-  static defaultProps = {
-    active: false,
-    className: ''
-  };
+const defaultProps = {
+  active: false,
+  className: ''
+};
 
-  render () {
-    let className = style.tab;
-    if (this.props.active) className += ` ${style.active}`;
-    if (this.props.className) className += ` ${this.props.className}`;
+const TabContent = ({active, tabIndex, children, className}) => {
+    let classNames = style.tab;
+    if (active) className += ` ${style.active}`;
+    if (className) classNames += ` ${className}`;
 
     return (
-      <section className={className} tabIndex={this.props.tabIndex}>
-        {this.props.children}
+      <section className={classNames} tabIndex={tabIndex}>
+        {children}
       </section>
     );
-  }
-}
+};
 
 export default TabContent;
