@@ -19,7 +19,7 @@
   box-shadow: 0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.24);
 }
 .disabled {
-  composes: cursor-normal from '../styles.css';
+  composes: cursor-default from '../styles.css';
   composes: gray from '../styles.css';
   composes: border-bottom-dotted from '../styles.css';
   composes: point-events-bottom from '../styles.css';

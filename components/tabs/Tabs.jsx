@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Tab from "./Tab";
 import TabContent from "./TabContent";
-import style from "./style";
+import style from "./tabs.css";
 
 const propTypes = {
   children: PropTypes.node,
@@ -15,30 +15,13 @@ const defaultProps = {
 };
 
 class Tabs extends Component {
-  constructor (props) {
-      super(props);
-      this.state = {
-          pointer: {}
-      };
-  }
-
-  componentDidMount () {
-    setTimeout(() => {
-      this._updatePointer(this.props.index);
-    }, 100);
-  }
-
-  componentWillReceiveProps (nextProps) {
-    this._updatePointer(nextProps.index);
-  }
-
   _handleHeaderClick = (idx) => {
     if (this.props.onChange) this.props.onChange(idx);
   };
 
   _parseChildren = () => {
-    const headers = [];
-    const contents = [];
+    let headers = [];
+    let contents = [];
 
     React.Children.forEach(this.props.children, (item) => {
       if (item.type === Tab) {
@@ -51,52 +34,32 @@ class Tabs extends Component {
       }
     });
 
-    return {headers, contents};
-  };
-
-  _updatePointer = (idx) => {
-    const startPoint = this.refs.tabs.getBoundingClientRect().left;
-    const label = this.refs.navigation.children[idx].getBoundingClientRect();
-    this.setState({
-      pointer: {
-        top: `${this.refs.navigation.getBoundingClientRect().height}px`,
-        left: `${label.left - startPoint}px`,
-        width: `${label.width}px`
-      }
-    });
+    return { headers, contents };
   };
 
   _renderHeaders = (headers) => {
     return headers.map((item, idx) => {
-      return React.cloneElement(item, {
-        key: idx,
-        active: this.props.index === idx,
-        onClick: this._handleHeaderClick.bind(this, idx, item)
-      });
+      return <Tab {...item.props} key={idx} active={this.props.index === idx} onClick={this._handleHeaderClick.bind(this, idx)} />
     });
   };
 
   _renderContents = (contents) => {
     return contents.map((item, idx) => {
-      return React.cloneElement(item, {
-        key: idx,
-        active: this.props.index === idx,
-        tabIndex: idx
-      });
+      return <TabContent {...item.props} key={idx} active={this.props.index === idx} tabIndex={idx} />
     });
   };
 
   render () {
-    let className = style.root;
     const { headers, contents } = this._parseChildren();
+
+    let className = style.container;
     if (this.props.className) className += ` ${this.props.className}`;
 
     return (
-      <div ref="tabs" className={className}>
+      <div className={className}>
         <nav className={style.navigation} ref="navigation">
           {this._renderHeaders(headers)}
         </nav>
-        <span className={style.pointer} style={this.state.pointer} />
         {this._renderContents(contents)}
       </div>
     );

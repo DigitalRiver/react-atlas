@@ -2,6 +2,7 @@
 
 /* Cursor Options */
 .cursor-pointer { cursor: pointer }
-.cursor-normal { cursor: normal }
+.cursor-default { cursor: default }
+.cursor-not-allowed { cursor: not-allowed }
 
 .pointer-events-none { pointer-events: none }

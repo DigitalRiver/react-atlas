@@ -1,11 +1,12 @@
-import React from 'react';
-import style from './style';
+import React, { Component, PropTypes } from 'react';
+import ClassNames from 'classnames/bind';
+import style from './tabs.css';
 
 const propTypes = {
-  active: React.PropTypes.bool,
-  children: React.PropTypes.node,
-  className: React.PropTypes.string,
-  tabIndex: React.PropTypes.number
+  active: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  tabIndex: PropTypes.number
 };
 
 const defaultProps = {
@@ -14,9 +15,11 @@ const defaultProps = {
 };
 
 const TabContent = ({active, tabIndex, children, className}) => {
-    let classNames = style.tab;
-    if (active) className += ` ${style.active}`;
-    if (className) classNames += ` ${className}`;
+    const cx = ClassNames.bind(style);
+    const classNames = cx({
+      tabContent: true,
+      tabActive: active
+    }, className);
 
     return (
       <section className={classNames} tabIndex={tabIndex}>
@@ -24,5 +27,8 @@ const TabContent = ({active, tabIndex, children, className}) => {
       </section>
     );
 };
+
+TabContent.propTypes = propTypes;
+TabContent.defaultProps = defaultProps;
 
 export default TabContent;

@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import ClassNames from 'classnames/bind';
-import style from './style';
+import style from './tabs.css';
 
 const propTypes = {
-  active: React.PropTypes.bool,
-  className: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  hidden: React.PropTypes.bool,
-  label: React.PropTypes.any.isRequired,
-  onActive: React.PropTypes.func,
-  onClick: React.PropTypes.func
+  active: PropTypes.bool,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  hidden: PropTypes.bool,
+  label: PropTypes.any.isRequired,
+  onActive: PropTypes.func,
+  onClick: PropTypes.func
 };
 
 const defaultProps = {
@@ -19,7 +19,7 @@ const defaultProps = {
   hidden: false
 };
 
-class Tab extends React.Component {
+class Tab extends Component {
   componentDidUpdate (prevProps) {
     if (!prevProps.active && this.props.active && this.props.onActive) {
       this.props.onActive();
@@ -33,10 +33,12 @@ class Tab extends React.Component {
   };
 
   render () {
-    let {active, hidden, disabled, label} = this.props;
+    let { active, hidden, disabled, label } = this.props;
+
     const cx = ClassNames.bind(style);
+
     const className = cx({
-      label: true,
+      label: !active && !hidden && !disabled,
       active,
       hidden,
       disabled
