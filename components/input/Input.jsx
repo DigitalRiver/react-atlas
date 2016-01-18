@@ -40,8 +40,8 @@ class Input extends Component {
 
         return (
           <div data-react-toolbox="input">
-            <label className={style.label} {...this.props} >{labelText}</label>
-            <input className={inputClassName} {...this.props} onChange={this.props.onChange} type={type} />
+            <label {...this.props} className={style.label}>{labelText}</label>
+            <input {...this.props} className={inputClassName} onChange={this.props.onChange} type={type} />
           </div>
         );
     }

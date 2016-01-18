@@ -1,7 +1,8 @@
-import React from "react";
-import { RadioGroup, RadioButton } from "../../components/radio";
+import React, { Component } from 'react';
+import { RadioGroup, Radio } from "../../components/radio";
+import Overlay from "../../components/overlay"
 
-class RadioGroupTest extends React.Component {
+class RadioGroupTest extends Component {
   state = {
     value: "vvendetta"
   };
@@ -26,10 +27,10 @@ class RadioGroupTest extends React.Component {
         <p style={{marginBottom: "10px"}}>Lorem ipsum...</p>
 
         <RadioGroup name="comic">
-          <RadioButton label="The Walking Dead" value="thewalkingdead"/>
-          <RadioButton label="From Hell" value="fromhell" disabled/>
-          <RadioButton label="V for a Vendetta" value="vvendetta" className="someClassIMadeUp" inline onFocus={this.handleFocus}/>
-          <RadioButton label="Watchmen" value="watchmen" inline onBlur={this.handleBlur}/>
+          <Radio label="The Walking Dead" value="thewalkingdead" defaultChecked />
+          <Radio label="From Hell" value="fromhell" disabled/>
+          <Radio label="V for a Vendetta" value="vvendetta" className="someClassIMadeUp" inline onFocus={this.handleFocus}/>
+          <Radio label="Watchmen" value="watchmen" inline onBlur={this.handleBlur}/>
         </RadioGroup>
       </section>
     );

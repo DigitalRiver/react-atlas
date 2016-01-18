@@ -26,7 +26,7 @@ export IconMenu from './menu/IconMenu';
 export Navigation from './navigation';
 export ProgressBar from './progress_bar';
 export RadioGroup from './radio/RadioGroup';
-export RadioButton from './radio/RadioButton';
+export Radio from './radio/Radio';
 export Ripple from './ripple';
 export Slider from './slider';
 export Snackbar from './snackbar';

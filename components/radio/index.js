@@ -1,2 +1,2 @@
-export RadioButton from './RadioButton';
+export Radio from './Radio';
 export RadioGroup from './RadioGroup';

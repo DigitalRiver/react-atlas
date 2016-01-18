@@ -1,31 +1,31 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
+import Radio from './Radio';
 
-class RadioGroup extends React.Component {
-  static propTypes = {
-    children: React.PropTypes.node,
-    className: React.PropTypes.string,
-    name: React.PropTypes.string
-  };
+const propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  name: PropTypes.string
+};
 
-  static defaultProps = {
-    className: ''
-  };
+const defaultProps = {
+  className: ''
+};
 
-  renderRadioButtons = () => {
-    return React.Children.map(this.props.children, (child) => {
-        return React.cloneElement(child, {
-          "name": this.props.name
-        });
-    });
-  };
-
-  render () {
-    return (
-      <div className={this.props.className}>
-        {this.renderRadioButtons()}
+const RadioGroup = ({className, children, name, ...props}) => {
+  return (
+      <div {...props} className={className}>
+        {React.Children.map(children, (child) => {
+          if (child.type === Radio) {
+            return <Radio {...child.props} name={name}/>
+          } else {
+            return child
+          }
+        })}
       </div>
-    );
-  }
-}
+  )
+};
+
+RadioGroup.propTypes = propTypes;
+RadioGroup.defaultProps = defaultProps;
 
 export default RadioGroup;
