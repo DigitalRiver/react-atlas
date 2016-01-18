@@ -17,6 +17,10 @@ This project uses CSS Modules and CSS Next for styling. To process this we use P
   - [Webpack CSS Loader](https://github.com/webpack/css-loader)
   - [PostCSS Modules](https://github.com/outpunk/postcss-modules)
   - [CSS Modules Require Hook](https://github.com/css-modules/css-modules-require-hook)
+- ES6/JSX compiler. We use the following Babel presets:
+  - [es2015](https://babeljs.io/docs/plugins/preset-es2015/)
+  - [react](http://babeljs.io/docs/plugins/preset-react/)
+  - [stage-1](http://babeljs.io/docs/plugins/preset-stage-1/)
 
 ## Usage
 
