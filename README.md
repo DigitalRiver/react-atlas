@@ -5,15 +5,18 @@ React Atlas is a React component library, with a focus on supplying Admin Interf
 React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). We liked the hierarchy and the way the components were built. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic. We hope that React Atlas will be that tool.
 
 ## Requirements
-This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.digitalriverws.net/ux/react-atlas/wiki/Decisions#a-note-on-css)). At minimum your application will need to have the following packages to correct interpret and use our library:
-- [PostCSS](https://github.com/postcss/postcss), with following plugins:
+If using this Library via NPM, you will need to make sure you reference the CSS file that is packaged with it. That should be it. Oh, also this library only officially supports [Node 4.2.x](https://nodejs.org/en/).
+
+If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
+
+This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.digitalriverws.net/ux/react-atlas/wiki/Decisions#a-note-on-css)). At minimum your application will need to have the following packages to correctly interpret and use our library:
+- [PostCSS](https://github.com/postcss/postcss), with the following plugins:
   - [PostCSS Import](https://github.com/postcss/postcss-import)
   - [CSS Next](https://github.com/cssnext/postcss-cssnext)
 - A way to interpret CSS Modules, could be any of the following depending on your environment:
   - [Webpack CSS Loader](https://github.com/webpack/css-loader)
   - [PostCSS Modules](https://github.com/outpunk/postcss-modules)
   - [CSS Modules Require Hook](https://github.com/css-modules/css-modules-require-hook)
-- [Node 4.2.x](https://nodejs.org/en/)
 
 ## Usage
 
