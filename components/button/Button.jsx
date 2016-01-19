@@ -50,14 +50,6 @@ const defaultProps = {
 
 class Button extends Component {
 
-  handleMouseDown = (event) => {
-    if (this.props.onMouseDown) this.props.onMouseDown(event);
-  };
-
-  handleMouseUp = () => {
-    this.refs.button.blur();
-  };
-
   render () {
 
     const {accent, outline, href, icon, label, loading, mini,
@@ -104,15 +96,11 @@ class Button extends Component {
       href,
       className,
       disabled: disabled || this.props.loading,
-      onMouseDown: this.handleMouseDown,
-      onTouchStart: this.handleTouchStart,
-      onMouseUp: this.handleMouseUp,
       role,
       'data-react-toolbox': 'button'
     };
 
     return React.createElement(element, props,
-      tooltip ? <Tooltip className={style.tooltip} label={tooltip}/> : null,
       label,
       children
     );

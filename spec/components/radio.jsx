@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { RadioGroup, Radio } from "../../components/radio";
-import Overlay from "../../components/overlay"
 
 class RadioGroupTest extends Component {
   state = {

@@ -1,25 +1,26 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import style from './style';
+import ClassNames from 'classnames/bind';
+import style from './overlay.css';
 
-class Overlay extends React.Component {
-  static propTypes = {
-    active: React.PropTypes.bool,
-    children: React.PropTypes.node,
-    className: React.PropTypes.string,
-    onClick: React.PropTypes.func,
-    opacity: React.PropTypes.number
-  };
+const propTypes = {
+  active: React.PropTypes.bool,
+  children: React.PropTypes.node,
+  className: React.PropTypes.string,
+  invisible: React.PropTypes.bool,
+  onClick: React.PropTypes.func
+};
 
-  static defaultProps = {
-    opacity: 0.5
-  };
+const defaultProps = {
+   invisible: false
+};
+
+class Overlay extends Component {
 
   componentDidMount () {
-    this.app = document.querySelector('[data-react-toolbox="app"]') || document.body;
-    this.node = document.createElement('div');
-    this.node.setAttribute('data-react-toolbox', 'overlay');
-    this.app.appendChild(this.node);
+    this.overlay = document.createElement('div');
+    this.overlay.setAttribute('data-react-atlas', 'overlay');
+    document.body.appendChild(this.overlay);
     this.handleRender();
   }
 
@@ -28,34 +29,31 @@ class Overlay extends React.Component {
   }
 
   componentWillUnmount () {
-    ReactDOM.unmountComponentAtNode(this.node);
-    this.app.removeChild(this.node);
+    ReactDOM.unmountComponentAtNode(this.overlay);
+    document.body.removeChild(this.overlay);
   }
 
   handleRender () {
-    let className = style.root;
-    const overlayStyle = {};
+    const { className, active, invisible, children, onClick } = this.props;
 
-    if (this.props.active) {
-      className += ` ${style.active}`;
-      overlayStyle.opacity = this.props.opacity;
-    }
-    if (this.props.className) className += ` ${className}`;
+    const cx = ClassNames.bind(style);
+    const classNames = cx({
+      inactive: !active,
+      active,
+      invisible,
+      className
+    });
 
     ReactDOM.render(
-      <div className={className}>
-        <div
-          className={style.overlay}
-          onClick={this.props.onClick}
-          style={overlayStyle}
-        />
-        {this.props.children}
+      <div className={classNames}>
+        <div className={style.overlay} onClick={onClick} />
+        {children}
       </div>
-    , this.node);
+    , this.overlay);
   }
 
   render () {
-    return React.DOM.noscript();
+    return null;
   }
 }
 

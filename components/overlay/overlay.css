@@ -1,0 +1,45 @@
+.container {
+    composes: fixed from '../styles.css';
+    composes: top-0 from '../styles.css';
+    composes: left-0 from '../styles.css';
+    composes: z-4 from '../styles.css';
+    composes: flex from '../styles.css';
+    composes: flex-column from '../styles.css';
+    composes: flex-center from '../styles.css';
+    composes: width-100 from '../styles.css';
+    composes: height-100 from '../styles.css';
+    align-content: center;
+    justify-content: center;
+}
+
+.inactive {
+    composes: container;
+    composes: display-none from '../styles.css';
+    composes: pointer-events-none from '../styles.css';
+}
+
+.active {
+    composes: container;
+    composes: pointer-events-all from '../styles.css';
+}
+
+.active > .overlay {
+    opacity: .6;
+}
+
+.overlay {
+    composes: absolute from '../styles.css';
+    composes: top-0 from '../styles.css';
+    composes: left-0 from '../styles.css';
+    composes: width-100 from '../styles.css';
+    composes: bg-black from '../styles.css';
+    composes: height-100 from '../styles.css';
+    opacity: 0;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: .35s;
+    transition-property: opacity;
+}
+
+.invisible > *:not(.overlay) {
+    pointer-events: all;
+}

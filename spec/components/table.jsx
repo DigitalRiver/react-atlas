@@ -3,20 +3,6 @@ import { Table, Th, Thead, Tbody, Tr, Td } from '../../components/table';
 import Col from '../../components/col';
 
 class TableTest extends Component {
-  state = {
-    selected: [],
-    source: users
-  };
-
-  handleChange = (row, key, value) => {
-    const source = this.state.source;
-    source[row][key] = value;
-    this.setState({source});
-  };
-
-  handleSelect = (selected) => {
-    this.setState({selected});
-  };
 
   render () {
     return (
