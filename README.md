@@ -87,6 +87,8 @@ Local documentation will be available at http://localhost:3001/
 ## Authors and Contributors
 Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.digitalriverws.net/ux/react-atlas/blob/master/CONTRIBUTING.md)***
 
+Please note that this project is released with a [Contributor Code of Conduct](https://github.digitalriverws.net/ux/react-atlas/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+
 The project is being initially developed and maintained by the DR UX team.
 
 ## [Read the Wiki](https://github.digitalriverws.net/ux/react-atlas/wiki)
