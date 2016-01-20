@@ -1,5 +1,5 @@
 # Contributing
-
+Please note that this project is released with a [Contributor Code of Conduct](https://github.digitalriverws.net/ux/react-atlas/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 ## READ: [General Contributing Guidelines on Github](https://guides.github.com/activities/contributing-to-open-source/#contributing)
 
 ### Development
