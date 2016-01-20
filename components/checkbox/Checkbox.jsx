@@ -11,26 +11,6 @@ const propTypes = {
     title: PropTypes.string
 };
 
-class Checkbox extends Component {
-  render () {
-      const {title, label, disabled, inline, className, ...props} = this.props;
-      const cx = ClassNames.bind(style);
-      const componentClass = cx({
-          "block": !inline,
-          inline,
-          disabled,
-          className
-      });
-
-      return (
-          <label className={componentClass} title={title}>
-              <input {...props} type="checkbox" disabled={disabled} className={style.input} />
-              {label && <span className={style.label}>{label}</span>}
-          </label>
-      );
-  }
-}
-
 const Checkbox = ({title, label, disabled, inline, className, ...other}) => {
       const cx = ClassNames.bind(style);
       const componentClass = cx({
@@ -46,8 +26,7 @@ const Checkbox = ({title, label, disabled, inline, className, ...other}) => {
               {label && <span className={style.label}>{label}</span>}
           </label>
       );
-
-}
+};
 
 Checkbox.propTypes = propTypes;
 
