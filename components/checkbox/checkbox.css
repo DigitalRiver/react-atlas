@@ -22,5 +22,5 @@
 
 .input {
     composes: relative from '../styles.css';
-    top: -1px;
+    top: 1px;
 }
