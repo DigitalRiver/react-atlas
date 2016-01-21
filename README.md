@@ -9,7 +9,7 @@ If using this Library via NPM, you will need to make sure you reference the CSS 
 
 If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
 
-This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.digitalriverws.net/ux/react-atlas/wiki/Decisions#a-note-on-css)). At minimum your application will need to have the following packages to correctly interpret and use our library:
+This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.com/DigitalRiver/react-atlas/wiki/Decisions#a-note-on-css)). At minimum your application will need to have the following packages to correctly interpret and use our library:
 - [PostCSS](https://github.com/postcss/postcss), with the following plugins:
   - [PostCSS Import](https://github.com/postcss/postcss-import)
   - [CSS Next](https://github.com/cssnext/postcss-cssnext)
@@ -85,14 +85,14 @@ npm start
 Local documentation will be available at http://localhost:3001/
 
 ## Authors and Contributors
-Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.digitalriverws.net/ux/react-atlas/blob/master/CONTRIBUTING.md)***
+Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.com/DigitalRiver/react-atlas/blob/master/CONTRIBUTING.md)***
 
-Please note that this project is released with a [Contributor Code of Conduct](https://github.digitalriverws.net/ux/react-atlas/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/DigitalRiver/react-atlas/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 The project is being initially developed and maintained by the DR UX team.
 
-## [Read the Wiki](https://github.digitalriverws.net/ux/react-atlas/wiki)
-Check out [our wiki](https://github.digitalriverws.net/ux/react-atlas/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
+## [Read the Wiki](https://github.com/DigitalRiver/react-atlas/wiki)
+Check out [our wiki](https://github.com/DigitalRiver/react-atlas/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
 
 ## Set-Up/Installation for Development and Contributing
 
