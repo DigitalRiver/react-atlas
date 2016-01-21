@@ -1,11 +1,11 @@
 # React Atlas
-React Atlas is a React component library, with a focus on supplying Admin Interface tools. The goal of this repo to is to eventually be the library that can power most of Digital River's complex admin interfaces. With this in mind, we need a fast, generic, composable library that can be dropped into a project and 'just work'.
+React Atlas is a React component library, with a focus on supplying Admin Interface tools. The end-goal of this repo to is to eventually be the library that can power most of Digital River's complex admin interfaces. With this in mind, we need a fast, generic, composable library that can be dropped into a project and 'just work'.
 
 ## Why?
-React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). We liked the hierarchy and the way the components were built. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic. We hope that React Atlas will be that tool.
+React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). We liked the hierarchy and the way the components were built among many other things. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic looking in regards to style and functionality. We hope that React Atlas will be that tool.
 
 ## Requirements
-If using this Library via NPM, you will need to make sure you reference the CSS file that is packaged with it. That should be it. Oh, also this library only officially supports [Node 4.2.x](https://nodejs.org/en/).
+If using react-atlas via NPM, you will need to make sure you reference the CSS file that is packaged with it. That should be it. Oh, also this library only officially supports [Node 4.2.x](https://nodejs.org/en/) and React 0.14.x, for now.
 
 If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
 
@@ -13,26 +13,28 @@ This project uses CSS Modules and CSS Next for styling. To process this we use P
 - [PostCSS](https://github.com/postcss/postcss), with the following plugins:
   - [PostCSS Import](https://github.com/postcss/postcss-import)
   - [CSS Next](https://github.com/cssnext/postcss-cssnext)
+  - [Autoprefixer](https://github.com/postcss/autoprefixer)
 - A way to interpret CSS Modules, could be any of the following depending on your environment:
   - [Webpack CSS Loader](https://github.com/webpack/css-loader)
   - [PostCSS Modules](https://github.com/outpunk/postcss-modules)
+  - [Babel Plugin CSS Modules Transform](https://github.com/michalkvasnicak/babel-plugin-css-modules-transform)
   - [CSS Modules Require Hook](https://github.com/css-modules/css-modules-require-hook)
-- ES6/JSX compiler. We use the following Babel presets:
+- ES6/JSX compiler. We reccomend Babel and use the following Babel presets:
   - [es2015](https://babeljs.io/docs/plugins/preset-es2015/)
   - [react](http://babeljs.io/docs/plugins/preset-react/)
   - [stage-1](http://babeljs.io/docs/plugins/preset-stage-1/)
 
 ## Usage
 
-For inital development and release, we are focusing on a nodejs with webpack environment. As we continue to develop React Atlas we will bring in examples and boilerplates to show it working with other build systems (JSPM, Browserify, UMD, etc.).
+For inital development and release, we are focusing on a nodejs with webpack environment. As we continue to develop React Atlas we might bring in examples and boilerplates to show it working with other build systems (JSPM, Browserify, UMD, etc.). Though our hope is that react-atlas will be generic enough, that it should be relatively simple to set up in most any environment.
 
-With webpack in mind, we reccomend using [Babel Loader](https://github.com/babel/babel-loader), [CSS Loader](https://github.com/webpack/css-loader), [PostCSS Loader](https://github.com/postcss/postcss-loader) and [SASS Loader](https://github.com/jtangelder/sass-loader) (for now, SASS will be removed from this project soon. We are working toward dropping the Sass and Webpack dependency as soon as it makes sense for us internally. A good starting point is for a webpack workflow is [React Hot Webpack Boilerplate](https://github.com/gaearon/react-hot-boilerplate).
+With webpack in mind, we reccomend using [Babel Loader](https://github.com/babel/babel-loader), [CSS Loader](https://github.com/webpack/css-loader), and [PostCSS Loader](https://github.com/postcss/postcss-loader).
 
-Requiring and using the components is as simple as:
+Once you've reference the react-atlas CSS file in your build process, requiring and using the components is as simple as:
 
 ```jsx
 import React from 'react';
-import {Button} from 'react-atlas';
+import { Button } from 'react-atlas';
 
 const someButton = () => (
   <Button label="Some Text" />
@@ -41,30 +43,11 @@ const someButton = () => (
 export default someButton;
 ```
 
-The previous code creates a React button component based on a React Atlas button. It's important to notice that requiring a module from the exposed root of the package will import the **SASS** of the component. We are working to change this as soon as possible, and hope to get away from SASS to help enable this library to be environment agnostic.
+The previous code creates a React button component based on a React Atlas button.
 
-## Customization
+## CSS Customization
 
-Since React Atlas styles are written in CSS it's pretty easy to customize your components:
-
-### Via `className` property
-
-Generally each component will have a `className` prop so you can tell the class name you want to keep in the root node of the resulting markup. All markup is style with the lowest specificity level so you can just nest one level in your CSS and the result will be applied. Consider this example:
-
-```jsx
-const CustomButton = () => (
-  <Button className='customized' label='Custom button' />
-);
-```
-
-If you browse the resulting markup you will see *data attributes* like `data-role="label"` so you can avoid styling directly tag names. You can now write your CSS:
-
-```css
-.customized > [data-role="label"] {
-  color: green;
-  font-weight: bold;
-}
-```
+Internally for React Atlas development, we use CSS Modules. However, we compile down our CSS into 1 main CSS file that is namespaced similar to: ```.ra_filename_stylename```. This allows multiple opens for anyone that wants to restyle a react-atlas component. You can simply overwrite the class with your own css file or you can feed the component inline styles via the ```style``` prop, or you can pass your own ```className``` prop.
 
 We will be thinking hard about styling going forward and this workflow may change. We want to make overriding the React Atlas styles as simple as possible. Something like [React Themeable](https://github.com/markdalgleish/react-themeable) may be used.
 
