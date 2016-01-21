@@ -5,7 +5,7 @@ React Atlas is a React component library, with a focus on supplying Admin Interf
 React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). We liked the hierarchy and the way the components were built among many other things. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic looking in regards to style and functionality. We hope that React Atlas will be that tool.
 
 ## Requirements
-If using react-atlas via NPM, you will need to make sure you reference the CSS file that is packaged with it. That should be it. Oh, also this library only officially supports [Node 4.2.x](https://nodejs.org/en/) and React 0.14.x, for now.
+If using React Atlas via NPM, you will need to make sure you reference the CSS file that is packaged with it. That should be it. Oh, also this library only officially supports [Node 4.2.x](https://nodejs.org/en/) and React 0.14.x, for now.
 
 If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
 
@@ -26,11 +26,11 @@ This project uses CSS Modules and CSS Next for styling. To process this we use P
 
 ## Usage
 
-For inital development and release, we are focusing on a nodejs with webpack environment. As we continue to develop React Atlas we might bring in examples and boilerplates to show it working with other build systems (JSPM, Browserify, UMD, etc.). Though our hope is that react-atlas will be generic enough, that it should be relatively simple to set up in most any environment.
+For inital development and release, we are focusing on a nodejs with webpack environment. As we continue to develop React Atlas we might bring in examples and boilerplates to show it working with other build systems (JSPM, Browserify, UMD, etc.). Though our hope is that React Atlas will be generic enough, that it should be relatively simple to set up in most any environment.
 
 With webpack in mind, we reccomend using [Babel Loader](https://github.com/babel/babel-loader), [CSS Loader](https://github.com/webpack/css-loader), and [PostCSS Loader](https://github.com/postcss/postcss-loader).
 
-Once you've reference the react-atlas CSS file in your build process, requiring and using the components is as simple as:
+Once you've reference the React Atlas CSS file in your build process, requiring and using the components is as simple as:
 
 ```jsx
 import React from 'react';
@@ -47,7 +47,7 @@ The previous code creates a React button component based on a React Atlas button
 
 ## CSS Customization
 
-Internally for React Atlas development, we use CSS Modules. However, we compile down our CSS into 1 main CSS file that is namespaced similar to: ```.ra_filename_stylename```. This allows multiple opens for anyone that wants to restyle a react-atlas component. You can simply overwrite the class with your own css file or you can feed the component inline styles via the ```style``` prop, or you can pass your own ```className``` prop.
+Internally for React Atlas development, we use CSS Modules. However, we compile down our CSS into 1 main CSS file that is namespaced similar to: ```.ra_filename_stylename```. This allows multiple opens for anyone that wants to restyle a React Atlas component. You can simply overwrite the class with your own css file or you can feed the component inline styles via the ```style``` prop, or you can pass your own ```className``` prop.
 
 We will be thinking hard about styling going forward and this workflow may change. We want to make overriding the React Atlas styles as simple as possible. Something like [React Themeable](https://github.com/markdalgleish/react-themeable) may be used.
 
@@ -111,6 +111,6 @@ When thinking about Web Design and Web Development, we came across the art of ma
 
 >Cartography (from Greek χάρτης khartēs, "map"; and γράφειν graphein, "write") is the study and practice of making maps. Combining science, aesthetics, and technique, cartography builds on the premise that reality can be modeled in ways that communicate spatial information effectively.
 
-After reading about it more, we realized that as Web Designer and Developers, we are essentially modern-day map makers. We combine technology and design to build flat screens that communicate information in a fixed space. With this reasoning in our heads, we decided on Atlas. Atlas is defined as a collection(or a _library_ if you will) of maps. What better name for a library of components that will be used to compose and display complex interfaces/maps?
+After reading about it more, we realized that as Web Designer and Developers, we are essentially modern-day map makers. We combine technology and design to build flat screens that communicate information in a fixed space. With this reasoning in our heads, we decided on Atlas. Atlas is defined as a collection (or a _library_ if you will) of maps. What better name for a library of components that will be used to compose and display complex interfaces/maps?
 
 Plus you know, there's this cool Titan in Greek mythology that literally holds up the world named Atlas.
