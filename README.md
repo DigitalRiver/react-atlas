@@ -5,8 +5,9 @@ React Atlas is a React component library, with a focus on supplying Admin Interf
 React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). We liked the hierarchy and the way the components were built among many other things. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic looking in regards to style and functionality. We hope that React Atlas will be that tool.
 
 ## Requirements
+This library only officially supports [Node 4.2.x](https://nodejs.org/en/) and React 0.14.x, for now.
 ### Via NPM
-Make sure you reference the CSS file that is packaged with it. That should be it. Oh, also this library only officially supports [Node 4.2.x](https://nodejs.org/en/) and React 0.14.x, for now.
+Just make sure you reference the CSS file that is packaged with this library, other than that, just import the components how you would normally.
 ### Forking/Cloning and Building Yourself
 If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
 
