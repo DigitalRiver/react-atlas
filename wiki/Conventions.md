@@ -16,7 +16,7 @@ Some of these conventions are in place for the reasons described above, and some
 
 ## React Components
 Please look at [our fork](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/React-Atlas-React-JSX-Style-Guide.md) of the [AirBnB React Style Guide](https://github.com/airbnb/javascript/tree/master/react):
-https://github.com/DigitalRiver/react-atlas/blob/master/wiki/React-Atlas-React-JSX-Style-Guide
+https://github.com/DigitalRiver/react-atlas/blob/master/wiki/React-Atlas-React-JSX-Style-Guide.md
 
 Here is a sample Component for quick reference of a general component.
 
