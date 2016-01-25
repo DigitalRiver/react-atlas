@@ -9,7 +9,7 @@ If using React Atlas via NPM, you will need to make sure you reference the CSS f
 
 If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
 
-This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.com/DigitalRiver/react-atlas/wiki/Decisions#a-note-on-css)). At minimum your application will need to have the following packages to correctly interpret and use our library:
+This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/Decisions#a-note-on-css)). At minimum your application will need to have the following packages to correctly interpret and use our library:
 - [PostCSS](https://github.com/postcss/postcss), with the following plugins:
   - [PostCSS Import](https://github.com/postcss/postcss-import)
   - [CSS Next](https://github.com/cssnext/postcss-cssnext)
@@ -74,8 +74,8 @@ Please note that this project is released with a [Contributor Code of Conduct](h
 
 The project is being initially developed and maintained by the DR UX team.
 
-## [Read the Wiki](https://github.com/DigitalRiver/react-atlas/wiki)
-Check out [our wiki](https://github.com/DigitalRiver/react-atlas/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
+## [Read the Wiki](https://github.com/DigitalRiver/react-atlas/tree/master/wiki)
+Check out [our wiki](https://github.com/DigitalRiver/react-atlas/tree/master/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
 
 ## Set-Up/Installation for Development and Contributing
 
