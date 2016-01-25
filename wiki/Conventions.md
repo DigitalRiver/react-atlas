@@ -2,10 +2,10 @@
 ## Table of Contents
   1. [What are Conventions](#what-are-conventions)
   1. [React Components](#react-components)
-    1. [React-Atlas React/JSX Style Guide](https://github.com/DigitalRiver/react-atlas/tree/blob/wiki/React-Atlas-React-JSX-Style-Guide)
+    1. [React-Atlas React/JSX Style Guide](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/React-Atlas-React-JSX-Style-Guide)
     1. [Sample Component](#sample-component)
-  1. [CSS](https://github.com/DigitalRiver/react-atlas/tree/blob/wiki/Conventions#css)
-    1. [Composes Order](https://github.com/DigitalRiver/react-atlas/tree/blob/wiki/Conventions#composes-order)
+  1. [CSS](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/Conventions#css)
+    1. [Composes Order](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/Conventions#composes-order)
   
 ## What are Conventions?
 Conventions are patterns and styles of coding that we can not enforce via eslint/istanbul/some other tool. They could also be called 'best practices', though that is somewhat of a loaded term and changes from month-to-month in the Javscript world. The React-Atlas conventions are agree upon coding styles that we, the maintainers, will try our best to keep.
@@ -15,8 +15,8 @@ There are many benefits to following specific conventions. For one, it helps the
 Some of these conventions are in place for the reasons described above, and some are to prevent known issues that might arise when not following the specified convention. For instance, a build might break if you import something in the wrong order, thus we will define our importing convention in this section of the Wiki for reference.
 
 ## React Components
-Please look at [our fork](https://github.com/DigitalRiver/react-atlas/tree/blob/wiki/React-Atlas-React-JSX-Style-Guide) of the [AirBnB React Style Guide](https://github.com/airbnb/javascript/tree/master/react):
-https://github.com/DigitalRiver/react-atlas/tree/blob/wiki/React-Atlas-React-JSX-Style-Guide
+Please look at [our fork](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/React-Atlas-React-JSX-Style-Guide) of the [AirBnB React Style Guide](https://github.com/airbnb/javascript/tree/master/react):
+https://github.com/DigitalRiver/react-atlas/blob/master/wiki/React-Atlas-React-JSX-Style-Guide
 
 Here is a sample Component for quick reference of a general component.
 
