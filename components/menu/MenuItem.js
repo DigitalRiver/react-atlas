@@ -41,7 +41,6 @@ class MenuItem extends React.Component {
 
     return (
       <li
-        data-react-toolbox="menu-item"
         className={className}
         onClick={this.handleClick}
         onMouseDown={this.handleMouseDown}

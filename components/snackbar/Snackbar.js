@@ -39,7 +39,7 @@ class Snackbar extends Component {
 
     return (
       <Overlay active={active} opacity={0}>
-        <div data-react-toolbox="snackbar" className={className}>
+        <div className={className}>
           {children}
         </div>
       </Overlay>

@@ -24,7 +24,7 @@ const Avatar = ({children, className, icon, image, title, ...other}) => {
   if (className) classes += ` ${className}`;
 
   return (
-    <div data-react-toolbox="avatar" className={classes} {...other}>
+    <div className={classes} {...other}>
       {kids}
       {avatar}
     </div>

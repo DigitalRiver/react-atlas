@@ -41,7 +41,7 @@ class TimePicker extends React.Component {
     const { value, format } = this.props;
     const formattedTime = value ? time.formatTime(value, format) : null;
     return (
-      <div data-react-toolbox="time-picker">
+      <div>
         <Input
           className={style.input}
           label={this.props.label}

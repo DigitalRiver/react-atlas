@@ -96,8 +96,7 @@ class Button extends Component {
       href,
       className,
       disabled: disabled || this.props.loading,
-      role,
-      'data-react-toolbox': 'button'
+      role
     };
 
     return React.createElement(element, props,

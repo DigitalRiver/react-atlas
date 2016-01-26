@@ -6,7 +6,7 @@ const propTypes = {
 
 const Link = ({children, ...props}) => {
   return (
-    <a {...props} data-react-toolbox="link">
+    <a {...props}>
       {children}
     </a>
   );

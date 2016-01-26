@@ -10,7 +10,7 @@ const Drawer = (props) => {
 
   return (
     <Overlay active={props.active} onClick={props.onOverlayClick}>
-      <div data-react-toolbox="drawer" className={className}>
+      <div className={className}>
         <aside className={style.content}>
           {props.children}
         </aside>

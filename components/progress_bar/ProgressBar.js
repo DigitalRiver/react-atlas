@@ -56,7 +56,7 @@ class ProgressBar extends React.Component {
     });
 
     return (
-      <div data-react-toolbox='progress-bar'
+      <div
         aria-valuenow={value}
         aria-valuemin={min}
         aria-valuemax={max}

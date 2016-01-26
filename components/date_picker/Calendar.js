@@ -81,7 +81,7 @@ class Calendar extends React.Component {
   renderMonths () {
     const animation = this.state.direction === "left" ? SlideLeft : SlideRight;
     return (
-      <div data-react-toolbox="calendar">
+      <div>
         <IconButton className={style.prev} icon="chevron_left" onClick={this.changeViewMonth.bind(this, "left", -1)} />
         <IconButton className={style.next} icon="chevron_right" onClick={this.changeViewMonth.bind(this, "right", 1)} />
         <CssTransitionGroup transitionName={animation} transitionEnterTimeout={350} transitionLeaveTimeout={350}>

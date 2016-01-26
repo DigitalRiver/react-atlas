@@ -16,7 +16,7 @@ const Navigation = props => {
   });
 
   return (
-    <nav data-react-toolbox="navigation" className={className}>
+    <nav className={className}>
       {links}
       {buttons}
       {props.children}

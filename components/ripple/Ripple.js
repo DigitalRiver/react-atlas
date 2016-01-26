@@ -74,7 +74,7 @@ class Ripple extends React.Component {
     }, this.props.className);
 
     return (
-      <span data-react-toolbox="ripple" className={style.wrapper}>
+      <span className={style.wrapper}>
         <span ref="ripple" role="ripple" className={className} style={rippleStyle} />
       </span>
     );

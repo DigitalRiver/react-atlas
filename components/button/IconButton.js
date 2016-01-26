@@ -47,8 +47,7 @@ class Button extends React.Component {
       className: classes,
       disabled: this.props.disabled,
       onMouseDown: this.handleMouseDown,
-      onMouseUp: this.handleMouseUp,
-      "data-react-toolbox": "button"
+      onMouseUp: this.handleMouseUp
     };
 
     return React.createElement(element, props,

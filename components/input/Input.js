@@ -39,7 +39,7 @@ class Input extends Component {
         if (this.props.className) inputClassName += ` ${this.props.className}`;
 
         return (
-          <div data-react-toolbox="input">
+          <div>
             <label {...this.props} className={style.label}>{labelText}</label>
             <input {...this.props} className={inputClassName} onChange={this.props.onChange} type={type} />
           </div>

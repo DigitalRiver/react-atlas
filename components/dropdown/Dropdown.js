@@ -75,7 +75,7 @@ class Dropdown extends Component {
     });
 
     return (
-        <div data-react-toolbox='dropdown' className={className}>
+        <div className={className}>
           {label ? <label className={style.label}>{label}</label> : null}
 
           <ul ref='values' className={style.values}>
