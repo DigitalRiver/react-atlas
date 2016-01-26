@@ -2,8 +2,8 @@ import React from 'react';
 import style from './list.css';
 
 const propTypes = {
-  caption: React.PropTypes.string.isRequired,
-  legend: React.PropTypes.any
+  className: React.PropTypes.string,
+  children: React.PropTypes.node
 };
 
 const ListText = ({className, children, ...props}) => {

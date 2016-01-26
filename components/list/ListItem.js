@@ -3,11 +3,9 @@ import style from "./list.css";
 
 const propTypes = {
   className: React.PropTypes.string,
-  disabled: React.PropTypes.bool
 };
 
 const defaultProps = {
-  disabled: false,
   className: ''
 };
 
