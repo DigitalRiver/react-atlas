@@ -1,24 +1,16 @@
 import React, { Component, PropTypes } from 'react';
-import classNames from 'classnames/bind';
+import ClassNames from 'classnames/bind';
 import Tooltip from '../tooltip';
 import style from './button.css';
 
 const propTypes = {
-  accent: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   outline: PropTypes.bool,
   href: PropTypes.string,
-  icon: PropTypes.string,
-  inverse: PropTypes.bool,
-  label: PropTypes.string,
   loading: PropTypes.bool,
-  mini: PropTypes.bool,
   primary: PropTypes.bool,
-  raised: PropTypes.bool,
-  tooltip: PropTypes.string,
-  tooltipDelay: PropTypes.number,
   type: PropTypes.string,
   secondary: PropTypes.bool,
   success: PropTypes.bool,
@@ -31,7 +23,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-  accent: false,
   className: '',
   outline: false,
   loading: false,
@@ -48,26 +39,20 @@ const defaultProps = {
   disabled: false
 };
 
-class Button extends Component {
-
-  render () {
-
-    const {accent, outline, href, icon, label, loading, mini,
-           primary, raised, tooltip, secondary, success, warning, danger, link, large, small, block, disabled, children, ...others} = this.props;
+const Button = ({className, outline, href, loading, primary, secondary, success, warning, danger, link, large, small, block, disabled, children, ...others}) => {
 
     const element = href ? 'a' : 'button';
-
-    const cx = classNames.bind(style);
-
-    let className = cx({
+    const cx = ClassNames.bind(style);
+    let classNames = cx({
         large,
         small,
         block,
-        disabled
+        disabled,
+        className
     });
 
     if (outline) {
-      className += ' ' + cx({
+      classNames += ' ' + cx({
         primary_outline: !secondary && !success && !warning && !danger && !link,
         secondary,
         success_outline: success,
@@ -76,7 +61,7 @@ class Button extends Component {
         link_outline: link
       });
     } else {
-      className += ' ' + cx({
+      classNames += ' ' + cx({
         primary: !secondary && !success && !warning && !danger && !link,
         secondary,
         success,
@@ -86,7 +71,6 @@ class Button extends Component {
       });
     }
 
-    if (this.props.className) className += ` ${this.props.className}`;
     let role;
     if (element === 'a') {
       role = 'button';
@@ -95,19 +79,17 @@ class Button extends Component {
       ...others,
       href,
       className,
-      disabled: disabled || this.props.loading,
+      disabled: disabled || loading,
       role
     };
 
     return React.createElement(element, props,
-      label,
       children
     );
-  }
-}
+
+};
 
 Button.propTypes = propTypes;
-
 Button.defaultProps = defaultProps;
 
 export default Button;
