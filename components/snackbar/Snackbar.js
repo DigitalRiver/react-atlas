@@ -22,25 +22,25 @@ class Snackbar extends Component {
   }
 
   render () {
-    const { active } = this.props;
-
-    const children = React.Children.map(this.props.children, (child) => {
-        if (typeof child === 'string') {
-          return <span className={style.text}>{child}</span>;
-        }
-        return child;
-    });
+    const { active, className, ...props } = this.props;
 
     const cx = ClassNames.bind(style);
-    const className = cx({
+    const classNames = cx({
       root: true,
-      active
-    }, this.props.className);
+      active,
+      className
+    });
 
     return (
       <Overlay active={active} opacity={0}>
-        <div className={className}>
-          {children}
+        <div className={classNames}>
+            {React.Children.map(this.props.children, (child) => {
+                if (typeof child === 'string') {
+                    return <span className={style.text}>{child}</span>;
+                } else {
+                    return child;
+                }
+            })}
         </div>
       </Overlay>
     );
