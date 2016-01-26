@@ -1,43 +1,26 @@
 import React from 'react';
-import ListItem from './ListItem';
-import style from './style';
+import style from './list.css';
 
-class List extends React.Component {
-  static propTypes = {
-    children: React.PropTypes.node,
-    className: React.PropTypes.string,
-    ripple: React.PropTypes.bool,
-    selectable: React.PropTypes.bool
-  };
+const propTypes = {
+  children: React.PropTypes.node,
+  className: React.PropTypes.string
+};
 
-  static defaultProps = {
-    className: '',
-    ripple: false,
-    selectable: false
-  };
+const defaultProps = {
+  className: ''
+};
 
-  renderItems () {
-    return React.Children.map(this.props.children, (item) => {
-      if (item.type === ListItem) {
-        return React.cloneElement(item, {
-          ripple: this.props.ripple,
-          selectable: this.props.selectable
-        });
-      } else {
-        return React.cloneElement(item);
-      }
-    });
-  }
-
-  render () {
-    let className = style.list;
-    if (this.props.className) className += ` ${this.props.className}`;
+const List = ({className, children, ...props}) => {
+    let classNames = style.list;
+    if (className) classNames += ` ${className}`;
     return (
-      <ul className={className}>
-        {this.renderItems()}
+      <ul {...props} className={classNames}>
+        {children}
       </ul>
     );
-  }
-}
+};
+
+List.propTypes = propTypes;
+List.defaultProps = defaultProps;
 
 export default List;

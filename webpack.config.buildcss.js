@@ -20,12 +20,12 @@ module.exports = {
     publicPath: '/lib/'
   },
   resolve: {
-    extensions: ['', '.jsx', '.scss', '.js', '.json', '.css']
+    extensions: ['', '.scss', '.js', '.json', '.css']
   },
   module: {
     loaders: [
       {
-        test: /(\.js|\.jsx)$/,
+        test: /(\.js)$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader'
       },

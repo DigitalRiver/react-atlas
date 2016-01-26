@@ -103,7 +103,7 @@
     "react-addons-test-utils": "^0.14.6",
     "react-docgen": "^2.6.0",
     "react-dom": "^0.14.6",
-    "react-icon-base": "^1.0.0",
+    "react-icons": "^1.0.3",
     "react-transform-catch-errors": "^1.0.1",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.2.0",

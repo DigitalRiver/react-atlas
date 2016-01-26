@@ -12,7 +12,7 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './spec/index.jsx'
+    './spec/index.js'
   ],
   output: {
     path: path.join(__dirname, 'build'),
@@ -20,12 +20,12 @@ module.exports = {
     publicPath: '/build/'
   },
   resolve: {
-    extensions: ['', '.jsx', '.scss', '.js', '.json']
+    extensions: ['', '.scss', '.js', '.json']
   },
   module: {
     loaders: [
       {
-        test: /(\.js|\.jsx)$/,
+        test: /(\.js)$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader'
       }, {

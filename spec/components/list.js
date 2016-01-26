@@ -1,24 +1,19 @@
 import React from "react";
-import { ListCheckbox, ListSubHeader, List, ListItem, ListDivider } from "../../components/list";
+import { List, ListItem, ListText } from "../../components/list";
+import Hint from '../../components/hint';
+import Avatar from '../../components/avatar';
+import FaInbox from 'react-icons/lib/fa/inbox';
+import FaShare from 'react-icons/lib/fa/share';
+import FaTrash from 'react-icons/lib/fa/trash';
+import FaBug from 'react-icons/lib/fa/bug';
+import FaStar from 'react-icons/lib/fa/star';
 
 const listStyle = {
-  border: "1px solid #EEE",
   display: "inline-block",
   minWidth: 340
 };
 
 class ListTest extends React.Component {
-  state = {
-    checkbox1: false,
-    checkbox2: true,
-    checkbox3: true
-  };
-
-  handleCheckboxChange = (field) => {
-    const newState = {};
-    newState[field] = !this.state[field];
-    this.setState(newState);
-  };
 
   render () {
     return (
@@ -26,116 +21,46 @@ class ListTest extends React.Component {
         <h5>With simple text and icons</h5>
         <p>This list can be used inside a Drawer for a list of options or as navigation.</p>
         <div style={listStyle}>
-          <List selectable ripple>
-            <ListSubHeader caption="Contacts" />
-            <ListItem caption="Inbox" leftIcon="inbox" />
-            <ListItem caption="Outbox" leftIcon="send" />
-            <ListItem caption="Trash" leftIcon="delete" />
-            <ListItem caption="Spam" leftIcon="report" />
+          <List>
+            <ListItem caption="Inbox"><FaInbox /><ListText> Inbox</ListText></ListItem>
+            <ListItem caption="Outbox"><FaShare /><ListText> Outbox</ListText></ListItem>
+            <ListItem caption="Trash"><FaTrash /><ListText> Trash</ListText></ListItem>
+            <ListItem caption="Spam"><FaBug /><ListText> Spam</ListText></ListItem>
           </List>
         </div>
 
         <h5>Two text lines, avatar and right icon</h5>
         <p>Useful for a list of contacts or similar.</p>
         <div style={listStyle}>
-          <List selectable ripple>
-            <ListSubHeader caption="Contacts" />
-            <ListItem
-              avatar="https://pbs.twimg.com/profile_images/614407428/s6pTalMzZs-nusCGWqoV.0_400x400.jpeg"
-              caption="Alfonso Rocha"
-              legend="Product Manager at Fon"
-              rightIcon="star"
-            />
-            <ListItem
-              avatar="https://pbs.twimg.com/profile_images/459485216499720192/ufS4YGOY_400x400.png"
-              caption="Javi Velasco"
-              legend="Frontend engineer at Socialbro"
-              rightIcon="star"
-            />
-            <ListItem
-              avatar="https://avatars2.githubusercontent.com/u/559654?v=3&s=460"
-              caption="Javi Jiménez"
-              legend="Frontend engineer at MediaSmart"
-              rightIcon="star"
-            />
-            <ListItem
-              avatar="https://pbs.twimg.com/profile_images/477103691506282499/bsIaPEiM_400x400.jpeg"
-              caption="Tobias Van Schneider"
-              legend="Designer at Spotify"
-              rightIcon="star"
-            />
-          </List>
-        </div>
+          <List>
+            <h5>Contacts</h5>
+            <ListItem>
+              <Avatar image="https://upload.wikimedia.org/wikipedia/en/6/6f/J.K._Simmons_as_Jameson.gif" />
+              <ListText>
+                Some Guy
+                <Hint> Works at Some Place</Hint>
+              </ListText>
+              <FaStar/>
+            </ListItem>
 
-        <h5>Two line options and checkbox items</h5>
-        <p>It can be used to embed little checkboxes in the list. These behave as checkboxes.</p>
-        <div style={listStyle}>
-          <List>
-            <ListSubHeader caption="General" />
-            <ListItem caption="Profile Photo" legend="Change your Google+ profile photo" />
-            <ListItem disabled caption="Show your status" legend="Your status is visible to everyone you use with" />
-          </List>
-          <ListDivider />
-          <List>
-            <ListSubHeader caption="Hangout notifications" />
-            <ListCheckbox
-              caption="Notifications"
-              checked={this.state.checkbox1}
-              legend="Allow notifications"
-              onChange={this.handleCheckboxChange.bind(this, "checkbox1")}
-            />
-            <ListCheckbox
-              caption="Sound"
-              checked={this.state.checkbox2}
-              legend="Hangouts message"
-              onChange={this.handleCheckboxChange.bind(this, "checkbox2")}
-            />
-            <ListCheckbox
-              caption="Video sounds"
-              checked
-              disabled
-              legend="Hangouts video call"
-            />
-          </List>
-        </div>
+            <ListItem>
+              <Avatar image="http://stanlemmens.nl/wp/wp-content/uploads/2014/07/bill-gates-wealthiest-person.jpg" />
+              <ListText>
+                Other Person
+                <Hint> Works at Other Place</Hint>
+              </ListText>
+              <FaStar/>
+            </ListItem>
 
-        <h5>Avatar, single text and icon</h5>
-        <p>Similar to a previous one but only with one text line</p>
-        <div style={listStyle}>
-          <List>
-            <ListItem
-              avatar="https://pbs.twimg.com/profile_images/614407428/s6pTalMzZs-nusCGWqoV.0_400x400.jpeg"
-              caption="Alfonso Rocha"
-              rightIcon="mail"
-            />
-            <ListItem
-              avatar="https://pbs.twimg.com/profile_images/459485216499720192/ufS4YGOY_400x400.png"
-              caption="Javi Velasco"
-              rightIcon="mail"
-            />
-            <ListItem
-              avatar="https://avatars2.githubusercontent.com/u/559654?v=3&s=460"
-              caption="Javi Jiménez"
-              rightIcon="mail"
-            />
-            <ListItem
-              avatar="https://pbs.twimg.com/profile_images/477103691506282499/bsIaPEiM_400x400.jpeg"
-              caption="Tobias Van Schneider"
-              rightIcon="mail"
-            />
-          </List>
-        </div>
+            <ListItem>
+              <Avatar image="https://pbs.twimg.com/profile_images/466831222073991168/XTkBynW_.jpeg" />
+              <ListText>
+                Chill Girl
+                <Hint> Works at Chill Place</Hint>
+              </ListText>
+              <FaStar/>
+            </ListItem>
 
-        <h5>Simple with just one text line</h5>
-        <p>The most simple list.</p>
-        <div style={listStyle}>
-          <List>
-            <ListItem caption="Alfonso Rocha" />
-            <ListItem caption="Javi Velasco" />
-            <ListItem caption="Javi Jiménez" />
-            <ListItem caption="Tobias Van Schneider" />
-            <ListDivider />
-            <ListItem caption="Other people" />
           </List>
         </div>
       </section>
