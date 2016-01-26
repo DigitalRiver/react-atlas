@@ -12,6 +12,7 @@
 .justify      { text-align: justify }
 
 .nowrap { white-space: nowrap }
+.white-space-normal { white-space: normal }
 .break-word { word-wrap: break-word }
 
 .truncate {
@@ -36,9 +37,11 @@
 .decoration-none { text-decoration: none }
 
 /* Font-size Utility */
-.font-size-1 { font-size: var(--h1, 2rem)}
-.font-size-2 { font-size: var(--h2, 1.5rem)}
-.font-size-3 { font-size: var(--h3, 1.25rem)}
+.font-size-1 { font-size: var(--h1, 2rem) }
+.font-size-2 { font-size: var(--h2, 1.5rem) }
+.font-size-3 { font-size: var(--h3, 1.25rem) }
 .font-size-4 { font-size: var(--h4, 1rem)}
-.font-size-5 { font-size: var(--h5, .875rem)}
-.font-size-6 { font-size: var(--h6, .75rem)}
+.font-size-5 { font-size: var(--h5, .875rem) }
+.font-size-6 { font-size: var(--h6, .75rem) }
+.font-size-7 { font-size: .5rem }
+.font-size-8 { font-size: .25rem }

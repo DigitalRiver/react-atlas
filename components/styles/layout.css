@@ -95,10 +95,10 @@
 .marg-b-4 { margin-bottom: var(--space-4) }
 .marg-l-4 { margin-left:   var(--space-4) }
 
-.marg-h-1 { margin-left: -var(--space-1); margin-right: -var(--space-1); }
-.marg-h-2 { margin-left: -var(--space-2); margin-right: -var(--space-2); }
-.marg-h-3 { margin-left: -var(--space-3); margin-right: -var(--space-3); }
-.marg-h-4 { margin-left: -var(--space-4); margin-right: -var(--space-4); }
+.marg-h-1 { margin-left: var(--space-1); margin-right: var(--space-1); }
+.marg-h-2 { margin-left: var(--space-2); margin-right: var(--space-2); }
+.marg-h-3 { margin-left: var(--space-3); margin-right: var(--space-3); }
+.marg-h-4 { margin-left: var(--space-4); margin-right: var(--space-4); }
 
 .marg-h-auto { margin-left: auto; margin-right: auto; }
 .pad-0 { padding: 0 }
