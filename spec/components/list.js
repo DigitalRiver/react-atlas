@@ -32,8 +32,8 @@ class ListTest extends React.Component {
         <h5>Two text lines, avatar and right icon</h5>
         <p>Useful for a list of contacts or similar.</p>
         <div style={listStyle}>
+          <h5>Contacts</h5>
           <List>
-            <h5>Contacts</h5>
             <ListItem>
               <Avatar image="https://upload.wikimedia.org/wikipedia/en/6/6f/J.K._Simmons_as_Jameson.gif" />
               <ListText>

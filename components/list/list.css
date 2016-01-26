@@ -19,6 +19,8 @@
   composes: relative from '../styles.css';
   composes: overflow-hidden from '../styles.css';
   composes: flex-center from '../styles.css';
+  composes: marg-b-less-1px from '../styles.css';
+  composes: border-silver from '../styles.css';
 }
 
 .text {

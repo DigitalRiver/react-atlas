@@ -77,6 +77,8 @@
 .marg-b-1 { margin-bottom: var(--space-1) }
 .marg-l-1 { margin-left:   var(--space-1) }
 
+.marg-b-less-1px { margin-bottom: -1px }
+
 .marg-2  { margin:        var(--space-2) }
 .marg-t-2 { margin-top:    var(--space-2) }
 .marg-r-2 { margin-right:  var(--space-2) }
