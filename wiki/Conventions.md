@@ -84,8 +84,8 @@ class someComponentName extends Component {
 }
 
 //Attach propTypes/defaultProps to component.
-someComponentName.propTypes;
-someComponentName.defaultProps;
+someComponentName.propTypes = propTypes;
+someComponentName.defaultProps = defaultProps;
 ```
 
 #### Boilerplate Function Component
@@ -115,8 +115,8 @@ const someComponentName = (props) => {
 }
 
 //Attach propTypes/defaultProps to component.
-someComponentName.propTypes;
-someComponentName.defaultProps;
+someComponentName.propTypes = propTypes;
+someComponentName.defaultProps = defaultProps;
 ```
 ## CSS
 Here we define some of our CSS conventions
