@@ -53,11 +53,6 @@
 .absolute { position: absolute }
 .fixed    { position: fixed }
 
-.top-0    { top: 0 }
-.right-0  { right: 0 }
-.bottom-0 { bottom: 0 }
-.left-0   { left: 0 }
-
 .z1 { z-index: 1 }
 .z2 { z-index: 2 }
 .z3 { z-index: 3 }
@@ -123,52 +118,26 @@
 
 
 /*Absolute Utility positions */
+.top-100 { top: 100% }
+.top-75 { top: 75% }
+.top-50 { top: 50% }
+.top-25 { top: 25% }
+.top-0    { top: 0 }
 
-.top-100 {
-    top: 100%;
-}
-.top-75 {
-    top: 75%;
-}
-.top-50 {
-    top: 50%;
-}
-.top-25 {
-    top: 25%;
-}
-.bottom-100 {
-    bottom: 100%;
-}
-.bottom-75 {
-    bottom: 75%;
-}
-.bottom-50 {
-    bottom: 50%;
-}
-.bottom-25 {
-    bottom: 25%;
-}
-.left-100 {
-    left: 100%;
-}
-.left-75 {
-    left: 75%;
-}
-.left-50 {
-    left: 50%;
-}
-.left-25 {
-    left: 25%;
-}
-.right-100 {
-    right: 100%;
-}
-.right-75 {
-    right: 75%;
-}
-.right-50 {
-    right: 50%;
-}
-.right-25 {
-    right: 25%;
-}
+.bottom-100 { bottom: 100% }
+.bottom-75 { bottom: 75% }
+.bottom-50 { bottom: 50% }
+.bottom-25 { bottom: 25% }
+.bottom-0 { bottom: 0 }
+
+.left-100 { left: 100% }
+.left-75 { left: 75% }
+.left-50 { left: 50% }
+.left-25 { left: 25% }
+.left-0   { left: 0 }
+
+.right-100 { right: 100% }
+.right-75 { right: 75% }
+.right-50 { right: 50% }
+.right-25 { right: 25% }
+.right-0  { right: 0 }
