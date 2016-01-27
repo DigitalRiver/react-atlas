@@ -71,6 +71,7 @@ const Button = ({className, outline, href, loading, primary, secondary, success,
       });
     }
 
+
     let role;
     if (element === 'a') {
       role = 'button';
@@ -78,7 +79,7 @@ const Button = ({className, outline, href, loading, primary, secondary, success,
     const props = {
       ...others,
       href,
-      className,
+      className: classNames,
       disabled: disabled || loading,
       role
     };
