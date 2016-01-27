@@ -1,9 +1,17 @@
 @import '../styles/variables.css';
 
 .root {
-    composes: fixed bottom-0 z4 pad-h-3 pad-v-2 marg-h-auto marg-t-2 from '../styles.css';
-    composes: flex flex-center from '../styles.css';
-    composes: white bg-black from '../styles.css';
+    composes: fixed from '../styles.css';
+    composes: bottom-0 from '../styles.css';
+    composes: z4 from '../styles.css';
+    composes: pad-h-3 from '../styles.css';
+    composes: pad-v-2 from '../styles.css';
+    composes: marg-h-auto from '../styles.css';
+    composes: marg-t-2 from '../styles.css';
+    composes: flex from '../styles.css';
+    composes: flex-center from '../styles.css';
+    composes: bg-black from '../styles.css';
+    composes: white  from '../styles.css';
     composes: rounded from '../styles.css';
     right: var(--space-3);
     left: var(--space-3);
