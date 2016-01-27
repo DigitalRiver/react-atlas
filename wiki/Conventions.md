@@ -4,6 +4,8 @@
   1. [React Components](#react-components)
     1. [React-Atlas React/JSX Style Guide](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/React-Atlas-React-JSX-Style-Guide.md)
     1. [Sample Components](#sample-components)
+      1. [Boilerplate Class Component](#boilerplate-class-component) 
+      2. [Boilerplate Function Component](#boilerplate-function-component) 
   1. [CSS](#css)
     1. [Composes Order](#composes-order)
   
