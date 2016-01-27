@@ -69,6 +69,7 @@ class someComponentName extends Component {
     _someGetMethod () {},
 
     //Custom Render methods (Usually maps)
+    //However, 9 time out of 10 can/should be broken into it's own component
     _renderSomething () {},
 
     //main Render method at bottom
