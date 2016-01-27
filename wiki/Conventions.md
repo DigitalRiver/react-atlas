@@ -7,7 +7,7 @@
       1. [Boilerplate Class Component](#boilerplate-class-component) 
       2. [Boilerplate Function Component](#boilerplate-function-component) 
   1. [CSS](#css)
-    1. [Composes Order](#composes-order)
+    1. [Using Composes](#using-composes)
   
 ## What are Conventions?
 Conventions are patterns and styles of coding that we can not enforce via eslint/istanbul/some other tool. They could also be called 'best practices', though that is somewhat of a loaded term and changes from month-to-month in the Javscript world. The React-Atlas conventions are agree upon coding styles that we, the maintainers, will try our best to keep.
