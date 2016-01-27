@@ -2,6 +2,8 @@ import React from "react";
 import Button from "../../components/button";
 import Input from "../../components/input";
 import Tooltip from "../../components/tooltip";
+import FaPlus from "react-icons/lib/fa/plus";
+import FaBookmark from "react-icons/lib/fa/bookmark"
 
 const TooltipTest = () => (
   <section>
@@ -10,13 +12,13 @@ const TooltipTest = () => (
     <br />
     <br />
     <Tooltip tooltip="Bookmark Tooltip" tooltipDelay={1000}>
-      <Button label="Bookmark" icon="bookmark" primary />
+      <Button primary><FaBookmark /> Bookmark</Button>
     </Tooltip>
-    <Tooltip tooltip="Floating Tooltip test setse tse tse tse t setse" >
-      <Button icon="plus" primary />
+    <Tooltip tooltip="Floating Tooltip" >
+      <Button primary><FaPlus /></Button>
     </Tooltip>
     <Tooltip tooltip="Floating can not be shown">
-      <Button icon="plus" disabled primary />
+      <Button disabled primary><FaPlus /></Button>
     </Tooltip>
     <br />
     <br />

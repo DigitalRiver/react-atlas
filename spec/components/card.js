@@ -16,8 +16,8 @@ const CardTest = () => (
           <Card className={style.card}>
             <h1>Title Goes Here</h1>
             <p>{dummyText}</p>
-            <Button label="Action 1" />
-            <Button label="Action 2" />
+            <Button>Action 1</Button>
+            <Button>Action 2</Button>
           </Card>
         </Col>
 
@@ -25,8 +25,8 @@ const CardTest = () => (
           <Card className={style.card}>
             <h1>Title Goes Here</h1>
             <p>{dummyText}</p>
-            <Button label="Action 1" />
-            <Button label="Action 2" />
+            <Button>Action 1</Button>
+            <Button>Action 2</Button>
           </Card>
         </Col>
         <Col sm="1/1" md="1/2" lg="1/3">

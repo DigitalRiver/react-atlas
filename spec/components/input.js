@@ -33,7 +33,7 @@ class InputTest extends React.Component {
           placeholder="Second Label placeholder"
         />
 
-        <Button label="Submit" style={{"margin": "0 5px"}} />
+        <Button style={{"margin": "0 5px"}}>Submit</Button>
       </section>
     );
   }

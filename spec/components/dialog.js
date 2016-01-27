@@ -23,7 +23,7 @@ class DialogTest extends React.Component {
       <section>
         <h5>Dialog</h5>
         <p>lorem ipsum...</p>
-        <Button label="Show Dialog" raised primary onClick={this.handleToggle} />
+        <Button primary onClick={this.handleToggle}>Show Dialog</Button>
         <Dialog
           actions={this.actions}
           active={this.state.active}
