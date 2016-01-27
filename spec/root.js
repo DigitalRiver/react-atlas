@@ -16,7 +16,6 @@ import Input from './components/input';
 import List from './components/list';
 import Media from './components/media';
 import Menu from './components/menu';
-import Pickers from './components/pickers';
 import Progress from './components/progress';
 import Radio from './components/radio';
 import Snackbar from './components/snackbar';
@@ -57,7 +56,6 @@ const Root = () => (
     <List />
     <Media />
     <Menu />
-    <Pickers />
     <Progress />
     <Radio />
     <Slider />
