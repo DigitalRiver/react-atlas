@@ -49,7 +49,7 @@ class someComponentName extends Component {
     //Static Methods
     static someStaticMethod () {},
 
-    //Lifecycle methods
+    //Lifecycle methods in this order
     getChildContext () {},
     componentWillMount () {},
     componentDidMount () {},
