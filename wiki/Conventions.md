@@ -28,6 +28,7 @@ Here is a sample Component for quick reference of a general component.
 import React, { Component, PropTypes } from 'react';
 
 //propTypes and defaultProps are defined outside and appended later at the bottom
+//This method isn't exactly DRY, but having propTypes and defaultProps at top is beneficial
 const propTypes = {
   text: PropTypes.string,
 };
