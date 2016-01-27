@@ -3,7 +3,7 @@
   1. [What are Conventions](#what-are-conventions)
   1. [React Components](#react-components)
     1. [React-Atlas React/JSX Style Guide](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/React-Atlas-React-JSX-Style-Guide.md)
-    1. [Sample Component](#sample-component)
+    1. [Sample Components](#sample-components)
   1. [CSS](#css)
     1. [Composes Order](#composes-order)
   
