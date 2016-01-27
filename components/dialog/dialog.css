@@ -1,25 +1,30 @@
 .base {
   composes: flex from '../styles.css';
   composes: rounded from '../styles.css';
-  composes: black from '../styles.css';
   composes: border from '../styles.css';
   composes: pad-2 from '../styles.css';
   composes: bg-white from '../styles.css';
-  border-width: 5px;
-  opacity: 0;
-  max-width: 96vw;
-  max-height: 96vh;
-  flex-direction: column;
+  composes: flex-column from '../styles.css';
+  max-width: 96%;
+  max-height: 96%;
   box-shadow: 0 19px 60px rgba(0,0,0,0.30), 0 15px 20px rgba(0,0,0,0.22);
   transition-delay: .07s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: .35s;
   transition-property: opacity, transform;
+
+}
+
+.inactive {
+  composes: base;
+  opacity: 0;
   transform: translateY(-4rem);
 }
-.base.active {
-    opacity: 1;
-    transform: translateY(0%);
+
+.active {
+  composes: base;
+  opacity: 1;
+  transform: translateY(0%);
 }
 
 .small {
@@ -34,12 +39,6 @@
   width: 96vw;
 }
 
-.title {
-  composes: marg-b-1 from '../styles.css';
-  composes: head-weight from '../styles.css';
-  composes: head-font-family from '../styles.css';
-  flex-grow: 0;
-}
 
 .body {
   composes: pad-2 from '../styles.css';
@@ -48,12 +47,4 @@
   overflow-y: auto;
 }
 
-.navigation {
-  composes: right-align from '../styles.css';
-  composes: marg-t-2 from '../styles.css';
-  flex-grow: 0;
-}
-.button {
-  margin-left: 10px !important;
-}
 

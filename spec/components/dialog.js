@@ -13,11 +13,6 @@ class DialogTest extends React.Component {
     });
   };
 
-  actions = [
-    { label: 'Disagree', primary: true, onClick: this.handleToggle },
-    { label: 'Agree', primary: true, onClick: this.handleToggle }
-  ];
-
   render () {
     return (
       <section>
@@ -25,12 +20,14 @@ class DialogTest extends React.Component {
         <p>lorem ipsum...</p>
         <Button primary onClick={this.handleToggle}>Show Dialog</Button>
         <Dialog
-          actions={this.actions}
           active={this.state.active}
-          title="Use Google's location service?"
           onOverlayClick={this.handleToggle}
         >
+          <h6><strong>Use Google's location service?</strong></h6>
           <p>Let Google help apps <strong>determine location</strong>. This means sending anonymous location data to Google, even when no apps are running.</p>
+
+          <Button primary onClick={this.handleToggle}>Disagree</Button>
+          <Button primary onClick={this.handleToggle}>Agree</Button>
         </Dialog>
       </section>
     );
