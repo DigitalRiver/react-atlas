@@ -1,97 +1,105 @@
+/*
+Dropdown inspired and mostly taken from:
+react-simple-dropdown
+https://github.com/Fauntleroy/react-simple-dropdown
+Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
+*/
+
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
+import { findDOMNode } from 'react-dom';
 import style from './dropdown.css';
 
-const propTypes = {
-  auto: PropTypes.bool,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  label: PropTypes.string,
-  onChange: PropTypes.func,
-  source: PropTypes.array.isRequired,
-  template: PropTypes.func,
-  value: PropTypes.string
-};
-
 const defaultProps = {
-  auto: true,
-  className: '',
-  disabled: false
+  className: ''
 };
 
 class Dropdown extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: false,
-      up: false
-    }
+  constructor (props) {
+      super(props);
+      this.state = {
+          active: false
+      };
   }
 
-  handleClick = (event) => {
-    const client = event.target.getBoundingClientRect();
-    const screen_height = window.innerHeight || document.documentElement.offsetHeight;
-    const up = this.props.auto ? client.top > ((screen_height / 2) + client.height) : false;
-    this.setState({active: true, up});
+  componentDidMount () {
+    window.addEventListener( 'click', this._onWindowClick );
   };
 
-  handleSelect = (item, event) => {
-    if (!this.props.disabled && this.props.onChange) {
-      this.props.onChange(item, event);
-      this.setState({active: false});
+  componentWillUnmount () {
+    window.removeEventListener( 'click', this._onWindowClick );
+  };
+
+   _onWindowClick = ( event ) => {
+    const dropdown_element = findDOMNode( this );
+    if( event.target !== dropdown_element && !dropdown_element.contains( event.target ) && this._isActive() ){
+      this._hide();
     }
   };
 
-  getSelectedItem = () => {
-    if (this.props.value) {
-      for (const item of this.props.source) {
-        if (item.value === this.props.value) return item;
-      }
+  _onToggleClick = ( event ) => {
+    event.preventDefault();
+    if( this.isActive() ){
+      this.hide();
     } else {
-      return this.props.source[0];
+      this._show();
     }
   };
 
-  renderItem (item, idx) {
-    const className = item.value === this.props.value ? style.selected : null;
-    return (
-        <li key={idx} className={className} onMouseDown={this.handleSelect.bind(this, item.value)}>
-          {this.props.template ? this.props.template(item) : item.label}
-        </li>
-    );
-  }
+  _isActive = () => {
+    return ( typeof this.props.active === 'boolean' ) ?
+      this.props.active :
+      this.state.active;
+  };
+  _hide = () => {
+    this.setState({
+      active: false
+    });
+    if( this.props.onHide ){
+      this.props.onHide();
+    }
+  };
+  _show = () => {
+    this.setState({
+      active: true
+    });
+    if( this.props.onShow ){
+      this.props.onShow();
+    }
+  };
+
+
 
   render () {
-    const {label, template, active, base, button, title, type} = this.props;
-    const selected = this.getSelectedItem();
-    let cx = classNames.bind(style);
-
-    let className = cx({
-      base: true,
-      up: this.state.up,
-      active: this.state.active,
-      disabled: this.props.disabled
+    const { children, className, ...props } = this.props;
+    // create component classes
+    const active = this._isActive();
+    var dropdown_classes = cx({
+      dropdown: true,
+      'dropdown--active': active
     });
-
+    dropdown_classes += ' ' + className;
+    // stick callback on trigger element
+    const bound_children = React.Children.map( children, child => {
+      if( child.type === DropdownTrigger ){
+        child = cloneElement( child, {
+          ref: 'trigger',
+          onClick: this._onToggleClick
+        });
+      }
+      return child;
+    });
     return (
-        <div className={className}>
-          {label ? <label className={style.label}>{label}</label> : null}
-
-          <ul ref='values' className={style.values}>
-            {this.props.source.map(this.renderItem.bind(this))}
-          </ul>
-
-          <div ref='value' className={style.value} onClick={this.handleClick}>
-            {template ? template(selected) : <span>{selected.label}</span>}
-          </div>
-        </div>
+      <div
+        {...props}
+        className={dropdown_classes}
+      >
+        {bound_children}
+      </div>
     );
-  }
+  };
+
 }
 
-Dropdown.propTypes = propTypes;
-
-Dropdown.defaultProps = defaultProps;
 
 export default Dropdown;

@@ -1,92 +1,47 @@
-.base {
+.container {
+  composes: inline-block from '../styles.css';
   composes: relative from '../styles.css';
-  composes: width-inherit from '../styles.css';
-  composes: marg-b-3 from '../styles.css';
-  composes: border-bottom from '../styles.css';
-  composes: black from '../styles.css';
-  composes: cursor-pointer from '../styles.css';
-}
-.base:not(.active) > .values {
-  max-height: 0;
-  visibility: hidden;
-}
-.active > .label, .active > .value {
-  opacity: .5;
-}
-.active > .values {
-  max-height: 45vh;
-  visibility: visible;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.24);
-}
-.disabled {
-  composes: cursor-default from '../styles.css';
-  composes: gray from '../styles.css';
-  composes: border-bottom-dotted from '../styles.css';
-  composes: point-events-bottom from '../styles.css';
-}
-.disabled > .value:after {
-  transform: scale(0);
-}
-.disabled:not(.up) > .values {
-  top: 0;
-  bottom: auto;
-}
-.up > .values {
-  top: auto;
-  bottom: 0;
-}
-.label {
-  composes: gray from '../styles.css';
-  composes: font-size-2 from '../styles.css';
-}
-.values {
-  composes: absolute from '../styles.css';
-  composes: width-100 from '../styles.css';
-  composes: bg-white from '../styles.css';
-  composes: rounded from '../styles.css';
-  composes: z2 from '../styles.css';
-  composes: overflow-x-hidden from '../styles.css';
-  composes: overflow-y-scroll from '../styles.css';
-  composes: list-style-none from '../styles.css';
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /*$ animation-curve-default;*/
-  transition-duration: .35s;
-  transition-property: max-height, box-shadow;
-}
-.values > * {
-  position: relative;
-  padding: 1rem;
-  overflow: hidden;
-  cursor: pointer;
-}
-.values > *:hover {
-  background-color: rgb(238,238,238); /* light gray */
-}
-.values > *.selected {
-  color: rgb(63,81,181); /*$dropdown-color-primary;*/
 }
 
-.value {
+.list {
+  composes: rounded from '../styles.css';
+  composes: bg-white from '../styles.css';
+  composes: left-0 from '../styles.css';
+  composes: absolute from '../styles.css';
+  composes: left-align from '../styles.css';
+  composes: top-100 from '../styles.css';
+  composes: z4 from '../styles.css';
+  composes: list-style-none from '../styles.css';
+  composes: overflow-y-scroll from '../styles.css';
+  box-shadow: 0 0 0 1px rgba(0,0,0,.175), 0 3px 8px rgba(0,0,0,.175);
+  margin: 4px 0 0;
+  min-width: 160px;
+  padding: 5px 0;
+  max-height: 360px;
+  overflow-scrolling: touch;
+}
+
+.item {
+  composes: nowrap from '../styles.css';
+}
+
+.content {
   composes: block from '../styles.css';
+  composes: clearfix from '../styles.css';
+  composes: cursor-pointer from '../styles.css';
+  composes: pad-v-1 from '../styles.css';
+  composes: pad-h-2 from '../styles.css';
 }
-.value > span {
-  display: inline-block;
-  height: 2.88rem; /*$input-field-height;*/
-  font-size: 1.6rem; /*$input-field-font-size;*/
-  line-height: 2.88rem; /*$input-field-height;*/
+
+.content:hover,
+.content:focus {
+    text-decoration: none;
 }
-.value > :not(span) {
-  margin: 0.8rem 0;
+
+.active,
+.active:hover,
+.active:focus {
+    outline: 0;
+    text-decoration: none;
 }
-.value:after {
-  /*$size: 0.4114285714285714rem; /*($input-field-height / 7);*/
-  position: absolute;
-  right: .8rem;
-  bottom: 1.6rem;
-  width: 0;
-  height: 0;
-  content: "";
-  border-top: 0.4114285714285714rem solid rgb(238,238,238); /*pallette grey 200 and $size*/
-  border-right: 0.4114285714285714rem solid transparent;
-  border-left: 0.4114285714285714rem solid transparent;
-  transition: transform .35s cubic-bezier(0.4, 0, 0.2, 1);
-}
+
