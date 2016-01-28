@@ -2,21 +2,24 @@
 
 /*Main Styles*/
 .base {
-  composes: marg-0 pad-v-1 pad-h-2 inline-block align-middle from '../styles.css';
+  composes: marg-0  from '../styles.css';
+  composes: pad-v-1 from '../styles.css';
+  composes: pad-h-2 from '../styles.css';
+  composes: inline-block from '../styles.css';
   composes: border from '../styles.css';
+  composes: align-middle from '../styles.css';
   composes: decoration-none from '../styles.css';
-  cursor: pointer;
+  composes: hover-decoration-none from '../styles.css';
+  composes: cursor-pointer from '../styles.css';
   line-height: 1.125rem;
   -webkit-appearance: none;
 }
-    .base:hover {
-      text-decoration: none;
-    }
 
 .default_btn {
   composes: base;
   composes: rounded from '../styles.css';
-  composes: white border-transparent from '../styles.css';
+  composes: white from '../styles.css';
+  composes: border-transparent from '../styles.css';
 }
     .default_btn:hover {
       box-shadow: inset 0 0 0 20rem var(--darken-1);
@@ -36,15 +39,15 @@
   composes: bg-transparent from '../styles.css';
   border-color: currentColor;
 }
-    .outline:hover{
+    .outline:hover {
       box-shadow: inset 0 0 0 20rem var(--darken-1);
     }
-    .outline:active{
+    .outline:active {
       box-shadow: inset 0 0 0 20rem var(--darken-2),
         inset 0 3px 4px 0 var(--darken-3),
         0 0 1px var(--darken-2);
     }
-    .outline:disabled{
+    .outline:disabled {
       opacity: .5;
     }
 
@@ -72,7 +75,8 @@
 .link {
   composes: default_btn;
   composes: border-none from '../styles.css';
-  composes: blue border-transparent from '../styles.css';
+  composes: blue from '../styles.css';
+  composes: border-transparent from '../styles.css';
   background-color: transparent;
 }
     .link:hover{
@@ -87,43 +91,58 @@
 .primary_outline {
   composes: outline;
   composes: blue from '../styles.css';
+  composes: hover-bg-blue from '../styles.css';
+  composes: hover-white from '../styles.css';
 }
 
 .secondary {
   composes: outline;
   composes: gray bg-transparent from '../styles.css';
+  composes: hover-bg-gray from '../styles.css';
+  composes: hover-white from '../styles.css';
 }
 
 .secondary_outline {
   composes: outline;
   composes: gray from '../styles.css';
+  composes: hover-bg-gray from '../styles.css';
+  composes: hover-white from '../styles.css';
 }
 
 .success_outline {
   composes: outline;
   composes: green from '../styles.css';
+  composes: hover-bg-green from '../styles.css';
+  composes: hover-white from '../styles.css';
 }
 
 .warning_outline {
   composes: outline;
   composes: orange from '../styles.css';
+  composes: hover-bg-orange from '../styles.css';
+  composes: hover-white from '../styles.css';
 }
 
 .danger_outline {
   composes: outline;
   composes: red from '../styles.css';
+  composes: hover-bg-red from '../styles.css';
+  composes: hover-white from '../styles.css';
 }
 
 .link_outline {
   composes: outline;
-  composes: blue bg-transparent from '../styles.css';
+  composes: blue from '../styles.css';
+  composes: bg-transparent from '../styles.css';
+  composes: hover-bg-blue from '../styles.css';
+  composes: hover-white from '../styles.css';
 }
 
 .disabled {
   composes: decoration-none from '../styles.css';
-  cursor: not-allowed;
+  composes: cursor-not-allowed from '../styles.css';
+  composes: pointer-events-none from '../styles.css';
   opacity: .65;
-  pointer-events: none;
 }
 
 /*button sizes*/
@@ -139,5 +158,6 @@
 
 /*block style*/
 .block {
-  composes: block width-100 from '../styles.css';
+  composes: block from '../styles.css';
+  composes: width-100 from '../styles.css';
 }
