@@ -3,9 +3,11 @@
   1. [What are Conventions](#what-are-conventions)
   1. [React Components](#react-components)
     1. [React-Atlas React/JSX Style Guide](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/React-Atlas-React-JSX-Style-Guide.md)
-    1. [Sample Component](#sample-component)
+    1. [Sample Components](#sample-components)
+      1. [Boilerplate Class Component](#boilerplate-class-component) 
+      2. [Boilerplate Function Component](#boilerplate-function-component) 
   1. [CSS](#css)
-    1. [Composes Order](#composes-order)
+    1. [Using Composes](#using-composes)
   
 ## What are Conventions?
 Conventions are patterns and styles of coding that we can not enforce via eslint/istanbul/some other tool. They could also be called 'best practices', though that is somewhat of a loaded term and changes from month-to-month in the Javscript world. The React-Atlas conventions are agree upon coding styles that we, the maintainers, will try our best to keep.
@@ -28,6 +30,7 @@ Here is a sample Component for quick reference of a general component.
 import React, { Component, PropTypes } from 'react';
 
 //propTypes and defaultProps are defined outside and appended later at the bottom
+//This method isn't exactly DRY, but having propTypes and defaultProps at top is beneficial
 const propTypes = {
   text: PropTypes.string,
 };
@@ -48,7 +51,7 @@ class someComponentName extends Component {
     //Static Methods
     static someStaticMethod () {},
 
-    //Lifecycle methods
+    //Lifecycle methods in this order
     getChildContext () {},
     componentWillMount () {},
     componentDidMount () {},
@@ -69,6 +72,7 @@ class someComponentName extends Component {
     _someGetMethod () {},
 
     //Custom Render methods (Usually maps)
+    //However, 9 time out of 10 can/should be broken into it's own component
     _renderSomething () {},
 
     //main Render method at bottom
@@ -82,8 +86,8 @@ class someComponentName extends Component {
 }
 
 //Attach propTypes/defaultProps to component.
-someComponentName.propTypes;
-someComponentName.defaultProps;
+someComponentName.propTypes = propTypes;
+someComponentName.defaultProps = defaultProps;
 ```
 
 #### Boilerplate Function Component
@@ -113,8 +117,8 @@ const someComponentName = (props) => {
 }
 
 //Attach propTypes/defaultProps to component.
-someComponentName.propTypes;
-someComponentName.defaultProps;
+someComponentName.propTypes = propTypes;
+someComponentName.defaultProps = defaultProps;
 ```
 ## CSS
 Here we define some of our CSS conventions
