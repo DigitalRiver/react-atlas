@@ -27,7 +27,7 @@ This project uses CSS Modules and CSS Next for styling. To process this we use P
   - [stage-1](http://babeljs.io/docs/plugins/preset-stage-1/)
 
 ## Usage
-***The React Atlas in initial developent, the API is still changing.***
+***The React Atlas is in initial development, the API is still changing.***
 
 For inital development and release, we are focusing on a nodejs with webpack environment. As we continue to develop React Atlas we might bring in examples and boilerplates to show it working with other build systems (JSPM, Browserify, UMD, etc.). Though our hope is that React Atlas will be generic enough, that it should be relatively simple to set up in most any environment.
 
