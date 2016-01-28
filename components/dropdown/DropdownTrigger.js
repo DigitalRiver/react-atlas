@@ -6,7 +6,7 @@ Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 
 import React, { createClass, PropTypes } from 'react';
-import style from '../dropdown.css';
+import style from './dropdown.css';
 
 const propTypes = {
 	children: PropTypes.any

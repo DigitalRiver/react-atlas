@@ -3,45 +3,44 @@
   composes: relative from '../styles.css';
 }
 
-.list {
+
+.content {
+  composes: absolute from '../styles.css';
+  composes: clearfix from '../styles.css';
+  composes: cursor-pointer from '../styles.css';
   composes: rounded from '../styles.css';
   composes: bg-white from '../styles.css';
   composes: left-0 from '../styles.css';
-  composes: absolute from '../styles.css';
   composes: left-align from '../styles.css';
   composes: top-100 from '../styles.css';
   composes: z4 from '../styles.css';
-  composes: list-style-none from '../styles.css';
   composes: overflow-y-scroll from '../styles.css';
-  box-shadow: 0 0 0 1px rgba(0,0,0,.175), 0 3px 8px rgba(0,0,0,.175);
-  margin: 4px 0 0;
-  min-width: 160px;
-  padding: 5px 0;
-  max-height: 360px;
-  overflow-scrolling: touch;
+  composes: hover-decoration-none from '../styles.css';
+  box-shadow:  0 2px 3px rgba(0, 0, 0, 0.075), 0 0 0 1px rgba(0,0,0,0.1);
+}
+
+.inactive {
+  composes: content;
+  composes: display-none from '../styles.css';
+
+}
+
+.active {
+  composes: content;
+  composes: block from '../styles.css';
+}
+
+.list {
+  composes: list-style-none from '../styles.css';
+  composes: pad-h-0 from '../styles.css';
+
 }
 
 .item {
   composes: nowrap from '../styles.css';
-}
-
-.content {
-  composes: block from '../styles.css';
-  composes: clearfix from '../styles.css';
-  composes: cursor-pointer from '../styles.css';
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
+  composes: hover-white from '../styles.css';
+  composes: hover-bg-blue from '../styles.css';
+  composes: hover-decoration-none from '../styles.css';
 }
-
-.content:hover,
-.content:focus {
-    text-decoration: none;
-}
-
-.active,
-.active:hover,
-.active:focus {
-    outline: 0;
-    text-decoration: none;
-}
-

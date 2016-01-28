@@ -5,8 +5,10 @@ https://github.com/Fauntleroy/react-simple-dropdown
 Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 
-import React, { Component, PropTypes } from 'react';
+import React, { cloneElement, Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
+import DropdownTrigger from './DropdownTrigger';
+import DropdownContent from './DropdownContent';
 import { findDOMNode } from 'react-dom';
 import style from './dropdown.css';
 
@@ -30,7 +32,7 @@ class Dropdown extends Component {
     window.removeEventListener( 'click', this._onWindowClick );
   };
 
-   _onWindowClick = ( event ) => {
+  _onWindowClick = ( event ) => {
     const dropdown_element = findDOMNode( this );
     if( event.target !== dropdown_element && !dropdown_element.contains( event.target ) && this._isActive() ){
       this._hide();
@@ -39,8 +41,8 @@ class Dropdown extends Component {
 
   _onToggleClick = ( event ) => {
     event.preventDefault();
-    if( this.isActive() ){
-      this.hide();
+    if( this._isActive() ){
+      this._hide();
     } else {
       this._show();
     }
@@ -51,6 +53,7 @@ class Dropdown extends Component {
       this.props.active :
       this.state.active;
   };
+
   _hide = () => {
     this.setState({
       active: false
@@ -59,6 +62,7 @@ class Dropdown extends Component {
       this.props.onHide();
     }
   };
+
   _show = () => {
     this.setState({
       active: true
@@ -68,23 +72,24 @@ class Dropdown extends Component {
     }
   };
 
-
-
   render () {
     const { children, className, ...props } = this.props;
     // create component classes
     const active = this._isActive();
-    var dropdown_classes = cx({
-      dropdown: true,
-      'dropdown--active': active
+    const cx = classNames.bind(style);
+    var classes = cx(className, {
+      container: true
     });
-    dropdown_classes += ' ' + className;
+
     // stick callback on trigger element
     const bound_children = React.Children.map( children, child => {
       if( child.type === DropdownTrigger ){
         child = cloneElement( child, {
-          ref: 'trigger',
           onClick: this._onToggleClick
+        });
+      } else if( child.type === DropdownContent ){
+        child = cloneElement( child, {
+          active
         });
       }
       return child;
@@ -92,7 +97,7 @@ class Dropdown extends Component {
     return (
       <div
         {...props}
-        className={dropdown_classes}
+        className={classes}
       >
         {bound_children}
       </div>

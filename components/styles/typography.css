@@ -35,6 +35,7 @@
 .head-line-height { line-height: var(--heading-line-height, 1.25) }
 
 .decoration-none { text-decoration: none }
+.hover-decoration-none:hover { text-decoration: none }
 
 /* Font-size Utility */
 .font-size-1 { font-size: var(--h1, 2rem) }

@@ -1,5 +1,6 @@
 import React from 'react';
-import Dropdown from '../../components/dropdown';
+import Button from '../../components/button';
+import { Dropdown, DropdownTrigger, DropdownContent, DropdownList, DropdownListItem } from '../../components/dropdown';
 import style from '../style';
 
 const countries = [
@@ -45,25 +46,18 @@ class DropdownTest extends React.Component {
           source={countries}
           template={this.customDropdownItem}
           value={this.state.dropdown1}
-        />
-
-        <Dropdown
-          label="Countries"
-          onChange={this.handleChange.bind(this, 'dropdown2')}
-          source={countries}
-        />
-
-        <Dropdown
-          onChange={this.handleChange.bind(this, 'dropdown4')}
-          source={countries}
-          value={this.state.dropdown4}
-        />
-
-        <Dropdown
-          source={countries}
-          disabled
-          onChange={this.handleChange.bind(this, 'dropdown3')}
-        />
+        >
+          <DropdownTrigger>
+            <Button>Dropdown</Button>
+          </DropdownTrigger>
+          <DropdownContent>
+            <DropdownList >
+              {countries.map((country, idx) => (
+                <DropdownListItem key={idx}>{country.label}</DropdownListItem>
+              ))}
+            </DropdownList>
+          </DropdownContent>
+        </Dropdown>
       </section>
     );
   }

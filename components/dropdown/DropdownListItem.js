@@ -17,19 +17,15 @@ const defaultProps = {
 	className: ''
 };
 
-const DropdownContent = ({ children, className, active, ...props }) => {
-    const cx = classNames.bind(style);
+const DropdownListItem = ({ children, className, active, ...props }) => {
 
-    const classes = cx(className, {
-        inactive: !active,
-        active: active
-    });
+    const classes = classNames(className, style.item);
 
     return (
-      <div {...props} className={classes}>
+      <li {...props} className={classes}>
         {children}
-      </div>
+      </li>
     )
 };
 
-export default DropdownContent;
+export default DropdownListItem;

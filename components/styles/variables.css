@@ -68,8 +68,6 @@
   --lighten-4: rgba(255,255,255,.5);
 
   --border-width: 1px;
-  --border-radius: 3px;
+  --border-radius: .25rem;
   --border-color: var(--darken-2);
-
-
 }
