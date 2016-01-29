@@ -1,9 +1,8 @@
 /* global VERSION */
 import React from 'react';
 import App from '../components/app';
-import AppBarToolbox from '../components/app_bar';
+import Header from '../components/header';
 import Avatar from './components/avatar';
-import ButtonToolbox from '../components/button';
 import Autocomplete from './components/autocomplete';
 import Button from './components/button';
 import Card from './components/card';
@@ -32,16 +31,9 @@ const _hrefProject = () => {
 
 const Root = () => (
   <App className={style.app}>
-    <AppBarToolbox fixed flat className={style.appbar}>
+    <Header fixed flat className={style.appbar}>
       <h1>React Atlas <small>Spec {VERSION}</small></h1>
-      <ButtonToolbox
-        accent
-        className={style.github}
-        icon="web"
-        floating
-        onClick={_hrefProject}
-      />
-    </AppBarToolbox>
+    </Header>
 
     <Autocomplete />
     <Avatar />

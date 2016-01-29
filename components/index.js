@@ -1,6 +1,5 @@
 import './utils/polyfills'; // Import polyfills for IE11
 export App from './app';
-export AppBar from './app_bar';
 export Autocomplete from './autocomplete';
 export Avatar from './avatar';
 export Button from './button/Button';
@@ -16,6 +15,7 @@ export DropdownContent from './dropdown';
 export DropdownList from './dropdown';
 export DropdownListItem from './dropdown';
 export Form from './form';
+export Header from './header';
 export Hint from './hint';
 export Input from './input';
 export Link from './link';
