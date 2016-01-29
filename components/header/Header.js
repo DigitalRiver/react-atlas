@@ -1,26 +1,23 @@
 import React from 'react';
 import ClassNames from 'classnames/bind';
-import style from './style';
+import style from './header.css';
 
 const propTypes = {
   children: React.PropTypes.node,
   className: React.PropTypes.string,
-  fixed: React.PropTypes.bool,
-  flat: React.PropTypes.bool
+  fixed: React.PropTypes.bool
 };
 
 const defaultProps = {
   className: '',
-  fixed: false,
-  flat: false
+  fixed: false
 };
 
-const Header = ({className, fixed, flat, children, ...props}) => {
+const Header = ({className, fixed, children, ...props}) => {
   const cx = ClassNames.bind(style);
   const classes = cx({
-    root: true,
-    fixed,
-    flat
+    container: true,
+    fixed
   }, className);
 
   return (
