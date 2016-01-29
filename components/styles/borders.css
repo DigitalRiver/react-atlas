@@ -35,6 +35,8 @@
 .border-none { border: 0 }
 
 .rounded { border-radius: var(--border-radius) }
+.rounded-top { border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius) }
+.rounded-bottom { border-bottom-left-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius) }
 .circle  { border-radius: 50% }
 
 .rounded-top    { border-radius: var(--border-radius) var(--border-radius) 0 0 }

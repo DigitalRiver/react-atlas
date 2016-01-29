@@ -19,7 +19,7 @@
     composes: black from '../styles.css';
     composes: border from '../styles.css';
     composes: border-transparent from '../styles.css';
-    composes: rounded from '../styles.css';
+    composes: rounded-top from '../styles.css';
     composes: marg-b-less-1px from '../styles.css';
     line-height: 1;
 }
