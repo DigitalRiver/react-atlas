@@ -23,7 +23,7 @@ import Switch from './components/switch';
 import Table from './components/table';
 import Tabs from './components/tabs';
 import Tooltip from './components/tooltip';
-import style from './style';
+import style from './app.css';
 
 const _hrefProject = () => {
   window.href = 'http://react-toolbox';
@@ -31,7 +31,7 @@ const _hrefProject = () => {
 
 const Root = () => (
   <App className={style.app}>
-    <Header fixed flat className={style.appbar}>
+    <Header fixed flat className={style.header}>
       <h1>React Atlas <small>Spec {VERSION}</small></h1>
     </Header>
 

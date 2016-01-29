@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '../../components/button';
 import { Dropdown, DropdownTrigger, DropdownContent, DropdownList, DropdownListItem } from '../../components/dropdown';
-import style from '../style';
 
 const countries = [
   { value: 'EN-gb', label: 'England', img: 'http://' },
@@ -12,10 +11,6 @@ const countries = [
 ];
 
 class DropdownTest extends React.Component {
-  state = {
-    dropdown1: 'ES-es',
-    dropdown4: 'TH-th'
-  };
 
   handleChange = (dropdown, value) => {
     const newState = {};
@@ -23,30 +18,13 @@ class DropdownTest extends React.Component {
     this.setState(newState);
   };
 
-  customDropdownItem (data) {
-    return (
-      <div className={style.dropdownTemplate}>
-        <img className={style.dropdownTemplateImage} src={data.img} />
-        <div className={style.dropdownTemplateContent}>
-          <strong>{data.label}</strong>
-          <small>{data.value}</small>
-        </div>
-      </div>
-    );
-  }
-
   render () {
     return (
       <section>
         <h5>Dropdown</h5>
         <p>lorem ipsum...</p>
 
-        <Dropdown
-          onChange={this.handleChange.bind(this, 'dropdown1')}
-          source={countries}
-          template={this.customDropdownItem}
-          value={this.state.dropdown1}
-        >
+        <Dropdown>
           <DropdownTrigger>
             <Button>Dropdown</Button>
           </DropdownTrigger>
