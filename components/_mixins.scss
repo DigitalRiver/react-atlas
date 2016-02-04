@@ -252,23 +252,27 @@
   transition-duration: $duration;
 }
 
-// The frames are this way to prevent a flicker in Safari
-// See https://goo.gl/5luFDk
-@mixin ripple-loading($name, $width, $height, $opacity: 0.3) {
-  @keyframes #{$name} {
-    0% {
-      opacity: $opacity;
-      transform: translate3d(-50%, -50%, 0) scale(0);
-    }
+@mixin no-webkit-scrollbar {
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
 
-    95% {
-      opacity: 0;
-      transform: translate3d(-50%, -50%, 0) scale(1);
+@mixin btn-colors($name, $color, $background, $hover) {
+  .#{$name}:not([disabled]) {
+    &.raised, &.floating {
+      color: $color;
+      background: $background;
     }
-
-    100% {
-      opacity: 0;
-      transform: translate3d(-50%, -50%, 0) scale(0);
+    &.flat, &.toggle {
+      color: $background;
+      &:focus:not(:active) {
+        background: $hover;
+      }
+    }
+    &.flat:hover {
+      background: $hover;
     }
   }
 }

@@ -99,6 +99,7 @@
     "postcss-loader": "^0.8.0",
     "react": "^0.14.6",
     "react-a11y": "^0.2.8",
+    "react-autosuggest": "3.4.0",
     "react-addons-css-transition-group": "^0.14.6",
     "react-addons-test-utils": "^0.14.6",
     "react-docgen": "^2.6.0",

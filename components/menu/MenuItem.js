@@ -1,15 +1,16 @@
 import React from 'react';
+import ClassNames from 'classnames';
 import Ripple from '../ripple';
 import style from './style.menu_item';
 
 class MenuItem extends React.Component {
   static propTypes = {
     caption: React.PropTypes.string.isRequired,
+    children: React.PropTypes.any,
     className: React.PropTypes.string,
     disabled: React.PropTypes.bool,
-    icon: React.PropTypes.string,
+    icon: React.PropTypes.any,
     onClick: React.PropTypes.func,
-    ripple: React.PropTypes.bool,
     selected: React.PropTypes.bool,
     shortcut: React.PropTypes.string
   };
@@ -17,7 +18,6 @@ class MenuItem extends React.Component {
   static defaultProps = {
     className: '',
     disabled: false,
-    ripple: false,
     selected: false
   };
 
@@ -27,31 +27,24 @@ class MenuItem extends React.Component {
     }
   };
 
-  handleMouseDown = (event) => {
-    if (this.props.ripple && !this.props.disabled) {
-      this.refs.ripple.start(event);
-    }
-  };
-
   render () {
-    let className = style.root;
-    if (this.props.selected) className += ` ${style.selected}`;
-    if (this.props.disabled) className += ` ${style.disabled}`;
-    if (this.props.className) className += ` ${this.props.className}`;
+    const {icon, caption, children, shortcut, selected, disabled, ...others} = this.props;
+    const className = ClassNames(style.root, {
+      [style.selected]: selected,
+      [style.disabled]: disabled
+    }, this.props.className);
 
     return (
-      <li
-        className={className}
-        onClick={this.handleClick}
-        onMouseDown={this.handleMouseDown}
-      >
-        {this.props.icon ? <span value={this.props.icon} className={style.icon}></span> : null}
-        <span className={style.caption}>{this.props.caption}</span>
-        {this.props.shortcut ? <small className={style.shortcut}>{this.props.shortcut}</small> : null}
-        {this.props.ripple ? <Ripple ref="ripple" className={style.ripple} spread={2.5} /> : null}
+      <li {...others} data-react-toolbox='menu-item' className={className} onClick={this.handleClick}>
+        <span className={style.caption}>{caption}</span>
+        {shortcut ? <small className={style.shortcut}>{shortcut}</small> : null}
+        {children}
       </li>
     );
   }
 }
 
-export default MenuItem;
+export default Ripple({
+  className: style.ripple
+})(MenuItem);
+export {MenuItem as RawMenuItem};
