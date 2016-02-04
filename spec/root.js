@@ -1,6 +1,5 @@
 /* global VERSION */
 import React from 'react';
-import App from '../components/app';
 import Header from '../components/header';
 import Avatar from './components/avatar';
 import Autocomplete from './components/autocomplete';
@@ -30,7 +29,7 @@ const _hrefProject = () => {
 };
 
 const Root = () => (
-  <App className={style.app}>
+  <div className={style.app}>
     <Header fixed flat className={style.header}>
       <h1>React Atlas <small>Spec {VERSION}</small></h1>
     </Header>
@@ -56,7 +55,7 @@ const Root = () => (
     <Table />
     <Tabs />
     <Tooltip />
-  </App>
+  </div>
 );
 
 export default Root;
