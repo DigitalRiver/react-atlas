@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ClassNames from 'classnames';
 import Input from '../input';
 import events from '../utils/events';
-import style from './style';
+import style from './autocomplete.css';
 
 const POSITION = {
  AUTO: 'auto',
