@@ -22,13 +22,13 @@ class InputTest extends React.Component {
         <p>lorem ipsum...</p>
         <Input
           type="text"
-          labelText="First Label" onChange={this.handleChange.bind(this, "normal")}
+          label="First Label" onChange={this.handleChange.bind(this, "normal")}
           maxLength={12}
           placeholder="First Label placeholder"
         />
         <Input
           type="text"
-          labelText="Second Label" onChange={this.handleChange.bind(this, "normal")}
+          label="Second Label" onChange={this.handleChange.bind(this, "normal")}
           maxLength={12}
           placeholder="Second Label placeholder"
         />

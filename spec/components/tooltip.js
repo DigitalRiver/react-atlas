@@ -22,8 +22,8 @@ const TooltipTest = () => (
     </Tooltip>
     <br />
     <br />
-    <Tooltip tooltip="lorem ipsum..." position="top" labelText="hello" type="text">
-      <Input labelText="hello" type="text" />
+    <Tooltip tooltip="lorem ipsum..." position="top" label="hello" type="text">
+      <Input label="hello" type="text" />
     </Tooltip>
     <p>Lorem ipsum dolor sit amet, <Tooltip tooltip="This is a auto show tooltip" inline><strong>consectetur</strong></Tooltip> adipiscing elit.</p>
   </section>

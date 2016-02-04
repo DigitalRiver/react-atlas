@@ -9,7 +9,7 @@ const propTypes = {
     "maxLength": PropTypes.number,
     "inputText": PropTypes.string,
     "focus": PropTypes.string,
-    "labelText": PropTypes.string,
+    "label": PropTypes.string,
     "multiline": PropTypes.bool,
     "type": PropTypes.string,
     "value": PropTypes.string,
@@ -25,7 +25,7 @@ const defaultProps = {
 
 class Input extends Component {
     render () {
-        const { disabled, labelText, maxLength, multiline, type, value, ...others} = this.props;
+        const { disabled, label, maxLength, multiline, type, value, ...others} = this.props;
 
         const cx = classNames.bind(style);
 
@@ -40,7 +40,7 @@ class Input extends Component {
 
         return (
           <div>
-            <label {...this.props} className={style.label}>{labelText}</label>
+            <label {...this.props} className={style.label}>{label}</label>
             <input {...this.props} className={inputClassName} onChange={this.props.onChange} type={type} />
           </div>
         );
