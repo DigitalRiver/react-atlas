@@ -1,7 +1,6 @@
 import React from "react";
 import ClassNames from "classnames";
 
-import Ripple from "../ripple";
 import style from "./button.css";
 
 class Button extends React.Component {
@@ -14,7 +13,6 @@ class Button extends React.Component {
     icon: React.PropTypes.string,
     inverse: React.PropTypes.bool,
     primary: React.PropTypes.bool,
-    ripple: React.PropTypes.bool,
     type: React.PropTypes.string
   };
 
@@ -22,11 +20,9 @@ class Button extends React.Component {
     accent: false,
     className: "",
     primary: false,
-    ripple: true
   };
 
   handleMouseDown = (event) => {
-    if (this.refs.ripple) this.refs.ripple.start(event);
     if (this.props.onMouseDown) this.props.onMouseDown(event);
   };
 
@@ -35,7 +31,7 @@ class Button extends React.Component {
   };
 
   render () {
-    const {accent, children, className, href, icon, inverse, primary, ripple, ...others} = this.props;
+    const {accent, children, className, href, icon, inverse, primary, ...others} = this.props;
     const element = href ? "a" : "button";
     const level = primary ? "primary" : accent ? "accent" : "neutral";
     const classes = ClassNames([style.toggle, style[level]], {[style.inverse]: inverse}, className);
@@ -51,7 +47,6 @@ class Button extends React.Component {
     };
 
     return React.createElement(element, props,
-      ripple ? <Ripple ref="ripple" centered /> : null,
       children
     );
   }
