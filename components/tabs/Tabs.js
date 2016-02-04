@@ -37,18 +37,6 @@ class Tabs extends Component {
     return { headers, contents };
   };
 
-  _renderHeaders = (headers) => {
-    return headers.map((item, idx) => {
-      return <Tab {...item.props} key={idx} active={this.props.index === idx} onClick={this._handleHeaderClick.bind(this, idx)} />
-    });
-  };
-
-  _renderContents = (contents) => {
-    return contents.map((item, idx) => {
-      return <TabContent {...item.props} key={idx} active={this.props.index === idx} tabIndex={idx} />
-    });
-  };
-
   render () {
     const { headers, contents } = this._parseChildren();
 
@@ -58,9 +46,13 @@ class Tabs extends Component {
     return (
       <div className={className}>
         <nav className={style.navigation} ref="navigation">
-          {this._renderHeaders(headers)}
+          {headers.map((item, idx) => {
+            return <Tab {...item.props} key={idx} active={this.props.index === idx} onClick={this._handleHeaderClick.bind(this, idx)} />
+          })}
         </nav>
-        {this._renderContents(contents)}
+        {contents.map((item, idx) => {
+          return <TabContent {...item.props} key={idx} active={this.props.index === idx} tabIndex={idx} />
+        })}
       </div>
     );
   }
