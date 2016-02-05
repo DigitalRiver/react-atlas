@@ -1,3 +1,7 @@
+.container {
+	composes: clearfix from '../styles.css';
+}
+
 .input{
 	composes: width-100 from '../styles.css';
     composes: left from '../styles.css';
@@ -9,7 +13,6 @@
 	composes: border-gray from '../styles.css';
 	border-width: 1px;
 	height: 2.4em;
-	appearance: none;
 	box-shadow: none;
 	transition: box-shadow 0.3s, border 0.3s;
 }
@@ -19,6 +22,12 @@
   outline: none;
   -webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
           box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
+}
+
+.checkbox {
+	composes: marg-b-1 from '../styles.css';
+	position: relative;
+    top: 1px;
 }
 
 .placeholder {
@@ -34,7 +43,5 @@
 	composes: inline-block from '../styles.css';
 	composes: marg-b-1 from '../styles.css';
 	composes: pad-h-1 from '../styles.css';
-	font-size: 0.9rem;
 	font-weight: 500;
-	color: #777;
 }

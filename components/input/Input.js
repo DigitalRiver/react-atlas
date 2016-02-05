@@ -30,7 +30,8 @@ class Input extends Component {
         const cx = classNames.bind(style);
 
         let inputClassName = cx({
-          "input": true,
+          "input": type !== 'checkbox',
+          "checkbox": type == 'checkbox',
           disabled,
           multiline,
           value
@@ -39,7 +40,7 @@ class Input extends Component {
         if (this.props.className) inputClassName += ` ${this.props.className}`;
 
         return (
-          <div>
+          <div className={style.container}>
             <label {...this.props} className={style.label}>{label}</label>
             <input {...this.props} className={inputClassName} onChange={this.props.onChange} type={type} />
           </div>

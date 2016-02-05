@@ -25,7 +25,7 @@ class CheckboxTest extends React.Component {
     return (
       <section>
         <h5>Checkbox</h5>
-        <p style={{marginBottom: "10px"}}>Lorem ipsum...</p>
+        <p style={{marginBottom: "10px"}}>Checkbox Component checkboxes (...except that last one there)</p>
 
         <Checkbox
           defaultChecked={this.state.checkbox_1}
@@ -50,7 +50,7 @@ class CheckboxTest extends React.Component {
           onBlur={this.handleBlur}
         />
 
-        <Input type="checkbox" label="input checkbox" />
+        <Input type="checkbox" label="Input Component checkbox" />
       </section>
     );
   }
