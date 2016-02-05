@@ -1,4 +1,4 @@
-/** Autocomplete component is a simple wrapper around react-autosuggest.
+/** Our Autocomplete component is a simple wrapper around react-autosuggest.
  * Copyright © 2016 Misha Moroshko
  * Read https://github.com/moroshko/react-autosuggest for documentation
  */
