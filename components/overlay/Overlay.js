@@ -44,9 +44,14 @@ class Overlay extends Component {
       className
     });
 
+    const overlayClasses = cx({
+      overlayActive: active,
+      overlayInactive: !active
+    });
+
     ReactDOM.render(
       <div className={classNames}>
-        <div className={style.overlay} onClick={onClick} />
+        <div className={overlayClasses} onClick={onClick} />
         {children}
       </div>
     , this.overlay);

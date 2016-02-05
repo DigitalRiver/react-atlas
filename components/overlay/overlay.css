@@ -1,43 +1,47 @@
 .container {
-    composes: fixed from '../styles.css';
-    composes: top-0 from '../styles.css';
-    composes: left-0 from '../styles.css';
-    composes: z-4 from '../styles.css';
-    composes: flex from '../styles.css';
-    composes: flex-column from '../styles.css';
-    composes: flex-center from '../styles.css';
-    composes: width-100 from '../styles.css';
-    composes: height-100 from '../styles.css';
-    align-content: center;
-    justify-content: center;
-}
-
-.inactive {
-    composes: container;
-    composes: display-none from '../styles.css';
-    composes: pointer-events-none from '../styles.css';
+    composes: z4 from '../styles.css';
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
 
 .active {
     composes: container;
-    composes: pointer-events-all from '../styles.css';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    pointer-events: all;
 }
 
-.active > .overlay {
-    opacity: .6;
+.inactive {
+    composes: container;
+    display: none;
+    pointer-events: none;
 }
 
 .overlay {
-    composes: absolute from '../styles.css';
-    composes: top-0 from '../styles.css';
-    composes: left-0 from '../styles.css';
-    composes: width-100 from '../styles.css';
     composes: bg-black from '../styles.css';
-    composes: height-100 from '../styles.css';
-    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: .35s;
     transition-property: opacity;
+}
+.overlayActive {
+    composes: overlay;
+    opacity: .6;
+}
+
+.overlayInactive {
+    composes: overlay;
+    opacity: 0;
 }
 
 .invisible > *:not(.overlay) {

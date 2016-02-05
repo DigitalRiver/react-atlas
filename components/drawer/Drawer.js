@@ -1,17 +1,21 @@
 import React from 'react';
-import ClassNames from 'classnames';
+import ClassNames from 'classnames/bind';
 import Overlay from '../overlay';
-import style from './style';
+import style from './drawer.css';
 
-const Drawer = (props) => {
-  const className = ClassNames([style.root, style[props.type]], {
-    [style.active]: props.active
-  }, props.className);
+const Drawer = ({active, className, type, onOverlayClick, ...props}) => {
+  const cx = ClassNames.bind(style);
+  const classes = cx({
+    container: true,
+    left: type == 'left',
+    right: type == 'right',
+    active
+  }, className);
 
   return (
-    <Overlay active={props.active} onClick={props.onOverlayClick}>
-      <div className={className}>
-        <aside className={style.content}>
+    <Overlay active={active} onClick={onOverlayClick}>
+      <div className={classes}>
+        <aside>
           {props.children}
         </aside>
       </div>
