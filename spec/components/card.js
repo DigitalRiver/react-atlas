@@ -11,7 +11,7 @@ const CardTest = () => (
     <h5>Cards</h5>
     <p>You have multiple options for cards. Combine different subcomponents to create your own:</p>
       <Row>
-        <Col sm="1/1" md="1/2" lg="1/3">
+        <Col sm="1" md="1/2" lg="1/3">
           <Card>
             <h1>Title Goes Here</h1>
             <p>{dummyText}</p>
@@ -20,7 +20,7 @@ const CardTest = () => (
           </Card>
         </Col>
 
-        <Col sm="1/1" md="1/2" lg="1/3">
+        <Col sm="1" md="1/2" lg="1/3">
           <Card>
             <h1>Title Goes Here</h1>
             <p>{dummyText}</p>
@@ -28,7 +28,7 @@ const CardTest = () => (
             <Button>Action 2</Button>
           </Card>
         </Col>
-        <Col sm="1/1" md="1/2" lg="1/3">
+        <Col sm="1" md="1/2" lg="1/3">
           <Card>
               <h1>Basic Card</h1>
             <h2>You can also use a subtitle like this</h2>

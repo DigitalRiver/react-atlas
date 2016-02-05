@@ -50,7 +50,8 @@ class Col extends Component {
 		const columnStyle = {
 			minHeight: 1,
 			paddingLeft: (gutter / 2),
-			paddingRight: (gutter / 2)
+			paddingRight: (gutter / 2),
+			boxSizing: 'border-box'
 		};
 
 		// if no width control is provided fill available space
