@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
 import ClassNames from 'classnames/bind';
 import style from './slider.css';
@@ -8,30 +8,30 @@ import utils from '../utils/utils';
 import ProgressBar from '../progress_bar';
 import Input from '../input';
 
-class Slider extends React.Component {
-  static propTypes = {
-    className: React.PropTypes.string,
-    editable: React.PropTypes.bool,
-    max: React.PropTypes.number,
-    min: React.PropTypes.number,
-    onChange: React.PropTypes.func,
-    pinned: React.PropTypes.bool,
-    snaps: React.PropTypes.bool,
-    step: React.PropTypes.number,
-    value: React.PropTypes.number
-  };
+const propTypes = {
+  className: PropTypes.string,
+  editable: PropTypes.bool,
+  max: PropTypes.number,
+  min: PropTypes.number,
+  onChange: PropTypes.func,
+  pinned: PropTypes.bool,
+  snaps: PropTypes.bool,
+  step: PropTypes.number,
+  value: PropTypes.number
+};
 
-  static defaultProps = {
-    className: '',
-    editable: false,
-    max: 100,
-    min: 0,
-    pinned: false,
-    snaps: false,
-    step: 0.01,
-    value: 0
-  };
+const defaultProps = {
+  className: '',
+  editable: false,
+  max: 100,
+  min: 0,
+  pinned: false,
+  snaps: false,
+  step: 0.01,
+  value: 0
+};
 
+class Slider extends Component {
   state = {
     inputFocused: false,
     inputValue: null,
@@ -279,5 +279,8 @@ class Slider extends React.Component {
     );
   }
 }
+
+Slider.propTypes = propTypes;
+Slider.defaultProps = defaultProps;
 
 export default Slider;
