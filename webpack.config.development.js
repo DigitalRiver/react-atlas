@@ -20,7 +20,7 @@ module.exports = {
     publicPath: '/build/'
   },
   resolve: {
-    extensions: ['', '.scss', '.js', '.json']
+    extensions: ['', '.js', '.json']
   },
   module: {
     loaders: [
@@ -28,9 +28,6 @@ module.exports = {
         test: /(\.js)$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader'
-      }, {
-        test: /(\.scss)$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]--[hash:base64:5]!sass?sourceMap')
       },
       {
         test: /\.css$/,

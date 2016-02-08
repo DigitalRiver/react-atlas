@@ -9,11 +9,9 @@ import Checkbox from './components/checkbox';
 import Dialog from './components/dialog';
 import Drawer from './components/drawer';
 import Dropdown from './components/dropdown';
-import IconMenu from './components/icon_menu';
 import Input from './components/input';
 import List from './components/list';
 import Media from './components/media';
-import Menu from './components/menu';
 import Progress from './components/progress';
 import Radio from './components/radio';
 import Snackbar from './components/snackbar';
@@ -42,11 +40,9 @@ const Root = () => (
     <Dialog />
     <Drawer />
     <Dropdown />
-    <IconMenu />
     <Input />
     <List />
     <Media />
-    <Menu />
     <Progress />
     <Radio />
     <Slider />

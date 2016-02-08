@@ -17,7 +17,7 @@
   ],
   "main": "./lib",
   "scripts": {
-    "start": "cross-env NODE_ENV=development UV_THREADPOOL_SIZE=100 node ./server",
+    "start": "cross-env NODE_ENV=development node ./server",
     "lint": "eslint ./ --ext .js,.jsx",
     "babelify": "babel ./components --out-dir ./lib",
     "build": "cross-env NODE_ENV=build npm run babelify && npm run build-css && rimraf ./lib/main.js && copyup ./components/*/**.scss ./lib && copyup ./components/**.scss ./lib",
