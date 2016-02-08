@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider from '../../components/slider';
+import Slider from '../../components/slider/'
 
 class SliderTest extends React.Component {
   state = {
@@ -17,6 +17,7 @@ class SliderTest extends React.Component {
     return (
       <section>
         <h5>Sliders</h5>
+
         <p>Normal slider</p>
         <Slider value={this.state.slider1} onChange={this.handleChange.bind(this, 'slider1')} />
         <p>With steps, initial value and editable</p>

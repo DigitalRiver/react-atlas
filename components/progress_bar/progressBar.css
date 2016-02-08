@@ -1,8 +1,8 @@
 .linear {
-  composes: relative from '../styles.css';
-  composes: overflow-hidden from '../styles.css';
-  composes: width-100 from '../styles.css';
-  composes: inline-block from '../styles.css';
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: inline-block;
   background: #eee none repeat scroll 0% 0%;
   height: .4rem;
 }
@@ -12,13 +12,12 @@
 }
 
 .value, .buffer {
-  composes: absolute from '../styles.css';
-  composes: top-0 from '../styles.css';
-  composes: right-0 from '../styles.css';
-  composes: bottom-0 from '../styles.css';
-  composes: left-0 from '../styles.css';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /*$animation-curve-default;*/
-  transition-duration: .35s;
   transform: scaleX(0);
   transform-origin: left center;
 }
@@ -29,12 +28,12 @@
 
 .buffer {
   background-image: linear-gradient(to right, rgba(255,255,255, 0.7), rgba(255,255,255, 0.7)),
-  linear-gradient(to right, rgb(63,81,181), rgb(63,81,181));
+    linear-gradient(to right, rgb(63,81,181), rgb(63,81,181));
 }
 
 .circular {
-  composes: relative from '../styles.css';
-  composes: inline-block from '../styles.css';
+  position: relative;
+  display: inline-block;
   width: 60px;
   height: 60px;
   transform: rotate(-90deg);
@@ -44,7 +43,6 @@
 }
 .circular.indeterminate .path {
   animation: circular-indeterminate-bar-dash 1.5s ease-in-out infinite;
-
   stroke-dasharray: 1.25, 250;
   stroke-dashoffset: 0;
 }
@@ -61,7 +59,6 @@
 .path {
   transition: stroke-dasharray .35s cubic-bezier(0.4, 0, 0.2, 1);
   fill: none;
-
   stroke-dasharray: 0, 500;
   stroke-dashoffset: 0;
   stroke-linecap: round;

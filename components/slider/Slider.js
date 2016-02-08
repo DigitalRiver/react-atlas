@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import ClassNames from "classnames";
-import style from "./style";
-import events from "../utils/events";
-import prefixer from "../utils/prefixer";
-import utils from "../utils/utils";
-import ProgressBar from "../progress_bar";
-import Input from "../input";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ClassNames from 'classnames/bind';
+import style from './slider.css';
+import events from '../utils/events';
+import prefixer from '../utils/prefixer';
+import utils from '../utils/utils';
+import ProgressBar from '../progress_bar';
+import Input from '../input';
 
 class Slider extends React.Component {
   static propTypes = {
@@ -22,7 +22,7 @@ class Slider extends React.Component {
   };
 
   static defaultProps = {
-    className: "",
+    className: '',
     editable: false,
     max: 100,
     min: 0,
@@ -40,7 +40,7 @@ class Slider extends React.Component {
   };
 
   componentDidMount () {
-    window.addEventListener("resize", this.handleResize);
+    window.addEventListener('resize', this.handleResize);
     this.handleResize();
   }
 
@@ -54,7 +54,7 @@ class Slider extends React.Component {
   }
 
   componentWillUnmount () {
-    window.removeEventListener("resize", this.handleResize);
+    window.removeEventListener('resize', this.handleResize);
   }
 
   handleInputFocus = () => {
@@ -64,8 +64,8 @@ class Slider extends React.Component {
     });
   };
 
-  handleInputChange = (event) => {
-    this.setState({inputValue: event.target.value});
+  handleInputChange = (value) => {
+    this.setState({inputValue: value});
   };
 
   handleInputBlur = (event) => {
@@ -102,7 +102,7 @@ class Slider extends React.Component {
 
   handleResize = (event, callback) => {
     const {left, right} = ReactDOM.findDOMNode(this.refs.progressbar).getBoundingClientRect();
-    const cb = callback || function () {};
+    const cb = (callback) || (() => {});
     this.setState({sliderStart: left, sliderLength: right - left}, cb);
   };
 
@@ -184,7 +184,7 @@ class Slider extends React.Component {
   }
 
   stepDecimals () {
-    return (this.props.step.toString().split(".")[1] || []).length;
+    return (this.props.step.toString().split('.')[1] || []).length;
   }
 
   trimValue (value) {
@@ -201,7 +201,7 @@ class Slider extends React.Component {
   renderSnaps () {
     if (this.props.snaps) {
       return (
-        <div ref="snaps" className={style.snaps}>
+        <div ref='snaps' className={style.snaps}>
           {utils.range(0, (this.props.max - this.props.min) / this.props.step).map(i => {
               return <div key={`span-${i}`} className={style.snap}></div>;
             })}
@@ -215,7 +215,7 @@ class Slider extends React.Component {
       const value = this.state.inputFocused ? this.state.inputValue : this.valueForInput(this.props.value);
       return (
         <Input
-          ref="input"
+          ref='input'
           className={style.input}
           onFocus={this.handleInputFocus}
           onChange={this.handleInputChange}
@@ -228,28 +228,30 @@ class Slider extends React.Component {
 
   render () {
     const knobStyles = prefixer({transform: `translateX(${this.knobOffset()}px)`});
-    const className = ClassNames(style.root, {
-      [style.editable]: this.props.editable,
-      [style.pinned]: this.props.pinned,
-      [style.pressed]: this.state.pressed,
-      [style.ring]: this.props.value === this.props.min
+    const cx = ClassNames.bind(style);
+    const className = cx(style.root, {
+      editable: this.props.editable,
+      pinned: this.props.pinned,
+      pressed: this.state.pressed,
+      ring: this.props.value === this.props.min
     }, this.props.className);
 
     return (
       <div
         className={className}
+        data-react-toolbox='slider'
         onBlur={this.handleSliderBlur}
         onFocus={this.handleSliderFocus}
-        tabIndex="0"
+        tabIndex='0'
       >
         <div
-          ref="slider"
+          ref='slider'
           className={style.container}
           onMouseDown={this.handleMouseDown}
           onTouchStart={this.handleTouchStart}
         >
           <div
-            ref="knob"
+            ref='knob'
             className={style.knob}
             onMouseDown={this.handleMouseDown}
             onTouchStart={this.handleTouchStart}
@@ -260,11 +262,12 @@ class Slider extends React.Component {
 
           <div className={style.progress}>
             <ProgressBar
-              ref="progressbar"
+              ref='progressbar'
               className={style.innerprogress}
               max={this.props.max}
               min={this.props.min}
-              mode="determinate"
+              mode='determinate'
+              transitionDuration='0s'
               value={this.props.value}
             />
             {this.renderSnaps()}

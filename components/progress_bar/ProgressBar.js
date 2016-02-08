@@ -21,8 +21,8 @@ class ProgressBar extends React.Component {
   linearStyle () {
     if (this.props.mode !== "indeterminate") {
       return {
-        buffer: prefixer({transform: `scaleX(${this.calculateRatio(this.props.buffer)})`}),
-        value: prefixer({transform: `scaleX(${this.calculateRatio(this.props.value)})`})
+        buffer: prefixer({transform: `scaleX(${this.calculateRatio(this.props.buffer)})`, transitionDuration: this.props.transitionDuration}),
+        value: prefixer({transform: `scaleX(${this.calculateRatio(this.props.value)})`, transitionDuration: this.props.transitionDuration})
       };
     } else {
       return {};
@@ -50,17 +50,17 @@ class ProgressBar extends React.Component {
   render () {
     const {buffer, type, mode, value, min, max, ...props} = this.props;
     const cx = classNames.bind(style);
-    const className = cx({
+    const classes = cx({
       [this.props.type]: this.props.type,
-      [this.props.mode]: this.props.mode,
-    });
+      [this.props.mode]: this.props.mode
+    }, this.props.className);
 
     return (
       <div
         aria-valuenow={value}
         aria-valuemin={min}
         aria-valuemax={max}
-        className={className}
+        className={classes}
       >
         {this.props.type === "circular" ? this.renderCircular() : this.renderLinear()}
       </div>
@@ -71,6 +71,7 @@ class ProgressBar extends React.Component {
 ProgressBar.propTypes = {
   buffer: React.PropTypes.number,
   className: React.PropTypes.string,
+  transitionDuration: React.PropTypes.string,
   max: React.PropTypes.number,
   min: React.PropTypes.number,
   mode: React.PropTypes.string,
@@ -84,6 +85,7 @@ ProgressBar.defaultProps = {
   className: '',
   max: 100,
   min: 0,
+  transitionDuration: '.35s',
   mode: 'indeterminate',
   multicolor: false,
   type: 'linear',
