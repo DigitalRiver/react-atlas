@@ -34,7 +34,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract(
           'style-loader',
           [
-            'css-loader?discardEmpty&discardDuplicates&discardComments&modules&importLoaders=1&localIdentName=ra_[name]__[local]',
+            'css-loader?minimize&modules&importLoaders=1&localIdentName=ra_[name]__[local]',
             'postcss-loader'
           ]
         )
@@ -47,13 +47,10 @@ module.exports = {
         addDependencyTo: bundler
       }),
       cssnext,
-      autoprefixer,
-      discardDuplicates,
-      discardComments,
-      discardEmpty
+      autoprefixer
     ];
   },
   plugins: [
-    new ExtractTextPlugin('main.css')
+    new ExtractTextPlugin('reactAtlas.min.css')
   ]
 };
