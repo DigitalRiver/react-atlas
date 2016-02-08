@@ -20,7 +20,7 @@ module.exports = {
     publicPath: '/lib/'
   },
   resolve: {
-    extensions: ['', '.scss', '.js', '.json', '.css']
+    extensions: ['', '.js', '.json', '.css']
   },
   module: {
     loaders: [
@@ -28,16 +28,6 @@ module.exports = {
         test: /(\.js)$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader'
-      },
-      {
-        test: /(\.scss)$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          [
-            'css-loader?discardEmpty&discardDuplicates&discardComments&modules&importLoaders=1&localIdentName=[name]__[local]--[hash:base64:5]',
-            'sass-loader'
-          ]
-        )
       },
       {
         test: /\.css$/,
