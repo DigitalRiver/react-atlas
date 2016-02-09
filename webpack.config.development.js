@@ -6,7 +6,6 @@ const cssnext = require('postcss-cssnext');
 const postcssImport = require('postcss-import');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-
 module.exports = {
   context: __dirname,
   devtool: 'inline-source-map',
@@ -46,6 +45,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('spec.css', { allChunks: true }),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
