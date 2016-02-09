@@ -8,7 +8,7 @@ const propTypes = {
     "htmlFor": PropTypes.string,
     "maxLength": PropTypes.number,
     "inputText": PropTypes.string,
-    "focus": PropTypes.string,
+    "focus": PropTypes.bool,
     "label": PropTypes.string,
     "multiline": PropTypes.bool,
     "type": PropTypes.string,
