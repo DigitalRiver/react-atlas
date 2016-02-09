@@ -1,6 +1,6 @@
 .container {
-  composes: inline-block from '../styles.css';
-  composes: relative from '../styles.css';
+  display: inline-block;
+  position: relative;
 }
 
 
@@ -10,39 +10,44 @@
   composes: rounded from '../styles.css';
   composes: bg-white from '../styles.css';
   composes: z4 from '../styles.css';
-  composes: hover-decoration-none from '../styles.css';
+  composes: cursor-pointer from '../styles.css';
   position: absolute;
   text-align: left;
-  cursor: pointer;
   top: 100%;
   left: 0;
   overflow-y: auto;
   box-shadow:  0 2px 3px rgba(0, 0, 0, 0.075), 0 0 0 1px rgba(0,0,0,0.1);
 }
 
+.content:hover {
+  text-decoration: none;
+}
+
 .inactive {
   composes: content;
-  composes: display-none from '../styles.css';
+  display: none;
 
 }
 
 .active {
   composes: content;
-  composes: block from '../styles.css';
+  display: block;
 }
 
 .list {
   composes: pad-0 from '../styles.css';
-  margin: 0;
+  composes: marg-0 from '../styles.css';
   list-style: none;
-
 }
 
 .item {
-  composes: nowrap from '../styles.css';
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
   composes: hover-white from '../styles.css';
   composes: hover-bg-blue from '../styles.css';
-  composes: hover-decoration-none from '../styles.css';
+  white-space: nowrap
+}
+
+.item:hover {
+  text-decoration: none;
 }

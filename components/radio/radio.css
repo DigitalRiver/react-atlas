@@ -1,12 +1,12 @@
 .block {
-	composes: block from '../styles.css';
 	composes: marg-b-1 from '../styles.css';
+	display: block;
 	line-height: 30px;
 }
 
 .inline {
-	composes: inline-block from '../styles.css';
 	composes: marg-r-2 from '../styles.css';
+	display: inline-block;
 }
 
 .disabled {

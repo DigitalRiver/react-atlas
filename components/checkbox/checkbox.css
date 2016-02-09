@@ -4,12 +4,12 @@
 
 .block {
     composes: base;
-    composes: block from '../styles.css';
+    display: block;
 }
 
 .inline {
     composes: base;
-    composes: inline-block marg-r-2 from '../styles.css';
+    dispaly: inline-block;
 }
 
 .disabled {
@@ -21,6 +21,6 @@
 }
 
 .input {
-    composes: relative from '../styles.css';
+    position: relative;
     top: 1px;
 }

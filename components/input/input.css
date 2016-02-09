@@ -3,14 +3,14 @@
 }
 
 .input{
-	composes: width-100 from '../styles.css';
-    composes: left from '../styles.css';
     composes: marg-l-1 from '../styles.css';
     composes: marg-b-2 from '../styles.css';
-    composes: relative from '../styles.css';
-    composes: block from '../styles.css';
     composes: pad-1 from '../styles.css';
 	composes: border-gray from '../styles.css';
+	width: 100%;
+	float: left;
+	position: relative;
+	display: block;
 	border-width: 1px;
 	height: 2.4em;
 	box-shadow: none;

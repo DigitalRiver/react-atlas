@@ -1,18 +1,18 @@
 @import '../styles/variables.css';
 
 .root {
-    composes: fixed from '../styles.css';
-    composes: bottom-0 from '../styles.css';
     composes: z4 from '../styles.css';
     composes: pad-h-3 from '../styles.css';
     composes: pad-v-2 from '../styles.css';
     composes: marg-h-auto from '../styles.css';
     composes: marg-t-2 from '../styles.css';
-    composes: flex from '../styles.css';
-    composes: flex-center from '../styles.css';
     composes: bg-black from '../styles.css';
     composes: white  from '../styles.css';
     composes: rounded from '../styles.css';
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
     right: var(--space-3);
     left: var(--space-3);
     transition: all .35s cubic-bezier(0.4, 0, 0.2, 1) .35s;

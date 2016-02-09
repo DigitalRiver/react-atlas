@@ -6,7 +6,7 @@
 }
 
 .block {
-  composes: inline-block from '../styles.css';
+  display: inline-block;
 }
 
 /* Base styles for the entire tooltip */

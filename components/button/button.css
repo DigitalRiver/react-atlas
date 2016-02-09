@@ -5,14 +5,17 @@
   composes: marg-0  from '../styles.css';
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
-  composes: inline-block from '../styles.css';
   composes: border from '../styles.css';
-  composes: align-middle from '../styles.css';
-  composes: decoration-none from '../styles.css';
-  composes: hover-decoration-none from '../styles.css';
   composes: cursor-pointer from '../styles.css';
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
   line-height: 1.125rem;
   -webkit-appearance: none;
+}
+
+.base:hover {
+  text-decoration: none;
 }
 
 .default_btn {
@@ -139,9 +142,9 @@
 }
 
 .disabled {
-  composes: decoration-none from '../styles.css';
   composes: cursor-not-allowed from '../styles.css';
-  composes: pointer-events-none from '../styles.css';
+  text-decoration: none;
+  pointer-events: none;
   opacity: .65;
 }
 
@@ -158,6 +161,6 @@
 
 /*block style*/
 .block {
-  composes: block from '../styles.css';
-  composes: width-100 from '../styles.css';
+  display: block;
+  width: 100%;
 }

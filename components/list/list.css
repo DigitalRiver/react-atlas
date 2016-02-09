@@ -1,12 +1,12 @@
 .list {
-  composes: relative from '../styles.css';
-  composes: inline-block from '../styles.css';
-  composes: width-100 from '../styles.css';
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-0 from '../styles.css';
-  composes: left-align from '../styles.css';
-  composes: nowrap from '../styles.css';
-  composes: list-style-none from '../styles.css';
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;;
+  list-style: none;
 }
 
 .item {
@@ -15,16 +15,15 @@
   composes: last-child-rounded from '../styles.css';
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
-  composes: flex from '../styles.css';
-  composes: relative from '../styles.css';
-  composes: overflow-hidden from '../styles.css';
-  composes: flex-center from '../styles.css';
   composes: marg-b-less-1px from '../styles.css';
   composes: border-silver from '../styles.css';
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
 }
 
 .text {
   composes: marg-h-2 from '../styles.css';
   flex-grow: 1;
-
 }

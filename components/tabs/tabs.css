@@ -1,16 +1,16 @@
 .container {
-    composes: relative from '../styles.css';
-    composes: flex from '../styles.css';
-    composes: flex-column from '../styles.css';
     composes: pad-0 from '../styles.css';
     composes: marg-b-0 from '../styles.css';
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .navigation {
-    composes: flex from '../styles.css';
-    composes: flex-row from '../styles.css';
     composes: border-bottom from '../styles.css';
     composes: border-gray from '../styles.css';
+    display: flex;
+    flex-direction: row;
 }
 
 .tab {
@@ -20,7 +20,7 @@
     composes: border from '../styles.css';
     composes: border-transparent from '../styles.css';
     composes: rounded-top from '../styles.css';
-    composes: marg-b-less-1px from '../styles.css';
+    margin-bottom: -1px;
     line-height: 1;
 }
 
@@ -46,31 +46,31 @@
 
 .disabled {
     composes: tab;
-    composes: pointer-events-none from '../styles.css';
     composes: cursor-not-allowed from '../styles.css';
+    pointer-events: none;
     opacity: .2;
 }
 
 .hidden {
     composes: tab;
-    composes: display-none from '../styles.css';
+    display: none;
 }
 
 .pointer {
-    composes: absolute from '../styles.css';
-    composes: width-0 from '../styles.css';
+    position: absolute;
+    width: 0;
     height: .2rem;
     margin-top: -.2rem;
 }
 
 .tabContent {
-    composes: flex from '../styles.css';
-    composes: flex-column from '../styles.css';
     composes: pad-v-2 from '../styles.css';
     composes: pad-h-2 from '../styles.css';
+    display: flex;
+    flex-direction: column;
 }
 .tabActive {
-    composes: block from '../styles.css';
+    display: block;
 }
 .tabContent:not(.tabActive){
     display: none;

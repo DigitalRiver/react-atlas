@@ -1,16 +1,16 @@
 .container {
-    composes: flex from '../styles.css';
     composes: pad-h-3 from '../styles.css';
     composes: white from '../styles.css';
     composes: bg-blue from '../styles.css';
-    composes: flex-center from '../styles.css';
+    display: flex;
+    align-items: center;
     height: 6.4rem;
 }
 
 .fixed {
-    composes: fixed from '../styles.css';
-    composes: top-0 from '../styles.css';
-    composes: left-0 from '../styles.css';
-    composes: width-100 from '../styles.css';
     composes: z4 from '../styles.css';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }

@@ -14,7 +14,7 @@
 .sliderSmall{
   composes: slider;
   width: 42px;
-  height: 19.2px;
+  height: 19px;
   margin: 12px;
   border-radius: 12px;
 }
@@ -43,16 +43,16 @@
   background: white;
   display:block;
   position:absolute;
-  top: 0px;
-  left:0px;
+  top: 0;
+  left: 0;
   box-shadow: 0 0 6px 3px rgba(0,0,0,0.3);
   transition:left 0.2s;
 }
 
 .handleSmall{
   composes: handle;
-  width: 19.2px;
-  height: 19.2px;
+  width: 19px;
+  height: 19px;
 }
 
 .handleMedium{
@@ -99,8 +99,8 @@
 
 .onColorSmall{
   composes: onColor;
-  width: 19.2px;
-  height: 19.2px;
+  width: 19px;
+  height: 19px;
 }
 
 .onColorMedium{
@@ -131,52 +131,12 @@
 }
 
 .disabled{
-  composes: decoration-none from '../styles.css';
+  text-decoration: none;
   cursor: not-allowed;
   opacity: .65;
   pointer-events: none;
   
 }
-
-/**
-.input:checked + .handleSmall::before{
-    content: " ";
-    display:block;
-    background:#4cd864;
-    position: absolute;
-    z-index:-1;
-    transition:left 0.2s;
-    left: -70px;
-    width: 80px;
-    height: 19.2px;
- }
-
-.input:checked + .handleMedium::before{
-    content: " ";
-    display:block;
-    background:#4cd864;
-    position: absolute;
-    z-index:-1;
-    transition-property:left 0.2s;
-    transition-timing-function: linear;
-    left: -70px;
-    width: 80px;
-    height: 32px;
- }
-
- .input:checked + .handleLarge::before{
-    content: " ";
-    display:block;
-    background:#4cd864;
-    position: absolute;
-    z-index:-1;
-    transition: left 0.2s;
-    left: -70px;
-    width: 100px;
-    height: 48px;
- }
-
-**/
 
 .inputSmall{
   composes: input;

@@ -1,57 +1,11 @@
 @import './variables.css';
 
-/*Utility layout*/
-.inherit      { display: inherit }
-.inline       { display: inline }
-.block        { display: block }
-.inline-block { display: inline-block }
-.table        { display: table }
-.table-cell   { display: table-cell }
-.display-none { display: none }
-
-.overflow-hidden { overflow: hidden }
-.overflow-scroll { overflow: scroll }
-.overflow-auto   { overflow: auto }
-
-.overflow-x-hidden { overflow: hidden }
-.overflow-y-hidden { overflow: hidden }
-
-.overflow-x-scroll { overflow: scroll }
-.overflow-y-scroll { overflow: scroll }
-
-.overflow-x-auto { overflow: auto }
-.overflow-y-auto { overflow: auto }
-
 .clearfix:before,
 .clearfix:after {
   content: " ";
   display: table
 }
 .clearfix:after { clear: both }
-
-.left  { float: left }
-.right { float: right }
-
-.fit { max-width: 100% }
-
-.border-box { box-sizing: border-box }
-
-.width-0 { width: 0 }
-.width-100 { width: 100% }
-.height-100 { height: 100% }
-
-.width-inherit { width: inherit }
-
-/*Alignment*/
-.align-baseline { vertical-align: baseline }
-.align-top      { vertical-align: top }
-.align-middle   { vertical-align: middle }
-.align-bottom   { vertical-align: bottom }
-
-/*Positioning*/
-.relative { position: relative }
-.absolute { position: absolute }
-.fixed    { position: fixed }
 
 .z1 { z-index: 1 }
 .z2 { z-index: 2 }
@@ -115,29 +69,3 @@
 .pad-4   { padding:       var(--space-4) }
 .pad-v-4 { padding-top:   var(--space-4); padding-bottom: var(--space-4) }
 .pad-h-4 { padding-left:  var(--space-4); padding-right:  var(--space-4) }
-
-
-/*Absolute Utility positions */
-.top-100 { top: 100% }
-.top-75 { top: 75% }
-.top-50 { top: 50% }
-.top-25 { top: 25% }
-.top-0  { top: 0 }
-
-.bottom-100 { bottom: 100% }
-.bottom-75 { bottom: 75% }
-.bottom-50 { bottom: 50% }
-.bottom-25 { bottom: 25% }
-.bottom-0 { bottom: 0 }
-
-.left-100 { left: 100% }
-.left-75 { left: 75% }
-.left-50 { left: 50% }
-.left-25 { left: 25% }
-.left-0   { left: 0 }
-
-.right-100 { right: 100% }
-.right-75 { right: 75% }
-.right-50 { right: 50% }
-.right-25 { right: 25% }
-.right-0  { right: 0 }
