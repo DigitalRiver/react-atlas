@@ -4,9 +4,6 @@ const autoprefixer = require('autoprefixer');
 const cssnext = require('postcss-cssnext');
 const postcssImport = require('postcss-import');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const discardComments = require('postcss-discard-comments');
-const discardEmpty = require('postcss-discard-empty');
-const discardDuplicates = require('postcss-discard-duplicates');
 
 module.exports = {
   context: __dirname,

@@ -11,10 +11,6 @@ exports.default = transformCssModules;
 
 var _path = require('path');
 
-var _autoprefixer = require('autoprefixer');
-
-var _autoprefixer2 = _interopRequireDefault(_autoprefixer);
-
 var _postcssCssnext = require('postcss-cssnext');
 
 var _postcssCssnext2 = _interopRequireDefault(_postcssCssnext);
@@ -38,7 +34,7 @@ function transformCssModules(_ref) {
                 let file = _ref2.file;
                 let opts = _ref2.opts;
 
-                require('css-modules-require-hook')(_extends({}, defaultOptions, opts, { prepend: [(0, _postcssImport2.default)(), (0, _postcssCssnext2.default)(), (0, _autoprefixer2.default)()] }));
+                require('css-modules-require-hook')(_extends({}, defaultOptions, opts, { prepend: [(0, _postcssImport2.default)(), (0, _postcssCssnext2.default)()] }));
 
                 var _path$node = path.node;
                 const calleeName = _path$node.callee.name;
