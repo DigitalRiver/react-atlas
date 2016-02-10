@@ -3,7 +3,6 @@
 }
 
 .input{
-    composes: marg-l-1 from '../styles.css';
     composes: marg-b-2 from '../styles.css';
     composes: pad-1 from '../styles.css';
 	composes: border-gray from '../styles.css';
@@ -15,6 +14,8 @@
 	height: 2.4em;
 	box-shadow: none;
 	transition: box-shadow 0.3s, border 0.3s;
+	appearance: none;
+	box-sizing: border-box;
 }
 
 .input:focus {
@@ -40,8 +41,7 @@
 }
 
 .label {
-	composes: inline-block from '../styles.css';
 	composes: marg-b-1 from '../styles.css';
-	composes: pad-h-1 from '../styles.css';
+	display: inline-block;
 	font-weight: 500;
 }
