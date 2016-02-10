@@ -22,7 +22,7 @@ const defaultProps = {
 	gutter: A.width.gutter
 };
 
-class Col extends Component {
+class GridCol extends Component {
 	constructor (props) {
         super(props);
         this.state = {
@@ -91,8 +91,8 @@ class Col extends Component {
 
 }
 
-Col.propTypes = propTypes;
+GridCol.propTypes = propTypes;
 
-Col.defaultProps = defaultProps;
+GridCol.defaultProps = defaultProps;
 
-export default Col;
+export default GridCol;
