@@ -7,7 +7,7 @@ const TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 module.exports = {
   context: __dirname,
-  entry: ['./app/index.jsx'],
+  entry: ['./app/index.js'],
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'docs.js'
