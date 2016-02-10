@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Th, Thead, Tbody, Tr, Td } from '../../components/table';
-import Col from '../../components/col';
+import GridCol from '../../components/grid_col';
 
 class TableTest extends Component {
 
@@ -8,7 +8,7 @@ class TableTest extends Component {
     return (
       <section>
         <h5>Table</h5>
-        <Col sm="1/3">
+        <GridCol sm="1/3">
           <Table>
             <Thead>
               <Tr>
@@ -27,7 +27,7 @@ class TableTest extends Component {
               </Tr>
             </Tbody>
           </Table>
-        </Col>
+        </GridCol>
       </section>
     );
   }
