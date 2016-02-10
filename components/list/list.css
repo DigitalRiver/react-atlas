@@ -1,6 +1,6 @@
 .list {
   composes: pad-v-1 from '../styles.css';
-  composes: pad-h-0 from '../styles.css';
+  padding-left: 0;
   position: relative;
   display: inline-block;
   width: 100%;
@@ -15,8 +15,8 @@
   composes: last-child-rounded from '../styles.css';
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
-  composes: marg-b-less-1px from '../styles.css';
   composes: border-silver from '../styles.css';
+  margin-bottom: -1px;
   display: flex;
   position: relative;
   overflow: hidden;
