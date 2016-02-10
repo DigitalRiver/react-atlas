@@ -13,7 +13,7 @@ const defaultProps = {
 	gutter: A.width.gutter
 };
 
-class Row extends Component {
+class GridRow extends Component {
 	render () {
 		const { gutter } = this.props;
 		const rowStyle = {
@@ -33,8 +33,8 @@ class Row extends Component {
 	}
 }
 
-Row.propTypes = propTypes;
+GridRow.propTypes = propTypes;
 
-Row.defaultProps = defaultProps;
+GridRow.defaultProps = defaultProps;
 
-export default Row;
+export default GridRow;
