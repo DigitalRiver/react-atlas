@@ -8,15 +8,6 @@ import React, { component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import style from './dropdown.css';
 
-const propTypes = {
-	children: PropTypes.any,
-	className: PropTypes.string
-};
-
-const defaultProps = {
-	className: ''
-};
-
 const DropdownContent = ({ children, className, active, ...props }) => {
     const cx = classNames.bind(style);
 
@@ -30,6 +21,15 @@ const DropdownContent = ({ children, className, active, ...props }) => {
         {children}
       </div>
     )
+};
+
+DropdownContent.propTypes = {
+	children: PropTypes.any,
+	className: PropTypes.string
+};
+
+DropdownContent.defaultProps = {
+	className: ''
 };
 
 export default DropdownContent;

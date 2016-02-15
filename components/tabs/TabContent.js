@@ -2,18 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import ClassNames from 'classnames/bind';
 import style from './tabs.css';
 
-const propTypes = {
-  active: PropTypes.bool,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  tabIndex: PropTypes.number
-};
-
-const defaultProps = {
-  active: false,
-  className: ''
-};
-
 const TabContent = ({active, tabIndex, children, className}) => {
     const cx = ClassNames.bind(style);
     const classNames = cx({
@@ -28,7 +16,15 @@ const TabContent = ({active, tabIndex, children, className}) => {
     );
 };
 
-TabContent.propTypes = propTypes;
-TabContent.defaultProps = defaultProps;
+TabContent.propTypes = {
+  active: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  tabIndex: PropTypes.number
+};
+TabContent.defaultProps = {
+  active: false,
+  className: ''
+};
 
 export default TabContent;

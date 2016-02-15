@@ -2,18 +2,6 @@ import React, { PropTypes, Component } from 'react';
 import ClassNames from 'classnames/bind';
 import style from './media.css';
 
-const propTypes = {
-	aspectRatio: PropTypes.oneOf([ 'wide', 'square' ]),
-	children: PropTypes.any,
-	className: PropTypes.string,
-	color: PropTypes.string,
-	contentOverlay: PropTypes.bool,
-	image: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.element
-	])
-};
-
 class Media extends Component {
   render () {
     const { aspectRatio, children, className, color, contentOverlay, image, ...other } = this.props;
@@ -43,6 +31,16 @@ class Media extends Component {
   }
 }
 
-Media.propTypes = propTypes;
+Media.propTypes = {
+	aspectRatio: PropTypes.oneOf([ 'wide', 'square' ]),
+	children: PropTypes.any,
+	className: PropTypes.string,
+	color: PropTypes.string,
+	contentOverlay: PropTypes.bool,
+	image: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element
+	])
+};
 
 export default Media;

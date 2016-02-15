@@ -3,18 +3,6 @@ import ReactDOM from 'react-dom';
 import ClassNames from 'classnames/bind';
 import style from './overlay.css';
 
-const propTypes = {
-  active: React.PropTypes.bool,
-  children: React.PropTypes.node,
-  className: React.PropTypes.string,
-  invisible: React.PropTypes.bool,
-  onClick: React.PropTypes.func
-};
-
-const defaultProps = {
-   invisible: false
-};
-
 class Overlay extends Component {
 
   componentDidMount () {
@@ -61,5 +49,17 @@ class Overlay extends Component {
     return null;
   }
 }
+
+Overlay.propTypes = {
+  active: React.PropTypes.bool,
+  children: React.PropTypes.node,
+  className: React.PropTypes.string,
+  invisible: React.PropTypes.bool,
+  onClick: React.PropTypes.func
+};
+
+Overlay.defaultProps = {
+   invisible: false
+};
 
 export default Overlay;

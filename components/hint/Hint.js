@@ -9,5 +9,4 @@ const Hint = ({className, children, ...props}) => {
 	)
 };
 
-
 export default Hint;

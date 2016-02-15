@@ -3,20 +3,6 @@ import ClassNames from "classnames/bind";
 import Overlay from "../overlay";
 import style from "./dialog.css";
 
-const propTypes = {
-    active: PropTypes.bool,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    onOverlayClick: PropTypes.func,
-    type: PropTypes.string,
-    body: PropTypes.string
-};
-
-const defaultProps = {
-    active: false,
-    type: "normal"
-};
-
 const Dialog = ({body, active, type, children, className, onOverlayClick, ...props}) => {
 
     const cx = ClassNames.bind(style);
@@ -38,8 +24,19 @@ const Dialog = ({body, active, type, children, className, onOverlayClick, ...pro
     );
 };
 
-Dialog.propTypes = propTypes;
-Dialog.defaultProps = defaultProps;
+Dialog.propTypes = {
+    active: PropTypes.bool,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    onOverlayClick: PropTypes.func,
+    type: PropTypes.string,
+    body: PropTypes.string
+};
+
+Dialog.defaultProps = {
+    active: false,
+    type: "normal"
+};
 
 export default Dialog;
 

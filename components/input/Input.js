@@ -2,27 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import style from './input.css';
 
-const propTypes = {
-    "disabled": PropTypes.bool,
-    "className": PropTypes.string,
-    "htmlFor": PropTypes.string,
-    "maxLength": PropTypes.number,
-    "inputText": PropTypes.string,
-    "focus": PropTypes.bool,
-    "label": PropTypes.string,
-    "multiline": PropTypes.bool,
-    "type": PropTypes.string,
-    "value": PropTypes.string,
-    "onChange": PropTypes.func
-  };
-
-const defaultProps = {
-    "disabled": false,
-    "type": 'text',
-    "inputLength": 0,
-    "focus": false
-  };
-
 class Input extends Component {
     render () {
         const { disabled, label, maxLength, multiline, type, value, ...others} = this.props;
@@ -48,7 +27,25 @@ class Input extends Component {
     }
 }
 
-Input.propTypes = propTypes;
-Input.defaultProps = defaultProps;
+Input.propTypes = {
+    "disabled": PropTypes.bool,
+    "className": PropTypes.string,
+    "htmlFor": PropTypes.string,
+    "maxLength": PropTypes.number,
+    "inputText": PropTypes.string,
+    "focus": PropTypes.bool,
+    "label": PropTypes.string,
+    "multiline": PropTypes.bool,
+    "type": PropTypes.string,
+    "value": PropTypes.string,
+    "onChange": PropTypes.func
+};
+
+Input.defaultProps = {
+    "disabled": false,
+    "type": 'text',
+    "inputLength": 0,
+    "focus": false
+};
 
 export default Input;

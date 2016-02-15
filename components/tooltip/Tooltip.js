@@ -2,20 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import style from './tooltip.css';
 
-const propTypes = {
-  inline: PropTypes.bool,
-  children: PropTypes.any,
-  className: PropTypes.string,
-  tooltip: PropTypes.string,
-  tooltipDelay: PropTypes.number,
-  tooltipHideOnClick: PropTypes.bool,
-  position: PropTypes.string
-};
-
-const defaultProps = {
-  className: ''
-};
-
 class Tooltip extends Component {
   render () {
     const {children, position, tooltip, inline, ...other} = this.props;
@@ -44,8 +30,18 @@ class Tooltip extends Component {
   }
 }
 
-Tooltip.propTypes = propTypes;
+Tooltip.propTypes = {
+  inline: PropTypes.bool,
+  children: PropTypes.any,
+  className: PropTypes.string,
+  tooltip: PropTypes.string,
+  tooltipDelay: PropTypes.number,
+  tooltipHideOnClick: PropTypes.bool,
+  position: PropTypes.string
+};
 
-Tooltip.defaultProps = defaultProps;
+Tooltip.defaultProps = {
+  className: ''
+};
 
 export default Tooltip;

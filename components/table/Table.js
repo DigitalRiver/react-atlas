@@ -2,15 +2,6 @@ import React, { PropTypes } from 'react';
 import ClassNames from 'classnames/bind';
 import style from './table.css';
 
-const propTypes = {
-    children: PropTypes.any,
-    className: PropTypes.string
-};
-
-const defaultProps = {
-  className: ''
-};
-
 const Table = ({className, children, ...props}) => {
 
     const cx = ClassNames.bind(style);
@@ -27,7 +18,12 @@ const Table = ({className, children, ...props}) => {
     );
 };
 
-Table.propTypes = propTypes;
-Table.defaultProps = defaultProps;
+Table.propTypes = {
+    children: PropTypes.any,
+    className: PropTypes.string
+};
+Table.defaultProps = {
+  className: ''
+};
 
 export default Table;

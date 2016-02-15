@@ -3,14 +3,6 @@ import ClassNames from 'classnames/bind';
 import Overlay from '../overlay';
 import style from './snackbar.css';
 
-const propTypes = {
-    active: PropTypes.bool,
-    className: PropTypes.string,
-    timeout: PropTypes.number,
-    onTimeout: PropTypes.func,
-    children: PropTypes.node
-};
-
 class Snackbar extends Component {
 
   componentDidUpdate () {
@@ -47,6 +39,12 @@ class Snackbar extends Component {
   }
 }
 
-Snackbar.propTypes = propTypes;
+Snackbar.propTypes = {
+    active: PropTypes.bool,
+    className: PropTypes.string,
+    timeout: PropTypes.number,
+    onTimeout: PropTypes.func,
+    children: PropTypes.node
+};
 
 export default Snackbar;

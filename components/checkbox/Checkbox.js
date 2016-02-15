@@ -2,15 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import ClassNames from 'classnames/bind';
 import style from './checkbox.css';
 
-const propTypes = {
-    className: PropTypes.string,
-    disabled: PropTypes.bool,
-    inline: PropTypes.bool,
-    label: PropTypes.string,
-    style: PropTypes.object,
-    title: PropTypes.string
-};
-
 const Checkbox = ({title, label, disabled, inline, className, ...other}) => {
       const cx = ClassNames.bind(style);
       const componentClass = cx({
@@ -28,6 +19,13 @@ const Checkbox = ({title, label, disabled, inline, className, ...other}) => {
       );
 };
 
-Checkbox.propTypes = propTypes;
+Checkbox.propTypes = {
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    inline: PropTypes.bool,
+    label: PropTypes.string,
+    style: PropTypes.object,
+    title: PropTypes.string
+};
 
 export default Checkbox;

@@ -2,23 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import style from './switch.css';
 import classNames from 'classnames/bind';
 
-const propTypes = {
-    disabled: React.PropTypes.bool,
-    name: React.PropTypes.string,
-    onColor: React.PropTypes.string,
-    offColor: React.PropTypes.string,
-    buttonColor: React.PropTypes.string
-  };
-
-const defaultProps = {
-    checked: false,
-    className: '',
-    disabled: false,
-  };  
-
 class Switch extends React.Component {
-
-
 
   render () {
  
@@ -75,7 +59,18 @@ class Switch extends React.Component {
   }
 }
 
-Switch.propTypes = propTypes;
-Switch.defaultProps = defaultProps;
+Switch.propTypes = {
+    disabled: React.PropTypes.bool,
+    name: React.PropTypes.string,
+    onColor: React.PropTypes.string,
+    offColor: React.PropTypes.string,
+    buttonColor: React.PropTypes.string
+};
+
+Switch.defaultProps = {
+    checked: false,
+    className: '',
+    disabled: false
+};
 
 export default Switch;

@@ -8,29 +8,6 @@ import utils from '../utils/utils';
 import ProgressBar from '../progress_bar';
 import Input from '../input';
 
-const propTypes = {
-  className: PropTypes.string,
-  editable: PropTypes.bool,
-  max: PropTypes.number,
-  min: PropTypes.number,
-  onChange: PropTypes.func,
-  pinned: PropTypes.bool,
-  snaps: PropTypes.bool,
-  step: PropTypes.number,
-  value: PropTypes.number
-};
-
-const defaultProps = {
-  className: '',
-  editable: false,
-  max: 100,
-  min: 0,
-  pinned: false,
-  snaps: false,
-  step: 0.01,
-  value: 0
-};
-
 class Slider extends Component {
   state = {
     inputFocused: false,
@@ -280,7 +257,27 @@ class Slider extends Component {
   }
 }
 
-Slider.propTypes = propTypes;
-Slider.defaultProps = defaultProps;
+Slider.propTypes = {
+  className: PropTypes.string,
+  editable: PropTypes.bool,
+  max: PropTypes.number,
+  min: PropTypes.number,
+  onChange: PropTypes.func,
+  pinned: PropTypes.bool,
+  snaps: PropTypes.bool,
+  step: PropTypes.number,
+  value: PropTypes.number
+};
+
+Slider.defaultProps = {
+  className: '',
+  editable: false,
+  max: 100,
+  min: 0,
+  pinned: false,
+  snaps: false,
+  step: 0.01,
+  value: 0
+};
 
 export default Slider;

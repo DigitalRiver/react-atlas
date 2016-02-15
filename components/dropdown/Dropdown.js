@@ -12,10 +12,6 @@ import DropdownContent from './DropdownContent';
 import { findDOMNode } from 'react-dom';
 import style from './dropdown.css';
 
-const defaultProps = {
-  className: ''
-};
-
 class Dropdown extends Component {
   constructor (props) {
       super(props);
@@ -106,5 +102,8 @@ class Dropdown extends Component {
 
 }
 
+Dropdown.defaultProps = {
+  className: ''
+};
 
 export default Dropdown;

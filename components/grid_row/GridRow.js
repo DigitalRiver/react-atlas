@@ -2,17 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import blacklist from 'blacklist';
 import A from '../constants';
 
-const propTypes = {
-	children: PropTypes.node.isRequired,
-	className: PropTypes.string,
-	gutter: PropTypes.number,
-	style: PropTypes.object
-};
-
-const defaultProps = {
-	gutter: A.width.gutter
-};
-
 class GridRow extends Component {
 	render () {
 		const { gutter } = this.props;
@@ -33,8 +22,15 @@ class GridRow extends Component {
 	}
 }
 
-GridRow.propTypes = propTypes;
+GridRow.propTypes = {
+	children: PropTypes.node.isRequired,
+	className: PropTypes.string,
+	gutter: PropTypes.number,
+	style: PropTypes.object
+};
 
-GridRow.defaultProps = defaultProps;
+GridRow.defaultProps = {
+	gutter: A.width.gutter
+};
 
 export default GridRow;

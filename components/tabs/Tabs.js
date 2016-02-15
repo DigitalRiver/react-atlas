@@ -3,17 +3,6 @@ import Tab from "./Tab";
 import TabContent from "./TabContent";
 import style from "./tabs.css";
 
-const propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  index: PropTypes.number,
-  onChange: PropTypes.func
-};
-
-const defaultProps = {
-  index: 0
-};
-
 class Tabs extends Component {
   _handleHeaderClick = (idx) => {
     if (this.props.onChange) this.props.onChange(idx);
@@ -58,7 +47,15 @@ class Tabs extends Component {
   }
 }
 
-Tabs.propTypes = propTypes;
-Tabs.defaultProps = defaultProps;
+Tabs.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  index: PropTypes.number,
+  onChange: PropTypes.func
+};
+
+Tabs.defaultProps = {
+  index: 0
+};
 
 export default Tabs;

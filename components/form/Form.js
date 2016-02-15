@@ -1,9 +1,5 @@
 import React, { PropTypes } from 'react';
 
-const propTypes = {
-  children: PropTypes.node
-};
-
 const Form = ({ children, ...props }) => {
     return (
       <form {...this.props}>
@@ -12,6 +8,8 @@ const Form = ({ children, ...props }) => {
     );
 };
 
-Form.propTypes = propTypes;
+Form.propTypes = {
+  children: PropTypes.node
+};
 
 export default Form;

@@ -2,26 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import blacklist from 'blacklist';
 import A from '../constants';
 
-const propTypes = {
-	/* eslint-disable react/jsx-sort-prop-types */
-	basis: PropTypes.oneOfType([
-		PropTypes.number, // allow pixels
-		PropTypes.string // allow percentage
-	]),
-	children: PropTypes.node,
-	gutter: PropTypes.number,
-	style: PropTypes.object,
-	lg: PropTypes.string, // width as a percentage or fraction
-	md: PropTypes.string, // width as a percentage or fraction
-	sm: PropTypes.string, // width as a percentage or fraction
-	xs: PropTypes.string // width as a percentage or fraction
-	/* eslint-enable */
-};
-
-const defaultProps = {
-	gutter: A.width.gutter
-};
-
 class GridCol extends Component {
 	constructor (props) {
         super(props);
@@ -91,8 +71,24 @@ class GridCol extends Component {
 
 }
 
-GridCol.propTypes = propTypes;
+GridCol.propTypes = {
+	/* eslint-disable react/jsx-sort-prop-types */
+	basis: PropTypes.oneOfType([
+		PropTypes.number, // allow pixels
+		PropTypes.string // allow percentage
+	]),
+	children: PropTypes.node,
+	gutter: PropTypes.number,
+	style: PropTypes.object,
+	lg: PropTypes.string, // width as a percentage or fraction
+	md: PropTypes.string, // width as a percentage or fraction
+	sm: PropTypes.string, // width as a percentage or fraction
+	xs: PropTypes.string // width as a percentage or fraction
+	/* eslint-enable */
+};
 
-GridCol.defaultProps = defaultProps;
+GridCol.defaultProps = {
+	gutter: A.width.gutter
+};
 
 export default GridCol;
