@@ -17,7 +17,13 @@
     },
    "build": {
     "plugins": [
-        ["./tools/cssTransforms.js", { "generateScopedName": "ra_[name]__[local]" }]
+        ["./tools/cssTransforms.js", {
+            "generateScopedName": "ra_[name]__[local]"
+        }],
+        ["transform-react-remove-statics", {
+            "propTypes": true,
+            "styleguide": true
+        }]
     ]
    }
   }
