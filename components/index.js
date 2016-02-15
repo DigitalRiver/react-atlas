@@ -1,7 +1,7 @@
 import './utils/polyfills'; // Import polyfills for IE11
 export Autocomplete from './autocomplete';
 export Avatar from './avatar';
-export Button from './button/Button';
+export Button from './button';
 export Card from './card';
 export Checkbox from './checkbox';
 export GridCol from './grid_col';
