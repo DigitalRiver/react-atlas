@@ -24,7 +24,7 @@ Here is a sample Component for quick reference of a general component.
 
 ### Sample Components
 #### Boilerplate Class Component
-```javascript
+```jsx
 //import React but also destructure Component and PropType out
 //so we can use those without 'React.' prefix
 import React, { Component, PropTypes } from 'react';
@@ -86,7 +86,7 @@ someComponentName.defaultProps = {
 ```
 
 #### Boilerplate Function Component
-```javascript
+```jsx
 //import React but also destructure Component and PropType out
 //so we can use those without 'React.' prefix
 import React, { Component, PropTypes } from 'react';
