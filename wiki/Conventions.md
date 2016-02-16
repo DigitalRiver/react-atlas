@@ -29,16 +29,6 @@ Here is a sample Component for quick reference of a general component.
 //so we can use those without 'React.' prefix
 import React, { Component, PropTypes } from 'react';
 
-//propTypes and defaultProps are defined outside and appended later at the bottom
-//This method isn't exactly DRY, but having propTypes and defaultProps at top is beneficial
-const propTypes = {
-  text: PropTypes.string,
-};
-
-const defaultProps = {
-  text: 'Hello World',
-};
-
 class someComponentName extends Component {
     //Set default state with constructor
     constructor(props) {
@@ -85,9 +75,14 @@ class someComponentName extends Component {
     }
 }
 
-//Attach propTypes/defaultProps to component.
-someComponentName.propTypes = propTypes;
-someComponentName.defaultProps = defaultProps;
+//Attach propTypes/defaultProps/Statics to component.
+someComponentName.propTypes = {
+  text: PropTypes.string,
+};
+
+someComponentName.defaultProps = {
+  text: 'Hello World',
+};
 ```
 
 #### Boilerplate Function Component
@@ -95,15 +90,6 @@ someComponentName.defaultProps = defaultProps;
 //import React but also destructure Component and PropType out
 //so we can use those without 'React.' prefix
 import React, { Component, PropTypes } from 'react';
-
-//propTypes and defaultProps are defined outside and appended later at the bottom
-const propTypes = {
-  text: PropTypes.string,
-};
-
-const defaultProps = {
-  text: 'Hello World',
-};
 
 const someComponentName = (props) => {
     //Function components have no lifecycle methods to access
@@ -117,8 +103,14 @@ const someComponentName = (props) => {
 }
 
 //Attach propTypes/defaultProps to component.
-someComponentName.propTypes = propTypes;
-someComponentName.defaultProps = defaultProps;
+someComponentName.propTypes = {
+  text: PropTypes.string,
+};
+
+//Attach propTypes/defaultProps/Statics to component.
+someComponentName.defaultProps = {
+  text: 'Hello World',
+};
 ```
 ## CSS
 Here we define some of our CSS conventions
