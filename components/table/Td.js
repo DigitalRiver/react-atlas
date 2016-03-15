@@ -18,11 +18,11 @@ const Td = ({className, children, ...props}) => {
 	);
 };
 
-Td.propTypes = propTypes = {
+Td.propTypes = {
     children: PropTypes.any,
     className: PropTypes.string
 };
-Td.defaultProps = defaultProps = {
+Td.defaultProps = {
   className: ''
 };
 

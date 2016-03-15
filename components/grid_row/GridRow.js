@@ -24,6 +24,9 @@ class GridRow extends Component {
 
 GridRow.propTypes = {
 	children: PropTypes.node.isRequired,
+	/**
+	 * input a css class name
+	 */
 	className: PropTypes.string,
 	gutter: PropTypes.number,
 	style: PropTypes.object

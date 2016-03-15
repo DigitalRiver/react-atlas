@@ -34,6 +34,9 @@ const Avatar = ({children, className, icon, image, title, ...other}) => {
 Avatar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  /**
+   * icon display
+   */
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   image: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   title: PropTypes.string
