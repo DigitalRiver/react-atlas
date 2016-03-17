@@ -56,6 +56,11 @@ const Button = ({className, outline, href, loading, primary, secondary, success,
 
 };
 
+Button.styleguide = {
+  index: '1.1',
+  category: 'Buttons'
+};
+
 Button.propTypes = {
   children: PropTypes.node,
     /**

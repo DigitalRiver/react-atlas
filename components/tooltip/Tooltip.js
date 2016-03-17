@@ -41,7 +41,9 @@ Tooltip.propTypes = {
 };
 
 Tooltip.defaultProps = {
-  className: ''
+  className: '',
+  children: <p>This is some text with tooltip</p>,
+  tooltip: 'Sample Tooltip Text'
 };
 
 export default Tooltip;

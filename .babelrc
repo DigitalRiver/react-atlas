@@ -21,8 +21,8 @@
             "generateScopedName": "ra_[name]__[local]"
         }],
         ["transform-react-remove-statics", {
-            "propTypes": true,
-            "styleguide": true
+            "propTypes": false,
+            "styleguide": false
         }]
     ]
    }

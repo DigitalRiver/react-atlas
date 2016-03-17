@@ -13,6 +13,7 @@ module.exports = {
       loaders: [
         {
           test: /\.css$/,
+          exclude: /(node_modules)/,
           loader: 'style!css?sourceMap&modules&importLoaders=1&localIdentName=ra_[name]__[local]!postcss'
         }
       ]
