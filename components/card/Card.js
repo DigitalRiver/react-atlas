@@ -17,5 +17,6 @@ Card.propTypes = {
 
 Card.defaultProps = {
   children: <p>Some card text.</p>
-}
+};
+
 export default Card;
