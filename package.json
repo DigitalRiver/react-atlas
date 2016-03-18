@@ -17,7 +17,7 @@
     "test:watch": "cross-env NODE_ENV=test karma start --no-single-run",
     "release": "bumped release",
     "patch": "bumped release patch",
-    "docs": "cross-env NODE_ENV=development res ./components/**/*.js -v -c ./docsConfig.js -d"
+    "docs": "cross-env NODE_ENV=development rcs ./components/**/*.js -v -c ./docsConfig.js -d"
   },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
@@ -83,8 +83,8 @@
     "postcss-loader": "^0.8.1",
     "react-a11y": "^0.2.8",
     "react-addons-test-utils": "^0.14.7",
+    "react-component-styleguide": "0.0.1",
     "react-docgen": "^2.7.0",
-    "react-easy-styleguide": "NogsMPLS/react-easy-styleguide",
     "react-icons": "^1.0.3",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.2",
