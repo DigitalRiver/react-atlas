@@ -73,14 +73,19 @@ Avatar.styleguide = {
   example: `
   <section>
     <h5>Avatars</h5>
+    {/* background color change */}
     <Avatar style={{backgroundColor: 'deepskyblue'}} >
       <i className="fa fa-github"></i>
     </Avatar>
+    {/* title prop gets truncated to 1st letter */}
     <Avatar title="Nathan" />
     {/* icon beats title */}
     <Avatar title="Nathan" icon={<i className="fa fa-github"></i>} />
     {/* image beats icon */}
-    <Avatar icon={<i className="fa fa-github"></i>} image="https://placeimg.com/80/80/animals" />
+    <Avatar 
+      icon={<i className="fa fa-github"></i>}
+      image="https://placeimg.com/80/80/animals"
+    />
     {/* image beats title */}
     <Avatar title="Javier" image="https://placeimg.com/80/80/animals" />
     {/* child beats parameters */}
@@ -92,7 +97,7 @@ Avatar.styleguide = {
     </Avatar>
     {/* child string gets truncated to 1st letter */}
     <Avatar>Nathan</Avatar>
-    {/* child should be svg, img, or string */}
+    {/* child should be <i>, <svg>, <img>, or string */}
     <Avatar><i className="fa fa-github"></i></Avatar>
   </section>
   `
