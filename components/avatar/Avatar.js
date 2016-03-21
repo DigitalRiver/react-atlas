@@ -1,7 +1,6 @@
 import React, { PropTypes } from "react";
 import style from "./avatar.css";
 
-
 /**
  * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
  *
