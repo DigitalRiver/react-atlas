@@ -10,9 +10,11 @@
   font-size: 2.4rem;
 }
 
-.avatar > :global(svg) {
+.avatar > :global(svg),
+.avatar > :global(i) {
   width: 2rem;
   height: 3rem;
+  line-height: 3rem;
   fill: currentColor;
 }
 
