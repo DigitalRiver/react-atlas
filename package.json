@@ -17,7 +17,7 @@
     "test:watch": "cross-env NODE_ENV=test karma start --no-single-run",
     "release": "bumped release",
     "patch": "bumped release patch",
-    "docs": "cross-env NODE_ENV=development rcs ./components/**/*.js -v -r /atlas -c ./docsConfig.js -d",
+    "docs": "cross-env NODE_ENV=development rcs ./components/**/*.js -v -r /atlas -c ./docsConfig.js -d 3013",
     "buildDocs": "cross-env NODE_ENV=production rcs ./components/**/*.js -v -c ./docsConfig.js"
   },
   "bugs": {
