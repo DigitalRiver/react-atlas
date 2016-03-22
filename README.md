@@ -63,7 +63,7 @@ To work in the project you'd need a `node` version supporting ES6 syntax. Althou
 To start documentation site locally you'd need to install dependencies from the main package and also dependencies from the docs subproject:
 
 ```
-git clone https://github.com/react-toolbox/react-toolbox.git
+git clone git@github.digitalriverws.net:ux/react-atlas.git
 npm install
 cd docs/
 npm install 
@@ -109,7 +109,7 @@ npm run start
 Spec page will be at ```http://localhost:3001/```
 
 ## License 
-This project is licensed under the terms of the [MIT license](https://github.com/react-toolbox/react-toolbox/blob/master/LICENSE).
+This project is licensed under the terms of the [MIT license](https://github.com/DigitalRiver/react-atlas/blob/master/LICENSE).
 
 ## Atlas?
 When thinking about Web Design and Web Development, we came across the art of map making - [Cartography](https://en.wikipedia.org/wiki/Cartography).
