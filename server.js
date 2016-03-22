@@ -1,13 +1,13 @@
-const path = require('path');
-const http = require('http');
-const express = require('express');
-const app = express();
+var path = require('path');
+var http = require('http');
+var express = require('express');
+var app = express();
 
 (function() {
 
-  const webpack = require('webpack');
-  const config = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : './webpack.config.development');
-  const compiler = webpack(config);
+  var webpack = require('webpack');
+  var config = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : './webpack.config.development');
+  var compiler = webpack(config);
 
   app.use(require('webpack-dev-middleware')(compiler, {
     publicPath: config.output.publicPath,

@@ -38,7 +38,7 @@ module.exports = {
       }
     ]
   },
-  postcss (bundler) {
+  postcss: function (bundler) {
     return [
       postcssImport({
         addDependencyTo: bundler

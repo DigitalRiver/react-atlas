@@ -21,24 +21,24 @@ var _postcssImport2 = _interopRequireDefault(_postcssImport);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const defaultOptions = {
+var defaultOptions = {
     generateScopedName: '[name]__[local]___[hash:base64:5]'
 };
 
 function transformCssModules(_ref) {
-    let t = _ref.types;
+    var t = _ref.types;
 
     return {
         visitor: {
-            CallExpression(path, _ref2) {
-                let file = _ref2.file;
-                let opts = _ref2.opts;
+            CallExpression: function(path, _ref2) {
+                var file = _ref2.file;
+                var opts = _ref2.opts;
 
                 require('css-modules-require-hook')(_extends({}, defaultOptions, opts, { prepend: [(0, _postcssImport2.default)(), (0, _postcssCssnext2.default)()] }));
 
                 var _path$node = path.node;
-                const calleeName = _path$node.callee.name;
-                const args = _path$node.arguments;
+                var calleeName = _path$node.callee.name;
+                var args = _path$node.arguments;
 
                 if (calleeName !== 'require' || !args.length || !t.isStringLiteral(args[0])) {
                     return;
@@ -47,18 +47,18 @@ function transformCssModules(_ref) {
                 if (/\.css/i.test(args[0].value)) {
                     var _args = _slicedToArray(args, 1);
 
-                    const cssPath = _args[0].value;
+                    var cssPath = _args[0].value;
 
                     // if parent expression is variable declarator, replace right side with tokens
 
                     if (!t.isVariableDeclarator(path.parent)) {
-                        throw new Error(`You can't import css file ${ cssPath } to a module scope.`);
+                        throw new Error("You can't import css file " + cssPath + " to a module scope.");
                     }
 
-                    const tokens = require((0, _path.resolve)(process.cwd(), (0, _path.dirname)(file.opts.filenameRelative), cssPath));
+                    var tokens = require((0, _path.resolve)(process.cwd(), (0, _path.dirname)(file.opts.filenameRelative), cssPath));
 
                     /* eslint-disable new-cap */
-                    path.replaceWith(t.ObjectExpression(Object.keys(tokens).map(token => t.ObjectProperty(t.StringLiteral(token), t.StringLiteral(tokens[token])))));
+                    path.replaceWith(t.ObjectExpression(Object.keys(tokens).map(function (token) { return t.ObjectProperty(t.StringLiteral(token), t.StringLiteral(tokens[token]))})));
                 }
             }
         }
