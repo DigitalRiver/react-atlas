@@ -1,0 +1,11 @@
+{
+    "apps": [
+        {
+            "name": "atlasDocs",
+            "script": "./node_modules/react-component-styleguide/bin/rcs",
+            "args" : "./components/**/*.js -r /atlas -c ./docsConfig.js -d 3013",
+            "autorestart": false,
+            "restart_delay": 1000
+        }
+    ]
+}
