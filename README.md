@@ -1,7 +1,7 @@
 # React Atlas
 ***This is an Alpha release and should be used with caution and hope.***
 
-React Atlas is a React component library, with a focus on supplying Admin Interface tools. The end-goal of this repo to is to eventually be the library that can power most of Digital River's complex admin interfaces. With this in mind, we need a fast, generic, composable library that can be dropped into a project and 'just work'.
+React Atlas is a React component library, with a focus on supplying Admin Interface tools. The end-goal of this repo to is to eventually be the library that can power most of Digital River's complex admin interfaces and internal tooling projects. With this in mind, we need a fast, generic, composable library that can be dropped into a project and 'just work'.
 
 ## Why?
 React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). We liked the hierarchy and the way the components were built among many other things. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic looking in regards to style and functionality. We hope that React Atlas will be that tool.
@@ -23,17 +23,17 @@ This project uses CSS Modules and CSS Next for styling. To process this we use P
   - [PostCSS Modules](https://github.com/outpunk/postcss-modules)
   - [Babel Plugin CSS Modules Transform](https://github.com/michalkvasnicak/babel-plugin-css-modules-transform)
   - [CSS Modules Require Hook](https://github.com/css-modules/css-modules-require-hook)
-- ES6/JSX compiler. We reccomend Babel and use the following Babel presets:
+- ES6/JSX compiler. We recommend Babel and use the following Babel presets:
   - [es2015](https://babeljs.io/docs/plugins/preset-es2015/)
   - [react](http://babeljs.io/docs/plugins/preset-react/)
   - [stage-1](http://babeljs.io/docs/plugins/preset-stage-1/)
 
 ## Usage
-***The React Atlas is in initial development, the API is still changing.***
+***The React Atlas is in alpha development, the API is still changing.***
 
-For inital development and release, we are focusing on a nodejs with webpack environment. As we continue to develop React Atlas we might bring in examples and boilerplates to show it working with other build systems (JSPM, Browserify, UMD, etc.). Though our hope is that React Atlas will be generic enough, that it should be relatively simple to set up in most any environment.
+For initial development and release, we are focusing on a nodejs with webpack environment. As we continue to develop React Atlas we might bring in examples and boilerplate repos to show it working with other build systems (JSPM, Browserify, UMD, etc.). Though our hope is that React Atlas will be generic enough, that it should be relatively simple to set up in most any environment.
 
-With webpack in mind, we reccomend using [Babel Loader](https://github.com/babel/babel-loader), [CSS Loader](https://github.com/webpack/css-loader), and [PostCSS Loader](https://github.com/postcss/postcss-loader).
+With webpack in mind, we recommend using [Babel Loader](https://github.com/babel/babel-loader), and [CSS Loader](https://github.com/webpack/css-loader).
 
 Once you've reference the React Atlas CSS file in your build process, requiring and using the components is as simple as:
 
@@ -42,50 +42,46 @@ import React from 'react';
 import { Button } from 'react-atlas';
 
 const someButton = () => (
-  <Button label="Some Text" />
+  <Button>Some Text</Button>
 );
 
 export default someButton;
 ```
 
-The previous code creates a React button component based on a React Atlas button.
+The previous code creates a React button component based on a React Atlas button default styling and logic.
 
 ## CSS Customization
 
-Internally for React Atlas development, we use CSS Modules. However, we compile down our CSS into 1 main CSS file that is namespaced similar to: ```.ra_filename_stylename```. This allows multiple opens for anyone that wants to restyle a React Atlas component. You can simply overwrite the class with your own css file or you can feed the component inline styles via the ```style``` prop, or you can pass your own ```className``` prop.
+Internally for React Atlas development, we use CSS Modules. However, we compile down our CSS into 1 main CSS file that is namespaced similar to: ```.ra_filename_stylename```. This allows multiple options for anyone that wants to restyle a React Atlas component. You can simply overwrite the class with your own css file or you can feed the component inline styles via the ```style``` prop, or you can pass your own ```className``` prop.
 
 We will be thinking hard about styling going forward and this workflow may change. We want to make overriding the React Atlas styles as simple as possible. Something like [React Themeable](https://github.com/markdalgleish/react-themeable) may be used.
 
 ## Local Docs
 
-To work in the project you'd need a `node` version supporting ES6 syntax. Although the project is built using Babel we use some ES6 features in the development server. Also, the packages has been tested with `node 4.2.1`. Consider using [nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n) to handle different node versions!
-
-To start documentation site locally you'd need to install dependencies from the main package and also dependencies from the docs subproject:
+To start documentation site locally you'd need to install dependencies from the main package and then just run the docs script:
 
 ```
 git clone git@github.digitalriverws.net:ux/react-atlas.git
 npm install
-cd docs/
-npm install 
-npm start
+npm run docs
 ```
 
-Local documentation will be available at http://localhost:3001/
+Local documentation will be available at http://localhost:3013/atlas
 
 ## Authors and Contributors
 Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.com/DigitalRiver/react-atlas/blob/master/CONTRIBUTING.md)***
 
 Please note that this project is released with a [Contributor Code of Conduct](https://github.com/DigitalRiver/react-atlas/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-The project is being initially developed and maintained by the DR UX team.
+The project is being initially developed and maintained by the Digital River Experience Engineering team.
 
 ## [Read the Wiki](https://github.com/DigitalRiver/react-atlas/tree/master/wiki)
 Check out [our wiki](https://github.com/DigitalRiver/react-atlas/tree/master/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
 
 ## Set-Up/Installation for Development and Contributing
 
-### Windows Users
-If running on windows, Follow these steps to ensure you don't run into any 'node-gyp' issues:
+### Pre-work for Windows Users (a.k.a. node-gyp stuff)
+If running on windows, follow these steps to ensure you don't run into any 'node-gyp' issues:
 
 [Install VC++ Build Tools Technical Preview](https://www.microsoft.com/en-us/download/confirmation.aspx?id=49983)
 
@@ -95,18 +91,15 @@ If running on windows, Follow these steps to ensure you don't run into any 'node
 
 Launch cmd, ```npm config set msvs_version 2015``` --global 
 
-### Clone and Start Spec/Style Guide Page
-The following commands will clone the repo down, install npm dependencies and start the specs/style guide page.
+### Clone and Start Docs
+The following commands will clone the repo down, install npm dependencies and start the docs server.
 ```
 git clone git@github.digitalriverws.net:ux/react-atlas.git
 cd react-atlas
 npm install
-cd docs/
-npm install 
-cd ..
-npm run start
+npm run docs
 ```
-Spec page will be at ```http://localhost:3001/```
+Docs will be at ```http://localhost:3013/atlas```
 
 ## License 
 This project is licensed under the terms of the [MIT license](https://github.com/DigitalRiver/react-atlas/blob/master/LICENSE).
