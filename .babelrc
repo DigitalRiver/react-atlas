@@ -16,15 +16,15 @@
       ]
     },
    "build": {
-    "plugins": [
+      "plugins": [
         ["./tools/cssTransforms.js", {
             "generateScopedName": "ra_[name]__[local]"
         }],
         ["transform-react-remove-statics", {
-            "propTypes": false,
-            "styleguide": false
+            "propTypes": true,
+            "styleguide": true
         }]
-    ]
-   }
+      ]
+    }
   }
 }

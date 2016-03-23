@@ -1,14 +1,14 @@
 .*rc
 .eslintignore
-.csscomb.json
-.*.yml
 .editorconfig
 karma.conf.js
-server.js
 tests.webpack.js
 webpack.config.*
 jsconfig.json
 CONTRIBUTING.md
+CODE_OF_CONDUCT.md
 docs
 spec
 tools
+wiki
+styleguide

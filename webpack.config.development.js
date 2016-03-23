@@ -11,7 +11,7 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './spec/index.js'
+    './styleguide/index.js'
   ],
   output: {
     path: path.join(__dirname, 'build'),
