@@ -1,6 +1,6 @@
 var Service = require('node-windows').Service;
 
-var scriptPath = require('path').join(__dirname, 'node_modules','gulp','bin','gulp.js')
+var scriptPath = require('path').join(__dirname, './node_modules','react-component-styleguide','bin','rcs')
 // Create a new service object
 var svc = new Service({
   name:'React-Atlas',
