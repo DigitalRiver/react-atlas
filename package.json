@@ -81,7 +81,7 @@
     "postcss-loader": "^0.8.2",
     "react-a11y": "^0.3.2",
     "react-addons-test-utils": "^0.14.7",
-    "react-component-styleguide": "0.0.9",
+    "react-component-styleguide": "^0.0.13",
     "react-docgen": "^2.7.0",
     "react-icons": "^1.0.3",
     "react-transform-catch-errors": "^1.0.2",
@@ -92,7 +92,8 @@
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.10.0",
+    "npm-publish-nexus-cache-test": "0.0.1"
   },
   "repository": "https://github.com/DigitalRiver/react-atlas.git"
 }
