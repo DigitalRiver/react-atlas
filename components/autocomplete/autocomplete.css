@@ -56,10 +56,6 @@
     text-align: left;
 }
 
-.suggestion > span {
- float: left;
-}
-
 .suggestionFocused {
     background-color: #ddd;
 }
