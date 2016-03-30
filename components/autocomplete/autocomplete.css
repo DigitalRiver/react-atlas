@@ -4,7 +4,7 @@
 }
 
 .input {
-    composes: pad-1 from '../styles.css';
+  composes: pad-1 from '../styles.css';
 	composes: border-gray from '../styles.css';
 	float:left;
 	position: relative;
@@ -53,6 +53,11 @@
 .suggestion {
     composes: pad-1 from '../styles.css';
     cursor: pointer;
+    text-align: left;
+}
+
+.suggestion > span {
+ float: left;
 }
 
 .suggestionFocused {
