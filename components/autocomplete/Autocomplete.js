@@ -133,6 +133,7 @@ Autocomplete.styleguide = {
   index: '3.1',
   wrappedExample: true,
   example: `
+// languages {
 var languages = [
   {
     name: 'C',
@@ -147,7 +148,8 @@ var languages = [
     year: 1983
   }
 ];
-
+// }
+// internal component methods {
 var App = React.createClass({
   
   getInitialState: function() {
@@ -194,7 +196,7 @@ var App = React.createClass({
       suggestions: this.getSuggestions(value)
     });
   },
-  
+// }
   render() {
     var inputProps = {
       placeholder: "Type 'c'",
@@ -215,9 +217,11 @@ var App = React.createClass({
       </section>
       );
     }
+// Mount component {
 })
 
 ReactDOM.render(<App/>, mountNode);
+// }
 `
 };
 
