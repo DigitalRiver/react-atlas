@@ -55,7 +55,6 @@ Dialog.styleguide = {
   category: "Layout",
   index: "4.1",
   wrappedExample: true,
-  importedComponents: { Button: require('../button')},
   example:`
 // Internal Methods {
 class App extends React.Component {
