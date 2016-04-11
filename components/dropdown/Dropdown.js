@@ -12,6 +12,9 @@ import DropdownContent from './DropdownContent';
 import { findDOMNode } from 'react-dom';
 import style from './dropdown.css';
 
+/**
+ * Simple Composable Dropdown Component that wraps DropdownTrigger and DropdownContent components. Primarily useful for Navigational dropdowns, not form select dropdowns.
+ */
 class Dropdown extends Component {
   constructor (props) {
       super(props);
@@ -104,6 +107,59 @@ class Dropdown extends Component {
 
 Dropdown.defaultProps = {
   className: ''
+};
+
+
+Dropdown.styleguide = {
+  category: 'Navigation',
+  index: '5.2',
+  wrappedExample: true,
+  example: `
+// Dropdown Dummy Data {
+var countries = [
+  { value: 'EN-gb', label: 'England'},
+  { value: 'ES-es', label: 'Spain'},
+  { value: 'TH-th', label: 'Thailand'},
+  { value: 'EN-en', label: 'USA'},
+  { value: 'FR-fr', label: 'France'}
+];
+// }
+// Internal Methods {
+class DropdownExample extends React.Component {
+
+  handleChange = (dropdown, value) => {
+    const newState = {};
+    newState[dropdown] = value;
+    this.setState(newState);
+  };
+
+  render () {
+// }
+    return (
+      <section>
+        <h5>Dropdown</h5>
+        <p>lorem ipsum...</p>
+
+        <Dropdown>
+          <DropdownTrigger>
+            <Button>Dropdown Button</Button>
+          </DropdownTrigger>
+          <DropdownContent>
+            <DropdownList>
+              {countries.map((country, idx) => (
+                <DropdownListItem key={idx}>{country.label}</DropdownListItem>
+              ))}
+            </DropdownList>
+          </DropdownContent>
+        </Dropdown>
+      </section>
+    );
+// Mount Component {
+  }
+}
+ReactDOM.render(<DropdownExample/>, mountNode);
+// }
+`
 };
 
 export default Dropdown;

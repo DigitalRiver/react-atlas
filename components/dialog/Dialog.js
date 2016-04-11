@@ -53,7 +53,7 @@ Dialog.defaultProps = {
 
 Dialog.styleguide = {
   category: "Layout",
-  index: "4.1",
+  index: "4.2",
   wrappedExample: true,
   example:`
 // Internal Methods {
