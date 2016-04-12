@@ -1,17 +1,14 @@
 .container {
-	composes: clearfix from '../styles.css';
+	clear: both;
 }
 
-.input{
-    composes: marg-b-2 from '../styles.css';
-    composes: pad-1 from '../styles.css';
+.input {
+  composes: pad-1 from '../styles.css';
 	composes: border-gray from '../styles.css';
 	width: 100%;
-	float: left;
 	position: relative;
 	display: block;
 	border-width: 1px;
-	height: 2.4em;
 	box-shadow: none;
 	transition: box-shadow 0.3s, border 0.3s;
 	appearance: none;
@@ -31,8 +28,8 @@
     top: 1px;
 }
 
-.placeholder {
-	padding: 0 .75em 0 .75em;
+.input::placeholder {
+  color: #aaa;
 }
 
 .error {

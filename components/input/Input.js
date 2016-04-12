@@ -2,6 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import style from './input.css';
 
+/**
+ * Input component. Takes a label prop and wraps label and input in a div. Takes regular input attributes as props as well
+ */
+
 class Input extends Component {
     render () {
         const { disabled, label, maxLength, multiline, type, value, ...others} = this.props;
@@ -20,7 +24,7 @@ class Input extends Component {
 
         return (
           <div className={style.container}>
-            <label {...this.props} className={style.label}>{label}</label>
+            <label htmlFor={this.props.htmlFor} className={style.label}>{label}</label>
             <input {...this.props} className={inputClassName} onChange={this.props.onChange} type={type} />
           </div>
         );
@@ -46,6 +50,30 @@ Input.defaultProps = {
     "type": 'text',
     "inputLength": 0,
     "focus": false
+};
+
+Input.styleguide = {
+  category: 'Form Components',
+  example: `
+<section>
+  <h5>Inputs</h5>
+  <p>lorem ipsum...</p>
+  <Input
+    type="text"
+    label="First Label"
+    maxLength={12}
+    placeholder="First Label placeholder"
+  />
+  <Input
+    type="text"
+    label="Second Label"
+    maxLength={12}
+    placeholder="Second Label placeholder"
+  />
+
+  <Button>Submit</Button>
+</section>  
+`
 };
 
 export default Input;

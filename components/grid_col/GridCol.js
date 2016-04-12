@@ -2,6 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import blacklist from 'blacklist';
 import A from '../constants';
 
+/**
+ * Component that handles Col/Column part of a Grid system. Syntax  somewhat similar to bootstraps grid class syntax.
+ */
 class GridCol extends Component {
 	constructor (props) {
         super(props);
@@ -96,8 +99,7 @@ GridCol.styleguide = {
   index: '4.3',
   example: `
 <section>
-  <h5>Cards</h5>
-  <p>You have multiple options for cards. Combine different subcomponents to create your own:</p>
+  <h5>GridCol Example</h5>
     <GridRow>
 
       <GridCol sm="1" md="1/2">
