@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import ClassNames from 'classnames/bind';
 import style from './overlay.css';
 
+/**
+ * Overlay component adds a 'shadowbox' to screen. Mostly used internally in the lib on the `<Dialog>` component.
+ */
 class Overlay extends Component {
 
   componentDidMount () {
@@ -60,6 +63,38 @@ Overlay.propTypes = {
 
 Overlay.defaultProps = {
    invisible: false
+};
+
+Overlay.styleguide = {
+  wrappedExample: true,
+  example:`
+// Internal Methods {
+class App extends React.Component {
+  state = {
+    active: false
+  };
+
+  handleToggle = () => {
+    this.setState({
+      active: !this.state.active
+    });
+  };
+// }
+  render () {
+    return (
+      <section>
+        <h5>Overlay Example</h5>
+        <Button onClick={this.handleToggle}>Show Overlay</Button>
+        <Overlay active={this.state.active} onClick={this.handleToggle} />
+      </section>
+    );
+  }
+// Mount Component {
+}
+
+ReactDOM.render(<App/>, mountNode);
+// }
+  `
 };
 
 export default Overlay;

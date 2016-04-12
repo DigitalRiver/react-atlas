@@ -2,6 +2,9 @@ import React, { PropTypes, Component } from 'react';
 import ClassNames from 'classnames/bind';
 import style from './media.css';
 
+/**
+ * Component to handle Media, such as Videos and Pictures and resize them based on aspect ratio.
+ */
 class Media extends Component {
   render () {
     const { aspectRatio, children, className, color, contentOverlay, image, ...other } = this.props;
@@ -41,6 +44,22 @@ Media.propTypes = {
       PropTypes.string,
       PropTypes.element
 	])
+};
+
+Media.styleguide = {
+  example: `
+<section>
+  <h5>Media</h5>
+	<div style={{"width": "400px", margin: "auto"}}>
+		<Media aspectRatio="square" image="https://placeimg.com/700/700/nature" />
+	</div>
+	<div style={{"width": "400px", margin: "auto"}}>
+		<Media aspectRatio="wide">
+			<iframe width="1280" height="720" src="https://www.youtube.com/embed/sGbxmsDFVnE?rel=0&amp;showinfo=0" frameBorder="0" allowFullScreen></iframe>
+		</Media>
+	</div>
+</section>
+`
 };
 
 export default Media;
