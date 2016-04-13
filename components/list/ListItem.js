@@ -24,6 +24,7 @@ const ListItem= ({children, className, ...props}) => {
 
 ListItem.styleguide = {
   category: 'Lists',
+  index: '7.2',
   example:`
 <section>
   <h5>Simple List with ListIem</h5>

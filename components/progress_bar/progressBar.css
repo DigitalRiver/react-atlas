@@ -2,7 +2,6 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  display: inline-block;
   background: #eee none repeat scroll 0% 0%;
   height: .4rem;
 }

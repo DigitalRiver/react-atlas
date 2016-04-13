@@ -23,6 +23,7 @@ ListText.propTypes = propTypes;
 
 ListText.styleguide = {
   category: 'Lists',
+  index: '7.3',
   example:`
 <section>
   <h5>Complex ListText example</h5>

@@ -28,4 +28,20 @@ const RadioGroup = ({className, children, name, ...props}) => {
 RadioGroup.propTypes = propTypes;
 RadioGroup.defaultProps = defaultProps;
 
+RadioGroup.styleguide = {
+  category: 'Form Components',
+  index: '3.9',
+  example: `
+<section>
+  <h5>RadioGroup with Radio Buttons</h5>
+  <RadioGroup name="comic">
+    <Radio label="Checked Radio" value="checkedRadio" defaultChecked />
+    <Radio label="Disabled Radio" value="disabledRadio" disabled/>
+    <Radio label="Inlined 1" value="inlined1" className="someClassIMadeUp" inline onFocus={this.handleFocus}/>
+    <Radio label="Inlined2" value="inlined2" inline onBlur={this.handleBlur}/>
+  </RadioGroup>
+</section>
+`
+}
+
 export default RadioGroup;

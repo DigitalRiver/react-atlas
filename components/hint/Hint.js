@@ -13,8 +13,8 @@ const Hint = ({className, children, ...props}) => {
 };
 
 Hint.styleguide = {
-  category: 'Typography',
-  index: '6.1',
+  category: 'Form Components',
+  index: '3.5',
   example: `
 <div>
   <p>Here is some regular text. <Hint>Some Hint text</Hint></p>

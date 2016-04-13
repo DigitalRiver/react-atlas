@@ -66,6 +66,8 @@ Overlay.defaultProps = {
 };
 
 Overlay.styleguide = {
+  category: 'Layout',
+  index: '3.6',
   wrappedExample: true,
   example:`
 // Internal Methods {

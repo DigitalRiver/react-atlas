@@ -29,9 +29,10 @@ Header.defaultProps = {
 
 Header.styleguide = {
   category: 'Layout',
+  index: '4.5',
   example:`
 <div style={{maxHeight: "200px", overflowY: "scroll"}}>
-  <Header flat>
+  <Header>
     <h1>This is a Header</h1>
   </Header>
   <div>

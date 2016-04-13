@@ -24,7 +24,7 @@ class Input extends Component {
 
         return (
           <div className={style.container}>
-            <label htmlFor={this.props.htmlFor} className={style.label}>{label}</label>
+            {this.props.label ? <label htmlFor={this.props.htmlFor} className={style.label}>{label}</label> : null}
             <input {...this.props} className={inputClassName} onChange={this.props.onChange} type={type} />
           </div>
         );
@@ -54,6 +54,7 @@ Input.defaultProps = {
 
 Input.styleguide = {
   category: 'Form Components',
+  index: '3.6',
   example: `
 <section>
   <h5>Inputs</h5>

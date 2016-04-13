@@ -12,6 +12,7 @@ class Slider extends Component {
   state = {
     inputFocused: false,
     inputValue: null,
+    otherKnobValue: null,
     sliderLength: 0,
     sliderStart: 0
   };
@@ -34,6 +35,10 @@ class Slider extends Component {
     window.removeEventListener('resize', this.handleResize);
   }
 
+  isRangeSlider () {
+    return isNaN(this.props.value);
+  }
+
   handleInputFocus = () => {
     this.setState({
       inputFocused: true,
@@ -42,13 +47,22 @@ class Slider extends Component {
   };
 
   handleInputChange = (value) => {
+    var stateVal = this.state.inputValue;
+    if (this.isRangeSlider())
+      value.to = event;
+    this.setState({inputValue: value});
+  };
+
+  handleFromInputChange = (event) => {
+    let value = this.state.inputValue;
+      value.from = event;
     this.setState({inputValue: value});
   };
 
   handleInputBlur = (event) => {
     const value = this.state.inputValue || 0;
     this.setState({inputFocused: false, inputValue: null}, () => {
-      this.props.onChange(this.trimValue(value), event);
+      this.props.onChange(this.prepareValue(value), event);
     });
   };
 
@@ -57,6 +71,7 @@ class Slider extends Component {
       this.refs.input.blur();
       ReactDOM.findDOMNode(this).blur();
     }
+    if (this.isRangeSlider()) return;
     if (event.keyCode === 38) this.addToValue(this.props.step);
     if (event.keyCode === 40) this.addToValue(-this.props.step);
   };
@@ -134,17 +149,26 @@ class Slider extends Component {
 
   end (revents) {
     events.removeEventsFromDocument(revents);
-    this.setState({ pressed: false });
+    this.setState({ pressed: false, otherKnobValue: null });
   }
 
-  knobOffset () {
-    const { max, min } = this.props;
-    return this.state.sliderLength * (this.props.value - min) / (max - min);
+  calculateKnobOffset (value) {
+    const { max, min, step } = this.props;
+    return 100 * (value - min) / (max - min);
+  }
+
+  enrichNewValue (value) {
+     if (!this.isRangeSlider())
+       return value;
+     const otherValue = this.state.otherKnobValue;
+     return otherValue > value ?
+     {from: value, to: otherValue} :
+     {from: otherValue, to: value};
   }
 
   move (position) {
     const newValue = this.positionToValue(position);
-    if (newValue !== this.props.value) this.props.onChange(newValue);
+    if (newValue !== this.props.value) this.props.onChange(this.enrichNewValue(newValue));
   }
 
   positionToValue (position) {
@@ -154,10 +178,20 @@ class Slider extends Component {
   }
 
   start (position) {
-    this.handleResize(null, () => {
-      this.setState({pressed: true});
-      this.props.onChange(this.positionToValue(position));
+    this.setState({
+       pressed: true,
+       otherKnobValue: this.getOtherKnobValue(position)
     });
+    this.handleResize(null, () => this.props.onChange(this.enrichNewValue(this.positionToValue(position))));
+  }
+
+  getOtherKnobValue (position) {
+     if (!this.isRangeSlider())
+       return null;
+     const currentValue = this.positionToValue(position);
+     const differenceFrom = Math.abs(currentValue - this.props.value.from);
+     const differenceTo = Math.abs(currentValue - this.props.value.to);
+     return differenceFrom > differenceTo ? this.props.value.from : this.props.value.to;
   }
 
   stepDecimals () {
@@ -170,41 +204,87 @@ class Slider extends Component {
     return utils.round(value, this.stepDecimals());
   }
 
-  valueForInput (value) {
+  prepareValue (value) {
+     if (!this.isRangeSlider())
+       return this.trimValue(value);
+     value.from = this.trimValue(value.from);
+     value.to = this.trimValue(value.to);
+     if (value.from > value.to) {
+       var temp = value.to;
+       value.to = value.from;
+       value.from = temp;
+     }
+     return value;
+  }
+
+  convertValue(value) {
     const decimals = this.stepDecimals();
     return decimals > 0 ? value.toFixed(decimals) : value.toString();
   }
 
-  renderSnaps () {
-    if (this.props.snaps) {
-      return (
-        <div ref='snaps' className={style.snaps}>
-          {utils.range(0, (this.props.max - this.props.min) / this.props.step).map(i => {
-              return <div key={`span-${i}`} className={style.snap}></div>;
-            })}
-        </div>
-      );
-    }
-  }
+  valueForInput (value) {
+     if (this.isRangeSlider())
+       return {from: this.convertValue(value.from), to: this.convertValue(value.to)};
+     return this.convertValue(value);
+   }
 
-  renderInput () {
+   valueForKnob (isLast) {
+     if (!this.isRangeSlider())
+       return this.props.value;
+     return isLast ? this.props.value.to : this.props.value.from;
+   }
+
+   renderKnob (isLast) {
+      const knobValue = this.valueForKnob(isLast);
+      const offset = this.calculateKnobOffset(knobValue);
+      const knobStyles = prefixer({left: `${offset}%`});
+      const className = ClassNames(style.innerknob, {
+         [style.pressed]: knobValue !== this.state.otherKnobValue
+      });
+      const ref = isLast ? "knob" : "knobFrom";
+      return (<div
+             ref={ref}
+             className={style.knob}
+             onMouseDown={this.handleMouseDown}
+             onTouchStart={this.handleTouchStart}
+             style={knobStyles}
+           >
+             <div className={className} data-value={parseInt(this.valueForKnob(isLast))}></div>
+           </div>);
+   }
+   renderSnaps () {
+      if (this.props.snaps) {
+        return (
+         <div ref='snaps' className={style.snaps}>
+           {utils.range(0, (this.props.max - this.props.min) / this.props.step).map(i => {
+               return <div key={`span-${i}`} className={style.snap}></div>;
+             })}
+         </div>
+       );
+      }
+    }
+
+  renderInput (isLast) {
     if (this.props.editable) {
-      const value = this.state.inputFocused ? this.state.inputValue : this.valueForInput(this.props.value);
+      var value = this.state.inputFocused ? this.state.inputValue : this.valueForInput(this.props.value);
+      if (this.isRangeSlider()) {
+        value = isLast ? value.to : value.from;
+      }
+      const ref = isLast ? "input" : "inputFrom";
       return (
-        <Input
-          ref='input'
-          className={style.input}
-          onFocus={this.handleInputFocus}
-          onChange={this.handleInputChange}
-          onBlur={this.handleInputBlur}
-          value={value}
-        />
+          <Input
+            ref={ref}
+            className={style.input}
+            onFocus={this.handleInputFocus}
+            onChange={isLast ? this.handleInputChange : this.handleFromInputChange}
+            onBlur={this.handleInputBlur}
+            value={value}
+          />
       );
     }
   }
 
   render () {
-    const knobStyles = prefixer({transform: `translateX(${this.knobOffset()}px)`});
     const cx = ClassNames.bind(style);
     const className = cx(style.root, {
       editable: this.props.editable,
@@ -221,22 +301,15 @@ class Slider extends Component {
         onFocus={this.handleSliderFocus}
         tabIndex='0'
       >
+        {this.isRangeSlider() ? this.renderInput(false) : null}
         <div
           ref='slider'
           className={style.container}
           onMouseDown={this.handleMouseDown}
           onTouchStart={this.handleTouchStart}
         >
-          <div
-            ref='knob'
-            className={style.knob}
-            onMouseDown={this.handleMouseDown}
-            onTouchStart={this.handleTouchStart}
-            style={knobStyles}
-          >
-            <div className={style.innerknob} data-value={parseInt(this.props.value)}></div>
-          </div>
-
+          {this.isRangeSlider() ? this.renderKnob(false) : ""}
+          {this.renderKnob(true)}
           <div className={style.progress}>
             <ProgressBar
               ref='progressbar'
@@ -247,11 +320,17 @@ class Slider extends Component {
               transitionDuration='0s'
               value={this.props.value}
             />
-            {this.renderSnaps()}
+            {this.props.snaps
+              ? <div ref='snaps' className={style.snaps}>
+                  {utils.range(0, (this.props.max - this.props.min) / this.props.step).map(i => {
+                      return <div key={`span-${i}`} className={style.snap}></div>;
+                    })}
+                </div>
+              : null
+            }
           </div>
         </div>
-
-        {this.renderInput()}
+        {this.renderInput(true)}
       </div>
     );
   }
@@ -266,7 +345,13 @@ Slider.propTypes = {
   pinned: PropTypes.bool,
   snaps: PropTypes.bool,
   step: PropTypes.number,
-  value: PropTypes.number
+  value: React.PropTypes.oneOfType([
+       React.PropTypes.number,
+       React.PropTypes.shape({
+         from: React.PropTypes.number,
+         to: React.PropTypes.number
+       })
+     ])
 };
 
 Slider.defaultProps = {
@@ -278,6 +363,47 @@ Slider.defaultProps = {
   snaps: false,
   step: 0.01,
   value: 0
+};
+
+Slider.styleguide = {
+  category: 'Form Components',
+  index: '3.11',
+  wrappedExample: true,
+  example: `
+// Internal Methods {
+class SliderExample extends React.Component {
+  state = {
+    slider2: 5,
+    slider3: 1,
+    slider4: {from: 10, to: 25}
+  };
+
+  handleChange = (slider, value) => {
+    const newState = {};
+    newState[slider] = value;
+    this.setState(newState);
+  };
+// }
+  render () {
+    return (
+      <section>
+        <h5>Sliders</h5>
+        <p>Normal slider</p>
+        <Slider value={this.state.slider1} onChange={this.handleChange.bind(this, 'slider1')} />
+        <p>With steps, initial value and editable</p>
+        <Slider min={0} max={10} editable value={this.state.slider2} onChange={this.handleChange.bind(this, 'slider2')} />
+        <p>Pinned and with snaps</p>
+        <Slider pinned snaps min={0} max={10} step={1} editable value={this.state.slider3} onChange={this.handleChange.bind(this, 'slider3')} />
+        <p>Range slider</p>
+        <Slider editable pinned snaps step={5} value={this.state.slider4} onChange={this.handleChange.bind(this, 'slider4')}/>
+      </section>
+    );
+  }
+// Mount Component {
+}
+ReactDOM.render(<SliderExample/>, mountNode);
+// }
+`
 };
 
 export default Slider;

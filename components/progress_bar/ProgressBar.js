@@ -46,6 +46,23 @@ class ProgressBar extends React.Component {
       </div>
     );
   }
+  renderRange () {
+     let rangeStyle = prefixer({
+       transform: `translateX(${this.calculateRatio(this.props.value.from) * 100}%) 
+                   scaleX(${this.calculateRatio(this.props.value.to - this.props.value.from)})`
+     });
+     return (
+         <span ref='value' data-ref='value' className={style.value} style={rangeStyle}></span>
+     );
+   }
+
+   renderInner () {
+     if (this.props.type === 'circular')
+       return this.renderCircular();
+     if (isNaN(this.props.value))
+       return this.renderRange();
+     return this.renderLinear();
+   }
 
   render () {
     const {buffer, type, mode, value, min, max, ...props} = this.props;
@@ -62,7 +79,7 @@ class ProgressBar extends React.Component {
         aria-valuemax={max}
         className={classes}
       >
-        {this.props.type === "circular" ? this.renderCircular() : this.renderLinear()}
+        {this.renderInner()}
       </div>
     );
   }
@@ -77,7 +94,13 @@ ProgressBar.propTypes = {
   mode: React.PropTypes.string,
   multicolor: React.PropTypes.bool,
   type: React.PropTypes.oneOf(['linear', 'circular']),
-  value: React.PropTypes.number
+  value: React.PropTypes.oneOfType([
+       React.PropTypes.number,
+       React.PropTypes.shape({
+         from: React.PropTypes.number,
+         to: React.PropTypes.number
+       })
+     ])
 };
 
 ProgressBar.defaultProps = {
@@ -90,6 +113,71 @@ ProgressBar.defaultProps = {
   multicolor: false,
   type: 'linear',
   value: 0
+};
+
+ProgressBar.styleguide = {
+  category: 'Form Components',
+  index: '3.7',
+  wrappedExample: true,
+  example: `
+// Internal Methods {
+class ProgressBarExample extends React.Component {
+  state = {
+    progress: 0,
+    buffer: 10
+  };
+
+  componentWillMount () {
+    this.simulateProgress();
+  }
+
+  simulateProgress () {
+    setTimeout(() => {
+      if (this.state.progress < 100) {
+        this.increaseProgress();
+        if (this.state.progress > this.state.buffer) this.increaseBuffer();
+      } else {
+        this.setState(initialState);
+      }
+      this.simulateProgress();
+    }, (Math.random() * 1 + 1) * 1000);
+  }
+
+  increaseProgress () {
+    this.setState({
+      progress: Math.random() * 30 + this.state.progress
+    });
+  }
+
+  increaseBuffer () {
+    this.setState({
+      buffer: Math.random() * (100 - this.state.progress) + this.state.progress
+    });
+  }
+// }
+  render () {
+    return (
+      <section>
+        <h5>Progress bars</h5>
+        <p style={{margin: "10px auto"}}>Determinate</p>
+        <ProgressBar mode="determinate" value={this.state.progress} buffer={this.state.buffer}/>
+        <p style={{margin: "10px auto"}}>Indeterminate...</p>
+        <ProgressBar mode="indeterminate"/>
+        <p style={{margin: "10px auto"}}>Circular Indeterminate</p>
+        <ProgressBar type="circular" mode="indeterminate"/>
+        <p style={{margin: "10px auto"}}>Circular Determinate</p>
+        <ProgressBar type="circular" mode="determinate" value={this.state.progress}/>
+        <p style={{margin: '10px auto'}}>Range</p>
+        <ProgressBar mode='determinate' value={{from: 10, to: 80}}/>
+      </section>
+    );
+  }
+// Mount Component {
+}
+
+ReactDOM.render(<ProgressBarExample/>, mountNode);
+// }
+`
 };
 
 export default ProgressBar;
