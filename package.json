@@ -15,7 +15,7 @@
     "prepublish": "npm run build",
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --no-single-run",
-    "docs": "cross-env NODE_ENV=development rcs ./components/**/*.js -v -c ./docsConfig.js -d"
+    "docs": "cross-env NODE_ENV=development rcs ./components/**/*.js -r /atlas -v -c ./docsConfig.js -d"
   },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
@@ -81,7 +81,7 @@
     "postcss-loader": "^0.8.2",
     "react-a11y": "^0.3.2",
     "react-addons-test-utils": "^15.0.1",
-    "react-component-styleguide": "0.0.32",
+    "react-component-styleguide": "0.0.33",
     "react-docgen": "^2.7.0",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
