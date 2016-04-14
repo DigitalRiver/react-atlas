@@ -34,7 +34,7 @@ ListText.styleguide = {
     <h5>Contacts</h5>
     <List>
       <ListItem>
-        <Avatar image="https://upload.wikimedia.org/wikipedia/en/6/6f/J.K._Simmons_as_Jameson.gif" />
+        <Avatar image="../files/jjj.jpg" />
         <ListText>
           Some Guy
           <Hint> Works at Some Place</Hint>
@@ -42,7 +42,7 @@ ListText.styleguide = {
       </ListItem>
 
       <ListItem>
-        <Avatar image="http://stanlemmens.nl/wp/wp-content/uploads/2014/07/bill-gates-wealthiest-person.jpg" />
+        <Avatar image="../files/gates.jpg" />
         <ListText>
           Other Person
           <Hint> Works at Other Place</Hint>
@@ -50,7 +50,7 @@ ListText.styleguide = {
       </ListItem>
 
       <ListItem>
-        <Avatar image="https://pbs.twimg.com/profile_images/466831222073991168/XTkBynW_.jpeg" />
+        <Avatar image="../files/chillgirl.jpeg" />
         <ListText>
           Chill Girl
           <Hint> Works at Chill Place</Hint>

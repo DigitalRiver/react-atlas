@@ -84,16 +84,16 @@ Avatar.styleguide = {
     {/* image beats icon */}
     <Avatar 
       icon={<i className="fa fa-github"></i>}
-      image="https://placeimg.com/80/80/animals"
+      image="../files/cat.jpg"
     />
     {/* image beats title */}
-    <Avatar title="Javier" image="https://placeimg.com/80/80/animals" />
+    <Avatar title="Javier" image="../files/cat.jpg" />
     {/* child beats parameters */}
-    <Avatar title="Nathan" image="https://placeimg.com/80/80/animals">
+    <Avatar title="Nathan" image="../files/cat.jpg">
       <i className="fa fa-github"></i>
     </Avatar>
     <Avatar title="Nathan" icon={<i className="fa fa-github"></i>}>
-      <img src="https://placeimg.com/80/80/animals"/>
+      <img src="../files/cat.jpg"/>
     </Avatar>
     {/* child string gets truncated to 1st letter */}
     <Avatar>Nathan</Avatar>

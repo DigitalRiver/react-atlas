@@ -137,7 +137,7 @@ class ProgressBarExample extends React.Component {
         this.increaseProgress();
         if (this.state.progress > this.state.buffer) this.increaseBuffer();
       } else {
-        this.setState(initialState);
+        this.setState(this.state);
       }
       this.simulateProgress();
     }, (Math.random() * 1 + 1) * 1000);

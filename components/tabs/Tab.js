@@ -43,7 +43,7 @@ Tab.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   hidden: PropTypes.bool,
-  label: PropTypes.any.isRequired,
+  label: PropTypes.string,
   onActive: PropTypes.func,
   onClick: PropTypes.func
 };
@@ -52,7 +52,8 @@ Tab.defaultProps = {
   active: false,
   className: '',
   disabled: false,
-  hidden: false
+  hidden: false,
+  label: 'Tab Title'
 };
 
 Tab.styleguide = {
