@@ -15,7 +15,7 @@
     "prepublish": "npm run build",
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --no-single-run",
-    "docs": "cross-env NODE_ENV=development rcs ./components/**/*.js -r /atlas -v -c ./docsConfig.js -d"
+    "docs": "cross-env NODE_ENV=development rcs ./components/**/*.js -v -c ./docsConfig.js -d"
   },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
