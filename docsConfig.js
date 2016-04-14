@@ -9,7 +9,17 @@ module.exports = {
     "presets": ["es2015", "react", "stage-1"]
   },
   "files": [
-    '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
+    "./docsAssets/font-awesome.min.css",
+    "./docsAssets/fonts/FontAwesome.otf",
+    "./docsAssets/fonts/fontawesome-webfont.eot",
+    "./docsAssets/fonts/fontawesome-webfont.svg",
+    "./docsAssets/fonts/fontawesome-webfont.ttf",
+    "./docsAssets/fonts/fontawesome-webfont.woff",
+    "./docsAssets/fonts/fontawesome-webfont.woff2",
+    './docsAssets/chillgirl.jpeg',
+    './docsAssets/gates.jpg',
+    './docsAssets/jjj.jpg',
+    './docsAssets/cat.jpg'
   ],
   "webpackConfig": {
     module: {
