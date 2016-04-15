@@ -6,7 +6,7 @@ All we have to do is annotate our components and add a `styleguide` static objec
 Another advantage we have using this tool, is that all over our components now have an interactive editor and preview area so we can easily mess around with components and even create small protoype views if we wanted to.
 
 You can refer to most any of our current components for examples of what this documentation annotation looks like.
-I reccomend checking out the [Button](https://github.com/DigitalRiver/react-atlas/blob/master/components/button/Button.js) component for a simple example.
+I recommend checking out the [Button](https://github.com/DigitalRiver/react-atlas/blob/master/components/button/Button.js) component for a simple example.
 
 ##### Gotchas
 If the example you are using to preview the component requires state, you will most likely have to create a container component/class to wrap the example.
