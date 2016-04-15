@@ -11,7 +11,11 @@ React Atlas originally started off as a fork of [React Toolbox](https://github.c
 ## Requirements
 This library only officially supports [Node 4.2.x](https://nodejs.org/en/) and React 0.14.x, for now.
 ### Via NPM
-Just make sure you reference the CSS file that is packaged with this library, other than that, just import the components how you would normally.
+Just make sure you reference the CSS file that is packaged with this library, something like:
+```javascript
+import './node_modules/react-atlas/lib/reactAtlas.min.css';
+```
+might work, depending on your app set up. Other than that, just import the components how you would normally.
 ### Forking/Cloning and Building Yourself
 If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
 
@@ -31,7 +35,7 @@ This project uses CSS Modules and CSS Next for styling. To process this we use P
   - [stage-1](http://babeljs.io/docs/plugins/preset-stage-1/)
 
 ## Usage
-***The React Atlas is in alpha development, the API is still changing.***
+***The React Atlas is in early alpha development, the API is still changing.***
 
 For initial development and release, we are focusing on a nodejs with webpack environment. As we continue to develop React Atlas we might bring in examples and boilerplate repos to show it working with other build systems (JSPM, Browserify, UMD, etc.). Though our hope is that React Atlas will be generic enough, that it should be relatively simple to set up in most any environment.
 
