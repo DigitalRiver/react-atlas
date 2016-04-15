@@ -105,7 +105,7 @@ cd react-atlas
 npm install
 npm run docs
 ```
-Docs will be at ```http://localhost:3013/atlas```
+Docs will be at ```http://localhost:3000```
 
 ## License 
 This project is licensed under the terms of the [MIT license](https://github.com/DigitalRiver/react-atlas/blob/master/LICENSE).
