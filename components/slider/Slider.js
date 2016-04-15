@@ -296,7 +296,6 @@ class Slider extends Component {
     return (
       <div
         className={className}
-        data-react-toolbox='slider'
         onBlur={this.handleSliderBlur}
         onFocus={this.handleSliderFocus}
         tabIndex='0'
