@@ -1,5 +1,6 @@
 # Table of Contents
-  1. [Conventions](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/Conventions.md)
+  1. [Component Documentation](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/Documentation.md)
+  2. [Conventions](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/Conventions.md)
     1. [What are Conventions](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/Conventions.md#what-are-conventions)
     1. [React Components](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/Conventions.md#react-components)
       1. [React-Atlas React/JSX Style Guide](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/React-Atlas-React-JSX-Style-Guide.md)
