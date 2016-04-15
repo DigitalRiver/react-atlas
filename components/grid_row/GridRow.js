@@ -1,3 +1,8 @@
+/** GridRow.js mostly taken and inspired from Elemental UI.
+ * used for Grid functionality
+ * Copyright (c) 2016 Thinkmill Pty Ltd
+ */
+
 import React, { Component, PropTypes } from 'react';
 import blacklist from 'blacklist';
 import A from '../constants';
