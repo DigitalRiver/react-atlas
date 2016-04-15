@@ -51,7 +51,7 @@ Media.styleguide = {
 <section>
   <h5>Media</h5>
 	<div style={{"width": "400px", margin: "auto"}}>
-		<Media aspectRatio="square" image="../files/nature.jpg" />
+		<Media aspectRatio="square" image="src/nature.jpg" />
 	</div>
 	<div style={{"width": "400px", margin: "auto"}}>
 		<Media aspectRatio="wide">
