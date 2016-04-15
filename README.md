@@ -72,7 +72,7 @@ npm install
 npm run docs
 ```
 
-Local documentation will be available at http://localhost:3013/atlas
+Local documentation will be available at `http://localhost:3000`
 
 ## Authors and Contributors
 Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.com/DigitalRiver/react-atlas/blob/master/CONTRIBUTING.md)***
@@ -95,17 +95,7 @@ If running on windows, follow these steps to ensure you don't run into any 'node
 
 [Install Python 2.7](https://www.python.org/downloads/), and add it to your PATH, ```npm config set python python2.7```
 
-Launch cmd, ```npm config set msvs_version 2015``` --global 
-
-### Clone and Start Docs
-The following commands will clone the repo down, install npm dependencies and start the docs server.
-```
-git clone git@github.digitalriverws.net:ux/react-atlas.git
-cd react-atlas
-npm install
-npm run docs
-```
-Docs will be at ```http://localhost:3000```
+Launch cmd, ```npm config set msvs_version 2015``` --global
 
 ## License 
 This project is licensed under the terms of the [MIT license](https://github.com/DigitalRiver/react-atlas/blob/master/LICENSE).
