@@ -17,4 +17,4 @@ Please note that this project is released with a [Contributor Code of Conduct](h
 12. wait patiently :-)
 
 ## Questions?
-Check out [our wiki](https://github.com/DigitalRiver/react-atlas/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
+Check out [our wiki](https://github.com/DigitalRiver/react-atlas/wiki) for more information on coding conventions, how we document our code, why we made certain decisions and a roadmap.
