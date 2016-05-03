@@ -17,9 +17,15 @@
     },
    "build": {
       "plugins": [
-        ["./tools/cssTransforms.js", {
-            "generateScopedName": "ra_[name]__[local]"
-        }],
+        [
+          "css-modules-transform", {
+            "generateScopedName": "ra_[name]__[local]",
+            "prepend": [
+              "postcss-import",
+              "postcss-cssnext"
+            ]
+          }
+        ],
         ["transform-react-remove-statics", {
             "propTypes": true,
             "styleguide": true
