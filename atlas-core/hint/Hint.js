@@ -1,14 +1,11 @@
 import React from 'react';
-import style from './hint.css';
 
 /**
  * Simple wrapper around a span to add 'hint'-like styles
  */
-const Hint = ({className, children, ...props}) => {
-	let classNames = style.base;
-	if (className) classNames += ` ${className}`;
+const Hint = ({children, theme = {}, ...props}) => {
 	return (
-		<span {...props} className={classNames}>{children}</span>
+		<span {...props} className={theme.base}>{children}</span>
 	)
 };
 

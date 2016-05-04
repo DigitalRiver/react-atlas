@@ -8,7 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: __dirname,
   entry: [
-    './components/index.js'
+    './drStyle/index.js'
   ],
   output: {
     filename: 'main.js',
