@@ -15,8 +15,8 @@
     "prepublish": "npm run build",
     "docs": "cross-env NODE_ENV=development rcs ./atlas-core/**/*.js -s ./drStyle/**/*.js -v -c ./docsConfig.js -d",
     "pages:build": "cross-env NODE_ENV=development rcs ./atlas-core/**/*.js -r /react-atlas -s ./drStyle/**/*.js -v -c ./docsConfig.js",
-    "pages": "gh-pages -d ./node_modules/react-component-styleguide/rcs-tmp/dist -r https://github.com/DigitalRiver/react-atlas.git -b gh-pages",
-    "deploy:docs": "npm run pages:build && npm run pages"
+    "pages:deploy": "gh-pages -d ./styleguide -r https://github.com/DigitalRiver/react-atlas.git -b gh-pages",
+    "pages": "npm run pages:build && npm run pages:deploy && rimraf ./styleguide"
   },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
