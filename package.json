@@ -13,7 +13,10 @@
     "clean": "rimraf ./lib",
     "prebuild": "npm run clean",
     "prepublish": "npm run build",
-    "docs": "cross-env NODE_ENV=development rcs ./atlas-core/**/*.js -s ./drStyle/**/*.js -v -c ./docsConfig.js -d"
+    "docs": "cross-env NODE_ENV=development rcs ./atlas-core/**/*.js -s ./drStyle/**/*.js -v -c ./docsConfig.js -d",
+    "pages:build": "cross-env NODE_ENV=development rcs ./atlas-core/**/*.js -r /react-atlas -s ./drStyle/**/*.js -v -c ./docsConfig.js",
+    "pages": "gh-pages -d ./node_modules/react-component-styleguide/rcs-tmp/dist -r https://github.com/DigitalRiver/react-atlas.git -b gh-pages",
+    "deploy:docs": "npm run pages:build && npm run pages"
   },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
@@ -58,6 +61,7 @@
     "expect": "^1.19.0",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
+    "gh-pages": "^0.11.0",
     "glob": "^7.0.3",
     "postcss": "^5.0.21",
     "postcss-modules-extract-imports": "^1.0.0",
@@ -69,7 +73,7 @@
     "postcss-loader": "^0.9.1",
     "react-a11y": "^0.3.3",
     "react-addons-test-utils": "^15.0.2",
-    "react-component-styleguide": "0.0.35",
+    "react-component-styleguide": "0.0.36",
     "react-docgen": "^2.8.2",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
