@@ -1,21 +1,18 @@
 {
-  "name": "react-atlas",
+  "name": "react-atlas-core",
   "version": "0.0.0",
-  "description": "Composable React components with CSS Modules.",
+  "description": "Core set of composable components for react-atlas",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib",
   "scripts": {
     "lint": "eslint ./ --ext .js,.jsx",
-    "babelify": "babel ./components/core/src --out-dir ./lib/core && babel ./components/ --out-dir ./lib",
+    "babelify": "babel ./src --out-dir ./lib",
     "build": "cross-env NODE_ENV=build npm run babelify && npm run build-css && rimraf ./lib/main.js",
     "build-css": "webpack --config ./webpack.config.buildcss.js",
     "clean": "rimraf ./lib",
     "prebuild": "npm run clean",
     "prepublish": "npm run build",
-    "docs": "cross-env NODE_ENV=development rcs ./components/core/src/**/*.js -s ./components/styled/**/*.js -v -c ./docsConfig.js -d",
-    "pages:build": "cross-env NODE_ENV=production rcs ./components/core/src/**/*.js -r /react-atlas -s ./components/styled/**/*.js -v -c ./docsConfig.js",
-    "pages:deploy": "gh-pages -d ./styleguide -r https://github.com/DigitalRiver/react-atlas.git -b gh-pages",
-    "pages": "npm run pages:build && npm run pages:deploy && rimraf ./styleguide"
+    "postpublish": "npm run clean"
   },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
