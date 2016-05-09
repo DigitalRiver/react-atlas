@@ -12,8 +12,8 @@
     "clean": "rimraf ./lib",
     "prebuild": "npm run clean",
     "prepublish": "npm run build",
-    "docs": "cross-env NODE_ENV=development rcs ./components/core/src/**/*.js -s ./components/styled/**/*.js -v -c ./docsConfig.js -d",
-    "pages:build": "cross-env NODE_ENV=production rcs ./components/core/src/**/*.js -r /react-atlas -s ./components/styled/**/*.js -v -c ./docsConfig.js",
+    "docs": "cross-env NODE_ENV=development rcs ./packages/react-atlas-core/src/**/*.js -s ./packages/react-atlas-default-theme/src/**/*.js -v -c ./docsConfig.js -d",
+    "pages:build": "cross-env NODE_ENV=production rcs ./packages/react-atlas-core/src/**/*.js -s ./packages/react-atlas-default-theme/src/**/*.js -r /react-atlas -v -c ./docsConfig.js",
     "pages:deploy": "gh-pages -d ./styleguide -r https://github.com/DigitalRiver/react-atlas.git -b gh-pages",
     "pages": "npm run pages:build && npm run pages:deploy && rimraf ./styleguide"
   },
@@ -35,7 +35,8 @@
     "react-dom": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
     "normalize.css": "^4.1.1",
-    "react-autosuggest": "^3.7.3"
+    "react-autosuggest": "^3.7.3",
+    "lerna": "2.0.0-beta.7"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

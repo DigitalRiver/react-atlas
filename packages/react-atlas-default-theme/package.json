@@ -1,9 +1,9 @@
 {
-  "name": "react-atlas-core",
+  "name": "react-atlas-default-theme",
   "version": "0.0.0",
-  "description": "Core set of composable components for react-atlas",
+  "description": "themed set of composable components from react-atlas-core",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
-  "main": "./lib",
+  "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint ./ --ext .js,.jsx",
     "babelify": "babel ./src --out-dir ./lib",
@@ -32,7 +32,8 @@
     "react-dom": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
     "normalize.css": "^4.1.1",
-    "react-autosuggest": "^3.7.3"
+    "react-autosuggest": "^3.7.3",
+    "react-atlas-core": "^0.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

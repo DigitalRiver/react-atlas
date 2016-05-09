@@ -1,4 +1,4 @@
-import Hint from '../core/src/hint';
+import { Hint } from 'react-atlas-core';
 import style from './hint.css';
 import createComponent from '../createComponent';
 
