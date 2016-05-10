@@ -1,56 +1,50 @@
 import React, { PropTypes } from 'react';
-import ClassNames from 'classnames/bind';
-import style from './button.css';
+import themeable from 'react-themeable';
 
 /**
  * A Generic button component.
  */
-const Button = ({className, outline, href, loading, primary, secondary, success, warning, danger, link, large, small, block, disabled, children, ...others}) => {
+const Button = ({className, outline, href, loading, primary, secondary, success, warning, danger, link, large, small, block, disabled, children, ...props}) => {
+    const theme = themeable(props.theme);
 
     const element = href ? 'a' : 'button';
-    const cx = ClassNames.bind(style);
-    let classNames = cx({
-        large,
-        small,
-        block,
-        disabled,
-        className
-    });
-
-    if (outline) {
-      classNames += ' ' + cx({
-        primary_outline: !secondary && !success && !warning && !danger && !link,
-        secondary,
-        success_outline: success,
-        warning_outline: warning,
-        danger_outline: danger,
-        link_outline: link
-      });
-    } else {
-      classNames += ' ' + cx({
-        primary: !secondary && !success && !warning && !danger && !link,
-        secondary,
-        success,
-        warning,
-        danger,
-        link
-      });
-    }
-
 
     let role;
     if (element === 'a') {
       role = 'button';
     }
-    const props = {
-      ...others,
+
+    var disabledStyle = disabled || loading ? 'disabled' : '';
+
+    var mainStyle = 'button';
+    if (primary) {
+        mainStyle = 'primary';
+    } else if (secondary) {
+        mainStyle = 'secondary';
+    } else if (success) {
+        mainStyle = 'success';
+    } else if (warning) {
+        mainStyle = 'warning';
+    } else if (danger) {
+        mainStyle = 'danger';
+    } else if (link) {
+        mainStyle = 'link';
+    }
+
+    if (outline && !secondary) {
+        mainStyle += '_outline';
+    }
+
+    const otherProps = {
+      ...props,
       href,
-      className: classNames,
+      className,
       disabled: disabled || loading,
-      role
+      role,
+      ...theme(1, mainStyle, disabledStyle)
     };
 
-    return React.createElement(element, props,
+    return React.createElement(element, otherProps,
       children
     );
 
@@ -61,6 +55,7 @@ Button.styleguide = {
   category: 'Buttons',
   example: `
   <section>
+    <h2>Styled with parameters</h2>
     <p>Regular Buttons</p>
     <Button>Button</Button>
     <Button secondary>Secondary</Button>
@@ -68,7 +63,6 @@ Button.styleguide = {
     <Button warning>Warning</Button>
     <Button danger>Danger</Button>
     <Button href="#" link>Link</Button>
-
     <p>Disabled Regular Buttons</p>
     <Button disabled primary>Button</Button>
     <Button disabled secondary>Secondary</Button>
@@ -76,7 +70,6 @@ Button.styleguide = {
     <Button disabled warning>Warning</Button>
     <Button disabled danger>Danger</Button>
     <Button href="#" disabled link>Link</Button>
-
     <p>Outline Buttons</p>
     <Button outline primary>Button</Button>
     <Button outline secondary>Secondary</Button>
@@ -84,7 +77,6 @@ Button.styleguide = {
     <Button warning outline>Warning</Button>
     <Button danger outline>Danger</Button>
     <Button href="#" link outline>Link</Button>
-
     <p>Disabled Outline Buttons</p>
     <Button disabled outline primary>Button</Button>
     <Button disabled secondary outline>Secondary</Button>
@@ -92,18 +84,36 @@ Button.styleguide = {
     <Button disabled warning outline>Warning</Button>
     <Button disabled danger outline>Danger</Button>
     <Button href="#" disabled link outline>Link</Button>
-
-    <p>Large Buttons</p>
-    <Button large>Button</Button>
-    <Button large secondary>Secondary</Button>
-
-    <p>Small Buttons</p>
-    <Button small primary>Button</Button>
-    <Button small secondary>Secondary</Button>
-
-    <p>Block Level Buttons</p>
-    <Button block>Button</Button>
-    <Button block secondary>Secondary</Button>
+    
+    <h2>Styled with wrapper components</h2>
+    <p>Regular Buttons</p>
+    <PrimaryButton>Button</PrimaryButton>
+    <SecondaryButton>Secondary</SecondaryButton>
+    <SuccessButton>Success</SuccessButton>
+    <WarningButton>Warning</WarningButton>
+    <DangerButton>Danger</DangerButton>
+    <LinkButton href="#">Link</LinkButton>
+    <p>Disabled Regular Buttons</p>
+    <PrimaryButton disabled>Button</PrimaryButton>
+    <SecondaryButton disabled>Secondary</SecondaryButton>
+    <SuccessButton disabled>Success</SuccessButton>
+    <WarningButton disabled>Warning</WarningButton>
+    <DangerButton disabled>Danger</DangerButton>
+    <LinkButton href="#" disabled>Link</LinkButton>
+    <p>Outline Buttons</p>
+    <PrimaryButton outline>Button</PrimaryButton>
+    <SecondaryButton>Secondary</SecondaryButton>
+    <SuccessButton outline>Success</SuccessButton>
+    <WarningButton outline>Warning</WarningButton>
+    <DangerButton outline>Danger</DangerButton>
+    <LinkButton href="#" outline>Link</LinkButton>
+    <p>Disabled Outline Buttons</p>
+    <PrimaryButton disabled outline>Button</PrimaryButton>
+    <SecondaryButton disabled>Secondary</SecondaryButton>
+    <SuccessButton disabled outline>Success</SuccessButton>
+    <WarningButton disabled outline>Warning</WarningButton>
+    <DangerButton disabled outline>Danger</DangerButton>
+    <LinkButton href="#" disabled outline>Link</LinkButton>
   </section>
   `
 };

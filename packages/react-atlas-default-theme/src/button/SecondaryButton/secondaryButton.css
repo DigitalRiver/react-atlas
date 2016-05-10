@@ -1,0 +1,13 @@
+.button {
+  composes: outline from '../button.css';
+  composes: gray bg-transparent from '../../styles.css';
+  composes: hover-bg-gray from '../../styles.css';
+  composes: hover-white from '../../styles.css';
+}
+
+.disabled {
+  composes: cursor-not-allowed from '../../styles.css';
+  text-decoration: none;
+  pointer-events: none;
+  opacity: .65;
+}
