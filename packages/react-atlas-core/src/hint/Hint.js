@@ -1,11 +1,13 @@
 import React from 'react';
+import themeable from 'react-themeable';
 
 /**
  * Simple wrapper around a span to add 'hint'-like styles
  */
-const Hint = ({children, theme = {}, ...props}) => {
+const Hint = ({children, ...props}) => {
+	const theme = themeable(props.theme);
 	return (
-		<span {...props} className={theme.base}>{children}</span>
+		<span {...props} {...theme(1, 'base')} >{children}</span>
 	)
 };
 
