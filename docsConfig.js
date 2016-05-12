@@ -19,17 +19,23 @@ module.exports = {
     './docsAssets/chillgirl.jpeg',
     './docsAssets/gates.jpg',
     './docsAssets/jjj.jpg',
-    './docsAssets/cat.jpg'
+    './docsAssets/cat.jpg',
+    "atlasStyles.css"
   ],
   "webpackConfig": {
     module: {
       loaders: [
         {
           test: /\.css$/,
-          loader: 'style!css?sourceMap&modules&importLoaders=1&localIdentName=ra_[name]__[local]!postcss'
+          loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=ra_[name]__[local]!postcss')
         }
       ]
     },
+    plugins: [
+      new ExtractTextPlugin("atlasStyles.css", {
+            allChunks: true
+      })
+    ],
     postcss: function(bundler) {
       return [
         postcssImport({

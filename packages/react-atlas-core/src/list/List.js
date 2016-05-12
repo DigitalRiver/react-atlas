@@ -49,7 +49,7 @@ List.styleguide = {
     <h5>Contacts</h5>
     <List>
       <ListItem>
-        <Avatar image="src/jjj.jpg" />
+        <Avatar image="jjj.jpg" />
         <ListText>
           Some Guy
           <Hint> Works at Some Place</Hint>
@@ -57,7 +57,7 @@ List.styleguide = {
       </ListItem>
 
       <ListItem>
-        <Avatar image="src/gates.jpg" />
+        <Avatar image="gates.jpg" />
         <ListText>
           Other Person
           <Hint> Works at Other Place</Hint>
@@ -65,7 +65,7 @@ List.styleguide = {
       </ListItem>
 
       <ListItem>
-        <Avatar image="src/chillgirl.jpeg" />
+        <Avatar image="chillgirl.jpeg" />
         <ListText>
           Chill Girl
           <Hint> Works at Chill Place</Hint>

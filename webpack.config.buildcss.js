@@ -8,8 +8,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: __dirname,
   entry: [
-    './components/core/src/index.js',
-    './components/styled/index.js'
+    './packages/react-atlas-core/src/index.js',
+    './packages/react-atlas-default-theme/src/index.js'
   ],
   output: {
     filename: 'main.js',
