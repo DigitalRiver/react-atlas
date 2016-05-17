@@ -1,17 +1,16 @@
 {
   "name": "react-atlas",
-  "version": "0.0.0",
+  "publishConfig": {
+    "registry": "http://nexus-master.digitalriverws.net/nexus/content/repositories/npm-internal/"
+  },
+  "version": "0.0.1",
   "description": "Composable React components with CSS Modules.",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib",
   "scripts": {
-    "lint": "eslint ./ --ext .js,.jsx",
-    "babelify": "babel ./packages/react-atlas-core/src --out-dir ./lib/react-atlas-core && babel ./packages/react-atlas-default-theme/src --out-dir ./lib/react-atlas-default-theme",
-    "clean": "rimraf ./lib",
-    "docs": "cross-env NODE_ENV=development rcs ./packages/react-atlas-core/src/**/*.js -s ./packages/react-atlas-default-theme/src/**/*.js -v -c ./docsConfig.js -d",
-    "pages:build": "cross-env NODE_ENV=production rcs ./packages/react-atlas-core/src/**/*.js -s ./packages/react-atlas-default-theme/src/**/*.js -r /react-atlas -v -c ./docsConfig.js",
-    "pages:deploy": "gh-pages -d ./styleguide/src -r https://github.com/DigitalRiver/react-atlas.git -b gh-pages",
-    "pages": "npm run pages:build && npm run pages:deploy && rimraf ./styleguide"
+    "babelify": "babel ./src --out-dir ./lib && cat ../react-atlas-core/lib/reactAtlas.min.css ../react-atlas-default-theme/lib/reactAtlas.min.css > ./lib/reactAtlas.min.css",
+    "build": "npm run babelify",
+    "clean": "rimraf ./lib"
   },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
@@ -28,8 +27,8 @@
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
-    "react-atlas-default-theme": "0.0.0",
-    "react-atlas-core": "0.0.0",
+    "react-atlas-default-theme": "^0.0.1",
+    "react-atlas-core": "^0.0.1",
     "normalize.css": "^4.1.1"
   },
   "repository": "https://github.com/DigitalRiver/react-atlas.git"

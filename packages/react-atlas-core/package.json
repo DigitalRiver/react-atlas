@@ -1,6 +1,9 @@
 {
   "name": "react-atlas-core",
-  "version": "0.0.0",
+  "publishConfig": {
+    "registry": "http://nexus-master.digitalriverws.net/nexus/content/repositories/npm-internal/"
+  },
+  "version": "0.0.1",
   "description": "Core set of composable components for react-atlas",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib/index.js",
