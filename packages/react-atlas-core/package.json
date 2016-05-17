@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "http://nexus-master.digitalriverws.net/nexus/content/repositories/npm-internal/"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Core set of composable components for react-atlas",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib/index.js",
@@ -27,6 +27,8 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "blacklist": "^1.1.2",
+    "classnames": "^2.2.5",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "normalize.css": "^4.1.1",

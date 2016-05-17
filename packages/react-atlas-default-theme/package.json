@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "http://nexus-master.digitalriverws.net/nexus/content/repositories/npm-internal/"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "themed set of composable components from react-atlas-core",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib/index.js",
@@ -34,7 +34,7 @@
     "react-addons-css-transition-group": "^15.0.2",
     "normalize.css": "^4.1.1",
     "react-autosuggest": "^3.7.3",
-    "react-atlas-core": "^0.0.2"
+    "react-atlas-core": "^0.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "http://nexus-master.digitalriverws.net/nexus/content/repositories/npm-internal/"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Composable React components with CSS Modules.",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib",
@@ -27,8 +27,8 @@
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
-    "react-atlas-default-theme": "^0.0.2",
-    "react-atlas-core": "^0.0.2",
+    "react-atlas-default-theme": "^0.0.3",
+    "react-atlas-core": "^0.0.3",
     "normalize.css": "^4.1.1"
   },
   "repository": "https://github.com/DigitalRiver/react-atlas.git"
