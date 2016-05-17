@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "themed set of composable components from react-atlas-core",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib/index.js",
@@ -33,7 +33,7 @@
     "react-addons-css-transition-group": "^15.0.2",
     "normalize.css": "^4.1.1",
     "react-autosuggest": "^3.7.3",
-    "react-atlas-core": "^0.0.6"
+    "react-atlas-core": "^0.0.7"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -81,5 +81,5 @@
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
   },
-  "repository": "https://github.com/DigitalRiver/react-atlas.git"
+  "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas-default-theme"
 }

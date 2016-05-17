@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Core set of composable components for react-atlas",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib/index.js",
@@ -79,5 +79,5 @@
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
   },
-  "repository": "https://github.com/DigitalRiver/react-atlas.git"
+  "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas-core"
 }
