@@ -1,26 +1,20 @@
 {
-  "name": "react-atlas",
-  "version": "0.0.0",
+  "name": "react-atlas-repo",
   "description": "Composable React components with CSS Modules.",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib",
   "scripts": {
-    "lint": "eslint ./ --ext .js,.jsx",
-    "babelify": "babel ./packages/react-atlas-core/src --out-dir ./lib/react-atlas-core && babel ./packages/react-atlas-default-theme/src --out-dir ./lib/react-atlas-default-theme",
-    "build": "cross-env NODE_ENV=build npm run babelify && npm run build-css && rimraf ./lib/main.js",
     "build:core": "cd packages/react-atlas-core && npm run build",
     "build:default-theme": "cd packages/react-atlas-default-theme && npm run build",
-    "build-css": "webpack --config ./webpack.config.buildcss.js",
-    "clean": "rimraf ./lib",
-    "prebuild": "npm run clean",
-    "prepublish": "npm run build",
+    "build:main": "cd packages/react-atlas && npm run build",
     "docs": "cross-env NODE_ENV=development rcs ./packages/react-atlas-core/src/**/*.js -s ./packages/react-atlas-default-theme/src/**/*.js -v -c ./docsConfig.js -d",
     "pages:build": "cross-env NODE_ENV=production rcs ./packages/react-atlas-core/src/**/*.js -s ./packages/react-atlas-default-theme/src/**/*.js -r /react-atlas -v -c ./docsConfig.js",
     "pages:deploy": "gh-pages -d ./styleguide/src -r https://github.com/DigitalRiver/react-atlas.git -b gh-pages",
     "pages": "npm run pages:build && npm run pages:deploy && rimraf ./styleguide",
     "lerna:init": "lerna init",
     "lerna:bootstrap": "lerna bootstrap",
-    "lerna:updated": "lerna updated"
+    "lerna:updated": "lerna updated",
+    "lerna:publish": "lerna publish"
   },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
@@ -80,5 +74,8 @@
     "react-component-styleguide": "0.0.44",
     "lerna": "2.0.0-beta.10"
   },
-  "repository": "https://github.com/DigitalRiver/react-atlas.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DigitalRiver/react-atlas.git"
+  }
 }
