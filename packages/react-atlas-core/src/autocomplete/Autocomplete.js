@@ -150,7 +150,7 @@ var languages = [
 ];
 // }
 // internal component methods {
-var App = React.createClass({
+var AutoCompleteExample = React.createClass({
   
   getInitialState: function() {
     return ({ 
@@ -220,7 +220,7 @@ var App = React.createClass({
 // Mount component {
 })
 
-ReactDOM.render(<App/>, mountNode);
+ReactDOM.render(<AutoCompleteExample />, mountNode);
 // }
 `
 };

@@ -1,4 +1,4 @@
-const autoprefixer = require('autoprefixer');
+const path = require('path');
 const cssnext = require('postcss-cssnext');
 const postcssImport = require('postcss-import');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -20,6 +20,7 @@ module.exports = {
     './docsAssets/gates.jpg',
     './docsAssets/jjj.jpg',
     './docsAssets/cat.jpg',
+    './docsAssets/nature.jpg',
     "atlasStyles.css"
   ],
   "webpackConfig": {
@@ -36,13 +37,15 @@ module.exports = {
             allChunks: true
       })
     ],
+    alias: {
+      'react': path.join(__dirname, 'node_modules', 'react')
+    },
     postcss: function(bundler) {
       return [
         postcssImport({
           addDependencyTo: bundler
         }),
-        cssnext,
-        autoprefixer
+        cssnext
       ];
     }
   }
