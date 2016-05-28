@@ -1,3 +1,4 @@
+export Avatar from './avatar';
 export Button from './button';
 export PrimaryButton from './button/PrimaryButton';
 export SecondaryButton from './button/SecondaryButton'

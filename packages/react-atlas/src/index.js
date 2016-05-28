@@ -1,6 +1,5 @@
 export {
 	Autocomplete,
-	Avatar,
 	Card,
 	Checkbox,
 	Dialog,
@@ -46,4 +45,5 @@ export {
 	DangerButton,
 	LinkButton,
 	Hint,
+	Avatar
 } from 'react-atlas-default-theme';
