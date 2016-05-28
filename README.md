@@ -1,15 +1,13 @@
 # React Atlas
 ***This is an Alpha release and should be used with caution and hope.***
 
-***Like, seriously, it's not even on npm yet.***
-
 React Atlas is a React component library, with a focus on supplying Admin Interface tools. The end-goal of this repo to is to eventually be the library that can power most of Digital River's complex admin interfaces and internal tooling projects. With this in mind, we need a fast, generic, composable library that can be dropped into a project and 'just work'.
 
 ## Why?
-React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). We liked the hierarchy and the way the components were built among many other things. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic looking in regards to style and functionality. We hope that React Atlas will be that tool.
+React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). We liked the hierarchy and the way the components were built among many other things. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic looking in regards to style and functionality. We hope that React Atlas will eventually be that tool.
 
 ## Requirements
-This library only officially supports [Node 4.2.x](https://nodejs.org/en/) and React 0.14.x, for now.
+This library only officially supports [Node 4.x.x](https://nodejs.org/en/) and React 15.0.2+, for now.
 ### Via NPM
 Just make sure you reference the CSS file that is packaged with this library, something like:
 ```javascript
@@ -60,7 +58,7 @@ The previous code creates a React button component based on a React Atlas button
 
 Internally for React Atlas development, we use CSS Modules. However, we compile down our CSS into 1 main CSS file that is namespaced similar to: ```.ra_filename_stylename```. This allows multiple options for anyone that wants to restyle a React Atlas component. You can simply overwrite the class with your own css file or you can feed the component inline styles via the ```style``` prop, or you can pass your own ```className``` prop.
 
-We will be thinking hard about styling going forward and this workflow may change. We want to make overriding the React Atlas styles as simple as possible. Something like [React Themeable](https://github.com/markdalgleish/react-themeable) may be used.
+We will be thinking hard about styling going forward and this workflow may change. We want to make overriding the React Atlas styles as simple as possible. We are in the process of implementing [React Themeable](https://github.com/markdalgleish/react-themeable).
 
 ## Local Docs
 
