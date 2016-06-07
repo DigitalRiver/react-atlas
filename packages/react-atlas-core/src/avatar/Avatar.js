@@ -1,34 +1,32 @@
 import React, { PropTypes } from "react";
-import style from "./avatar.css";
+import themeable from 'react-themeable';
 
 /**
  * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
  *
  * **NOTE**: children will always take precedence over props passed into component.
  */
-const Avatar = ({children, className, icon, image, title, ...other}) => {
+const Avatar = ({children, icon, image, title, ...props}) => {
+  const theme = themeable(props.theme);
   let kids = children;
   if (React.Children.count(children) === 1 && typeof children === "string"){
-    kids = <span className={style.letter}>{children[0]}</span>;
+    kids = <span {...theme(4, 'letter')}>{children[0]}</span>;
   }
 
   let avatar = null;
 
   if (typeof image === "string") {
-    avatar = <img className={style.image} src={image} title={title} />;
+    avatar = <img src={image} title={title} {...theme(3, 'image')} />;
   } else if (image){
     avatar = image;
   } else if (icon){
     avatar = icon;
   } else if (title) {
-    avatar = <span className={style.letter}>{title[0]}</span>;
+    avatar = <span {...theme(2, 'letter')}>{title[0]}</span>;
   }
 
-  let classes = style.avatar;
-  if (className) classes += ` ${className}`;
-
   return (
-    <div className={classes} {...other}>
+    <div {...props} {...theme(1, 'avatar')}>
       {kids}
       {avatar}
     </div>
