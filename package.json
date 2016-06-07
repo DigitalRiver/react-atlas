@@ -72,7 +72,7 @@
     "react-a11y": "^0.3.3",
     "react-addons-test-utils": "^15.0.2",
     "react-component-styleguide": "0.0.44",
-    "lerna": "2.0.0-beta.14"
+    "lerna": "2.0.0-beta.16"
   },
   "repository": {
     "type": "git",
