@@ -1,21 +1,23 @@
 import React, { PropTypes } from 'react';
-import ClassNames from "classnames/bind";
 import Overlay from "../overlay";
-import style from "./dialog.css";
+import { classNames } from '../utils/utils';
+import themeable from 'react-themeable';
 
 const Dialog = ({body, active, type, children, className, onOverlayClick, ...props}) => {
-
-    const cx = ClassNames.bind(style);
-    const classNames = cx({
+    const theme = themeable(props.theme);
+    const componentClasses = classNames({
         inactive: !active,
         type,
         active,
         className
     });
 
+    console.log('DIALOG THEME');
+    console.log(...theme(1, ...componentClasses));
+
     return (
         <Overlay active={active} onClick={onOverlayClick}>
-            <div className={classNames}>
+            <div>
                 <section className={body}>
                     {children}
                 </section>
