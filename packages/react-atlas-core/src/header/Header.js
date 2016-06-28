@@ -1,16 +1,17 @@
 import React from 'react';
-import ClassNames from 'classnames/bind';
-import style from './header.css';
+import { classNames } from '../utils/utils';
+import themeable from 'react-themeable';
 
 const Header = ({className, fixed, children, ...props}) => {
-  const cx = ClassNames.bind(style);
-  const classes = cx({
+  const theme = themeable(props.theme);
+  const classes = classNames({
     container: true,
-    fixed
-  }, className);
+    fixed,
+    className
+  });
 
   return (
-    <header {...props} className={classes}>
+    <header {...props} {...theme(1, ...classes)}>
       {children}
     </header>
   );
