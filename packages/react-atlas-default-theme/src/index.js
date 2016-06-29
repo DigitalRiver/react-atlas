@@ -12,3 +12,4 @@ export Checkbox from './checkbox';
 export Dialog from './dialog';
 export Drawer from './drawer';
 export Header from './header';
+export Input from './input';
