@@ -1,5 +1,6 @@
 import React from 'react';
-import style from './list.css';
+import { classNames } from '../utils';
+import themeable from 'react-themeable';
 
 const propTypes = {
   className: React.PropTypes.string,
@@ -10,10 +11,13 @@ const propTypes = {
  * Used inside `<ListItem>` when the Item has more complex needs for text and elements inside
  */
 const ListText = ({className, children, ...props}) => {
-	let classNames = style.text;
-	if (className) classNames += ` ${className}`;
+  const theme = themeable(props.theme);
+  const classes = classNames({
+      text: true,
+      [`${className}`]: !!className
+  });
 	return (
-		<span {...props} className={style.text}>
+		<span {...props} {...theme(1, ...classes)}>
 			{children}
 		</span>
 	)

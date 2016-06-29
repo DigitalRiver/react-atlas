@@ -1,19 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import themeable from 'react-themeable';
-import { classNames } from '../utils/utils';
+import { classNames } from '../utils';
 
 
 /**
  * Simple component for a basic checkbox
  */
-const Checkbox = ({title, label, disabled, inline, ...other}) => {
-      //const cx = ClassNames.bind(other.theme);
+const Checkbox = ({title, label, disabled, inline, className, ...other}) => {
       const theme = themeable(other.theme);
       const componentClasses = classNames({
           "block": !inline,
           inline,
           disabled,
-          [className]: className
+          [`${className}`]: !!className
       });
 
       title = title ? title : label;

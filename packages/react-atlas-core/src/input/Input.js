@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { classNames } from '../utils/utils';
+import { classNames } from '../utils';
 import themeable from 'react-themeable';
 
 /**
@@ -8,7 +8,7 @@ import themeable from 'react-themeable';
 
 class Input extends Component {
     render () {
-        const { disabled, label, maxLength, multiline, type, value, ...others} = this.props;
+        const { disabled, label, maxLength, multiline, type, value, className, ...others} = this.props;
 
         const theme = themeable(others.theme);
 
@@ -18,10 +18,8 @@ class Input extends Component {
           disabled,
           multiline,
           value,
-          [`${this.props.className}`]: !!this.props.className
+          [`${className}`]: !!className
         });
-
-        //if (this.props.className) inputClassName += ` ${this.props.className}`;
 
         return (
           <div {...theme(1, 'container')}>

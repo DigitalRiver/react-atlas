@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import classNames from 'classnames/bind';
 import themeable from 'react-themeable';
 
 /**
@@ -7,8 +6,6 @@ import themeable from 'react-themeable';
  */
 const Card = ({children, ...props}) => {
   const theme = themeable(props.theme);
-  console.log(theme);
-  console.log(theme(1, 'card'));
   return <div {...theme(1, 'card')}>{children}</div>;
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../utils/utils';
+import { classNames } from '../utils';
 import themeable from 'react-themeable';
 
 const Header = ({className, fixed, children, ...props}) => {
@@ -7,7 +7,7 @@ const Header = ({className, fixed, children, ...props}) => {
   const classes = classNames({
     container: true,
     fixed,
-    className
+    [`${className}`]: !!className
   });
 
   return (

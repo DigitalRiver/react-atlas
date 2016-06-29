@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Overlay from "../overlay";
-import { classNames } from '../utils/utils';
+import { classNames } from '../utils';
 import themeable from 'react-themeable';
 
 const Dialog = ({body, active, type, children, className, onOverlayClick, ...props}) => {
@@ -9,16 +9,13 @@ const Dialog = ({body, active, type, children, className, onOverlayClick, ...pro
         inactive: !active,
         type,
         active,
-        className
+        [`${className}`]: !!className
     });
-
-    console.log('DIALOG THEME');
-    console.log(...theme(1, ...componentClasses));
 
     return (
         <Overlay active={active} onClick={onOverlayClick}>
-            <div>
-                <section className={body}>
+            <div {...theme(1, ...componentClasses)}>
+                <section {...theme(2, 'body')}>
                     {children}
                 </section>
             </div>

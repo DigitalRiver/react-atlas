@@ -1,6 +1,6 @@
 import React from 'react';
 import Overlay from '../overlay';
-import { classNames } from '../utils/utils';
+import { classNames } from '../utils';
 import themeable from 'react-themeable';
 
 const Drawer = ({active, className, type, onOverlayClick, ...props}) => {
@@ -10,7 +10,7 @@ const Drawer = ({active, className, type, onOverlayClick, ...props}) => {
     left: type == 'left',
     right: type == 'right',
     active,
-    className
+    [`${className}`]: !!className
   });
 
   return (
