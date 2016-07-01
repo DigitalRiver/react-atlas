@@ -16,3 +16,4 @@ export Input from './input';
 export List from './list';
 export ListItem from './list';
 export ListText from './list';
+export Media from './media';
