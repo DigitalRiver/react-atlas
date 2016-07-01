@@ -18,3 +18,4 @@ export ListItem from './list';
 export ListText from './list';
 export Media from './media';
 export Overlay from './overlay';
+export ProgressBar from './progress_bar';

@@ -1,7 +1,7 @@
 import React from 'react';
-import classNames from 'classnames/bind';
-import style from './progressBar.css';
+import { classNames } from '../utils';
 import prefixer from '../utils/prefixer';
+import themeable from 'react-themeable';
 
 //TODO Change this to a self contained component from the current version that requires too much logic in the parent component
 class ProgressBar extends React.Component {
@@ -29,45 +29,45 @@ class ProgressBar extends React.Component {
     }
   }
 
-  renderCircular () {
+  renderCircular (theme) {
     return (
-      <svg className={style.circle}>
-        <circle className={style.path} style={this.circularStyle()} cx="30" cy="30" r="25" />
+      <svg {...theme(1, 'circle')}>
+        <circle {...theme(2, 'path')} style={this.circularStyle()} cx="30" cy="30" r="25" />
       </svg>
     );
   }
 
-  renderLinear () {
+  renderLinear (theme) {
     const {buffer, value} = this.linearStyle();
     return (
       <div>
-        <span ref="buffer" data-ref="buffer" className={style.buffer} style={buffer}></span>
-        <span ref="value" data-ref="value" className={style.value} style={value}></span>
+        <span ref="buffer" data-ref="buffer" {...theme(3, 'buffer')} style={buffer}></span>
+        <span ref="value" data-ref="value" {...theme(4, 'value')} style={value}></span>
       </div>
     );
   }
-  renderRange () {
+  renderRange (theme) {
      let rangeStyle = prefixer({
        transform: `translateX(${this.calculateRatio(this.props.value.from) * 100}%) 
                    scaleX(${this.calculateRatio(this.props.value.to - this.props.value.from)})`
      });
      return (
-         <span ref='value' data-ref='value' className={style.value} style={rangeStyle}></span>
+         <span ref='value' data-ref='value' {...theme(5, 'value')} style={rangeStyle}></span>
      );
    }
 
-   renderInner () {
+   renderInner (theme) {
      if (this.props.type === 'circular')
-       return this.renderCircular();
+       return this.renderCircular(theme);
      if (isNaN(this.props.value))
-       return this.renderRange();
-     return this.renderLinear();
+       return this.renderRange(theme);
+     return this.renderLinear(theme);
    }
 
   render () {
     const {buffer, type, mode, value, min, max, ...props} = this.props;
-    const cx = classNames.bind(style);
-    const classes = cx({
+    const theme = themeable(props.theme);
+    const classes = classNames({
       [this.props.type]: this.props.type,
       [this.props.mode]: this.props.mode
     }, this.props.className);
@@ -77,9 +77,9 @@ class ProgressBar extends React.Component {
         aria-valuenow={value}
         aria-valuemin={min}
         aria-valuemax={max}
-        className={classes}
+        {...theme(6, ...classes)}
       >
-        {this.renderInner()}
+        {this.renderInner(theme)}
       </div>
     );
   }
