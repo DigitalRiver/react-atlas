@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
-import ClassNames from 'classnames/bind';
-import style from './media.css';
+import { classNames } from '../utils';
+import themeable from 'react-themeable';
 
 /**
  * Component to handle Media, such as Videos and Pictures and resize them based on aspect ratio.
@@ -8,25 +8,27 @@ import style from './media.css';
 class Media extends Component {
   render () {
     const { aspectRatio, children, className, color, contentOverlay, image, ...other } = this.props;
-    const cx = ClassNames.bind(style);
-    let classes = cx({
+    const theme = themeable(other.theme);
+    let classes = classNames({
       wide: aspectRatio === 'wide',
-      square: aspectRatio === 'square'
+      square: aspectRatio === 'square',
+      [`${className}`]: !!className
     });
 
-	if (className) classes += ` ${className}`;
+    const innerClasses = classNames({
+        content: true
+    });
 
-	const innerClass = cx({
-      content: true
-	});
+    console.log("Whats your theme?");
+    console.log(other.theme);
 
     const bgStyle = {
       backgroundImage: typeof image === 'string' ? `url('${image}')` : undefined
     };
 
     return (
-      <div style={bgStyle} className={classes} {...other}>
-        <div className={innerClass}>
+      <div style={bgStyle} {...other}>
+        <div {...theme(2, ...innerClasses)}>
           {children}
         </div>
       </div>
