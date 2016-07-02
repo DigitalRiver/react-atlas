@@ -19,3 +19,8 @@ export ListText from './list';
 export Media from './media';
 export Overlay from './overlay';
 export ProgressBar from './progress_bar';
+export Radio from './radio';
+export RadioGroup from './radio';
+
+import * as Core from 'react-atlas-core';
+console.log("CORE!!   --------------------------->   ", Core);

@@ -1,19 +1,17 @@
 import React, { Component, PropTypes } from 'react';
-import classNames from 'classnames/bind';
-import style from './radio.css';
+import { classNames } from '../utils';
+import themeable from 'react-themeable';
 
 const Radio = ({className, disabled, inline, name, label, ...props}) => {
-  const cx = classNames.bind(style);
-
-  const labelClassName = cx({
+  const theme = themeable(props.theme);
+  const labelClasses = classNames({
     block: !inline,
     inline,
-    disabled,
-    className
-  });
+    disabled
+  }, className);
 
   return (
-    <label className={labelClassName}>
+    <label {...theme(1, ...labelClasses)}>
       <input
         {...props}
         disabled={disabled}
