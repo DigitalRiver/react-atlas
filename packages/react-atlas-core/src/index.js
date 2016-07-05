@@ -22,6 +22,5 @@ export Slider from './slider';
 export Snackbar from './snackbar';
 export Switch from './switch';
 export { Table, Thead, Th, Tbody, Tr, Td, Tfoot } from './table';
-export Tabs from './tabs/Tabs';
-export Tab from './tabs/Tab';
+export { Tabs, Tab } from './tabs';
 export Tooltip from './tooltip';
