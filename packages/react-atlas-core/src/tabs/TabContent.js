@@ -1,19 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-import ClassNames from 'classnames/bind';
-import style from './tabs.css';
+import themeable from 'react-themeable';
+import classNames from '../utils/classNames';
 
 /**
  * Used within the `<Tabs>` Component to programatically determine the content of any given tab. There probably isn't any reason for you to actually use `<TabContent>` directly.
  */
-const TabContent = ({active, tabIndex, children, className}) => {
-    const cx = ClassNames.bind(style);
-    const classNames = cx({
+const TabContent = ({active, tabIndex, children, className, ...props}) => {
+    const theme = themeable(props.theme);
+    const classes = classNames({
       tabContent: true,
       tabActive: active
     }, className);
 
     return (
-      <section className={classNames} tabIndex={tabIndex}>
+      <section {...theme(1, ...classes)} tabIndex={tabIndex}>
         {children}
       </section>
     );
