@@ -23,3 +23,4 @@ export Radio from './radio';
 export RadioGroup from './radio';
 export Slider from './slider';
 export Snackbar from './snackbar';
+export Switch from './switch';
