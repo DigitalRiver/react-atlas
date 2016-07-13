@@ -1,3 +1,4 @@
+export Autocomplete from './autocomplete';
 export Avatar from './avatar';
 export Button from './button';
 export PrimaryButton from './button/PrimaryButton';
