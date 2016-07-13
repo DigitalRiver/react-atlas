@@ -1,14 +1,18 @@
 import React from 'react';
-import style from './list.css';
+import { classNames } from '../utils';
+import themeable from 'react-themeable';
 
 /**
  * Wrapper around `<ul>` element to apply styling to lists. Usually paired with `<ListItem>` and `<ListText>` components.
  */
 const List = ({className, children, ...props}) => {
-    let classNames = style.list;
-    if (className) classNames += ` ${className}`;
+    const theme = themeable(props.theme);
+    const classes = classNames({
+        list: true,
+        [`${className}`]: !!className
+    });
     return (
-      <ul {...props} className={classNames}>
+      <ul {...props} {...theme(1, ...classes)}>
         {children}
       </ul>
     );

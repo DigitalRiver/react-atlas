@@ -1,5 +1,6 @@
 import React from "react";
-import style from "./list.css";
+import { classNames } from '../utils';
+import themeable from 'react-themeable';
 
 const propTypes = {
   className: React.PropTypes.string
@@ -13,10 +14,13 @@ const defaultProps = {
  * Wrapper around `<li>` element that applies styles.
  */
 const ListItem= ({children, className, ...props}) => {
-    let classNames = style.item;
-    if (className) classNames += ` ${className}`;
+    const theme = themeable(props.theme);
+    const classes = classNames({
+        item: true,
+        [`${className}`]: !!className
+    });
     return (
-      <li {...props} className={classNames}>
+      <li {...props} {...theme(1, ...classes)}>
         {children}
       </li>
     );

@@ -1,4 +1,3 @@
-export Colgroup from './Colgroup';
 export Table from './Table';
 export Tbody from './Tbody';
 export Td from './Td';

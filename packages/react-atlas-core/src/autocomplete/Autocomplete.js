@@ -5,15 +5,13 @@
 
 import React, { PropTypes } from 'react';
 import Autosuggest from 'react-autosuggest';
-import style from './autocomplete.css';
 
 /**
  * Auto Complete component is a very simple wrapper around the [React-Autosuggest](https://github.com/moroshko/react-autosuggest) component.
  * Read there for more comprehensive documentation.
  */
-const Autocomplete = ({theme, ...props}) => {
-	const styles = {...style, ...theme};
-	return <Autosuggest {...props} theme={styles} />
+const Autocomplete = ({className, theme, ...props}) => {
+	return <Autosuggest className={className} {...props} theme={theme} />
 };
 
 Autocomplete.propTypes = {

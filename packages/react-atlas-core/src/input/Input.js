@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import classNames from 'classnames/bind';
-import style from './input.css';
+import { classNames } from '../utils';
+import themeable from 'react-themeable';
 
 /**
  * Input component. Takes a label prop and wraps label and input in a div. Takes regular input attributes as props as well
@@ -8,24 +8,23 @@ import style from './input.css';
 
 class Input extends Component {
     render () {
-        const { disabled, label, maxLength, multiline, type, value, ...others} = this.props;
+        const { disabled, label, maxLength, multiline, type, value, className, ...others} = this.props;
 
-        const cx = classNames.bind(style);
+        const theme = themeable(others.theme);
 
-        let inputClassName = cx({
+        let inputClassName = classNames({
           "input": type !== 'checkbox',
           "checkbox": type == 'checkbox',
           disabled,
           multiline,
-          value
+          value,
+          [`${className}`]: !!className
         });
 
-        if (this.props.className) inputClassName += ` ${this.props.className}`;
-
         return (
-          <div className={style.container}>
-            {this.props.label ? <label htmlFor={this.props.htmlFor} className={style.label}>{label}</label> : null}
-            <input {...this.props} className={inputClassName} onChange={this.props.onChange} type={type} />
+          <div {...theme(1, 'container')}>
+            {this.props.label ? <label htmlFor={this.props.htmlFor} {...theme(2, 'label')}>{label}</label> : null}
+            <input {...this.props} {...theme(3, ...inputClassName)} onChange={this.props.onChange} type={type} />
           </div>
         );
     }
