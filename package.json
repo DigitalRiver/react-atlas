@@ -7,7 +7,7 @@
     "build:core": "cd packages/react-atlas-core && npm run build",
     "build:default-theme": "cd packages/react-atlas-default-theme && npm run build",
     "build:main": "cd packages/react-atlas && npm run build",
-    "docs": "cross-env NODE_ENV=development rcs ./packages/react-atlas-core/src/**/*.js -s ./packages/react-atlas-default-theme/src/**/*.js -v -c ./docsConfig.js -d",
+    "docs": "cross-env NODE_ENV=development rcs './packages/react-atlas-core/src/**/*.js' -s './packages/react-atlas-default-theme/src/**/*.js' -v -c ./docsConfig.js -d",
     "pages:build": "cross-env NODE_ENV=production rcs ./packages/react-atlas-core/src/**/*.js -s ./packages/react-atlas-default-theme/src/**/*.js -r /react-atlas -v -c ./docsConfig.js",
     "pages:deploy": "gh-pages -d ./styleguide/src -r https://github.com/DigitalRiver/react-atlas.git -b gh-pages",
     "pages": "npm run pages:build && npm run pages:deploy && rimraf ./styleguide",
@@ -72,7 +72,7 @@
     "react-a11y": "^0.3.3",
     "react-addons-test-utils": "^15.0.2",
     "react-component-styleguide": "0.0.44",
-    "lerna": "2.0.0-beta.16"
+    "lerna": "2.0.0-beta.24"
   },
   "repository": {
     "type": "git",
