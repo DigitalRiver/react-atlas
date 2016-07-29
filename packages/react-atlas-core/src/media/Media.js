@@ -19,9 +19,6 @@ class Media extends Component {
         content: true
     });
 
-    console.log("Whats your theme?");
-    console.log(other.theme);
-
     const bgStyle = {
       backgroundImage: typeof image === 'string' ? `url('${image}')` : undefined
     };
