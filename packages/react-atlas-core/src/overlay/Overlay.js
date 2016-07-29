@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import ClassNames from 'classnames/bind';
-import style from './overlay.css';
+import { classNames } from '../utils';
+import themeable from 'react-themeable';
 
 /**
  * Overlay component adds a 'shadowbox' to screen. Mostly used internally in the lib on the `<Dialog>` component.
@@ -25,24 +25,24 @@ class Overlay extends Component {
   }
 
   handleRender () {
-    const { className, active, invisible, children, onClick } = this.props;
+    const { className, active, invisible, children, onClick, ...other } = this.props;
 
-    const cx = ClassNames.bind(style);
-    const classNames = cx({
+    const theme = themeable(other.theme);
+    const classes = classNames({
       inactive: !active,
       active,
       invisible,
-      className
+      [`${className}`]: className
     });
 
-    const overlayClasses = cx({
+    const overlayClasses = classNames({
       overlayActive: active,
       overlayInactive: !active
     });
 
     ReactDOM.render(
-      <div className={classNames}>
-        <div className={overlayClasses} onClick={onClick} />
+      <div {...theme(1, ...classes)}>
+        <div {...theme(2, ...overlayClasses)} onClick={onClick} />
         {children}
       </div>
     , this.overlay);
