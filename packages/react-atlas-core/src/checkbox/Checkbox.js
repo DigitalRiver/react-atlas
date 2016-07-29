@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
-import ClassNames from 'classnames/bind';
-import style from './checkbox.css';
+import ClassNames from 'classnames';
+import themeable from 'react-themeable';
 
 /**
  * Simple component for a basic checkbox
  */
-const Checkbox = ({title, label, disabled, inline, className, ...other}) => {
-      const cx = ClassNames.bind(style);
-      const componentClass = cx({
+const Checkbox = ({title, label, disabled, inline, className, ...props}) => {
+      const theme = themeable(props.theme);
+      const componentClasses = ClassNames({
           "block": !inline,
           inline,
           disabled,
@@ -17,9 +17,9 @@ const Checkbox = ({title, label, disabled, inline, className, ...other}) => {
       title = title ? title : label;
 
       return (
-          <label className={componentClass} title={title}>
-              <input {...other} type="checkbox" disabled={disabled} className={style.input} />
-              {label && <span className={style.label}>{label}</span>}
+          <label {..theme(1, ...componentClasses)} title={title}>
+              <input {...props} type="checkbox" disabled={disabled} {...theme(2, 'input')} />
+              {label && <span {...theme(3, 'label')}>{label}</span>}
           </label>
       );
 };
