@@ -4,13 +4,15 @@
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib",
   "scripts": {
-    "build:core": "cd packages/react-atlas-core && npm run build",
-    "build:default-theme": "cd packages/react-atlas-default-theme && npm run build",
+    "build": "npm run build:core && npm run build:default-theme && npm run build:main",
+    "build:core": "cd packages/react-atlas-core && npm run build && cd ../../",
+    "build:default-theme": "cd packages/react-atlas-default-theme && npm run build && cd ../../",
     "build:main": "cd packages/react-atlas && npm run build",
-    "docs": "cross-env NODE_ENV=development rcs ./packages/react-atlas-core/src/**/*.js -s ./packages/react-atlas-default-theme/src/**/*.js -v -c ./docsConfig.js -d",
-    "pages:build": "cross-env NODE_ENV=production rcs ./packages/react-atlas-core/src/**/*.js -s ./packages/react-atlas-default-theme/src/**/*.js -r /react-atlas -v -c ./docsConfig.js",
+    "docs": "cross-env NODE_ENV=development rcs \"./packages/react-atlas-core/src/**/*.js\" -s \"./packages/react-atlas-default-theme/src/**/*.js\" -v -c ./docsConfig.js -d",
+    "pages:build": "cross-env NODE_ENV=production rcs \"./packages/react-atlas-core/src/**/*.js\" -s \"./packages/react-atlas-default-theme/src/**/*.js\" -r /react-atlas -v -c ./docsConfig.js",
     "pages:deploy": "gh-pages -d ./styleguide/src -r https://github.com/DigitalRiver/react-atlas.git -b gh-pages",
     "pages": "npm run pages:build && npm run pages:deploy && rimraf ./styleguide",
+    "setup": "npm run lerna:init && npm run lerna:bootstrap && npm run build",
     "lerna:init": "lerna init",
     "lerna:bootstrap": "lerna bootstrap",
     "lerna:updated": "lerna updated",
@@ -71,8 +73,8 @@
     "postcss-loader": "^0.9.1",
     "react-a11y": "^0.3.3",
     "react-addons-test-utils": "^15.0.2",
-    "react-component-styleguide": "0.0.44",
-    "lerna": "2.0.0-beta.16"
+    "react-component-styleguide": "0.0.45",
+    "lerna": "2.0.0-beta.24"
   },
   "repository": {
     "type": "git",
