@@ -9,9 +9,10 @@
   "main": "./lib/index.js",
   "scripts": {
     "babelify": "babel ./src --out-dir ./lib",
-    "build": "cross-env NODE_ENV=build npm run babelify && npm run build-css && rimraf ./lib/main.js",
+    "build": "cross-env NODE_ENV=build npm run babelify && npm run build-css && npm run clean:mainJS",
     "build-css": "webpack --config ./webpack.config.buildcss.js",
     "clean": "rimraf ./lib",
+    "clean:mainJS": "rimraf ./lib/main.js",
     "prebuild": "npm run clean"
   },
   "bugs": {
