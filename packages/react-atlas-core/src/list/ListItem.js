@@ -1,25 +1,25 @@
 import React from "react";
-import style from "./list.css";
-
-const propTypes = {
-  className: React.PropTypes.string
-};
-
-const defaultProps = {
-  className: ''
-};
+import themeable from 'react-themeable';
 
 /**
  * Wrapper around `<li>` element that applies styles.
  */
 const ListItem= ({children, className, ...props}) => {
-    let classNames = style.item;
-    if (className) classNames += ` ${className}`;
+    const theme = themeable(props.theme);
+
     return (
-      <li {...props} className={classNames}>
+      <li {...props} {...theme(1, 'item')}>
         {children}
       </li>
     );
+};
+
+ListItem.propTypes = {
+    className: React.PropTypes.string
+};
+
+ListItem.defaultProps = {
+    className: ''
 };
 
 ListItem.styleguide = {
