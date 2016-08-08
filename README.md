@@ -62,11 +62,12 @@ We will be thinking hard about styling going forward and this workflow may chang
 
 ## Local Docs
 
-To start documentation site locally you'd need to install dependencies from the main package and then just run the docs script:
+To start documentation site locally you'd need to install dependencies from the main package, setup the monorepo and then just run the docs script:
 
 ```
 git clone git@github.digitalriverws.net:ux/react-atlas.git
 npm install
+npm run setup
 npm run docs
 ```
 

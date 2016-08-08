@@ -8,10 +8,11 @@
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib",
   "scripts": {
-    "babelify": "cross-env NODE_ENV=build babel ./src --out-dir ./lib && npm run build-css && rimraf ./lib/main.js",
+    "babelify": "cross-env NODE_ENV=production babel ./src --out-dir ./lib && npm run build-css && rimraf ./lib/main.js",
     "build-css": "webpack --config ./webpack.config.buildcss.js",
     "build": "npm run babelify",
     "clean": "rimraf ./lib",
+    "clean:mainJS": "rimraf ./lib/main.js",
     "prebuild": "npm run clean"
   },
   "bugs": {
@@ -42,11 +43,11 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
-    "babel-plugin-css-modules-transform": "^0.1.0",
+    "babel-plugin-css-modules-transform": "^0.2.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-react-remove-statics": "^0.0.5",
     "css-modules-require-hook": "^4.0.0 ",
-    "cross-env": "^1.0.7",
+    "cross-env": "^2.0.0",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "glob": "^7.0.3",

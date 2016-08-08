@@ -1,25 +1,22 @@
 import React from 'react';
-import style from './list.css';
-
-const propTypes = {
-  className: React.PropTypes.string,
-  children: React.PropTypes.node
-};
+import themeable from 'react-themeable';
 
 /**
  * Used inside `<ListItem>` when the Item has more complex needs for text and elements inside
  */
 const ListText = ({className, children, ...props}) => {
-	let classNames = style.text;
-	if (className) classNames += ` ${className}`;
+	const theme = themeable(props.theme);
 	return (
-		<span {...props} className={style.text}>
+		<span {...props} {...theme(1, 'text')}>
 			{children}
 		</span>
 	)
 };
 
-ListText.propTypes = propTypes;
+ListText.propTypes = {
+	className: React.PropTypes.string,
+	children: React.PropTypes.node
+};
 
 ListText.styleguide = {
   category: 'Lists',
