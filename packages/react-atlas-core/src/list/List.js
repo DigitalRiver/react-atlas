@@ -1,5 +1,4 @@
 import React from 'react';
-import style from './list.css';
 import themeable from 'react-themeable';
 
 /**
