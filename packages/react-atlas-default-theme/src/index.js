@@ -10,3 +10,4 @@ export Hint from './hint';
 export Header from './header';
 export { List, ListItem, ListText } from './list';
 export Input from './input';
+export Media from './media';
