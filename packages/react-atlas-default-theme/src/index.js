@@ -7,4 +7,5 @@ export WarningButton from './button/WarningButton';
 export DangerButton from './button/DangerButton';
 export LinkButton from './button/LinkButton';
 export Hint from './hint';
+export Header from './header';
 export { List, ListItem, ListText } from './list';
