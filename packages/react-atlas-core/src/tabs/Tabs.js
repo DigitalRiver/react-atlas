@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import themeable from 'react-themeable';
+import classNames from 'classnames/bind';
 import Tab from "./Tab";
 import TabContent from "./TabContent";
-import style from "./tabs.css";
 
 /**
  * Wrapper component to organize and produce tabs using multiple `<Tab>` components as children.
@@ -19,7 +20,7 @@ class Tabs extends Component {
       if (item.type === Tab) {
         headers.push(item);
         if (item.props.children) {
-          contents.push(<TabContent children={item.props.children}/>);
+          contents.push(<TabContent children={item.props.children} theme={this.props.theme} />);
         }
       } else if (item.type === TabContent) {
         contents.push(item);
@@ -31,19 +32,20 @@ class Tabs extends Component {
 
   render () {
     const { headers, contents } = this._parseChildren();
-
-    let className = style.container;
-    if (this.props.className) className += ` ${this.props.className}`;
+    const theme = themeable(this.props.theme);
+    const classes = classNames({
+      container: true
+    }, this.props.className);
 
     return (
-      <div className={className}>
-        <nav className={style.navigation} ref="navigation">
+      <div {...theme(1, ...classes)}>
+        <nav {...theme(2, 'navigation')} ref="navigation">
           {headers.map((item, idx) => {
-            return <Tab {...item.props} key={idx} active={this.props.index === idx} onClick={this._handleHeaderClick.bind(this, idx)} />
+            return <Tab {...item.props} key={idx} active={this.props.index === idx} onClick={this._handleHeaderClick.bind(this, idx)} theme={this.props.theme} />
           })}
         </nav>
         {contents.map((item, idx) => {
-          return <TabContent {...item.props} key={idx} active={this.props.index === idx} tabIndex={idx} />
+          return <TabContent {...item.props} key={idx} active={this.props.index === idx} tabIndex={idx} theme={this.props.theme} />
         })}
       </div>
     );
