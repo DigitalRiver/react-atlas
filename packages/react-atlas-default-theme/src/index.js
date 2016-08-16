@@ -16,3 +16,4 @@ export ProgressBar from './progress_bar';
 export Radio from './radio';
 export RadioGroup from './radio';
 export Snackbar from './snackbar';
+export { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from './table';
