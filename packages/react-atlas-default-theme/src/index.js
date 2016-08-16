@@ -12,3 +12,4 @@ export { List, ListItem, ListText } from './list';
 export Input from './input';
 export Media from './media';
 export Overlay from './overlay';
+export ProgressBar from './progress_bar';
