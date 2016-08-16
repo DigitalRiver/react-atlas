@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import ClassNames from 'classnames/bind';
+import themeable from 'react-themeable';
 import Overlay from '../overlay';
-import style from './snackbar.css';
+import classNames from 'classnames/bind';
 
 class Snackbar extends Component {
 
@@ -16,19 +16,18 @@ class Snackbar extends Component {
   render () {
     const { active, className, ...props } = this.props;
 
-    const cx = ClassNames.bind(style);
-    const classNames = cx({
+    const theme = themeable(props.theme);
+    const classes = classNames({
       root: true,
-      active,
-      className
-    });
+      active
+    }, className);
 
     return (
 
-        <div className={classNames}>
+        <div {...theme(1, ...classes)}>
             {React.Children.map(this.props.children, (child) => {
                 if (typeof child === 'string') {
-                    return <span className={style.text}>{child}</span>;
+                    return <span {...theme(1, 'text')}>{child}</span>;
                 } else {
                     return child;
                 }

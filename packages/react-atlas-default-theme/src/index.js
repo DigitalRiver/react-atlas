@@ -15,3 +15,4 @@ export Overlay from './overlay';
 export ProgressBar from './progress_bar';
 export Radio from './radio';
 export RadioGroup from './radio';
+export Snackbar from './snackbar';
