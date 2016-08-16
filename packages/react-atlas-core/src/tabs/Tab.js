@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import ClassNames from 'classnames/bind';
-import style from './tabs.css';
+import themeable from 'react-themeable';
+import classNames from 'classnames/bind';
 
 /**
  * Individual Tab component used within `<Tabs>`. Can be disabled, hidden and also sent an onActive event trigger. Children become `<TabContent>`.
@@ -19,19 +19,19 @@ class Tab extends Component {
   };
 
   render () {
-    let { active, hidden, disabled, label } = this.props;
+    let { active, className, hidden, disabled, label, ...other } = this.props;
 
-    const cx = ClassNames.bind(style);
+    const theme = themeable(other.theme);
 
-    const className = cx({
+    const classes = classNames({
       label: !active && !hidden && !disabled,
       active,
       hidden,
       disabled
-    }, this.props.className);
+    }, className);
 
     return (
-      <label className={className} onClick={this._handleClick}>
+      <label {...theme(1, ...classes)} onClick={this._handleClick}>
         {label}
       </label>
     );
