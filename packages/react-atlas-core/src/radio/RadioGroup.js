@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Radio from './Radio';
+import themeable from 'react-themeable';
 
 const propTypes = {
   children: PropTypes.node,
@@ -12,11 +13,13 @@ const defaultProps = {
 };
 
 const RadioGroup = ({className, children, name, ...props}) => {
+  const theme = themeable(props.theme);
+
   return (
-      <div {...props} className={className}>
+      <div {...props} {...theme(1, className)}>
         {React.Children.map(children, (child) => {
           if (child.type === Radio) {
-            return <Radio {...child.props} name={name}/>
+            return <Radio {...child.props} name={name} theme={props.theme}/>
           } else {
             return child
           }
