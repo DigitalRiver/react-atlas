@@ -1,18 +1,16 @@
 import React, { PropTypes } from 'react';
-import ClassNames from 'classnames/bind';
-import style from './table.css';
+import themeable from 'react-themeable';
+import classNames from 'classnames/bind';
 
 const Td = ({className, children, ...props}) => {
 
-	const cx = ClassNames.bind(style);
-	const classNames = cx({
-			td: true,
-			className
-		}
-	);
+	const theme = themeable(props.theme);
+	const classes = classNames({
+			td: true
+	}, className);
 
 	return (
-	    <td {...props} className={classNames}>
+	    <td {...props} {...theme(1, ...classes)}>
 	      {children}
 	    </td>
 	);
