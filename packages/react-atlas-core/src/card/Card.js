@@ -1,17 +1,14 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import style from './card.css';
+import themeable from 'react-themeable';
 
 /**
  * Simple Card component that wraps a div around content with card styling.
  */
-const Card = ({children}) => {
-  const cx = classNames.bind(style);
-  const className = cx({
-    "card": true
-  });
+const Card = ({children, ...props}) => {
+  const theme = themeable(props.theme);
 
-  return <div className={className}>{children}</div>;
+  return <div {...theme(1, 'card')}>{children}</div>;
 };
 
 Card.propTypes = {
