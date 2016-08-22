@@ -20,3 +20,4 @@ export { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from './table';
 export { Tab, Tabs } from './tabs';
 export Switch from './switch';
 export Tooltip from './tooltip';
+export Card from './card';
