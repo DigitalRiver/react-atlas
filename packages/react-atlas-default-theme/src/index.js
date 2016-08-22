@@ -22,3 +22,4 @@ export Switch from './switch';
 export Tooltip from './tooltip';
 export Card from './card';
 export Checkbox from './checkbox';
+export Drawer from './drawer';
