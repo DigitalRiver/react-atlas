@@ -1,37 +1,37 @@
 import React, { Component, PropTypes } from 'react';
-import style from './switch.css';
+import themeable from 'react-themeable';
 import classNames from 'classnames/bind';
 
 class Switch extends React.Component {
 
   render () {
 
-    const {checked,  disabled, inline, name, slider, small, medium, large, onColor, offColor, buttonColor} = this.props;
+    const {checked,  disabled, inline, name, slider, small, medium, large, onColor, offColor, buttonColor, ...other} = this.props;
 
-    var cx = classNames.bind(style);
+    const theme = themeable(other.theme);
 
-    let offClassName = cx({
+    let offClassName = classNames({
       sliderSmall: small && !medium && !large,
       sliderMedium: !small && !large,
       sliderLarge: large && !medium && !small,
       disabled
     });
 
-    let inputClassName = cx({
+    let inputClassName = classNames({
       inputSmall: small && !medium && !large,
       inputMedium: !small && !large,
       inputLarge: large && !medium && !small,
       disabled
     });
 
-    let buttonClassName = cx({
+    let buttonClassName = classNames({
       handleSmall: small && !medium && !large,
       handleMedium: !small && !large,
       handleLarge: large && !medium && !small,
       disabled
     });
 
-    let onClassName = cx({
+    let onClassName = classNames({
       onColorSmall: small && !medium && !large,
       onColorMedium: !small && !large,
       onColorLarge: large && !medium && !small
@@ -50,10 +50,10 @@ class Switch extends React.Component {
     };
 
     return (
-      <label className={offClassName} style={offColorStyle}>
-        <input className={inputClassName} style={onColorStyle} type="checkbox" />
-        <div className={buttonClassName} style={buttonColorStyle}></div>
-        <div className={onClassName} style={onColorStyle}></div>
+      <label {...theme(1, ...offClassName)} style={offColorStyle}>
+        <input {...theme(2, ...inputClassName)} style={onColorStyle} type="checkbox" />
+        <div {...theme(3, ...buttonClassName)} style={buttonColorStyle}></div>
+        <div {...theme(4, ...onClassName)} style={onColorStyle}></div>
       </label>
     );
   }
