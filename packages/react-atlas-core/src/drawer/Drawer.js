@@ -1,11 +1,11 @@
 import React from 'react';
-import ClassNames from 'classnames/bind';
+import ClassNames from 'classnames';
 import Overlay from '../overlay';
-import style from './drawer.css';
+import themeable from 'react-themeable';
 
 const Drawer = ({active, className, type, onOverlayClick, ...props}) => {
-  const cx = ClassNames.bind(style);
-  const classes = cx({
+  const theme = themeable(props.theme);
+  const classes = ClassNames({
     container: true,
     left: type == 'left',
     right: type == 'right',
@@ -14,7 +14,7 @@ const Drawer = ({active, className, type, onOverlayClick, ...props}) => {
 
   return (
     <Overlay active={active} onClick={onOverlayClick}>
-      <div className={classes}>
+      <div {...theme(1, ...classes)}>
         <aside>
           {props.children}
         </aside>
