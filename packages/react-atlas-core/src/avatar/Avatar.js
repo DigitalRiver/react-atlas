@@ -10,10 +10,10 @@ import themeable from 'react-themeable';
    constructor(props) {
      super(props);
 
-     var image;
+     let image;
 
-     if(this.props.image == undefined) {
-       if(this.props.defaultImage == undefined) {
+     if(this.props.image === undefined) {
+       if(this.props.defaultImage === undefined) {
          image = null;
        } else {
          image = this.props.defaultImage;
