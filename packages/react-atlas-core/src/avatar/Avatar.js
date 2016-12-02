@@ -1,8 +1,6 @@
 import React, { PropTypes } from "react";
 import themeable from 'react-themeable';
 
- var defaultImage = "http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg";
-
 /**
  * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
  *
@@ -12,16 +10,30 @@ import themeable from 'react-themeable';
    constructor(props) {
      super(props);
 
+     var image;
+
      if(this.props.image == undefined) {
-       this.state = {image: defaultImage, title: this.props.title, icon: this.props.icon};
+       if(this.props.defaultImage == undefined) {
+         image = null;
+       } else {
+         image = this.props.defaultImage;
+       }
      } else {
-       this.state = {image: this.props.image, title: this.props.title, icon: this.props.icon};
+       image = this.props.image;
      }
+
+     this.state = {image: image, title: this.props.title, icon: this.props.icon};
    }
 
    handleBadImage() {
-     this.setState({image: defaultImage});
+     if(this.props.defaultImage === this.state.image) {
+        this.setState({image: null});
+        return;
+     }
+
+     this.setState({image: this.props.defaultImage});
    }
+
    render() {
      const theme = themeable(this.props.theme);
      var children = this.props.children;
@@ -37,19 +49,19 @@ import themeable from 'react-themeable';
 
      if (typeof image === "string") {
        avatar = <img src={image} title={title} onError={this.handleBadImage.bind(this)} {...theme(3, 'image')} />;
-     } else if (image){
+     } else if (image) {
        avatar = image;
-     } else if (icon){
+     } else if (icon) {
        avatar = icon;
      } else if (title) {
        avatar = <span {...theme(2, 'letter')}>{title[0]}</span>;
      }
-       return (
-         <div {...theme(1, 'avatar')}>
-           {kids}
-           {avatar}
-         </div>
-       );
+     return (
+       <div {...theme(1, 'avatar')}>
+         {kids}
+         {avatar}
+       </div>
+     );
    }
  }
 
@@ -77,7 +89,12 @@ Avatar.propTypes = {
    * A string. Avatar will use First letter of the string.
    * @examples "Nathan" will output "N"
    */
-  title: PropTypes.string
+  title: PropTypes.string,
+
+  /**
+   * A URL to a image that is displayed when the main image fails to load.
+   */
+  defaultImage: PropTypes.string
 };
 
 Avatar.defaultProps = {
