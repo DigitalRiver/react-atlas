@@ -12,17 +12,17 @@ import themeable from 'react-themeable';
 
      let image;
 
-     if(this.props.image === undefined) {
-       if(this.props.defaultImage === undefined) {
+     if(typeof props.image === undefined) {
+       if(typeof props.defaultImage === undefined) {
          image = null;
        } else {
-         image = this.props.defaultImage;
+         image = props.defaultImage;
        }
      } else {
-       image = this.props.image;
+       image = props.image;
      }
 
-     this.state = {image: image, title: this.props.title, icon: this.props.icon};
+     this.state = {image: image};
    }
 
    handleBadImage() {
@@ -36,16 +36,14 @@ import themeable from 'react-themeable';
 
    render() {
      const theme = themeable(this.props.theme);
-     var children = this.props.children;
+     var {children, icon, title} = this.props;
      let kids = children;
      if (React.Children.count(children) === 1 && typeof children === "string"){
        kids = <span {...theme(4, 'letter')}>{children[0]}</span>;
      }
 
      let avatar = null;
-     var icon = this.state.icon;
      var image = this.state.image;
-     var title = this.state.title;
 
      if (typeof image === "string") {
        avatar = <img src={image} title={title} onError={this.handleBadImage.bind(this)} {...theme(3, 'image')} />;
