@@ -12,8 +12,8 @@ import themeable from 'react-themeable';
 
      let image;
 
-     if(typeof props.image === undefined) {
-       if(typeof props.defaultImage === undefined) {
+     if(typeof props.image === "undefined") {
+       if(typeof props.defaultImage === "undefined") {
          image = null;
        } else {
          image = props.defaultImage;
