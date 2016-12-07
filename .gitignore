@@ -8,3 +8,6 @@ styleguide
 .npmrc
 jsconfig.json
 lerna-debug.log
+cov-int
+coverage
+atlas.tgz
