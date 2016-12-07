@@ -6,32 +6,62 @@ import themeable from 'react-themeable';
  *
  * **NOTE**: children will always take precedence over props passed into component.
  */
-const Avatar = ({children, icon, image, title, ...props}) => {
-  const theme = themeable(props.theme);
-  let kids = children;
-  if (React.Children.count(children) === 1 && typeof children === "string"){
-    kids = <span {...theme(4, 'letter')}>{children[0]}</span>;
-  }
+ class Avatar extends React.Component {
+   constructor(props) {
+     super(props);
 
-  let avatar = null;
+     let image;
 
-  if (typeof image === "string") {
-    avatar = <img src={image} title={title} {...theme(3, 'image')} />;
-  } else if (image){
-    avatar = image;
-  } else if (icon){
-    avatar = icon;
-  } else if (title) {
-    avatar = <span {...theme(2, 'letter')}>{title[0]}</span>;
-  }
+     if(typeof props.image === "undefined") {
+       if(typeof props.defaultImage === "undefined") {
+         image = null;
+       } else {
+         image = props.defaultImage;
+       }
+     } else {
+       image = props.image;
+     }
 
-  return (
-    <div {...props} {...theme(1, 'avatar')}>
-      {kids}
-      {avatar}
-    </div>
-  );
-};
+     this.state = {image: image};
+   }
+
+   handleBadImage() {
+     if(this.props.defaultImage === this.state.image) {
+        this.setState({image: null});
+        return;
+     }
+
+     this.setState({image: this.props.defaultImage});
+   }
+
+   render() {
+     const theme = themeable(this.props.theme);
+     var {children, icon, title} = this.props;
+     let kids = children;
+     if (React.Children.count(children) === 1 && typeof children === "string"){
+       kids = <span {...theme(4, 'letter')}>{children[0]}</span>;
+     }
+
+     let avatar = null;
+     var image = this.state.image;
+
+     if (typeof image === "string") {
+       avatar = <img src={image} title={title} onError={this.handleBadImage.bind(this)} {...theme(3, 'image')} />;
+     } else if (image) {
+       avatar = image;
+     } else if (icon) {
+       avatar = icon;
+     } else if (title) {
+       avatar = <span {...theme(2, 'letter')}>{title[0]}</span>;
+     }
+     return (
+       <div {...theme(1, 'avatar')}>
+         {kids}
+         {avatar}
+       </div>
+     );
+   }
+ }
 
 Avatar.propTypes = {
   /**
@@ -57,7 +87,12 @@ Avatar.propTypes = {
    * A string. Avatar will use First letter of the string.
    * @examples "Nathan" will output "N"
    */
-  title: PropTypes.string
+  title: PropTypes.string,
+
+  /**
+   * A URL to a image that is displayed when the main image fails to load.
+   */
+  defaultImage: PropTypes.string
 };
 
 Avatar.defaultProps = {
@@ -80,7 +115,7 @@ Avatar.styleguide = {
     {/* icon beats title */}
     <Avatar title="Nathan" icon={<i className="fa fa-github"></i>} />
     {/* image beats icon */}
-    <Avatar 
+    <Avatar
       icon={<i className="fa fa-github"></i>}
       image="cat.jpg"
     />
