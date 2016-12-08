@@ -1,37 +1,57 @@
 import React, { PropTypes } from "react";
 import themeable from 'react-themeable';
 
+ var defaultImage = "http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg";
+
 /**
  * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
  *
  * **NOTE**: children will always take precedence over props passed into component.
  */
-const Avatar = ({children, icon, image, title, ...props}) => {
-  const theme = themeable(props.theme);
-  let kids = children;
-  if (React.Children.count(children) === 1 && typeof children === "string"){
-    kids = <span {...theme(4, 'letter')}>{children[0]}</span>;
-  }
+ class Avatar extends React.Component {
+   constructor(props) {
+     super(props);
 
-  let avatar = null;
+     if(this.props.image == undefined) {
+       this.state = {image: defaultImage, title: this.props.title, icon: this.props.icon};
+     } else {
+       this.state = {image: this.props.image, title: this.props.title, icon: this.props.icon};
+     }
+   }
 
-  if (typeof image === "string") {
-    avatar = <img src={image} title={title} {...theme(3, 'image')} />;
-  } else if (image){
-    avatar = image;
-  } else if (icon){
-    avatar = icon;
-  } else if (title) {
-    avatar = <span {...theme(2, 'letter')}>{title[0]}</span>;
-  }
+   handleBadImage() {
+     this.setState({image: defaultImage});
+   }
+   render() {
+     const theme = themeable(this.props.theme);
+     var children = this.props.children;
+     let kids = children;
+     if (React.Children.count(children) === 1 && typeof children === "string"){
+       kids = <span {...theme(4, 'letter')}>{children[0]}</span>;
+     }
 
-  return (
-    <div {...props} {...theme(1, 'avatar')}>
-      {kids}
-      {avatar}
-    </div>
-  );
-};
+     let avatar = null;
+     var icon = this.state.icon;
+     var image = this.state.image;
+     var title = this.state.title;
+
+     if (typeof image === "string") {
+       avatar = <img src={image} title={title} onError={this.handleBadImage.bind(this)} {...theme(3, 'image')} />;
+     } else if (image){
+       avatar = image;
+     } else if (icon){
+       avatar = icon;
+     } else if (title) {
+       avatar = <span {...theme(2, 'letter')}>{title[0]}</span>;
+     }
+       return (
+         <div {...theme(1, 'avatar')}>
+           {kids}
+           {avatar}
+         </div>
+       );
+   }
+ }
 
 Avatar.propTypes = {
   /**
@@ -80,7 +100,7 @@ Avatar.styleguide = {
     {/* icon beats title */}
     <Avatar title="Nathan" icon={<i className="fa fa-github"></i>} />
     {/* image beats icon */}
-    <Avatar 
+    <Avatar
       icon={<i className="fa fa-github"></i>}
       image="cat.jpg"
     />
