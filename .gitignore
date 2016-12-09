@@ -8,3 +8,4 @@ styleguide
 .npmrc
 jsconfig.json
 lerna-debug.log
+coverage
