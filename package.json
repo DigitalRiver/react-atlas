@@ -18,6 +18,9 @@
     "pages:deploy": "gh-pages -d ./styleguide/src -r https://github.com/DigitalRiver/react-atlas.git -b gh-pages",
     "setup": "npm run packages:install && npm run lerna:init && npm run lerna:bootstrap && npm run packages:build"
   },
+  "jest": {
+    "collectCoverageFrom" : ["packages/**/src/**/*.js"]
+  },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
   },
