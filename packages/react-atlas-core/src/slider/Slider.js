@@ -4,7 +4,7 @@ import themeable from 'react-themeable';
 import classNames from 'classnames/bind';
 import events from '../utils/events';
 import prefixer from '../utils/prefixer';
-import utils from '../utils/utils';
+import utils from '../utils';
 import ProgressBar from '../progress_bar';
 import Input from '../input';
 

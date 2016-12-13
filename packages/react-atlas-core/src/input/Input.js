@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { classNames } from '../utils/utils';
+import { classNames } from '../utils';
 import themeable from 'react-themeable';
 
 /**
@@ -74,7 +74,7 @@ Input.styleguide = {
   />
 
   <Button>Submit</Button>
-</section>  
+</section>
 `
 };
 
