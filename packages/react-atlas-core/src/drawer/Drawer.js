@@ -5,7 +5,7 @@ import themeable from 'react-themeable';
 
 const Drawer = ({active, className, type, onOverlayClick, ...props}) => {
   const theme = themeable(props.theme);
-  const classes = ClassNames({
+  const classes = classNames({
     container: true,
     left: type == 'left',
     right: type == 'right',

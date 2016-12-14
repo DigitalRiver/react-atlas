@@ -7,7 +7,7 @@ import themeable from 'react-themeable';
  */
 const Checkbox = ({title, label, disabled, inline, className, ...props}) => {
       const theme = themeable(props.theme);
-      const componentClasses = ClassNames({
+      const componentClasses = classNames({
           "block": !inline,
           inline,
           disabled,

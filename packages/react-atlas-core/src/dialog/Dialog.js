@@ -6,7 +6,7 @@ import themeable from 'react-themeable';
 const Dialog = ({body, active, type, children, className, onOverlayClick, ...props}) => {
 
     const theme = themeable(props.theme);
-    const componentClasses = ClassNames({
+    const componentClasses = classNames({
         inactive: !active,
         type,
         active,
