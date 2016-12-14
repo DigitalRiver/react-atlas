@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
-import ClassNames from "classnames";
+import { classNames } from '../utils';
 import Overlay from "../overlay";
 import themeable from 'react-themeable';
 
 const Dialog = ({body, active, type, children, className, onOverlayClick, ...props}) => {
 
     const theme = themeable(props.theme);
-    const componentClasses = ClassNames({
+    const componentClasses = classNames({
         inactive: !active,
         type,
         active,
@@ -96,4 +96,3 @@ ReactDOM.render(<App/>, mountNode);
 };
 
 export default Dialog;
-

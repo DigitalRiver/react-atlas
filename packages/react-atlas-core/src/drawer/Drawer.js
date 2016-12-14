@@ -1,11 +1,11 @@
 import React from 'react';
-import ClassNames from 'classnames';
+import { classNames } from '../utils';
 import Overlay from '../overlay';
 import themeable from 'react-themeable';
 
 const Drawer = ({active, className, type, onOverlayClick, ...props}) => {
   const theme = themeable(props.theme);
-  const classes = ClassNames({
+  const classes = classNames({
     container: true,
     left: type == 'left',
     right: type == 'right',

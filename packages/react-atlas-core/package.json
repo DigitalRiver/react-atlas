@@ -28,7 +28,6 @@
   "license": "MIT",
   "dependencies": {
     "blacklist": "^1.1.2",
-    "classnames": "^2.2.5",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "normalize.css": "^4.1.1",

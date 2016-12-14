@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import themeable from 'react-themeable';
-import classNames from 'classnames/bind';
+import { classNames } from '../utils';
 
 const Table = ({className, children, ...props}) => {
 
