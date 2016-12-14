@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import themeable from 'react-themeable';
 import Overlay from '../overlay';
-import classNames from 'classnames/bind';
+import { classNames } from '../utils';
 
 class Snackbar extends Component {
 

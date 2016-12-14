@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import themeable from 'react-themeable';
-import classNames from 'classnames/bind';
+import { classNames } from '../utils';
 
 /**
  * Individual Tab component used within `<Tabs>`. Can be disabled, hidden and also sent an onActive event trigger. Children become `<TabContent>`.
@@ -104,7 +104,7 @@ class TabsExample extends React.Component {
 }
 
 ReactDOM.render(<TabsExample />, mountNode);
-// } 
+// }
 `
 };
 

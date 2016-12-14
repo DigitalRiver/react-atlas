@@ -6,7 +6,7 @@ Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 
 import React, { cloneElement, Component, PropTypes } from 'react';
-import classNames from 'classnames/bind';
+import { classNames } from '../utils';
 import DropdownTrigger from './DropdownTrigger';
 import DropdownContent from './DropdownContent';
 import { findDOMNode } from 'react-dom';

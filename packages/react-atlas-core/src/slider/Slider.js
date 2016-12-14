@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
 import themeable from 'react-themeable';
-import classNames from 'classnames/bind';
+import { classNames } from '../utils';
 import events from '../utils/events';
 import prefixer from '../utils/prefixer';
 import utils from '../utils';

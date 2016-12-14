@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import themeable from 'react-themeable';
-import classNames from 'classnames/bind';
+import { classNames } from '../utils';
 
 /*
  * A CSS driven tooltip that gives more information when an element it wraps is hovered over.
@@ -24,7 +24,7 @@ class Tooltip extends Component {
 
     const element = inline ? 'span' : 'div';
 
-    let props = { 
+    let props = {
       'data-tooltip': tooltip
     };
 
@@ -69,7 +69,7 @@ Tooltip.styleguide = {
     <Input label="hello" type="text" />
   </Tooltip>
   <p>Lorem ipsum dolor sit amet, <Tooltip tooltip="Tooltip inside a sentence" inline><strong>consectetur</strong></Tooltip> adipiscing elit.</p>
-</section>  
+</section>
 `
 };
 

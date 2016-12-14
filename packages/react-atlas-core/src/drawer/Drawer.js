@@ -1,5 +1,5 @@
 import React from 'react';
-import ClassNames from 'classnames';
+import { classNames } from '../utils';
 import Overlay from '../overlay';
 import themeable from 'react-themeable';
 

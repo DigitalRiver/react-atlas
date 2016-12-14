@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import themeable from 'react-themeable';
-import classNames from 'classnames/bind';
+import { classNames } from '../utils';
 
 const Th = ({className, children, ...props}) => {
 	const theme = themeable(props.theme);

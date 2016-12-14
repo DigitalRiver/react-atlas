@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import ClassNames from 'classnames';
+import { classNames } from '../utils';
 import themeable from 'react-themeable';
 
 /**

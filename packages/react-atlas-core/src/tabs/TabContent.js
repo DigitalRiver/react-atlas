@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import themeable from 'react-themeable';
-import classNames from 'classnames/bind';
+import { classNames } from '../utils';
 
 /**
  * Used within the `<Tabs>` Component to programatically determine the content of any given tab. There probably isn't any reason for you to actually use `<TabContent>` directly.
@@ -78,7 +78,7 @@ class TabsExample extends React.Component {
 }
 
 ReactDOM.render(<TabsExample />, mountNode);
-// } 
+// }
 `
 };
 

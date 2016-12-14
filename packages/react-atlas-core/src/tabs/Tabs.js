@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import themeable from 'react-themeable';
-import classNames from 'classnames/bind';
+import { classNames } from '../utils';
 import Tab from "./Tab";
 import TabContent from "./TabContent";
 
@@ -111,7 +111,7 @@ class TabsExample extends React.Component {
 }
 
 ReactDOM.render(<TabsExample />, mountNode);
-// } 
+// }
 `
 };
 

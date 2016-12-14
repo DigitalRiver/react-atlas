@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import themeable from 'react-themeable';
-import classNames from 'classnames/bind';
+import { classNames } from '../utils';
 
-class Switch extends React.Component {
+export default class Switch extends React.Component {
 
   render () {
 
@@ -107,4 +107,3 @@ Switch.styleguide = {
 </section>
 `
 };
-export default Switch;
