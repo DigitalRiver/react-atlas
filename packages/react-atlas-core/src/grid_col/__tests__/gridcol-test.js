@@ -2,7 +2,7 @@ import React from 'react'
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 import A from '../../constants';
-import Gridcol from '../index.js'
+import Gridcol from '../../grid_col'
 import sinon from 'sinon';
 
 const basis = "20";

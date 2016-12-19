@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
-import Gridrow from '../index.js'
+import Gridrow from '../../grid_row'
 
 const gutter = 2;
 
