@@ -2,7 +2,7 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
-import Avatar from '../Avatar.js'
+import Avatar from '../index.js'
 
 let title = "testTitle";
 let image = "picture.jpg";
