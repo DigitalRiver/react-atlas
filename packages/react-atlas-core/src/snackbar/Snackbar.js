@@ -46,6 +46,12 @@ Snackbar.propTypes = {
     children: PropTypes.node
 };
 
+Snackbar.defaultProps = {
+  theme: {
+    root: true
+  }
+};
+
 Snackbar.styleguide = {
   category: 'Layout',
   index: '4.6',
