@@ -62,7 +62,10 @@ Overlay.propTypes = {
 };
 
 Overlay.defaultProps = {
-   invisible: false
+   invisible: false,
+   'theme': {
+     'active': true
+   }
 };
 
 Overlay.styleguide = {

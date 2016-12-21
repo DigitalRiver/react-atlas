@@ -50,7 +50,10 @@ Input.defaultProps = {
     "disabled": false,
     "type": 'text',
     "inputLength": 0,
-    "focus": false
+    "focus": false,
+    "theme": {
+      'container': true
+    }
 };
 
 Input.styleguide = {

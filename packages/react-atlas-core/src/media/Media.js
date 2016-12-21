@@ -45,6 +45,12 @@ Media.propTypes = {
 	])
 };
 
+Media.defaultProps = {
+  'theme': {
+    'content': true
+  }
+};
+
 Media.styleguide = {
   example: `
 <section>
