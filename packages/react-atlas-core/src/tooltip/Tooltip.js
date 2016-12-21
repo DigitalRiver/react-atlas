@@ -47,7 +47,10 @@ Tooltip.propTypes = {
 Tooltip.defaultProps = {
   className: '',
   children: <p>This is some text with tooltip</p>,
-  tooltip: 'Sample Tooltip Text'
+  tooltip: 'Sample Tooltip Text',
+  theme: {
+    'block': true
+  }
 };
 
 Tooltip.styleguide = {
