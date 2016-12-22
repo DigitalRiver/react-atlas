@@ -44,7 +44,6 @@
     "func-names": [0],
     "func-style": [0, "declaration"],
     "generator-star-spacing": [2, "after"],
-    "strict": [2, "always"],
     "guard-for-in": [0],
     "handle-callback-err": [0],
     "key-spacing": [2, {
@@ -136,7 +135,6 @@
     "no-sequences": [2],
     "no-shadow": [2],
     "no-shadow-restricted-names": [2],
-    "semi-spacing": [2],
     "no-spaced-func": [2],
     "no-sparse-arrays": [2],
     "no-sync": [0],
@@ -198,7 +196,6 @@
       "nonwords": false
     }],
     "spaced-line-comment": [0, "always"],
-    "strict": [1],
     "use-isnan": [2],
     "valid-jsdoc": [0],
     "valid-typeof": [2],
