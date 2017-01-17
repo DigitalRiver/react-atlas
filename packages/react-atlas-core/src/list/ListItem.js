@@ -19,7 +19,10 @@ ListItem.propTypes = {
 };
 
 ListItem.defaultProps = {
-    className: ''
+    className: '',
+    theme: {
+      'item': true
+    }
 };
 
 ListItem.styleguide = {

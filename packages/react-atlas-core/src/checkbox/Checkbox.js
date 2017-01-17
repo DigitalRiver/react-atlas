@@ -14,6 +14,7 @@ const Checkbox = ({title, label, disabled, inline, className, ...props}) => {
           [className]: className
       });
 
+      /* If title is not set use label as the title. */
       title = title ? title : label;
 
       return (
@@ -57,7 +58,10 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   className: '',
   disabled: false,
-  inline: false
+  inline: false,
+  theme: {
+    'block': true
+  }
 };
 
 Checkbox.styleguide = {

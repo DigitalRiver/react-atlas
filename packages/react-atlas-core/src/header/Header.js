@@ -25,7 +25,10 @@ Header.propTypes = {
 
 Header.defaultProps = {
   className: '',
-  fixed: false
+  fixed: false,
+  theme: {
+    'container': true
+  }
 };
 
 Header.styleguide = {

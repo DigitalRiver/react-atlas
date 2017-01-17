@@ -70,7 +70,10 @@ Switch.propTypes = {
 Switch.defaultProps = {
     checked: false,
     className: '',
-    disabled: false
+    disabled: false,
+    theme: {
+      sliderMedium: '!small && !large'
+    }
 };
 
 Switch.styleguide = {

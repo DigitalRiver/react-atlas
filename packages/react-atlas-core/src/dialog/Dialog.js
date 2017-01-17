@@ -48,7 +48,10 @@ Dialog.propTypes = {
 Dialog.defaultProps = {
     active: false,
     type: "normal",
-    className: ''
+    className: '',
+    theme: {
+      inactive: true
+    }
 };
 
 Dialog.styleguide = {

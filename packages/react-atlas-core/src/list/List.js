@@ -19,7 +19,11 @@ List.propTypes = {
 };
 
 List.defaultProps = {
-  className: ''
+  className: '',
+  theme: {
+    'list': true,
+    'text': true
+  }
 };
 
 List.styleguide = {
@@ -39,7 +43,7 @@ List.styleguide = {
       <li>Spam</li>
     </List>
   </div>
-  
+
   <h5>Complex List using ListItem and ListText</h5>
   <div style={{
       display: "inline-block",

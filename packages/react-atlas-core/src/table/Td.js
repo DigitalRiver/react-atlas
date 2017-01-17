@@ -21,7 +21,10 @@ Td.propTypes = {
     className: PropTypes.string
 };
 Td.defaultProps = {
-  className: ''
+  className: '',
+	theme: {
+		'td': true
+	}
 };
 
 Td.styleguide = {

@@ -84,7 +84,7 @@ Button.styleguide = {
     <Button disabled warning outline>Warning</Button>
     <Button disabled danger outline>Danger</Button>
     <Button href="#" disabled link outline>Link</Button>
-    
+
     <h2>Styled with wrapper components</h2>
     <p>Regular Buttons</p>
     <PrimaryButton>Button</PrimaryButton>
@@ -212,7 +212,10 @@ Button.defaultProps = {
   raised: false,
   large: false,
   small: false,
-  disabled: false
+  disabled: false,
+  theme: {
+    button: true
+  }
 };
 
 export default Button;
