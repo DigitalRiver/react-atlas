@@ -21,24 +21,21 @@ class Dropdown extends Component {
       this.state = {
           active: false
       };
+      this.onWindowClick = this.onWindowClick.bind(this);
   }
 
-  componentDidMount () {
-    window.addEventListener( 'click', this._onWindowClick );
-  };
+  onWindowClick(event) {
+    // const dropdown_element = findDOMNode( this );
+    // if( event.target !== dropdown_element && !dropdown_element.contains( event.target ) && this._isActive() ){
+    //   this._hide();
+    // }
 
-  componentWillUnmount () {
-    window.removeEventListener( 'click', this._onWindowClick );
-  };
-
-  _onWindowClick = ( event ) => {
-    const dropdown_element = findDOMNode( this );
-    if( event.target !== dropdown_element && !dropdown_element.contains( event.target ) && this._isActive() ){
+    if(this._isActive()) {
       this._hide();
     }
   };
 
-  _onToggleClick = ( event ) => {
+  _onToggleClick( event ) {
     event.preventDefault();
     if( this._isActive() ){
       this._hide();
@@ -53,16 +50,16 @@ class Dropdown extends Component {
       this.state.active;
   };
 
-  _hide = () => {
+  _hide() {
     this.setState({
       active: false
     });
     if( this.props.onHide ){
       this.props.onHide();
     }
-  };
+  }
 
-  _show = () => {
+  _show() {
     this.setState({
       active: true
     });
@@ -95,7 +92,7 @@ class Dropdown extends Component {
     });
     return (
       <div
-        {...props}
+        {...props} onClick={this.onWindowClick}
         className={classes}
       >
         {bound_children}

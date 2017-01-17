@@ -18,14 +18,14 @@ class GridCol extends Component {
         };
     }
 
-    componentDidMount () {
+  componentDidMount () {
 		if (typeof window !== 'undefined') window.addEventListener('resize', this._handleResize);
 	}
 	componentWillUnmount () {
 		if (typeof window !== 'undefined') window.removeEventListener('resize', this._handleResize);
 	}
 
-	_handleResize = () => {
+	_handleResize() {
 		this.setState({
 			windowWidth: (typeof window !== 'undefined') ? window.innerWidth : 0
 		});

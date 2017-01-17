@@ -12,7 +12,7 @@ class Tab extends Component {
     }
   }
 
-  _handleClick = () => {
+  _handleClick() {
     if (!this.props.disabled && this.props.onClick) {
       this.props.onClick();
     }
@@ -53,7 +53,10 @@ Tab.defaultProps = {
   className: '',
   disabled: false,
   hidden: false,
-  label: 'Tab Title'
+  label: 'Tab Title',
+  theme: {
+    'label': true
+  }
 };
 
 Tab.styleguide = {
