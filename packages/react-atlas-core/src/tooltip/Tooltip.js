@@ -49,7 +49,7 @@ Tooltip.defaultProps = {
   children: <p>This is some text with tooltip</p>,
   tooltip: 'Sample Tooltip Text',
   theme: {
-    block: true
+    'block': true
   }
 };
 
