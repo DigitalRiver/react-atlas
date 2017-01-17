@@ -34,4 +34,11 @@ describe('Testing gridcol component', () => {
     expect(result.find('div').first().props('style').style.WebkitFlex).to.equal("1 0 " + basis);
     expect(result.state().windowWidth).to.equal(window.innerWidth);
   });
+
+  it('Check handle resize', function() {
+    const result = shallow(<Gridcol></Gridcol>);
+    result.instance()._handleResize();
+    expect(result.state().windowWidth).to.equal(window.innerWidth);
+  });
+
 });
