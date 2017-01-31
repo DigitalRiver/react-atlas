@@ -19,7 +19,12 @@
     "setup": "npm run packages:install && npm run lerna:init && npm run lerna:bootstrap && npm run packages:build"
   },
   "jest": {
-    "collectCoverageFrom" : ["packages/**/src/**/*.js"]
+    "collectCoverageFrom": [
+      "packages/react-atlas-core/src/**/*.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
@@ -68,8 +73,11 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "gh-pages": "^0.11.0",
     "glob": "^7.0.3",
+    "identity-obj-proxy": "^3.0.0",
+    "install": "^0.8.4",
     "jest": "^17.0.3",
     "lerna": "2.0.0-beta.24",
+    "npm": "^4.0.5",
     "postcss": "^5.0.21",
     "postcss-cssnext": "^2.5.2",
     "postcss-import": "7.1.3",
