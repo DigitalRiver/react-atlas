@@ -7,29 +7,44 @@ import themeable from 'react-themeable';
  */
 
 class Input extends Component {
-    render () {
-        const { disabled, label, maxLength, multiline, type, value, ...others} = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-        const theme = themeable(others.theme);
-
-        let inputClassName = classNames({
-          "input": type !== 'checkbox',
-          "checkbox": type == 'checkbox',
-          disabled,
-          multiline,
-          value,
-          [`${this.props.className}`]: !!this.props.className
-        });
-
-        //if (this.props.className) inputClassName += ` ${this.props.className}`;
-
-        return (
-          <div {...theme(1, 'container')}>
-            {this.props.label ? <label htmlFor={this.props.htmlFor} {...theme(2, 'label')}>{label}</label> : null}
-            <input {...this.props} {...theme(3, ...inputClassName)} onChange={this.props.onChange} type={type} />
-          </div>
-        );
+  handleChange(event) {
+    /* Check if max length has been set. If max length has been
+    set make sure the user input is less than max Length. */
+    if(this.props.maxLength) {
+      if(event.target.value.length > this.props.maxLength) {
+        this.setState({ value: event.target.value.substring(0, this.props.maxLength) });
+        return;
+      }
     }
+    this.setState({ value: event.target.value });
+  }
+
+  render () {
+    const { disabled, label, maxLength, multiline, type, value, ...others} = this.props;
+    const theme = themeable(others.theme);
+
+    let inputClassName = classNames({
+      "input": type !== 'checkbox',
+      "checkbox": type == 'checkbox',
+      disabled,
+      multiline,
+      value,
+      [`${this.props.className}`]: !!this.props.className
+    });
+
+    return (
+      <div {...theme(1, 'container')}>
+        {this.props.label ? <label htmlFor={this.props.htmlFor} {...theme(2, 'label')}>{label}</label> : null}
+          <input value={this.state.value} {...theme(3, ...inputClassName)} onChange={this.handleChange} type={type} />
+      </div>
+    );
+  }
 }
 
 Input.propTypes = {
@@ -75,7 +90,6 @@ Input.styleguide = {
     maxLength={12}
     placeholder="Second Label placeholder"
   />
-
   <Button>Submit</Button>
 </section>
 `
