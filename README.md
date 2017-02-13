@@ -62,10 +62,12 @@ We will be thinking hard about styling going forward and this workflow may chang
 
 ## Packages and react-atlas, react-atlas-core, react-atlas-default-theme... What?
 
-React-Atlas is a [monorepo](https://medium.com/@bebraw/the-case-for-monorepos-907c1361708a#.lflmhsuzq) which is being handled with the [lerna](https://github.com/lerna/lerna) package.  Lerna was developed in order to support [Babel's](https://github.com/babel/babel/tree/master/packages) monorepo approach.  It is basically a command line tool taht handles some tricky operations by connecting modules together and running commands against multiple modules.  All of the different packages can be found under the [packages](https://github.com/DigitalRiver/react-atlas/tree/master/packages) folder.
+React-Atlas is a [monorepo](https://medium.com/@bebraw/the-case-for-monorepos-907c1361708a#.lflmhsuzq) which is being handled with the [lerna](https://github.com/lerna/lerna) package.  Lerna was developed in order to support [Babel's](https://github.com/babel/babel/tree/master/packages) monorepo approach.  It is basically a command line tool that handles some tricky operations by connecting modules together and running commands against multiple modules.  All of the different packages can be found under the [packages](https://github.com/DigitalRiver/react-atlas/tree/master/packages) folder.
 
 `lerna bootstrap`: probably the most important command of the set, this links all modules in a monorepo together. This way, you can immediately test whether a change will break code that relies on a module.
+
 `lerna run test`: a way to run unit tests across many modules in one command, and to make tests fail if a module fails.
+
 `lerna publish`: a wrapper around npm publish that can publish multiple repositories at a time and is smart enough to only publish changed code.
 
 Pros:
