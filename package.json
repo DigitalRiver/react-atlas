@@ -6,6 +6,9 @@
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage",
+    "format": "prettier packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js --write",
+    "lint": "eslint packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js --fix",
+    "format-lint": "npm run format && npm run lint",
     "docs": "cross-env NODE_ENV=development rcs \"./packages/react-atlas-core/src/**/*.js\" -s \"./packages/react-atlas-default-theme/src/**/*.js\" -v -c ./docsConfig.js -d",
     "lerna:init": "lerna init",
     "lerna:bootstrap": "lerna bootstrap",
@@ -86,6 +89,7 @@
     "postcss-modules-local-by-default": "^1.0.1",
     "postcss-modules-scope": "^1.0.0",
     "postcss-modules-values": "^1.1.2",
+    "prettier": "^0.16.0",
     "react-a11y": "^0.3.3",
     "react-addons-test-utils": "^15.0.2",
     "react-component-styleguide": "0.0.49"
