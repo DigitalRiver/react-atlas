@@ -64,14 +64,14 @@ We will be thinking hard about styling going forward and this workflow may chang
 
 React-Atlas is a [monorepo](https://medium.com/@bebraw/the-case-for-monorepos-907c1361708a#.lflmhsuzq) which is being handled with the [lerna](https://github.com/lerna/lerna) package.  Lerna was developed in order to support [Babel's](https://github.com/babel/babel/tree/master/packages) monorepo approach.  It is basically a command line tool that handles some tricky operations by connecting modules together and running commands against multiple modules.  All of the different packages can be found under the [packages](https://github.com/DigitalRiver/react-atlas/tree/master/packages) folder.
 
-`lerna bootstrap`: probably the most important command of the set, this links all modules in a monorepo together. This way, you can immediately test whether a change will break code that relies on a module.
+```lerna bootstrap: probably the most important command of the set, this links all modules in a monorepo together. This way, you can immediately test whether a change will break code that relies on a module.
 
-`lerna run test`: a way to run unit tests across many modules in one command, and to make tests fail if a module fails.
+lerna run test: a way to run unit tests across many modules in one command, and to make tests fail if a module fails.
 
-`lerna publish`: a wrapper around npm publish that can publish multiple repositories at a time and is smart enough to only publish changed code.
+lerna publish: a wrapper around npm publish that can publish multiple repositories at a time and is smart enough to only publish changed code.````
 
 Pros:
-
+```
 Single lint, build, test and release process.
 Easy to coordinate changes across modules.
 Single place to report issues.
@@ -79,14 +79,14 @@ Easier to setup a development environment.
 Tests across modules are ran together which finds bugs that touch multiple modules easier.
 Continous integration testing is easier, sinc eall tests run on all commits
 Licensing information and documentation is all done in the same place as well.
-
+```
 Cons:
-
+```
 Codebase looks more intimidating.
 Repo is bigger in size.
 Publishing who has access to publish changes to `React-atlas` is hacky and msut be controled via [npm orgianizations](https://docs.npmjs.com/orgs/what-are-orgs)
 Lower ranking in npms results. At least until npms-io/npms-analyzer#83 is fixed.
-
+```
 ## Local Docs
 
 To start documentation site locally you'd need to install dependencies from the main package, setup the monorepo and then just run the docs script:
