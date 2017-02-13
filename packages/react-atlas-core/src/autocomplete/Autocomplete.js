@@ -96,7 +96,7 @@ Autocomplete.propTypes = {
       const inputProps = props[propName];
 
       if (!inputProps.hasOwnProperty('value')) {
-        throw new Error('\'inputProps\' must have \'value\'.');
+        throw new Error("Value must be set inside inputProps");
       }
 
       if (!inputProps.hasOwnProperty('onChange')) {
@@ -125,7 +125,10 @@ Autocomplete.defaultProps = {
       throw new Error('`getSectionSuggestions` must be provided');
     },
     focusInputOnSuggestionClick: true,
-    id: '1'
+    id: '1',
+		theme: {
+			value: true
+		}
 };
 
 Autocomplete.styleguide = {
@@ -151,18 +154,18 @@ var languages = [
 // }
 // internal component methods {
 var AutoCompleteExample = React.createClass({
-  
+
   getInitialState: function() {
-    return ({ 
-      value: '', 
+    return ({
+      value: '',
       suggestions: this.getSuggestions('')
     });
   },
-  
+
   escapeRegexCharacters: function(str) {
     return str.replace(/[.*+?^{}()|[\]\\]/g, "\\$&");
   },
-  
+
   getSuggestions: function (value) {
     const escapedValue = this.escapeRegexCharacters(value.trim());
 

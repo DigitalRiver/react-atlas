@@ -34,7 +34,10 @@ Drawer.propTypes = {
 Drawer.defaultProps = {
   active: false,
   className: '',
-  type: 'left'
+  type: 'left',
+  theme: {
+    'container': true
+  }
 };
 
 Drawer.styleguide = {

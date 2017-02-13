@@ -21,7 +21,10 @@ Table.propTypes = {
     className: PropTypes.string
 };
 Table.defaultProps = {
-  className: ''
+  className: '',
+  theme: {
+    'table': true
+  }
 };
 
 Table.styleguide = {

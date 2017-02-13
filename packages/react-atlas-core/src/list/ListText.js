@@ -18,6 +18,12 @@ ListText.propTypes = {
 	children: React.PropTypes.node
 };
 
+ListText.defaultProps = {
+	theme: {
+		'text': true
+	}
+};
+
 ListText.styleguide = {
   category: 'Lists',
   index: '7.3',

@@ -20,7 +20,10 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  children: <p>Some card text.</p>
+  children: <p>Some card text.</p>,
+  theme: {
+    card: true
+  }
 };
 
 Card.styleguide = {
