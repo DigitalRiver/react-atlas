@@ -7,7 +7,8 @@ Please note that this project is released with a [Contributor Code of Conduct](h
 2. Clone your forked repo to your machine
 3. Go inside newly cloned directory and `git remote add upstream git@github.digitalriverws.net:ux/react-atlas.git`
 4. run `npm install`
-5. run `npm start`
+5. run `npm run setup` to have lerna install and setup the different packages
+6. run `npm run docs` to start the development server
 6. write tests & code in ES6 goodness :-)
 7. run `git add whatever/files/you/changed.js`
 8. run `npm run commit` and follow the prompt (this ensures that your commit message follows [our conventions](https://github.com/ajoslin/conventional-changelog/blob/master/conventions/angular.md)).
