@@ -1,62 +1,65 @@
-import React, { Component, PropTypes } from 'react';
-import themeable from 'react-themeable';
-import Overlay from '../overlay';
-import { classNames } from '../utils';
+import React, { Component, PropTypes } from "react";
+import themeable from "react-themeable";
+import { classNames } from "../utils";
 
 class Snackbar extends Component {
-
-  componentDidUpdate () {
+  componentDidUpdate() {
     if (this.props.active && this.props.timeout) {
-      setTimeout(() => {
-        this.props.onTimeout();
-      }, this.props.timeout);
+      setTimeout(
+        () => {
+          this.props.onTimeout();
+        },
+        this.props.timeout
+      );
     }
   }
 
-  render () {
+  render() {
     const { active, className, ...props } = this.props;
 
     const theme = themeable(props.theme);
-    const classes = classNames({
-      root: true,
-      active
-    }, className);
+    const classes = classNames(
+      {
+        "root": true,
+        active
+      },
+      className
+    );
 
     return (
-
-        <div {...theme(1, ...classes)}>
-            {React.Children.map(this.props.children, (child) => {
-                if (typeof child === 'string') {
-                    return <span {...theme(1, 'text')}>{child}</span>;
-                } else {
-                    return child;
-                }
-            })}
-        </div>
-
+      <div {...theme(1, ...classes)}>
+        {React.Children.map(this.props.children, child => {
+          if (typeof child === "string") {
+            return <span {...theme(1, "text")}>{child}</span>;
+          } else {
+            return child;
+          }
+        })}
+      </div>
     );
   }
 }
 
 Snackbar.propTypes = {
-    active: PropTypes.bool,
-    className: PropTypes.string,
-    timeout: PropTypes.number,
-    onTimeout: PropTypes.func,
-    children: PropTypes.node
+  "active": PropTypes.bool,
+  "className": PropTypes.string,
+  "timeout": PropTypes.number,
+  "onTimeout": PropTypes.func,
+  "children": PropTypes.node
 };
 
 Snackbar.defaultProps = {
-  theme: {
-    root: true
+  "theme": {
+    "root": true
   }
 };
 
 Snackbar.styleguide = {
-  category: 'Layout',
-  index: '4.6',
-  wrappedExample: true,
-  example: `
+  "category": "Layout",
+  "index": "4.6",
+  "wrappedExample": true,
+  "example": 
+    `
 // Internal Methods {
 class SnackbarExample extends React.Component {
   state = {
@@ -126,6 +129,7 @@ class SnackbarExample extends React.Component {
 ReactDOM.render(<SnackbarExample/>, mountNode);
 // }
 `
+  
 };
 
 export default Snackbar;

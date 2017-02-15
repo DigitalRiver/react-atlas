@@ -1,76 +1,119 @@
-import React from 'react';
-import { classNames } from '../utils';
-import prefixer from '../utils/prefixer';
-import themeable from 'react-themeable';
+import React from "react";
+import { classNames } from "../utils";
+import prefixer from "../utils/prefixer";
+import themeable from "react-themeable";
 
 //TODO Change this to a self contained component from the current version that requires too much logic in the parent component
 class ProgressBar extends React.Component {
-
-  calculateRatio (value) {
-    if (value < this.props.min) return 0;
-    if (value > this.props.max) return 1;
+  calculateRatio(value) {
+    if (value < this.props.min) {
+      return 0;
+    }
+    if (value > this.props.max) {
+      return 1;
+    }
     return (value - this.props.min) / (this.props.max - this.props.min);
   }
 
-  circularStyle () {
+  circularStyle() {
     if (this.props.mode !== "indeterminate") {
-      return {strokeDasharray: `${2 * Math.PI * 25 * this.calculateRatio(this.props.value)}, 400`};
+      return {
+        "strokeDasharray": 
+          `${2 * Math.PI * 25 * this.calculateRatio(this.props.value)}, 400`
+        
+      };
     }
   }
 
-  linearStyle () {
+  linearStyle() {
     if (this.props.mode !== "indeterminate") {
       return {
-        buffer: prefixer({transform: `scaleX(${this.calculateRatio(this.props.buffer)})`, transitionDuration: this.props.transitionDuration}),
-        value: prefixer({transform: `scaleX(${this.calculateRatio(this.props.value)})`, transitionDuration: this.props.transitionDuration})
+        "buffer": prefixer({
+          "transform": `scaleX(${this.calculateRatio(this.props.buffer)})`,
+          "transitionDuration": this.props.transitionDuration
+        }),
+        "value": prefixer({
+          "transform": `scaleX(${this.calculateRatio(this.props.value)})`,
+          "transitionDuration": this.props.transitionDuration
+        })
       };
     } else {
       return {};
     }
   }
 
-  renderCircular (theme) {
+  renderCircular(theme) {
     return (
-      <svg {...theme(1, 'circle')}>
-        <circle {...theme(2, 'path')} style={this.circularStyle()} cx="30" cy="30" r="25" />
+      <svg {...theme(1, "circle")}>
+        <circle
+          {...theme(2, "path")}
+          style={this.circularStyle()}
+          cx="30"
+          cy="30"
+          r="25"
+        />
       </svg>
     );
   }
 
-  renderLinear (theme) {
-    const {buffer, value} = this.linearStyle();
+  renderLinear(theme) {
+    const { buffer, value } = this.linearStyle();
     return (
       <div>
-        <span ref="buffer" data-ref="buffer" {...theme(3, 'buffer')} style={buffer}></span>
-        <span ref="value" data-ref="value" {...theme(4, 'value')} style={value}></span>
+        <span
+          ref="buffer"
+          data-ref="buffer"
+          {...theme(3, "buffer")}
+          style={buffer}
+        />
+        <span
+          ref="value"
+          data-ref="value"
+          {...theme(4, "value")}
+          style={value}
+        />
       </div>
     );
   }
-  renderRange (theme) {
-     let rangeStyle = prefixer({
-       transform: `translateX(${this.calculateRatio(this.props.value.from) * 100}%) 
-                   scaleX(${this.calculateRatio(this.props.value.to - this.props.value.from)})`
-     });
-     return (
-         <span ref='value' data-ref='value' {...theme(5, 'value')} style={rangeStyle}></span>
-     );
-   }
+  renderRange(theme) {
+    let rangeStyle = prefixer({
+      "transform": 
+        `translateX(${this.calculateRatio(this.props.value.from) * 100}%) 
+                   scaleX(${this.calculateRatio(
+          this.props.value.to - this.props.value.from
+        )})`
+      
+    });
+    return (
+      <span
+        ref="value"
+        data-ref="value"
+        {...theme(5, "value")}
+        style={rangeStyle}
+      />
+    );
+  }
 
-   renderInner (theme) {
-     if (this.props.type === 'circular')
-       return this.renderCircular(theme);
-     if (isNaN(this.props.value))
-       return this.renderRange(theme);
-     return this.renderLinear(theme);
-   }
+  renderInner(theme) {
+    if (this.props.type === "circular") {
+      return this.renderCircular(theme);
+    }
+    if (isNaN(this.props.value)) {
+      return this.renderRange(theme);
+    }
+    return this.renderLinear(theme);
+  }
 
-  render () {
-    const {buffer, type, mode, value, min, max, ...props} = this.props;
+  render() {
+    const { buffer, type, mode, value, min, max, ...props } = this.props;
     const theme = themeable(props.theme);
-    const classes = classNames({
-      [this.props.type]: this.props.type,
-      [this.props.mode]: this.props.mode
-    }, this.props.className);
+    const classes = classNames(
+      {
+        [this.props.type]: this.props.type,
+        [this.props.mode]: this.props.mode
+      },
+      this.props.className
+    );
 
     return (
       <div
@@ -86,40 +129,41 @@ class ProgressBar extends React.Component {
 }
 
 ProgressBar.propTypes = {
-  buffer: React.PropTypes.number,
-  className: React.PropTypes.string,
-  transitionDuration: React.PropTypes.string,
-  max: React.PropTypes.number,
-  min: React.PropTypes.number,
-  mode: React.PropTypes.string,
-  multicolor: React.PropTypes.bool,
-  type: React.PropTypes.oneOf(['linear', 'circular']),
-  value: React.PropTypes.oneOfType([
-       React.PropTypes.number,
-       React.PropTypes.shape({
-         from: React.PropTypes.number,
-         to: React.PropTypes.number
-       })
-     ])
+  "buffer": React.PropTypes.number,
+  "className": React.PropTypes.string,
+  "transitionDuration": React.PropTypes.string,
+  "max": React.PropTypes.number,
+  "min": React.PropTypes.number,
+  "mode": React.PropTypes.string,
+  "multicolor": React.PropTypes.bool,
+  "type": React.PropTypes.oneOf(["linear", "circular"]),
+  "value": React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.shape({
+      "from": React.PropTypes.number,
+      "to": React.PropTypes.number
+    })
+  ])
 };
 
 ProgressBar.defaultProps = {
-  buffer: 0,
-  className: '',
-  max: 100,
-  min: 0,
-  transitionDuration: '.35s',
-  mode: 'indeterminate',
-  multicolor: false,
-  type: 'linear',
-  value: 0
+  "buffer": 0,
+  "className": "",
+  "max": 100,
+  "min": 0,
+  "transitionDuration": ".35s",
+  "mode": "indeterminate",
+  "multicolor": false,
+  "type": "linear",
+  "value": 0
 };
 
 ProgressBar.styleguide = {
-  category: 'Form Components',
-  index: '3.7',
-  wrappedExample: true,
-  example: `
+  "category": "Form Components",
+  "index": "3.7",
+  "wrappedExample": true,
+  "example": 
+    `
 // Internal Methods {
 class ProgressBarExample extends React.Component {
   state = {
@@ -178,6 +222,7 @@ class ProgressBarExample extends React.Component {
 ReactDOM.render(<ProgressBarExample/>, mountNode);
 // }
 `
+  
 };
 
 export default ProgressBar;

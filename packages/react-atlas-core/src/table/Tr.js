@@ -1,19 +1,20 @@
-import React, {  PropTypes } from 'react';
+import React, { PropTypes } from "react";
 
-const Tr = ({children, ...props}) => (
-    <tr {...props}>
-      {children}
-    </tr>
-);
+const Tr = ({ children, ...props }) => 
+  <tr {...props}>
+    {children}
+  </tr>
+;
 
 Tr.propTypes = {
-    children: PropTypes.any
+  "children": PropTypes.any
 };
 
 Tr.styleguide = {
-  category: 'Table',
-  index: '7.5',
-  example: `
+  "category": "Table",
+  "index": "7.5",
+  "example": 
+    `
 <section>
   <h5>Tr example</h5>
     <table>
@@ -36,6 +37,7 @@ Tr.styleguide = {
     </table>
 </section>
 `
+  
 };
 
 export default Tr;

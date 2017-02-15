@@ -1,33 +1,38 @@
-import React, { PropTypes } from 'react';
-import themeable from 'react-themeable';
-import { classNames } from '../utils';
+import React, { PropTypes } from "react";
+import themeable from "react-themeable";
+import { classNames } from "../utils";
 
-const Th = ({className, children, ...props}) => {
-	const theme = themeable(props.theme);
-	const classes = classNames({
-			th: true
-	}, className);
+const Th = ({ className, children, ...props }) => {
+  const theme = themeable(props.theme);
+  const classes = classNames(
+    {
+      "th": true
+    },
+    className
+  );
 
-	return (
-	    <th {...props} {...theme(1, ...classes)}>
-	      {children}
-	    </th>
-	);
+  return (
+    <th {...props} {...theme(1, ...classes)}>
+      {children}
+    </th>
+  );
 };
 
 Th.propTypes = {
-    children: PropTypes.any,
-    className: PropTypes.string
+  "children": PropTypes.any,
+  "className": PropTypes.string,
+  "theme": PropTypes.object
 };
 
 Th.defaultProps = {
-  className: ''
+  "className": ""
 };
 
 Th.styleguide = {
-  category: 'Table',
-  index: '7.3',
-  example: `
+  "category": "Table",
+  "index": "7.3",
+  "example": 
+    `
 <section>
   <h5>Th Example</h5>
     <table>
@@ -50,6 +55,7 @@ Th.styleguide = {
     </table>
 </section>
 `
+  
 };
 
 export default Th;

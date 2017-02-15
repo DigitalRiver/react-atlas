@@ -1,36 +1,40 @@
-import React, { PropTypes } from 'react';
-import themeable from 'react-themeable';
-import { classNames } from '../utils';
+import React, { PropTypes } from "react";
+import themeable from "react-themeable";
+import { classNames } from "../utils";
 
-const Table = ({className, children, ...props}) => {
+const Table = ({ className, children, ...props }) => {
+  const theme = themeable(props.theme);
+  const classes = classNames(
+    {
+      "table": true
+    },
+    className
+  );
 
-    const theme = themeable(props.theme);
-	  const classes = classNames({
-          table: true
-    }, className);
-
-    return (
-        <table {...props} {...theme(1, ...classes)}>
-          {children}
-        </table>
-    );
+  return (
+    <table {...props} {...theme(1, ...classes)}>
+      {children}
+    </table>
+  );
 };
 
 Table.propTypes = {
-    children: PropTypes.any,
-    className: PropTypes.string
+  "children": PropTypes.any,
+  "className": PropTypes.string,
+  "theme": PropTypes.object
 };
 Table.defaultProps = {
-  className: '',
-  theme: {
-    'table': true
+  "className": "",
+  "theme": {
+    "table": true
   }
 };
 
 Table.styleguide = {
-  category: 'Table',
-  index: '7.1',
-  example: `
+  "category": "Table",
+  "index": "7.1",
+  "example": 
+    `
 <section>
   <h5>Full Table Example</h5>
     <Table>
@@ -63,6 +67,7 @@ Table.styleguide = {
     </Table>
 </section>
 `
+  
 };
 
 export default Table;

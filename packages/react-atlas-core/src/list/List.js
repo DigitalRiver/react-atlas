@@ -1,35 +1,31 @@
-import React from 'react';
-import themeable from 'react-themeable';
+import React from "react";
+import themeable from "react-themeable";
 
 /**
  * Wrapper around `<ul>` element to apply styling to lists. Usually paired with `<ListItem>` and `<ListText>` components.
  */
-const List = ({className, children, ...props}) => {
-    const theme = themeable(props.theme);
-    return (
-      <ul {...props} {...theme(1, 'list')}>
-        {children}
-      </ul>
-    );
+const List = ({ children, ...props }) => {
+  const theme = themeable(props.theme);
+  return (
+    <ul {...props} {...theme(1, "list")}>
+      {children}
+    </ul>
+  );
 };
 
 List.propTypes = {
-  children: React.PropTypes.node,
-  className: React.PropTypes.string
+  "children": React.PropTypes.node,
+  "className": React.PropTypes.string,
+  "theme": React.PropTypes.object
 };
 
-List.defaultProps = {
-  className: '',
-  theme: {
-    'list': true,
-    'text': true
-  }
-};
+List.defaultProps = { "className": "" };
 
 List.styleguide = {
-  category: 'Lists',
-  index: '7.1',
-  example:`
+  "category": "Lists",
+  "index": "7.1",
+  "example": 
+    `
 <section>
   <h5>Simple List</h5>
   <div style={{
@@ -43,7 +39,7 @@ List.styleguide = {
       <li>Spam</li>
     </List>
   </div>
-
+  
   <h5>Complex List using ListItem and ListText</h5>
   <div style={{
       display: "inline-block",
@@ -79,6 +75,7 @@ List.styleguide = {
   </div>
 </section>
 `
+  
 };
 
 export default List;

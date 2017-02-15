@@ -1,26 +1,26 @@
-import React from 'react'
-import { mount, shallow } from 'enzyme';
-import { expect } from 'chai';
-import Dialog from '../../dialog';
+import React from "react";
+import { mount, shallow } from "enzyme";
+import { expect } from "chai";
+import Dialog from "../../dialog";
 
-var count = 0;
+let count = 0;
 
 function handleToggle() {
   count++;
 }
 
-describe('Test dialog component', () => {
-  it('Test default props', function() {
-    const result = mount(<Dialog></Dialog>);
+describe("Test dialog component", () => {
+  it("Test default props", function() {
+    const result = mount(<Dialog />);
     expect(result.props().active).to.equal(false);
     expect(result.props().type).to.equal("normal");
-    expect(result.props().className).to.equal('');
-    expect(result.props().theme).to.contain({inactive: true});
+    expect(result.props().className).to.equal("");
+    expect(result.props().theme).to.contain({ "inactive": true });
   });
 
-  it('Check overlay click event', function() {
-    const result = shallow(<Dialog onOverlayClick={handleToggle}></Dialog>);
-    result.simulate('click');
+  it("Check overlay click event", function() {
+    const result = shallow(<Dialog onOverlayClick={handleToggle} />);
+    result.simulate("click");
     expect(count).to.equal(1);
   });
 });

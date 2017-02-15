@@ -1,64 +1,63 @@
-import React, { PropTypes } from 'react';
-import { classNames } from '../utils';
+import React, { PropTypes } from "react";
+import { classNames } from "../utils";
 import Overlay from "../overlay";
-import themeable from 'react-themeable';
+import themeable from "react-themeable";
 
-const Dialog = ({body, active, type, children, className, onOverlayClick, ...props}) => {
+const Dialog = (
+  { body, active, type, children, className, onOverlayClick, ...props }
+) => {
+  const theme = themeable(props.theme);
+  const componentClasses = classNames({
+    "inactive": !active,
+    type,
+    active,
+    className
+  });
 
-    const theme = themeable(props.theme);
-    const componentClasses = classNames({
-        inactive: !active,
-        type,
-        active,
-        className
-    });
-
-    return (
-        <Overlay active={active} onClick={onOverlayClick}>
-            <div {...theme(1, ...componentClasses)}>
-                <section className={body}>
-                    {children}
-                </section>
-            </div>
-        </Overlay>
-    );
+  return (
+    <Overlay active={active} onClick={onOverlayClick}>
+      <div {...theme(1, ...componentClasses)}>
+        <section className={body}>
+          {children}
+        </section>
+      </div>
+    </Overlay>
+  );
 };
 
 Dialog.propTypes = {
   /**
    * defines if Dialog modal is active/open/popped-up.
    */
-    active: PropTypes.bool,
-	/**
+  "active": PropTypes.bool,
+  /**
    * The content inside the modal
    */
-  children: PropTypes.node,
-    className: PropTypes.string,
-	/**
+  "children": PropTypes.node,
+  "className": PropTypes.string,
+  /**
    * Defines what should happen when someone clicks off of the Modal box
    */
-  onOverlayClick: PropTypes.func,
-	/**
+  "onOverlayClick": PropTypes.func,
+  /**
    * What type/size of modal. Choose from 'small', 'normal', 'large'.
    */
-  type: PropTypes.oneOf(["large","small","normal"]),
-  body: PropTypes.string
+  "type": PropTypes.oneOf(["large", "small", "normal"]),
+  "body": PropTypes.string,
+  /**
+   * The theme object.
+   */
+  "theme": PropTypes.object
 };
 
-Dialog.defaultProps = {
-    active: false,
-    type: "normal",
-    className: '',
-    theme: {
-      inactive: true
-    }
-};
+Dialog.defaultProps = { "active": false, "type": "normal", "className": "" };
 
 Dialog.styleguide = {
-  category: "Layout",
-  index: "4.2",
-  wrappedExample: true,
-  example:`
+  "category": "Layout",
+  "index": "4.2",
+  "wrappedExample": true,
+  "example": 
+    `
 // Internal Methods {
 class App extends React.Component {
   state = {
@@ -96,6 +95,7 @@ class App extends React.Component {
 ReactDOM.render(<App/>, mountNode);
 // }
   `
+  
 };
 
 export default Dialog;

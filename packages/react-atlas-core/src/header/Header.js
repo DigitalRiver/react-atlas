@@ -1,14 +1,10 @@
-import React from 'react';
-import { classNames } from '../utils';
-import themeable from 'react-themeable';
+import React from "react";
+import { classNames } from "../utils";
+import themeable from "react-themeable";
 
-const Header = ({className, fixed, children, ...props}) => {
+const Header = ({ className, fixed, children, ...props }) => {
   const theme = themeable(props.theme);
-  const classes = classNames({
-    container: true,
-    fixed,
-    className
-  });
+  const classes = classNames({ "container": true, fixed, className });
 
   return (
     <header {...props} {...theme(1, ...classes)}>
@@ -18,23 +14,19 @@ const Header = ({className, fixed, children, ...props}) => {
 };
 
 Header.propTypes = {
-  children: React.PropTypes.node,
-  className: React.PropTypes.string,
-  fixed: React.PropTypes.bool
+  "children": React.PropTypes.node,
+  "className": React.PropTypes.string,
+  "fixed": React.PropTypes.bool,
+  "theme": React.PropTypes.object
 };
 
-Header.defaultProps = {
-  className: '',
-  fixed: false,
-  theme: {
-    'container': true
-  }
-};
+Header.defaultProps = { "className": "", "fixed": false };
 
 Header.styleguide = {
-  category: 'Layout',
-  index: '4.5',
-  example:`
+  "category": "Layout",
+  "index": "4.5",
+  "example": 
+    `
 <div style={{maxHeight: "200px", overflowY: "scroll"}}>
   <Header>
     <h1>This is a Header</h1>
@@ -47,6 +39,7 @@ Header.styleguide = {
   </div>
 </div>
 `
+  
 };
 
 export default Header;

@@ -1,10 +1,9 @@
-import React from 'react'
-import { mount, shallow } from 'enzyme';
-import { expect } from 'chai';
-import Switch from '../../switch';
+import React from "react";
+import { mount } from "enzyme";
+import Switch from "../../switch";
 
-describe('Testing switch component', () => {
-  it('Check default props', function() {
-    const result = mount(<Switch onColor="black"/>);
+describe("Testing switch component", () => {
+  it("Check default props", function() {
+    const result = mount(<Switch onColor="black" />);
   });
 });

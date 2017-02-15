@@ -1,1 +1,1 @@
-export default from './SuccessButton';
+export default from "./SuccessButton";
