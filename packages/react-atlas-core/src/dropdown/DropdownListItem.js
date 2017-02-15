@@ -6,17 +6,14 @@ Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 import React, { component, PropTypes } from 'react';
 import { classNames } from '../utils';
-import style from './dropdown.css';
 
 /**
  * Optional component to use within DropdownList & DropdownContent components. It just sets styles to `<li>` in dropdowns.
  */
 const DropdownListItem = ({ children, className, active, ...props }) => {
 
-    const classes = classNames(className, style.item);
-
     return (
-      <li {...props} className={classes}>
+      <li {...props} className={className}>
         {children}
       </li>
     )

@@ -10,7 +10,6 @@ import { classNames } from '../utils';
 import DropdownTrigger from './DropdownTrigger';
 import DropdownContent from './DropdownContent';
 import { findDOMNode } from 'react-dom';
-import style from './dropdown.css';
 
 /**
  * Simple Composable Dropdown Component that wraps DropdownTrigger and DropdownContent components. Primarily useful for Navigational dropdowns, not form select dropdowns.
@@ -75,10 +74,6 @@ class Dropdown extends Component {
     const { children, className, ...props } = this.props;
     // create component classes
     const active = this._isActive();
-    const cx = classNames.bind(style);
-    var classes = cx(className, {
-      container: true
-    });
 
     // stick callback on trigger element
     const bound_children = React.Children.map( children, child => {
@@ -96,7 +91,6 @@ class Dropdown extends Component {
     return (
       <div
         {...props}
-        className={classes}
       >
         {bound_children}
       </div>

@@ -6,21 +6,13 @@ Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 import React, { component, PropTypes } from 'react';
 import { classNames } from '../utils';
-import style from './dropdown.css';
 
 /**
  * Component used inside Dropdown to define content. Often paired with DropdownList & DropdownListItem.
  */
 const DropdownContent = ({ children, className, active, ...props }) => {
-    const cx = classNames.bind(style);
-
-    const classes = cx(className, {
-        inactive: !active,
-        active: active
-    });
-
     return (
-      <div {...props} className={classes}>
+      <div {...props}>
         {children}
       </div>
     )

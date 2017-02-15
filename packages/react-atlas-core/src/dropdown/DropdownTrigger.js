@@ -6,7 +6,6 @@ Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 
 import React, { createClass, PropTypes } from 'react';
-import style from './dropdown.css';
 
 /**
  * Contains the component or element that will trigger the Dropdown on and off.
