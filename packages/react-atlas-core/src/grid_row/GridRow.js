@@ -25,8 +25,8 @@ const GridRow = ({ gutter, ...props }) => {
   return (
     <div
       {...styles}
-      style={Object.assign(rowStyle, this.props.style)}
-      className={this.props.className}
+      style={Object.assign(rowStyle, props.style)}
+      className={props.className}
     />
   );
 };
