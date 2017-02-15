@@ -1,34 +1,32 @@
 import React from "react";
-import themeable from 'react-themeable';
+import themeable from "react-themeable";
 
 /**
  * Wrapper around `<li>` element that applies styles.
  */
-const ListItem= ({children, className, ...props}) => {
-    const theme = themeable(props.theme);
+const ListItem = ({ children, ...props }) => {
+  const theme = themeable(props.theme);
 
-    return (
-      <li {...props} {...theme(1, 'item')}>
-        {children}
-      </li>
-    );
+  return (
+    <li {...props} {...theme(1, "item")}>
+      {children}
+    </li>
+  );
 };
 
 ListItem.propTypes = {
-    className: React.PropTypes.string
+  "className": React.PropTypes.string,
+  "children": React.PropTypes.node,
+  "theme": React.PropTypes.object
 };
 
-ListItem.defaultProps = {
-    className: '',
-    theme: {
-      'item': true
-    }
-};
+ListItem.defaultProps = { "className": "" };
 
 ListItem.styleguide = {
-  category: 'Lists',
-  index: '7.2',
-  example:`
+  "category": "Lists",
+  "index": "7.2",
+  "example": 
+    `
 <section>
   <h5>Simple List with ListIem</h5>
   <div style={{
@@ -42,6 +40,7 @@ ListItem.styleguide = {
   </div>
 </section>
 `
+  
 };
 
 export default ListItem;

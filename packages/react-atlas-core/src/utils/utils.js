@@ -1,15 +1,13 @@
 export default {
-  angleFromPositions (cx, cy, ex, ey) {
+  angleFromPositions(cx, cy, ex, ey) {
     const theta = Math.atan2(ey - cy, ex - cx) + Math.PI / 2;
     return theta * 180 / Math.PI;
   },
-
-  angle360FromPositions (cx, cy, ex, ey) {
+  angle360FromPositions(cx, cy, ex, ey) {
     const angle = this.angleFromPositions(cx, cy, ex, ey);
     return angle < 0 ? 360 + angle : angle;
   },
-
-  range (start = 0, stop = null, step = 1) {
+  range(start = 0, stop = null, step = 1) {
     let [_start, _stop] = [0, start];
     if (stop !== null) {
       [_start, _stop] = [start, stop];
@@ -23,37 +21,40 @@ export default {
 
     return range;
   },
-
-  round (number, decimals) {
+  round(number, decimals) {
     if (!isNaN(parseFloat(number)) && isFinite(number)) {
       const decimalPower = Math.pow(10, decimals);
       return Math.round(parseFloat(number) * decimalPower) / decimalPower;
     }
     return NaN;
   },
-
-  getViewport () {
+  getViewport() {
     return {
-      height: window.innerHeight || document.documentElement.offsetHeight,
-      width: window.innerWidth || document.documentElement.offsetWidth
+      "height": window.innerHeight || document.documentElement.offsetHeight,
+      "width": window.innerWidth || document.documentElement.offsetWidth
     };
   },
-
-  cloneObject (object) {
+  cloneObject(object) {
     return JSON.parse(JSON.stringify(object));
   },
-
-  inputTypeForPrototype (prototype) {
-    if (prototype === Date) return 'date';
-    if (prototype === Number) return 'number';
-    if (prototype === Boolean) return 'checkbox';
-    return 'text';
+  inputTypeForPrototype(prototype) {
+    if (prototype === Date) {
+      return "date";
+    }
+    if (prototype === Number) {
+      return "number";
+    }
+    if (prototype === Boolean) {
+      return "checkbox";
+    }
+    return "text";
   },
-
-  prepareValueForInput (value, type) {
-    if (type === 'date') return new Date(value).toISOString().slice(0, 10);
-    if (type === 'checkbox') {
-      return value ? 'on' : null;
+  prepareValueForInput(value, type) {
+    if (type === "date") {
+      return new Date(value).toISOString().slice(0, 10);
+    }
+    if (type === "checkbox") {
+      return value ? "on" : null;
     }
     return value;
   }

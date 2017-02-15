@@ -1,1 +1,1 @@
-export default from './GridRow';
+export default from "./GridRow";

@@ -1,1 +1,1 @@
-export default from './DangerButton';
+export default from "./DangerButton";

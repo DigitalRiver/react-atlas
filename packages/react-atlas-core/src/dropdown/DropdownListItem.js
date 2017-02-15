@@ -4,38 +4,36 @@ react-simple-dropdown
 https://github.com/Fauntleroy/react-simple-dropdown
 Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
-import React, { component, PropTypes } from 'react';
-import { classNames } from '../utils';
-import style from './dropdown.css';
+import React, { PropTypes } from "react";
+import { classNames } from "../utils";
+import style from "./dropdown.css";
 
 /**
  * Optional component to use within DropdownList & DropdownContent components. It just sets styles to `<li>` in dropdowns.
  */
-const DropdownListItem = ({ children, className, active, ...props }) => {
+const DropdownListItem = ({ children, className, ...props }) => {
+  const classes = classNames(className, style.item);
 
-    const classes = classNames(className, style.item);
-
-    return (
-      <li {...props} className={classes}>
-        {children}
-      </li>
-    )
+  return (
+    <li {...props} className={classes}>
+      {children}
+    </li>
+  );
 };
 
 DropdownListItem.propTypes = {
-	children: PropTypes.any,
-	className: PropTypes.string
+  "children": PropTypes.any,
+  "className": PropTypes.string
 };
 
-DropdownListItem.defaultProps = {
-	className: ''
-};
+DropdownListItem.defaultProps = { "className": "" };
 
 DropdownListItem.styleguide = {
-  category: 'Navigation',
-  index: '5.6',
-  wrappedExample: true,
-  example: `
+  "category": "Navigation",
+  "index": "5.6",
+  "wrappedExample": true,
+  "example": 
+    `
 // Dropdown Dummy Data {
 var countries = [
   { value: 'EN-gb', label: 'England' },
@@ -79,6 +77,7 @@ class DropdownListItemExample extends React.Component {
 ReactDOM.render(<DropdownListItemExample/>, mountNode);
 // }
 `
+  
 };
 
 export default DropdownListItem;

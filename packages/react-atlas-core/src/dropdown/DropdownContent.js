@@ -4,42 +4,39 @@ react-simple-dropdown
 https://github.com/Fauntleroy/react-simple-dropdown
 Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
-import React, { component, PropTypes } from 'react';
-import { classNames } from '../utils';
-import style from './dropdown.css';
+import React, { PropTypes } from "react";
+import { classNames } from "../utils";
+import style from "./dropdown.css";
 
 /**
  * Component used inside Dropdown to define content. Often paired with DropdownList & DropdownListItem.
  */
 const DropdownContent = ({ children, className, active, ...props }) => {
-    const cx = classNames.bind(style);
+  const cx = classNames.bind(style);
 
-    const classes = cx(className, {
-        inactive: !active,
-        active: active
-    });
+  const classes = cx(className, { "inactive": !active, "active": active });
 
-    return (
-      <div {...props} className={classes}>
-        {children}
-      </div>
-    )
+  return (
+    <div {...props} className={classes}>
+      {children}
+    </div>
+  );
 };
 
 DropdownContent.propTypes = {
-	children: PropTypes.any,
-	className: PropTypes.string
+  "children": PropTypes.any,
+  "className": PropTypes.string,
+  "active": PropTypes.bool
 };
 
-DropdownContent.defaultProps = {
-	className: ''
-};
+DropdownContent.defaultProps = { "className": "" };
 
 DropdownContent.styleguide = {
-  category: 'Navigation',
-  index: '5.4',
-  wrappedExample: true,
-  example: `
+  "category": "Navigation",
+  "index": "5.4",
+  "wrappedExample": true,
+  "example": 
+    `
 // Dropdown Dummy Data {
 var countries = [
   { value: 'EN-gb', label: 'England', img: 'http://' },
@@ -86,6 +83,7 @@ class DropdownContentExample extends React.Component {
 ReactDOM.render(<DropdownContentExample/>, mountNode);
 // }
 `
+  
 };
 
 export default DropdownContent;

@@ -1,16 +1,14 @@
-import React from 'react';
-import { classNames } from '../utils';
-import Overlay from '../overlay';
-import themeable from 'react-themeable';
+import React, { PropTypes } from "react";
+import { classNames } from "../utils";
+import Overlay from "../overlay";
+import themeable from "react-themeable";
 
-const Drawer = ({active, className, type, onOverlayClick, ...props}) => {
+const Drawer = ({ active, className, type, onOverlayClick, ...props }) => {
   const theme = themeable(props.theme);
-  const classes = classNames({
-    container: true,
-    left: type == 'left',
-    right: type == 'right',
-    active
-  }, className);
+  const classes = classNames(
+    { "container": true, "left": type === "left", "right": type === "right", active },
+    className
+  );
 
   return (
     <Overlay active={active} onClick={onOverlayClick}>
@@ -24,27 +22,26 @@ const Drawer = ({active, className, type, onOverlayClick, ...props}) => {
 };
 
 Drawer.propTypes = {
-  active: React.PropTypes.bool,
-  children: React.PropTypes.node,
-  className: React.PropTypes.string,
-  onOverlayClick: React.PropTypes.func,
-  type: React.PropTypes.oneOf(['left', 'right'])
+  "active": React.PropTypes.bool,
+  "children": React.PropTypes.node,
+  "className": React.PropTypes.string,
+  "onOverlayClick": React.PropTypes.func,
+  "type": React.PropTypes.oneOf(["left", "right"]),
+  /**
+     * The theme object.
+     *
+     */
+  "theme": PropTypes.object
 };
 
-Drawer.defaultProps = {
-  active: false,
-  className: '',
-  type: 'left',
-  theme: {
-    'container': true
-  }
-};
+Drawer.defaultProps = { "active": false, "className": "", "type": "left" };
 
 Drawer.styleguide = {
-  category: 'Navigation',
-  index: '5.1',
-  wrappedExample: true,
-  example: `
+  "category": "Navigation",
+  "index": "5.1",
+  "wrappedExample": true,
+  "example": 
+    `
 // Internal Methods {
 class DrawerTest extends React.Component {
   state = {
@@ -89,6 +86,7 @@ class DrawerTest extends React.Component {
 ReactDOM.render(<DrawerTest/>, mountNode);
 // }
 `
+  
 };
 
 export default Drawer;

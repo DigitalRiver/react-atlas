@@ -1,19 +1,20 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from "react";
 
-const Thead = ({children, ...props}) => (
-    <thead {...props}>
-      {children}
-    </thead>
-);
+const Thead = ({ children, ...props }) => 
+  <thead {...props}>
+    {children}
+  </thead>
+;
 
 Thead.propTypes = {
-    children: PropTypes.any
+  "children": PropTypes.any
 };
 
 Thead.styleguide = {
-  category: 'Table',
-  index: '7.2',
-  example: `
+  "category": "Table",
+  "index": "7.2",
+  "example": 
+    `
 <section>
   <h5>Thead Example</h5>
     <table>
@@ -36,6 +37,7 @@ Thead.styleguide = {
     </table>
 </section>
 `
+  
 };
 
 export default Thead;

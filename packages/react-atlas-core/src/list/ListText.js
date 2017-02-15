@@ -1,33 +1,29 @@
-import React from 'react';
-import themeable from 'react-themeable';
+import React from "react";
+import themeable from "react-themeable";
 
 /**
  * Used inside `<ListItem>` when the Item has more complex needs for text and elements inside
  */
-const ListText = ({className, children, ...props}) => {
-	const theme = themeable(props.theme);
-	return (
-		<span {...props} {...theme(1, 'text')}>
-			{children}
-		</span>
-	)
+const ListText = ({ children, ...props }) => {
+  const theme = themeable(props.theme);
+  return (
+    <span {...props} {...theme(1, "text")}>
+      {children}
+    </span>
+  );
 };
 
 ListText.propTypes = {
-	className: React.PropTypes.string,
-	children: React.PropTypes.node
-};
-
-ListText.defaultProps = {
-	theme: {
-		'text': true
-	}
+  "className": React.PropTypes.string,
+  "children": React.PropTypes.node,
+  "theme": React.PropTypes.object
 };
 
 ListText.styleguide = {
-  category: 'Lists',
-  index: '7.3',
-  example:`
+  "category": "Lists",
+  "index": "7.3",
+  "example": 
+    `
 <section>
   <h5>Complex ListText example</h5>
   <div style={{
@@ -64,6 +60,7 @@ ListText.styleguide = {
   </div>
 </section>
 `
+  
 };
 
 export default ListText;
