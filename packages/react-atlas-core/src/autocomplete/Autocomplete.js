@@ -3,16 +3,16 @@
  * Read https://github.com/moroshko/react-autosuggest for documentation
  */
 
-import React, { PropTypes } from 'react';
-import Autosuggest from 'react-autosuggest';
+import React, { PropTypes } from "react";
+import Autosuggest from "react-autosuggest";
 
 /**
  * Auto Complete component is a very simple wrapper around the [React-Autosuggest](https://github.com/moroshko/react-autosuggest) component.
  * Read there for more comprehensive documentation.
  */
-const Autocomplete = ({theme, ...props}) => {
-	const styles = {...theme};
-	return <Autosuggest {...props} theme={styles} />
+const Autocomplete = ({ theme, ...props }) => {
+  const styles = { ...theme };
+  return <Autosuggest {...props} theme={styles} />;
 };
 
 Autocomplete.propTypes = {
@@ -37,13 +37,13 @@ Autocomplete.propTypes = {
    *   }
    * ];
    */
-    suggestions: PropTypes.array.isRequired,
-	/**
+  "suggestions": PropTypes.array.isRequired,
+  /**
    * Normally, you would want to update suggestions as user types.
    * You might also want to update suggestions when user selects a suggestion or the input loses focus (so that, next time the input gets focus, suggestions will be up to date).
    */
-    onSuggestionsUpdateRequested: PropTypes.func,
-	/**
+  "onSuggestionsUpdateRequested": PropTypes.func,
+  /**
    * When user navigates the suggestions using the Up and Down keys, the input should display the highlighted suggestion.
    * You design how suggestion is modelled. Therefore, it's your responsibility to tell Autosuggest how to map suggestions to input values.
    *
@@ -56,8 +56,8 @@ Autocomplete.propTypes = {
    * return suggestion.text;
    * }
    */
-    getSuggestionValue: PropTypes.func.isRequired,
-	/**
+  "getSuggestionValue": PropTypes.func.isRequired,
+  /**
    *
    *
    * Use your imagination to define how suggestions are rendered.
@@ -79,8 +79,8 @@ Autocomplete.propTypes = {
    *  );
    * }
    */
-  renderSuggestion: PropTypes.func.isRequired,
-	/**
+  "renderSuggestion": PropTypes.func.isRequired,
+  /**
    * Autosuggest is a controlled component.
    * Therefore, you should pass at least a value and an onChange callback to the input field. You can pass additional props as well.
    *
@@ -91,50 +91,51 @@ Autocomplete.propTypes = {
    *   placeholder: 'Enter city or postcode'
    * };
    */
-    inputProps: (props, propName) => {
-      const inputProps = props[propName];
+  "inputProps": (props, propName) => {
+    const inputProps = props[propName];
 
-      if (!inputProps.hasOwnProperty('value')) {
-        throw new Error("Value must be set inside inputProps");
-      }
+    if (!inputProps.hasOwnProperty("value")) {
+      throw new Error("Value must be set inside inputProps");
+    }
 
-      if (!inputProps.hasOwnProperty('onChange')) {
-        throw new Error('\'inputProps\' must have \'onChange\'.');
-      }
-    },
-    shouldRenderSuggestions: PropTypes.func,
-    onSuggestionSelected: PropTypes.func,
-    multiSection: PropTypes.bool,
-    renderSectionTitle: PropTypes.func,
-    getSectionSuggestions: PropTypes.func,
-    focusInputOnSuggestionClick: PropTypes.bool,
-    theme: PropTypes.object,
-    id: PropTypes.string
+    if (!inputProps.hasOwnProperty("onChange")) {
+      throw new Error("'inputProps' must have 'onChange'.");
+    }
+  },
+  "shouldRenderSuggestions": PropTypes.func,
+  "onSuggestionSelected": PropTypes.func,
+  "multiSection": PropTypes.bool,
+  "renderSectionTitle": PropTypes.func,
+  "getSectionSuggestions": PropTypes.func,
+  "focusInputOnSuggestionClick": PropTypes.bool,
+  "theme": PropTypes.object,
+  "id": PropTypes.string
 };
 
 Autocomplete.defaultProps = {
-    onSuggestionsUpdateRequested: function () {},
-    shouldRenderSuggestions: value => value.trim().length > 0,
-    onSuggestionSelected: function () {},
-    multiSection: false,
-    renderSectionTitle() {
-      throw new Error('`renderSectionTitle` must be provided');
-    },
-    getSectionSuggestions() {
-      throw new Error('`getSectionSuggestions` must be provided');
-    },
-    focusInputOnSuggestionClick: true,
-    id: '1',
-		theme: {
-			value: true
-		}
+  "onSuggestionsUpdateRequested": function() {},
+  "shouldRenderSuggestions": value => value.trim().length > 0,
+  "onSuggestionSelected": function() {},
+  "multiSection": false,
+  renderSectionTitle() {
+    throw new Error("`renderSectionTitle` must be provided");
+  },
+  getSectionSuggestions() {
+    throw new Error("`getSectionSuggestions` must be provided");
+  },
+  "focusInputOnSuggestionClick": true,
+  "id": "1",
+  "theme": {
+    "value": true
+  }
 };
 
 Autocomplete.styleguide = {
-  category: 'Form Components',
-  index: '3.1',
-  wrappedExample: true,
-  example: `
+  "category": "Form Components",
+  "index": "3.1",
+  "wrappedExample": true,
+  "example": 
+    `
 // languages {
 var languages = [
   {
@@ -225,6 +226,7 @@ var AutoCompleteExample = React.createClass({
 ReactDOM.render(<AutoCompleteExample />, mountNode);
 // }
 `
+  
 };
 
 export default Autocomplete;

@@ -5,29 +5,27 @@ https://github.com/Fauntleroy/react-simple-dropdown
 Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 
-import React, { createClass, PropTypes } from 'react';
+import React, { createClass, PropTypes } from "react";
 
 /**
  * Contains the component or element that will trigger the Dropdown on and off.
  */
-const DropdownTrigger = ({ children, ...props }) => (
-	  <a
-	    {...props}
-	    href="#dropdown-trigger"
-	  >
-	    {children}
-	  </a>
-);
+const DropdownTrigger = ({ children, ...props }) => 
+  <a {...props} href="#dropdown-trigger">
+    {children}
+  </a>
+;
 
 DropdownTrigger.propTypes = {
-	children: PropTypes.any
+  "children": PropTypes.any
 };
 
 DropdownTrigger.styleguide = {
-  category: 'Navigation',
-  index: '5.3',
-  wrappedExample: true,
-  example: `
+  "category": "Navigation",
+  "index": "5.3",
+  "wrappedExample": true,
+  "example": 
+    `
 // Dropdown Dummy Data {
 var countries = [
   { value: 'EN-gb', label: 'England'},
@@ -71,6 +69,7 @@ class DropdownTriggerExample extends React.Component {
 ReactDOM.render(<DropdownTriggerExample/>, mountNode);
 // }
 `
+  
 };
 
 export default DropdownTrigger;

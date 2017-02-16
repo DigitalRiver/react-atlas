@@ -4,34 +4,35 @@ react-simple-dropdown
 https://github.com/Fauntleroy/react-simple-dropdown
 Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
-import React, { component, PropTypes } from 'react';
-import { classNames } from '../utils';
+import React, { component, PropTypes } from "react";
+import { classNames } from "../utils";
 
 /**
  * Component used inside Dropdown to define content. Often paired with DropdownList & DropdownListItem.
  */
 const DropdownContent = ({ children, className, active, ...props }) => {
-    return (
-      <div {...props}>
-        {children}
-      </div>
-    )
+  return (
+    <div {...props}>
+      {children}
+    </div>
+  );
 };
 
 DropdownContent.propTypes = {
-	children: PropTypes.any,
-	className: PropTypes.string
+  "children": PropTypes.any,
+  "className": PropTypes.string
 };
 
 DropdownContent.defaultProps = {
-	className: ''
+  "className": ""
 };
 
 DropdownContent.styleguide = {
-  category: 'Navigation',
-  index: '5.4',
-  wrappedExample: true,
-  example: `
+  "category": "Navigation",
+  "index": "5.4",
+  "wrappedExample": true,
+  "example": 
+    `
 // Dropdown Dummy Data {
 var countries = [
   { value: 'EN-gb', label: 'England', img: 'http://' },
@@ -78,6 +79,7 @@ class DropdownContentExample extends React.Component {
 ReactDOM.render(<DropdownContentExample/>, mountNode);
 // }
 `
+  
 };
 
 export default DropdownContent;
