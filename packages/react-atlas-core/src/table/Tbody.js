@@ -1,19 +1,20 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from "react";
 
-const Tbody = ({children, ...props}) => (
-    <tbody {...props}>
-      {children}
-    </tbody>
-);
+const Tbody = ({ children, ...props }) => 
+  <tbody {...props}>
+    {children}
+  </tbody>
+;
 
 Tbody.propTypes = {
-    children: PropTypes.any
+  "children": PropTypes.any
 };
 
 Tbody.styleguide = {
-  category: 'Table',
-  index: '7.4',
-  example: `
+  "category": "Table",
+  "index": "7.4",
+  "example": 
+    `
 <section>
   <h5>Tbody Example</h5>
     <table>
@@ -30,6 +31,7 @@ Tbody.styleguide = {
     </table>
 </section>
 `
+  
 };
 
 export default Tbody;

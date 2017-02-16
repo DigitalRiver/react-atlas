@@ -1,36 +1,40 @@
-import React, { PropTypes } from 'react';
-import themeable from 'react-themeable';
-import { classNames } from '../utils';
+import React, { PropTypes } from "react";
+import themeable from "react-themeable";
+import { classNames } from "../utils";
 
-const Td = ({className, children, ...props}) => {
+const Td = ({ className, children, ...props }) => {
+  const theme = themeable(props.theme);
+  const classes = classNames(
+    {
+      "td": true
+    },
+    className
+  );
 
-	const theme = themeable(props.theme);
-	const classes = classNames({
-			td: true
-	}, className);
-
-	return (
-	    <td {...props} {...theme(1, ...classes)}>
-	      {children}
-	    </td>
-	);
+  return (
+    <td {...props} {...theme(1, ...classes)}>
+      {children}
+    </td>
+  );
 };
 
 Td.propTypes = {
-    children: PropTypes.any,
-    className: PropTypes.string
+  "children": PropTypes.any,
+  "className": PropTypes.string,
+  "theme": PropTypes.object
 };
 Td.defaultProps = {
-  className: '',
-	theme: {
-		'td': true
-	}
+  "className": "",
+  "theme": {
+    "td": true
+  }
 };
 
 Td.styleguide = {
-  category: 'Table',
-  index: '7.6',
-  example: `
+  "category": "Table",
+  "index": "7.6",
+  "example": 
+    `
 <section>
   <h5>Td Example</h5>
     <table>
@@ -47,6 +51,7 @@ Td.styleguide = {
     </table>
 </section>
 `
+  
 };
 
 export default Td;

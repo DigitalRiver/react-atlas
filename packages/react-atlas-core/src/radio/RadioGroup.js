@@ -1,40 +1,42 @@
-import React, { Component, PropTypes } from 'react';
-import Radio from './Radio';
-import themeable from 'react-themeable';
+import React, { PropTypes } from "react";
+import Radio from "./Radio";
+import themeable from "react-themeable";
 
 const propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  name: PropTypes.string
+  "children": PropTypes.node,
+  "className": PropTypes.string,
+  "name": PropTypes.string,
+  "theme": PropTypes.object
 };
 
 const defaultProps = {
-  className: ''
+  "className": ""
 };
 
-const RadioGroup = ({className, children, name, ...props}) => {
+const RadioGroup = ({ className, children, name, ...props }) => {
   const theme = themeable(props.theme);
 
   return (
-      <div {...props} {...theme(1, className)}>
-        {React.Children.map(children, (child) => {
-          if (child.type === Radio) {
-            return <Radio {...child.props} name={name} theme={props.theme}/>
-          } else {
-            return child
-          }
-        })}
-      </div>
-  )
+    <div {...props} {...theme(1, className)}>
+      {React.Children.map(children, child => {
+        if (child.type === Radio) {
+          return <Radio {...child.props} name={name} theme={props.theme} />;
+        } else {
+          return child;
+        }
+      })}
+    </div>
+  );
 };
 
 RadioGroup.propTypes = propTypes;
 RadioGroup.defaultProps = defaultProps;
 
 RadioGroup.styleguide = {
-  category: 'Form Components',
-  index: '3.9',
-  example: `
+  "category": "Form Components",
+  "index": "3.9",
+  "example": 
+    `
 <section>
   <h5>RadioGroup with Radio Buttons</h5>
   <RadioGroup name="comic">
@@ -45,6 +47,7 @@ RadioGroup.styleguide = {
   </RadioGroup>
 </section>
 `
-}
+  
+};
 
 export default RadioGroup;

@@ -1,19 +1,20 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from "react";
 
-const Tfoot = ({children, ...props}) => (
-    <tfoot {...props}>
-      {children}
-    </tfoot>
-);
+const Tfoot = ({ children, ...props }) => 
+  <tfoot {...props}>
+    {children}
+  </tfoot>
+;
 
 Tfoot.propTypes = {
-    children: PropTypes.any
+  "children": PropTypes.any
 };
 
 Tfoot.styleguide = {
-  category: 'Table',
-  index: '7.7',
-  example: `
+  "category": "Table",
+  "index": "7.7",
+  "example": 
+    `
 <section>
   <h5>Tfoot Example</h5>
     <table>
@@ -36,6 +37,7 @@ Tfoot.styleguide = {
     </table>
 </section>
 `
+  
 };
 
 export default Tfoot;

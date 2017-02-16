@@ -3,51 +3,51 @@
  * Copyright (c) 2016 Thinkmill Pty Ltd
  */
 
-import React, { Component, PropTypes } from 'react';
-import blacklist from 'blacklist';
-import A from '../constants';
+import React, { PropTypes } from "react";
+import blacklist from "blacklist";
+import A from "../constants";
 
 /**
  * Component that handles Row part of a Grid system. Syntax is somewhat similar to bootstrap's grid class syntax.
  */
-class GridRow extends Component {
-	render () {
-		const { gutter } = this.props;
-		const rowStyle = {
-			display: 'flex',
-			flexWrap: 'wrap',
-			msFlexWrap: 'wrap',
-			WebkitFlexWrap: 'wrap',
-			marginLeft: (gutter / -2),
-			marginRight: (gutter / -2)
-		};
+const GridRow = ({ gutter, ...props }) => {
+  const rowStyle = {
+    "display": "flex",
+    "flexWrap": "wrap",
+    "msFlexWrap": "wrap",
+    "WebkitFlexWrap": "wrap",
+    "marginLeft": gutter / -2,
+    "marginRight": gutter / -2
+  };
 
-		const props = blacklist(this.props, 'className', 'gutter', 'style');
+  const styles = blacklist(props, "className", "gutter", "style");
 
-		return (
-			<div {...props} style={Object.assign(rowStyle, this.props.style)} className={this.props.className} />
-		);
-	}
-}
+  return (
+    <div
+      {...styles}
+      style={Object.assign(rowStyle, props.style)}
+      className={props.className}
+    />
+  );
+};
 
 GridRow.propTypes = {
-	children: PropTypes.node,
-	/**
-	 * input a css class name
-	 */
-	className: PropTypes.string,
-	gutter: PropTypes.number,
-	style: PropTypes.object
+  "children": PropTypes.node,
+  /**
+   * input a css class name
+   */
+  "className": PropTypes.string,
+  "gutter": PropTypes.number,
+  "style": PropTypes.object
 };
 
-GridRow.defaultProps = {
-	gutter: A.width.gutter
-};
+GridRow.defaultProps = { "gutter": A.width.gutter };
 
 GridRow.styleguide = {
-  category: 'Layout',
-  index: '4.4',
-  example:`
+  "category": "Layout",
+  "index": "4.4",
+  "example": 
+    `
 <section>
   <h5>Row Example</h5>
   <p>Compare this example to GridCol example.</p>
@@ -83,6 +83,7 @@ GridRow.styleguide = {
     </GridRow>
 </section>
 `
+  
 };
 
 export default GridRow;

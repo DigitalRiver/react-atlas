@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Returns a the provided component as themed component.
@@ -6,6 +6,6 @@ import React from 'react';
  * Note: defaultProps could be useful for default special behavioural in
  * different ui libraries.
  */
-export default (Component, theme, defaultProps) => (props) => {
+export default (Component, theme, defaultProps) => props => {
   return <Component {...defaultProps} theme={theme} {...props} />;
 };

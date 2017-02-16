@@ -1,40 +1,44 @@
-import React, { Component, PropTypes } from 'react';
-import themeable from 'react-themeable';
-import { classNames } from '../utils';
+import React, { PropTypes } from "react";
+import themeable from "react-themeable";
+import { classNames } from "../utils";
 
 /**
  * Used within the `<Tabs>` Component to programatically determine the content of any given tab. There probably isn't any reason for you to actually use `<TabContent>` directly.
  */
-const TabContent = ({active, tabIndex, children, className, ...props}) => {
-    const theme = themeable(props.theme);
-    const classes = classNames({
-      tabContent: true,
-      tabActive: active
-    }, className);
+const TabContent = ({ active, tabIndex, children, className, ...props }) => {
+  const theme = themeable(props.theme);
+  const classes = classNames(
+    {
+      "tabContent": true,
+      "tabActive": active
+    },
+    className
+  );
 
-    return (
-      <section {...theme(1, ...classes)} tabIndex={tabIndex}>
-        {children}
-      </section>
-    );
+  return (
+    <section {...theme(1, ...classes)} tabIndex={tabIndex}>
+      {children}
+    </section>
+  );
 };
 
 TabContent.propTypes = {
-  active: PropTypes.bool,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  tabIndex: PropTypes.number
+  "active": PropTypes.bool,
+  "children": PropTypes.node,
+  "className": PropTypes.string,
+  "tabIndex": PropTypes.number
 };
 TabContent.defaultProps = {
-  active: false,
-  className: ''
+  "active": false,
+  "className": ""
 };
 
 TabContent.styleguide = {
-  category: 'Layout',
-  index: '4.10',
-  wrappedExample: true,
-  example: `
+  "category": "Layout",
+  "index": "4.10",
+  "wrappedExample": true,
+  "example": 
+    `
 // Internal Methods {
 class TabsExample extends React.Component {
   state = {
@@ -80,6 +84,7 @@ class TabsExample extends React.Component {
 ReactDOM.render(<TabsExample />, mountNode);
 // }
 `
+  
 };
 
 export default TabContent;

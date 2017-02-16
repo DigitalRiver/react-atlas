@@ -1,25 +1,26 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from "react";
 
 /**
  * A simple wrapper around the regular HTML `<form>` element.
  */
 const Form = ({ children, ...props }) => {
-    return (
-      <form {...props}>
-        {children}
-      </form>
-    );
+  return (
+    <form {...props}>
+      {children}
+    </form>
+  );
 };
 
 Form.propTypes = {
-  children: PropTypes.node
+  "children": PropTypes.node
 };
 
 Form.styleguide = {
-  category: 'Form Components',
-  index: '3.3',
-  wrappedExample: true,
-  example:`
+  "category": "Form Components",
+  "index": "3.3",
+  "wrappedExample": true,
+  "example": 
+    `
 class FormExample extends React.Component {
   handleEvent = (type, event) => {
     console.log('handleEvent triggered: ', event);
@@ -49,6 +50,7 @@ class FormExample extends React.Component {
 }
 ReactDOM.render(<FormExample/>, mountNode); 
 `
+  
 };
 
 export default Form;

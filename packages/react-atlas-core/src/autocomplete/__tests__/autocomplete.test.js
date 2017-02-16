@@ -1,10 +1,9 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
-import { expect, should } from "chai";
+import { expect } from "chai";
 import Autocomplete from "../../autocomplete";
 
 let count = 0;
-
 let inputProps = {
   "placeholder": "Type 'c'",
   "value": "value",

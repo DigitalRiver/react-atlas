@@ -104,6 +104,14 @@ Dropdown.defaultProps = {
   "className": ""
 };
 
+Dropdown.propTypes = {
+  "active": PropTypes.bool,
+  "onHide": PropTypes.bool,
+  "onShow": PropTypes.bool,
+  "children": PropTypes.node,
+  "className": PropTypes.string
+};
+
 Dropdown.styleguide = {
   "category": "Navigation",
   "index": "5.2",

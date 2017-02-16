@@ -4,6 +4,7 @@ react-simple-dropdown
 https://github.com/Fauntleroy/react-simple-dropdown
 Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
+
 import React, { component, PropTypes } from "react";
 import { classNames } from "../utils";
 
