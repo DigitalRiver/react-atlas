@@ -5,8 +5,7 @@ https://github.com/Fauntleroy/react-simple-dropdown
 Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 
-import React, { PropTypes } from "react";
-import style from "./dropdown.css";
+import React, { createClass, PropTypes } from "react";
 
 /**
  * Contains the component or element that will trigger the Dropdown on and off.
@@ -17,7 +16,9 @@ const DropdownTrigger = ({ children, ...props }) =>
   </a>
 ;
 
-DropdownTrigger.propTypes = { "children": PropTypes.any };
+DropdownTrigger.propTypes = {
+  "children": PropTypes.any
+};
 
 DropdownTrigger.styleguide = {
   "category": "Navigation",

@@ -4,8 +4,7 @@ import { expect } from "chai";
 import Autocomplete from "../../autocomplete";
 
 let count = 0;
-
-const inputProps = {
+let inputProps = {
   "placeholder": "Type 'c'",
   "value": "value",
   "onChange": function() {
@@ -13,8 +12,11 @@ const inputProps = {
   }
 };
 
-// const badValueProps = {};
-// const badOnChangeProps = { "value": "value" };
+let badValueProps = {};
+
+let badOnChangeProps = {
+  "value": "value"
+};
 
 describe("Test Autocomplete component", () => {
   it("Test default props", function() {

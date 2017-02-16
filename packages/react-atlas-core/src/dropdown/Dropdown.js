@@ -10,7 +10,6 @@ import { classNames } from "../utils";
 import DropdownTrigger from "./DropdownTrigger";
 import DropdownContent from "./DropdownContent";
 import { findDOMNode } from "react-dom";
-import style from "./dropdown.css";
 
 /**
  * Simple Composable Dropdown Component that wraps DropdownTrigger and DropdownContent components. Primarily useful for Navigational dropdowns, not form select dropdowns.
@@ -18,7 +17,9 @@ import style from "./dropdown.css";
 class Dropdown extends Component {
   constructor(props) {
     super(props);
-    this.state = { "active": false };
+    this.state = {
+      "active": false
+    };
   }
 
   componentDidMount() {
@@ -56,14 +57,18 @@ class Dropdown extends Component {
   };
 
   _hide = () => {
-    this.setState({ "active": false });
+    this.setState({
+      "active": false
+    });
     if (this.props.onHide) {
       this.props.onHide();
     }
   };
 
   _show = () => {
-    this.setState({ "active": true });
+    this.setState({
+      "active": true
+    });
     if (this.props.onShow) {
       this.props.onShow();
     }
@@ -73,25 +78,31 @@ class Dropdown extends Component {
     const { children, className, ...props } = this.props;
     // create component classes
     const active = this._isActive();
-    const cx = classNames.bind(style);
-    const classes = cx(className, { "container": true });
 
     // stick callback on trigger element
     const bound_children = React.Children.map(children, child => {
       if (child.type === DropdownTrigger) {
-        child = cloneElement(child, { "onClick": this._onToggleClick });
+        child = cloneElement(child, {
+          "onClick": this._onToggleClick
+        });
       } else if (child.type === DropdownContent) {
-        child = cloneElement(child, { active });
+        child = cloneElement(child, {
+          active
+        });
       }
       return child;
     });
     return (
-      <div {...props} className={classes}>
+      <div {...props}>
         {bound_children}
       </div>
     );
   }
 }
+
+Dropdown.defaultProps = {
+  "className": ""
+};
 
 Dropdown.propTypes = {
   "active": PropTypes.bool,
@@ -100,8 +111,6 @@ Dropdown.propTypes = {
   "children": PropTypes.node,
   "className": PropTypes.string
 };
-
-Dropdown.defaultProps = { "className": "" };
 
 Dropdown.styleguide = {
   "category": "Navigation",

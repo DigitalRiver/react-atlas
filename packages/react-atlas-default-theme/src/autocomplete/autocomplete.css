@@ -5,17 +5,17 @@
 
 .input {
   composes: pad-1 from '../styles.css';
-	composes: border-gray from '../styles.css';
-	float:left;
-	position: relative;
-	width: 100%;
-	display: block;
-	margin-bottom: -1px;
-	border-width: 1px;
-	appearance: none;
-	box-shadow: none;
-	transition: box-shadow 0.3s, border 0.3s;
-	box-sizing: border-box;
+    composes: border-gray from '../styles.css';
+    float:left;
+    position: relative;
+    width: 100%;
+    display: block;
+    margin-bottom: -1px;
+    border-width: 1px;
+    appearance: none;
+    box-shadow: none;
+    transition: box-shadow 0.3s, border 0.3s;
+    box-sizing: border-box;
 }
 
 .input:focus {

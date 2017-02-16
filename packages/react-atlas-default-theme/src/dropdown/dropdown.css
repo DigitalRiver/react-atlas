@@ -3,7 +3,6 @@
   position: relative;
 }
 
-
 .content {
   composes: absolute from '../styles.css';
   composes: clearfix from '../styles.css';

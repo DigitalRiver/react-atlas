@@ -4,18 +4,17 @@ react-simple-dropdown
 https://github.com/Fauntleroy/react-simple-dropdown
 Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
-import React, { PropTypes } from "react";
+
+import React, { component, PropTypes } from "react";
 import { classNames } from "../utils";
-import style from "./dropdown.css";
 
 /**
  * Optional component to use within DropdownList & DropdownContent components. It just sets styles to `<li>` in dropdowns.
  */
-const DropdownListItem = ({ children, className, ...props }) => {
-  const classes = classNames(className, style.item);
 
+const DropdownListItem = ({ children, className, active, ...props }) => {
   return (
-    <li {...props} className={classes}>
+    <li {...props} className={className}>
       {children}
     </li>
   );
@@ -26,7 +25,9 @@ DropdownListItem.propTypes = {
   "className": PropTypes.string
 };
 
-DropdownListItem.defaultProps = { "className": "" };
+DropdownListItem.defaultProps = {
+  "className": ""
+};
 
 DropdownListItem.styleguide = {
   "category": "Navigation",
