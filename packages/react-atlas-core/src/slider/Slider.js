@@ -41,6 +41,7 @@ class Slider extends Component {
     return isNaN(this.props.value);
   }
 
+  /* handles the focus to let user know the know is in focus*/
   handleInputFocus = () => {
     this.setState({
       "inputFocused": true,
@@ -94,6 +95,7 @@ class Slider extends Component {
     events.pauseEvent(event);
   };
 
+  /* Detects mouse position and moves the knob to the x location */
   handleMouseMove = event => {
     events.pauseEvent(event);
     this.move(events.getMousePosition(event));
@@ -119,14 +121,17 @@ class Slider extends Component {
     events.addEventsToDocument(this.getKeyboardEvents());
   };
 
+  /* Touch handler */
   handleTouchEnd = () => {
     this.end(this.getTouchEventMap());
   };
 
+  /* Touch handler */
   handleTouchMove = event => {
     this.move(events.getTouchPosition(event));
   };
 
+  /* Touch handler */
   handleTouchStart = event => {
     if (this.state.inputFocused) {
       this.refs.input.blur();
@@ -393,14 +398,46 @@ class Slider extends Component {
 }
 
 Slider.propTypes = {
+  /**
+   * Sets an additional css class to customize this component
+   * @examples 'Some Label'
+   */
   "className": PropTypes.string,
+  /**
+   * If true, allows the user to set the slider based on keyboard value
+   * @examples 'Some Label'
+   */
   "editable": PropTypes.bool,
+  /**
+   * Max value of the slider
+   * @examples 'Some Label'
+   */
   "max": PropTypes.number,
+  /**
+   * Minimum value of the slider
+   * @examples 'Some Label'
+   */
   "min": PropTypes.number,
   "onChange": PropTypes.func,
+  /**
+   * If true, a numeric value is shown when the knob is held down.
+   * @examples 'Some Label'
+   */
   "pinned": PropTypes.bool,
+  /**
+   * If true, knob will snap to evenly spaced ticks as defined with the step prop
+   * @examples 'Some Label'
+   */
   "snaps": PropTypes.bool,
+  /**
+   * Varying amount to allow the knob to move in either direction
+   * @examples 'Some Label'
+   */
   "step": PropTypes.number,
+  /**
+   * Default value of the slider
+   * @examples 'Some Label'
+   */
   "value": React.PropTypes.oneOfType([
     React.PropTypes.number,
     React.PropTypes.shape({
@@ -446,13 +483,7 @@ class SliderExample extends React.Component {
       <section>
         <h5>Sliders</h5>
         <p>Normal slider</p>
-        <Slider value={this.state.slider1} onChange={this.handleChange.bind(this, 'slider1')} />
-        <p>With steps, initial value and editable</p>
-        <Slider min={0} max={10} editable value={this.state.slider2} onChange={this.handleChange.bind(this, 'slider2')} />
-        <p>Pinned and with snaps</p>
-        <Slider pinned snaps min={0} max={10} step={1} editable value={this.state.slider3} onChange={this.handleChange.bind(this, 'slider3')} />
-        <p>Range slider</p>
-        <Slider editable pinned snaps step={5} value={this.state.slider4} onChange={this.handleChange.bind(this, 'slider4')}/>
+        <Slider />
       </section>
     );
   }
