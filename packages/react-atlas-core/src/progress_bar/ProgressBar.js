@@ -30,11 +30,13 @@ class ProgressBar extends React.Component {
       return {
         "buffer": prefixer({
           "transform": `scaleX(${this.calculateRatio(this.props.buffer)})`,
-          "transitionDuration": this.props.transitionDuration
+          "transitionDuration": this.props.transitionDuration,
+          color: "brown"
         }),
         "value": prefixer({
           "transform": `scaleX(${this.calculateRatio(this.props.value)})`,
-          "transitionDuration": this.props.transitionDuration
+          "transitionDuration": this.props.transitionDuration,
+          color: "brown"
         })
       };
     } else {
@@ -62,13 +64,11 @@ class ProgressBar extends React.Component {
       <div>
         <span
           ref="buffer"
-          data-ref="buffer"
           {...theme(3, "buffer")}
           style={buffer}
         />
         <span
           ref="value"
-          data-ref="value"
           {...theme(4, "value")}
           style={value}
         />
@@ -87,7 +87,6 @@ class ProgressBar extends React.Component {
     return (
       <span
         ref="value"
-        data-ref="value"
         {...theme(5, "value")}
         style={rangeStyle}
       />
@@ -129,18 +128,70 @@ class ProgressBar extends React.Component {
 }
 
 ProgressBar.propTypes = {
+  /**
+   * The value of a second progress bar
+   * @examples ''
+   */
   "buffer": React.PropTypes.number,
+  /**
+   * Additional classname provided to component for further styling
+   * @examples ''
+   */
   "className": React.PropTypes.string,
+  /**
+   * Length of time in seconds for the transition (can use decimals)
+   * @examples '35'
+   */
   "transitionDuration": React.PropTypes.string,
+  /**
+   * The max value of the progress bar
+   * @examples ''
+   */
   "max": React.PropTypes.number,
+  /**
+   * The min value of the progress bar
+   * @examples ''
+   */
   "min": React.PropTypes.number,
+  /**
+   * Defines the type of Progress bar: 'determinate', 'indeterminate'
+   * @examples 'circular'
+   */
   "mode": React.PropTypes.string,
+  /**
+   * If true, progressbar will change colors during transition
+   * @examples ''
+   */
   "multicolor": React.PropTypes.bool,
+  /**
+   * Type of progress bar; 'circular' or 'linear'
+   * @examples ''
+   */
   "type": React.PropTypes.oneOf(["linear", "circular"]),
+  /**
+   * The default value of the progress bar
+   * @examples ''
+   */
   "value": React.PropTypes.oneOfType([
+    /**
+     * The value of a second progress bar
+     * @examples ''
+     */
     React.PropTypes.number,
+    /**
+     * The value of a second progress bar
+     * @examples ''
+     */
     React.PropTypes.shape({
+      /**
+       * The range of the progress bar starts at 'from'
+       * @examples ''
+       */
       "from": React.PropTypes.number,
+      /**
+       * The range of the progress bar ending at 'to'
+       * @examples ''
+       */
       "to": React.PropTypes.number
     })
   ])
