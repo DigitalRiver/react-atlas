@@ -30,13 +30,11 @@ class ProgressBar extends React.Component {
       return {
         "buffer": prefixer({
           "transform": `scaleX(${this.calculateRatio(this.props.buffer)})`,
-          "transitionDuration": this.props.transitionDuration,
-          color: "brown"
+          "transitionDuration": this.props.transitionDuration
         }),
         "value": prefixer({
           "transform": `scaleX(${this.calculateRatio(this.props.value)})`,
-          "transitionDuration": this.props.transitionDuration,
-          color: "brown"
+          "transitionDuration": this.props.transitionDuration
         })
       };
     } else {
@@ -63,12 +61,12 @@ class ProgressBar extends React.Component {
     return (
       <div>
         <span
-          ref="buffer"
+          data-ref="buffer"
           {...theme(3, "buffer")}
           style={buffer}
         />
         <span
-          ref="value"
+          data-ref="value"
           {...theme(4, "value")}
           style={value}
         />
@@ -86,7 +84,7 @@ class ProgressBar extends React.Component {
     });
     return (
       <span
-        ref="value"
+        data-ref="value"
         {...theme(5, "value")}
         style={rangeStyle}
       />
