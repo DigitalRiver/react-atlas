@@ -102,24 +102,22 @@ class ProgressBar extends React.Component {
   }
 
   render() {
-    const { buffer, type, mode, value, min, max, ...props } = this.props;
-    const theme = themeable(props.theme);
-    const classes = classNames(
-      {
-        [this.props.type]: this.props.type,
-        [this.props.mode]: this.props.mode
-      },
-      this.props.className
-    );
+    const { type, mode, value, min, max, className, theme} = this.props;
+    const themed = themeable(theme);
+    const classes = [
+      type,
+      mode,
+      className
+    ];
 
     return (
       <div
         aria-valuenow={value}
         aria-valuemin={min}
         aria-valuemax={max}
-        {...theme(6, ...classes)}
+        {...themed(6, ...classes)}
       >
-        {this.renderInner(theme)}
+        {this.renderInner(themed)}
       </div>
     );
   }
@@ -167,29 +165,13 @@ ProgressBar.propTypes = {
    */
   "type": React.PropTypes.oneOf(["linear", "circular"]),
   /**
-   * The default value of the progress bar
-   * @examples ''
+   * The default value(s) of the progress bar.  Can be a number, or an object containing keys of "from" and "to"
+   * @examples '{"from": 10, "to": 80" }'
    */
   "value": React.PropTypes.oneOfType([
-    /**
-     * The value of a second progress bar
-     * @examples ''
-     */
     React.PropTypes.number,
-    /**
-     * The value of a second progress bar
-     * @examples ''
-     */
     React.PropTypes.shape({
-      /**
-       * The range of the progress bar starts at 'from'
-       * @examples ''
-       */
       "from": React.PropTypes.number,
-      /**
-       * The range of the progress bar ending at 'to'
-       * @examples ''
-       */
       "to": React.PropTypes.number
     })
   ])
