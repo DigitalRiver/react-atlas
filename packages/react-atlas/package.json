@@ -1,0 +1,68 @@
+{
+  "name": "react-atlas",
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "version": "0.0.10",
+  "description": "Composable React components with CSS Modules.",
+  "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
+  "main": "./lib",
+  "scripts": {
+    "babelify": "cross-env NODE_ENV=production babel ./src --out-dir ./lib && npm run build-css && rimraf ./lib/main.js",
+    "build-css": "webpack --config ./webpack.config.buildcss.js",
+    "build": "npm run babelify",
+    "clean": "rimraf ./lib",
+    "clean:mainJS": "rimraf ./lib/main.js",
+    "prebuild": "npm run clean"
+  },
+  "bugs": {
+    "url": "https://github.com/DigitalRiver/react-atlas/issues"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "atlas",
+    "CSS Modules",
+    "components"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-addons-css-transition-group": "^15.0.2",
+    "react-atlas-default-theme": "^0.0.10",
+    "react-atlas-core": "^0.0.10",
+    "normalize.css": "^4.1.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-cli": "^6.7.7",
+    "babel-core": "^6.7.7",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-1": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-plugin-css-modules-transform": "^0.2.0",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-react-remove-statics": "^0.0.5",
+    "css-modules-require-hook": "^4.0.0 ",
+    "cross-env": "^2.0.0",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "glob": "^7.0.3",
+    "postcss": "^5.0.21",
+    "postcss-modules-extract-imports": "^1.0.0",
+    "postcss-modules-local-by-default": "^1.0.1",
+    "postcss-modules-scope": "^1.0.0",
+    "postcss-modules-values": "^1.1.2",
+    "postcss-cssnext": "^2.5.2",
+    "postcss-import": "7.1.3",
+    "postcss-loader": "^0.9.1",
+    "react-addons-test-utils": "^15.0.2",
+    "rimraf": "^2.5.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.0"
+  },
+  "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas"
+}

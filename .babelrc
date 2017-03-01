@@ -1,25 +1,18 @@
 {
   "presets": ["es2015", "react", "stage-1"],
   "env": {
-    "development": {
+
+   "production": {
       "plugins": [
-        ["react-transform", {
-          "transforms": [{
-            "transform": "react-transform-hmr",
-            "imports": ["react"],
-            "locals": ["module"]
-          }, {
-            "transform": "react-transform-catch-errors",
-            "imports": ["react", "redbox-react"]
-          }]
-        }]
-      ]
-    },
-   "build": {
-      "plugins": [
-        ["./tools/cssTransforms.js", {
-            "generateScopedName": "ra_[name]__[local]"
-        }],
+        [
+          "css-modules-transform", {
+            "generateScopedName": "ra_[name]__[local]",
+            "prepend": [
+              "postcss-import",
+              "postcss-cssnext"
+            ]
+          }
+        ],
         ["transform-react-remove-statics", {
             "propTypes": true,
             "styleguide": true

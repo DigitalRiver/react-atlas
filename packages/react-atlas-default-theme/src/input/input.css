@@ -1,0 +1,44 @@
+.container {
+	clear: both;
+}
+
+.input {
+  composes: pad-1 from '../styles.css';
+	composes: border-gray from '../styles.css';
+	width: 100%;
+	position: relative;
+	display: block;
+	border-width: 1px;
+	box-shadow: none;
+	transition: box-shadow 0.3s, border 0.3s;
+	appearance: none;
+	box-sizing: border-box;
+}
+
+.input:focus {
+  border: solid 1px #66afe9;
+  outline: none;
+  -webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
+          box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
+}
+
+.checkbox {
+	composes: marg-b-1 from '../styles.css';
+	position: relative;
+    top: 1px;
+}
+
+.input::placeholder {
+  color: #aaa;
+}
+
+.error {
+	composes: input;
+	composes: red from '../styles.css';
+}
+
+.label {
+	composes: marg-b-1 from '../styles.css';
+	display: inline-block;
+	font-weight: 500;
+}
