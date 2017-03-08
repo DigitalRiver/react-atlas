@@ -186,7 +186,21 @@ ProgressBar.defaultProps = {
   "mode": "indeterminate",
   "multicolor": false,
   "type": "linear",
-  "value": 0
+  "value": 0,
+  "theme": {
+     "buffer":"ra_progressBar__buffer",
+    "circle":"ra_progressBar__circle",
+    "circular":"ra_progressBar__circular",
+  "circular-indeterminate-bar-dash":"ra_progressBar__circular-indeterminate-bar-dash",
+  "circular-indeterminate-bar-rotate":"ra_progressBar__circular-indeterminate-bar-rotate",
+  "colors":"ra_progressBar__colors",
+  "indeterminate":"ra_progressBar__indeterminate",
+  "linear":"ra_progressBar__linear",
+  "lindear-indeterminate-bar":"ra_progressBar__linear-indeterminate-bar",
+  "multicolor":"ra_progressBar__multicolor",
+  "path":"ra_progressBar__path",
+  "value": "ra_progressBar__value",
+  }
 };
 
 ProgressBar.styleguide = {

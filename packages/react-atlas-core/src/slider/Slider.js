@@ -12,9 +12,9 @@ class Slider extends Component {
   state = {
     "inputFocused": false,
     "inputValue": null,
-    "otherKnobValue": null,
     "sliderLength": 0,
-    "sliderStart": 0
+    "sliderStart": 0,
+    "value": this.props.defaultValue || 0,
   };
 
   componentDidMount() {
@@ -28,7 +28,7 @@ class Slider extends Component {
     if (!this.state.inputFocused && nextState.inputFocused) {
       return false;
     }
-    if (this.state.inputFocused && this.props.value !== nextProps.value) {
+    if (this.state.inputFocused && this.state.value !== nextProps.value) {
       this.setState({ "inputValue": this.valueForInput(nextProps.value) });
       return false;
     }
@@ -42,17 +42,8 @@ class Slider extends Component {
 
   isRangeSlider() {
     console.log("isRangeSlider")
-    return isNaN(this.props.value);
+    return isNaN(this.state.value);
   }
-
-  /* handles the focus to let user know the know is in focus*/
-  handleInputFocus = () => {
-    console.log("handleInputFocus")
-    this.setState({
-      "inputFocused": true,
-      "inputValue": this.valueForInput(this.props.value)
-    });
-  };
 
   handleInputChange = (value) => {
     console.log("handleInputChange")
@@ -63,37 +54,15 @@ class Slider extends Component {
     this.setState({ "inputValue": value });
   };
 
-  handleFromInputChange = event => {
-    console.log("handleFromInputChange")
-    let value = this.state.inputValue;
-    value.from = event;
-    this.setState({ "inputValue": value });
-  };
 
   handleInputBlur = event => {
     console.log("handleInputBlur")
     const value = this.state.inputValue || 0;
     this.setState({ "inputFocused": false, "inputValue": null }, () => {
-      this.props.onChange(this.prepareValue(value), event);
+      this.handleChange(this.prepareValue(value));
     });
   };
 
-  handleKeyDown = event => {
-    console.log("handleKeyDown")
-    if ([13, 27].indexOf(event.keyCode) !== -1) {
-      this.inputNode.blur();
-      ReactDOM.findDOMNode(this).blur();
-    }
-    if (this.isRangeSlider()) {
-      return;
-    }
-    if (event.keyCode === 38) {
-      this.addToValue(this.props.step);
-    }
-    if (event.keyCode === 40) {
-      this.addToValue(-this.props.step);
-    }
-  };
 
   getInput = () => {
     console.log("getInput")
@@ -112,18 +81,15 @@ class Slider extends Component {
     events.pauseEvent(event);
   };
 
-  /* Detects mouse position and moves the knob to the x location */
-  handleMouseMove = (event) => {
-    console.log("handleMouseMove")
-    events.pauseEvent(event);
-    this.move(events.getMousePosition(event));
-  };
 
-  handleMouseUp = () => {
-    console.log("handleMouseUp")
-    this.end(this.getMouseEventMap());
+  /* handles the focus to let user know the know is in focus*/
+  handleInputFocus = () => {
+    console.log("handleInputFocus")
+    this.setState({
+      "inputFocused": true,
+      "inputValue": this.valueForInput(this.state.value)
+    });
   };
-
   handleResize(event, callback) {
     console.log("handleResize")
     console.log("this.progressBar: ", this.progressBar)
@@ -140,17 +106,23 @@ class Slider extends Component {
     events.removeEventsFromDocument(this.getKeyboardEvents());
   };
 
-  handleSliderFocus = () => {
-    console.log("handleSliderFocus")
-    events.addEventsToDocument(this.getKeyboardEvents());
-  };
-
   /* Touch handler */
   handleTouchEnd = () => {
     console.log("handleTouchEnd")
     this.end(this.getTouchEventMap());
   };
 
+  /* Detects mouse position and moves the knob to the x location */
+  handleMouseMove = (event) => {
+    console.log("handleMouseMove")
+    events.pauseEvent(event);
+    this.move(events.getMousePosition(event));
+  };
+
+  handleMouseUp = () => {
+    console.log("handleMouseUp")
+    this.end(this.getMouseEventMap());
+  };
   /* Touch handler */
   handleTouchMove = event => {
     console.log("handleTouchMove")
@@ -168,14 +140,31 @@ class Slider extends Component {
     events.pauseEvent(event);
   };
 
+
+  handleKeyDown = event => {
+    console.log("handleKeyDown")
+    if ([13, 27].indexOf(event.keyCode) !== -1) {
+      this.inputNode.blur();
+      ReactDOM.findDOMNode(this).blur();
+    }
+    if (this.isRangeSlider()) {
+      return;
+    }
+    if (event.keyCode === 38) {
+      this.addToValue(this.props.step);
+    }
+    if (event.keyCode === 40) {
+      this.addToValue(-this.props.step);
+    }
+  };
   addToValue(increment) {
   console.log("addToValue")
     let value = this.state.inputFocused
       ? parseFloat(this.state.inputValue)
-      : this.props.value;
+      : this.state.value;
     value = this.trimValue(value + increment);
-    if (value !== this.props.value) {
-      this.props.onChange(value);
+    if (value !== this.state.value) {
+      this.handleChange(value);
     }
   }
 
@@ -186,14 +175,18 @@ class Slider extends Component {
     };
   }
 
-  getMouseEventMap() {
-  console.log("getMouseEventMap")
-    return {
-      "mousemove": this.handleMouseMove,
-      "mouseup": this.handleMouseUp
-    };
-  }
+  handleSliderFocus = () => {
+    console.log("handleSliderFocus")
+    events.addEventsToDocument(this.getKeyboardEvents());
+  };
 
+
+  convertValue(value) {
+    console.log("convertValue")
+    const decimals = this.stepDecimals();
+    console.log(decimals > 0 ? value.toFixed(decimals) : value.toString());
+    return decimals > 0 ? value.toFixed(decimals) : value.toString();
+  }
   getTouchEventMap() {
   console.log("getTouchEventMap")
     return {
@@ -211,26 +204,41 @@ class Slider extends Component {
   calculateKnobOffset(value) {
   console.log("calculateKnobOffset")
     const { max, min, step } = this.props;
+    console.log("value: ", value)
+    console.log("max: ", max)
+    console.log("min: ", min)
+    console.log("step: ", step)
+    const offsetValue = 100 * (value - min) / (max - min);
+    console.log("offsetValue: ", offsetValue);
     return 100 * (value - min) / (max - min);
   }
 
+  handleChange = (newValue) => {
+    console.log("handleChange");
+    this.setState({"value": newValue});
+  };
+  getMouseEventMap() {
+    console.log("getMouseEventMap")
+    return {
+      "mousemove": this.handleMouseMove,
+      "mouseup": this.handleMouseUp
+    };
+  }
   enrichNewValue(value) {
   console.log("enrichNewValue")
     if (!this.isRangeSlider()) {
       return value;
     }
     const otherValue = this.state.otherKnobValue;
-    return otherValue > value
-      ? { "from": value, "to": otherValue }
-      : { "from": otherValue, "to": value };
   }
 
   move(position) {
   console.log("move")
     const newValue = this.positionToValue(position);
-    if (newValue !== this.props.value) {
-      this.props.onChange(this.enrichNewValue(newValue));
+    if (newValue !== this.state.value) {
+      this.handleChange(this.enrichNewValue(newValue));
     }
+    console.log("move value: ", newValue)
   }
 
   positionToValue(position) {
@@ -242,25 +250,12 @@ class Slider extends Component {
 
   start(position) {
   console.log("start")
+    console.log("position: ", position);
     this.setState({
-      "pressed": true,
-      "otherKnobValue": this.getOtherKnobValue(position)
+      "pressed": true
     });
     this.handleResize(null, () =>
-      this.props.onChange(this.enrichNewValue(this.positionToValue(position))));
-  }
-
-  getOtherKnobValue(position) {
-  console.log("getOtherKnobValue")
-    if (!this.isRangeSlider()) {
-      return null;
-    }
-    const currentValue = this.positionToValue(position);
-    const differenceFrom = Math.abs(currentValue - this.props.value.from);
-    const differenceTo = Math.abs(currentValue - this.props.value.to);
-    return differenceFrom > differenceTo
-      ? this.props.value.from
-      : this.props.value.to;
+      this.handleChange(this.enrichNewValue(this.positionToValue(position))));
   }
 
   stepDecimals() {
@@ -270,6 +265,7 @@ class Slider extends Component {
 
   trimValue(value) {
   console.log("trimValue")
+    console.log("trimValue value: ", value);
     if (value < this.props.min) {
       return this.props.min;
     }
@@ -279,7 +275,9 @@ class Slider extends Component {
     console.log("trying to hit round")
     console.log("utils.round: ", utils.round)
     console.log("after hitting round")
-    return utils.round(50, this.stepDecimals());
+    var rounded = utils.round(value, this.stepDecimals());
+    console.log("rounded: ", rounded);
+    return utils.round(value, this.stepDecimals());
   }
 
   prepareValue(value) {
@@ -287,46 +285,27 @@ class Slider extends Component {
     if (!this.isRangeSlider()) {
       return this.trimValue(value);
     }
-    value.from = this.trimValue(value.from);
-    value.to = this.trimValue(value.to);
-    if (value.from > value.to) {
-      let temp = value.to;
-      value.to = value.from;
-      value.from = temp;
-    }
-    return value;
   }
 
-  convertValue(value) {
-  console.log("convertValue")
-    const decimals = this.stepDecimals();
-    return decimals > 0 ? value.toFixed(decimals) : value.toString();
+  valueForKnob = () => {
+    console.log("valueForKnob")
+    console.log("valueForKnob this.state.value: ", this.state.value);
+    return this.state.value;
   }
 
   valueForInput(value) {
   console.log("valueForInput")
-    if (this.isRangeSlider()) {
-      return {
-        "from": this.convertValue(value.from),
-        "to": this.convertValue(value.to)
-      };
-    }
     return this.convertValue(value);
   }
 
-  valueForKnob(isLast) {
-  console.log("valueForKnob")
-    if (!this.isRangeSlider()) {
-      return this.props.value;
-    }
-    return isLast ? this.props.value.to : this.props.value.from;
-  }
 
-  renderKnob(isLast, theme) {
+  renderKnob(theme) {
   console.log("renderKnob")
-    const knobValue = this.valueForKnob(isLast);
+    const knobValue = this.valueForKnob();
+    console.log("knobValue: ", knobValue);
     const offset = this.calculateKnobOffset(knobValue);
-    const knobStyles = prefixer({ "left": `${offset}%` });
+    console.log("offset!!: ", offset);
+    const knobStyles = prefixer({ "left": `${offset - 5}%` });
     const className = classNames("innerknob", {
       "pressed": knobValue !== this.state.otherKnobValue
     });
@@ -340,44 +319,25 @@ class Slider extends Component {
       >
         <div
           {...theme(11, ...className)}
-          data-value={parseInt(this.valueForKnob(isLast))}
+          data-value={parseInt(this.valueForKnob())}
         />
       </div>
     );
   }
-  renderSnaps(theme) {
-  console.log("renderSnaps")
-    if (this.props.snaps) {
-      return (
-        <div ref={(node) => { this.snapsNode = node }} {...theme(12, "snaps")}>
-          {utils
-            .range(0, (this.props.max - this.props.min) / this.props.step)
-            .map(i => {
-              return <div key={`span-${i}`} {...theme(13, "snap")} />;
-            })}
-        </div>
-      );
-    }
-    else return undefined
-  }
 
-  renderInput(isLast, theme) {
+  renderInput(theme) {
   console.log("renderInput")
     if (this.props.editable) {
       let value = this.state.inputFocused
         ? this.state.inputValue
-        : this.valueForInput(this.props.value);
-      if (this.isRangeSlider()) {
-        value = isLast ? value.to : value.from;
-      }
+        : this.valueForInput(this.state.value);
       return (
         <Input
           ref={(node) => { this.inputNode = node}}
+          disabled={this.props.disabled}
           {...theme(14, "input")}
           onFocus={this.handleInputFocus}
-          onChange={
-            isLast ? this.handleInputChange : this.handleFromInputChange
-          }
+          onChange={this.handleInputChange}
           onBlur={this.handleInputBlur}
           value={value}
           theme={this.props.theme}
@@ -395,60 +355,38 @@ class Slider extends Component {
         "editable": this.props.editable,
         "pinned": this.props.pinned,
         "pressed": this.state.pressed,
-        "ring": this.props.value === this.props.min
+        "ring": this.state.value === this.props.min
       },
       this.props.className
     );
 
     return (
       <div
+        disabled={this.props.disabled}
         {...theme(15, ...className)}
         onBlur={this.handleSliderBlur}
         onFocus={this.handleSliderFocus}
         tabIndex="0"
       >
-        {this.isRangeSlider() ? this.renderInput(false, theme) : null}
         <div
           ref={(node) => {this.slider = node}}
           {...theme(16, "container")}
           onMouseDown={this.handleMouseDown}
           onTouchStart={this.handleTouchStart}
         >
-          {this.isRangeSlider() ? this.renderKnob(false, theme) : ""}
-          {/* Render knob here */}
-
-
-
-          {/* Render slider here */}
 
           <div {...theme(17, "progress")}>
             <ProgressBar
               ref={(node) => { this.progressBar = node; }}
-              {...theme(18, "innerprogress")}
-              max={this.props.max}
-              min={this.props.min}
+              disabled={this.props.disabled}
               mode="determinate"
-              transitionDuration="0s"
-              value={this.props.value}
-              theme={this.props.theme}
+              value={{from: 0, to: this.state.value}}
             />
-            {this.props.snaps
-              ? <div ref={(node) => { this.snapsNode = node }} {...theme(19, "snaps")}>
-                  {utils
-                    .range(
-                      0,
-                      (this.props.max - this.props.min) / this.props.step
-                    )
-                    .map(i => {
-                      return <div key={`span-${i}`} {...theme(20, "snap")} />;
-                    })}
-                </div>
-              : null}
 
-            {this.renderKnob(true, theme)}
+            {this.renderKnob(theme)}
           </div>
         </div>
-        {this.renderInput(true, theme)}
+        {this.renderInput(theme)}
       </div>
     );
   }
@@ -463,6 +401,11 @@ Slider.propTypes = {
   /**
    * If true, allows the user to set the slider based on keyboard value
    * @examples 'Some Label'
+   */
+  "disabled": PropTypes.bool,
+  /**
+   * If true, component will be disabled and cannot be interacted with
+   * @examples <Slider disabled>
    */
   "editable": PropTypes.bool,
   /**
@@ -496,16 +439,13 @@ Slider.propTypes = {
    * @examples 'Some Label'
    */
   "value": React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.shape({
-      "from": React.PropTypes.number,
-      "to": React.PropTypes.number
-    })
+    React.PropTypes.number
   ])
 };
 
 Slider.defaultProps = {
   "className": "",
+  "disabled": false,
   "editable": false,
   "max": 100,
   "min": 0,
@@ -523,25 +463,16 @@ Slider.styleguide = {
     `
 // Internal Methods {
 class SliderExample extends React.Component {
-  state = {
-    slider2: 5,
-    slider3: 1,
-    slider4: {from: 10, to: 25}
-  };
 
-  handleChange = (slider, value) => {
-  console.log("handleChange");
-    const newState = {};
-    newState[slider] = value;
-    this.setState(newState);
-  };
 // }
   render () {
     return (
       <section>
         <h5>Sliders</h5>
         <p>Normal slider</p>
-        <Slider onChange={this.handleChange}/>
+        <Slider  />
+        <p>Disabled slider</p>
+        <Slider disabled />
       </section>
     );
   }
