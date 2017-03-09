@@ -82,10 +82,11 @@ class ProgressBar extends React.Component {
         )})`
       
     });
+    const disabledStyles = this.props.disabled ? "disabled" : "value";
     return (
       <span
         data-ref="value"
-        {...theme(5, "value")}
+        {...theme(5, disabledStyles)}
         style={rangeStyle}
       />
     );

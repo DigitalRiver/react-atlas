@@ -22,12 +22,15 @@
 }
 
 .value {
-  background-color: rgb(63,81,181);
+  background-color: rgb(0, 126, 181);
 }
-
+.disabled {
+    background-color: rgb(179, 179, 179);
+}
 .buffer {
   background-image: linear-gradient(to right, rgba(255,255,255, 0.7), rgba(255,255,255, 0.7)),
-    linear-gradient(to right, rgb(63,81,181), rgb(63,81,181));
+    linear-gradient(to right, rgb(0, 126, 181), rgb(0, 126, 181));
+
 }
 
 .circular {
@@ -63,7 +66,7 @@
   stroke-linecap: round;
   stroke-miterlimit: 20;
   stroke-width: 4;
-  stroke: rgb(63,81,181);
+  stroke: rgb(0, 126, 181);
 }
 
 @keyframes linear-indeterminate-bar {
