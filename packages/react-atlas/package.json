@@ -9,7 +9,7 @@
   "main": "./lib",
   "scripts": {
     "babelify": "cross-env NODE_ENV=production babel ./src --out-dir ./lib && npm run build-css && rimraf ./lib/main.js",
-    "build-css": "webpack --config ./webpack.config.buildcss.js",
+    "build-css": "webpack --config ./webpack.config.js",
     "build": "npm run babelify",
     "clean": "rimraf ./lib",
     "clean:mainJS": "rimraf ./lib/main.js",
@@ -27,12 +27,13 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "normalize.css": "^4.1.1",
     "react": "^15.0.2",
-    "react-dom": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
-    "react-atlas-default-theme": "^0.0.10",
     "react-atlas-core": "^0.0.10",
-    "normalize.css": "^4.1.1"
+    "react-atlas-default-theme": "^0.0.10",
+    "react-css-modules": "^4.1.0",
+    "react-dom": "^15.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

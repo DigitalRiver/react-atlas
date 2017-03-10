@@ -9,7 +9,7 @@
     "format": "prettier packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas/src/**/*.js packages/react-atlas-default-theme/src/**/*.js --write",
     "lint": "eslint packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas/src/**/*.js packages/react-atlas-default-theme/src/**/*.js --fix",
     "format-lint": "npm run format && npm run lint",
-    "docs": "cross-env NODE_ENV=development rcs \"./packages/react-atlas-core/src/**/*.js\" -s \"./packages/react-atlas-default-theme/src/**/*.js\" -v -c ./docsConfig.js -d",
+    "docs": "cross-env NODE_ENV=development rcs \"./packages/react-atlas/src/**/*.js\" -s \"./packages/react-atlas-default-theme/src/**/*.js\" -v -c ./docsConfig.js -d",
     "lerna:init": "lerna init",
     "lerna:bootstrap": "lerna bootstrap",
     "lerna:updated": "lerna updated",
