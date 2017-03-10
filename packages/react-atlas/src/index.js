@@ -1,5 +1,4 @@
 import CSSModules from 'react-css-modules';
-import createComponent from './createComponent';
 import { AutocompleteCore } from 'react-atlas-core'; 
 import { AutocompleteStyle } from 'react-atlas-default-theme';  
 export const Autocomplete = CSSModules(Autocomplete, AutocompleteStyle, {allowMultiple: true});  
@@ -68,4 +67,7 @@ import { SwitchStyle } from 'react-atlas-default-theme';
 export const Switch = CSSModules(SwitchCore, SwitchStyle, { allowMultiple: true});
 import { TooltipCore } from 'react-atlas-core';
 import { TooltipStyle } from 'react-atlas-default-theme';
-export const Tooltip = createComponent(TooltipCore, TooltipStyle);
+export const Tooltip = CSSModules(TooltipCore, TooltipStyle, { allowMultiple: true});
+import { ProgressBarCore } from 'react-atlas-core';
+import { ProgressBarStyle } from 'react-atlas-default-theme';
+export const ProgressBar = CSSModules(ProgressBarCore, ProgressBarStyle, { allowMultiple: true});
