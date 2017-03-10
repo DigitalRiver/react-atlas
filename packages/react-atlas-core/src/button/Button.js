@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 /**
  * A Generic button component.
@@ -21,8 +21,6 @@ const Button = (
     ...props
   }
 ) => {
-  const theme = themeable(props.theme);
-
   const element = href ? "a" : "button";
 
   let role;
@@ -46,21 +44,11 @@ const Button = (
   } else if (link) {
     mainStyle = "link";
   }
-
-  if (outline && !secondary) {
-    mainStyle += "_outline";
-  }
-
-  const otherProps = {
-    ...props,
-    href,
-    className,
-    "disabled": disabled || loading,
-    role,
-    ...theme(1, mainStyle, disabledStyle)
-  };
-
-  return React.createElement(element, otherProps, children);
+  const classes = cx(mainStyle, disabledStyle);
+  
+  return (
+    <button className={cx(className)} styleName={classes}>Click</button>
+  )
 };
 
 Button.styleguide = {
@@ -219,7 +207,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   "children": "Default Button",
-  "className": "",
   "outline": false,
   "loading": false,
   "mini": false,

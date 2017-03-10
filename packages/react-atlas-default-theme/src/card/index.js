@@ -1,1 +1,2 @@
-export default from "./Card";
+import * as CardStyle from "./Card.css";
+export { CardStyle };

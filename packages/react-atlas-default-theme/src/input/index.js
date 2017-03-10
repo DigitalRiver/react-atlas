@@ -1,1 +1,4 @@
-export default from "./Input";
+import * as InputStyle from "./Input.css";
+export { InputStyle };
+
+

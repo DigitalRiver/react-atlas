@@ -1,1 +1,4 @@
-export default from "./Media";
+import * as MediaStyle from "./Media.css";
+export { MediaStyle };
+
+

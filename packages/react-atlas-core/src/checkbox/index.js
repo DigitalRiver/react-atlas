@@ -1,1 +1,2 @@
-export default from "./Checkbox";
+import { default as CheckboxCore } from "./Checkbox";
+export { CheckboxCore };

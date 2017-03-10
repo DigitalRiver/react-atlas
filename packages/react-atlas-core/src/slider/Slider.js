@@ -5,7 +5,7 @@ import { classNames } from "../utils";
 import events from "../utils/events";
 import prefixer from "../utils/prefixer";
 import utils from "../utils";
-import ProgressBar from "../progress_bar";
+import ProgressBar from "../progressBar";
 import Input from "../input";
 
 class Slider extends Component {

@@ -1,21 +1,19 @@
 import React, { PropTypes } from "react";
-import { classNames } from "../utils";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 /**
  * Component to handle Media, such as Videos and Pictures and resize them based on aspect ratio.
  */
-const Media = ({ children, image, ...other }) => {
-  const theme = themeable(other.theme);
-  const innerClasses = classNames({ "content": true });
+const Media = ({ children, image, aspectRatio, ...other }) => {
+  const innerClasses = cx({ "content": true }, aspectRatio);
 
   const bgStyle = {
     "backgroundImage": typeof image === "string" ? `url('${image}')` : undefined
   };
 
   return (
-    <div style={bgStyle} {...other}>
-      <div {...theme(2, ...innerClasses)}>
+    <div styleName={cx(bgStyle)} {...other}>
+      <div styleName={cx(innerClasses)}>
         {children}
       </div>
     </div>
@@ -30,8 +28,6 @@ Media.propTypes = {
   "contentOverlay": PropTypes.bool,
   "image": PropTypes.oneOfType([PropTypes.string, PropTypes.element])
 };
-
-Media.defaultProps = { "theme": { "content": true } };
 
 Media.styleguide = {
   "example": 

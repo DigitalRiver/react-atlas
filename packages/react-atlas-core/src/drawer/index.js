@@ -1,1 +1,2 @@
-export default from "./Drawer";
+import { default as DrawerCore } from "./Drawer";
+export { DrawerCore };

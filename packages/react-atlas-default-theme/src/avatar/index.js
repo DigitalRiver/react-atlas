@@ -1,1 +1,3 @@
-export default from "./Avatar";
+import * as AvatarStyle from "./avatar.css";
+export { AvatarStyle };
+

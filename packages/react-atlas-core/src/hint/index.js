@@ -1,1 +1,2 @@
-export default from "./Hint";
+import { default as HintCore } from "./Hint";
+export { HintCore };

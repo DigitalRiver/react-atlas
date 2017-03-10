@@ -1,1 +1,3 @@
-export default from "./Snackbar";
+import * as SnackbarStyle from "./Snackbar.css";
+export { SnackbarStyle };
+

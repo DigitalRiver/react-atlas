@@ -1,33 +1,23 @@
-// import './utils/polyfills'; // Import polyfills for IE11
-export Autocomplete from "./autocomplete";
-export Avatar from "./avatar";
-export Button from "./button";
-export Card from "./card";
-export Checkbox from "./checkbox";
-export Dialog from "./dialog";
-export Drawer from "./drawer";
-export {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-  DropdownList,
-  DropdownListItem
-} from "./dropdown";
-export Form from "./form";
-export GridCol from "./grid_col";
-export GridRow from "./grid_row";
-export Header from "./header";
-export Hint from "./hint";
-export Input from "./input";
-export { List, ListItem, ListText } from "./list";
-export Media from "./media";
-export Overlay from "./overlay";
-export ProgressBar from "./progress_bar";
-export { Radio, RadioGroup } from "./radio";
-export Slider from "./slider";
-export Snackbar from "./snackbar";
-export Switch from "./switch";
-export { Table, Thead, Th, Tbody, Tr, Td, Tfoot } from "./table";
-export Tabs from "./tabs/Tabs";
-export Tab from "./tabs/Tab";
-export Tooltip from "./tooltip";
+export { AvatarCore } from "./avatar";
+export { ButtonCore } from "./button";
+export { FormCore } from "./form";
+export { HintCore } from "./hint";
+export { HeaderCore } from "./header";
+// export { List, ListItem, ListText } from "./list";
+export { InputCore } from "./input";
+export { MediaCore } from "./media";
+export { OverlayCore } from "./overlay";
+export { ProgressBarCore } from "./progressBar";
+export { RadioCore } from "./radio";
+export { RadioGroupCore } from "./radioGroup";
+// export RadioGroup from "./radio";
+export { SnackbarCore } from "./snackbar";
+// export { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from "./table";
+// export { Tab, Tabs } from "./tabs";
+export { SwitchCore } from "./switch";
+export { TooltipCore } from "./tooltip";
+export { CardCore } from "./card";
+export { CheckboxCore } from "./checkbox";
+export { DialogCore } from "./dialog";
+export { DrawerCore } from "./drawer";
+export { SliderCore } from "./slider";

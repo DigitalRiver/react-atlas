@@ -1,1 +1,3 @@
-export default from "./Switch";
+import * as SwitchStyle from "./Switch.css";
+export { SwitchStyle };
+

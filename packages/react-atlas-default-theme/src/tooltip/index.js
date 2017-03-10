@@ -1,1 +1,3 @@
-export default from "./Tooltip";
+import * as TooltipStyle from "./tooltip.css";
+export { TooltipStyle };
+
