@@ -1,2 +1,4 @@
-export Tabs from "./Tabs";
-export Tab from "./Tab";
+import { default as TabsCore } from "./Tabs";
+export { TabsCore };
+
+

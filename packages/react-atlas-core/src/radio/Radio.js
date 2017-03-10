@@ -1,10 +1,8 @@
 import React, { PropTypes } from "react";
-import { classNames } from "../utils";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 const Radio = ({ className, disabled, inline, name, label, ...props }) => {
-  const theme = themeable(props.theme);
-  const labelClasses = classNames(
+  const labelClasses = cx(
     {
       "block": !inline,
       inline,
@@ -14,7 +12,7 @@ const Radio = ({ className, disabled, inline, name, label, ...props }) => {
   );
 
   return (
-    <label {...theme(1, ...labelClasses)}>
+    <label styleName={labelClasses}>
       <input {...props} disabled={disabled} name={name} type="radio" />
       {label ? <span> {label}</span> : null}
     </label>
@@ -32,8 +30,7 @@ Radio.propTypes = {
   "onChange": PropTypes.func,
   "onClick": PropTypes.func,
   "onFocus": PropTypes.func,
-  "value": PropTypes.any,
-  "theme": PropTypes.object
+  "value": PropTypes.any
 };
 
 Radio.defaultProps = {

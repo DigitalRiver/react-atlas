@@ -1,2 +1,3 @@
-export Radio from "./Radio";
-export RadioGroup from "./RadioGroup";
+import { default as RadioCore } from "./Radio";
+export { RadioCore };
+
