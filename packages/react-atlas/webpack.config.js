@@ -1,3 +1,4 @@
+
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
@@ -8,11 +9,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: __dirname,
   entry: [
-    '../react-atlas-core/src/index.js',
-    '../react-atlas-default-theme/src/index.js'
+    './src/index.js'
   ],
   output: {
-    filename: 'main.js',
+    filename: 'index.js',
     libraryTarget: 'commonjs2',
     path: path.join(__dirname, 'lib'),
     publicPath: '/lib/'
@@ -44,7 +44,8 @@ module.exports = {
       postcssImport({
         addDependencyTo: bundler
       }),
-      cssnext
+      cssnext,
+      autoprefixer
     ];
   },
   plugins: [
