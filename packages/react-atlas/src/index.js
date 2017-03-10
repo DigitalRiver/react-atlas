@@ -1,49 +1,71 @@
-export {
-  Autocomplete,
-  Card,
-  Checkbox,
-  Dialog,
-  Drawer,
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-  DropdownList,
-  DropdownListItem,
-  Form,
-  GridCol,
-  GridRow,
-  Header,
-  Input,
-  List,
-  ListItem,
-  ListText,
-  Media,
-  Overlay,
-  ProgressBar,
-  Radio,
-  RadioGroup,
-  Slider,
-  Snackbar,
-  Switch,
-  Table,
-  Thead,
-  Th,
-  Tbody,
-  Tr,
-  Td,
-  Tfoot,
-  Tabs,
-  Tab,
-  Tooltip
-} from "react-atlas-core";
-export {
-  Button,
-  PrimaryButton,
-  SecondaryButton,
-  SuccessButton,
-  WarningButton,
-  DangerButton,
-  LinkButton,
-  Hint,
-  Avatar
-} from "react-atlas-default-theme";
+import CSSModules from 'react-css-modules';
+import createComponent from './createComponent';
+import { AutocompleteCore } from 'react-atlas-core'; 
+import { AutocompleteStyle } from 'react-atlas-default-theme';  
+export const Autocomplete = CSSModules(Autocomplete, AutocompleteStyle, {allowMultiple: true});  
+import { AvatarCore } from 'react-atlas-core'; 
+import { AvatarStyle } from 'react-atlas-default-theme';
+export const Avatar = CSSModules(AvatarCore, AvatarStyle, {allowMultiple: true});
+import { ButtonCore } from 'react-atlas-core'; 
+import { ButtonStyle } from 'react-atlas-default-theme';
+export const Button = CSSModules(ButtonCore, ButtonStyle, {allowMultiple: true});
+import { CardCore } from 'react-atlas-core'; 
+import { CardStyle } from 'react-atlas-default-theme';  
+export const Card = CSSModules(CardCore, CardStyle, {allowMultiple: true});  
+import { CheckboxCore } from 'react-atlas-core'; 
+import { CheckboxStyle } from 'react-atlas-default-theme';  
+export const Checkbox = CSSModules(CheckboxCore, CheckboxStyle, {allowMultiple: true});  
+import { DialogCore } from 'react-atlas-core'; 
+import { DialogStyle } from 'react-atlas-default-theme';
+export const Dialog = CSSModules(DialogCore, DialogStyle, {allowMultiple: true});  
+import { DrawerCore } from 'react-atlas-core'; 
+import { DrawerStyle } from 'react-atlas-default-theme';  
+export const Drawer = CSSModules(DrawerCore, DrawerStyle, {allowMultiple: true});  
+import { DropdownCore } from 'react-atlas-core'; 
+import { DropdownStyle } from 'react-atlas-default-theme';  
+export const Dropdown = CSSModules(DropdownCore, DropdownStyle, {allowMultiple: true}); 
+import { DropdownContentCore } from 'react-atlas-core'; 
+import { DropdownContentStyle } from 'react-atlas-default-theme';  
+export const DropdownContent = CSSModules(DropdownContentCore, DropdownContentStyle, {allowMultiple: true});  
+import { DropdownListCore } from 'react-atlas-core'; 
+import { DropdownListStyle } from 'react-atlas-default-theme';  
+export const DropdownList = CSSModules(DropdownListCore, DropdownListStyle, {allowMultiple: true});  
+import { DropdownListItemCore } from 'react-atlas-core'; 
+import { DropdownListItemStyle } from 'react-atlas-default-theme';  
+export const DropdownListItem = CSSModules(DropdownListItemCore, DropdownListItemStyle, {allowMultiple: true});  
+import { DropdownTriggerCore } from 'react-atlas-core'; 
+import { DropdownTriggerStyle } from 'react-atlas-default-theme';  
+export const DropdownTrigger = CSSModules(DropdownTriggerCore, DropdownTriggerStyle, {allowMultiple: true});
+import { FormCore } from 'react-atlas-core';
+import { FormStyle } from 'react-atlas-default-theme';
+export const Form = CSSModules(FormCore, FormStyle, {allowMultiple: true});
+import { OverlayCore } from 'react-atlas-core';
+import { OverlayStyle } from 'react-atlas-default-theme';
+export const Overlay = CSSModules(OverlayCore, OverlayStyle, {allowMultiple: true});
+import { HeaderCore } from 'react-atlas-core';
+import { HeaderStyle } from 'react-atlas-default-theme';
+export const Header = CSSModules(HeaderCore, HeaderStyle, {allowMultiple: true});
+import { HintCore } from 'react-atlas-core';
+import { HintStyle } from 'react-atlas-default-theme';
+export const Hint = CSSModules(HintCore, HintStyle, {allowMultiple: true});
+import { InputCore } from 'react-atlas-core';
+import { InputStyle } from 'react-atlas-default-theme';
+export const Input = CSSModules(InputCore, InputStyle, {allowMultiple: true});
+import { MediaCore } from 'react-atlas-core';
+import { MediaStyle } from 'react-atlas-default-theme';
+export const Media = CSSModules(MediaCore, MediaStyle, {allowMultiple: true});
+import { RadioCore } from 'react-atlas-core';
+import { RadioStyle } from 'react-atlas-default-theme';
+export const Radio = CSSModules(RadioCore, RadioStyle, {allowMultiple: true});
+import { RadioGroupCore } from 'react-atlas-core';
+import { RadioGroupStyle } from 'react-atlas-default-theme';
+export const RadioGroup = CSSModules(RadioGroupCore, RadioGroupStyle, {allowMultiple: true});
+import { SnackbarCore } from 'react-atlas-core';
+import { SnackbarStyle } from 'react-atlas-default-theme';
+export const Snackbar = CSSModules(SnackbarCore, SnackbarStyle, { allowMultiple: true});
+import { SwitchCore } from 'react-atlas-core';
+import { SwitchStyle } from 'react-atlas-default-theme';
+export const Switch = CSSModules(SwitchCore, SwitchStyle, { allowMultiple: true});
+import { TooltipCore } from 'react-atlas-core';
+import { TooltipStyle } from 'react-atlas-default-theme';
+export const Tooltip = createComponent(TooltipCore, TooltipStyle);
