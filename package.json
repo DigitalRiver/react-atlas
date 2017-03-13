@@ -62,6 +62,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-preset-stage-1": "^6.16.0",
     "chai": "^3.5.0",
+    "classNames": "^2.2.5",
     "core-js": "^2.3.0",
     "cross-env": "^2.0.0",
     "cross-spawn": "^4.0.0",
