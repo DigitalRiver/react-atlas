@@ -1,14 +1,12 @@
 import React from "react";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 /**
  * Wrapper around `<li>` element that applies styles.
  */
 const ListItem = ({ children, ...props }) => {
-  const theme = themeable(props.theme);
-
   return (
-    <li {...props} {...theme(1, "item")}>
+    <li {...props} styleName={cx("item")}>
       {children}
     </li>
   );
@@ -16,11 +14,8 @@ const ListItem = ({ children, ...props }) => {
 
 ListItem.propTypes = {
   "className": React.PropTypes.string,
-  "children": React.PropTypes.node,
-  "theme": React.PropTypes.object
+  "children": React.PropTypes.node
 };
-
-ListItem.defaultProps = { "className": "" };
 
 ListItem.styleguide = {
   "category": "Lists",
