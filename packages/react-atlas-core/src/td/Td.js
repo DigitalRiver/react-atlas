@@ -1,10 +1,8 @@
-import React, { PropTypes } from "react";
-import themeable from "react-themeable";
-import { classNames } from "../utils";
+import React, { PropTypes } from "react"
+import cx from 'classNames';
 
 const Td = ({ className, children, ...props }) => {
-  const theme = themeable(props.theme);
-  const classes = classNames(
+  const classes = cx(
     {
       "td": true
     },
@@ -12,7 +10,7 @@ const Td = ({ className, children, ...props }) => {
   );
 
   return (
-    <td {...props} {...theme(1, ...classes)}>
+    <td {...props} styleName={classes}>
       {children}
     </td>
   );
@@ -20,14 +18,7 @@ const Td = ({ className, children, ...props }) => {
 
 Td.propTypes = {
   "children": PropTypes.any,
-  "className": PropTypes.string,
-  "theme": PropTypes.object
-};
-Td.defaultProps = {
-  "className": "",
-  "theme": {
-    "td": true
-  }
+  "className": PropTypes.string
 };
 
 Td.styleguide = {

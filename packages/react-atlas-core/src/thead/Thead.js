@@ -1,7 +1,8 @@
 import React, { PropTypes } from "react";
+import cx from 'classNames';
 
-const Thead = ({ children, ...props }) => 
-  <thead {...props}>
+const Thead = ({ className, children, ...props }) =>
+  <thead {...props} styleName={className}>
     {children}
   </thead>
 ;
