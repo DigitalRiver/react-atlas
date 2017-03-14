@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import { OverlayCore } from "../overlay";
+import { OverlayCore } from "../index.js";
 import cx from 'classNames';
 
 const Dialog = (
@@ -41,11 +41,7 @@ Dialog.propTypes = {
    * What type/size of modal. Choose from 'small', 'normal', 'large'.
    */
   "type": PropTypes.oneOf(["large", "small", "normal"]),
-  "body": PropTypes.string,
-  /**
-   * The theme object.
-   */
-  "theme": PropTypes.object
+  "body": PropTypes.string
 };
 
 Dialog.defaultProps = { "active": false, "type": "normal", "className": "" };
