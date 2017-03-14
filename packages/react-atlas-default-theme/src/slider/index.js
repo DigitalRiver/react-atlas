@@ -1,3 +1,3 @@
-import * as SliderStyle from "./Slider.css";
+import * as SliderStyle from "./slider.css";
 export { SliderStyle };
 
