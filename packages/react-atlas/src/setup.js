@@ -69,4 +69,4 @@ function createIndexFromConfig() {
   createIndexFromGlobalTheme(config.theme);
 }
 
-console.log("Done: ", __dirname + '/index.js');
+console.log("Finished generating index file: ", __dirname + '/index.js');
