@@ -7,14 +7,6 @@
   "description": "themed set of composable components from react-atlas-core",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib/index.js",
-  "scripts": {
-    "babelify": "babel ./src --out-dir ./lib",
-    "build": "cross-env NODE_ENV=production npm run babelify && npm run build-css && npm run clean:mainJS",
-    "build-css": "webpack --config ./webpack.config.js",
-    "clean": "rimraf ./lib",
-    "clean:mainJS": "rimraf ./lib/main.js",
-    "prebuild": "npm run clean"
-  },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
   },
