@@ -1,3 +1,4 @@
+export { AutocompleteCore } from "./autocomplete";
 export { AvatarCore } from "./avatar";
 export { ButtonCore } from "./button";
 export { FormCore } from "./form";
@@ -12,9 +13,11 @@ export { OverlayCore } from "./overlay";
 export { ProgressBarCore } from "./progressBar";
 export { RadioCore } from "./radio";
 export { RadioGroupCore } from "./radioGroup";
+export { GridColCore } from "./gridCol";
+export { GridRowCore } from "./gridRow";
 // export RadioGroup from "./radio";
 export { SnackbarCore } from "./snackbar";
-// export { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from "./table";
+export { TableCore } from "./table";
 // export { Tab, Tabs } from "./tabs";
 export { SwitchCore } from "./switch";
 export { TooltipCore } from "./tooltip";

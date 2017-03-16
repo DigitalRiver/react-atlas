@@ -1,9 +1,9 @@
 import React from "react";
 import { mount } from "enzyme";
-import Switch from "../../switch";
+import { SwitchCore } from "../../index";
 
 describe("Testing switch component", () => {
   it("Check default props", function() {
-    const result = mount(<Switch onColor="black" />);
+    const result = mount(<SwitchCore onColor="black" />);
   });
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 import { expect } from "chai";
-import Autocomplete from "../../autocomplete";
+import { AutocompleteCore } from "../../index";
 
 let count = 0;
 let inputProps = {
@@ -20,7 +20,7 @@ let badOnChangeProps = {
 
 describe("Test Autocomplete component", () => {
   it("Test default props", function() {
-    const result = mount(<Autocomplete inputProps={inputProps} />);
+    const result = mount(<AutocompleteCore inputProps={inputProps} />);
     expect(typeof result.props().onSuggestionsUpdateRequested).to.equal(
       "function"
     );
@@ -38,12 +38,12 @@ describe("Test Autocomplete component", () => {
   });
 
   it("Check inputProps", function() {
-    const result = mount(<Autocomplete inputProps={inputProps} />);
+    const result = mount(<AutocompleteCore inputProps={inputProps} />);
     expect(result.props().inputProps).to.equal(inputProps);
   });
 
   it("Make sure onChange function can be called", function() {
-    const result = shallow(<Autocomplete inputProps={inputProps} />);
+    const result = shallow(<AutocompleteCore inputProps={inputProps} />);
     result.simulate("change", { "target": { "value": "1234567890!!!" } });
     expect(count).to.equal(1);
   });

@@ -1,7 +1,7 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 import { expect } from "chai";
-import Avatar from "../../avatar";
+import { AvatarCore } from "../../index";
 
 let title = "testTitle";
 let image = "picture.jpg";
@@ -9,7 +9,7 @@ let icon = 'icon={<i className="fa fa-github"></i>}';
 
 describe("Testing Avatar component", () => {
   it("Set props should match what was passed in", function() {
-    const result = mount(<Avatar title={title} image={image} icon={icon} />);
+    const result = mount(<AvatarCore title={title} image={image} icon={icon} />);
     expect(result.props().title).to.equal(title);
     expect(result.props().image).to.equal(image);
     expect(result.find("img").length).to.equal(1);
@@ -19,7 +19,7 @@ describe("Testing Avatar component", () => {
   it(
     "If image is not set then state.image should be equal to defaultImage",
     function() {
-      const result = mount(<Avatar defaultImage={image} />);
+      const result = mount(<AvatarCore defaultImage={image} />);
       expect(result.state().image).to.equal(image);
     }
   );
@@ -27,7 +27,7 @@ describe("Testing Avatar component", () => {
   it(
     "If image and defaultImage are not set then state.image should be equal to null",
     function() {
-      const result = mount(<Avatar />);
+      const result = mount(<AvatarCore />);
       expect(result.state().image).to.equal(null);
     }
   );
@@ -35,7 +35,7 @@ describe("Testing Avatar component", () => {
   it(
     "If an image is not set and an icon is set then avatar should have the icon as a child.",
     function() {
-      const result = shallow(<Avatar icon={icon} />);
+      const result = shallow(<AvatarCore icon={icon} />);
       expect(result.state().image).to.equal(null);
       expect(result.type()).to.equal("div");
       expect(result.contains(icon)).to.equal(true);
@@ -46,7 +46,7 @@ describe("Testing Avatar component", () => {
     "If image is set but fails to load fall back on the default image.",
     function() {
       const result = mount(
-        <Avatar image={"incorrect.jpg"} defaultImage={image} />
+        <AvatarCore image={"incorrect.jpg"} defaultImage={image} />
       );
       let img = result.find("img");
       img.simulate("error");
@@ -57,7 +57,7 @@ describe("Testing Avatar component", () => {
   it(
     "The avatar component should fall back on the title prop if image and defaultImage props are not set or fail to load.",
     function() {
-      const result = mount(<Avatar image={image} title={title} />);
+      const result = mount(<AvatarCore image={image} title={title} />);
       let img = result.find("img");
       img.simulate("error");
       expect(result.state().image).to.equal(null);
