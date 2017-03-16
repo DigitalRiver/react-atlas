@@ -4,7 +4,7 @@ import cx from 'classNames';
 
 const RadioGroup = ({ className, children, name, ...props }) => {
   return (
-    <div {...props} styleName={className}>
+    <div {...props} className={className}>
       {React.Children.map(children, child => {
         if (child.type === Radio) {
           return <Radio {...child.props} name={name}/>;
