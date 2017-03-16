@@ -1,13 +1,11 @@
 import React, { PropTypes } from "react";
-import themeable from "react-themeable";
-import { classNames } from "../utils";
+import cx from 'classNames';
 
 /**
  * Used within the `<Tabs>` Component to programatically determine the content of any given tab. There probably isn't any reason for you to actually use `<TabContent>` directly.
  */
 const TabContent = ({ active, tabIndex, children, className, ...props }) => {
-  const theme = themeable(props.theme);
-  const classes = classNames(
+  const classes = cx(
     {
       "tabContent": true,
       "tabActive": active
@@ -16,7 +14,7 @@ const TabContent = ({ active, tabIndex, children, className, ...props }) => {
   );
 
   return (
-    <section {...theme(1, ...classes)} tabIndex={tabIndex}>
+    <section styleName={classes} tabIndex={tabIndex}>
       {children}
     </section>
   );
@@ -30,7 +28,6 @@ TabContent.propTypes = {
 };
 TabContent.defaultProps = {
   "active": false,
-  "className": ""
 };
 
 TabContent.styleguide = {
@@ -60,6 +57,9 @@ class TabsExample extends React.Component {
         <p>This tabs can be disabled or hidden</p>
         <Tabs index={this.state.index} onChange={this.handleTabChange}>
           <Tab label="Primary">
+            <TabContent>
+              lorem ipsum
+            </TabContent>
             <small>Primary content</small>
           </Tab>
           <Tab label="Secondary" onActive={this.handleActive}>

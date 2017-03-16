@@ -68,6 +68,17 @@ export const Switch = CSSModules(SwitchCore, SwitchStyle, { allowMultiple: true}
 import { TooltipCore } from 'react-atlas-core';
 import { TooltipStyle } from 'react-atlas-default-theme';
 export const Tooltip = CSSModules(TooltipCore, TooltipStyle, { allowMultiple: true});
+
+import { TabCore } from 'react-atlas-core';
+import { TabStyle } from 'react-atlas-default-theme';
+export const Tab = CSSModules(TabCore, TabStyle, { allowMultiple: true});
+import { TabContentCore } from 'react-atlas-core';
+import { TabContentStyle } from 'react-atlas-default-theme';
+export const TabContent = CSSModules(TabContentCore, TabContentStyle, { allowMultiple: true});
+import { TabsCore } from 'react-atlas-core';
+import { TabsStyle } from 'react-atlas-default-theme';
+export const Tabs = CSSModules(TabsCore, TabsStyle, { allowMultiple: true});
+
 import { TableCore } from 'react-atlas-core';
 import { TableStyle } from 'react-atlas-default-theme';
 export const Table = CSSModules(TableCore, TableStyle, { allowMultiple: true});

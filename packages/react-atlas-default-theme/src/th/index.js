@@ -1,2 +1,2 @@
-import * as ThStyle from "./thStyle.css";
+import * as ThStyle from "./th.css";
 export { ThStyle };

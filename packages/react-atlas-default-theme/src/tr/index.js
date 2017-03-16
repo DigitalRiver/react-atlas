@@ -1,2 +1,2 @@
-import * as TrStyle from "./trStyle.css";
+import * as TrStyle from "./tr.css";
 export { TrStyle };

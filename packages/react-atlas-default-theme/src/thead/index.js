@@ -1,2 +1,2 @@
-import * as TheadStyle from "./theadStyle.css";
+import * as TheadStyle from "./thead.css";
 export { TheadStyle };

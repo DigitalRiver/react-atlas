@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from "react";
-import themeable from "react-themeable";
-import { classNames } from "../utils";
-import Tab from "./Tab";
-import TabContent from "./TabContent";
+import cx from 'classNames';
+import TabCore from "./index";
+import TabContentCore from "./index";
 
 /**
  * Wrapper component to organize and produce tabs using multiple `<Tab>` components as children.
@@ -23,9 +22,8 @@ class Tabs extends Component {
         headers.push(item);
         if (item.props.children) {
           contents.push(
-            <TabContent
+            <TabContentCore
               children={item.props.children}
-              theme={this.props.theme}
             />
           );
         }
@@ -39,8 +37,7 @@ class Tabs extends Component {
 
   render() {
     const { headers, contents } = this._parseChildren();
-    const theme = themeable(this.props.theme);
-    const classes = classNames(
+    const classes = cx(
       {
         "container": true
       },
@@ -48,33 +45,42 @@ class Tabs extends Component {
     );
 
     return (
-      <div {...theme(1, ...classes)}>
+      <div styleName={classes}>
         <nav
-          {...theme(2, "navigation")}
+          styleName={"navigation"}
           ref={nav => {
             this.navigation = nav;
           }}
         >
           {headers.map((item, idx) => {
             return (
-              <Tab
+              <TabCore
                 {...item.props}
                 key={idx}
                 active={this.props.index === idx}
                 onClick={this._handleHeaderClick.bind(this, idx)}
-                theme={this.props.theme}
+                className={cx(
+                  "label",
+                  active,
+                  hidden,
+                  disabled
+                )}
               />
+                //theme={this.props.theme}
             );
           })}
         </nav>
         {contents.map((item, idx) => {
           return (
-            <TabContent
+            <TabContentCore
               {...item.props}
               key={idx}
               active={this.props.index === idx}
               tabIndex={idx}
-              theme={this.props.theme}
+              className={cx(
+                "tabContent",
+                "tabActive"
+              )}
             />
           );
         })}

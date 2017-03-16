@@ -1,2 +1,2 @@
-import * as TfootStyle from "./tfootStyle.css";
+import * as TfootStyle from "./tfoot.css";
 export { TfootStyle };

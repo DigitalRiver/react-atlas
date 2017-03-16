@@ -1,2 +1,2 @@
-import * as TbodyStyle from "./tbodyStyle.css";
+import * as TbodyStyle from "./tbody.css";
 export { TbodyStyle };
