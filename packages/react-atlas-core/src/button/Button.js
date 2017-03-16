@@ -18,6 +18,9 @@ const Button = (
     link,
     disabled,
     children,
+    mini,
+    large,
+    small,
     ...props
   }
 ) => {
@@ -29,6 +32,15 @@ const Button = (
   }
 
   const disabledStyle = disabled || loading ? "disabled" : "";
+
+  let size;
+  if(large) {
+    size = "large";
+  } else if(small) {
+    size = "small";
+  } else if(mini) {
+    size = "mini";
+  }
 
   let mainStyle = "button";
   if (primary) {
@@ -44,10 +56,10 @@ const Button = (
   } else if (link) {
     mainStyle = "link";
   }
-  const classes = cx(mainStyle, disabledStyle);
+  const classes = cx(mainStyle, disabledStyle, size);
   
   return (
-    <button className={cx(className)} styleName={classes}>Click</button>
+    <button {...props} className={cx(className)} styleName={classes}>Click</button>
   )
 };
 
