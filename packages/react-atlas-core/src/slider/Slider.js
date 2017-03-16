@@ -14,7 +14,7 @@ class Slider extends Component {
     "inputValue": null,
     "sliderLength": 0,
     "sliderStart": 0,
-    "value": this.props.defaultValue || 0,
+    "value": this.props.defaultValue || 0
   };
 
   componentDidMount() {
@@ -84,7 +84,7 @@ class Slider extends Component {
     ).getBoundingClientRect();
     const cb = callback || (() => {});
     this.setState({ "sliderStart": left, "sliderLength": right - left }, cb);
-  };
+  }
 
   handleSliderBlur = () => {
     events.removeEventsFromDocument(this.getKeyboardEvents());
@@ -224,7 +224,7 @@ class Slider extends Component {
     if (value > this.props.max) {
       return this.props.max;
     }
-    var rounded = utils.round(value, this.stepDecimals());
+    let rounded = utils.round(value, this.stepDecimals());
     return utils.round(value, this.stepDecimals());
   }
 
@@ -270,7 +270,7 @@ class Slider extends Component {
         />
       );
     }
-    else return undefined
+    else {return undefined}
   }
 
   render() {
@@ -307,7 +307,7 @@ class Slider extends Component {
               ref={(node) => { this.progressBar = node; }}
               disabled={this.props.disabled}
               mode="determinate"
-              value={{from: 0, to: this.state.value}}
+              value={{"from": 0, "to": this.state.value}}
             />
 
             {this.renderKnob(theme)}
