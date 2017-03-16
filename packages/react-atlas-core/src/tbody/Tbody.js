@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 import cx from 'classNames';
 
 const Tbody = ({ className, children, ...props }) =>
-  <tbody {...props} styleName={className}>
+  <tbody {...props} className={cx(className)}>
     {children}
   </tbody>
 ;

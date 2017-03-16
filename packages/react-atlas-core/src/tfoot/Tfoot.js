@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 import cx from 'classNames';
 
 const Tfoot = ({ className, children, ...props }) =>
-  <tfoot {...props} styleName={className}>
+  <tfoot {...props} className={className}>
     {children}
   </tfoot>
 ;

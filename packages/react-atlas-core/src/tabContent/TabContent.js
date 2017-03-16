@@ -9,12 +9,11 @@ const TabContent = ({ active, tabIndex, children, className, ...props }) => {
     {
       "tabContent": true,
       "tabActive": active
-    },
-    className
+    }
   );
 
   return (
-    <section styleName={classes} tabIndex={tabIndex}>
+    <section styleName={classes} tabIndex={tabIndex} className={cx(className)}>
       {children}
     </section>
   );

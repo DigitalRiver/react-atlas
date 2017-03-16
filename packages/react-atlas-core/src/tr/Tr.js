@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 import cx from 'classNames';
 
 const Tr = ({ className, children, ...props }) =>
-  <tr {...props} styleName={className}>
+  <tr {...props} className={className}>
     {children}
   </tr>
 ;

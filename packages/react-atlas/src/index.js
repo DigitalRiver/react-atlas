@@ -117,4 +117,4 @@ import { TooltipStyle } from 'react-atlas-default-theme';
 export const Tooltip = CSSModules(TooltipCore, TooltipStyle, {allowMultiple: true});
 import { TrCore } from 'react-atlas-core';
 import { TrStyle } from 'react-atlas-default-theme';
-export const Tr = CSSModules(TrCore, TrStyle, {allowMultiple: true}); 
+export const Tr = CSSModules(TrCore, TrStyle, {allowMultiple: true});

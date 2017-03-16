@@ -5,12 +5,11 @@ const Td = ({ className, children, ...props }) => {
   const classes = cx(
     {
       "td": true
-    },
-    className
+    }
   );
 
   return (
-    <td {...props} styleName={classes}>
+    <td {...props} styleName={classes} className={cx(className)}>
       {children}
     </td>
   );

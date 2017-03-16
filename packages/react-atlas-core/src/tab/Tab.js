@@ -26,12 +26,11 @@ class Tab extends Component {
         active,
         hidden,
         disabled
-      },
-      className
+      }
     );
 
     return (
-      <label styleName={classes} onClick={this._handleClick}>
+      <label styleName={classes} onClick={this._handleClick} className={cx(className)}>
         {label}
       </label>
     );
