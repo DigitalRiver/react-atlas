@@ -1,13 +1,12 @@
 import React from "react";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 /**
  * Used inside `<ListItem>` when the Item has more complex needs for text and elements inside
  */
 const ListText = ({ children, ...props }) => {
-  const theme = themeable(props.theme);
   return (
-    <span {...props} {...theme(1, "text")}>
+    <span {...props}>
       {children}
     </span>
   );
@@ -15,8 +14,7 @@ const ListText = ({ children, ...props }) => {
 
 ListText.propTypes = {
   "className": React.PropTypes.string,
-  "children": React.PropTypes.node,
-  "theme": React.PropTypes.object
+  "children": React.PropTypes.node
 };
 
 ListText.styleguide = {

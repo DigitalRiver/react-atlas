@@ -13,11 +13,7 @@ Card.propTypes = {
    * Any HTML element or React Component.
    * @examples <p>Some Text.</p>
    */
-  "children": PropTypes.node.isRequired,
-  /**
-   * The theme object.
-   */
-  "theme": PropTypes.object
+  "children": PropTypes.node.isRequired
 };
 
 Card.defaultProps = { "children": <p>Some card text.</p> };

@@ -7,14 +7,6 @@
   "description": "Composable React components with CSS Modules.",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib",
-  "scripts": {
-    "babelify": "cross-env NODE_ENV=production babel ./src --out-dir ./lib && npm run build-css && rimraf ./lib/main.js",
-    "build-css": "webpack --config ./webpack.config.js",
-    "build": "npm run babelify",
-    "clean": "rimraf ./lib",
-    "clean:mainJS": "rimraf ./lib/main.js",
-    "prebuild": "npm run clean"
-  },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
   },

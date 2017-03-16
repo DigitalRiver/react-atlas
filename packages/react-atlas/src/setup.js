@@ -4,7 +4,16 @@ var fs = require('fs');
 
 const cwd = process.cwd();
 const path = cwd + '/atlas.config.js';
-const template = "import CSSModules from 'react-css-modules'; {{~it.dependencies :value:index}} import { {{=value.name}}Core } from 'react-atlas-core'; import { {{=value.name}}Style } from '{{=value.package}}';  export const {{=value.name}} = CSSModules({{=value.name}}, {{=value.name}}Style, {allowMultiple: true}); {{~}}";
+const template = "import CSSModules from 'react-css-modules'; {{~it.dependencies :value:index}} import { {{=value.name}}Core } from 'react-atlas-core'; import { {{=value.name}}Style } from '{{=value.theme}}';  export const {{=value.name}} = CSSModules({{=value.name}}Core, {{=value.name}}Style, {allowMultiple: true}); {{~}}";
+
+/* TODO: Replace hardcoded array with a dynamic solution. */
+var components = ['autocomplete', 'avatar', 'button', 'card', 'checkbox',
+                 'dialog', 'drawer', 'dropdown', 'dropdownContent', 'dropdownList',
+                 'dropdownListItem', 'dropdownTrigger', 'form', 'gridCol', 'gridRow',
+                 'header', 'hint', 'input', 'list', 'listItem', 'listText',
+                 'media', 'overlay', 'progressBar', 'radio', 'radioGroup', 'slider',
+                 'snackbar', 'switch', 'tab', 'tabContent', 'table', 'tabs', 'tbody',
+                 'td', 'tfoot', 'th', 'thead', 'tooltip', 'tr'];
 
 /* Check if a atlas config file exist or not. If the config file
   does exist create a new index file. */
@@ -25,19 +34,39 @@ function getComponentArray(path) {
   }
 }
 
+function createIndexFromGlobalTheme(theme) {
+  var dependencies = [];
+  for(var i = 0; i < components.length; i++) {
+    var component = { 'name': components[i], 'theme': theme };
+
+    /* Make sure leading letter is uppercase. */
+    component.name = component.name[0].toUpperCase() + component.name.slice(1);
+    dependencies.push(component);
+  }
+
+  var tempFn = dot.template(template);
+  var resultText = tempFn({'dependencies': dependencies});
+  fs.writeFileSync(__dirname + '/index.js', resultText);
+  return;
+}
+
 /* Read the config file, grab needed info and use the
  dotjs templating engine to output the index.js file for
  react-atlas. */
 function createIndexFromConfig() {
   var config = require(path);
   var dependencies = [];
-  if(config.all === '') {
+  if(config.theme === '') {
   	for(var i = 0; i < config.components.length; i++) {
   	  dependencies.push(config.components[i]);
   	}
   	var tempFn = dot.template(template);
   	var resultText = tempFn({'dependencies': dependencies});
-  	fs.writeFileSync(__dirname + '/../index.js', resultText);
+  	fs.writeFileSync(__dirname + '/index.js', resultText);
   	return;
   }
+
+  createIndexFromGlobalTheme(config.theme);
 }
+
+console.log("Finished generating index file: ", __dirname + '/index.js');
