@@ -30,8 +30,8 @@ module.exports = {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract(
             "style",
-            "css?sourceMap&modules&importLoaders=1&localIdentName=ra_[name]__[local]!postcss"
-          )
+            "css?sourceMap&modules&importLoaders=1&localIdentName=[local]!postcss"
+            )
         }
       ]
     },
