@@ -1,91 +1,25 @@
 import React, { Component, PropTypes } from "react";
 import cx from 'classNames';
-import TabCore from "./index";
-import TabContentCore from "./index";
 
 /**
  * Wrapper component to organize and produce tabs using multiple `<Tab>` components as children.
  */
 class Tabs extends Component {
-  _handleHeaderClick = idx => {
-    if (this.props.onChange) {
-      this.props.onChange(idx);
-    }
-  };
-
-  _parseChildren = () => {
-    let headers = [];
-    let contents = [];
-
-    React.Children.forEach(this.props.children, item => {
-      if (item.type === Tab) {
-        headers.push(item);
-        if (item.props.children) {
-          contents.push(
-            <TabContentCore
-              children={item.props.children}
-            />
-          );
-        }
-      } else if (item.type === TabContent) {
-        contents.push(item);
-      }
-    });
-
-    return { headers, contents };
-  };
-
   render() {
-    const { headers, contents } = this._parseChildren();
+    let { children, className, onClick, ...props } = this.props;
     const classes = cx(
       {
         "container": true
-      },
-      this.props.className
+      }
     );
 
-    return (
-      <div styleName={classes}>
-        <nav
-          styleName={"navigation"}
-          ref={nav => {
-            this.navigation = nav;
-          }}
-        >
-          {headers.map((item, idx) => {
-            return (
-              <TabCore
-                {...item.props}
-                key={idx}
-                active={this.props.index === idx}
-                onClick={this._handleHeaderClick.bind(this, idx)}
-                className={cx(
-                  "label",
-                  active,
-                  hidden,
-                  disabled
-                )}
-              />
-                //theme={this.props.theme}
-            );
-          })}
-        </nav>
-        {contents.map((item, idx) => {
-          return (
-            <TabContentCore
-              {...item.props}
-              key={idx}
-              active={this.props.index === idx}
-              tabIndex={idx}
-              className={cx(
-                "tabContent",
-                "tabActive"
-              )}
-            />
-          );
-        })}
-      </div>
-    );
+  return (
+    <div {...props} className={cx(className)} styleName={classes}>
+      <nav styleName={"navigation"}>
+        {children}
+      </nav>
+    </div>
+  )
   }
 }
 
@@ -93,8 +27,7 @@ Tabs.propTypes = {
   "children": PropTypes.node,
   "className": PropTypes.string,
   "index": PropTypes.number,
-  "onChange": PropTypes.func,
-  "theme": PropTypes.object
+  "onChange": PropTypes.func
 };
 
 Tabs.defaultProps = {
