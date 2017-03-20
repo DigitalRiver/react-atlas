@@ -59,7 +59,7 @@ const Button = (
   const classes = cx(mainStyle, disabledStyle, size);
   
   return (
-    <button {...props} className={cx(className)} styleName={classes}>Click</button>
+    <button {...props} className={cx(className)} styleName={classes}>{children}</button>
   )
 };
 
