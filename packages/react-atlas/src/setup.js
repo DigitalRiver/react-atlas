@@ -46,7 +46,7 @@ function createIndexFromGlobalTheme(theme) {
 
   let tempFn = dot.template(template);
   let resultText = tempFn({'dependencies': dependencies});
-  fs.writeFileSync(__dirname + '/index.js', resultText);
+  fs.writeFileSync(__dirname + '/generatedModules.js', resultText);
   return;
 }
 
@@ -62,11 +62,11 @@ function createIndexFromConfig() {
   	}
   	let tempFn = dot.template(template);
   	let resultText = tempFn({'dependencies': dependencies});
-  	fs.writeFileSync(__dirname + '/index.js', resultText);
+  	fs.writeFileSync(__dirname + '/generatedModules.js', resultText);
   	return;
   }
 
   createIndexFromGlobalTheme(config.theme);
 }
 
-console.log("Finished generating index file: ", __dirname + '/index.js');
+console.log("Finished generating index file: ", __dirname + '/generatedModules.js');
