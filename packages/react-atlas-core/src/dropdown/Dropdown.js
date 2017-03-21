@@ -6,9 +6,9 @@ Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 
 import React, { cloneElement, Component, PropTypes } from "react";
-import { classNames } from "../utils";
-import DropdownTrigger from "./DropdownTrigger";
-import DropdownContent from "./DropdownContent";
+import cx from 'classNames';
+import DropdownTriggerCore from "./index";
+import DropdownContentCore from "./index";
 import { findDOMNode } from "react-dom";
 
 /**
@@ -143,18 +143,18 @@ class DropdownExample extends React.Component {
         <h5>Dropdown</h5>
         <p>lorem ipsum...</p>
 
-        <Dropdown>
-          <DropdownTrigger>
+        <DropdownCore>
+          <DropdownTriggerCore>
             <Button>Dropdown Button</Button>
-          </DropdownTrigger>
-          <DropdownContent>
-            <DropdownList>
+          </DropdownTriggerCore>
+          <DropdownContentCore>
+            <DropdownListCore>
               {countries.map((country, idx) => (
-                <DropdownListItem key={idx}>{country.label}</DropdownListItem>
+                <DropdownListItemCore key={idx}>{country.label}</DropdownListItem>
               ))}
-            </DropdownList>
-          </DropdownContent>
-        </Dropdown>
+            </DropdownListCore>
+          </DropdownContentCore>
+        </DropdownCore>
       </section>
     );
 // Mount Component {

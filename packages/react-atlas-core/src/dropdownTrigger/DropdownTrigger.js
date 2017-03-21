@@ -49,18 +49,18 @@ class DropdownTriggerExample extends React.Component {
     return (
       <section>
         <h5>DropdownTrigger Example</h5>
-        <Dropdown>
-          <DropdownTrigger>
+        <DropdownCore>
+          <DropdownTriggerCore>
             <div>Trigger Element</div>
-          </DropdownTrigger>
-          <DropdownContent>
+          </DropdownTriggerCore>
+          <DropdownContentCore>
             <ul>
               {countries.map((country, idx) => (
                 <li key={idx}>{country.label}</li>
               ))}
             </ul>
-          </DropdownContent>
-        </Dropdown>
+          </DropdownContentCore>
+        </DropdownCore>
       </section>
     );
 // Mount Component {

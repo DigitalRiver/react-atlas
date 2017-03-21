@@ -6,7 +6,7 @@ Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 
 import React, { component, PropTypes } from "react";
-import { classNames } from "../utils";
+import cx from 'classNames';
 
 /**
  * Component used inside Dropdown to define content. Often paired with DropdownList & DropdownListItem.
@@ -56,22 +56,22 @@ class DropdownContentExample extends React.Component {
     return (
       <section>
         <h5>DropdownContent Example</h5>
-        <Dropdown>
-          <DropdownTrigger>
+        <DropdownCore>
+          <DropdownTriggerCore>
             <Button>Dropdown</Button>
-          </DropdownTrigger>
-          <DropdownContent>
+          </DropdownTriggerCore>
+          <DropdownContentCore>
             <p>Any content</p>
             <ul>
               <li>A Regular List Item</li>
             </ul>
-            <DropdownList>
+            <DropdownListCore>
               {countries.map((country, idx) => (
-                <DropdownListItem key={idx}>{country.label}</DropdownListItem>
+                <DropdownListItemCore key={idx}>{country.label}</DropdownListItem>
               ))}
-            </DropdownList>
-          </DropdownContent>
-        </Dropdown>
+            </DropdownListCore>
+          </DropdownContentCore>
+        </DropdownCore>
       </section>
     );
 // Mount Component {

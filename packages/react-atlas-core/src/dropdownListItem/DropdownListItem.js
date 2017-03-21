@@ -6,7 +6,7 @@ Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 
 import React, { component, PropTypes } from "react";
-import { classNames } from "../utils";
+import cx from 'classNames';
 
 /**
  * Optional component to use within DropdownList & DropdownContent components. It just sets styles to `<li>` in dropdowns.
@@ -58,18 +58,18 @@ class DropdownListItemExample extends React.Component {
     return (
       <section>
         <h5>DropdownListItem Example</h5>
-        <Dropdown>
-          <DropdownTrigger>
+        <DropdownCore>
+          <DropdownTriggerCore>
             <Button>Dropdown</Button>
-          </DropdownTrigger>
-          <DropdownContent>
-            <DropdownList >
+          </DropdownTriggerCore>
+          <DropdownContentCore>
+            <DropdownListCore>
               {countries.map((country, idx) => (
-                <DropdownListItem key={idx}>{country.label}</DropdownListItem>
+                <DropdownListItemCore key={idx}>{country.label}</DropdownListItem>
               ))}
-            </DropdownList>
-          </DropdownContent>
-        </Dropdown>
+            </DropdownListCore>
+          </DropdownContentCore>
+        </DropdownCore>
       </section>
     );
 // Mount Component {
