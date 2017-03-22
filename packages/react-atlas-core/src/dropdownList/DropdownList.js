@@ -14,7 +14,7 @@ import cx from 'classNames';
 
 const DropdownList = ({ children, className, active, ...props }) => {
   return (
-    <ul {...props} className={className}>
+    <ul {...props} className={className} styleName={cx("list")}>
       {children}
     </ul>
   );
@@ -59,23 +59,23 @@ class DropdownListExample extends React.Component {
       <section>
         <h5>DropdownList Example</h5>
 
-        <DropdownCore>
-          <DropdownTriggerCore>
+        <Dropdown>
+          <DropdownTrigger>
             <Button>Dropdown</Button>
-          </DropdownTriggerCore>
-          <DropdownContentCore>
-             <DropdownListCore>
+          </DropdownTrigger>
+          <DropdownContent>
+             <DropdownList>
               <li>Can be used</li>
               <li>With Regular</li>
               <li>list elements.</li>
-            </DropdownListCore>
-            <DropdownListCore>
+            </DropdownList>
+            <DropdownList>
               {countries.map((country, idx) => (
                 <DropdownListItem key={idx}>{country.label}</DropdownListItem>
               ))}
-            </DropdownListCore>
-          </DropdownContentCore>
-        </DropdownCore>
+            </DropdownList>
+          </DropdownContent>
+        </Dropdown>
       </section>
     );
 // Mount Component {

@@ -12,8 +12,16 @@ import cx from 'classNames';
  * Component used inside Dropdown to define content. Often paired with DropdownList & DropdownListItem.
  */
 const DropdownContent = ({ children, className, active, ...props }) => {
+  const classes = cx(
+    {
+      "content": true,
+      "active": active,
+      "inactive": !active
+    }
+  );
+
   return (
-    <div {...props}>
+    <div {...props} className={className} styleName={classes}>
       {children}
     </div>
   );
@@ -56,22 +64,22 @@ class DropdownContentExample extends React.Component {
     return (
       <section>
         <h5>DropdownContent Example</h5>
-        <DropdownCore>
-          <DropdownTriggerCore>
+        <Dropdown>
+          <DropdownTrigger>
             <Button>Dropdown</Button>
-          </DropdownTriggerCore>
-          <DropdownContentCore>
+          </DropdownTrigger>
+          <DropdownContent>
             <p>Any content</p>
             <ul>
               <li>A Regular List Item</li>
             </ul>
-            <DropdownListCore>
+            <DropdownList>
               {countries.map((country, idx) => (
-                <DropdownListItemCore key={idx}>{country.label}</DropdownListItem>
+                <DropdownListItem key={idx}>{country.label}</DropdownListItem>
               ))}
-            </DropdownListCore>
-          </DropdownContentCore>
-        </DropdownCore>
+            </DropdownList>
+          </DropdownContent>
+        </Dropdown>
       </section>
     );
 // Mount Component {
