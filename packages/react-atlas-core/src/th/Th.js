@@ -1,18 +1,15 @@
 import React, { PropTypes } from "react";
-import themeable from "react-themeable";
-import { classNames } from "../utils";
+import cx from 'classNames';
 
 const Th = ({ className, children, ...props }) => {
-  const theme = themeable(props.theme);
-  const classes = classNames(
+  const classes = cx(
     {
       "th": true
-    },
-    className
+    }
   );
 
   return (
-    <th {...props} {...theme(1, ...classes)}>
+    <th {...props} styleName={classes} className={cx(className)}>
       {children}
     </th>
   );
@@ -20,12 +17,7 @@ const Th = ({ className, children, ...props }) => {
 
 Th.propTypes = {
   "children": PropTypes.any,
-  "className": PropTypes.string,
-  "theme": PropTypes.object
-};
-
-Th.defaultProps = {
-  "className": ""
+  "className": PropTypes.string
 };
 
 Th.styleguide = {

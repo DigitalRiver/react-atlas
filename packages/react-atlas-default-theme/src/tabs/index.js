@@ -1,2 +1,2 @@
-export Tab from "./Tab";
-export Tabs from "./Tabs";
+import * as TabsStyle from "./tabs.css";
+export { TabsStyle };

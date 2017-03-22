@@ -1,7 +1,8 @@
 import React, { PropTypes } from "react";
+import cx from 'classNames';
 
-const Tr = ({ children, ...props }) => 
-  <tr {...props}>
+const Tr = ({ className, children, ...props }) =>
+  <tr {...props} className={className}>
     {children}
   </tr>
 ;

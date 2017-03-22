@@ -6,23 +6,7 @@ import cx from 'classNames';
  * Overlay component adds a 'shadowbox' to screen. Mostly used internally in the lib on the `<Dialog>` component.
  */
 class Overlay extends Component {
-  componentDidMount() {
-    this.overlay = document.createElement("div");
-    this.overlay.setAttribute("data-react-atlas", "overlay");
-    document.body.appendChild(this.overlay);
-    this.handleRender();
-  }
-
-  componentDidUpdate() {
-    this.handleRender();
-  }
-
-  componentWillUnmount() {
-    ReactDOM.unmountComponentAtNode(this.overlay);
-    document.body.removeChild(this.overlay);
-  }
-
-  handleRender() {
+  render() {
     const {
       className,
       active,
@@ -46,15 +30,11 @@ class Overlay extends Component {
 
     return(
       <div styleName={classes}>
-        <div styleName={overlayClasses} onClick={onClick}/>
-        {children}
-      </div>,
-      this.overlay
+        <div styleName={overlayClasses} onClick={onClick}>
+          {children}
+        </div>
+      </div>
     );
-  }
-
-  render() {
-    return null;
   }
 }
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { mount } from "enzyme";
-import ProgressBar from "../../progress_bar";
+import { ProgressBarCore } from "../../index";
 // import style from '../../progress_bar/style';
 
 describe("#calculateRatio", function() {
-  let progressBar = mount(<ProgressBar min={100} max={300} />);
+  let progressBar = mount(<ProgressBarCore min={100} max={300} />);
 
   // it("calculates the right ratio", function() {
   //   expect(progressBar.calculateRatio(150)).to.equal(0.25);
