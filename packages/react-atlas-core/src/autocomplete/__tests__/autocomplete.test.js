@@ -12,12 +12,6 @@ let inputProps = {
   }
 };
 
-let badValueProps = {};
-
-let badOnChangeProps = {
-  "value": "value"
-};
-
 describe("Test Autocomplete component", () => {
   it("Test default props", function() {
     const result = mount(<AutocompleteCore inputProps={inputProps} />);
@@ -46,14 +40,5 @@ describe("Test Autocomplete component", () => {
     const result = shallow(<AutocompleteCore inputProps={inputProps} />);
     result.simulate("change", { "target": { "value": "1234567890!!!" } });
     expect(count).to.equal(1);
-  });
-
-  it("Make sure error is thrown when no value is set.", function() {
-    // const result = mount(<Autocomplete inputProps={badValueProps}></Autocomplete>)
-    // expect(result.).to.throw(Error);
-  });
-
-  it("Make sure error is thrown when no onChange is set.", function() {
-    // expect(mount(<Autocomplete inputProps={badOnChangeProps}></Autocomplete>)).toThrow(new Error('\'inputProps\' must have \'onChange\'.'));
   });
 });
