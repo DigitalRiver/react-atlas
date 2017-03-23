@@ -9,7 +9,8 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.join(__dirname, 'lib'),
-    publicPath: '/lib/'
+    publicPath: '/lib/',
+    libraryTarget: 'commonjs2'
   },
   module: {
     rules: [
