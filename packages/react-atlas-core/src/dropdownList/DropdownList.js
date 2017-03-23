@@ -6,7 +6,7 @@ Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 
 import React, { component, PropTypes } from "react";
-import { classNames } from "../utils";
+import cx from 'classNames';
 
 /**
  * Optional component to use inside DropdownContent component, it just applies styles to a `<ul>` and wraps DropdownListItem
@@ -14,7 +14,7 @@ import { classNames } from "../utils";
 
 const DropdownList = ({ children, className, active, ...props }) => {
   return (
-    <ul {...props} className={className}>
+    <ul {...props} className={className} styleName={cx("list")}>
       {children}
     </ul>
   );
