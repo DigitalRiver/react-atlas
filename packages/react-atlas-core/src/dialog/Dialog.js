@@ -13,7 +13,7 @@ const Dialog = (
   });
 
   return (
-    <OverlayCore active={active} onClick={onOverlayClick}>
+    <OverlayCore {...props} className={componentClasses} active={active} onClick={onOverlayClick}>
       <div>
         <section className={body}>
           {children}
