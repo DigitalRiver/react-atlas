@@ -8,7 +8,6 @@ const Button = (
   {
     className,
     outline,
-    href,
     loading,
     primary,
     secondary,
@@ -24,13 +23,6 @@ const Button = (
     ...props
   }
 ) => {
-  const element = href ? "a" : "button";
-
-  let role;
-  if (element === "a") {
-    role = "button";
-  }
-
   const disabledStyle = disabled || loading ? "disabled" : "";
 
   let size;
@@ -56,7 +48,13 @@ const Button = (
   } else if (link) {
     mainStyle = "link";
   }
-  const classes = cx(mainStyle, disabledStyle, size);
+
+  let outlineStyle = "button";
+  if(outline) {
+    outlineStyle = "outline";
+  }
+
+  const classes = cx(mainStyle, disabledStyle, size, outlineStyle);
   
   return (
     <button {...props} className={cx(className)} styleName={classes}>{children}</button>
@@ -135,10 +133,10 @@ Button.styleguide = {
 
 Button.propTypes = {
   /**
-     * The theme object.
+     * Define a mini button.
      *
      */
-  "theme": PropTypes.object,
+  "mini": PropTypes.bool,
   /**
      * Anything that can be in a button. Usually text, but could also be icons/glyphs.
      * @examples 'Save', 'Cancel'
