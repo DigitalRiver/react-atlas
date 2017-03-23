@@ -12,7 +12,7 @@ packages.forEach(function(pack) {
   // ensure path has package.json
   if (!fs.existsSync(path.join(pack, "package.json"))) return;
 
-  spawn.sync('./node_modules/webpack/bin/webpack.js', {
+  spawn.sync(pack + '/node_modules/webpack/bin/webpack.js', {
     env: process.env,
     cwd: pack,
     stdio: "inherit"

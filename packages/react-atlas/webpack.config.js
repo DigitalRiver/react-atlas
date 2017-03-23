@@ -1,59 +1,27 @@
-
-const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const cssnext = require('postcss-cssnext');
-const postcssImport = require('postcss-import');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-  context: __dirname,
   entry: [
     './src/index.js'
   ],
   output: {
     filename: 'index.js',
-    libraryTarget: 'commonjs2',
     path: path.join(__dirname, 'lib'),
     publicPath: '/lib/'
   },
-  resolve: {
-    extensions: ['', '.js', '.json', '.css']
-  },
   module: {
-    loaders: [
-      {
-        test: /(\.js)$/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader'
-      },
+    rules: [
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
+        use: [
           'style-loader',
-          [
-            'css-loader?minimize&modules&importLoaders=1&localIdentName=ra_[name]__[local]',
-            'postcss-loader'
-          ]
-        )
-      }
-    ]
+          {
+            loader: 'css-loader',
+            options: { modules: true }
+          },
+        ],
+      },
+    ],
   },
-  postcss: function (bundler) {
-    return [
-      postcssImport({
-        addDependencyTo: bundler
-      }),
-      cssnext,
-      autoprefixer
-    ];
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
-    new ExtractTextPlugin('reactAtlas.min.css')
-  ]
 };
