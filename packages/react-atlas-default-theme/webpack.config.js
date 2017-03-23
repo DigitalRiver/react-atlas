@@ -23,7 +23,7 @@ module.exports = {
                        query: {
                            modules: true,
                            importLoaders: 1,
-                           localIdentName: '[hash:base64:5]',
+                           localIdentName: 'ra_[name]__[local]',
                            minimize: true
                        }
                      },
