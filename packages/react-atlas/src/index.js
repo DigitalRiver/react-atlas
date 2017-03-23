@@ -26,6 +26,7 @@ export {
   Snackbar,
   Switch,
   Table,
+  TableHeaderColumn,
   Thead,
   Th,
   Tbody,

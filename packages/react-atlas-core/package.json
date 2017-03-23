@@ -6,7 +6,7 @@
   "version": "0.0.10",
   "description": "Core set of composable components for react-atlas",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "babelify": "babel ./src --out-dir ./lib",
     "build": "cross-env NODE_ENV=production npm run babelify && npm run build-css && rimraf ./lib/main.js",
