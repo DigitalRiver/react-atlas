@@ -23,10 +23,10 @@ Table.propTypes = {
 };
 Table.defaultProps = {
     pagination: true,
-    options: PropTypes.shape({
+    options: {
         defaultSortName: undefined,
         defaultSortOrder: undefined
-    })
+    }
 };
 Table.styleguide = {
     "category": "Table",

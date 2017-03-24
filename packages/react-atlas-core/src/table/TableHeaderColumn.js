@@ -20,8 +20,8 @@ TableHeaderColumn.defaultProps = {
 };
 
 TableHeaderColumn.styleguide = {
-    "category": "Form Components",
-    "index": "3.11",
+    "category": "Table",
+    "index": "7.2",
     "wrappedExample": true,
     "example":
         `

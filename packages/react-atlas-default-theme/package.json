@@ -80,7 +80,11 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.10.0",
+    "bootstrap": "^3.3.6",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "file-loader": "^0.9.0"
   },
   "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas-default-theme"
 }

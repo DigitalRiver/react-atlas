@@ -27,12 +27,6 @@ export {
   Switch,
   Table,
   TableHeaderColumn,
-  Thead,
-  Th,
-  Tbody,
-  Tr,
-  Td,
-  Tfoot,
   Tabs,
   Tab,
   Tooltip

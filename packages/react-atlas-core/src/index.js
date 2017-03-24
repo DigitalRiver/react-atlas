@@ -27,7 +27,7 @@ export { Radio, RadioGroup } from "./radio";
 export Slider from "./slider";
 export Snackbar from "./snackbar";
 export Switch from "./switch";
-export { Table, TableHeaderColumn, Thead, Th, Tbody, Tr, Td, Tfoot } from "./table";
+export { Table, TableHeaderColumn } from "./table";
 export Tabs from "./tabs/Tabs";
 export Tab from "./tabs/Tab";
 export Tooltip from "./tooltip";
