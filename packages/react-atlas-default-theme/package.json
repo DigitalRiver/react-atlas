@@ -34,7 +34,8 @@
     "normalize.css": "^4.1.1",
     "react-autosuggest": "^3.7.3",
     "react-atlas-core": "^0.0.10",
-    "react-bootstrap-table": "3.1.1"
+    "react-bootstrap-table": "3.1.1",
+    "bootstrap": "^3.3.6"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -81,7 +82,6 @@
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0",
-    "bootstrap": "^3.3.6",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "file-loader": "^0.9.0"
