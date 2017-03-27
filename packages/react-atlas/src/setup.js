@@ -1,80 +1,97 @@
-const dot = require('dot');
-const fs = require('fs');
-const spawn = require("cross-spawn");
-const setupConf = require('./setup.config.js'); 
-const warningMessage = setupConf.warningMessage;
-const template = setupConf.template;
-const components = setupConf.components;
+/* This file consumes an atlas.config.js file and generates an index.js for react-atlas. */
+let dot = require('dot');
+let fs = require('fs');
+let eol = require('os').EOL;
 
-/* Set variables and constants used through out this file.  */
 const cwd = process.cwd();
 const path = cwd + '/atlas.config.js';
-const outputFileName = 'generatedModules.js'
-let outputFilePath = __dirname;
-outputFilePath += '/' + outputFileName;
+const warningMessage = "/* WARNING, THIS FILE WAS MACHINE GENERATED. DO NOT MODIFY THIS FILE DIRECTLY " + eol +
+                       "BECAUSE YOUR CHANGES WILL BE OVERWRITTEN WHEN THIS FILE IS GENERATED AGAIN. " + eol +
+                       "IF YOU WAN'T TO MODIFY THIS FILE YOU SHOULD BE MODIFYING THE GENERATOR IT'S SELF " + eol +
+                       "AND REGENERATE THIS FILE. */" + eol;
+
+let template = warningMessage;
+template += "import CSSModules from 'react-css-modules';" + eol + 
+            "{{~it.dependencies :value:index}}" + eol +
+            "import { {{=value.name}}Core } from 'react-atlas-core';" + eol + 
+            "import { {{=value.name}}Style } from '{{=value.theme}}';" + eol +
+            "export const {{=value.name}} = CSSModules({{=value.name}}Core, {{=value.name}}Style, {allowMultiple: true}); {{~}}" + eol;
+
+dot.templateSettings = {
+  evaluate:    /\{\{([\s\S]+?)\}\}/g,
+  interpolate: /\{\{=([\s\S]+?)\}\}/g,
+  encode:      /\{\{!([\s\S]+?)\}\}/g,
+  use:         /\{\{#([\s\S]+?)\}\}/g,
+  define:      /\{\{##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\}\}/g,
+  conditional: /\{\{\?(\?)?\s*([\s\S]*?)\s*\}\}/g,
+  iterate:     /\{\{~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\}\})/g,
+  varname: 'it',
+  strip: false,
+  append: true,
+  selfcontained: false
+};
+
+/* TODO: Replace hardcoded array with a dynamic solution. */
+let components = ['autocomplete', 'avatar', 'button', 'card', 'checkbox',
+                 'dialog', 'drawer', 'dropdown', 'dropdownContent', 'dropdownList',
+                 'dropdownListItem', 'dropdownTrigger', 'form', 'gridCol', 'gridRow',
+                 'header', 'hint', 'input', 'list', 'listItem', 'listText',
+                 'media', 'overlay', 'progressBar', 'radio', 'radioGroup', 'slider',
+                 'snackbar', 'switch', 'tab', 'tabContent', 'table', 'tabs', 'tbody',
+                 'td', 'tfoot', 'th', 'thead', 'tooltip', 'tr'];
 
 /* Check if a atlas config file exist or not. If the config file
-  does exist create a new output file. */
+  does exist create a new index file. */
 if(fs.existsSync(path)) {
-  createOutputFromConfig(path);
-  let config = require(path);
-  if(config.theme === 'react-atlas-default-theme') {
-    spawn.sync('./node_modules/webpack/bin/webpack.js', ['--config', __dirname + '/../webpack.config.js'], {
-      "env": process.env,
-      "cwd": cwd,
-      "stdio": "inherit"
-    });
-  } else {
-    /* Rebuild react-atlas library, but pass the theme string to exclude
-      from the rebuilding process. This allows react-atlas to rebuild with out
-      having access to the theme.  */
-    spawn.sync('./node_modules/webpack/bin/webpack.js', ['--config', __dirname + '/../webpack.config.js', '--env.external', config.theme], {
-      "env": process.env,
-      "cwd": cwd,
-      "stdio": "inherit"
-    });
-  }
-} else if(fs.existsSync(outputFilePath)) {
-  console.log("No atlas.config.js found, try passing --config /path/to/config");
-  return;
-} else {
-  /* No atlas config or generated output file so,
-     generate one with the default theme. */
-  createOutputFromGlobalTheme("react-atlas-default-theme");
+  // getComponentArray(cwd + '/node_modules/react-atlas-core/');
+  createIndexFromConfig(path);
 }
 
-/* Creates a generatedModules file where all components share a theme. */
-function createOutputFromGlobalTheme(theme) {
+/* Get an array of components by looping through components in react-atlas-core.
+  This will allow the user to not have to list every component inside of atlas.config.js. */
+function getComponentArray(path) {
+  fs.readlink(path, function(err, str) {
+    console.log("str: ", str);
+  });
+  let array = fs.readdirSync(fs.readlinkSync(path));
+  for(let i = 0; i < array.length - 1; i++) {
+    console.log(array[i]);
+  }
+}
+
+function createIndexFromGlobalTheme(theme) {
   let dependencies = [];
   for(let i = 0; i < components.length; i++) {
     let component = { 'name': components[i], 'theme': theme };
 
-    /* Make sure leading letter of the Component name is uppercase. */
+    /* Make sure leading letter is uppercase. */
     component.name = component.name[0].toUpperCase() + component.name.slice(1);
     dependencies.push(component);
   }
 
   let tempFn = dot.template(template);
   let resultText = tempFn({'dependencies': dependencies});
-  fs.writeFileSync(outputFilePath, resultText);
+  fs.writeFileSync(__dirname + '/generatedModules.js', resultText);
   return;
 }
 
 /* Read the config file, grab needed info and use the
  dotjs templating engine to output the index.js file for
  react-atlas. */
-function createOutputFromConfig() {
+function createIndexFromConfig() {
   let config = require(path);
   let dependencies = [];
   if(config.theme === '') {
-    for(let i = 0; i < config.components.length; i++) {
-      dependencies.push(config.components[i]);
-    }
-    let tempFn = dot.template(template);
-    let resultText = tempFn({'dependencies': dependencies});
-    fs.writeFileSync(outputFilePath, resultText);
-    return;
+  	for(let i = 0; i < config.components.length; i++) {
+  	  dependencies.push(config.components[i]);
+  	}
+  	let tempFn = dot.template(template);
+  	let resultText = tempFn({'dependencies': dependencies});
+  	fs.writeFileSync(__dirname + '/generatedModules.js', resultText);
+  	return;
   }
 
-  createOutputFromGlobalTheme(config.theme);
+  createIndexFromGlobalTheme(config.theme);
 }
+
+console.log("Finished generating index file: ", __dirname + '/generatedModules.js');
