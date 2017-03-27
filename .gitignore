@@ -9,4 +9,3 @@ styleguide
 jsconfig.json
 lerna-debug.log
 coverage
-packages/react-atlas/src/generatedModules.js
