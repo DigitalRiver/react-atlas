@@ -1,12 +1,11 @@
 import React, { PropTypes, Component } from "react";
 import ReactDOM from "react-dom";
-import themeable from "react-themeable";
-import { classNames } from "../utils";
+import cx from 'classNames';
 import events from "../utils/events";
 import prefixer from "../utils/prefixer";
 import utils from "../utils/utils";
-import ProgressBar from "../progressBar";
-import Input from "../input";
+import { default as ProgressBar } from "../progressBar/ProgressBar";
+import { default as Input } from "../input/Input";
 
 class Slider extends Component {
   state = {
@@ -228,31 +227,36 @@ class Slider extends Component {
     return utils.round(value, this.stepDecimals());
   }
 
-  renderKnob(theme) {
+  renderKnob() {
     const knobValue = this.state.value;
     const offset = this.calculateKnobOffset(knobValue);
     const knobStyles = prefixer({ "left": `${offset - 5}%` });
-    const innerknobDisabled = this.props.disabled ? "innerknobDisabled" : "innerknob"
-    const className = classNames(innerknobDisabled, {
-      "pressed": knobValue !== this.state.otherKnobValue
-    });
+    const innerknobDisabled = this.props.disabled ? "innerknobDisabled" : "innerknob";
+    
+    const knobClasses = cx(
+      innerknobDisabled,
+      {
+        "pressed": knobValue !== this.state.otherKnobValue
+      }
+    );
+
     return (
       <div
         ref={(node) => { this.knobNode = node }}
-        {...theme(10, "knob")}
+        styleName={cx("knob")}
         onMouseDown={this.handleMouseDown}
         onTouchStart={this.handleTouchStart}
         style={knobStyles}
       >
         <div
-          {...theme(11, ...className)}
+          styleName={knobClasses}
           data-value={parseInt(this.state.value)}
         />
       </div>
     );
   }
 
-  renderInput(theme) {
+  renderInput() {
     if (this.props.editable) {
       let value = this.state.inputFocused
         ? this.state.inputValue
@@ -261,12 +265,11 @@ class Slider extends Component {
         <Input
           ref={(node) => { this.inputNode = node}}
           disabled={this.props.disabled}
-          {...theme(14, "input")}
+          styleName={cx("input")}
           onFocus={this.handleInputFocus}
           onChange={this.handleInputChange}
           onBlur={this.handleInputBlur}
           value={value}
-          theme={this.props.theme}
         />
       );
     }
@@ -274,8 +277,7 @@ class Slider extends Component {
   }
 
   render() {
-    const theme = themeable(this.props.theme);
-    const className = classNames(
+    const classes = cx(
       "root",
       {
         "editable": this.props.editable,
@@ -283,26 +285,26 @@ class Slider extends Component {
         "pressed": this.state.pressed,
         "ring": this.state.value === this.props.min,
         "disabled": this.props.disabled ? "disabled" : null
-      },
-      this.props.className
+      }
     );
 
     return (
       <div
         disabled={this.props.disabled}
-        {...theme(15, ...className)}
+        styleName={classes}
+        className={this.props.className}
         onBlur={this.handleSliderBlur}
         onFocus={this.handleSliderFocus}
         tabIndex="0"
       >
         <div
           ref={(node) => {this.slider = node}}
-          {...theme(16, "container")}
+          styleName={cx("container")}
           onMouseDown={this.handleMouseDown}
           onTouchStart={this.handleTouchStart}
         >
 
-          <div {...theme(17, "progress")}>
+          <div styleName={cx("progress")}>
             <ProgressBar
               ref={(node) => { this.progressBar = node; }}
               disabled={this.props.disabled}
@@ -310,10 +312,10 @@ class Slider extends Component {
               value={{"from": 0, "to": this.state.value}}
             />
 
-            {this.renderKnob(theme)}
+            {this.renderKnob()}
           </div>
         </div>
-        {this.renderInput(theme)}
+        {this.renderInput()}
       </div>
     );
   }
