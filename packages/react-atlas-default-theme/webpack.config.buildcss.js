@@ -35,7 +35,11 @@ module.exports = {
             'postcss-loader'
           ]
         )
-      }
+      },
+        { test: /\.less$/,
+            loader: ExtractTextPlugin.extract('style', `css!less`) },
+        { test: /\.eot$|\.ttf$|\.svg$|\.woff2?$/, loader: 'file?name=[name].[ext]' },
+        { test: /\.jpe?g$|\.gif$|\.png|\.ico$/, loader: 'file?name=[name].[ext]' }
     ]
   },
   postcss: function (bundler) {

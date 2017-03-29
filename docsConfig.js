@@ -31,8 +31,12 @@ module.exports = {
           loader: ExtractTextPlugin.extract(
             "style",
             "css?sourceMap&modules&importLoaders=1&localIdentName=ra_[name]__[local]!postcss"
-          )
-        }
+            )
+        },
+          { test: /\.less$/,
+              loader: ExtractTextPlugin.extract('style', `css!less`) },
+          { test: /\.eot$|\.ttf$|\.svg$|\.woff2?$/, loader: 'file?name=[name].[ext]' },
+          { test: /\.jpe?g$|\.gif$|\.png|\.ico$/, loader: 'file?name=[name].[ext]' }
       ]
     },
     plugins: [

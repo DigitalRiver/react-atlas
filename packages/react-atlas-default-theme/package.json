@@ -33,7 +33,9 @@
     "react-addons-css-transition-group": "^15.0.2",
     "normalize.css": "^4.1.1",
     "react-autosuggest": "^3.7.3",
-    "react-atlas-core": "^0.0.10"
+    "react-atlas-core": "^0.0.10",
+    "react-bootstrap-table": "3.1.1",
+    "bootstrap": "^3.3.6"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -79,7 +81,10 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.10.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "file-loader": "^0.9.0"
   },
   "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas-default-theme"
 }

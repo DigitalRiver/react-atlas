@@ -26,12 +26,7 @@ export {
   Snackbar,
   Switch,
   Table,
-  Thead,
-  Th,
-  Tbody,
-  Tr,
-  Td,
-  Tfoot,
+  TableHeaderColumn,
   Tabs,
   Tab,
   Tooltip

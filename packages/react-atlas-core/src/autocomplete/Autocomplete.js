@@ -132,7 +132,7 @@ Autocomplete.defaultProps = {
 
 Autocomplete.styleguide = {
   "category": "Form Components",
-  "index": "3.1",
+  "index": "3.12",
   "wrappedExample": true,
   "example": 
     `
