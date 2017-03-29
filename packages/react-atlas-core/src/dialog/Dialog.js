@@ -1,13 +1,11 @@
 import React, { PropTypes } from "react";
-import { classNames } from "../utils";
-import Overlay from "../overlay";
-import themeable from "react-themeable";
+import { OverlayCore } from "../index.js";
+import cx from 'classNames';
 
 const Dialog = (
   { body, active, type, children, className, onOverlayClick, ...props }
 ) => {
-  const theme = themeable(props.theme);
-  const componentClasses = classNames({
+  const componentClasses = cx({
     "inactive": !active,
     type,
     active,
@@ -15,13 +13,13 @@ const Dialog = (
   });
 
   return (
-    <Overlay active={active} onClick={onOverlayClick}>
-      <div {...theme(1, ...componentClasses)}>
+    <OverlayCore {...props} className={componentClasses} active={active} onClick={onOverlayClick}>
+      <div>
         <section className={body}>
           {children}
         </section>
       </div>
-    </Overlay>
+    </OverlayCore>
   );
 };
 
@@ -43,11 +41,7 @@ Dialog.propTypes = {
    * What type/size of modal. Choose from 'small', 'normal', 'large'.
    */
   "type": PropTypes.oneOf(["large", "small", "normal"]),
-  "body": PropTypes.string,
-  /**
-   * The theme object.
-   */
-  "theme": PropTypes.object
+  "body": PropTypes.string
 };
 
 Dialog.defaultProps = { "active": false, "type": "normal", "className": "" };

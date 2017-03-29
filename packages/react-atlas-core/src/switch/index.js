@@ -1,1 +1,2 @@
-export default from "./Switch";
+import { default as SwitchCore } from "./Switch";
+export { SwitchCore };

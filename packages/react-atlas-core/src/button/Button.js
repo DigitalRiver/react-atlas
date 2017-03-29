@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 /**
  * A Generic button component.
@@ -8,7 +8,6 @@ const Button = (
   {
     className,
     outline,
-    href,
     loading,
     primary,
     secondary,
@@ -18,19 +17,22 @@ const Button = (
     link,
     disabled,
     children,
+    mini,
+    large,
+    small,
     ...props
   }
 ) => {
-  const theme = themeable(props.theme);
-
-  const element = href ? "a" : "button";
-
-  let role;
-  if (element === "a") {
-    role = "button";
-  }
-
   const disabledStyle = disabled || loading ? "disabled" : "";
+
+  let size;
+  if(large) {
+    size = "large";
+  } else if(small) {
+    size = "small";
+  } else if(mini) {
+    size = "mini";
+  }
 
   let mainStyle = "button";
   if (primary) {
@@ -47,20 +49,16 @@ const Button = (
     mainStyle = "link";
   }
 
-  if (outline && !secondary) {
-    mainStyle += "_outline";
+  let outlineStyle = "button";
+  if(outline) {
+    outlineStyle = "outline";
   }
 
-  const otherProps = {
-    ...props,
-    href,
-    className,
-    "disabled": disabled || loading,
-    role,
-    ...theme(1, mainStyle, disabledStyle)
-  };
-
-  return React.createElement(element, otherProps, children);
+  const classes = cx(mainStyle, disabledStyle, size, outlineStyle);
+  
+  return (
+    <button {...props} className={cx(className)} styleName={classes}>{children}</button>
+  )
 };
 
 Button.styleguide = {
@@ -135,10 +133,10 @@ Button.styleguide = {
 
 Button.propTypes = {
   /**
-     * The theme object.
+     * Define a mini button.
      *
      */
-  "theme": PropTypes.object,
+  "mini": PropTypes.bool,
   /**
      * Anything that can be in a button. Usually text, but could also be icons/glyphs.
      * @examples 'Save', 'Cancel'
@@ -219,7 +217,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   "children": "Default Button",
-  "className": "",
   "outline": false,
   "loading": false,
   "mini": false,

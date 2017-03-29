@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 /**
  * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
@@ -40,11 +40,10 @@ export default class Avatar extends React.Component {
   }
 
   render() {
-    const theme = themeable(this.props.theme);
     let { children, icon, title } = this.props;
     let kids = children;
     if (React.Children.count(children) === 1 && typeof children === "string") {
-      kids = <span {...theme(4, "letter")}>{children[0]}</span>;
+      kids = <span styleName={cx("letter")}>{children[0]}</span>;
     }
 
     let avatar = null;
@@ -56,7 +55,7 @@ export default class Avatar extends React.Component {
           src={image}
           title={title}
           onError={this.handleBadImage.bind(this)}
-          {...theme(3, "image")}
+          styleName={cx("image")}
         />
       ;
     } else if (image) {
@@ -64,11 +63,11 @@ export default class Avatar extends React.Component {
     } else if (icon) {
       avatar = icon;
     } else if (title) {
-      avatar = <span {...theme(2, "letter")}>{title[0]}</span>;
+      avatar = <span styleName={cx("letter")}>{title[0]}</span>;
     }
 
     return (
-      <div {...theme(1, "avatar")}>
+      <div styleName={cx("avatar")}>
         {kids}
         {avatar}
       </div>
@@ -104,22 +103,7 @@ Avatar.propTypes = {
   /**
     * A URL to a image that is displayed when the main image fails to load.
     */
-  "defaultImage": PropTypes.string,
-  "theme": React.PropTypes.shape({
-    "letter": React.PropTypes.string,
-    "image": React.PropTypes.string,
-    "avatar": React.PropTypes.string
-  })
-};
-
-Avatar.defaultProps = {
-  "className": "",
-  "icon": "",
-  "theme": {
-    "letter": "ra_avatar__letter",
-    "image": "ra_avatar__image",
-    "avatar": "ra_avatar__avatar"
-  }
+  "defaultImage": PropTypes.string
 };
 
 Avatar.styleguide = {

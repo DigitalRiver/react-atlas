@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import themeable from "react-themeable";
-import { classNames } from "../utils";
+import cx from 'classNames';
 
 class Snackbar extends Component {
   componentDidUpdate() {
@@ -16,9 +15,7 @@ class Snackbar extends Component {
 
   render() {
     const { active, className, ...props } = this.props;
-
-    const theme = themeable(props.theme);
-    const classes = classNames(
+    const classes = cx(
       {
         "root": true,
         active
@@ -27,10 +24,10 @@ class Snackbar extends Component {
     );
 
     return (
-      <div {...theme(1, ...classes)}>
+      <div styleName={classes}>
         {React.Children.map(this.props.children, child => {
           if (typeof child === "string") {
-            return <span {...theme(1, "text")}>{child}</span>;
+            return <span styleName={cx("text")}>{child}</span>;
           } else {
             return child;
           }
@@ -46,12 +43,6 @@ Snackbar.propTypes = {
   "timeout": PropTypes.number,
   "onTimeout": PropTypes.func,
   "children": PropTypes.node
-};
-
-Snackbar.defaultProps = {
-  "theme": {
-    "root": true
-  }
 };
 
 Snackbar.styleguide = {

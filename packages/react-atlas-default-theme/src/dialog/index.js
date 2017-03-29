@@ -1,1 +1,2 @@
-export default from "./Dialog";
+import * as DialogStyle from "./Dialog.css";
+export { DialogStyle };

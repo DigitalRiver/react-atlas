@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import themeable from "react-themeable";
-import { classNames } from "../utils";
+import cx from 'classNames';
 
 /*
  * A CSS driven tooltip that gives more information when an element it wraps is hovered over.
@@ -9,10 +8,9 @@ class Tooltip extends Component {
   render() {
     const { children, position, tooltip, inline, ...other } = this.props;
 
-    const theme = themeable(other.theme);
     let tooltipClasses;
     if (!children.props.disabled) {
-      tooltipClasses = classNames({
+      tooltipClasses = cx({
         "tooltip": true,
         "tooltip-top": 
           position !== "left" && position !== "bottom" && position !== "right"
@@ -30,9 +28,11 @@ class Tooltip extends Component {
       "data-tooltip": tooltip
     };
 
-    Object.assign(props, theme(1, "block", ...tooltipClasses));
-
-    return React.createElement(element, props, children);
+    return (
+      <div {...props} styleName={'block ' + tooltipClasses}>
+        {children}
+      </div>
+    )
   }
 }
 

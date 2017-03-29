@@ -1,1 +1,2 @@
-export default from "./Header";
+import { default as HeaderCore } from "./Header";
+export { HeaderCore };

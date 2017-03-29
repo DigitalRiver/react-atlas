@@ -1,1 +1,2 @@
-export default from "./Slider";
+import { default as SliderCore } from "./Slider";
+export { SliderCore };

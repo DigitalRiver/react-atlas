@@ -1,1 +1,2 @@
-export default from "./Tooltip";
+import { default as TooltipCore } from "./Tooltip";
+export { TooltipCore };

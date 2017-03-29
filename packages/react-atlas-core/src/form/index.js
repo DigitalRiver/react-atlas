@@ -1,1 +1,2 @@
-export default from "./Form";
+import { default as FormCore } from "./Form";
+export { FormCore };

@@ -1,3 +1,2 @@
-export List from "./List";
-export ListItem from "./ListItem";
-export ListText from "./ListText";
+import * as ListStyle from "./list.css";
+export { ListStyle };

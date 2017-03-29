@@ -1,3 +1,3 @@
-export List from "./List";
-export ListItem from "./ListItem";
-export ListText from "./ListText";
+import { default as ListCore } from "./List";
+export { ListCore };
+

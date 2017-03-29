@@ -1,6 +1,5 @@
 import React from "react";
-import themeable from "react-themeable";
-import { classNames } from "../utils";
+import cx from 'classNames';
 
 export default class Switch extends React.Component {
   render() {
@@ -19,30 +18,28 @@ export default class Switch extends React.Component {
       ...other
     } = this.props;
 
-    const theme = themeable(other.theme);
-
-    let offClassName = classNames({
+    let offClassName = cx({
       "sliderSmall": small && !medium && !large,
       "sliderMedium": !small && !large,
       "sliderLarge": large && !medium && !small,
       disabled
     });
 
-    let inputClassName = classNames({
+    let inputClassName = cx({
       "inputSmall": small && !medium && !large,
       "inputMedium": !small && !large,
       "inputLarge": large && !medium && !small,
       disabled
     });
 
-    let buttonClassName = classNames({
+    let buttonClassName = cx({
       "handleSmall": small && !medium && !large,
       "handleMedium": !small && !large,
       "handleLarge": large && !medium && !small,
       disabled
     });
 
-    let onClassName = classNames({
+    let onClassName = cx({
       "onColorSmall": small && !medium && !large,
       "onColorMedium": !small && !large,
       "onColorLarge": large && !medium && !small
@@ -61,14 +58,14 @@ export default class Switch extends React.Component {
     };
 
     return (
-      <label {...theme(1, ...offClassName)} style={offColorStyle}>
+      <label styleName={offClassName} style={offColorStyle}>
         <input
-          {...theme(2, ...inputClassName)}
+          styleName={inputClassName}
           style={onColorStyle}
           type="checkbox"
         />
-        <div {...theme(3, ...buttonClassName)} style={buttonColorStyle} />
-        <div {...theme(4, ...onClassName)} style={onColorStyle} />
+        <div styleName={buttonClassName} style={buttonColorStyle} />
+        <div styleName={onClassName} style={onColorStyle} />
       </label>
     );
   }

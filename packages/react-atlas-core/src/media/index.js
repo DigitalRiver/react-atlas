@@ -1,1 +1,2 @@
-export default from "./Media";
+import { default as MediaCore } from "./Media";
+export { MediaCore };

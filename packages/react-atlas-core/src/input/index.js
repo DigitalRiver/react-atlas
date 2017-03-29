@@ -1,1 +1,2 @@
-export default from "./Input";
+import { default as InputCore } from "./Input";
+export { InputCore };

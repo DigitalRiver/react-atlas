@@ -1,29 +1,12 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { classNames } from "../utils";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 /**
  * Overlay component adds a 'shadowbox' to screen. Mostly used internally in the lib on the `<Dialog>` component.
  */
 class Overlay extends Component {
-  componentDidMount() {
-    this.overlay = document.createElement("div");
-    this.overlay.setAttribute("data-react-atlas", "overlay");
-    document.body.appendChild(this.overlay);
-    this.handleRender();
-  }
-
-  componentDidUpdate() {
-    this.handleRender();
-  }
-
-  componentWillUnmount() {
-    ReactDOM.unmountComponentAtNode(this.overlay);
-    document.body.removeChild(this.overlay);
-  }
-
-  handleRender() {
+  render() {
     const {
       className,
       active,
@@ -33,30 +16,25 @@ class Overlay extends Component {
       ...other
     } = this.props;
 
-    const theme = themeable(other.theme);
-    const classes = classNames({
+    const classes = cx({
       "inactive": !active,
       active,
       invisible,
       [`${className}`]: className
     });
 
-    const overlayClasses = classNames({
+    const overlayClasses = cx({
       "overlayActive": active,
       "overlayInactive": !active
     });
 
-    ReactDOM.render(
-      <div {...theme(1, ...classes)}>
-        <div {...theme(2, ...overlayClasses)} onClick={onClick} />
-        {children}
-      </div>,
-      this.overlay
+    return(
+      <div styleName={classes}>
+        <div styleName={overlayClasses} onClick={onClick}>
+          {children}
+        </div>
+      </div>
     );
-  }
-
-  render() {
-    return null;
   }
 }
 
@@ -69,10 +47,7 @@ Overlay.propTypes = {
 };
 
 Overlay.defaultProps = {
-  "invisible": false,
-  "theme": {
-    "active": true
-  }
+  "invisible": false
 };
 
 Overlay.styleguide = {

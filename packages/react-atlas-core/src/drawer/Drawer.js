@@ -1,23 +1,20 @@
 import React, { PropTypes } from "react";
-import { classNames } from "../utils";
-import Overlay from "../overlay";
-import themeable from "react-themeable";
+import { OverlayCore } from "../index.js";
+import cx from "classNames";
 
 const Drawer = ({ active, className, type, onOverlayClick, ...props }) => {
-  const theme = themeable(props.theme);
-  const classes = classNames(
-    { "container": true, "left": type === "left", "right": type === "right", active },
-    className
+  const classes = cx(
+    { "container": true, "left": type === "left", "right": type === "right", active }
   );
 
   return (
-    <Overlay active={active} onClick={onOverlayClick}>
-      <div {...theme(1, ...classes)}>
+    <OverlayCore active={active} onClick={onOverlayClick}>
+      <div styleName={cx(classes)} className={className}>
         <aside>
           {props.children}
         </aside>
       </div>
-    </Overlay>
+    </OverlayCore>
   );
 };
 
@@ -26,12 +23,7 @@ Drawer.propTypes = {
   "children": React.PropTypes.node,
   "className": React.PropTypes.string,
   "onOverlayClick": React.PropTypes.func,
-  "type": React.PropTypes.oneOf(["left", "right"]),
-  /**
-     * The theme object.
-     *
-     */
-  "theme": PropTypes.object
+  "type": React.PropTypes.oneOf(["left", "right"])
 };
 
 Drawer.defaultProps = { "active": false, "className": "", "type": "left" };

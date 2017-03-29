@@ -1,11 +1,11 @@
 import React from "react";
 import { mount } from "enzyme";
 import { expect } from "chai";
-import Card from "../../card";
+import { CardCore } from "../../index";
 
 describe("Test Card component", () => {
   it("Test default props", function() {
-    const result = mount(<Card />);
+    const result = mount(<CardCore />);
 
     /* Make sure card returns the correct default text.  */
     expect(result.props().children).to.equal(<p>Some card text.</p>);
