@@ -73,7 +73,15 @@ function createIndexFromGlobalTheme(theme) {
 
   let tempFn = dot.template(template);
   let resultText = tempFn({'dependencies': dependencies});
-  fs.writeFileSync(__dirname + '/generatedModules.js', resultText);
+  try {
+    fs.writeFileSync(__dirname + '/generatedModules.js', resultText);
+  }
+  catch(err) {
+    console.log("Failed generating modules file: ", err);
+    return;
+  }
+
+  console.log("Finished generating modules file: ", __dirname + '/generatedModules.js');
   return;
 }
 
@@ -84,16 +92,24 @@ function createIndexFromConfig() {
   let config = require(path);
   let dependencies = [];
   if(config.theme === '') {
-  	for(let i = 0; i < config.components.length; i++) {
-  	  dependencies.push(config.components[i]);
-  	}
-  	let tempFn = dot.template(template);
-  	let resultText = tempFn({'dependencies': dependencies});
-  	fs.writeFileSync(__dirname + '/generatedModules.js', resultText);
-  	return;
+    for(let i = 0; i < config.components.length; i++) {
+      dependencies.push(config.components[i]);
+    }
+    let tempFn = dot.template(template);
+    let resultText = tempFn({'dependencies': dependencies});
+    try {
+      fs.writeFileSync(__dirname + '/generatedModules.js', resultText);
+    }
+    catch(err) {
+      console.log("Failed generating modules file: ", err);
+      return;
+    }
+
+    console.log("Finished generating modules file: ", __dirname + '/generatedModules.js');
+
+    return;
   }
 
   createIndexFromGlobalTheme(config.theme);
 }
 
-console.log("Finished generating index file: ", __dirname + '/generatedModules.js');
