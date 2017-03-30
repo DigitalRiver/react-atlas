@@ -45,6 +45,8 @@ let components = ['autocomplete', 'avatar', 'button', 'card', 'checkbox',
 if(fs.existsSync(path)) {
   // getComponentArray(cwd + '/node_modules/react-atlas-core/');
   createIndexFromConfig(path);
+} else {
+  createIndexFromGlobalTheme("react-atlas-default-theme");
 }
 
 /* Get an array of components by looping through components in react-atlas-core.
