@@ -5,31 +5,39 @@
 @custom-media --breakpoint-lg (min-width: 64em);
 
 :root {
+  /* Blue */
+  --aqua:         #7fdbff;
+  --blue:         #007EB5;
+  --navy:         #001f3f;
+  --teal:         #39cccc;
+  --sky-blue:     #00A7E1;
+
   /* Cool */
-  --aqua:   #7fdbff;
-  --blue:   #0074d9;
-  --navy:   #001f3f;
-  --teal:   #39cccc;
-  --green:  #2ecc40;
-  --olive:  #3d9970;
-  --lime:   #01ff70;
+  --green:        #2ecc40;
+  --kelly-green:  #81b315;
+  --olive:        #3d9970;
+  --lime:         #01ff70;
+  --ylw-green:    #a8c628;
 
   /* Warm */
-  --yellow: #ffdc00;
-  --orange: #ff851b;
-  --red:    #ff4136;
-  --fuchsia:#f012be;
-  --purple: #b10dc9;
-  --maroon: #85144b;
+  --yellow:       #ffdc00;
+  --orange:       #ff851b;
+  --red:          #ff4136;
+  --fuchsia:      #f012be;
+  --purple:       #b10dc9;
+  --maroon:       #85144b;
 
   /* Gray scale */
-  --white:  #fff;
-  --silver: #ddd;
-  --gray:   #aaa;
-  --black:  #111;
+  --white:        #fff;
+  --silver:       #e6e6e6;
+  --gray:         #ccc;
+  --med-grey:     #999;
+  --dark-grey:    #666;
+  --charcoal:     #333;
+  --black:        #111;
 
   /*standard variables*/
-  --font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  --font-family: arial, "Helvetica Neue", Helvetica;
   --line-height: 1.5;
   --heading-font-family: var(--font-family);
   --heading-font-weight: bold;
@@ -68,6 +76,7 @@
   --lighten-4: rgba(255,255,255,.5);
 
   --border-width: 1px;
+  --buttom-border-width: 2px;
   --border-radius: .25rem;
   --border-color: var(--darken-2);
 }

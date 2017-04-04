@@ -47,11 +47,13 @@ const Button = (
     mainStyle = "danger";
   } else if (link) {
     mainStyle = "link";
+  } else {
+    mainStyle = "default";
   }
 
   let outlineStyle = "button";
   if(outline) {
-    outlineStyle = "outline";
+    mainStyle += "_outline";
   }
 
   const classes = cx(mainStyle, disabledStyle, size, outlineStyle);
