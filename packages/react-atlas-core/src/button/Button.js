@@ -20,6 +20,7 @@ const Button = (
     mini,
     large,
     small,
+    icon,
     ...props
   }
 ) => {
@@ -47,8 +48,6 @@ const Button = (
     mainStyle = "danger";
   } else if (link) {
     mainStyle = "link";
-  } else {
-    mainStyle = "default";
   }
 
   let outlineStyle = "button";
