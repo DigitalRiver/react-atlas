@@ -35,7 +35,3 @@ export { DialogCore } from "./dialog";
 export { DrawerCore } from "./drawer";
 export { SliderCore } from "./slider";
 export { DropdownCore } from "./dropdown";
-export { DropdownContentCore } from "./dropdownContent";
-export { DropdownListCore } from "./dropdownList";
-export { DropdownListItemCore } from "./dropdownListItem";
-export { DropdownTriggerCore } from "./dropdownTrigger";

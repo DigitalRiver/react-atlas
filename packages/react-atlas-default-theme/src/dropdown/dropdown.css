@@ -1,6 +1,7 @@
 .container {
   display: inline-block;
   position: relative;
+  min-width: 8rem;
 }
 
 .content {
@@ -44,9 +45,37 @@
   composes: pad-h-2 from '../styles.css';
   composes: hover-white from '../styles.css';
   composes: hover-bg-blue from '../styles.css';
-  white-space: nowrap
+  white-space: nowrap;
 }
 
 .item:hover {
   text-decoration: none;
+}
+
+i {
+  border: solid #999999;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  vertical-align: middle;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  float: right;
+}
+
+.arrow {
+  top: 2pt;
+  width: 0.4em;
+  height: 0.4em;
+  border-right: 0.2em;
+  border-top: 0.2em;
+}
+
+.dropdown-button {
+  min-width: 100%;
+  padding-left: 0px;
+  padding-left: 0.5rem;
+  text-align: left;
+  white-space: nowrap;
 }

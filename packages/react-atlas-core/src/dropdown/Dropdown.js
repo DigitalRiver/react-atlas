@@ -7,9 +7,7 @@ Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 
 import React, { cloneElement, Component, PropTypes } from "react";
 import cx from 'classNames';
-import DropdownTriggerCore from "./index";
-import DropdownContentCore from "./index";
-import { findDOMNode } from "react-dom";
+import { ButtonCore } from "../index";
 
 /**
  * Simple Composable Dropdown Component that wraps DropdownTrigger and DropdownContent components. Primarily useful for Navigational dropdowns, not form select dropdowns.
@@ -18,90 +16,56 @@ class Dropdown extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      "active": false
+      "active": false,
+      "output": "Select One"
     };
   }
 
-  componentDidMount() {
-    window.addEventListener("click", this._onWindowClick);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("click", this._onWindowClick);
-  }
+  _toggle = event => {
+    this.setState({'active': !this.state.active});
+  };
 
   _onWindowClick = event => {
-    const dropdown_element = findDOMNode(this);
-    if (
-      event.target !== dropdown_element &&
-        !dropdown_element.contains(event.target) &&
-        this._isActive()
-    ) {
-      this._hide();
-    }
-  };
-
-  _onToggleClick = event => {
     event.preventDefault();
-    if (this._isActive()) {
-      this._hide();
-    } else {
-      this._show();
-    }
-  };
-
-  _isActive = () => {
-    return typeof this.props.active === "boolean"
-      ? this.props.active
-      : this.state.active;
-  };
-
-  _hide = () => {
-    this.setState({
-      "active": false
-    });
-    if (this.props.onHide) {
-      this.props.onHide();
-    }
-  };
-
-  _show = () => {
-    this.setState({
-      "active": true
-    });
-    if (this.props.onShow) {
-      this.props.onShow();
-    }
+    this.setState({'output': event.target.innerText, 
+                   'active': !this.state.active});
   };
 
   render() {
     const { children, className, ...props } = this.props;
+    const active = this.state.active;
 
-    // create component classes
-    const active = this._isActive();
     const classes = cx(
-      {
-        "container": true
-      }
-    );
+    {
+      "content": true,
+      "active": active,
+      "container": true
+    });
 
-    // stick callback on trigger element
     const bound_children = React.Children.map(children, child => {
-      if (child.type.displayName === "DropdownTrigger") {
-        child = cloneElement(child, {
-          "onClick": this._onToggleClick
-        });
-      } else if (child.type.displayName === "DropdownContent") {
-        child = cloneElement(child, {
-          active
-        });
-      }
-      return child;
+      let kid = <li styleName={"item"} onClick={this._onWindowClick}>{child}</li>
+      return kid;
+    });
+
+    const buttonClasses = cx({
+      'ra_button__button': true,
+      'ra_button__default_btn': true,
+      'ra_button__base': true,
+      'ra_styles__bg-blue': true,
+      'ra_styles__pad-v-1': true,
+      'ra_styles__pad-h-2': true,
+      'ra_styles__border': true,
+      'ra_styles__cursor-pointer': true,
+      'ra_styles__rounded': true,
+      'ra_styles__white': true,
+      'ra_styles__border-transparent': true,
+      'ra_dropdown__dropdown-button': true
     });
 
     return (
-      <div {...props} className={className} styleName={classes}>
-        {bound_children}
+      <div {...props} className={className} styleName={classes} onClick={this._toggle}>
+        <ButtonCore className={buttonClasses}>{this.state.output}<i className="arrow"></i></ButtonCore>
+        {this.state.active ? <div styleName={"list"}>{bound_children}</div> : null}
       </div>
     );
   }
@@ -148,20 +112,9 @@ class DropdownExample extends React.Component {
     return (
       <section>
         <h5>Dropdown</h5>
-        <p>lorem ipsum...</p>
-
         <Dropdown>
-          <DropdownTrigger>
-            <Button>Dropdown Button</Button>
-          </DropdownTrigger>
-          <DropdownContent>
-            <DropdownList>
-              {countries.map((country, idx) => (
-                <DropdownListItem key={idx}>{country.label}</DropdownListItem>
-              ))}
-            </DropdownList>
-          </DropdownContent>
-        </DropdownCore>
+          {countries.map((country, idx) => (country.label))}
+        </Dropdown>
       </section>
     );
 // Mount Component {
