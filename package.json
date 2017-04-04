@@ -17,7 +17,8 @@
     "packages:build": "node buildPackages.js",
     "setup": "npm run packages:install && npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
     "generateFiles": "node packages/react-atlas/src/setup.js",
-    "bootstrap": "npm run packages:install && npm run generateFiles && npm run lerna:init && npm run lerna:bootstrap && npm run packages:build"
+    "bootstrap": "npm run packages:install && npm run generateFiles && npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
+    "styleguide": "cd packages/react-atlas-docs && npm run styleguide"
   },
   "jest": {
     "collectCoverageFrom": [
