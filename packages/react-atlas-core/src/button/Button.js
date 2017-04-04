@@ -50,6 +50,11 @@ const Button = (
     mainStyle = "link";
   }
 
+  let iconStyle = "icon"
+  if (icon) {
+    console.log("icon: ", icon)
+  }
+
   let outlineStyle = "button";
   if(outline) {
     mainStyle += "_outline";
@@ -75,6 +80,7 @@ Button.styleguide = {
     <Button success>Success</Button>
     <Button warning>Warning</Button>
     <Button danger>Danger</Button>
+    <Button icon="fa-github">Danger</Button>
     <Button href="#" link>Link</Button>
     <p>Disabled Regular Buttons</p>
     <Button disabled primary>Button</Button>
