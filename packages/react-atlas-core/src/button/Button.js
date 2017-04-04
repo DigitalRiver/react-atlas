@@ -52,7 +52,6 @@ const Button = (
 
   let iconStyle = "icon"
   if (icon) {
-    console.log("icon: ", icon)
   }
 
   let outlineStyle = "button";
