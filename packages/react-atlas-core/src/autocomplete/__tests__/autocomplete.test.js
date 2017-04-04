@@ -1,7 +1,7 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 import { expect } from "chai";
-import Autocomplete from "../../autocomplete";
+import { AutocompleteCore } from "../../index";
 
 let count = 0;
 let inputProps = {
@@ -12,15 +12,9 @@ let inputProps = {
   }
 };
 
-let badValueProps = {};
-
-let badOnChangeProps = {
-  "value": "value"
-};
-
 describe("Test Autocomplete component", () => {
   it("Test default props", function() {
-    const result = mount(<Autocomplete inputProps={inputProps} />);
+    const result = mount(<AutocompleteCore inputProps={inputProps} />);
     expect(typeof result.props().onSuggestionsUpdateRequested).to.equal(
       "function"
     );
@@ -38,22 +32,13 @@ describe("Test Autocomplete component", () => {
   });
 
   it("Check inputProps", function() {
-    const result = mount(<Autocomplete inputProps={inputProps} />);
+    const result = mount(<AutocompleteCore inputProps={inputProps} />);
     expect(result.props().inputProps).to.equal(inputProps);
   });
 
   it("Make sure onChange function can be called", function() {
-    const result = shallow(<Autocomplete inputProps={inputProps} />);
+    const result = shallow(<AutocompleteCore inputProps={inputProps} />);
     result.simulate("change", { "target": { "value": "1234567890!!!" } });
     expect(count).to.equal(1);
-  });
-
-  it("Make sure error is thrown when no value is set.", function() {
-    // const result = mount(<Autocomplete inputProps={badValueProps}></Autocomplete>)
-    // expect(result.).to.throw(Error);
-  });
-
-  it("Make sure error is thrown when no onChange is set.", function() {
-    // expect(mount(<Autocomplete inputProps={badOnChangeProps}></Autocomplete>)).toThrow(new Error('\'inputProps\' must have \'onChange\'.'));
   });
 });

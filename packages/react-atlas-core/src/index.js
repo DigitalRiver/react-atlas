@@ -1,33 +1,41 @@
-// import './utils/polyfills'; // Import polyfills for IE11
-export Autocomplete from "./autocomplete";
-export Avatar from "./avatar";
-export Button from "./button";
-export Card from "./card";
-export Checkbox from "./checkbox";
-export Dialog from "./dialog";
-export Drawer from "./drawer";
-export {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-  DropdownList,
-  DropdownListItem
-} from "./dropdown";
-export Form from "./form";
-export GridCol from "./grid_col";
-export GridRow from "./grid_row";
-export Header from "./header";
-export Hint from "./hint";
-export Input from "./input";
-export { List, ListItem, ListText } from "./list";
-export Media from "./media";
-export Overlay from "./overlay";
-export ProgressBar from "./progress_bar";
-export { Radio, RadioGroup } from "./radio";
-export Slider from "./slider";
-export Snackbar from "./snackbar";
-export Switch from "./switch";
-export { Table, Thead, Th, Tbody, Tr, Td, Tfoot } from "./table";
-export Tabs from "./tabs/Tabs";
-export Tab from "./tabs/Tab";
-export Tooltip from "./tooltip";
+export { AutocompleteCore } from "./autocomplete";
+export { AvatarCore } from "./avatar";
+export { ButtonCore } from "./button";
+export { FormCore } from "./form";
+export { HintCore } from "./hint";
+export { HeaderCore } from "./header";
+export { ListCore } from "./list";
+export { ListItemCore } from "./listItem";
+export { ListTextCore } from "./listText";
+export { InputCore } from "./input";
+export { MediaCore } from "./media";
+export { OverlayCore } from "./overlay";
+export { ProgressBarCore } from "./progressBar";
+export { RadioCore } from "./radio";
+export { RadioGroupCore } from "./radioGroup";
+export { GridColCore } from "./gridCol";
+export { GridRowCore } from "./gridRow";
+// export RadioGroup from "./radio";
+export { SnackbarCore } from "./snackbar";
+export { TableCore } from "./table";
+export { TbodyCore } from "./tbody";
+export { TdCore } from "./td";
+export { TfootCore } from "./tfoot";
+export { ThCore } from "./th";
+export { TheadCore } from "./thead";
+export { TrCore } from "./tr";
+export { TabCore } from "./tab";
+export { TabsCore } from "./tabs";
+export { TabContentCore } from "./tabContent";
+export { SwitchCore } from "./switch";
+export { TooltipCore } from "./tooltip";
+export { CardCore } from "./card";
+export { CheckboxCore } from "./checkbox";
+export { DialogCore } from "./dialog";
+export { DrawerCore } from "./drawer";
+export { SliderCore } from "./slider";
+export { DropdownCore } from "./dropdown";
+export { DropdownContentCore } from "./dropdownContent";
+export { DropdownListCore } from "./dropdownList";
+export { DropdownListItemCore } from "./dropdownListItem";
+export { DropdownTriggerCore } from "./dropdownTrigger";

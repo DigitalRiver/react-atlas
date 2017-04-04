@@ -1,13 +1,12 @@
 import React from "react";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 /**
  * Wrapper around `<ul>` element to apply styling to lists. Usually paired with `<ListItem>` and `<ListText>` components.
  */
 const List = ({ children, ...props }) => {
-  const theme = themeable(props.theme);
   return (
-    <ul {...props} {...theme(1, "list")}>
+    <ul {...props} styleName={cx("list")}>
       {children}
     </ul>
   );
@@ -15,11 +14,8 @@ const List = ({ children, ...props }) => {
 
 List.propTypes = {
   "children": React.PropTypes.node,
-  "className": React.PropTypes.string,
-  "theme": React.PropTypes.object
+  "className": React.PropTypes.string
 };
-
-List.defaultProps = { "className": "" };
 
 List.styleguide = {
   "category": "Lists",

@@ -1,2 +1,2 @@
-export Radio from "./Radio";
-export RadioGroup from "./RadioGroup";
+import * as RadioStyle from "./radio.css";
+export { RadioStyle };

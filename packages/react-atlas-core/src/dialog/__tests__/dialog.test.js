@@ -1,7 +1,7 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 import { expect } from "chai";
-import Dialog from "../../dialog";
+import { DialogCore } from "../../index";
 
 let count = 0;
 
@@ -11,15 +11,13 @@ function handleToggle() {
 
 describe("Test dialog component", () => {
   it("Test default props", function() {
-    const result = mount(<Dialog />);
+    const result = mount(<DialogCore />);
     expect(result.props().active).to.equal(false);
     expect(result.props().type).to.equal("normal");
-    expect(result.props().className).to.equal("");
-    expect(result.props().theme).to.contain({ "inactive": true });
   });
 
   it("Check overlay click event", function() {
-    const result = shallow(<Dialog onOverlayClick={handleToggle} />);
+    const result = shallow(<DialogCore onOverlayClick={handleToggle} />);
     result.simulate("click");
     expect(count).to.equal(1);
   });

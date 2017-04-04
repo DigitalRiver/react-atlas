@@ -6,9 +6,9 @@ Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
 */
 
 import React, { cloneElement, Component, PropTypes } from "react";
-import { classNames } from "../utils";
-import DropdownTrigger from "./DropdownTrigger";
-import DropdownContent from "./DropdownContent";
+import cx from 'classNames';
+import DropdownTriggerCore from "./index";
+import DropdownContentCore from "./index";
 import { findDOMNode } from "react-dom";
 
 /**
@@ -76,24 +76,31 @@ class Dropdown extends Component {
 
   render() {
     const { children, className, ...props } = this.props;
+
     // create component classes
     const active = this._isActive();
+    const classes = cx(
+      {
+        "container": true
+      }
+    );
 
     // stick callback on trigger element
     const bound_children = React.Children.map(children, child => {
-      if (child.type === DropdownTrigger) {
+      if (child.type.displayName === "DropdownTrigger") {
         child = cloneElement(child, {
           "onClick": this._onToggleClick
         });
-      } else if (child.type === DropdownContent) {
+      } else if (child.type.displayName === "DropdownContent") {
         child = cloneElement(child, {
           active
         });
       }
       return child;
     });
+
     return (
-      <div {...props}>
+      <div {...props} className={className} styleName={classes}>
         {bound_children}
       </div>
     );
@@ -154,7 +161,7 @@ class DropdownExample extends React.Component {
               ))}
             </DropdownList>
           </DropdownContent>
-        </Dropdown>
+        </DropdownCore>
       </section>
     );
 // Mount Component {

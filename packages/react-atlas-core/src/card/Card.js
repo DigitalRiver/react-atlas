@@ -1,13 +1,11 @@
 import React, { PropTypes } from "react";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 /**
  * Simple Card component that wraps a div around content with card styling.
  */
-const Card = ({ children, ...props }) => {
-  const theme = themeable(props.theme);
-
-  return <div {...theme(1, "card")}>{children}</div>;
+const Card = ({ children, className, ...props }) => {
+  return <div {...props} styleName={cx('card')} className={cx(className)}>{children}</div>;
 };
 
 Card.propTypes = {
@@ -16,10 +14,11 @@ Card.propTypes = {
    * @examples <p>Some Text.</p>
    */
   "children": PropTypes.node.isRequired,
+
   /**
-   * The theme object.
+   * Custom classnames prop
    */
-  "theme": PropTypes.object
+   "className": PropTypes.string
 };
 
 Card.defaultProps = { "children": <p>Some card text.</p> };

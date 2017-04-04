@@ -1,13 +1,11 @@
 import React from "react";
-import { classNames } from "../utils";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 const Header = ({ className, fixed, children, ...props }) => {
-  const theme = themeable(props.theme);
-  const classes = classNames({ "container": true, fixed, className });
+  const classes = cx({ "container": true, fixed });
 
   return (
-    <header {...props} {...theme(1, ...classes)}>
+    <header {...props} styleName={classes} className={cx(className)}>
       {children}
     </header>
   );

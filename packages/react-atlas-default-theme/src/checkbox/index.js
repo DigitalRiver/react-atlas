@@ -1,1 +1,3 @@
-export default from "./Checkbox";
+import * as CheckboxStyle from "./Checkbox.css";
+export { CheckboxStyle };
+

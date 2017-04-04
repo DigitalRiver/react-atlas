@@ -24,17 +24,25 @@
   composes: white from '../styles.css';
   composes: border-transparent from '../styles.css';
 }
-    .default_btn:hover {
-      box-shadow: inset 0 0 0 20rem var(--darken-1);
-    }
-    .default_btn:active {
-      box-shadow: inset 0 0 0 20rem var(--darken-2),
-          inset 0 3px 4px 0 var(--darken-3),
-          0 0 1px var(--darken-2);
-    }
-    .default_btn:disabled {
-      box-shadow: inset 0 0 0 20rem var(--darken-1);
-    }
+
+.button {
+  composes: default_btn;
+  composes: bg-blue from '../styles.css';
+}
+    
+.default_btn:hover {
+  box-shadow: inset 0 0 0 20rem var(--darken-1);
+}
+
+.default_btn:active {
+  box-shadow: inset 0 0 0 20rem var(--darken-2),
+  inset 0 3px 4px 0 var(--darken-3),
+  0 0 1px var(--darken-2);
+}
+    
+.default_btn:disabled {
+  box-shadow: inset 0 0 0 20rem var(--darken-1);
+}
 
 .outline {
   composes: base;
@@ -42,17 +50,27 @@
   composes: bg-transparent from '../styles.css';
   border-color: currentColor;
 }
-    .outline:hover {
-      box-shadow: inset 0 0 0 20rem var(--darken-1);
-    }
-    .outline:active {
-      box-shadow: inset 0 0 0 20rem var(--darken-2),
-        inset 0 3px 4px 0 var(--darken-3),
-        0 0 1px var(--darken-2);
-    }
-    .outline:disabled {
-      opacity: .5;
-    }
+    
+.outline:hover {
+  box-shadow: inset 0 0 0 20rem var(--darken-1);
+}
+    
+.outline:active {
+  box-shadow: inset 0 0 0 20rem var(--darken-2),
+  inset 0 3px 4px 0 var(--darken-3),
+  0 0 1px var(--darken-2);
+}
+    
+.outline:disabled {
+  opacity: .5;
+}
+
+.button_outline {
+  composes: outline;
+  composes: blue from '../styles.css';
+  composes: hover-bg-blue from '../styles.css';
+  composes: hover-white from '../styles.css';
+}
 
 /*default button variant*/
 .primary, .button {
@@ -82,12 +100,13 @@
   composes: border-transparent from '../styles.css';
   background-color: transparent;
 }
-    .link:hover{
-      text-decoration: underline;
-      border-color: transparent;
-      background-color: transparent;
-      box-shadow: none;
-    }
+
+.link:hover {
+  text-decoration: underline;
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
+}
 
 /*Outline styles*/
 

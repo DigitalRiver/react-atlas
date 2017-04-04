@@ -69,6 +69,14 @@
   stroke: rgb(0, 126, 181);
 }
 
+.indeterminate {
+
+}
+
+.determinate {
+  
+}
+
 @keyframes linear-indeterminate-bar {
   0% {
     transform: translate(-50%) scaleX(0);

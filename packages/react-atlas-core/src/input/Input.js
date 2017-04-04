@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import { classNames } from "../utils";
-import themeable from "react-themeable";
+import cx from 'classNames';
 
 /**
  * Input component. Takes a label prop and wraps label and input in a div. Takes regular input attributes as props as well
@@ -29,9 +28,8 @@ class Input extends Component {
 
   render() {
     const { disabled, label, multiline, type, value, ...others } = this.props;
-    const theme = themeable(others.theme);
 
-    let inputClassName = classNames({
+    let inputClassName = cx({
       "input": type !== "checkbox",
       "checkbox": type === "checkbox",
       disabled,
@@ -41,15 +39,15 @@ class Input extends Component {
     });
 
     return (
-      <div {...theme(1, "container")}>
+      <div styleName={cx("container")}>
         {this.props.label
-          ? <label htmlFor={this.props.htmlFor} {...theme(2, "label")}>
+          ? <label htmlFor={this.props.htmlFor} styleName={cx("label")}>
               {label}
             </label>
           : null}
         <input
           value={this.state.value}
-          {...theme(3, ...inputClassName)}
+          styleName={inputClassName}
           onChange={this.handleChange}
           type={type}
         />
@@ -76,10 +74,7 @@ Input.defaultProps = {
   "disabled": false,
   "type": "text",
   "inputLength": 0,
-  "focus": false,
-  "theme": {
-    "container": true
-  }
+  "focus": false
 };
 
 Input.styleguide = {
