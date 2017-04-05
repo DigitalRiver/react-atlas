@@ -107,36 +107,6 @@ Button.styleguide = {
     <Button disabled warning outline>Warning</Button>
     <Button disabled danger outline>Danger</Button>
     <Button href="#" disabled link outline>Link</Button>
-    
-    <h2>Styled with wrapper components</h2>
-    <p>Regular Buttons</p>
-    <PrimaryButton>Button</PrimaryButton>
-    <SecondaryButton>Secondary</SecondaryButton>
-    <SuccessButton>Success</SuccessButton>
-    <WarningButton>Warning</WarningButton>
-    <DangerButton>Danger</DangerButton>
-    <LinkButton href="#">Link</LinkButton>
-    <p>Disabled Regular Buttons</p>
-    <PrimaryButton disabled>Button</PrimaryButton>
-    <SecondaryButton disabled>Secondary</SecondaryButton>
-    <SuccessButton disabled>Success</SuccessButton>
-    <WarningButton disabled>Warning</WarningButton>
-    <DangerButton disabled>Danger</DangerButton>
-    <LinkButton href="#" disabled>Link</LinkButton>
-    <p>Outline Buttons</p>
-    <PrimaryButton outline>Button</PrimaryButton>
-    <SecondaryButton>Secondary</SecondaryButton>
-    <SuccessButton outline>Success</SuccessButton>
-    <WarningButton outline>Warning</WarningButton>
-    <DangerButton outline>Danger</DangerButton>
-    <LinkButton href="#" outline>Link</LinkButton>
-    <p>Disabled Outline Buttons</p>
-    <PrimaryButton disabled outline>Button</PrimaryButton>
-    <SecondaryButton disabled>Secondary</SecondaryButton>
-    <SuccessButton disabled outline>Success</SuccessButton>
-    <WarningButton disabled outline>Warning</WarningButton>
-    <DangerButton disabled outline>Danger</DangerButton>
-    <LinkButton href="#" disabled outline>Link</LinkButton>
   </section>
   `
   
