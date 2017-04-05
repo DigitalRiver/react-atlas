@@ -1,18 +1,23 @@
 @import './variables.css';
 
 /*Text Colors*/
-.black  { color: var(--black) }
-.gray   { color: var(--gray) }
-.silver { color: var(--silver) }
-.white  { color: var(--white) }
+.black      { color: var(--black) }
+.gray       { color: var(--gray) }
+.med-grey   { color: var(--med-grey) }
+.dark-grey  { color: var(--dark-grey) }
+.charcoal   { color: var(--charcoal) }
+.silver     { color: var(--silver) }
+.white      { color: var(--white) }
 
-.aqua  { color: var(--aqua) }
-.blue  { color: var(--blue) }
-.navy  { color: var(--navy) }
-.teal  { color: var(--teal) }
-.green { color: var(--green) }
-.olive { color: var(--olive) }
-.lime  { color: var(--lime) }
+.aqua       { color: var(--aqua) }
+.blue       { color: var(--blue) }
+.navy       { color: var(--navy) }
+.sky-blue   { color: var(--sky-blue) }
+.kelly      { color: var(--kelly-green) }
+.teal       { color: var(--teal) }
+.green      { color: var(--green) }
+.olive      { color: var(--olive) }
+.lime       { color: var(--lime) }
 
 .yellow  { color: var(--yellow) }
 .orange  { color: var(--orange) }
@@ -25,10 +30,11 @@
 .muted { opacity: .5 }
 
 /*Hover-Text Colors*/
-.hover-black:hover  { color: var(--black) }
-.hover-gray:hover   { color: var(--gray) }
-.hover-silver:hover { color: var(--silver) }
-.hover-white:hover  { color: var(--white) }
+.hover-black:hover      { color: var(--black) }
+.hover-gray:hover       { color: var(--gray) }
+.hover-charcoal:hover   { color: var(--charcoal) }
+.hover-silver:hover     { color: var(--silver) }
+.hover-white:hover      { color: var(--white) }
 
 .hover-aqua:hover  { color: var(--aqua) }
 .hover-blue:hover  { color: var(--blue) }
@@ -56,13 +62,15 @@
 .bg-silver { background-color: var(--silver) }
 .bg-white  { background-color: var(--white) }
 
-.bg-aqua  { background-color: var(--aqua) }
-.bg-blue  { background-color: var(--blue) }
-.bg-navy  { background-color: var(--navy) }
-.bg-teal  { background-color: var(--teal) }
-.bg-green { background-color: var(--green) }
-.bg-olive { background-color: var(--olive) }
-.bg-lime  { background-color: var(--lime) }
+.bg-aqua     { background-color: var(--aqua) }
+.bg-blue     { background-color: var(--blue) }
+.bg-sky-blue { background-color: var(--sky-blue) }
+.bg-navy     { background-color: var(--navy) }
+.bg-teal     { background-color: var(--teal) }
+.bg-green    { background-color: var(--green) }
+.bg-olive    { background-color: var(--olive) }
+.bg-lime     { background-color: var(--lime) }
+.bg-ylw-green{ background-color: var(--ylw-green)}
 
 .bg-yellow  { background-color: var(--yellow) }
 .bg-orange  { background-color: var(--orange) }
@@ -89,13 +97,14 @@
 .hover-bg-silver:hover { background-color: var(--silver) }
 .hover-bg-white:hover  { background-color: var(--white) }
 
-.hover-bg-aqua:hover  { background-color: var(--aqua) }
-.hover-bg-blue:hover  { background-color: var(--blue) }
-.hover-bg-navy:hover  { background-color: var(--navy) }
-.hover-bg-teal:hover  { background-color: var(--teal) }
-.hover-bg-green:hover { background-color: var(--green) }
-.hover-bg-olive:hover { background-color: var(--olive) }
-.hover-bg-lime:hover  { background-color: var(--lime) }
+.hover-bg-aqua:hover    { background-color: var(--aqua) }
+.hover-bg-blue:hover    { background-color: var(--blue) }
+.hover-bg-navy:hover    { background-color: var(--navy) }
+.hover-bg-teal:hover    { background-color: var(--teal) }
+.hover-bg-green:hover   { background-color: var(--green) }
+.hover-bg-kelly:hover   { background-color: var(--kelly-green) }
+.hover-bg-olive:hover   { background-color: var(--olive) }
+.hover-bg-lime:hover    { background-color: var(--lime) }
 
 .hover-bg-yellow:hover  { background-color: var(--yellow) }
 .hover-bg-orange:hover  { background-color: var(--orange) }
@@ -117,18 +126,22 @@
 /* Border Colors */
 .border-transparent  { border-color: transparent }
 
-.border-black  { border-color: var(--black) }
-.border-gray   { border-color: var(--gray) }
-.border-silver { border-color: var(--silver) }
-.border-white  { border-color: var(--white) }
+.border-black       { border-color: var(--black) }
+.border-gray        { border-color: var(--gray) }
+.border-silver      { border-color: var(--silver) }
+.border-white       { border-color: var(--white) }
+.border-med-grey    { border-color: var(--med-grey) }
+.border-dark-grey   { border-color: var(--dark-grey) }
+.border-charcoal    { border-color: var(--charcoal) }
 
-.border-aqua  { border-color: var(--aqua) }
-.border-blue  { border-color: var(--blue) }
-.border-navy  { border-color: var(--navy) }
-.border-teal  { border-color: var(--teal) }
-.border-green { border-color: var(--green) }
-.border-olive { border-color: var(--olive) }
-.border-lime  { border-color: var(--lime) }
+.border-aqua    { border-color: var(--aqua) }
+.border-blue    { border-color: var(--blue) }
+.border-navy    { border-color: var(--navy) }
+.border-teal    { border-color: var(--teal) }
+.border-green   { border-color: var(--green) }
+.border-kelly   { border-color: var(--kelly-green) }
+.border-olive   { border-color: var(--olive) }
+.border-lime    { border-color: var(--lime) }
 
 .border-yellow  { border-color: var(--yellow) }
 .border-orange  { border-color: var(--orange) }
