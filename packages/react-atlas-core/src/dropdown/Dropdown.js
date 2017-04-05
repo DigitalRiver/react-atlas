@@ -50,8 +50,16 @@ class Dropdown extends React.Component {
     });
 
     const bound_children = React.Children.map(children, child => {
-      let kid = <li styleName={"item"} onClick={this._onWindowClick}>{child}</li>
-      return kid;
+      // if(typeof child.type === 'undefined') {
+        let kid = <li styleName={"item"} onClick={this._onWindowClick}>{child}</li>
+        return kid;
+      // }
+
+      // let el = React.cloneElement({child}, {'styleName': "child"});
+
+      // let kid = <li styleName={"item"} onClick={this._onWindowClick}>{el}</li>
+      // return kid;
+      
     });
 
     return (
