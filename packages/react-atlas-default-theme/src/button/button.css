@@ -4,8 +4,7 @@
 .base {
   composes: marg-0  from '../styles.css';
   composes: bold from '../styles.css';
-  composes: pad-v-1 from '../styles.css';
-  composes: pad-h-2 from '../styles.css';
+  composes: button-pad-1 from '../styles.css';
   composes: border from '../styles.css';
   composes: cursor-pointer from '../styles.css';
   composes: button-border-width from '../styles.css';

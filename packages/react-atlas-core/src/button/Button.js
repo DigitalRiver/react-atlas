@@ -20,7 +20,6 @@ const Button = (
     mini,
     large,
     small,
-    icon,
     ...props
   }
 ) => {
@@ -50,10 +49,6 @@ const Button = (
     mainStyle = "link";
   }
 
-  let iconStyle = "icon"
-  if (icon) {
-  }
-
   let outlineStyle = "button";
   if(outline) {
     mainStyle += "_outline";
@@ -79,8 +74,12 @@ Button.styleguide = {
     <Button success>Success</Button>
     <Button warning>Warning</Button>
     <Button danger>Danger</Button>
-    <Button icon="fa-github">Danger</Button>
-    <Button href="#" link>Link</Button>
+    <p>Regular Buttons With Icons</p>
+    <Button><i className="fa fa-github"></i> Button</Button>
+    <Button secondary><i className="fa fa-github"></i> Secondary</Button>
+    <Button success><i className="fa fa-github"></i> Success</Button>
+    <Button warning><i className="fa fa-github"></i> Warning</Button>
+    <Button danger><i className="fa fa-github"></i> Danger</Button>
     <p>Disabled Regular Buttons</p>
     <Button disabled primary>Button</Button>
     <Button disabled secondary>Secondary</Button>
@@ -88,6 +87,12 @@ Button.styleguide = {
     <Button disabled warning>Warning</Button>
     <Button disabled danger>Danger</Button>
     <Button href="#" disabled link>Link</Button>
+    <p>Disabled Regular Buttons With Icons</p>
+    <Button disabled primary><i className="fa fa-github"></i> Button</Button>
+    <Button disabled secondary><i className="fa fa-github"></i> Secondary</Button>
+    <Button disabled success><i className="fa fa-github"></i> Success</Button>
+    <Button disabled warning><i className="fa fa-github"></i> Warning</Button>
+    <Button disabled danger><i className="fa fa-github"></i> Danger</Button>
     <p>Outline Buttons</p>
     <Button outline primary>Button</Button>
     <Button outline secondary>Secondary</Button>

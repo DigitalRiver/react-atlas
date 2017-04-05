@@ -38,6 +38,7 @@
 
   /*standard variables*/
   --font-family: arial, "Helvetica Neue", Helvetica;
+  --font-size: 16px;
   --line-height: 1.5;
   --heading-font-family: var(--font-family);
   --heading-font-weight: bold;
@@ -50,10 +51,12 @@
   --h5: .875rem;
   --h6: .75rem;
   --bold-font-weight: bold;
-  --space-1: .5rem;
-  --space-2: 1rem;
-  --space-3: 2rem;
-  --space-4: 4rem;
+  --space-1:    .5rem;
+  --space-1-1:  .625rem;
+  --space-1-2:  .75rem;
+  --space-2:    1rem;
+  --space-3:    2rem;
+  --space-4:    4rem;
   --form-field-font-size: 1rem;
   --form-field-height: 2.25rem;
   --form-field-padding-y: .5rem;
