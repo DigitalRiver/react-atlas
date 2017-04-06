@@ -3,7 +3,7 @@ const loaders = require('loaders');
 
 module.exports = {
 	require: [
-		path.join(__dirname, 'src/assets/reactAtlas.min.css')
+		path.join(__dirname, 'src/assets/atlasThemes.min.css')
 	],
   // Use this to select all components in the src/components folder
   // components: 'src/components/**/[A-Z]*.js',
