@@ -51,7 +51,7 @@ const Button = (
 
   let outlineStyle = "button";
   if(outline) {
-    outlineStyle = "outline";
+    mainStyle += "_outline";
   }
 
   const classes = cx(mainStyle, disabledStyle, size, outlineStyle);
@@ -74,7 +74,12 @@ Button.styleguide = {
     <Button success>Success</Button>
     <Button warning>Warning</Button>
     <Button danger>Danger</Button>
-    <Button href="#" link>Link</Button>
+    <p>Regular Buttons With Icons</p>
+    <Button><i className="fa fa-github"></i> Button</Button>
+    <Button secondary><i className="fa fa-github"></i> Secondary</Button>
+    <Button success><i className="fa fa-github"></i> Success</Button>
+    <Button warning><i className="fa fa-github"></i> Warning</Button>
+    <Button danger><i className="fa fa-github"></i> Danger</Button>
     <p>Disabled Regular Buttons</p>
     <Button disabled primary>Button</Button>
     <Button disabled secondary>Secondary</Button>
@@ -82,6 +87,12 @@ Button.styleguide = {
     <Button disabled warning>Warning</Button>
     <Button disabled danger>Danger</Button>
     <Button href="#" disabled link>Link</Button>
+    <p>Disabled Regular Buttons With Icons</p>
+    <Button disabled primary><i className="fa fa-github"></i> Button</Button>
+    <Button disabled secondary><i className="fa fa-github"></i> Secondary</Button>
+    <Button disabled success><i className="fa fa-github"></i> Success</Button>
+    <Button disabled warning><i className="fa fa-github"></i> Warning</Button>
+    <Button disabled danger><i className="fa fa-github"></i> Danger</Button>
     <p>Outline Buttons</p>
     <Button outline primary>Button</Button>
     <Button outline secondary>Secondary</Button>
@@ -96,36 +107,6 @@ Button.styleguide = {
     <Button disabled warning outline>Warning</Button>
     <Button disabled danger outline>Danger</Button>
     <Button href="#" disabled link outline>Link</Button>
-    
-    <h2>Styled with wrapper components</h2>
-    <p>Regular Buttons</p>
-    <PrimaryButton>Button</PrimaryButton>
-    <SecondaryButton>Secondary</SecondaryButton>
-    <SuccessButton>Success</SuccessButton>
-    <WarningButton>Warning</WarningButton>
-    <DangerButton>Danger</DangerButton>
-    <LinkButton href="#">Link</LinkButton>
-    <p>Disabled Regular Buttons</p>
-    <PrimaryButton disabled>Button</PrimaryButton>
-    <SecondaryButton disabled>Secondary</SecondaryButton>
-    <SuccessButton disabled>Success</SuccessButton>
-    <WarningButton disabled>Warning</WarningButton>
-    <DangerButton disabled>Danger</DangerButton>
-    <LinkButton href="#" disabled>Link</LinkButton>
-    <p>Outline Buttons</p>
-    <PrimaryButton outline>Button</PrimaryButton>
-    <SecondaryButton>Secondary</SecondaryButton>
-    <SuccessButton outline>Success</SuccessButton>
-    <WarningButton outline>Warning</WarningButton>
-    <DangerButton outline>Danger</DangerButton>
-    <LinkButton href="#" outline>Link</LinkButton>
-    <p>Disabled Outline Buttons</p>
-    <PrimaryButton disabled outline>Button</PrimaryButton>
-    <SecondaryButton disabled>Secondary</SecondaryButton>
-    <SuccessButton disabled outline>Success</SuccessButton>
-    <WarningButton disabled outline>Warning</WarningButton>
-    <DangerButton disabled outline>Danger</DangerButton>
-    <LinkButton href="#" disabled outline>Link</LinkButton>
   </section>
   `
   
