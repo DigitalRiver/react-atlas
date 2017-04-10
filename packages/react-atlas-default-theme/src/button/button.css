@@ -22,7 +22,6 @@
 
 .default_btn {
   composes: base;
-  composes: rounded from '../styles.css';
   composes: charcoal from '../styles.css';
   composes: border-med-grey from '../styles.css';
   composes: bg-silver from '../styles.css';
