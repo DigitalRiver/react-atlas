@@ -42,7 +42,6 @@
 
 .outline {
   composes: base;
-  composes: rounded from '../styles.css';
   composes: bg-transparent from '../styles.css';
   composes: button-border-width from '../styles.css';
 }
