@@ -11,6 +11,9 @@ module.exports = {
     publicPath: '/lib/',
     libraryTarget: 'commonjs2'
   },
+  externals : {
+      react: 'react'
+  },
   module: {
     rules: [
       {
