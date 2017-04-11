@@ -4,7 +4,19 @@ import cx from 'classNames';
 /**
  * Simple component for a basic checkbox
  */
-const Checkbox = ({ title, label, disabled, inline, className, ...props }) => {
+const Checkbox = (
+  {
+    title,
+    label,
+    checked,
+    disabled,
+    inline,
+    className,
+    ...props
+  }
+) => {
+
+  const disabledStyle = disabled ? "disabled" : "";
   const componentClasses = cx({
     "block": !inline,
     inline,
@@ -12,18 +24,28 @@ const Checkbox = ({ title, label, disabled, inline, className, ...props }) => {
     [className]: className
   });
 
+  const controlStyle = cx({
+    "control": true,
+    "control--checkbox": true
+  })
+
   title = title ? title : label;
 
+  const classes = cx(disabledStyle);
+
   return (
-    <label styleName={componentClasses} title={title}>
-      <input
-        {...props}
-        type="checkbox"
-        disabled={disabled}
-        styleName={"input"}
-      />
-      {label && <span styleName={"label"}>{label}</span>}
-    </label>
+    <div styleName={"control-group"}>
+      <label styleName={controlStyle} title={title}>
+        <input
+          {...props}
+          type="checkbox"
+          disabled={disabled}
+          styleName={"input"}
+          checked={checked}
+        />
+        {label && <div styleName={"control__indicator"}><span>{label}</span></div>}
+      </label>
+    </div>
   );
 };
 
