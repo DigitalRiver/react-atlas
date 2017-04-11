@@ -1,19 +1,10 @@
 import React from "react";
+import ReactDOM from 'react-dom'
 import cx from 'classNames';
 import { ButtonCore } from "../index";
 
 const buttonClasses = cx({
-  'ra_button__button': true,
-  'ra_button__default_btn': true,
-  'ra_button__base': true,
-  'ra_styles__bg-blue': true,
-  'ra_styles__pad-v-1': true,
-  'ra_styles__pad-h-2': true,
-  'ra_styles__border': true,
-  'ra_styles__cursor-pointer': true,
   'ra_styles__rounded': true,
-  'ra_styles__white': true,
-  'ra_styles__border-transparent': true,
   'ra_dropdown__dropdown-button': true
 });
 
@@ -27,11 +18,27 @@ class Dropdown extends React.Component {
     };
   }
 
+  componentDidMount() {
+    window.addEventListener("click", this._onWindowClick);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("click", this._onWindowClick);
+  }
+
+  _onWindowClick = event => {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      if(this.state.active === true) {
+        this.setState({'active': false});
+      }
+    }
+  };
+
   _toggle = event => {
     this.setState({'active': !this.state.active});
   };
 
-  _onWindowClick = event => {
+  _clickHandler = event => {
     const selected = event.target.innerText;
     this.setState({'output': selected, 
                    'active': !this.state.active});
@@ -50,20 +57,12 @@ class Dropdown extends React.Component {
     });
 
     const bound_children = React.Children.map(children, child => {
-      // if(typeof child.type === 'undefined') {
-        let kid = <li styleName={"item"} onClick={this._onWindowClick}>{child}</li>
+        let kid = <li styleName={"item"} onClick={this._clickHandler}>{child}</li>
         return kid;
-      // }
-
-      // let el = React.cloneElement({child}, {'styleName': "child"});
-
-      // let kid = <li styleName={"item"} onClick={this._onWindowClick}>{el}</li>
-      // return kid;
-      
     });
 
     return (
-      <div {...props} className={className} styleName={classes} onClick={this._toggle}>
+      <div {...props} ref={(node) => (this.wrapperRef = node)} className={className} styleName={classes} onClick={this._toggle}>
         <ButtonCore className={buttonClasses}>{this.state.output}<i className="arrow"></i></ButtonCore>
         {this.state.active ? <div styleName={"list"}>{bound_children}</div> : null}
       </div>

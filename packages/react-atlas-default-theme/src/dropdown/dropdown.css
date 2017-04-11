@@ -1,7 +1,7 @@
 .container {
   display: inline-block;
   position: relative;
-  min-width: 8rem;
+  min-width: 10rem;
 }
 
 .content {
@@ -43,8 +43,7 @@
 .item {
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
-  composes: hover-white from '../styles.css';
-  composes: hover-bg-blue from '../styles.css';
+  composes: hover-charcoal from '../styles.css';
 }
 
 .item:hover {
@@ -61,7 +60,7 @@ i {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   float: right;
-  margin-top: .1rem;
+  margin-right: .5rem;
 }
 
 .arrow {
@@ -79,11 +78,12 @@ i {
   text-align: left;
   white-space: nowrap;
   text-overflow: ellipsis;
+  height: 1.8rem;
+  line-height: normal;
 }
 
 .child {
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
-  composes: hover-white from '../styles.css';
-  composes: hover-bg-blue from '../styles.css';
+  composes: hover-charcoal from '../styles.css';
 }
