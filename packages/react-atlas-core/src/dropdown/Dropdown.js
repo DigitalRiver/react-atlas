@@ -1,11 +1,19 @@
 import React from "react";
-import ReactDOM from 'react-dom'
 import cx from 'classNames';
 import { ButtonCore } from "../index";
 
 const buttonClasses = cx({
   'ra_styles__rounded': true,
-  'ra_dropdown__dropdown-button': true
+  'ra_dropdown__dropdown-button': true,
+  'ra_button__button ra_button__default_btn': true,
+  'ra_button__base': true,
+  'ra_styles__marg-0': true,
+  'ra_styles__bold': true,
+  'ra_styles__button-pad-1': true,
+  'ra_styles__border': true,
+  'ra_styles__cursor-pointer': true,
+  'ra_styles__charcoal': true,
+  'ra_styles__border-med-grey': true,
 });
 
 class Dropdown extends React.Component {

@@ -11,7 +11,6 @@
   composes: z4 from '../styles.css';
   composes: cursor-pointer from '../styles.css';
   text-align: left;
-  top: 100%;
   left: 0;
   overflow-y: auto;
   box-shadow:  0 2px 3px rgba(0, 0, 0, 0.075), 0 0 0 1px rgba(0,0,0,0.1);
@@ -43,24 +42,21 @@
 .item {
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
-  composes: hover-charcoal from '../styles.css';
 }
 
 .item:hover {
   text-decoration: none;
+  background-color: #E6E6E6;
 }
 
 i {
-  border: solid black;
+  border: solid #333;
   border-width: 0 4px 4px 0;
-  display: inline-block;
-  padding: 3px;
-  vertical-align: middle;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   float: right;
-  margin-right: .5rem;
+  padding: 3px;
 }
 
 .arrow {
@@ -69,6 +65,9 @@ i {
   height: 0.4em;
   border-right: 0.2em;
   border-top: 0.2em;
+  margin-right: .5rem;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .dropdown-button {
@@ -80,10 +79,23 @@ i {
   text-overflow: ellipsis;
   height: 1.8rem;
   line-height: normal;
+  padding-top: .5rem;
+  background-color: white;
 }
 
-.child {
-  composes: pad-v-1 from '../styles.css';
-  composes: pad-h-2 from '../styles.css';
-  composes: hover-charcoal from '../styles.css';
+.dropdown-button:hover {
+  min-width: 100%;
+  padding-left: 0px;
+  padding-left: 0.5rem;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 1.8rem;
+  line-height: normal;
+  padding-top: .5rem;
+  background-color: #E6E6E6;
+}
+
+.selected {
+  
 }
