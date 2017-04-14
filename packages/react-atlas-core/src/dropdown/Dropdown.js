@@ -46,10 +46,11 @@ class Dropdown extends React.Component {
     this.setState({'active': !this.state.active});
   };
 
-  _clickHandler = event => {
+  _clickHandler = (i, event) => {
     const selected = event.target.innerText;
     this.setState({'output': selected, 
-                   'active': !this.state.active});
+                   'active': !this.state.active,
+                   'index': i});
     this.state.onChange(selected);
   };
 
@@ -64,14 +65,20 @@ class Dropdown extends React.Component {
       "container": true
     });
 
-    const bound_children = React.Children.map(children, child => {
-        let kid = <li styleName={"item"} onClick={this._clickHandler}>{child}</li>
+    const bound_children = children.map((child, i) => {
+      if(i === this.state.index) {
+        let kid = <li key={i} styleName={"selected"} onClick={this._clickHandler.bind(this, i)}>{child}</li>
         return kid;
+      }
+
+      let kid = <li key={i} styleName={"item"} onClick={this._clickHandler.bind(this, i)}>{child}</li>
+      return kid;
+     
     });
 
     return (
       <div {...props} ref={(node) => (this.wrapperRef = node)} className={className} styleName={classes} onClick={this._toggle}>
-        <ButtonCore className={buttonClasses}>{this.state.output}<i className="arrow"></i></ButtonCore>
+        <ButtonCore className={buttonClasses}>{this.state.output}<i styleName="arrow"></i></ButtonCore>
         {this.state.active ? <div styleName={"list"}>{bound_children}</div> : null}
       </div>
     );
