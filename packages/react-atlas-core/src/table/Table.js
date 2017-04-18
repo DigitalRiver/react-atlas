@@ -1,24 +1,22 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 import cx from 'classNames';
 import {BootstrapTable} from "react-bootstrap-table";
 
-const Table = ({ className, children, ...props }) => {
-  const classes = cx(
-    {
-      "table": true
-    }
-  );
+class Table extends Component {
+    render(){
+        const { className, children, styles, ...props } = this.props;
     
-  return (
-      <BootstrapTable {...props} striped={true} hover={true} styleName={classes} className={cx(className)}
-                      containerClass={'ra_table__react-bs-table-container'}
-                      tableContainerClass={'ra_table__react-bs-table'}
-                      headerContainerClass={'ra_table__react-bs-container-header'}
-                      bodyContainerClass={'ra_table__react-bs-container-body'}>
-          {children}
-      </BootstrapTable>
-  );
-};
+        return (
+            <BootstrapTable {...props} className={cx(className)}
+                            containerClass={styles['react-bs-table-container']}
+                            tableContainerClass={styles['react-bs-table']}
+                            headerContainerClass={styles['react-bs-container-header']}
+                            bodyContainerClass={styles['react-bs-container-body']}>
+                {children}
+            </BootstrapTable>
+        );
+    }
+}
 
 Table.propTypes = {
     children: PropTypes.any,
