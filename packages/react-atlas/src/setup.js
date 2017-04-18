@@ -37,7 +37,7 @@ let components = ['autocomplete', 'avatar', 'button', 'card', 'checkbox',
                  'dropdownListItem', 'dropdownTrigger', 'form', 'gridCol', 'gridRow',
                  'header', 'hint', 'input', 'list', 'listItem', 'listText',
                  'media', 'overlay', 'progressBar', 'radio', 'radioGroup', 'slider',
-                 'snackbar', 'switch', 'tab', 'tabContent', 'table', 'tabs', 'tbody',
+                 'snackbar', 'switch', 'tab', 'tabContent', 'table', 'tableHeaderColumn', 'tabs', 'tbody',
                  'td', 'tfoot', 'th', 'thead', 'tooltip', 'tr'];
 
 /* Check if a atlas config file exist or not. If the config file

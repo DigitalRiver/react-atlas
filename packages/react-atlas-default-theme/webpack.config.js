@@ -16,6 +16,7 @@ module.exports = {
     rules: [
     {
       test: /\.css$/,
+      exclude: /\.global\.css$/,
       loader: ExtractTextPlugin.extract({
                     fallbackLoader: 'style-loader',
                     loader: [ {
@@ -30,8 +31,21 @@ module.exports = {
                      'postcss-loader'
                      ]
                 })
-    }
-    ],
+    }, {
+        test: /\.global\.css$/,
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: [{
+            loader: 'css-loader',
+            query: {
+              importLoaders: 1,
+              minimize: true
+            }
+          },
+            'postcss-loader'
+          ]
+        })
+    }],
   },
   plugins: [
     new ExtractTextPlugin("atlasThemes.min.css"),
