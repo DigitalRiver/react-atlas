@@ -23,7 +23,6 @@ export { RadioStyle } from "./radio";
 export { RadioGroupStyle } from "./radioGroup";
 export { SnackbarStyle } from "./snackbar";
 export { TableStyle } from "./table";
-export { TableHeaderColumnStyle } from "./tableHeaderColumn";
 export { TbodyStlye } from "./tbody";
 export { TdStyle } from "./td";
 export { Tfoot } from "./tfoot";

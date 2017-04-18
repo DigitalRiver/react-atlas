@@ -18,7 +18,6 @@ export { GridRowCore } from "./gridRow";
 // export RadioGroup from "./radio";
 export { SnackbarCore } from "./snackbar";
 export { TableCore } from "./table";
-export { TableHeaderColumnCore } from "./tableHeaderColumn";
 export { TbodyCore } from "./tbody";
 export { TdCore } from "./td";
 export { TfootCore } from "./tfoot";
