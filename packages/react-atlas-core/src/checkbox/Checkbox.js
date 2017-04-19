@@ -48,7 +48,7 @@ class Checkbox extends React.Component {
 
     return (
       <label styleName={controlStyle} title={title_label} ref={(checkbox) => { this.wrapperRef = checkbox; }}>
-        <CheckboxInput checked={this.state.active} disabled={disabled} defaultChecked={this.props.defaultChecked} label={label}/>
+        <CheckboxInput checked={this.state.active} disabled={disabled} defaultChecked={this.props.defaultChecked} name={label}/>
 
         {label && <div styleName={labelClasses} onClick={this._clickHandler.bind(this)}><div styleName={"control__label"}>{label}</div></div>}
       </label>
@@ -60,8 +60,10 @@ class CheckboxInput extends React.Component {
 
   render() {
     const { checked, className, defaultChecked, disabled, ...props } = this.props;
+    console.log(this.props)
     return (
       <input
+        {...props}
         type="checkbox"
         styleName={"input"}
         disabled={this.props.disabled}
