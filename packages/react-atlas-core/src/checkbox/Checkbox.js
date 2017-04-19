@@ -4,50 +4,87 @@ import cx from 'classNames';
 /**
  * Simple component for a basic checkbox
  */
-const Checkbox = (
-  {
-    title,
-    label,
-    checked,
-    disabled,
-    inline,
-    className,
-    ...props
+class Checkbox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      "active": false,
+      "onChange": this.props.onChange
+    };
   }
-) => {
 
-  const disabledStyle = disabled ? "disabled" : "";
-  const componentClasses = cx({
-    "block": !inline,
-    inline,
-    disabled,
-    [className]: className
-  });
 
-  const controlStyle = cx({
-    "control": true,
-    "control--checkbox": true
-  })
+  _clickHandler = (event) => {
+    const selected = event.target.innerText;
+    if (this.wrapperRef && this.wrapperRef.contains(event.target)) {
+      console.log("state-inner?: ", this.state.active)
 
-  title = title ? title : label;
+      this.setState({
+        'active': !this.state.active
+      })
+    }
+    console.log("state-outer?: ", this.state.active)
+  };
 
-  const classes = cx(disabledStyle);
+  render() {
+    const { title, label, checked, disabled, inline, className, defaultChecked, ...props } = this.props;
+    const inlineText = inline ? "inline" : "";
+    const componentClasses = cx({
+      "block": !inline,
+      inline,
+      disabled,
+      [className]: className
+    });
 
-  return (
-    <div styleName={"control-group"}>
-      <label styleName={controlStyle} title={title}>
-        <input
-          {...props}
-          type="checkbox"
-          disabled={disabled}
-          styleName={"input"}
-          checked={checked}
-        />
-        {label && <div styleName={"control__indicator"}><span>{label}</span></div>}
+    const controlStyle = cx({
+      "control": true,
+      "control--checkbox": true
+    })
+
+    const title_label = title ? title : label;
+
+    const classes = cx(inline);
+    const labelClasses = cx("control__indicator", inlineText);
+
+    return (
+      <label styleName={controlStyle} title={title_label} ref={(checkbox) => { this.wrapperRef = checkbox; }}>
+        <CheckboxInput checked={this.state.active} disabled={disabled} defaultChecked={this.props.defaultChecked} label={label}/>
+
+        {label && <div styleName={labelClasses} onClick={this._clickHandler.bind(this)}><div styleName={"control__label"}>{label}</div></div>}
       </label>
-    </div>
-  );
+    );
+  }
+}
+
+class CheckboxInput extends React.Component {
+
+  render() {
+    const { checked, className, defaultChecked, disabled, ...props } = this.props;
+    return (
+      <input
+        type="checkbox"
+        styleName={"input"}
+        disabled={this.props.disabled}
+        checked={this.props.checked}
+        value={this.props.checked}
+        defaultChecked={this.props.defaultChecked}
+      />
+    );
+  }
+}
+
+CheckboxInput.propTypes = {
+  /**
+   * Defines if checkbox should be checked on load.
+   */
+  "checked": PropTypes.bool,
+  /**
+   * Defines if checkbox should be checked on load.
+   */
+  "defaultChecked": PropTypes.bool
 };
+
+CheckboxInput.defaultProps = { "className": "", "checked": false, "defaultChecked": false};
 
 Checkbox.propTypes = {
   /**
@@ -76,7 +113,11 @@ Checkbox.propTypes = {
   /**
    * Defines if checkbox should be checked on load.
    */
-  "defaultChecked": PropTypes.bool
+  "defaultChecked": PropTypes.bool,
+  /**
+   * Defines if checkbox should be checked on load.
+   */
+  "checked": PropTypes.bool
 };
 
 Checkbox.defaultProps = { "className": "", "disabled": false, "inline": false };
