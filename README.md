@@ -1,4 +1,4 @@
-# React Atlas
+# ![React-Atlas](https://github.com/DigitalRiver/react-atlas/blob/master/readme/images/logo_full_300.png)
 ***This is an Alpha release and should be used with caution and hope.***
 
 React Atlas is a React component library, with a focus on supplying Admin Interface tools. The end-goal of this repo to is to eventually be the library that can power most of Digital River's complex admin interfaces and internal tooling projects. With this in mind, we need a fast, generic, composable library that can be dropped into a project and 'just work'.
