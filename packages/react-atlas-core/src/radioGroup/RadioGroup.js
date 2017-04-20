@@ -1,16 +1,19 @@
-import React, { PropTypes } from "react";
+import React, { PropTypes, cloneElement } from "react";
 import Radio from "../radio";
 import cx from 'classNames';
 
-const RadioGroup = ({ className, children, name, ...props }) => {
+const RadioGroup = ({ className, children, name, inline, ...props }) => {
   return (
-    <div {...props} className={className}>
+    <div {...props} className={className} styleName={cx("radioGroup")}>
       {React.Children.map(children, child => {
-        if (child.type === Radio) {
-          return <Radio {...child.props} name={name}/>;
-        } else {
-          return child;
+        if (child.type.displayName === "Radio") {
+          child = cloneElement(child, {
+            name,
+            inline
+          });
         }
+
+        return child;
       })}
     </div>
   );
@@ -19,7 +22,8 @@ const RadioGroup = ({ className, children, name, ...props }) => {
 RadioGroup.propTypes = {
   "children": PropTypes.node,
   "className": PropTypes.string,
-  "name": PropTypes.string
+  "name": PropTypes.string,
+  "inline": PropTypes.bool
 };
 
 RadioGroup.styleguide = {

@@ -8,12 +8,13 @@ const Radio = ({ className, disabled, inline, name, label, ...props }) => {
       inline,
       disabled
     },
-    className
+    className,
+    "radioLabel"
   );
 
   return (
     <label styleName={labelClasses}>
-      <input {...props} disabled={disabled} name={name} type="radio" />
+      <input styleName={cx("radioInput")} {...props} disabled={disabled} name={name} type="radio" />
       {label ? <span> {label}</span> : null}
     </label>
   );
