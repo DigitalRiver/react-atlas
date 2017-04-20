@@ -57,10 +57,11 @@
 /*Background Colors*/
 .bg-transparent { background-color: transparent }
 
-.bg-black  { background-color: var(--black) }
-.bg-gray   { background-color: var(--gray) }
-.bg-silver { background-color: var(--silver) }
-.bg-white  { background-color: var(--white) }
+.bg-black    { background-color: var(--black) }
+.bg-gray     { background-color: var(--gray) }
+.bg-med-grey { background-color: var(--med-grey) }
+.bg-silver   { background-color: var(--silver) }
+.bg-white    { background-color: var(--white) }
 
 .bg-aqua     { background-color: var(--aqua) }
 .bg-blue     { background-color: var(--blue) }

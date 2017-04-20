@@ -4,11 +4,11 @@
 
 .slider {
   overflow:hidden;
-  cursor:pointer;
-  background: #d8d9db;
+  composes: cursor-pointer from '../styles.css';
+  composes: bg-med-grey from '../styles.css';
   display: block;
   position:relative;
-  z-index:1;
+  composes: z1 from '../styles.css';
 }
 
 .sliderSmall{
@@ -39,33 +39,32 @@
   the off color
 */
 .handle {
-  border-radius: 50%;
+  composes: circle from '../styles.css';
   background: white;
   display:block;
   position:absolute;
-  top: 0;
-  left: 0;
+  top: 2px;
+  left: 3px;
   box-shadow: 0 0 6px 3px rgba(0,0,0,0.3);
   transition:left 0.2s;
 }
 
 .handleSmall{
   composes: handle;
-  width: 19px;
-  height: 19px;
+  width: 15px;
+  height: 15px;
 }
 
 .handleMedium{
   composes: handle;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }
 
 .handleLarge{
   composes: handle;
-  width: 48px;
-  height: 48px;
-
+  width: 44px;
+  height: 44px;
 }
 
 .input {
@@ -77,13 +76,13 @@
 */
 
 .inputSmall:checked + .handle{
-    left:24px;
+    left:25px;
 }
 .inputMedium:checked + .handle{
-    left:40px;
+    left:39px;
 }
 .inputLarge:checked + .handle{
-    left:60px;
+    left:58px;
 }
 
 /*
@@ -91,10 +90,10 @@
 */
 
 .onColor{
-  background: #4cd864;
+  composes: bg-blue from '../styles.css';
   position: relative;
-  z-index:-1;
-  left: -32px;
+  composes: zNeg from '../styles.css';
+  left: -48px;
 }
 
 .onColorSmall{
@@ -121,18 +120,18 @@
 }
 
 .input:checked ~ .onColorMedium{
-    width: 100px;
+    width: 132px;
     transition: 0.2s;
 }
 
 .input:checked ~ .onColorLarge{
-    width: 140px;
+    width: 158px;
     transition: 0.2s;
 }
 
 .disabled{
   text-decoration: none;
-  cursor: not-allowed;
+  composes: cursor-not-allowed from '../styles.css';
   opacity: .65;
   pointer-events: none;
   
@@ -148,44 +147,4 @@
 
 .inputLarge{
   composes: input;
-}
-
-/*
-  colors
-*/
-
-.black{
-  composes: bg-black from '../styles.css';
-}
-
-.gray{
-  composes: bg-gray from '../styles.css';
-}
-
-.silver{
-  composes: bg-silver from '../styles.css';
-}
-
-.white{
-  composes: bg-white from '../styles.css';
-}
-
-.blue{
-  composes: bg-blue from '../styles.css';
-}
-
-.green{
-  composes: bg-green from '../styles.css';
-}
-
-.yellow{
-  composes: bg-yellow from '../styles.css';
-}
-
-.red{
-  composes: bg-red from '../styles.css';
-}
-
-.purple{
-  composes: bg-purple from '../styles.css';
 }

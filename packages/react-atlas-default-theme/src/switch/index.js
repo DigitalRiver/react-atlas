@@ -1,3 +1,3 @@
-import * as SwitchStyle from "./Switch.css";
+import * as SwitchStyle from "./switch.css";
 export { SwitchStyle };
 
