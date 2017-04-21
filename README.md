@@ -3,36 +3,25 @@
 
 React Atlas is a React component library, with a focus on supplying Admin Interface tools. The end-goal of this repo to is to eventually be the library that can power most of Digital River's complex admin interfaces and internal tooling projects. With this in mind, we need a fast, generic, composable library that can be dropped into a project and 'just work'.
 
+Check out our [docs site](http://digitalriver.github.io/react-atlas/) for full working examples and a code playground.
+
 ## Why?
-React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox). We liked the hierarchy and the way the components were built among many other things. However, we didn't want to be married to the Material Design concept, and wanted to make a library that was a little more generic looking in regards to style and functionality. We hope that React Atlas will eventually be that tool.
+React Atlas originally started off as a fork of [React Toolbox](https://github.com/react-toolbox/react-toolbox), which allowed us to have a quick list of components. However, the more we dug into the code and tried to use the library, the more we ended up changing. Today, almost everything in React-Atlas is custom. React-Atlas now offers ...
+- Coded using ECMAScript 2015 patterns and features
+- Styled using [CSS Modules](https://github.com/css-modules/css-modules) and [CSSNext](http://cssnext.io/)
+- Decoupled styles and logic for optimized themeing
+- Themeing is completed at compile time, not at runtime, to reduce library size and memory usage
+- Tested with [Jest](https://facebook.github.io/jest/), [Enzyme](https://github.com/airbnb/enzyme), and [Chai](http://chaijs.com/)
+- Bundled with [Webpack 2.0](https://webpack.js.org/)
+- Formatted with [Prettier](https://github.com/prettier/prettier)
+- Component styleguide to ensure code consistency throughout the library
+- Encapsulated component state within each component, instead of requiring the user to maintain state in their own application
 
 ## Requirements
 This library only officially supports [Node 4.x.x](https://nodejs.org/en/) and React 15.0.2+, for now.
-### Via NPM
-Just make sure you reference the CSS file that is packaged with this library, something like:
-```javascript
-import './node_modules/react-atlas/lib/reactAtlas.min.css';
-```
-might work, depending on your app set up. Other than that, just import the components how you would normally.
-### Forking/Cloning and Building Yourself
-If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
 
-This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.com/DigitalRiver/react-atlas/blob/master/readme/Decisions.md#a-note-on-css)). At minimum your application will need to have the following packages to correctly interpret and use our library:
-- [PostCSS](https://github.com/postcss/postcss), with the following plugins:
-  - [PostCSS Import](https://github.com/postcss/postcss-import)
-  - [CSS Next](https://github.com/cssnext/postcss-cssnext)
-  - [Autoprefixer](https://github.com/postcss/autoprefixer)
-- A way to interpret CSS Modules, could be any of the following depending on your environment:
-  - [Webpack CSS Loader](https://github.com/webpack/css-loader)
-  - [PostCSS Modules](https://github.com/outpunk/postcss-modules)
-  - [Babel Plugin CSS Modules Transform](https://github.com/michalkvasnicak/babel-plugin-css-modules-transform)
-  - [CSS Modules Require Hook](https://github.com/css-modules/css-modules-require-hook)
-- ES6/JSX compiler. We recommend Babel and use the following Babel presets:
-  - [es2015](https://babeljs.io/docs/plugins/preset-es2015/)
-  - [react](http://babeljs.io/docs/plugins/preset-react/)
-  - [stage-1](http://babeljs.io/docs/plugins/preset-stage-1/)
-
-## Usage
+## Usage/Installation
+### In an application
 ***The React Atlas is in early alpha development, the API is still changing.***
 
 For initial development and release, we are focusing on a nodejs with webpack environment. As we continue to develop React Atlas we might bring in examples and boilerplate repos to show it working with other build systems (JSPM, Browserify, UMD, etc.). Though our hope is that React Atlas will be generic enough, that it should be relatively simple to set up in most any environment.
@@ -54,42 +43,41 @@ export default someButton;
 
 The previous code creates a React button component based on a React Atlas button default styling and logic.
 
-## CSS Customization
+### Via NPM
+Just make sure you reference the CSS file that is packaged with this library, something like:
+```javascript
+import './node_modules/react-atlas/lib/reactAtlas.min.css';
+```
+might work, depending on your app set up. Other than that, just import the components how you would normally.
 
+### Themeing
 Internally for React Atlas development, we use CSS Modules. However, we compile down our CSS into 1 main CSS file that is namespaced similar to: ```.ra_filename_stylename```. This allows multiple options for anyone that wants to restyle a React Atlas component. You can simply overwrite the class with your own css file or you can feed the component inline styles via the ```style``` prop, or you can pass your own ```className``` prop.
 
 We will be thinking hard about styling going forward and this workflow may change. We want to make overriding the React Atlas styles as simple as possible. We are in the process of implementing [React Themeable](https://github.com/markdalgleish/react-themeable).
 
-## Packages and react-atlas, react-atlas-core, react-atlas-default-theme... What?
+## Development
+### Forking/Cloning and Building Yourself
+If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
 
-React-Atlas is a [monorepo](https://medium.com/@bebraw/the-case-for-monorepos-907c1361708a#.lflmhsuzq) which is being handled with the [lerna](https://github.com/lerna/lerna) package.  Lerna was developed in order to support [Babel's](https://github.com/babel/babel/tree/master/packages) monorepo approach.  It is basically a command line tool that handles some tricky operations by connecting modules together and running commands against multiple modules.  All of the different packages can be found under the [packages](https://github.com/DigitalRiver/react-atlas/tree/master/packages) folder.
-
-```lerna bootstrap: probably the most important command of the set, this links all modules in a monorepo together. This way, you can immediately test whether a change will break code that relies on a module.
-
-lerna run test: a way to run unit tests across many modules in one command, and to make tests fail if a module fails.
-
-lerna publish: a wrapper around npm publish that can publish multiple repositories at a time and is smart enough to only publish changed code.````
-
-Pros:
-```
-Single lint, build, test and release process.
-Easy to coordinate changes across modules.
-Single place to report issues.
-Easier to setup a development environment.
-Tests across modules are ran together which finds bugs that touch multiple modules easier.
-Continous integration testing is easier, sinc eall tests run on all commits
-Licensing information and documentation is all done in the same place as well.
-```
-Cons:
-```
-Codebase looks more intimidating.
-Repo is bigger in size.
-Publishing who has access to publish changes to `React-atlas` is hacky and msut be controled via [npm orgianizations](https://docs.npmjs.com/orgs/what-are-orgs)
-Lower ranking in npms results. At least until npms-io/npms-analyzer#83 is fixed.
-```
-## Local Docs
-
-To start documentation site locally you'd need to install dependencies from the main package, setup the monorepo and then just run the docs script:
+This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.com/DigitalRiver/react-atlas/blob/master/readme/Decisions.md#a-note-on-css)). At minimum your application will need to have the following packages to correctly interpret and use our library:
+- [PostCSS](https://github.com/postcss/postcss), with the following plugins:
+  - [PostCSS Import](https://github.com/postcss/postcss-import)
+  - [CSS Next](https://github.com/cssnext/postcss-cssnext)
+  - [Autoprefixer](https://github.com/postcss/autoprefixer)
+- A way to interpret CSS Modules, could be any of the following depending on your environment:
+  - [Webpack CSS Loader](https://github.com/webpack/css-loader)
+  - [PostCSS Modules](https://github.com/outpunk/postcss-modules)
+  - [Babel Plugin CSS Modules Transform](https://github.com/michalkvasnicak/babel-plugin-css-modules-transform)
+  - [CSS Modules Require Hook](https://github.com/css-modules/css-modules-require-hook)
+- ES6/JSX compiler. We recommend Babel and use the following Babel presets:
+  - [es2015](https://babeljs.io/docs/plugins/preset-es2015/)
+  - [react](http://babeljs.io/docs/plugins/preset-react/)
+  - [stage-1](http://babeljs.io/docs/plugins/preset-stage-1/)
+  
+  ### Setup
+  
+  ### Docs
+  To start documentation site locally you'd need to install dependencies from the main package, setup the monorepo and then just run the docs script:
 
 ```
 git clone https://github.com/DigitalRiver/react-atlas.git
@@ -99,6 +87,35 @@ npm run docs
 ```
 
 Local documentation will be available at `http://localhost:3000`
+  
+  ### Monorepo
+React-Atlas is a [monorepo](https://medium.com/@bebraw/the-case-for-monorepos-907c1361708a#.lflmhsuzq) which is being handled with the [lerna](https://github.com/lerna/lerna) package.  Lerna was developed in order to support [Babel's](https://github.com/babel/babel/tree/master/packages) monorepo approach.  It is basically a command line tool that handles some tricky operations by connecting modules together and running commands against multiple modules.  All of the different packages can be found under the [packages](https://github.com/DigitalRiver/react-atlas/tree/master/packages) folder.
+
+**lerna bootstrap:** probably the most important command of the set, this links all modules in a monorepo together. This way, you can immediately test whether a change will break code that relies on a module.
+
+**lerna run test:** a way to run unit tests across many modules in one command, and to make tests fail if a module fails.
+
+**lerna publish:** a wrapper around npm publish that can publish multiple repositories at a time and is smart enough to only publish changed code.
+
+**Pros:**
+
+- Single lint, build, test and release process.
+- Easy to coordinate changes across modules.
+- Single place to report issues.
+- Easier to setup a development environment.
+- Tests across modules are ran together which finds bugs that touch multiple modules easier.
+- Continous integration testing is easier, sinc eall tests run on all commits
+- Licensing information and documentation is all done in the same place as well.
+
+**Cons:**
+
+- Codebase looks more intimidating.
+- Repo is bigger in size.
+- Publishing who has access to publish changes to `React-atlas` is hacky and msut be controled via [npm orgianizations](https://docs.npmjs.com/orgs/what-are-orgs)
+- Lower ranking in npms results. At least until npms-io/npms-analyzer#83 is fixed.
+
+## [Read the Wiki](https://github.com/DigitalRiver/react-atlas/tree/master/wiki)
+Check out [our wiki](https://github.com/DigitalRiver/react-atlas/tree/master/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
 
 ## Authors and Contributors
 Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.com/DigitalRiver/react-atlas/blob/master/readme/CONTRIBUTING.md)***
@@ -106,9 +123,6 @@ Before cloning or submitting a Pull Request, ***please read our [Contributing Gu
 Please note that this project is released with a [Contributor Code of Conduct](https://github.com/DigitalRiver/react-atlas/blob/master/readme/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 The project is being initially developed and maintained by the Digital River Experience Engineering team.
-
-## [Read the Wiki](https://github.com/DigitalRiver/react-atlas/tree/master/wiki)
-Check out [our wiki](https://github.com/DigitalRiver/react-atlas/tree/master/wiki) for more information on coding conventions, why we made certain decisions and a roadmap.
 
 ## Set-Up/Installation for Development and Contributing
 
