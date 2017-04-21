@@ -104,7 +104,7 @@ React-Atlas is a [monorepo](https://medium.com/@bebraw/the-case-for-monorepos-90
 - Single place to report issues.
 - Easier to setup a development environment.
 - Tests across modules are ran together which finds bugs that touch multiple modules easier.
-- Continous integration testing is easier, sinc eall tests run on all commits
+- Continous integration testing is easier, since all tests run on all commits
 - Licensing information and documentation is all done in the same place as well.
 
 **Cons:**
