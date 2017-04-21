@@ -1,6 +1,5 @@
 import React, { PropTypes, cloneElement } from "react";
-import Radio from "../radio";
-import cx from 'classNames';
+import cx from "classNames";
 
 const RadioGroup = ({ className, children, name, inline, ...props }) => {
   return (
@@ -29,8 +28,7 @@ RadioGroup.propTypes = {
 RadioGroup.styleguide = {
   "category": "Form Components",
   "index": "3.9",
-  "example": 
-    `
+  "example": `
 <section>
   <h5>RadioGroup with Radio Buttons</h5>
   <RadioGroup name="comic">
@@ -41,7 +39,6 @@ RadioGroup.styleguide = {
   </RadioGroup>
 </section>
 `
-  
 };
 
 export default RadioGroup;
