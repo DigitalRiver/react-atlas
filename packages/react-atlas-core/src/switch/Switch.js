@@ -72,14 +72,50 @@ const Switch = ({
 };
 
 Switch.propTypes = {
+  /**
+   * Define a custom css class name.
+   * @examples 'switch', 'switch-elem'
+   */
   "className": PropTypes.string,
+  /**
+   * Determines if the switch input is disabled.
+   * @examples '<Switch disabled/>'
+   */
   "disabled": PropTypes.bool,
+  /**
+   * Define a name for the switch input.
+   * @examples '<Switch name="test"/>'
+   */
   "name": PropTypes.string,
+  /**
+   * Sets color that will be displayed when the switch is checked.
+   * @examples '<Switch onColor="#ababab"/>'
+   */
   "onColor": PropTypes.string,
+  /**
+   * Sets color that will be displayed when the switch is unchecked.
+   * @examples '<Switch offColor="#d3d3d3"/>'
+   */
   "offColor": PropTypes.string,
+  /**
+   * Sets color that will be displayed for the inner button.
+   * @examples '<Switch buttonColor="#ffffff"/>'
+   */
   "buttonColor": PropTypes.string,
+  /**
+   * Defines a small sized switch element.
+   * @examples '<Switch small/>'
+   */
   "small": PropTypes.bool,
+  /**
+   * Defines a medium sized switch element.
+   * @examples '<Switch medium/>'
+   */
   "medium": PropTypes.bool,
+  /**
+   * Defines a large sized switch element.
+   * @examples '<Switch large/>'
+   */
   "large": PropTypes.bool
 };
 
