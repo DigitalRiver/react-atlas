@@ -8,11 +8,10 @@
 To setup testing for a component create a folder called `__tests__` inside the components folder. Jest automatically searches for folders named `__tests__` and runs test files found with in. Test files should be named after the component with `.test.js` appended to the end. For example the dialog components test file would be named `dialog.test.js`.
 
 ### Imports/Dependencies
-To test a react-atlas component or any react component you will need to import `React`, `mount` and/or `shallow` from enzyme, `expect` from chai and the component you want to test, in this case the dialog component. Below is an example of the imports needed for testing the dialog component.
+To test a react-atlas component or any react component you will need to import `React`, `mount` and/or `shallow` from enzyme and the component you want to test, in this case the dialog component. Below is an example of the imports needed for testing the dialog component.
 ```javascript
 import React from 'react'
 import { mount, shallow } from 'enzyme';
-import { expect } from 'chai';
 import Dialog from '../../dialog'
 ```
 
@@ -21,7 +20,6 @@ Next use `describe()` to declare your test suite for this component. Inside `des
 ```javascript
 import React from 'react'
 import { mount, shallow } from 'enzyme';
-import { expect } from 'chai';
 import Dialog from '../../dialog'
 
 describe('Test dialog component example', () => {
@@ -45,22 +43,17 @@ React Atlas uses chai for the assertion library. More info about chai can be fou
 ### Running tests
 To run all tests use `npm test`. If you want a coverage report generated use `npm run coverage` instead. The report will be in a newly created folder called coverage. Inside coverage is a folder called lcov-report, open that folder and you will see a file called index.html. Open index.html with a browser to see the coverage report.
 
-### Using expect
-
-There are several different versions of `expect` used in the javascript community. React Atlas is using `expect` from chai, so note that if you need to research how to do something with `expect`. Also note that jest exposes it's own version of `expect` with a different API. If you leave out this line `import { expect } from 'chai';` you will be using the jest version of `expect`.
-
 ### Test Component props
 To test the props that a component has, `mount` it and call `.props().nameOfVariable` on the component that is returned. Replace `nameOfVariable` with the actual name of the variable you want to test. Below is an example of testing a prop variable with the name `active`.
 ```javascript
 import React from 'react'
 import { mount, shallow } from 'enzyme';
-import { expect } from 'chai';
 import Dialog from '../../dialog'
 
 describe('Check props example', () => {
   it('Test default props', function() {
     const result = mount(<Dialog></Dialog>);
-    expect(result.props().active).to.equal(false);
+    expect(result.props().active).toBe(false);
   });
 });
 ```
@@ -69,13 +62,12 @@ To test the state that a component has, `mount` it and call `.state().nameOfVari
 ```javascript
 import React from 'react'
 import { mount, shallow } from 'enzyme';
-import { expect } from 'chai';
 import Dialog from '../../dialog'
 
 describe('Check props example', () => {
   it('Test default props', function() {
     const result = mount(<Dialog></Dialog>);
-    expect(result.state().active).to.equal(false);
+    expect(result.state().active).toBe(false);
   });
 });
 ```
@@ -86,13 +78,12 @@ Often you want to make sure the correct css is being set. Enzyme gives you a rou
 ```javascript
 import React from 'react'
 import { mount, shallow } from 'enzyme';
-import { expect } from 'chai';
 import GridCol from '../../grid_col'
 
 describe('Check props example', () => {
   it('Test default props', function() {
     const result = mount(<Dialog></Dialog>);
-    expect(result.find('div').first().props('style').style.flex).to.equal("1 0 " + basis);
+    expect(result.find('div').first().props('style').style.flex).toBe("1 0 " + basis);
   });
 });
 
@@ -105,7 +96,6 @@ Use `sinon` to gain access to the click handler. Now you can call `.simulate('.c
 ```javascript
 import React from 'react'
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
 import { Dropdown } from '../../dropdown';
 import sinon from 'sinon';
 
@@ -125,7 +115,6 @@ Sometimes you will need to simulate an image failing to load. To do that `mount`
 ```javascript
 import React from 'react'
 import { mount, shallow } from 'enzyme';
-import { expect } from 'chai';
 import Avatar from '../../avatar'
 
 let image = "picture.jpg";
@@ -135,7 +124,7 @@ describe('Image error handler test example', function() {
     const result = mount(<Avatar image={"incorrect.jpg"} defaultImage={image} />);
     var img = result.find('img');
     img.simulate('error');
-    expect(result.state().image).to.equal(image);
+    expect(result.state().image).toBe(image);
   });
 });
 ```
@@ -146,7 +135,6 @@ the unmount event handler. Use the assertions inside `sinon` to test the event h
 ```javascript
 import React from 'react'
 import { mount, shallow } from 'enzyme';
-import { expect } from 'chai';
 import sinon from 'sinon';
 import Dialog from '../../overlay'
 
@@ -163,13 +151,10 @@ describe('Click event example', () => {
 
 
 ## Design Choices
-React Atlas is currently using Jest, Enzyme and Chai for testing. This section will go over why these technologies were chosen instead of alternatives.
+React Atlas is currently using Jest and Enzyme for testing. This section will go over why these technologies were chosen instead of alternatives.
 
 ### Jest
 Jest was chosen for the simple fact that it works. Orginally karma was chosen as the test runner. However karma is "too" configurable, meaning documentation about using karma for testing react is fragmented because there are several ways of doing things. With jest there is the "one" way of doing things which lowers the learning curve. Jest is also much simpler to configure than karma. The jest config is a couple lines long and lives in package.json. karma required a seperate config file that was about a hundred lines long to achieve the same goal.
 
 ### Enzyme
 In the react testing world it seems most people are either using jest's test utils, or they are using enzyme for there testing. Enzyme is a wrapper around jest's test utils and provides an easier to use API. Enzyme is also well documented between the official documentation and the hundreds of blog posts.
-
-### Chai
-Seeing as jest ships with it's own expect, one may wonder why chai is being used for the assertion library and not the one jest has. First when researching how to use expect one finds alot more documentation and examples for the chai version of expect. Second chai provides three different assertion styles. So users are not forced to use just expect.
