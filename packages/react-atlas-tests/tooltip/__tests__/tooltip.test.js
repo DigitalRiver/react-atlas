@@ -1,6 +1,5 @@
 import React from "react";
 import { mount } from "enzyme";
-import { expect } from "chai";
 import { TooltipCore } from "react-atlas-core";
 
 const message = "The tooltip message";
@@ -20,10 +19,10 @@ describe("Testing tooltip component", () => {
         position={position}
       />
     );
-    expect(result.props().tooltip).to.equal(message);
-    expect(result.props().inline).to.equal(inline);
-    expect(result.props().tooltipDelay).to.equal(delay);
-    expect(result.props().tooltipHideOnClick).to.equal(hide);
-    expect(result.props().position).to.equal(position);
+    expect(result.props().tooltip).toBe(message);
+    expect(result.props().inline).toBe(inline);
+    expect(result.props().tooltipDelay).toBe(delay);
+    expect(result.props().tooltipHideOnClick).toBe(hide);
+    expect(result.props().position).toBe(position);
   });
 });
