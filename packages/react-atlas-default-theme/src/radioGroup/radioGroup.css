@@ -1,3 +1,7 @@
+.radioGroup {
+	margin: 20px 0;
+}
+
 .block {
 	composes: marg-b-1 from '../styles.css';
 	display: block;
