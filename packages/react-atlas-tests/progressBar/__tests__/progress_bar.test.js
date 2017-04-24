@@ -1,7 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
 import { ProgressBarCore } from "react-atlas-core";
-// import style from '../../progress_bar/style';
 
 describe("#calculateRatio", function() {
   let progressBar = mount(<ProgressBarCore min={100} max={300} />);

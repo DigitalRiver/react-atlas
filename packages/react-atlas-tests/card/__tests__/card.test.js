@@ -1,6 +1,5 @@
 import React from "react";
 import { mount } from "enzyme";
-import { expect } from "chai";
 import { CardCore } from "react-atlas-core";
 
 describe("Test Card component", () => {
@@ -8,9 +7,9 @@ describe("Test Card component", () => {
     const result = mount(<CardCore />);
 
     /* Make sure card returns the correct default text.  */
-    expect(result.props().children).to.equal(<p>Some card text.</p>);
+    expect(result.props().children).toBe(<p>Some card text.</p>);
 
     /* Check theme object. */
-    expect(result.props().theme).to.contain({ "card": true });
+    expect(result.props().theme).toContain({ "card": true });
   });
 });

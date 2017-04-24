@@ -41,7 +41,7 @@ describe("Testing tabs component", () => {
   // it('Make sure onActive is called when set and didUpdate is called', function() {
   //   const result = mount(<Tab onActive={activeCallback}></Tab>);
   //   result.update();
-  //   expect(count).to.equal(1);
+  //   expect(count).toBe(1);
   // });
   //
   // it('Check click handler', function() {
