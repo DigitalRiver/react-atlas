@@ -86,9 +86,17 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.propTypes = {
+  /* Boolean value taht tells the dropdown wether to
+    be open or not.*/
   "active": React.PropTypes.bool,
+
+  /* A callback funtion that is called when a new menu item is selected. */
   "onChange": React.PropTypes.func,
+
+  /* The children elements to be wrapped by the dropdown menu. */
   "children": React.PropTypes.node,
+
+  /* Pass CSS styles to className to set them on the dropdown component. */
   "className": React.PropTypes.string
 };
 
