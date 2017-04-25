@@ -43,7 +43,7 @@ class Checkbox extends React.Component {
     const labelClasses = cx("control__indicator", inlineText);
 
     return (
-      <label styleName={controlStyle} title={title_label} ref={(checkbox) => { this.wrapperRef = checkbox; }}>
+      <label styleName={controlStyle} title={title_label} ref={(checkbox) => { this.wrapperRef = checkbox; }} className={cx(className)}>
         <input
             {...props}
             name={label}
