@@ -9,11 +9,11 @@ class Checkbox extends React.Component {
     super(props);
     this.state = {
       "inputValue": '',
-      "checkValue": false,
       "checked": this.props.defaultChecked || false
     };
   }
 
+  // Handles new checkbox clicks and sets value and checked status of hidden input
   _clickHandler = (event) => {
     if (this.wrapperRef && this.wrapperRef.contains(event.target)) {
       if(this.state.inputValue === "off" || this.state.inputValue === "" || this.state.inputValue === null) {
