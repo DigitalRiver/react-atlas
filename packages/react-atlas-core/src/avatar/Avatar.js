@@ -6,7 +6,7 @@ import cx from 'classNames';
  *
  * **NOTE**: children will always take precedence over props passed into component.
  */
-export default class Avatar extends React.Component {
+class Avatar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -106,46 +106,4 @@ Avatar.propTypes = {
   "defaultImage": PropTypes.string
 };
 
-Avatar.styleguide = {
-  "category": "Avatar",
-  "index": "2.1",
-  "example": 
-    `
-   <section>
-     <h5>Avatars</h5>
-     {/* background color change */}
-     <Avatar style={{backgroundColor: 'deepskyblue'}} >
-       <i className="fa fa-github"></i>
-     </Avatar>
-     {/* title prop gets truncated to 1st letter */}
-     <Avatar title="Nathan" />
-     {/* icon beats title */}
-     <Avatar title="Nathan" icon={<i className="fa fa-github"></i>} />
-     {/* image beats icon */}
-     <Avatar
-       icon={<i className="fa fa-github"></i>}
-       image="cat.jpg"
-     />
-     {/* image beats title */}
-     <Avatar title="Javier" image="cat.jpg" />
-     {/* child beats parameters */}
-     <Avatar title="Nathan" image="cat.jpg">
-       <i className="fa fa-github"></i>
-     </Avatar>
-     <Avatar title="Nathan" icon={<i className="fa fa-github"></i>}>
-       <img src="cat.jpg"/>
-     </Avatar>
-     {/* image beats defaultImage */}
-     <Avatar image="nature.jpg" defaultImage="cat.jpg" />
-     {/* defaultImage beats title */}
-     <Avatar title="Javier" defaultImage="nature.jpg" />
-     {/* defaultImage will replace a image that fails to load */}
-     <Avatar image="badImage.jpg" defaultImage="chillgirl.jpeg" />
-     {/* child string gets truncated to 1st letter */}
-     <Avatar>Nathan</Avatar>
-     {/* child should be <i>, <svg>, <img>, or string */}
-     <Avatar><i className="fa fa-github"></i></Avatar>
-   </section>
-   `
-  
-};
+export default Avatar;
