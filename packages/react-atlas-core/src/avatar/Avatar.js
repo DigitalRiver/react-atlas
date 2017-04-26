@@ -6,7 +6,7 @@ import cx from 'classNames';
  *
  * **NOTE**: children will always take precedence over props passed into component.
  */
-class Avatar extends React.Component {
+class Avatar extends React.PureComponent  {
   constructor(props) {
     super(props);
 
