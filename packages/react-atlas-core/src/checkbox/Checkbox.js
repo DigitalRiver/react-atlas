@@ -95,40 +95,4 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = { "className": "", "disabled": false, "inline": false, "checked": false };
 
-Checkbox.styleguide = {
-  "category": "Form Components",
-  "index": "3.2",
-  "example": 
-    `
-<section style={{textAlign:"left"}}>
-  <h4 style={{marginBottom: "10px"}}>Checkboxes</h4>
-  <Checkbox
-    defaultChecked={true}
-    label="Checked"
-  />
-  <Checkbox
-    defaultChecked={false}
-    label="Not checked"
-
-  />
-  <Checkbox
-    defaultChecked={true}
-    label="Disabled checkbox"
-    disabled
-  />
-  <Checkbox
-    defaultChecked={false}
-    label="Inline checkbox 1"
-    inline
-  />
-  <Checkbox
-    defaultChecked={false}
-    label="Inline checkbox 2"
-    inline
-  />
-</section>
-`
-  
-};
-
 export default Checkbox;
