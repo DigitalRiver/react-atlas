@@ -1,4 +1,4 @@
-# React Atlas
+# ![React-Atlas](https://github.com/DigitalRiver/react-atlas/blob/master/readme/images/logo_full_300.png)
 ***This is an Alpha release and should be used with caution and hope.***
 
 React Atlas is a React component library, with a focus on supplying Admin Interface tools. The end-goal of this repo to is to eventually be the library that can power most of Digital River's complex admin interfaces and internal tooling projects. With this in mind, we need a fast, generic, composable library that can be dropped into a project and 'just work'.
@@ -17,7 +17,7 @@ might work, depending on your app set up. Other than that, just import the compo
 ### Forking/Cloning and Building Yourself
 If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
 
-This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.com/DigitalRiver/react-atlas/blob/master/wiki/Decisions.md#a-note-on-css)). At minimum your application will need to have the following packages to correctly interpret and use our library:
+This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.com/DigitalRiver/react-atlas/blob/master/readme/Decisions.md#a-note-on-css)). At minimum your application will need to have the following packages to correctly interpret and use our library:
 - [PostCSS](https://github.com/postcss/postcss), with the following plugins:
   - [PostCSS Import](https://github.com/postcss/postcss-import)
   - [CSS Next](https://github.com/cssnext/postcss-cssnext)
@@ -101,9 +101,9 @@ npm run docs
 Local documentation will be available at `http://localhost:3000`
 
 ## Authors and Contributors
-Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.com/DigitalRiver/react-atlas/blob/master/CONTRIBUTING.md)***
+Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.com/DigitalRiver/react-atlas/blob/master/readme/CONTRIBUTING.md)***
 
-Please note that this project is released with a [Contributor Code of Conduct](https://github.com/DigitalRiver/react-atlas/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/DigitalRiver/react-atlas/blob/master/readme/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 The project is being initially developed and maintained by the Digital River Experience Engineering team.
 

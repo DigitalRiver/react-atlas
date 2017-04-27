@@ -13,7 +13,6 @@
     "node": ">=4"
   },
   "dependencies": {
-    "dog-names": "^1.0.2",
     "loaders": "^1.1.2",
     "react": "^15.4.2",
     "react-atlas": "^0.0.10",

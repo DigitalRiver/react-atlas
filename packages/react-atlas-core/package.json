@@ -21,7 +21,6 @@
   "dependencies": {
     "blacklist": "^1.1.2",
     "classnames": "^2.2.5",
-    "normalize.css": "^4.1.1",
     "react": "^15.0.2",
     "react-autosuggest": "^3.7.3",
     "react-dom": "^15.0.2"

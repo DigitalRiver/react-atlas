@@ -17,7 +17,7 @@
     "setup": "npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
     "generateFiles": "node packages/react-atlas/src/setup.js",
     "bootstrap": "npm run lerna:init && npm run lerna:bootstrap && npm run generateFiles && npm run packages:build",
-    "styleguide": "cd packages/react-atlas-docs && npm run styleguide"
+    "docs": "cd packages/react-atlas-docs && npm run styleguide"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -39,23 +39,24 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "blacklist": "^1.1.2",
-    "normalize.css": "^4.1.1",
     "react": "^15.4.2",
-    "react-addons-css-transition-group": "^15.0.2",
     "react-autosuggest": "^3.7.3",
     "react-dom": "^15.4.2"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-1": "^6.22.0",
-    "chai": "^3.5.0",
     "cross-spawn": "^5.1.0",
     "enzyme": "^2.8.2",
+    "eslint": "^3.19.0",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-react": "^6.10.3",
     "glob": "^7.1.1",
     "jest": "^19.0.2",
     "lerna": "^2.0.0-rc.3",
+    "prettier": "^1.2.2",
     "react-addons-test-utils": "^15.5.1",
     "sinon": "^2.1.0"
   },

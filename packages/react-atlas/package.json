@@ -20,9 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "dot": "^1.1.1",
-    "normalize.css": "^4.1.1",
     "react": "^15.0.2",
-    "react-addons-css-transition-group": "^15.0.2",
     "react-atlas-core": "^0.0.10",
     "react-atlas-default-theme": "^0.0.10",
     "react-css-modules": "^4.1.0",

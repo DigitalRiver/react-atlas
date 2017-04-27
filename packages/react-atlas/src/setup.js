@@ -33,8 +33,7 @@ dot.templateSettings = {
 
 /* TODO: Replace hardcoded array with a dynamic solution. */
 let components = ['autocomplete', 'avatar', 'button', 'card', 'checkbox',
-                 'dialog', 'drawer', 'dropdown', 'dropdownContent', 'dropdownList',
-                 'dropdownListItem', 'dropdownTrigger', 'form', 'gridCol', 'gridRow',
+                 'dialog', 'drawer', 'dropdown', 'form', 'gridCol', 'gridRow',
                  'header', 'hint', 'input', 'list', 'listItem', 'listText',
                  'media', 'overlay', 'progressBar', 'radio', 'radioGroup', 'slider',
                  'snackbar', 'switch', 'tab', 'tabContent', 'table', 'tableHeaderColumn', 'tabs', 'tbody',
