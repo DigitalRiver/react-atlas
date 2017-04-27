@@ -39,6 +39,9 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "babel-plugin-transform-react-constant-elements": "^6.23.0",
+    "babel-plugin-transform-react-inline-elements": "^6.22.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.2",
     "react": "^15.4.2",
     "react-autosuggest": "^3.7.3",
     "react-dom": "^15.4.2"
