@@ -21,6 +21,14 @@ React Atlas originally started off as a fork of [React Toolbox](https://github.c
 This library only officially supports [Node 4.x.x](https://nodejs.org/en/) and React 15.0.2+, for now.
 
 ## Usage/Installation
+`git clone https://github.com/DigitalRiver/react-atlas`
+
+`cd react-atlas`
+
+`npm install`
+
+`npm run bootstrap`
+
 ### In an application
 ***The React Atlas is in early alpha development, the API is still changing.***
 
@@ -51,9 +59,7 @@ import './node_modules/react-atlas/lib/reactAtlas.min.css';
 might work, depending on your app set up. Other than that, just import the components how you would normally.
 
 ### Themeing
-Internally for React Atlas development, we use CSS Modules. However, we compile down our CSS into 1 main CSS file that is namespaced similar to: ```.ra_filename_stylename```. This allows multiple options for anyone that wants to restyle a React Atlas component. You can simply overwrite the class with your own css file or you can feed the component inline styles via the ```style``` prop, or you can pass your own ```className``` prop.
-
-We will be thinking hard about styling going forward and this workflow may change. We want to make overriding the React Atlas styles as simple as possible. We are in the process of implementing [React Themeable](https://github.com/markdalgleish/react-themeable).
+Internally for React Atlas development, we use CSS Modules. However, for production we compile down our CSS into 1 main CSS file that is namespaced similar to: ```.ra_filename_stylename```. This allows multiple options for anyone that wants to restyle a React Atlas component. You can simply overwrite the class with your own css file or you can feed the component inline styles via the ```style``` prop, or you can pass your own ```className``` prop.
 
 ## Development
 ### Forking/Cloning and Building Yourself
@@ -63,19 +69,17 @@ This project uses CSS Modules and CSS Next for styling. To process this we use P
 - [PostCSS](https://github.com/postcss/postcss), with the following plugins:
   - [PostCSS Import](https://github.com/postcss/postcss-import)
   - [CSS Next](https://github.com/cssnext/postcss-cssnext)
-  - [Autoprefixer](https://github.com/postcss/autoprefixer)
 - A way to interpret CSS Modules, could be any of the following depending on your environment:
   - [Webpack CSS Loader](https://github.com/webpack/css-loader)
   - [PostCSS Modules](https://github.com/outpunk/postcss-modules)
   - [Babel Plugin CSS Modules Transform](https://github.com/michalkvasnicak/babel-plugin-css-modules-transform)
-  - [CSS Modules Require Hook](https://github.com/css-modules/css-modules-require-hook)
 - ES6/JSX compiler. We recommend Babel and use the following Babel presets:
   - [es2015](https://babeljs.io/docs/plugins/preset-es2015/)
   - [react](http://babeljs.io/docs/plugins/preset-react/)
   - [stage-1](http://babeljs.io/docs/plugins/preset-stage-1/)
-  
+
   ### Setup
-  
+
   ### Docs
   To start documentation site locally you'd need to install dependencies from the main package, setup the monorepo and then just run the docs script:
 
@@ -87,7 +91,7 @@ npm run docs
 ```
 
 Local documentation will be available at `http://localhost:3000`
-  
+
   ### Monorepo
 React-Atlas is a [monorepo](https://medium.com/@bebraw/the-case-for-monorepos-907c1361708a#.lflmhsuzq) which is being handled with the [lerna](https://github.com/lerna/lerna) package.  Lerna was developed in order to support [Babel's](https://github.com/babel/babel/tree/master/packages) monorepo approach.  It is basically a command line tool that handles some tricky operations by connecting modules together and running commands against multiple modules.  All of the different packages can be found under the [packages](https://github.com/DigitalRiver/react-atlas/tree/master/packages) folder.
 
@@ -126,18 +130,8 @@ The project is being initially developed and maintained by the Digital River Exp
 
 ## Set-Up/Installation for Development and Contributing
 
-### Pre-work for Windows Users (a.k.a. node-gyp stuff)
-If running on windows, follow these steps to ensure you don't run into any 'node-gyp' issues:
 
-[Install VC++ Build Tools Technical Preview](https://www.microsoft.com/en-us/download/confirmation.aspx?id=49983)
-
->:bulb: [Windows 7 only] requires [.NET Framework 4.5.1](http://www.microsoft.com/en-us/download/details.aspx?id=40773)
-
-[Install Python 2.7](https://www.python.org/downloads/), and add it to your PATH, ```npm config set python python2.7```
-
-Launch cmd, ```npm config set msvs_version 2015``` --global
-
-## License 
+## License
 This project is licensed under the terms of the [MIT license](https://github.com/DigitalRiver/react-atlas/blob/master/LICENSE).
 
 ## Atlas?
