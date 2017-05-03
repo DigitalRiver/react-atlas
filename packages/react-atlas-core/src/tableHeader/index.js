@@ -1,3 +1,2 @@
-import {default as TableHeaderCore} from "./TableHeader";
-export {TableHeaderCore};
-
+import { default as TableHeaderCore } from "./TableHeader";
+export { TableHeaderCore };

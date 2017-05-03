@@ -28,7 +28,7 @@ export default class Table extends React.Component {
       defaultSortOrder: 'desc'  // default sort order
     };
     return (
-      <Atlas.Table data={ this.products } selectRow={{mode: 'checkbox'}} options={this.options} >
+      <Atlas.Table {...props} >
         {children}
       </Atlas.Table>
     )
