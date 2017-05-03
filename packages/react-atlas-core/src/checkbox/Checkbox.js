@@ -4,28 +4,60 @@ import cx from 'classNames';
 /**
  * Simple component for a basic checkbox
  */
-const Checkbox = ({ title, label, disabled, inline, className, ...props }) => {
-  const componentClasses = cx({
-    "block": !inline,
-    inline,
-    disabled,
-    [className]: className
-  });
+class Checkbox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      "inputValue": '',
+      "checked": this.props.defaultChecked || false
+    };
+  }
 
-  title = title ? title : label;
+  // Handles new checkbox clicks and sets value and checked status of hidden input
+  _clickHandler = (event) => {
+    if (this.wrapperRef && this.wrapperRef.contains(event.target)) {
+      if(this.state.inputValue === "off" || this.state.inputValue === "" || this.state.inputValue === null) {
+        this.setState({'inputValue': "on"});
+      } else {
+        this.setState({'inputValue': "off"});
+      }
 
-  return (
-    <label styleName={componentClasses} title={title}>
-      <input
-        {...props}
-        type="checkbox"
-        disabled={disabled}
-        styleName={"input"}
-      />
-      {label && <span styleName={"label"}>{label}</span>}
-    </label>
-  );
-};
+      if(this.state.defaultChecked === true){
+        this.setState({'checked': false})
+      } else {
+        this.setState({'checked': true})
+      }
+
+    }
+  };
+
+  render() {
+    const { title, label, checked, disabled, inline, className, defaultChecked, ...props } = this.props;
+    const inlineText = inline ? "inline" : "";
+    const controlStyle = cx({
+      "control": true,
+      "control--checkbox": true
+    })
+
+    const title_label = title ? title : label;
+    const labelClasses = cx("control__indicator", inlineText);
+
+    return (
+      <label styleName={controlStyle} title={title_label} ref={(checkbox) => { this.wrapperRef = checkbox; }} className={cx(className)}>
+        <input
+            {...props}
+            name={label}
+            type="checkbox"
+            disabled={disabled}
+            value={this.state.inputValue}
+            defaultChecked={this.state.checked}
+            />
+
+        {label && <div styleName={labelClasses} onClick={this._clickHandler.bind(this)}><div styleName={"control__label"}>{label}</div></div>}
+      </label>
+    );
+  }
+}
 
 Checkbox.propTypes = {
   /**
@@ -54,45 +86,13 @@ Checkbox.propTypes = {
   /**
    * Defines if checkbox should be checked on load.
    */
-  "defaultChecked": PropTypes.bool
+  "defaultChecked": PropTypes.bool,
+  /**
+   * Defines if checkbox should be checked on load.
+   */
+  "checked": PropTypes.bool
 };
 
-Checkbox.defaultProps = { "className": "", "disabled": false, "inline": false };
-
-Checkbox.styleguide = {
-  "category": "Form Components",
-  "index": "3.2",
-  "example": 
-    `
-<section style={{textAlign:"left"}}>
-  <h4 style={{marginBottom: "10px"}}>Checkboxes</h4>
-  <Checkbox
-    defaultChecked={true}
-    label="Checked"
-  />
-  <Checkbox
-    defaultChecked={false}
-    label="Not checked"
-
-  />
-  <Checkbox
-    defaultChecked={true}
-    label="Disabled checkbox"
-    disabled
-  />
-  <Checkbox
-    defaultChecked={false}
-    label="Inline checkbox 1"
-    inline
-  />
-  <Checkbox
-    defaultChecked={false}
-    label="Inline checkbox 2"
-    inline
-  />
-</section>
-`
-  
-};
+Checkbox.defaultProps = { "className": "", "disabled": false, "inline": false, "checked": false };
 
 export default Checkbox;

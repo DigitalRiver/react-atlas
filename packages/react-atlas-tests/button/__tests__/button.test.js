@@ -1,37 +1,36 @@
 import React from "react";
 import { mount } from "enzyme";
-import { expect } from "chai";
 import { ButtonCore } from "react-atlas-core";
 
 describe("Test ButtonCore component", () => {
   it("Test default props", function() {
     const result = mount(<ButtonCore />);
-    expect(result.props().children).to.equal("Default Button");
-    expect(result.props().outline).to.equal(false);
-    expect(result.props().loading).to.equal(false);
-    expect(result.props().mini).to.equal(false);
+    expect(result.props().children).toBe("Default Button");
+    expect(result.props().outline).toBe(false);
+    expect(result.props().loading).toBe(false);
+    expect(result.props().mini).toBe(false);
   });
 
   it("Make sure main style is set correctly.", function() {
     let result = mount(<ButtonCore />);
-    expect(result.props().primary).to.equal(false);
+    expect(result.props().primary).toBe(false);
 
     result = mount(<ButtonCore primary />);
-    expect(result.props().primary).to.equal(true);
+    expect(result.props().primary).toBe(true);
 
     result = mount(<ButtonCore secondary />);
-    expect(result.props().secondary).to.equal(true);
+    expect(result.props().secondary).toBe(true);
 
     result = mount(<ButtonCore success />);
-    expect(result.props().success).to.equal(true);
+    expect(result.props().success).toBe(true);
 
     result = mount(<ButtonCore warning />);
-    expect(result.props().warning).to.equal(true);
+    expect(result.props().warning).toBe(true);
 
     result = mount(<ButtonCore danger />);
-    expect(result.props().danger).to.equal(true);
+    expect(result.props().danger).toBe(true);
 
     result = mount(<ButtonCore link />);
-    expect(result.props().link).to.equal(true);
+    expect(result.props().link).toBe(true);
   });
 });

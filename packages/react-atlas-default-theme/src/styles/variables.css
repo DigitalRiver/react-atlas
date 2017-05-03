@@ -13,7 +13,7 @@
   --sky-blue:     #00A7E1;
 
   /* Cool */
-  --green:        #2ecc40;
+  --green:        #b2d23c;
   --kelly-green:  #81b315;
   --olive:        #3d9970;
   --lime:         #01ff70;
@@ -21,8 +21,8 @@
 
   /* Warm */
   --yellow:       #ffdc00;
-  --orange:       #ff851b;
-  --red:          #ff4136;
+  --orange:       #ff5b00;
+  --red:          #ea0f43;
   --fuchsia:      #f012be;
   --purple:       #b10dc9;
   --maroon:       #85144b;
@@ -81,5 +81,5 @@
   --border-width: 1px;
   --buttom-border-width: 2px;
   --border-radius: .25rem;
-  --border-color: var(--darken-2);
+  --border-color: var(--med-grey);
 }

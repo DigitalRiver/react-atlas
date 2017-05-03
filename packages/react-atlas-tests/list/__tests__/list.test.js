@@ -1,6 +1,5 @@
 import React from "react";
 import { mount } from "enzyme";
-import { expect } from "chai";
 import { ListCore, ListItemCore, ListTextCore } from "react-atlas-core";
 
 describe("Test List component", () => {
