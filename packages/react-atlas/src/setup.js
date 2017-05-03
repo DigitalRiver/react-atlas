@@ -1,107 +1,156 @@
-/* This file consumes an atlas.config.js file and generates an index.js for react-atlas. */
+/* This script handles bootstrapping atlas as well as theming support. */
 let dot = require('dot');
 let fs = require('fs');
 let eol = require('os').EOL;
-
+const setupConf = require('./setup.config.js'); 
+const warningMessage = setupConf.warningMessage;
+const template = setupConf.template;
+const components = setupConf.components;
+const indexTemplate = setupConf.indexTemplate;
+const compIndexTemplate = setupConf.compIndexTemplate;
 const cwd = process.cwd();
 const path = cwd + '/atlas.config.js';
-const warningMessage = "/* WARNING, THIS FILE WAS MACHINE GENERATED. DO NOT MODIFY THIS FILE DIRECTLY " + eol +
-                       "BECAUSE YOUR CHANGES WILL BE OVERWRITTEN WHEN THIS FILE IS GENERATED AGAIN. " + eol +
-                       "IF YOU WAN'T TO MODIFY THIS FILE YOU SHOULD BE MODIFYING THE GENERATOR IT'S SELF " + eol +
-                       "AND REGENERATE THIS FILE. */" + eol;
+const reactDocs = require('react-docgen');
 
-let template = warningMessage;
-template += "import CSSModules from 'react-css-modules';" + eol + 
-            "{{~it.dependencies :value:index}}" + eol +
-            "import { {{=value.name}}Core } from 'react-atlas-core';" + eol + 
-            "import { {{=value.name}}Style } from '{{=value.theme}}';" + eol +
-            "export const {{=value.name}} = CSSModules({{=value.name}}Core, {{=value.name}}Style, {allowMultiple: true}); {{~}}" + eol;
-
-dot.templateSettings = {
-  evaluate:    /\{\{([\s\S]+?)\}\}/g,
-  interpolate: /\{\{=([\s\S]+?)\}\}/g,
-  encode:      /\{\{!([\s\S]+?)\}\}/g,
-  use:         /\{\{#([\s\S]+?)\}\}/g,
-  define:      /\{\{##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\}\}/g,
-  conditional: /\{\{\?(\?)?\s*([\s\S]*?)\s*\}\}/g,
-  iterate:     /\{\{~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\}\})/g,
-  varname: 'it',
-  strip: false,
-  append: true,
-  selfcontained: false
-};
-
-/* TODO: Replace hardcoded array with a dynamic solution. */
-let components = ['autocomplete', 'avatar', 'button', 'card', 'checkbox',
-                 'dialog', 'drawer', 'dropdown', 'form', 'gridCol', 'gridRow',
-                 'header', 'hint', 'input', 'list', 'listItem', 'listText',
-                 'media', 'overlay', 'progressBar', 'radio', 'radioGroup', 'slider',
-                 'snackbar', 'switch', 'tab', 'tabContent', 'table', 'tabs', 'tbody',
-                 'td', 'tfoot', 'th', 'thead', 'tooltip', 'tr'];
+/* Create generated component directory structure inside react-atlas/src. */
+createComponentDirectories();
 
 /* Check if a atlas config file exist or not. If the config file
   does exist create a new index file. */
 if(fs.existsSync(path)) {
-  // getComponentArray(cwd + '/node_modules/react-atlas-core/');
-  createIndexFromConfig(path);
+  createComponentsFromConfig(path);
 } else {
-  createIndexFromGlobalTheme("react-atlas-default-theme");
+  createComponentFromGlobalTheme("react-atlas-default-theme");
 }
 
-/* Get an array of components by looping through components in react-atlas-core.
-  This will allow the user to not have to list every component inside of atlas.config.js. */
-function getComponentArray(path) {
-  fs.readlink(path, function(err, str) {
-    console.log("str: ", str);
+function processInfo(info) {
+  let array = Object.keys(info.props).map(function (key) {
+    let obj = {};
+
+    /* Skip empty objects. */
+    if(typeof info.props[key].type === 'undefined') {
+      return obj;
+    }
+
+    let name = info.props[key].type.name;
+
+    /* Check if the type is a union. */
+    if(name === 'union') {
+
+      obj.type = '"' + key + '":' + " PropTypes.oneOfType(["
+
+      for(let i = 0; i < info.props[key].type.value.length; i++) {
+        let type = info.props[key].type.value[i];
+        switch(type.name) {
+          case 'number':
+            obj.type += "PropTypes.number,";
+            break;
+          case 'string':
+            obj.type += "PropTypes.string,";
+            break;
+          case 'element':
+            obj.type += "PropTypes.element,";
+            break;
+
+          default:
+            console.log("type: ", type);
+            break;
+        }
+      }
+
+      obj.type += "])";
+      
+    } else {
+      obj.type = '"' + key + '":' + ' ' + "PropTypes." + name;
+    }
+
+    obj.required = info.props[key].required;
+    obj.description = info.props[key].description;
+    return obj; 
   });
-  let array = fs.readdirSync(fs.readlinkSync(path));
-  for(let i = 0; i < array.length - 1; i++) {
-    console.log(array[i]);
-  }
+
+  return array;
 }
 
-function createIndexFromGlobalTheme(theme) {
-  let dependencies = [];
-  for(let i = 0; i < components.length; i++) {
-    let component = { 'name': components[i], 'theme': theme };
+function createComponent(name, theme) {
+  let component = {};
 
-    /* Make sure leading letter is uppercase. */
-    component.name = component.name[0].toUpperCase() + component.name.slice(1);
-    dependencies.push(component);
+  component = { 'name': name, 'theme': theme };
+
+  /* Make sure leading letter is uppercase. */
+  component.name = component.name[0].toUpperCase() + component.name.slice(1);
+
+  /* Create component path. */
+  let path = __dirname + '/../../react-atlas-core/src/' + component.name + '/' + component.name + '.js'
+
+  /* Read the component source file. */
+  let file = fs.readFileSync(path);
+
+  /* Parse component source. */
+  let info = reactDocs.parse(file.toString('ascii'));
+
+  // console.log("info: ", info.props);
+
+  component.propTypes = processInfo(info);
+
+  return component;
+}
+
+function writeComponent(component) {
+  /* Render component template. */
+  let tempFn = dot.template(template);
+  let resultText = tempFn({'component': component});
+
+  /* Try writting component to disk. */
+  try {
+    fs.writeFileSync(__dirname + '/components/' + component.name + '/' + component.name + '.js', resultText);
+  }
+  catch(err) {
+     console.log("Failed generating modules file: ", err);
+    return;
   }
 
-  let tempFn = dot.template(template);
-  let resultText = tempFn({'dependencies': dependencies});
+  tempFn = dot.template(compIndexTemplate);
+  resultText = tempFn({'component': component});
+
   try {
-    fs.writeFileSync(__dirname + '/generatedModules.js', resultText);
+    fs.writeFileSync(__dirname + '/components/' + component.name + '/index.js', resultText);
   }
   catch(err) {
     console.log("Failed generating modules file: ", err);
     return;
   }
 
+  console.log('Generating: ', __dirname + '/components/' + component.name + '/' + component.name + '.js');
+}
+
+function createComponentFromGlobalTheme(theme) {
+  let comps = [];
+  for(let i = 0; i < components.length; i++) {
+
+    let component = createComponent(components[i], theme);
+
+    comps.push(component);
+
+    writeComponent(component);
+  }
+
   console.log("Finished generating modules file: ", __dirname + '/generatedModules.js');
+
+  writeIndexFile(comps);
+
   return;
 }
 
 /* Read the config file, grab needed info and use the
  dotjs templating engine to output the index.js file for
  react-atlas. */
-function createIndexFromConfig() {
+function createComponentFromConfig() {
   let config = require(path);
-  let dependencies = [];
   if(config.theme === '') {
     for(let i = 0; i < config.components.length; i++) {
-      dependencies.push(config.components[i]);
-    }
-    let tempFn = dot.template(template);
-    let resultText = tempFn({'dependencies': dependencies});
-    try {
-      fs.writeFileSync(__dirname + '/generatedModules.js', resultText);
-    }
-    catch(err) {
-      console.log("Failed generating modules file: ", err);
-      return;
+      let component = createComponent(config.components[i].name, config.components[i].theme);
+      writeComponent(component);
     }
 
     console.log("Finished generating modules file: ", __dirname + '/generatedModules.js');
@@ -109,6 +158,35 @@ function createIndexFromConfig() {
     return;
   }
 
-  createIndexFromGlobalTheme(config.theme);
+  createComponentFromGlobalTheme(config.theme);
+}
+
+function createComponentDirectories() {
+  const componentDirPath = __dirname + '/components';
+
+  if(!fs.existsSync(componentDirPath)) {
+    fs.mkdirSync(componentDirPath, 0777);
+    for(let i = 0; i < components.length; i++) {
+      let component = components[i];
+
+      /* Make sure leading letter is uppercase. */
+      component = component[0].toUpperCase() + component.slice(1);
+      fs.mkdir(componentDirPath + '/' + component);
+    }
+  }
+}
+
+function writeIndexFile(comps) {
+  let tempFn = dot.template(indexTemplate);
+  let resultText = tempFn({'components': comps});
+
+  /* Try writting component to disk. */
+  try {
+    fs.writeFileSync(__dirname + '/components/index.js', resultText);
+  }
+  catch(err) {
+    console.log("Failed generating modules file: ", err);
+    return;
+  }
 }
 

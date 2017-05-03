@@ -17,7 +17,7 @@
     "setup": "npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
     "generateFiles": "node packages/react-atlas/src/setup.js",
     "bootstrap": "npm run lerna:init && npm run lerna:bootstrap && npm run generateFiles && npm run packages:build",
-    "docs": "cd packages/react-atlas-docs && npm run styleguide"
+    "docs": "cd packages/react-atlas && npm run styleguide"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -42,8 +42,10 @@
     "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "babel-plugin-transform-react-inline-elements": "^6.22.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.2",
+    "colors": "^1.1.2",
     "react": "^15.4.2",
     "react-autosuggest": "^3.7.3",
+    "react-docgen": "^2.14.1",
     "react-dom": "^15.4.2"
   },
   "devDependencies": {
@@ -58,7 +60,7 @@
     "eslint-plugin-react": "^6.10.3",
     "glob": "^7.1.1",
     "jest": "^19.0.2",
-    "lerna": "^2.0.0-rc.3",
+    "lerna": "^2.0.0-rc.4",
     "prettier": "^1.2.2",
     "react-addons-test-utils": "^15.5.1",
     "sinon": "^2.1.0"
