@@ -89,8 +89,6 @@ function createComponent(name, theme) {
   /* Parse component source. */
   let info = reactDocs.parse(file.toString('ascii'));
 
-  // console.log("info: ", info.props);
-
   component.propTypes = processInfo(info);
 
   return component;
@@ -163,16 +161,29 @@ function createComponentFromConfig() {
 
 function createComponentDirectories() {
   const componentDirPath = __dirname + '/components';
+  const oldPath = __dirname + "/../../react-atlas-core/src/";
+
+  let component;
 
   if(!fs.existsSync(componentDirPath)) {
     fs.mkdirSync(componentDirPath, 0777);
     for(let i = 0; i < components.length; i++) {
-      let component = components[i];
+      component = components[i];
 
       /* Make sure leading letter is uppercase. */
       component = component[0].toUpperCase() + component.slice(1);
       fs.mkdir(componentDirPath + '/' + component);
     }
+  }
+  for(let i = 0; i < components.length; i++) {
+    component = components[i];
+
+    /* Make sure leading letter is uppercase. */
+    component = component[0].toUpperCase() + component.slice(1);
+
+    console.log("OLD: ", oldPath + component + '/README.md');
+    console.log("NEW: ", componentDirPath + '/' + component + '/README.md');
+    fs.linkSync(oldPath + component + '/README.md', componentDirPath + '/' + component + '/README.md');
   }
 }
 
