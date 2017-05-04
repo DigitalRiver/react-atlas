@@ -11,16 +11,51 @@ const compIndexTemplate = setupConf.compIndexTemplate;
 const cwd = process.cwd();
 const path = cwd + '/atlas.config.js';
 const reactDocs = require('react-docgen');
+const spawn = require("cross-spawn");
 
 /* Create generated component directory structure inside react-atlas/src. */
 createComponentDirectories();
 
 /* Check if a atlas config file exist or not. If the config file
-  does exist create a new index file. */
+  does exist generate components. */
 if(fs.existsSync(path)) {
   createComponentsFromConfig(path);
 } else {
   createComponentFromGlobalTheme("react-atlas-default-theme");
+}
+
+/* Check for command line arguments. */
+if(process.argv.length >= 2) {
+  if(typeof process.argv[2] === 'undefined')
+    return;
+
+  /* Someone is switching themes so let's rebuild react-atlas/packages/react-atlas. */
+  if(process.argv[2] === "--switch") {
+    rebuild(path);
+  }
+}
+
+/* Just functions below, entire control flow(logic) is above this comment. */
+
+function rebuild(path) {
+  console.log("path: ", __dirname + '/../webpack.config.js');
+  let config = require(path);
+  if(config.theme === 'react-atlas-default-theme') {
+    spawn.sync(__dirname + '/../node_modules/webpack/bin/webpack.js', ['--config', __dirname + '/../webpack.config.js'], {
+      "env": process.env,
+      "cwd": cwd,
+      "stdio": "inherit"
+    });
+  } else {
+    /* Rebuild react-atlas library, but pass the theme string to exclude
+    from the rebuilding process. This allows react-atlas to rebuild with out
+    having access to the theme.  */
+  spawn.sync(__dirname + '/../node_modules/webpack/bin/webpack.js', ['--config', __dirname + '/../webpack.config.js', '--env.theme', config.theme], {
+    "env": process.env,
+    "cwd": cwd,
+    "stdio": "inherit"
+   });
+  }
 }
 
 function processInfo(info) {
@@ -133,7 +168,7 @@ function createComponentFromGlobalTheme(theme) {
     writeComponent(component);
   }
 
-  console.log("Finished generating modules file: ", __dirname + '/generatedModules.js');
+  console.log("Finished generating components");
 
   writeIndexFile(comps);
 
@@ -143,7 +178,7 @@ function createComponentFromGlobalTheme(theme) {
 /* Read the config file, grab needed info and use the
  dotjs templating engine to output the index.js file for
  react-atlas. */
-function createComponentFromConfig() {
+function createComponentsFromConfig() {
   let config = require(path);
   if(config.theme === '') {
     for(let i = 0; i < config.components.length; i++) {
@@ -151,7 +186,7 @@ function createComponentFromConfig() {
       writeComponent(component);
     }
 
-    console.log("Finished generating modules file: ", __dirname + '/generatedModules.js');
+    console.log("Finished generating components");
 
     return;
   }
@@ -181,9 +216,9 @@ function createComponentDirectories() {
     /* Make sure leading letter is uppercase. */
     component = component[0].toUpperCase() + component.slice(1);
 
-    console.log("OLD: ", oldPath + component + '/README.md');
-    console.log("NEW: ", componentDirPath + '/' + component + '/README.md');
-    fs.linkSync(oldPath + component + '/README.md', componentDirPath + '/' + component + '/README.md');
+    if(!fs.existsSync(oldPath + component + '/README.md')) {
+      fs.linkSync(oldPath + component + '/README.md', componentDirPath + '/' + component + '/README.md');
+    }
   }
 }
 

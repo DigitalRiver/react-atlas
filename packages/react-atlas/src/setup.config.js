@@ -12,8 +12,8 @@ template += "import CSSModules from 'react-css-modules';" + eol +
             "import { PropTypes } from 'react';" + eol +
             "import { {{=it.component.name}}Core } from 'react-atlas-core';" + eol + 
             "import { {{=it.component.name}}Style } from '{{=it.component.theme}}';" + eol +
-            "export const {{=it.component.name}} = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});"; + eol +
-             eol + "{{=it.component.name}}.PropTypes = {" + eol +
+            "export const {{=it.component.name}} = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});" + eol +
+            "{{=it.component.name}}.PropTypes = {" + eol +
             "{{~it.component.propTypes :value:index}}" + eol +
             "/* {{=value.description}} */" + eol +
                 "{{=value.type}}," + eol +
