@@ -68,21 +68,12 @@ if(process.env.NODE_ENV === "production") {
 } else {
   config.module.rules.push({
     test: /\.css$/,
-	  exclude: /\.global\.css$/,
     loaders: [
         'style-loader?sourceMap',
         'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
         'postcss-loader'
     ]
-},
-	  {
-		  test: /\.global\.css$/,
-		  loader: [
-			  'style-loader?sourceMap',
-			  'css-loader?importLoaders=1',
-			  'postcss-loader'
-		  ]
-	  });
+});
 }
 
 module.exports = function() {
