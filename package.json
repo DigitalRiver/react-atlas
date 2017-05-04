@@ -7,7 +7,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "format": "prettier packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas/src/**/*.js packages/react-atlas-default-theme/src/**/*.js --write",
-    "lint": "eslint packages/react-atlas-core/src/table/*.js packages/react-atlas-core/src/table/**/*.js packages/react-atlas/src/**/*.js packages/react-atlas-default-theme/src/table/*.js --fix",
+    "lint": "eslint packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas/src/**/*.js packages/react-atlas-default-theme/src/**/*.js --fix",
     "format-lint": "npm run format && npm run lint",
     "lerna:init": "lerna init",
     "lerna:bootstrap": "lerna bootstrap",
@@ -17,9 +17,7 @@
     "setup": "npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
     "generateFiles": "node packages/react-atlas/src/setup.js",
     "bootstrap": "npm run lerna:init && npm run lerna:bootstrap && npm run generateFiles && npm run packages:build",
-    "docs": "cd packages/react-atlas-docs && npm run styleguide",
-    "clean": "rm node_modules/ packages/react-atlas/node_modules/ packages/react-atlas-core/node_modules/ packages/react-atlas-default-theme/node_modules/ packages/react-atlas-docs/node_modules/ -rf",
-    "clean-docs": "cd packages/react-atlas-docs && rm node_modules/react-atlas node_modules/react-atlas-core node_modules/react-atlas-default-theme -rf && npm install && npm run styleguide"
+    "docs": "cd packages/react-atlas-docs && npm run styleguide"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -60,7 +58,7 @@
     "eslint-plugin-react": "^6.10.3",
     "glob": "^7.1.1",
     "jest": "^19.0.2",
-    "lerna": "^2.0.0-rc.4",
+    "lerna": "^2.0.0-rc.3",
     "prettier": "^1.2.2",
     "react-addons-test-utils": "^15.5.1",
     "sinon": "^2.1.0"

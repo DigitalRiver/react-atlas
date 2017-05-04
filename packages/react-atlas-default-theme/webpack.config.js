@@ -28,7 +28,6 @@ let config = {
 if(process.env.NODE_ENV === "production") {
   config.module.rules.push({
       test: /\.css$/,
-      exclude: /\.global\.css$/,
       loader: ExtractTextPlugin.extract({
                     fallbackLoader: 'style-loader',
                     loader: [ {
@@ -43,21 +42,7 @@ if(process.env.NODE_ENV === "production") {
                      'postcss-loader'
                      ]
                 })
-    }, {
-	  test: /\.global\.css$/,
-	  loader: ExtractTextPlugin.extract({
-		  fallbackLoader: 'style-loader',
-		  loader: [{
-			  loader: 'css-loader',
-			  query: {
-				  importLoaders: 1,
-				  minimize: true
-			  }
-		  },
-			  'postcss-loader'
-		  ]
-	  })
-  });
+    });
   config.plugins.push(new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: false
