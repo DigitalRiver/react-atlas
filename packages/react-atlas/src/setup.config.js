@@ -9,16 +9,32 @@ const warningMessage = "/* WARNING, THIS FILE WAS MACHINE GENERATED. DO NOT MODI
 
 let template = warningMessage;
 template += "import CSSModules from 'react-css-modules';" + eol +
-            "import { PropTypes } from 'react';" + eol +
             "import { {{=it.component.name}}Core } from 'react-atlas-core';" + eol + 
             "import { {{=it.component.name}}Style } from '{{=it.component.theme}}';" + eol +
-            "export const {{=it.component.name}} = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});" + eol +
-            "{{=it.component.name}}.PropTypes = {" + eol +
+            "export const {{=it.component.name}} = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});"; 
+
+let devTemplate = warningMessage;
+devTemplate += "import CSSModules from 'react-css-modules';" + eol +
+            "import React, { PropTypes } from 'react';" + eol +
+            "import { {{=it.component.name}}Core } from 'react-atlas-core';" + eol + 
+            "import { {{=it.component.name}}Style } from '{{=it.component.theme}}';" + eol +
+            "const {{=it.component.name}}Comp = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});" + eol +
+            "export default class {{=it.component.name}} extends React.Component {" + eol +
+            "constructor(props){" + eol +
+            "super(props)" + eol +
+            "}" + eol +
+            "render() {" + eol +
+            "return (" + eol +
+            "<{{=it.component.name}}Comp {...this.props}></{{=it.component.name}}Comp>" + eol +
+            ")" + eol +
+            "}" + eol + "}" + eol + 
+            "{{=it.component.name}}.propTypes = {" + eol +
             "{{~it.component.propTypes :value:index}}" + eol +
-            "/* {{=value.description}} */" + eol +
+            "/** {{=value.description}} */" + eol +
                 "{{=value.type}}," + eol +
             "{{~}}" + eol +
             "};";
+           
             
 
 let indexTemplate = "{{~it.components :value:index}}" + eol +
@@ -54,5 +70,6 @@ module.exports = {
   "template": template,
   "components": components,
   "indexTemplate": indexTemplate,
-  "compIndexTemplate": compIndexTemplate
+  "compIndexTemplate": compIndexTemplate,
+  "devTemplate": devTemplate
 }

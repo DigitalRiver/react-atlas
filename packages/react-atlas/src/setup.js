@@ -5,6 +5,7 @@ let eol = require('os').EOL;
 const setupConf = require('./setup.config.js'); 
 const warningMessage = setupConf.warningMessage;
 const template = setupConf.template;
+const devTemplate = setupConf.devTemplate;
 const components = setupConf.components;
 const indexTemplate = setupConf.indexTemplate;
 const compIndexTemplate = setupConf.compIndexTemplate;
@@ -88,7 +89,6 @@ function processInfo(info) {
             break;
 
           default:
-            console.log("type: ", type);
             break;
         }
       }
@@ -129,7 +129,17 @@ function createComponent(name, theme) {
   return component;
 }
 
+function getTemplate() {
+  if(process.env.NODE_ENV === 'production') {
+    return template;
+  } else {
+    return devTemplate;
+  }
+}
+
 function writeComponent(component) {
+  var template = getTemplate();
+
   /* Render component template. */
   let tempFn = dot.template(template);
   let resultText = tempFn({'component': component});
