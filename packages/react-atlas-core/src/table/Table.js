@@ -33,7 +33,7 @@ Table.propTypes = {
 };
 
 Table.defaultProps = {
-  "pagination": true,
+  "pagination": false,
   "options": {
     "defaultSortName": "",
     "defaultSortOrder": ""

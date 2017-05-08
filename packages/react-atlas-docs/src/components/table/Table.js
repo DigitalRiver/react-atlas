@@ -4,25 +4,11 @@ import * as Atlas from 'react-atlas';
 export default class Table extends React.Component {
   constructor(props){
     super(props);
-    this.buildProducts = this.buildProducts.bind(this);
   }
-  buildProducts(count){
-    let products = [];
-    const startId = 0;
-    for (let i = 0; i < count; i++) {
-      const id = startId + i;
-      products.push({
-        id: id,
-        name: 'Item name ' + id,
-        price: 2100 + i
-      });
-    }
-    return products;
-  }
+	
   render() {
     let {children, ...props} = this.props;
     
-    this.products = this.buildProducts(70);
     this.options = {
       defaultSortName: 'name',  // default sort column name
       defaultSortOrder: 'desc'  // default sort order
