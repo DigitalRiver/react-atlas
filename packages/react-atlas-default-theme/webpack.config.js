@@ -55,7 +55,7 @@ if(process.env.NODE_ENV === "production") {
     test: /\.css$/,
     loaders: [
         'style-loader?sourceMap',
-        'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+        'css-loader?modules&importLoaders=1&localIdentName=ra_[name]__[local]',
         'postcss-loader'
     ]
 });
