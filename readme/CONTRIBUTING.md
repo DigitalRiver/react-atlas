@@ -5,9 +5,9 @@ Please note that this project is released with a [Contributor Code of Conduct](h
 ### Development
 1. Fork repo to your personal profile
 2. Clone your forked repo to your machine
-3. Go inside newly cloned directory and `git remote add upstream git@github.digitalriverws.net:ux/react-atlas.git`
+3. Go inside newly cloned directory and `git remote add upstream https://github.com/DigitalRiver/react-atlas.git`
 4. run `npm install`
-5. run `npm run setup` to have lerna install and setup the different packages
+5. run `npm run bootstrap` to have lerna install and setup the different packages as well as generate atlas code.
 6. run `npm run docs` to start the development server
 6. write tests & code in ES6 goodness :-)
 7. run `git add whatever/files/you/changed.js`
