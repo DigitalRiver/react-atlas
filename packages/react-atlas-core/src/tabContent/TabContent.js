@@ -1,40 +1,53 @@
 import React, { PropTypes } from "react";
-import cx from 'classNames';
+import cx from "classNames";
 
 /**
  * Used within the `<Tabs>` Component to programatically determine the content of any given tab. There probably isn't any reason for you to actually use `<TabContent>` directly.
  */
 const TabContent = ({ active, tabIndex, children, className, ...props }) => {
-  const classes = cx(
-    {
-      "tabContent": true,
-      "tabActive": active
-    }
-  );
+  const classes = cx({
+    "tabContent": true,
+    "tabActive": active
+  });
 
   return (
-    <section styleName={classes} tabIndex={tabIndex} className={cx(className)}>
+    <section {...props} styleName={classes} className={cx(className)} tabIndex={tabIndex}>
       {children}
     </section>
   );
 };
 
 TabContent.propTypes = {
+  /**
+   * Determines if the tab content is active (depends on tab active index).
+   */
   "active": PropTypes.bool,
+  /**
+     * Children components (any markup to be displayed when tab is active).
+     * @examples <TabContent><h3>Tab 1</h3><p>Lorem ipsum</p></TabContent>
+     */
   "children": PropTypes.node,
+  /**
+     * Defines a custom css class name.
+     * @examples 'tabContent', 'tabActive'
+     */
   "className": PropTypes.string,
+  /**
+     * Tab index related to the content.
+     * @examples 0,1,2,3,4
+     */
   "tabIndex": PropTypes.number
 };
 TabContent.defaultProps = {
-  "active": false,
+  "className": "",
+  "active": false
 };
 
 TabContent.styleguide = {
   "category": "Layout",
   "index": "4.10",
   "wrappedExample": true,
-  "example": 
-    `
+  "example": `
 // Internal Methods {
 class TabsExample extends React.Component {
   state = {
@@ -83,7 +96,6 @@ class TabsExample extends React.Component {
 ReactDOM.render(<TabsExample />, mountNode);
 // }
 `
-  
 };
 
 export default TabContent;
