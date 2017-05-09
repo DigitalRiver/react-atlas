@@ -18,7 +18,7 @@ React Atlas originally started off as a fork of [React Toolbox](https://github.c
 - Encapsulated component state within each component, instead of requiring the user to maintain state in their own application
 
 ## Requirements
-This library only officially supports [Node 6.x.x](https://nodejs.org/en/) and [React 15.x.x+](https://facebook.github.io/react/), on Windows, MacOS, Linux and FreeBSD.
+This library only officially supports [Node 6.x.x+](https://nodejs.org/en/) and [React 15.x.x+](https://facebook.github.io/react/), on Windows, MacOS, Linux and FreeBSD.
 
 ## License
 This project is licensed under the terms of the [MIT license](https://github.com/DigitalRiver/react-atlas/blob/master/LICENSE).
@@ -43,15 +43,15 @@ $ npm run bootstrap
 
 When NODE_ENV is set to production make sure to either import the stylesheet into your application.
 ```javascript
-    import './node_modules/react-atlas/lib/atlasThemes.min.css';
+import './node_modules/react-atlas/lib/atlasThemes.min.css';
 ```
 Or include the stylesheet with a link tag in your index.html.
 ```html
-   <link rel="stylesheet" type="text/css" href="../scripts/atlasThemes.min.css">
+<link rel="stylesheet" type="text/css" href="../scripts/atlasThemes.min.css">
 ```  
 After referencing the stylesheet, import atlas components like you would any other component.
 
-```jsx
+```javascript
 import React from 'react';
 import { Button } from 'react-atlas';
 
@@ -78,11 +78,11 @@ If you wish to use this project via a fork, and build/minifiy on your own, you w
 ### Docs
 To start documentation site locally you'd need to install dependencies from the main package, setup the monorepo and then just run the docs script:
 
-```
-git clone https://github.com/DigitalRiver/react-atlas.git
-npm install
-npm run bootstrap
-npm run docs
+```bash
+$ git clone https://github.com/DigitalRiver/react-atlas.git
+$ npm install
+$ npm run bootstrap
+$ npm run docs
 ```
 
 ## Authors and Contributors
