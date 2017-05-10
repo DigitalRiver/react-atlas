@@ -17,11 +17,11 @@ React Atlas originally started off as a fork of [React Toolbox](https://github.c
 - Component styleguide to ensure code consistency throughout the library
 - Encapsulated component state within each component, instead of requiring the user to maintain state in their own application
 
-## Requirements
-This library only officially supports [Node 6.x.x+](https://nodejs.org/en/) and [React 15.x.x+](https://facebook.github.io/react/), on Windows, MacOS, Linux and FreeBSD.
-
 ## License
 This project is licensed under the terms of the [MIT license](https://github.com/DigitalRiver/react-atlas/blob/master/LICENSE).
+
+## Requirements
+This library only officially supports [Node 6.x.x+](https://nodejs.org/en/) and [React 15.x.x+](https://facebook.github.io/react/), on Windows, MacOS, Linux and FreeBSD.
 
 ## Installation
 React Atlas can be installed as an [npm package](https://www.npmjs.com/package/react-atlas):
@@ -73,7 +73,8 @@ $ npm run bootstrap
 $ npm run docs
 ```
 ## Development and Contributing
-To setup atlas for development follow the steps below.
+To setup atlas for development first make sure `NODE_ENV` is not set or is
+set to `dev`. If `NODE_ENV` is set to production, the doc site wouldn't work, as well as hot loading, etc. Next follow the steps below.
 ```bash
 $ git clone https://github.com/DigitalRiver/react-atlas.git
 $ npm install
