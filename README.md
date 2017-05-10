@@ -36,7 +36,7 @@ import './node_modules/react-atlas/lib/atlasThemes.min.css';
 ```
 Or include the stylesheet with a link tag in your index.html.
 ```html
-<link rel="stylesheet" type="text/css" href="../scripts/atlasThemes.min.css">
+<link rel="stylesheet" type="text/css" href="node_modules/react-atlas/lib/atlasThemes.min.css">
 ```  
 After referencing the stylesheet, import atlas components like you would any other component.
 
