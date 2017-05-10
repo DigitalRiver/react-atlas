@@ -1,6 +1,20 @@
 # Why Things Are The Way They Are
 Here is where we document some of the more opinionated parts of React-Atlas. As questions, feedback and changes happen, this page will evolve so that the reason behind certain choices can be recorded and possibly refuted in future iterations of the project.
 ## CSS
+
+This project uses CSS Modules and CSS Next for styling. To process this we use PostCSS. ([Read why here](https://github.com/DigitalRiver/react-atlas/blob/master/readme/Decisions.md#a-note-on-css)). At minimum your application will need to have the following packages to correctly interpret and use our library:
+- [PostCSS](https://github.com/postcss/postcss), with the following plugins:
+  - [PostCSS Import](https://github.com/postcss/postcss-import)
+  - [CSS Next](https://github.com/cssnext/postcss-cssnext)
+- A way to interpret CSS Modules, could be any of the following depending on your environment:
+  - [Webpack CSS Loader](https://github.com/webpack/css-loader)
+  - [PostCSS Modules](https://github.com/outpunk/postcss-modules)
+  - [Babel Plugin CSS Modules Transform](https://github.com/michalkvasnicak/babel-plugin-css-modules-transform)
+- ES6/JSX compiler. We recommend Babel and use the following Babel presets:
+  - [es2015](https://babeljs.io/docs/plugins/preset-es2015/)
+  - [react](http://babeljs.io/docs/plugins/preset-react/)
+  - [stage-1](http://babeljs.io/docs/plugins/preset-stage-1/)
+
 ### A Note on CSS
 While the original project that React Altas was forked from used SASS for it's css, we are trying our best to eventually remove that dependency. SASS is great, but there are a few reasons behind this move:
   - Being a superset of CSS, SASS effectively becomes it's own Domain Specific Language(DSL) with it's own quirks and syntax to learn. Effectively, SASS is to CSS what CoffeeScript is to Javascipt. Not a bad thing, it has it's benefits for sure. But since this is a library, we want to be as generic and close to spec as possible.

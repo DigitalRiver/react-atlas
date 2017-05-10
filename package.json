@@ -58,7 +58,7 @@
     "eslint-plugin-react": "^6.10.3",
     "glob": "^7.1.1",
     "jest": "^19.0.2",
-    "lerna": "^2.0.0-rc.3",
+    "lerna": "^2.0.0-rc.4",
     "prettier": "^1.2.2",
     "react-addons-test-utils": "^15.5.1",
     "sinon": "^2.1.0"
