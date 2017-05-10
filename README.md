@@ -28,17 +28,6 @@ React Atlas can be installed as an [npm package](https://www.npmjs.com/package/r
 ```bash
 $ npm install --save react-atlas
 ```
-Otherwise for testing or development purposes React Atlas can be installed directly from this repo.
-```bash
-$ git clone https://github.com/DigitalRiver/react-atlas
-
-$ cd react-atlas
-
-$ npm install
-
-$ npm run bootstrap
-```
-
 ### Usage
 
 When NODE_ENV is set to production make sure to either import the stylesheet into your application.
