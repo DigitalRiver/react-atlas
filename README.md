@@ -55,10 +55,10 @@ The previous code creates a React button component based on a React Atlas button
 
 ### Themeing
 There are several ways to style/theme react-atlas components.
-- [Style individual component instance.](readme/themeing.md#Style-Component-Instance)
-- [Creating themes.](readme/themeing.md#Creating-Themes)
-- [Themeing whole library.](readme/themeing.md#Theming-Atlas)
-- [Themeing components.](readme/themeing.md#Themeing-Components)
+- [Style individual component instance.](readme/themeing.md#Instance)
+- [Creating themes.](readme/themeing.md#Create)
+- [Themeing whole library.](readme/themeing.md#Themeing)
+- [Themeing components.](readme/themeing.md#Components)
 
 ### Forking/Cloning and Building Yourself
 If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
