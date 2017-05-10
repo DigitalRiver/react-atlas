@@ -55,10 +55,10 @@ The previous code creates a React button component based on a React Atlas button
 
 ### Themeing
 There are several ways to style/theme react-atlas components.
-- [Style individual component instance.](readme/themeing.md#Style-Component-Instance)
-- [Creating themes.](readme/themeing.md#Creating-themes)
-- [Themeing whole library.](readme/themeing.md#Theming-Atlas)
-- [Themeing components.](readme/themeing.md#Themeing-Components)
+- [Style individual component instance.](readme/themeing.md#Style Component Instance)
+- [Creating themes.](readme/themeing.md#Creating Themes)
+- [Themeing whole library.](readme/themeing.md#Theming Atlas)
+- [Themeing components.](readme/themeing.md#Themeing Components)
 
 ### Forking/Cloning and Building Yourself
 If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
@@ -90,7 +90,7 @@ $ npm run setup           // Builds react-atlas.
 $ npm run generateFiles   // Runs just the code generator.
 
 ```
-For more indepth information on development check out our contributors [readme](readme/CONTRIBUTING.md#Contributing).
+For more in depth information on development check out our contributors [readme](readme/CONTRIBUTING.md#Contributing).
 
 ## Authors and Contributors
 Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.com/DigitalRiver/react-atlas/blob/master/readme/CONTRIBUTING.md)***
