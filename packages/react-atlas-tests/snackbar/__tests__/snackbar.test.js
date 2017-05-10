@@ -1,6 +1,5 @@
 import React from "react";
 import { mount } from "enzyme";
-import { expect } from "chai";
 import { SnackbarCore, ButtonCore } from "react-atlas-core";
 import sinon from "sinon";
 
@@ -30,16 +29,16 @@ describe("Testing Snackbar component", () => {
     );
     expect(
       result.contains(<ButtonCore theme={{ "button": true }}>Hide</ButtonCore>)
-    ).to.equal(true);
+    ).toBe(true);
   });
   it("Make sure props passed in are correct", function() {
     let result = mount(
       <SnackbarCore action={"Hide"} active timeout={10} type={"cancel"} />
     );
-    expect(result.props().action).to.equal("Hide");
-    expect(result.props().active).to.equal(true);
-    expect(result.props().timeout).to.equal(10);
-    expect(result.props().type).to.equal("cancel");
+    expect(result.props().action).toBe("Hide");
+    expect(result.props().active).toBe(true);
+    expect(result.props().timeout).toBe(10);
+    expect(result.props().type).toBe("cancel");
   });
 
   it("Check update handler", function() {
@@ -47,6 +46,6 @@ describe("Testing Snackbar component", () => {
     let result = mount(<SnackbarCore active timeout={1} onTimeout={timeout} />);
     result.update();
     sinon.assert.calledOnce(didUpdate);
-    // expect(count).to.equal(1);
+    // expect(count).toBe(1);
   });
 });

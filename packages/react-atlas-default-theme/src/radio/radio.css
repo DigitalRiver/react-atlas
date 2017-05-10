@@ -1,3 +1,47 @@
+.radioLabel {
+	composes: cursor-pointer from '../styles.css';
+}
+
+.radioInput {
+	position: absolute;
+	composes: opacity-0 from '../styles.css';
+}
+
+.radioInput + span { 
+	position: relative;
+}
+
+	/* we can't use composes here due to pseudo-element */
+	.radioInput + span:before {
+		cursor: pointer;
+		position: relative;
+		content: "";
+	    display: inline-block;
+	    margin-right: 5px;
+	    top: 5px;
+	    height: 18px;
+	    width: 18px;
+		background: white;
+		background: -webkit-linear-gradient(#ffffff, #e6e6e6);
+		background: -o-linear-gradient(#ffffff, #e6e6e6);
+		background: -moz-linear-gradient(#ffffff, #e6e6e6);
+		background: linear-gradient(#ffffff, #e6e6e6);
+		border: 1px solid #999999;
+		border-radius: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		-o-border-radius: 50%;
+	}
+
+	.radioInput:checked + span:before {
+		background: #007eb5;
+		box-shadow: inset 0px 0px 0px 3px white;
+		-webkit-box-shadow: inset 0px 0px 0px 3px white;
+		-moz-box-shadow: inset 0px 0px 0px 3px white;
+		-o-box-shadow: inset 0px 0px 0px 3px white;
+	}
+
+
 .block {
 	composes: marg-b-1 from '../styles.css';
 	display: block;

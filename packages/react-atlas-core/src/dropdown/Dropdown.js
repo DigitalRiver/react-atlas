@@ -1,24 +1,28 @@
-/*
-Dropdown inspired and mostly taken from:
-react-simple-dropdown
-https://github.com/Fauntleroy/react-simple-dropdown
-Copyright (c) 2015, Timothy Kempf <tim@kemp59f.info>
-*/
-
-import React, { cloneElement, Component, PropTypes } from "react";
+import React from "react";
 import cx from 'classNames';
-import DropdownTriggerCore from "./index";
-import DropdownContentCore from "./index";
-import { findDOMNode } from "react-dom";
+import { ButtonCore } from "../index";
 
-/**
- * Simple Composable Dropdown Component that wraps DropdownTrigger and DropdownContent components. Primarily useful for Navigational dropdowns, not form select dropdowns.
- */
-class Dropdown extends Component {
+const buttonClasses = cx({
+  'ra_styles__rounded': true,
+  'ra_dropdown__dropdown-button': true,
+  'ra_button__button ra_button__default_btn': true,
+  'ra_button__base': true,
+  'ra_styles__marg-0': true,
+  'ra_styles__bold': true,
+  'ra_styles__button-pad-1': true,
+  'ra_styles__border': true,
+  'ra_styles__cursor-pointer': true,
+  'ra_styles__charcoal': true,
+  'ra_styles__border-med-grey': true,
+});
+
+class Dropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      "active": false
+      "active": false,
+      "output": "Select One",
+      "onChange": this.props.onChange
     };
   }
 
@@ -31,146 +35,69 @@ class Dropdown extends Component {
   }
 
   _onWindowClick = event => {
-    const dropdown_element = findDOMNode(this);
-    if (
-      event.target !== dropdown_element &&
-        !dropdown_element.contains(event.target) &&
-        this._isActive()
-    ) {
-      this._hide();
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      if(this.state.active === true) {
+        this.setState({'active': false});
+      }
     }
   };
 
-  _onToggleClick = event => {
-    event.preventDefault();
-    if (this._isActive()) {
-      this._hide();
-    } else {
-      this._show();
-    }
+  _toggle = event => {
+    this.setState({'active': !this.state.active});
   };
 
-  _isActive = () => {
-    return typeof this.props.active === "boolean"
-      ? this.props.active
-      : this.state.active;
-  };
-
-  _hide = () => {
-    this.setState({
-      "active": false
-    });
-    if (this.props.onHide) {
-      this.props.onHide();
-    }
-  };
-
-  _show = () => {
-    this.setState({
-      "active": true
-    });
-    if (this.props.onShow) {
-      this.props.onShow();
-    }
+  _clickHandler = (i, event) => {
+    const selected = event.target.innerText;
+    this.setState({'output': selected, 
+                   'active': !this.state.active,
+                   'index': i});
+    this.state.onChange(selected);
   };
 
   render() {
-    const { children, className, ...props } = this.props;
+    const { children, className, onChange, ...props } = this.props;
+    const active = this.state.active;
 
-    // create component classes
-    const active = this._isActive();
     const classes = cx(
-      {
-        "container": true
-      }
-    );
+    {
+      "content": true,
+      "active": active,
+      "container": true
+    });
 
-    // stick callback on trigger element
-    const bound_children = React.Children.map(children, child => {
-      if (child.type.displayName === "DropdownTrigger") {
-        child = cloneElement(child, {
-          "onClick": this._onToggleClick
-        });
-      } else if (child.type.displayName === "DropdownContent") {
-        child = cloneElement(child, {
-          active
-        });
+    const bound_children = children.map((child, i) => {
+      if(i === this.state.index) {
+        let kid = <li key={i} styleName={"selected"} onClick={this._clickHandler.bind(this, i)}>{child}</li>
+        return kid;
       }
-      return child;
+
+      let kid = <li key={i} styleName={"item"} onClick={this._clickHandler.bind(this, i)}>{child}</li>
+      return kid;
+     
     });
 
     return (
-      <div {...props} className={className} styleName={classes}>
-        {bound_children}
+      <div {...props} ref={(node) => (this.wrapperRef = node)} className={className} styleName={classes} onClick={this._toggle}>
+        <ButtonCore className={buttonClasses}>{this.state.output}<i styleName="arrow"></i></ButtonCore>
+        {this.state.active ? <div styleName={"list"}>{bound_children}</div> : null}
       </div>
     );
   }
 }
 
-Dropdown.defaultProps = {
-  "className": ""
-};
-
 Dropdown.propTypes = {
-  "active": PropTypes.bool,
-  "onHide": PropTypes.bool,
-  "onShow": PropTypes.bool,
-  "children": PropTypes.node,
-  "className": PropTypes.string
-};
+  /* Boolean value taht tells the dropdown wether to
+    be open or not.*/
+  "active": React.PropTypes.bool,
 
-Dropdown.styleguide = {
-  "category": "Navigation",
-  "index": "5.2",
-  "wrappedExample": true,
-  "example": 
-    `
-// Dropdown Dummy Data {
-var countries = [
-  { value: 'EN-gb', label: 'England'},
-  { value: 'ES-es', label: 'Spain'},
-  { value: 'TH-th', label: 'Thailand'},
-  { value: 'EN-en', label: 'USA'},
-  { value: 'FR-fr', label: 'France'}
-];
-// }
-// Internal Methods {
-class DropdownExample extends React.Component {
+  /* A callback funtion that is called when a new menu item is selected. */
+  "onChange": React.PropTypes.func,
 
-  handleChange = (dropdown, value) => {
-    const newState = {};
-    newState[dropdown] = value;
-    this.setState(newState);
-  };
+  /* The children elements to be wrapped by the dropdown menu. */
+  "children": React.PropTypes.node,
 
-  render () {
-// }
-    return (
-      <section>
-        <h5>Dropdown</h5>
-        <p>lorem ipsum...</p>
-
-        <Dropdown>
-          <DropdownTrigger>
-            <Button>Dropdown Button</Button>
-          </DropdownTrigger>
-          <DropdownContent>
-            <DropdownList>
-              {countries.map((country, idx) => (
-                <DropdownListItem key={idx}>{country.label}</DropdownListItem>
-              ))}
-            </DropdownList>
-          </DropdownContent>
-        </DropdownCore>
-      </section>
-    );
-// Mount Component {
-  }
-}
-ReactDOM.render(<DropdownExample/>, mountNode);
-// }
-`
-  
+  /* Pass CSS styles to className to set them on the dropdown component. */
+  "className": React.PropTypes.string
 };
 
 export default Dropdown;

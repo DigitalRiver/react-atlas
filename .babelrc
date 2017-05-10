@@ -1,23 +1,14 @@
 {
-  "presets": ["es2015", "react", "stage-1"],
+  "presets": [["es2015", { "modules": false }], "react", "stage-1"],
   "env": {
-
    "production": {
-      "plugins": [
-        [
-          "css-modules-transform", {
-            "generateScopedName": "ra_[name]__[local]",
-            "prepend": [
-              "postcss-import",
-              "postcss-cssnext"
-            ]
-          }
-        ],
-        ["transform-react-remove-statics", {
-            "propTypes": true,
-            "styleguide": true
-        }]
+      "plugins": ["transform-react-constant-elements",
+                  "transform-react-inline-elements",
+                  "transform-react-remove-prop-types"
       ]
+    },
+    "test": {
+      "presets": ["es2015", "react", "stage-1"]
     }
   }
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
-import { expect } from "chai";
 import {
   Dropdown,
   DropdownTrigger,
@@ -30,7 +29,7 @@ describe("Testing Dropdown component", () => {
         </DropdownContent>
       </Dropdown>
     );
-    expect(result.props().className).to.equal("");
+    expect(result.props().className).toBe("");
   });
 
   it("Check click handler function.", function() {
@@ -42,7 +41,7 @@ describe("Testing Dropdown component", () => {
 
   it("Make sure _isActive returns true when active is set.", function() {
     const result = shallow(<Dropdown active />);
-    expect(result.instance()._isActive()).to.equal(true);
+    expect(result.instance()._isActive()).toBe(true);
   });
 
   it(
@@ -50,7 +49,7 @@ describe("Testing Dropdown component", () => {
     function() {
       const result = shallow(<Dropdown />);
       result.simulate("click");
-      expect(hideWrapper.called).to.equal(false);
+      expect(hideWrapper.called).toBe(false);
     }
   );
 
@@ -68,7 +67,7 @@ describe("Testing Dropdown component", () => {
     function() {
       const result = shallow(<Dropdown active />);
       result.simulate("click");
-      expect(result.state().active).to.equal(false);
+      expect(result.state().active).toBe(false);
     }
   );
 
@@ -77,7 +76,7 @@ describe("Testing Dropdown component", () => {
     function() {
       const result = shallow(<Dropdown active onHide={onHideTestHandler} />);
       result.simulate("click");
-      expect(count).to.equal(1);
+      expect(count).toBe(1);
     }
   );
 
@@ -86,7 +85,7 @@ describe("Testing Dropdown component", () => {
     function() {
       const result = shallow(<Dropdown onHide={onHideTestHandler} />);
       result.simulate("click");
-      expect(count).to.equal(0);
+      expect(count).toBe(0);
     }
   );
 

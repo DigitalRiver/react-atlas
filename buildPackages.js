@@ -10,13 +10,21 @@ packages.push(packages.shift());
 
 packages.forEach(function(pack) {
   // ensure path has package.json
-  if (!fs.existsSync(path.join(pack, "package.json"))) return;
+  if(!fs.existsSync(path.join(pack, "package.json"))) return;
 
-  spawn.sync(pack + '/node_modules/webpack/bin/webpack.js', {
-    env: process.env,
-    cwd: pack,
-    stdio: "inherit"
-  });
+  if(process.env.NODE_ENV === 'production') {
+  	spawn.sync(pack + '/node_modules/webpack/bin/webpack.js', ['-p'], {
+      env: process.env,
+      cwd: pack,
+      stdio: "inherit"
+    });
+  } else {
+    spawn.sync(pack + '/node_modules/webpack/bin/webpack.js', {
+      env: process.env,
+      cwd: pack,
+      stdio: "inherit"
+    });
+  }
  });
 
 

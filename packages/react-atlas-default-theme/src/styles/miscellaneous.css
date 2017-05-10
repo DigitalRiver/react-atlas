@@ -4,3 +4,10 @@
 .cursor-pointer { cursor: pointer }
 .cursor-default { cursor: default }
 .cursor-not-allowed { cursor: not-allowed }
+
+.opacity-0 {
+	opacity: 0;
+    -moz-opacity: 0;
+    -webkit-opacity: 0;
+    -o-opacity: 0;
+}

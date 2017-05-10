@@ -1,82 +1,122 @@
-import React from "react";
-import cx from 'classNames';
+import React, { PropTypes } from "react";
+import cx from "classNames";
 
-export default class Switch extends React.Component {
-  render() {
-    const {
-      checked,
-      disabled,
-      inline,
-      name,
-      slider,
-      small,
-      medium,
-      large,
-      onColor,
-      offColor,
-      buttonColor,
-      ...other
-    } = this.props;
+const Switch = ({
+  className,
+  name,
+  disabled,
+  small,
+  medium,
+  large,
+  offColor,
+  onColor,
+  buttonColor,
+  ...props
+}) => {
+  let offClassName = cx({
+    "sliderSmall": small && !medium && !large,
+    "sliderMedium": !small && !large,
+    "sliderLarge": large && !medium && !small,
+    disabled
+  });
 
-    let offClassName = cx({
-      "sliderSmall": small && !medium && !large,
-      "sliderMedium": !small && !large,
-      "sliderLarge": large && !medium && !small,
-      disabled
-    });
+  let inputClassName = cx({
+    "inputSmall": small && !medium && !large,
+    "inputMedium": !small && !large,
+    "inputLarge": large && !medium && !small,
+    disabled
+  });
 
-    let inputClassName = cx({
-      "inputSmall": small && !medium && !large,
-      "inputMedium": !small && !large,
-      "inputLarge": large && !medium && !small,
-      disabled
-    });
+  let buttonClassName = cx({
+    "handleSmall": small && !medium && !large,
+    "handleMedium": !small && !large,
+    "handleLarge": large && !medium && !small,
+    disabled
+  });
 
-    let buttonClassName = cx({
-      "handleSmall": small && !medium && !large,
-      "handleMedium": !small && !large,
-      "handleLarge": large && !medium && !small,
-      disabled
-    });
+  let onClassName = cx({
+    "onColorSmall": small && !medium && !large,
+    "onColorMedium": !small && !large,
+    "onColorLarge": large && !medium && !small
+  });
 
-    let onClassName = cx({
-      "onColorSmall": small && !medium && !large,
-      "onColorMedium": !small && !large,
-      "onColorLarge": large && !medium && !small
-    });
+  let offColorStyle = {
+    "background": offColor
+  };
 
-    let offColorStyle = {
-      "background": offColor
-    };
+  let onColorStyle = {
+    "background": onColor
+  };
 
-    let onColorStyle = {
-      "background": onColor
-    };
+  let buttonColorStyle = {
+    "background": buttonColor
+  };
 
-    let buttonColorStyle = {
-      "background": buttonColor
-    };
-
-    return (
-      <label styleName={offClassName} style={offColorStyle}>
-        <input
-          styleName={inputClassName}
-          style={onColorStyle}
-          type="checkbox"
-        />
-        <div styleName={buttonClassName} style={buttonColorStyle} />
-        <div styleName={onClassName} style={onColorStyle} />
-      </label>
-    );
-  }
-}
+  return (
+    <label
+      {...props}
+      styleName={offClassName}
+      className={cx(className)}
+      style={offColorStyle}
+    >
+      <input
+        name={name}
+        styleName={inputClassName}
+        style={onColorStyle}
+        type="checkbox"
+      />
+      <div styleName={buttonClassName} style={buttonColorStyle} />
+      <div styleName={onClassName} style={onColorStyle} />
+    </label>
+  );
+};
 
 Switch.propTypes = {
-  "disabled": React.PropTypes.bool,
-  "name": React.PropTypes.string,
-  "onColor": React.PropTypes.string,
-  "offColor": React.PropTypes.string,
-  "buttonColor": React.PropTypes.string
+  /**
+   * Define a custom css class name.
+   * @examples 'switch', 'switch-elem'
+   */
+  "className": PropTypes.string,
+  /**
+   * Determines if the switch input is disabled.
+   * @examples '<Switch disabled/>'
+   */
+  "disabled": PropTypes.bool,
+  /**
+   * Define a name for the switch input.
+   * @examples '<Switch name="test"/>'
+   */
+  "name": PropTypes.string,
+  /**
+   * Sets color that will be displayed when the switch is checked.
+   * @examples '<Switch onColor="#ababab"/>'
+   */
+  "onColor": PropTypes.string,
+  /**
+   * Sets color that will be displayed when the switch is unchecked.
+   * @examples '<Switch offColor="#d3d3d3"/>'
+   */
+  "offColor": PropTypes.string,
+  /**
+   * Sets color that will be displayed for the inner button.
+   * @examples '<Switch buttonColor="#ffffff"/>'
+   */
+  "buttonColor": PropTypes.string,
+  /**
+   * Defines a small sized switch element.
+   * @examples '<Switch small/>'
+   */
+  "small": PropTypes.bool,
+  /**
+   * Defines a medium sized switch element.
+   * @examples '<Switch medium/>'
+   */
+  "medium": PropTypes.bool,
+  /**
+   * Defines a large sized switch element.
+   * @examples '<Switch large/>'
+   */
+  "large": PropTypes.bool
 };
 
 Switch.defaultProps = {
@@ -91,8 +131,7 @@ Switch.defaultProps = {
 Switch.styleguide = {
   "category": "Form Components",
   "index": "3.12",
-  "example": 
-    `
+  "example": `
 <section>
   <h5>Toggle Switches</h5>
   <Switch />
@@ -122,5 +161,6 @@ Switch.styleguide = {
   <Switch large/>
 </section>
 `
-  
 };
+
+export default Switch;
