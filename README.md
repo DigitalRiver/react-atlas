@@ -30,7 +30,7 @@ $ npm install --save react-atlas
 ```
 ### Usage
 
-When NODE_ENV is set to production make sure to either import the stylesheet into your application.
+Now make sure to either import the react atlas stylesheet into your application.
 ```javascript
 import './node_modules/react-atlas/lib/atlasThemes.min.css';
 ```
@@ -55,12 +55,11 @@ The previous code creates a React button component based on a React Atlas button
 
 ### Themeing
 There are several ways to style/theme react-atlas components.
-- [Style individual component instance.](#Style-Component-Instance)
-- [Creating themes.](#Creating-themes)
-- [Themeing whole library.](#Theming-Atlas)
-- [Themeing components.](#Themeing-Components)
+- [Style individual component instance.](readme/themeing.md#Style-Component-Instance)
+- [Creating themes.](readme/themeing.md#Creating-themes)
+- [Themeing whole library.](readme/themeing.md#Theming-Atlas)
+- [Themeing components.](readme/themeing.md#Themeing-Components)
 
-## Development
 ### Forking/Cloning and Building Yourself
 If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
 
@@ -73,6 +72,25 @@ $ npm install
 $ npm run bootstrap
 $ npm run docs
 ```
+## Development and Contributing
+To setup atlas for development follow the steps below.
+```bash
+$ git clone https://github.com/DigitalRiver/react-atlas.git
+$ npm install
+$ npm run bootstrap
+```
+There are other npm commands which may be of use in your development.
+```bash
+
+$ npm run test            // Runs test suite without coverage.
+$ npm run coverage        // Runs test suite with code coverage.
+$ npm run format          // Format all code with prettier.
+$ npm run lint            // Lint code with eslint.
+$ npm run setup           // Builds react-atlas.
+$ npm run generateFiles   // Runs just the code generator.
+
+```
+For more indepth information on development check out our contributors [readme](readme/CONTRIBUTING.md#Contributing).
 
 ## Authors and Contributors
 Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.com/DigitalRiver/react-atlas/blob/master/readme/CONTRIBUTING.md)***
@@ -81,7 +99,6 @@ Please note that this project is released with a [Contributor Code of Conduct](h
 
 The project is being initially developed and maintained by the Digital River Experience Engineering team.
 
-## Development and Contributing
 
 ## Atlas?
 When thinking about Web Design and Web Development, we came across the art of map making - [Cartography](https://en.wikipedia.org/wiki/Cartography).
