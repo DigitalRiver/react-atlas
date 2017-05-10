@@ -90,7 +90,7 @@ $ npm run setup           // Builds react-atlas.
 $ npm run generateFiles   // Runs just the code generator.
 
 ```
-For more in depth information on development check out our contributors [readme](readme/CONTRIBUTING.md#Contributing).
+For more in depth information on development check out our contributors [readme](readme/CONTRIBUTING.md#contributing).
 
 ## Authors and Contributors
 Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.com/DigitalRiver/react-atlas/blob/master/readme/CONTRIBUTING.md)***
