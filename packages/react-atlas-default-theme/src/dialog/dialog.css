@@ -1,6 +1,6 @@
 .base {
   composes: rounded from '../styles.css';
-  composes: border-default from '../styles.css';
+  composes: default-border from '../styles.css';
   composes: pad-2 from '../styles.css';
   composes: bg-white from '../styles.css';
   display: flex;
