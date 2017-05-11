@@ -1,63 +1,43 @@
 import React, { PropTypes } from "react";
-import cx from 'classNames';
+import cx from "classNames";
+import { BootstrapTable } from "react-bootstrap-table";
 
-const Table = ({ className, children, ...props }) => {
-  const classes = cx(
-    {
-      "table": true
-    }
-  );
+class Table extends React.PureComponent {
+  render() {
+    const { className, children, styles, ...props } = this.props;
 
-  return (
-    <table {...props} styleName={classes} className={cx(className)}>
-      {children}
-    </table>
-  );
-};
+    return (
+      <BootstrapTable
+        {...props}
+        className={cx(className)}
+        containerClass={styles["react-bs-table-container"]}
+        tableContainerClass={styles["react-bs-table"]}
+        headerContainerClass={styles["react-bs-container-header"]}
+        bodyContainerClass={styles["react-bs-container-body"]}
+      >
+        {children}
+      </BootstrapTable>
+    );
+  }
+}
 
 Table.propTypes = {
   "children": PropTypes.any,
+  "data": PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  "pagination": PropTypes.bool,
+  "options": PropTypes.shape({
+    "defaultSortName": PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+    "defaultSortOrder": PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+  }),
   "className": PropTypes.string
 };
 
-Table.styleguide = {
-  "category": "Table",
-  "index": "7.1",
-  "example": 
-    `
-<section>
-  <h5>Full Table Example</h5>
-    <Table>
-      <Thead>
-        <Tr>
-          <Th>Heading</Th>
-          <Th>Another</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        <Tr>
-          <Td>Row 1</Td>
-          <Td>Cell 1</Td>
-        </Tr>
-        <Tr>
-          <Td>Row 2</Td>
-          <Td>Cell 2</Td>
-        </Tr>
-        <Tr>
-          <Td>Row 3</Td>
-          <Td>Cell 3</Td>
-        </Tr>
-      </Tbody>
-      <Tfoot>
-        <Tr>
-          <Th>Foot</Th>
-          <Th>Another</Th>
-        </Tr>
-      </Tfoot>
-    </Table>
-</section>
-`
-  
+Table.defaultProps = {
+  "pagination": false,
+  "options": {
+    "defaultSortName": "",
+    "defaultSortOrder": ""
+  }
 };
 
 export default Table;

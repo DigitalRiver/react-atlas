@@ -1,44 +1,56 @@
+Default table
 
-Regular Buttons:
-
+    function buildProducts(count){
+      let products = [];
+      const startId = 0;
+      for (let i = 0; i < count; i++) {
+        const id = startId + i;
+        products.push({
+          id: id,
+          name: 'Product ' + id,
+          price: 2100 + i
+        });
+      }
+      return products;
+    }
+    var products = buildProducts(10);
+    this.options = {
+      defaultSortName: 'name',  // default sort column name
+      defaultSortOrder: 'desc'  // default sort order
+    };
     <div>
-        <Button>Button</Button>
-        <Button secondary>Secondary</Button>
-        <Button success>Success</Button>
-        <Button warning>Warning</Button>
-        <Button danger>Danger</Button>
-        <Button href="#" link>Link</Button>
+      <Table data={ products } selectRow={{mode: 'checkbox'}} options={this.options}>
+        <TableHeader dataField='id' isKey>Product ID</TableHeader>
+        <TableHeader dataField='name' dataSort>Product Name</TableHeader>
+        <TableHeader dataField='price' dataSort>Product Price</TableHeader>
+      </Table>
     </div>
     
-Disabled Regular Buttons:
+Table with pagination
 
+    function buildProducts(count){
+      let products = [];
+      const startId = 0;
+      for (let i = 0; i < count; i++) {
+        const id = startId + i;
+        products.push({
+          id: id,
+          name: 'Product ' + id,
+          price: 2100 + i
+        });
+      }
+      return products;
+    }
+    var products = buildProducts(70);
+    this.options = {
+      defaultSortName: 'name',  // default sort column name
+      defaultSortOrder: 'desc',  // default sort order
+      paginationShowsTotal: true
+    };
     <div>
-        <Button disabled primary>Button</Button>
-        <Button disabled secondary>Secondary</Button>
-        <Button disabled success>Success</Button>
-        <Button disabled warning>Warning</Button>
-        <Button disabled danger>Danger</Button>
-        <Button href="#" disabled link>Link</Button>
-    </div>
-    
-Outline Buttons:
-
-    <div>
-        <Button outline primary>Button</Button>
-        <Button outline secondary>Secondary</Button>
-        <Button success outline>Success</Button>
-        <Button warning outline>Warning</Button>
-        <Button danger outline>Danger</Button>
-        <Button href="#" link outline>Link</Button>
-    </div>
-    
-Diabled Outline Buttons
-
-    <div>
-        <Button disabled outline primary>Button</Button>
-        <Button disabled secondary outline>Secondary</Button>
-        <Button disabled success outline>Success</Button>
-        <Button disabled warning outline>Warning</Button>
-        <Button disabled danger outline>Danger</Button>
-        <Button href="#" disabled link outline>Link</Button>
+      <Table data={ products } selectRow={{mode: 'checkbox'}} options={this.options} pagination>
+        <TableHeader dataField='id' isKey>Product ID</TableHeader>
+        <TableHeader dataField='name' dataSort>Product Name</TableHeader>
+        <TableHeader dataField='price' dataSort>Product Price</TableHeader>
+      </Table>
     </div>
