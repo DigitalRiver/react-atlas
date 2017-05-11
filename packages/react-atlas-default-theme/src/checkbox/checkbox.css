@@ -13,7 +13,7 @@
 }
 
 .disabled {
-    composes: primary-text from '../styles.css';
+    composes: default-text from '../styles.css';
 }
 
 .label {
