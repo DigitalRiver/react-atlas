@@ -1,7 +1,7 @@
 .container {
     composes: pad-h-3 from '../styles.css';
-    composes: white from '../styles.css';
-    composes: bg-blue from '../styles.css';
+    composes: secondary from '../styles.css';
+    composes: bg-primary from '../styles.css';
     display: flex;
     align-items: center;
     height: 6.4rem;

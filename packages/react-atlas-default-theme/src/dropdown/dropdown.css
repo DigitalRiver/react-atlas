@@ -60,6 +60,7 @@
 }
 
 .dropdown-button {
+  composes: bg-white from '../styles.css';
   min-width: 100%;
   padding-left: 0px;
   padding-left: 0.5rem;
@@ -69,7 +70,6 @@
   height: 1.8rem;
   line-height: normal;
   padding-top: .5rem;
-  background-color: white;
 }
 
 .dropdown-button:hover {
@@ -79,7 +79,7 @@
 .selected {
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
-  background-color: #CCCCCC;
+  composes: bg-gray from '../styles.css';
 }
 
 .selected:hover {

@@ -3,12 +3,11 @@
 }
 
 .input {
-  composes: pad-1 from '../styles.css';
-	composes: border-gray from '../styles.css';
+	composes: pad-1 from '../styles.css';
+	composes: primary-border from '../styles.css';
 	width: 100%;
 	position: relative;
 	display: block;
-	border-width: 1px;
 	box-shadow: none;
 	transition: box-shadow 0.3s, border 0.3s;
 	appearance: none;
@@ -16,10 +15,10 @@
 }
 
 .input:focus {
-  border: solid 1px #66afe9;
-  outline: none;
-  -webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
-          box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
+  	border: solid 1px #66afe9;
+  	outline: none;
+  	-webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
+          	box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
 }
 
 .checkbox {
@@ -29,7 +28,7 @@
 }
 
 .input::placeholder {
-  color: #aaa;
+  	color: #aaa;
 }
 
 .error {

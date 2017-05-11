@@ -1,5 +1,5 @@
 .item {
-  composes: border from '../styles.css';
+  composes: primary-border from '../styles.css';
   composes: first-child-rounded from '../styles.css';
   composes: last-child-rounded from '../styles.css';
   composes: pad-v-1 from '../styles.css';

@@ -1,35 +1,35 @@
 @import './variables.css';
 
-.border {
+.primary-border {
   border-style: solid;
-  border-width: var(--border-width);
-  border-color: var(--border-color);
+  border-width: var(--primary-border-width);
+  border-color: var(--primary-border-color);
 }
 
 .border-top {
   border-top-style: solid;
-  border-top-width: var(--border-width);
-  border-top-color: var(--border-color);
+  border-top-width: var(--primary-border-width);
+  border-top-color: var(--primary-border-color);
 }
 
 .border-right {
   border-right-style: solid;
-  border-right-width: var(--border-width);
-  border-right-color: var(--border-color);
+  border-right-width: var(--primary-border-width);
+  border-right-color: var(--primary-border-color);
 }
 
 .border-bottom {
   border-bottom-style: solid;
-  border-bottom-width: var(--border-width);
-  border-bottom-color: var(--border-color);
+  border-bottom-width: var(--primary-border-width);
+  border-bottom-color: var(--primary-border-color);
 }
 
 .border-bottom-dotted { border-bottom-style: dotted }
 
 .border-left {
   border-left-style: solid;
-  border-left-width: var(--border-width);
-  border-left-color: var(--border-color);
+  border-left-width: var(--primary-border-width);
+  border-left-color: var(--primary-border-color);
 }
 
 .border-none { border: 0 }
@@ -48,3 +48,5 @@
 
 .first-child-rounded:first-child { border-radius: var(--border-radius) var(--border-radius) 0 0 }
 .last-child-rounded:last-child { border-radius: 0 0 var(--border-radius) var(--border-radius) }
+
+.primary-button-border-width { border-width: var(--button-border-width) }

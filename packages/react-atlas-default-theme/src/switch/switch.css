@@ -3,12 +3,12 @@
 */
 
 .slider {
-  overflow:hidden;
   composes: cursor-pointer from '../styles.css';
   composes: bg-med-grey from '../styles.css';
+  composes: z1 from '../styles.css';
+  overflow:hidden;
   display: block;
   position:relative;
-  composes: z1 from '../styles.css';
 }
 
 .sliderSmall{
@@ -40,7 +40,7 @@
 */
 .handle {
   composes: circle from '../styles.css';
-  background: white;
+  composes: bg-white from '../styles.css';
   display:block;
   position:absolute;
   top: 2px;

@@ -4,14 +4,13 @@
 }
 
 .input {
-  composes: pad-1 from '../styles.css';
-    composes: border-gray from '../styles.css';
+    composes: pad-1 from '../styles.css';
+    composes: primary-border from '../styles.css';
     float:left;
     position: relative;
     width: 100%;
     display: block;
     margin-bottom: -1px;
-    border-width: 1px;
     appearance: none;
     box-shadow: none;
     transition: box-shadow 0.3s, border 0.3s;
@@ -31,6 +30,8 @@
 }
 
 .suggestionsContainer {
+    composes: bg-white from '../styles.css';
+    composes: primary-border from '../styles.css';
     position: absolute;
     top: 100%;
     max-height: 45vh;
@@ -40,10 +41,7 @@
     padding: 0;
     margin: 0;
     list-style-type: none;
-    border: 1px solid #aaa;
-    background-color: #fff;
     font-weight: 300;
-    font-size: 16px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     z-index: 2;

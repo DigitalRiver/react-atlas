@@ -5,19 +5,34 @@
 @custom-media --breakpoint-lg (min-width: 64em);
 
 :root {
+  /* Primary Theme Colors */
+  --primary:        var(--primary-blue);
+  --primary-hover:  var(--primary-blue-hover);
+  --secondary:      var(--primary-green);  /* Matches Primary Green */
+  --secondary-hover:var(--primary-green-hover);
+
+  --primary-font-color:         var(--med-gray);
+  --secondary-font-color:       var(--white);
+  --primary-button-font-color:  var(--white);
+  --secondary-button-font-color:var(--med-gray);
+
   /* Blue */
-  --aqua:         #7fdbff;
-  --blue:         #007EB5;
-  --navy:         #001f3f;
-  --teal:         #39cccc;
-  --sky-blue:     #00A7E1;
+  --primary-blue:       var(--sky-blue);
+  --primary-blue-hover: var(--blue);
+  --aqua:               #7fdbff;
+  --blue:               #007EB5;
+  --navy:               #001f3f;
+  --teal:               #39cccc;
+  --sky-blue:           #00A7E1;
 
   /* Cool */
-  --green:        #b2d23c;
-  --kelly-green:  #81b315;
-  --olive:        #3d9970;
-  --lime:         #01ff70;
-  --ylw-green:    #a8c628;
+  --primary-green:        var(--light-green);
+  --primary-green-hover:  var(--kelly-green);
+  --green:                #b2d23c;
+  --kelly-green:          #81b315;
+  --olive:                #3d9970;
+  --lime:                 #01ff70;
+  --light-green:          #a8c628;
 
   /* Warm */
   --yellow:       #ffdc00;
@@ -28,16 +43,21 @@
   --maroon:       #85144b;
 
   /* Gray scale */
-  --white:        #fff;
-  --silver:       #e6e6e6;
-  --gray:         #ccc;
-  --med-grey:     #999;
-  --dark-grey:    #666;
-  --charcoal:     #333;
-  --black:        #111;
+  --primary-gray:       var(--silver);
+  --primary-gray-hover: var(--gray);
+
+  --primary-gray-border:      var(--med-gray);
+  --primary-gray-border-hover: var(--dark-gray);
+  --white:              #fff;
+  --silver:             #e6e6e6;
+  --gray:               #ccc;
+  --med-gray:           #999;
+  --dark-gray:          #666;
+  --charcoal:           #333;
+  --black:              #111;
 
   /*standard variables*/
-  --font-family: arial, "Helvetica Neue", Helvetica;
+  --font-family: arial;
   --font-size: 16px;
   --line-height: 1.5;
   --heading-font-family: var(--font-family);
@@ -78,8 +98,12 @@
   --lighten-3: rgba(255,255,255,.25);
   --lighten-4: rgba(255,255,255,.5);
 
+  --primary-border-width:   var(--border-width);
+  --primary-border-color:   var(--border-color);
+  --secondary-border-width: var(--button-border-width);
+  --secondary-border-color: var(--dark-gray);
   --border-width: 1px;
-  --buttom-border-width: 2px;
+  --button-border-width: 2px;
   --border-radius: .25rem;
-  --border-color: var(--med-grey);
+  --border-color: var(--med-gray);
 }
