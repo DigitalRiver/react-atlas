@@ -6,15 +6,18 @@
 
 :root {
   /* Primary Theme Colors */
-  --primary:        var(--primary-blue);
-  --primary-hover:  var(--primary-blue-hover);
-  --secondary:      var(--primary-green);  /* Matches Primary Green */
-  --secondary-hover:var(--primary-green-hover);
+  --primary:                    var(--primary-blue);
+  --primary-hover:              var(--primary-blue-hover);
+  --secondary:                  var(--primary-green);  /* Matches Primary Green */
+  --secondary-hover:            var(--primary-green-hover);
+  --default:                    var(--charcoal);
+  --default-hover:              var(--primary-gray-hover);
 
-  --primary-font-color:         var(--med-gray);
-  --secondary-font-color:       var(--white);
-  --primary-button-font-color:  var(--white);
-  --secondary-button-font-color:var(--med-gray);
+  --error:      var(--red);
+  --warning:    var(--gold);
+  --success:    var(--primary-green);
+  --info:       var(--primary-blue);
+  --alert:      var(--red);
 
   /* Blue */
   --primary-blue:       var(--sky-blue);
@@ -41,8 +44,9 @@
   --fuchsia:      #f012be;
   --purple:       #b10dc9;
   --maroon:       #85144b;
+  --gold:         #be9500;
 
-  /* Gray scale */
+    /* Gray scale */
   --primary-gray:       var(--silver);
   --primary-gray-hover: var(--gray);
 
@@ -98,10 +102,8 @@
   --lighten-3: rgba(255,255,255,.25);
   --lighten-4: rgba(255,255,255,.5);
 
-  --primary-border-width:   var(--border-width);
-  --primary-border-color:   var(--border-color);
-  --secondary-border-width: var(--button-border-width);
-  --secondary-border-color: var(--dark-gray);
+  --default-border-width:   var(--border-width);
+  --default-border-color:   var(--border-color);
   --border-width: 1px;
   --button-border-width: 2px;
   --border-radius: .25rem;

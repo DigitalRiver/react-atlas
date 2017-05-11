@@ -13,7 +13,7 @@
 }
 
 .disabled {
-    composes: primary from '../styles.css';
+    composes: primary-text from '../styles.css';
 }
 
 .label {
@@ -40,7 +40,7 @@
 }
 .control__indicator {
     composes: rounded from '../styles.css';
-    composes: border from "../styles.css";
+    composes: border-default from "../styles.css";
     composes: bg-silver from "../styles.css"; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#fff, #e6e6e6); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#fff, #e6e6e6); /* For Opera 11.1 to 12.0 */

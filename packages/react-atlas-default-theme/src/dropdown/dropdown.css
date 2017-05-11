@@ -79,7 +79,7 @@
 .selected {
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
-  composes: bg-gray from '../styles.css';
+  composes: bg-default from '../styles.css';
 }
 
 .selected:hover {

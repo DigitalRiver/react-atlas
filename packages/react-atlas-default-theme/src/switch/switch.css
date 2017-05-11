@@ -4,7 +4,7 @@
 
 .slider {
   composes: cursor-pointer from '../styles.css';
-  composes: bg-med-grey from '../styles.css';
+  composes: bg-primary from '../styles.css';
   composes: z1 from '../styles.css';
   overflow:hidden;
   display: block;
@@ -90,7 +90,7 @@
 */
 
 .onColor{
-  composes: bg-blue from '../styles.css';
+  composes: bg-primary from '../styles.css';
   position: relative;
   composes: zNeg from '../styles.css';
   left: -48px;

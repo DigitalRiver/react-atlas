@@ -4,9 +4,9 @@
 }
 
 .th {
+    composes: default-text from '../styles.css';
     border-bottom: 2px solid rgba(0, 0, 0, 0.06);
     border-top: 0;
-    color: #999;
     display: table-cell;
     font-weight: normal;
     text-align: left;

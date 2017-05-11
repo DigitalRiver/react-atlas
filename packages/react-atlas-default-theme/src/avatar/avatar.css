@@ -1,8 +1,8 @@
 .avatar {
   composes: circle from '../styles.css';
-  composes: secondary-text from '../styles.css';
-  composes: bg-gray from '../styles.css';
-  composes: primary-border from '../styles.css';
+  composes: white from '../styles.css';
+  composes: bg-silver from '../styles.css';
+  composes: default-border from '../styles.css';
   position: relative;
   display: inline-block;
   overflow: hidden;

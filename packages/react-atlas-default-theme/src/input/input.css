@@ -4,7 +4,7 @@
 
 .input {
 	composes: pad-1 from '../styles.css';
-	composes: primary-border from '../styles.css';
+	composes: default-border from '../styles.css';
 	width: 100%;
 	position: relative;
 	display: block;

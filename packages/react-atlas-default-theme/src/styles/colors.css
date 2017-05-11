@@ -1,11 +1,15 @@
 @import './variables.css';
 
 /*Text Colors*/
-.primary          { color: var(--primary-font-color) }
-.secondary        { color: var(--secondary-font-color) }
+.primary-text    { color: var(--primary) }
+.secondary-text  { color: var(--secondary) }
+.default-text    { color: var(--default) }
 
-.primary-button-text    { color: var(--primary-button-font-color) }
-.secondary-button-text  { color: var(--secondary-button-font-color) }
+.error-text     { color: var(--error) }
+.warning-text   { color: var(--warning) }
+.success-text   { color: var(--success) }
+.info-text      { color: var(--info) }
+.alert-text     { color: var(--alert) }
 
 .black          { color: var(--black) }
 .gray           { color: var(--gray) }
@@ -36,7 +40,10 @@
 .muted { opacity: .5 }
 
 /*Hover-Text Colors*/
-.hover-primary-button-text:hover   { color: var(--primary-button-font-color) }
+
+.hover-primary-text:hover   { color: var(--primary-hover) }
+.hover-secondary-text:hover   { color: var(--secondary-hover) }
+.hover-default-text:hover   { color: var(--default-hover) }
 
 .hover-black:hover          { color: var(--black) }
 .hover-gray:hover           { color: var(--gray) }
@@ -65,8 +72,11 @@
 /*Background Colors*/
 .bg-transparent { background-color: transparent }
 
+.bg-body        { background-color: var(--white) }
+
 .bg-primary     { background-color: var(--primary) }
 .bg-secondary   { background-color: var(--secondary) }
+.bg-default     { background-color: var(--default) }
 
 .bg-black    { background-color: var(--black) }
 .bg-gray     { background-color: var(--gray) }
@@ -106,6 +116,7 @@
 
 .hover-bg-primary:hover     { background-color: var(--primary-hover) }
 .hover-bg-secondary:hover   { background-color: var(--secondary-hover) }
+.hover-bg-default:hover     { background-color: var(--default-hover) }
 
 .hover-bg-black:hover  { background-color: var(--black) }
 .hover-bg-gray:hover   { background-color: var(--gray) }
@@ -141,9 +152,9 @@
 /* Border Colors */
 .border-transparent  { border-color: transparent }
 
-.border-primary         { border-color: var(--primary-gray-border) }
-.border-button-primary  { border-color: var(--primary-hover) }
-.border-button-secondary{ border-color: var(--secondary-hover) }
+.border-primary         { border-color: var(--primary) }
+.border-secondary       { border-color: var(--secondary) }
+.border-default         { border-color: var(--default) }
 
 .border-black       { border-color: var(--black) }
 .border-gray        { border-color: var(--gray) }
@@ -182,7 +193,9 @@
 /*Hover-Border Colors */
 .hover-border-transparent:hover  { border-color: transparent }
 
-.hover-border-primary:hover { border-color: var(--primary-gray-border-hover) }
+.hover-border-primary:hover     { border-color: var(--primary-hover) }
+.hover-boder-secondary:hover    { border-color: var(--secondary-hover) }
+.hover-border-default:hover     { border-color: var(--default-hover) }
 
 .hover-border-black:hover  { border-color: var(--black) }
 .hover-border-gray:hover   { border-color: var(--gray) }

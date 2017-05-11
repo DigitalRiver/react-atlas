@@ -5,7 +5,7 @@
 
 .input {
     composes: pad-1 from '../styles.css';
-    composes: primary-border from '../styles.css';
+    composes: border-default from '../styles.css';
     float:left;
     position: relative;
     width: 100%;
@@ -31,7 +31,7 @@
 
 .suggestionsContainer {
     composes: bg-white from '../styles.css';
-    composes: primary-border from '../styles.css';
+    composes: border-default from '../styles.css';
     position: absolute;
     top: 100%;
     max-height: 45vh;
@@ -55,7 +55,7 @@
 }
 
 .suggestionFocused {
-    background-color: #ddd;
+    composes: bg-default from '../styles.css';
 }
 
 .sectionTitle {

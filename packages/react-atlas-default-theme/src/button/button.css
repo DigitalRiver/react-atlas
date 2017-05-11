@@ -5,8 +5,8 @@
   composes: marg-0  from '../styles.css';
   composes: bold from '../styles.css';
   composes: button-pad-1 from '../styles.css';
-  composes: primary-font-color from '../styles.css';
-  composes: primary-border from '../styles.css';
+  composes: default-text from '../styles.css';
+  composes: default-border from '../styles.css';
   composes: cursor-pointer from '../styles.css';
   composes: primary-button-border-width from '../styles.css';
   text-decoration: none;
@@ -50,16 +50,16 @@
 .primary {
   composes: bg-primary from '../styles.css';
   composes: hover-bg-primary from '../styles.css';
-  composes: border-button-primary from '../styles.css';
-  composes: primary-button-text from '../styles.css';
+  composes: border-blue from '../styles.css';
+  composes: white from '../styles.css';
 }
 .button {
   composes: default_btn;
 }
 .secondary {
-  composes: primary-button-text from '../styles.css';
+  composes: white from '../styles.css';
   composes: bg-secondary from '../styles.css';
-  composes: border-button-secondary from '../styles.css';
+  composes: border-kelly from '../styles.css';
   composes: hover-bg-secondary from '../styles.css';
 }
 .success {
@@ -79,7 +79,7 @@
 .link {
   composes: default_btn;
   composes: border-none from '../styles.css';
-  composes: primary-color from '../styles.css';
+  composes: primary-text from '../styles.css';
   composes: border-transparent from '../styles.css';
   composes: bg-transparent from '../styles.css';
 }
@@ -96,8 +96,8 @@
   composes: outline;
   composes: blue from '../styles.css';
   composes: hover-bg-primary from '../styles.css';
-  composes: hover-primary-button-text from '../styles.css';
-  composes: border-button-primary from '../styles.css';
+  composes: hover-white from '../styles.css';
+  composes: border-blue from '../styles.css';
 }
 .button_outline {
   composes: outline;
@@ -106,17 +106,17 @@
 }
 .secondary_outline {
   composes: outline;
-  composes: secondary-color from '../styles.css';
+  composes: kelly from '../styles.css';
   composes: hover-bg-secondary from '../styles.css';
-  composes: hover-primary-button-text from '../styles.css';
-  composes: border-button-secondary from '../styles.css';
+  composes: hover-white from '../styles.css';
+  composes: border-kelly from '../styles.css';
 }
 
 .success_outline {
   composes: outline;
   composes: green from '../styles.css';
   composes: hover-bg-green from '../styles.css';
-  composes: hover-primary-button-text from '../styles.css';
+  composes: hover-white from '../styles.css';
   composes: border-green from '../styles.css';
 }
 
@@ -124,7 +124,7 @@
   composes: outline;
   composes: orange from '../styles.css';
   composes: hover-bg-orange from '../styles.css';
-  composes: hover-primary-button-text from '../styles.css';
+  composes: hover-white from '../styles.css';
   composes: border-orange from '../styles.css';
 }
 
@@ -132,13 +132,13 @@
   composes: outline;
   composes: red from '../styles.css';
   composes: hover-bg-red from '../styles.css';
-  composes: hover-primary-button-text from '../styles.css';
+  composes: hover-white from '../styles.css';
   composes: border-red from '../styles.css';
 }
 
 .link_outline {
   composes: outline;
-  composes: primary-color from '../styles.css';
+  composes: primary-text from '../styles.css';
   composes: bg-transparent from '../styles.css';
   composes: border-none from '../styles.css';
 }

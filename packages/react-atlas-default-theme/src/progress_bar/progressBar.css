@@ -25,7 +25,7 @@
   composes: bg-primary from '../styles.css';
 }
 .disabled {
-  composes: bg-med-gray from '../styles.css';
+  composes: bg-default from '../styles.css';
 }
 .buffer {
   background-image: linear-gradient(to right, rgba(255,255,255, 0.7), rgba(255,255,255, 0.7)),

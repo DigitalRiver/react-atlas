@@ -1,6 +1,6 @@
 .base {
   composes: rounded from '../styles.css';
-  composes: border from '../styles.css';
+  composes: border-default from '../styles.css';
   composes: pad-2 from '../styles.css';
   composes: bg-white from '../styles.css';
   display: flex;
@@ -41,7 +41,7 @@
 
 .body {
   composes: pad-2 from '../styles.css';
-  composes: gray from '../styles.css';
+  composes: default-text from '../styles.css';
   flex-grow: 2;
   overflow-y: auto;
 }

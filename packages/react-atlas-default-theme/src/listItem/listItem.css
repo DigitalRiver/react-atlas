@@ -1,10 +1,9 @@
 .item {
-  composes: primary-border from '../styles.css';
   composes: first-child-rounded from '../styles.css';
   composes: last-child-rounded from '../styles.css';
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
-  composes: border-silver from '../styles.css';
+  composes: default-border from '../styles.css';
   margin-bottom: -1px;
   display: flex;
   position: relative;
