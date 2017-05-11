@@ -22,10 +22,10 @@
 }
 
 .value {
-  background-color: rgb(0, 126, 181);
+  composes: bg-primary from '../styles.css';
 }
 .disabled {
-    background-color: rgb(179, 179, 179);
+  composes: bg-default from '../styles.css';
 }
 .buffer {
   background-image: linear-gradient(to right, rgba(255,255,255, 0.7), rgba(255,255,255, 0.7)),

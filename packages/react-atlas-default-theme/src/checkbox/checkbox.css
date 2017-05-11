@@ -13,7 +13,7 @@
 }
 
 .disabled {
-    composes: gray from '../styles.css';
+    composes: default-text from '../styles.css';
 }
 
 .label {
@@ -40,17 +40,17 @@
 }
 .control__indicator {
     composes: rounded from '../styles.css';
-    position: absolute;
-    top: 2px;
-    left: 0;
-    width: 25px;
-    height: 25px;
-    border: 1px solid #999;
+    composes: default-border from "../styles.css";
     composes: bg-silver from "../styles.css"; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#fff, #e6e6e6); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#fff, #e6e6e6); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#fff, #e6e6e6); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#fff, #e6e6e6); /* Standard syntax */
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
 }
 .control__indicator span {

@@ -8,7 +8,6 @@
 
 .navigation {
     composes: border-bottom from '../styles.css';
-    composes: border-gray from '../styles.css';
     display: flex;
     flex-direction: row;
 }

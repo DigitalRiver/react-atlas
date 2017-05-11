@@ -1,23 +1,33 @@
 @import './variables.css';
 
 /*Text Colors*/
-.black      { color: var(--black) }
-.gray       { color: var(--gray) }
-.med-grey   { color: var(--med-grey) }
-.dark-grey  { color: var(--dark-grey) }
-.charcoal   { color: var(--charcoal) }
-.silver     { color: var(--silver) }
-.white      { color: var(--white) }
+.primary-text    { color: var(--primary) }
+.secondary-text  { color: var(--secondary) }
+.default-text    { color: var(--default) }
 
-.aqua       { color: var(--aqua) }
-.blue       { color: var(--blue) }
-.navy       { color: var(--navy) }
-.sky-blue   { color: var(--sky-blue) }
-.kelly      { color: var(--kelly-green) }
-.teal       { color: var(--teal) }
-.green      { color: var(--green) }
-.olive      { color: var(--olive) }
-.lime       { color: var(--lime) }
+.error-text     { color: var(--error) }
+.warning-text   { color: var(--warning) }
+.success-text   { color: var(--success) }
+.info-text      { color: var(--info) }
+.alert-text     { color: var(--alert) }
+
+.black          { color: var(--black) }
+.gray           { color: var(--gray) }
+.med-gray       { color: var(--med-gray) }
+.dark-gray      { color: var(--dark-gray) }
+.charcoal       { color: var(--charcoal) }
+.silver         { color: var(--silver) }
+.white          { color: var(--white) }
+
+.aqua           { color: var(--aqua) }
+.blue           { color: var(--blue) }
+.navy           { color: var(--navy) }
+.sky-blue       { color: var(--sky-blue) }
+.kelly          { color: var(--kelly-green) }
+.teal           { color: var(--teal) }
+.green          { color: var(--green) }
+.olive          { color: var(--olive) }
+.lime           { color: var(--lime) }
 
 .yellow  { color: var(--yellow) }
 .orange  { color: var(--orange) }
@@ -30,11 +40,16 @@
 .muted { opacity: .5 }
 
 /*Hover-Text Colors*/
-.hover-black:hover      { color: var(--black) }
-.hover-gray:hover       { color: var(--gray) }
-.hover-charcoal:hover   { color: var(--charcoal) }
-.hover-silver:hover     { color: var(--silver) }
-.hover-white:hover      { color: var(--white) }
+
+.hover-primary-text:hover   { color: var(--primary-hover) }
+.hover-secondary-text:hover   { color: var(--secondary-hover) }
+.hover-default-text:hover   { color: var(--default-hover) }
+
+.hover-black:hover          { color: var(--black) }
+.hover-gray:hover           { color: var(--gray) }
+.hover-charcoal:hover       { color: var(--charcoal) }
+.hover-silver:hover         { color: var(--silver) }
+.hover-white:hover          { color: var(--white) }
 
 .hover-aqua:hover  { color: var(--aqua) }
 .hover-blue:hover  { color: var(--blue) }
@@ -57,9 +72,15 @@
 /*Background Colors*/
 .bg-transparent { background-color: transparent }
 
+.bg-body        { background-color: var(--white) }
+
+.bg-primary     { background-color: var(--primary) }
+.bg-secondary   { background-color: var(--secondary) }
+.bg-default     { background-color: var(--default) }
+
 .bg-black    { background-color: var(--black) }
 .bg-gray     { background-color: var(--gray) }
-.bg-med-grey { background-color: var(--med-grey) }
+.bg-med-gray { background-color: var(--med-gray) }
 .bg-silver   { background-color: var(--silver) }
 .bg-white    { background-color: var(--white) }
 
@@ -71,7 +92,7 @@
 .bg-green    { background-color: var(--green) }
 .bg-olive    { background-color: var(--olive) }
 .bg-lime     { background-color: var(--lime) }
-.bg-ylw-green{ background-color: var(--ylw-green)}
+.bg-ylw-green{ background-color: var(--light-green)}
 
 .bg-yellow  { background-color: var(--yellow) }
 .bg-orange  { background-color: var(--orange) }
@@ -92,6 +113,10 @@
 
 /*Hover-Background Colors*/
 .hover-bg-transparent:hover { background-color: transparent }
+
+.hover-bg-primary:hover     { background-color: var(--primary-hover) }
+.hover-bg-secondary:hover   { background-color: var(--secondary-hover) }
+.hover-bg-default:hover     { background-color: var(--default-hover) }
 
 .hover-bg-black:hover  { background-color: var(--black) }
 .hover-bg-gray:hover   { background-color: var(--gray) }
@@ -127,12 +152,16 @@
 /* Border Colors */
 .border-transparent  { border-color: transparent }
 
+.border-primary         { border-color: var(--primary) }
+.border-secondary       { border-color: var(--secondary) }
+.border-default         { border-color: var(--default) }
+
 .border-black       { border-color: var(--black) }
 .border-gray        { border-color: var(--gray) }
 .border-silver      { border-color: var(--silver) }
 .border-white       { border-color: var(--white) }
-.border-med-grey    { border-color: var(--med-grey) }
-.border-dark-grey   { border-color: var(--dark-grey) }
+.border-med-gray    { border-color: var(--med-gray) }
+.border-dark-gray   { border-color: var(--dark-gray) }
 .border-charcoal    { border-color: var(--charcoal) }
 
 .border-aqua    { border-color: var(--aqua) }
@@ -163,6 +192,10 @@
 
 /*Hover-Border Colors */
 .hover-border-transparent:hover  { border-color: transparent }
+
+.hover-border-primary:hover     { border-color: var(--primary-hover) }
+.hover-boder-secondary:hover    { border-color: var(--secondary-hover) }
+.hover-border-default:hover     { border-color: var(--default-hover) }
 
 .hover-border-black:hover  { border-color: var(--black) }
 .hover-border-gray:hover   { border-color: var(--gray) }

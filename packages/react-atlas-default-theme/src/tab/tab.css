@@ -1,8 +1,8 @@
 .tab {
     composes: pad-v-2 from '../styles.css';
     composes: pad-h-2 from '../styles.css';
-    composes: black from '../styles.css';
-    composes: border from '../styles.css';
+    composes: default-text from '../styles.css';
+    composes: default-border from '../styles.css';
     composes: border-transparent from '../styles.css';
     margin-right: 10px;
     margin-bottom: -1px;
