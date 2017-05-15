@@ -2,7 +2,7 @@
 let dot = require('dot');
 let fs = require('fs');
 let eol = require('os').EOL;
-const setupConf = require('./setup.config.js'); 
+const setupConf = require('./setup.config.js');
 const warningMessage = setupConf.warningMessage;
 const template = setupConf.template;
 const devTemplate = setupConf.devTemplate;
@@ -10,17 +10,18 @@ const components = setupConf.components;
 const indexTemplate = setupConf.indexTemplate;
 const compIndexTemplate = setupConf.compIndexTemplate;
 const cwd = process.cwd();
-const path = cwd + '/atlas.config.js';
+const configPath = cwd + '/atlas.config.js';
 const reactDocs = require('react-docgen');
 const spawn = require("cross-spawn");
+const path = require('path');
 
 /* Create generated component directory structure inside react-atlas/src. */
 createComponentDirectories();
 
 /* Check if a atlas config file exist or not. If the config file
   does exist generate components. */
-if(fs.existsSync(path)) {
-  createComponentsFromConfig(path);
+if(fs.existsSync(configPath)) {
+  createComponentsFromConfig(configPath);
 } else {
   createComponentFromGlobalTheme("react-atlas-default-theme");
 }
@@ -32,15 +33,15 @@ if(process.argv.length >= 2) {
 
   /* Someone is switching themes so let's rebuild react-atlas/packages/react-atlas. */
   if(process.argv[2] === "--switch") {
-    rebuild(path);
+    rebuild(configPath);
   }
 }
 
 /* Just functions below, entire control flow(logic) is above this comment. */
 
-function rebuild(path) {
-  console.log("path: ", __dirname + '/../webpack.config.js');
-  let config = require(path);
+function rebuild(configPath) {
+  console.log("configPath: ", __dirname + '/../webpack.config.js');
+  let config = require(configPath);
   if(config.theme === 'react-atlas-default-theme') {
     spawn.sync(__dirname + '/../node_modules/webpack/bin/webpack.js', ['--config', __dirname + '/../webpack.config.js'], {
       "env": process.env,
@@ -59,6 +60,8 @@ function rebuild(path) {
   }
 }
 
+/* Transforms extracted information from react-docgen into a form
+  that can be consumed by the dot.js templating engine. */
 function processInfo(info) {
   let array = Object.keys(info.props).map(function (key) {
     let obj = {};
@@ -88,20 +91,22 @@ function processInfo(info) {
             obj.type += "PropTypes.element,";
             break;
 
+          /* If we get here it means were missing this proptype and it should
+            have a case added to this switch statment. */
           default:
-            break;
+            throw "Missing proptype: " + type.name;
         }
       }
 
       obj.type += "])";
-      
+
     } else {
       obj.type = '"' + key + '":' + ' ' + "PropTypes." + name;
     }
 
     obj.required = info.props[key].required;
     obj.description = info.props[key].description;
-    return obj; 
+    return obj;
   });
 
   return array;
@@ -115,11 +120,11 @@ function createComponent(name, theme) {
   /* Make sure leading letter is uppercase. */
   component.name = component.name[0].toUpperCase() + component.name.slice(1);
 
-  /* Create component path. */
-  let path = __dirname + '/../../react-atlas-core/src/' + component.name + '/' + component.name + '.js'
+  /* Create component configPath. */
+  let configPath = __dirname + '/../../react-atlas-core/src/' + component.name + '/' + component.name + '.js'
 
   /* Read the component source file. */
-  let file = fs.readFileSync(path);
+  let file = fs.readFileSync(configPath);
 
   /* Parse component source. */
   let info = reactDocs.parse(file.toString('ascii'));
@@ -149,7 +154,7 @@ function writeComponent(component) {
     fs.writeFileSync(__dirname + '/components/' + component.name + '/' + component.name + '.js', resultText);
   }
   catch(err) {
-     console.log("Failed generating modules file: ", err);
+    console.log("Failed generating modules file: ", err);
     return;
   }
 
@@ -164,7 +169,7 @@ function writeComponent(component) {
     return;
   }
 
-  console.log('Generating: ', __dirname + '/components/' + component.name + '/' + component.name + '.js');
+  console.log(path.resolve('Generating: ', __dirname + '/components/' + component.name + '/' + component.name + '.js'));
 }
 
 function createComponentFromGlobalTheme(theme) {
@@ -189,7 +194,7 @@ function createComponentFromGlobalTheme(theme) {
  dotjs templating engine to output the index.js file for
  react-atlas. */
 function createComponentsFromConfig() {
-  let config = require(path);
+  let config = require(configPath);
   if(config.theme === '') {
     for(let i = 0; i < config.components.length; i++) {
       let component = createComponent(config.components[i].name, config.components[i].theme);
@@ -205,19 +210,19 @@ function createComponentsFromConfig() {
 }
 
 function createComponentDirectories() {
-  const componentDirPath = __dirname + '/components';
-  const oldPath = __dirname + "/../../react-atlas-core/src/";
+  const componentDirconfigPath = __dirname + '/components';
+  const oldconfigPath = __dirname + "/../../react-atlas-core/src/";
 
   let component;
 
-  if(!fs.existsSync(componentDirPath)) {
-    fs.mkdirSync(componentDirPath, 0777);
+  if(!fs.existsSync(componentDirconfigPath)) {
+    fs.mkdirSync(componentDirconfigPath, 0777);
     for(let i = 0; i < components.length; i++) {
       component = components[i];
 
       /* Make sure leading letter is uppercase. */
       component = component[0].toUpperCase() + component.slice(1);
-      fs.mkdir(componentDirPath + '/' + component);
+      fs.mkdir(componentDirconfigPath + '/' + component);
     }
   }
   for(let i = 0; i < components.length; i++) {
@@ -226,8 +231,8 @@ function createComponentDirectories() {
     /* Make sure leading letter is uppercase. */
     component = component[0].toUpperCase() + component.slice(1);
 
-    if(!fs.existsSync(oldPath + component + '/README.md')) {
-      fs.linkSync(oldPath + component + '/README.md', componentDirPath + '/' + component + '/README.md');
+    if(!fs.existsSync(oldconfigPath + component + '/README.md')) {
+      fs.linkSync(oldconfigPath + component + '/README.md', componentDirconfigPath + '/' + component + '/README.md');
     }
   }
 }
@@ -245,4 +250,3 @@ function writeIndexFile(comps) {
     return;
   }
 }
-

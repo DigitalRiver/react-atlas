@@ -19,7 +19,7 @@ devTemplate += "import CSSModules from 'react-css-modules';" + eol +
             "import { {{=it.component.name}}Core } from 'react-atlas-core';" + eol + 
             "import { {{=it.component.name}}Style } from '{{=it.component.theme}}';" + eol +
             "const {{=it.component.name}}Comp = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});" + eol +
-            "export default class {{=it.component.name}} extends React.Component {" + eol +
+            "export class {{=it.component.name}} extends React.Component {" + eol +
             "constructor(props){" + eol +
             "super(props)" + eol +
             "}" + eol +
