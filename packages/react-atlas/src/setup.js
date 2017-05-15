@@ -14,6 +14,8 @@ const configPath = cwd + '/atlas.config.js';
 const reactDocs = require('react-docgen');
 const spawn = require("cross-spawn");
 const path = require('path');
+const prettier = require("prettier");
+const options = {} // optional
 
 /* Create generated component directory structure inside react-atlas/src. */
 createComponentDirectories();
@@ -149,9 +151,12 @@ function writeComponent(component) {
   let tempFn = dot.template(template);
   let resultText = tempFn({'component': component});
 
+  /* Use prettier to format code so it looks nicer to people. */
+  let text = prettier.format(resultText, options);
+
   /* Try writting component to disk. */
   try {
-    fs.writeFileSync(__dirname + '/components/' + component.name + '/' + component.name + '.js', resultText);
+    fs.writeFileSync(__dirname + '/components/' + component.name + '/' + component.name + '.js', text);
   }
   catch(err) {
     console.log("Failed generating modules file: ", err);
@@ -231,7 +236,8 @@ function createComponentDirectories() {
     /* Make sure leading letter is uppercase. */
     component = component[0].toUpperCase() + component.slice(1);
 
-    if(!fs.existsSync(oldconfigPath + component + '/README.md')) {
+    if(fs.existsSync(oldconfigPath + component + '/README.md')) {
+      console.log("Linking: %s -> %s", oldconfigPath + component + '/README.md', componentDirconfigPath + '/' + component + '/README.md');
       fs.linkSync(oldconfigPath + component + '/README.md', componentDirconfigPath + '/' + component + '/README.md');
     }
   }
