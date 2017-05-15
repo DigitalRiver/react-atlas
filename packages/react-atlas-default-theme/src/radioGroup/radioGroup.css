@@ -14,5 +14,5 @@
 }
 
 .disabled {
-	composes: gray from '../styles.css';
+	composes: default-text from '../styles.css';
 }
