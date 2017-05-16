@@ -5,6 +5,7 @@ const Switch = ({
   className,
   name,
   disabled,
+  hidden,
   small,
   medium,
   large,
@@ -17,21 +18,24 @@ const Switch = ({
     "sliderSmall": small && !medium && !large,
     "sliderMedium": !small && !large,
     "sliderLarge": large && !medium && !small,
-    disabled
+    disabled,
+    hidden
   });
 
   let inputClassName = cx({
     "inputSmall": small && !medium && !large,
     "inputMedium": !small && !large,
     "inputLarge": large && !medium && !small,
-    disabled
+    disabled,
+    hidden
   });
 
   let buttonClassName = cx({
     "handleSmall": small && !medium && !large,
     "handleMedium": !small && !large,
     "handleLarge": large && !medium && !small,
-    disabled
+    disabled,
+    hidden
   });
 
   let onClassName = cx({
@@ -83,6 +87,11 @@ Switch.propTypes = {
    */
   "disabled": PropTypes.bool,
   /**
+   * Determines if the switch input is hidden.
+   * @examples '<Switch hidden/>'
+   */
+  "hidden": PropTypes.bool,
+  /**
    * Define a name for the switch input.
    * @examples '<Switch name="test"/>'
    */
@@ -123,9 +132,7 @@ Switch.defaultProps = {
   "checked": false,
   "className": "",
   "disabled": false,
-  "theme": {
-    "sliderMedium": "!small && !large"
-  }
+  "hidden": false
 };
 
 Switch.styleguide = {

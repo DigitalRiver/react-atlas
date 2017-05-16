@@ -36,8 +36,17 @@
 	composes: red from '../styles.css';
 }
 
-.label {
-	composes: marg-b-1 from '../styles.css';
-	display: inline-block;
-	font-weight: 500;
+.invalid {
+	composes: border-red from '../styles.css';
+}
+
+.disabled {
+	composes: cursor-not-allowed from '../styles.css';
+	opacity: .65;
+	pointer-events: none;
+}
+
+.hidden {
+	display: none;
+	visibility: hidden;
 }
