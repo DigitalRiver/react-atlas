@@ -60,9 +60,6 @@ There are several ways to style/theme react-atlas components.
 - [Themeing whole library.](readme/themeing.md#Themeing)
 - [Themeing components.](readme/themeing.md#Components)
 
-### Forking/Cloning and Building Yourself
-If you wish to use this project via a fork, and build/minifiy on your own, you will need to account for the following:
-
 ### Docs
 To start documentation site locally you'd need to install dependencies from the main package, setup the monorepo and then just run the docs script:
 
