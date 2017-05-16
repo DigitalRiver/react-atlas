@@ -35,13 +35,11 @@ devTemplate += "import CSSModules from 'react-css-modules';" + eol +
             "{{~}}" + eol +
             "};";
            
-            
-
 let indexTemplate = "{{~it.components :value:index}}" + eol +
-                    "export { {{=value.name}} } from './{{=value.name}}';" + eol +
+                    "export {{=value.name}} from './{{=value.name}}';" + eol +
                     "{{~}}" + eol;
 
-let compIndexTemplate = "export { {{=it.component.name}} } from './{{=it.component.name}}.js';";
+let compIndexTemplate = "export { {{=it.component.name}} as default } from './{{=it.component.name}}.js';";
 
 dot.templateSettings = {
   evaluate:    /\{\{([\s\S]+?)\}\}/g,

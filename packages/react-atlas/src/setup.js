@@ -15,7 +15,7 @@ const reactDocs = require('react-docgen');
 const spawn = require("cross-spawn");
 const path = require('path');
 const prettier = require("prettier");
-const options = {} // optional
+const options = {}
 
 /* Create generated component directory structure inside react-atlas/src. */
 createComponentDirectories();
@@ -237,6 +237,7 @@ function createComponentDirectories() {
     component = component[0].toUpperCase() + component.slice(1);
 
     if(fs.existsSync(oldconfigPath + component + '/README.md')) {
+      fs.unlinkSync(componentDirconfigPath + '/' + component + '/README.md');
       console.log("Linking: %s -> %s", oldconfigPath + component + '/README.md', componentDirconfigPath + '/' + component + '/README.md');
       fs.linkSync(oldconfigPath + component + '/README.md', componentDirconfigPath + '/' + component + '/README.md');
     }
