@@ -88,6 +88,7 @@ Input.propTypes = {
   "type": PropTypes.string,
   "required": PropTypes.bool,
   "errorText": PropTypes.string,
+  "errorLocation": PropTypes.string,
   "value": PropTypes.string,
   "disabled": PropTypes.bool,
   "hidden": PropTypes.bool,
@@ -100,8 +101,11 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  "className": "",
   "disabled": false,
-  "focus": false
+  "hidden": false,
+  "focus": false,
+  "errorLocation": "bottom"
 };
 
 Input.styleguide = {
