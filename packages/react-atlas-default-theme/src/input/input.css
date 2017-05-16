@@ -1,11 +1,11 @@
 .container {
+	margin: 10px 0;
 	clear: both;
 }
 
 .input {
 	composes: pad-1 from '../styles.css';
 	composes: border-gray from '../styles.css';
-	width: 100%;
 	position: relative;
 	display: block;
 	box-shadow: none;
@@ -21,6 +21,22 @@
           	box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
 }
 
+.small {
+	width: 15%;
+}
+
+.medium {
+	width: 30%;
+}
+
+.large {
+	width: 60%;
+}
+
+.max {
+	width: 100%;
+}
+
 .checkbox {
 	composes: marg-b-1 from '../styles.css';
 	position: relative;
@@ -32,7 +48,6 @@
 }
 
 .error {
-	composes: input;
 	composes: red from '../styles.css';
 }
 

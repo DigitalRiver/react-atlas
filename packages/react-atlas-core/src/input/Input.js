@@ -41,14 +41,31 @@ class Input extends Component {
   }
 
   render() {
-    const { className, type, value, multiline, placeholder, disabled, hidden, errorText, ...others } = this.props;
+    const { 
+      className, 
+      small, 
+      medium, 
+      large, 
+      type, 
+      value, 
+      multiline, 
+      placeholder, 
+      disabled, 
+      hidden, 
+      errorText, 
+      ...others 
+    } = this.props;
 
     let classes = cx({
       "input": type !== "checkbox",
       "checkbox": type === "checkbox",
+      "small": small,
+      "medium": medium,
+      "large": large,
+      "max": !small && !medium && !large,
+      "invalid": !this.state.isValid,
       disabled,
-      hidden,
-      "invalid": !this.state.isValid
+      hidden
     });
 
     let inputElement = multiline ? (
@@ -97,6 +114,9 @@ Input.propTypes = {
   "placeholder": PropTypes.string,
   "focus": PropTypes.bool,
   "multiline": PropTypes.bool,
+  "small": PropTypes.bool,
+  "medium": PropTypes.bool,
+  "large": PropTypes.bool,
   "onChange": PropTypes.func
 };
 
