@@ -43,25 +43,25 @@
     "babel-plugin-transform-react-inline-elements": "^6.22.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.2",
     "react": "^15.4.2",
-    "react-autosuggest": "^3.7.3",
+    "react-autosuggest": "^9.0.1",
     "react-dom": "^15.4.2"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "babel-preset-es2015": "^6.24.0",
-    "babel-preset-react": "^6.23.0",
-    "babel-preset-stage-1": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
     "cross-spawn": "^5.1.0",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-plugin-babel": "^4.1.1",
-    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-react": "^7.0.1",
     "glob": "^7.1.1",
-    "jest": "^19.0.2",
+    "jest": "^20.0.1",
     "lerna": "^2.0.0-rc.4",
-    "prettier": "^1.2.2",
+    "prettier": "^1.3.1",
     "react-addons-test-utils": "^15.5.1",
-    "sinon": "^2.1.0"
+    "sinon": "^2.2.0"
   },
   "repository": {
     "type": "git",
