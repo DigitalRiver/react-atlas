@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "babel-loader": "^7.0.0",
+    "chokidar": "^1.7.0",
     "dot": "^1.1.1",
     "react": "^15.0.2",
     "react-atlas-core": "^0.0.10",

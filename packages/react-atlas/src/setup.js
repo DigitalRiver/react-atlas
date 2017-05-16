@@ -12,7 +12,7 @@ const compIndexTemplate = setupConf.compIndexTemplate;
 const cwd = process.cwd();
 const configPath = cwd + '/atlas.config.js';
 const reactDocs = require('react-docgen');
-const spawn = require("cross-spawn");
+const spawn = require('cross-spawn');
 const path = require('path');
 const prettier = require("prettier");
 const options = {}
@@ -38,9 +38,7 @@ if(process.argv.length >= 2) {
     rebuild(configPath);
   }
 }
-
 /* Just functions below, entire control flow(logic) is above this comment. */
-
 function rebuild(configPath) {
   console.log("configPath: ", __dirname + '/../webpack.config.js');
   let config = require(configPath);
@@ -165,9 +163,10 @@ function writeComponent(component) {
 
   tempFn = dot.template(compIndexTemplate);
   resultText = tempFn({'component': component});
+  text = prettier.format(resultText, options);
 
   try {
-    fs.writeFileSync(__dirname + '/components/' + component.name + '/index.js', resultText);
+    fs.writeFileSync(__dirname + '/components/' + component.name + '/index.js', text);
   }
   catch(err) {
     console.log("Failed generating modules file: ", err);
@@ -247,10 +246,11 @@ function createComponentDirectories() {
 function writeIndexFile(comps) {
   let tempFn = dot.template(indexTemplate);
   let resultText = tempFn({'components': comps});
+  let text = prettier.format(resultText, options);
 
   /* Try writting component to disk. */
   try {
-    fs.writeFileSync(__dirname + '/components/index.js', resultText);
+    fs.writeFileSync(__dirname + '/components/index.js', text);
   }
   catch(err) {
     console.log("Failed generating modules file: ", err);

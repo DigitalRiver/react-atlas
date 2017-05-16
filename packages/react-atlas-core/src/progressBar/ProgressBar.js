@@ -168,11 +168,7 @@ ProgressBar.propTypes = {
    * @examples '{"from": 10, "to": 80" }'
    */
   "value": React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.shape({
-      "from": React.PropTypes.number,
-      "to": React.PropTypes.number
-    })
+    React.PropTypes.number
   ])
 };
 
@@ -238,7 +234,6 @@ class ProgressBarExample extends React.Component {
         <p style={{margin: "10px auto"}}>Circular Determinate</p>
         <ProgressBar type="circular" mode="determinate" value={this.state.progress}/>
         <p style={{margin: '10px auto'}}>Range</p>
-        <ProgressBar mode='determinate' value={{from: 10, to: 80}}/>
       </section>
     );
   }
