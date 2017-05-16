@@ -16,33 +16,59 @@ class Input extends Component {
   }
 
   handleChange = (event) => {
+    let inputValue = event.target.value;
+
+    /* Validate max character length */
     if (this.props.maxLength) {
       // Keep difference between maxlenght and input value in state for count
       this.setState({
         "remaining": this.props.maxLength - event.target.value.length
       });
       // Make sure the user input is less than maxLength value
-      if (event.target.value.length > this.props.maxLength) {
+      if (inputValue.length > this.props.maxLength) {
         this.setState({
-          "value": event.target.value.substring(0, this.props.maxLength),
+          "value": inputValue.substring(0, this.props.maxLength),
           "remaining": 0
         });
         return;
       }
     }
 
-    if (this.props.required) {
-      if(!event.target.value.length) {
+    /* Execute custom validator and change state and error messages accordingly */
+    let customValidationPass = false;
+    if (this.props.validator) {
+      let valid = this.props.validator(inputValue);
+      if (!valid) {
         this.setState({
-          "errorText": this.props.errorText || "This field is required.",
+          "errorText": this.props.errorText,
           "isValid": false
         });
       } else {
-        this.setState({ "isValid": true });
+        customValidationPass = true;
       }
     }
 
-    this.setState({ "value": event.target.value });
+    /* If the field is required, and it has no value, change state and display error message */
+    if (this.props.required) {
+      if(!inputValue.length) {
+        this.setState({
+          "errorText": this.props.requiredText || "This field is required.",
+          "isValid": false
+        });
+      } else {
+        /* Set state after both validation checks to display both when required */
+        if(this.props.validator) {
+          if(customValidationPass) {
+            this.setState({ "isValid": true });
+          }
+        } else {
+          this.setState({ "isValid": true });
+        }
+      }
+    }
+
+    /* Regardless of validations, set value in the component state */
+    this.setState({ "value": inputValue });
   }
 
   render() {
@@ -68,19 +94,13 @@ class Input extends Component {
       "checkbox": type === "checkbox",
       "invalid": !this.state.isValid,
       "blockInput": errorLocation === "bottom", 
+      "small": small,
+      "medium": medium,
+      "large": large,
+      "max": !small && !medium && !large,
       disabled,
       hidden
     });
-
-    let wrapperClasses = cx(
-      "container",
-      {
-        "small": small,
-        "medium": medium,
-        "large": large,
-        "max": !small && !medium && !large,
-      }
-    );
 
     let inputElement = multiline ? (
       <textarea
@@ -106,7 +126,7 @@ class Input extends Component {
     );
 
     return (
-      <div styleName={wrapperClasses}>
+      <div styleName={cx("container")}>
         {inputElement}
         {this.state.isValid ? null : errorTextElement}
       </div>
@@ -118,6 +138,7 @@ Input.propTypes = {
   "className": PropTypes.string,
   "type": PropTypes.string,
   "required": PropTypes.bool,
+  "requiredText": PropTypes.string,
   "errorText": PropTypes.string,
   "errorLocation": PropTypes.string,
   "value": PropTypes.string,
@@ -131,7 +152,8 @@ Input.propTypes = {
   "small": PropTypes.bool,
   "medium": PropTypes.bool,
   "large": PropTypes.bool,
-  "onChange": PropTypes.func
+  "onChange": PropTypes.func,
+  "validator": PropTypes.func
 };
 
 Input.defaultProps = {
