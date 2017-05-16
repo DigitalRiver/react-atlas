@@ -10,17 +10,22 @@ class Input extends Component {
     this.state = { 
       "value": props.value || "",
       "errorText": undefined,
-      "isValid": true
+      "isValid": true,
+      "remaining": props.maxLength
     };
   }
 
   handleChange = (event) => {
-    /* Check if max length has been set. If maxLength has been
-    set make sure the user input is less than maxLength value. */
     if (this.props.maxLength) {
+      // Keep difference between maxlenght and input value in state for count
+      this.setState({
+        "remaining": this.props.maxLength - event.target.value.length
+      });
+      // Make sure the user input is less than maxLength value
       if (event.target.value.length > this.props.maxLength) {
         this.setState({
-          "value": event.target.value.substring(0, this.props.maxLength)
+          "value": event.target.value.substring(0, this.props.maxLength),
+          "remaining": 0
         });
         return;
       }
@@ -48,31 +53,40 @@ class Input extends Component {
       large, 
       type, 
       value, 
-      multiline, 
+      multiline,
+      maxLength, 
       placeholder, 
       disabled, 
       hidden, 
       errorText, 
+      errorLocation,
       ...others 
     } = this.props;
 
-    let classes = cx({
+    let inputClasses = cx({
       "input": type !== "checkbox",
       "checkbox": type === "checkbox",
-      "small": small,
-      "medium": medium,
-      "large": large,
-      "max": !small && !medium && !large,
       "invalid": !this.state.isValid,
+      "blockInput": errorLocation === "bottom", 
       disabled,
       hidden
     });
+
+    let wrapperClasses = cx(
+      "container",
+      {
+        "small": small,
+        "medium": medium,
+        "large": large,
+        "max": !small && !medium && !large,
+      }
+    );
 
     let inputElement = multiline ? (
       <textarea
         value={this.state.value}
         placeholder={placeholder}
-        styleName={classes}
+        styleName={inputClasses}
         className={cx(className)}
         onChange={this.handleChange}
       />
@@ -81,7 +95,7 @@ class Input extends Component {
         type={type}
         value={this.state.value}
         placeholder={placeholder}
-        styleName={classes}
+        styleName={inputClasses}
         className={cx(className)}
         onChange={this.handleChange}
       />
@@ -92,7 +106,7 @@ class Input extends Component {
     );
 
     return (
-      <div styleName={cx("container")}>
+      <div styleName={wrapperClasses}>
         {inputElement}
         {this.state.isValid ? null : errorTextElement}
       </div>
@@ -125,7 +139,7 @@ Input.defaultProps = {
   "disabled": false,
   "hidden": false,
   "focus": false,
-  "errorLocation": "bottom"
+  "errorLocation": "right"
 };
 
 Input.styleguide = {
