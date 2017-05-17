@@ -2,11 +2,14 @@ import React, { Component, PropTypes } from "react";
 import cx from 'classNames';
 
 /**
- * Input component. Takes a label prop and wraps label and input in a div. Takes regular input attributes as props as well
+ * Master Input component. To be used as core for different input types
+ * components. Accepts all input properties and also supports custom 
+ * and maxlenght/required validations.
  */
 class Input extends Component {
   constructor(props) {
     super(props);
+    // Initial state
     this.state = { 
       "value": props.value || "",
       "errorText": undefined,
@@ -78,6 +81,7 @@ class Input extends Component {
       medium, 
       large, 
       type, 
+      name,
       value, 
       multiline,
       maxLength, 
@@ -86,7 +90,7 @@ class Input extends Component {
       hidden, 
       errorText, 
       errorLocation,
-      ...others 
+      ...props 
     } = this.props;
 
     let inputClasses = cx({
@@ -104,6 +108,8 @@ class Input extends Component {
 
     let inputElement = multiline ? (
       <textarea
+        {...props}
+        name={name}
         value={this.state.value}
         placeholder={placeholder}
         styleName={inputClasses}
@@ -112,7 +118,9 @@ class Input extends Component {
       />
     ) : (
       <input
+        {...props}
         type={type}
+        name={name}
         value={this.state.value}
         placeholder={placeholder}
         styleName={inputClasses}
@@ -135,24 +143,95 @@ class Input extends Component {
 }
 
 Input.propTypes = {
+  /**
+   * Defines a custom css class name.
+   * @examples 'custom-imput'
+   */
   "className": PropTypes.string,
+  /**
+   * Defines the input type. Accepts HTML5 input types.
+   * @examples 'text', 'checkbox', 'radio', 'password', 'email'
+   */
   "type": PropTypes.string,
+  /**
+   * Defines a name for the input.
+   * @examples '<Input type="text" name="test"/>'
+   */
+  "name": PropTypes.string,
+  /**
+   * Sets the field as required. Will be validated onChange.
+   * @examples '<Input type="text" required/>'
+   */
   "required": PropTypes.bool,
+  /**
+   * Defines error message to be displayed when input is empty and required.
+   * Otherwise, it will display pre-defined required field message.
+   * @examples '<Input type="text" required requiredText="Custom required msg"/>'
+   */
   "requiredText": PropTypes.string,
+  /**
+   * Defines error message to be displayed on custom validation.
+   * @examples '<Input type="text" validator={this.validateTest} errorText="Custom validation msg"/>'
+   */
   "errorText": PropTypes.string,
+  /**
+   * Defines error messages location (on validation). 
+   * > Valid values are 'right' and 'bottom'.
+   * > Default value is 'right'.
+   * @examples '<Input type="text" required requiredText="Custom required msg" errorLocation="buttom"/>'
+   */
   "errorLocation": PropTypes.string,
+  /**
+   * Defines a determinate value for the input.
+   * @examples '<Input type="text" value="test input"/>'
+   */
   "value": PropTypes.string,
+  /**
+   * Determines if the input is disabled.
+   * @examples '<Input type="text" disabled/>'
+   */
   "disabled": PropTypes.bool,
+  /**
+   * Determines if the input is hidden.
+   * @examples '<Input type="text" hidden/>'
+   */
   "hidden": PropTypes.bool,
+  /**
+   * Sets a maximum character lenght that will be validated onChange.
+   * @examples '<Input type="text" maxLenght={25}/>'
+   */
   "maxLength": PropTypes.number,
-  "minLength": PropTypes.number,
+  /**
+   * Defines placeholder text.
+   * @examples '<Input type="text" placeholder="test input"/>'
+   */
   "placeholder": PropTypes.string,
-  "focus": PropTypes.bool,
+  /**
+   * Renders a textarea element instead. To be used in TextArea component.
+   * @examples '<Input multiline/>'
+   */
   "multiline": PropTypes.bool,
+  /**
+   * Defines a small sized input element.
+   * @examples '<Input type="text" small/>'
+   */
   "small": PropTypes.bool,
+  /**
+   * Defines a medium sized input element.
+   * @examples '<Input type="text" small/>'
+   */
   "medium": PropTypes.bool,
+  /**
+   * Defines a large sized input element.
+   * @examples '<Input type="text" small/>'
+   */
   "large": PropTypes.bool,
-  "onChange": PropTypes.func,
+  /**
+   * Sets a custom validator function that will be executed onChange.
+   * > Should return a boolean value, otherwise will evaluate to false.
+   * > Error message to be displayed will come from errorText prop.
+   * @examples '<Input type="text" validator={this.validateTest} errorText="Custom validation msg"/>'
+   */
   "validator": PropTypes.func
 };
 
@@ -171,19 +250,16 @@ Input.styleguide = {
     `
 <section>
   <h5>Inputs</h5>
-  <p>lorem ipsum...</p>
-  <Input
-    type="text"
-    label="First Label"
-    maxLength={12}
-    placeholder="First Label placeholder"
-  />
-  <Input
-    type="text"
-    label="Second Label"
-    maxLength={12}
-    placeholder="Second Label placeholder"
-  />
+  <Input 
+    type="text" 
+    placeholder="small input" 
+    small 
+    required 
+    maxLength={25} 
+    validator={this.validateTest} 
+    errorText="custom validation msg"/>
+  <Input type="text" placeholder="medium input" medium required maxLength={25}/>
+  <Input type="text" placeholder="large input" large required maxLength={25}/>
   <Button>Submit</Button>
 </section>
 `
