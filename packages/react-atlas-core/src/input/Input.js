@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from "react";
+import InputMask from "inputmask-core";
+import { utils } from "../utils";
 import cx from 'classNames';
 
 /**
  * Master Input component. To be used as core for different input types
  * components. Accepts all input properties and also supports custom 
- * and maxlenght/required validations.
+ * and maxlenght/required validations. Allows input masking.
  */
 class Input extends Component {
   constructor(props) {
@@ -18,8 +20,95 @@ class Input extends Component {
     };
   }
 
-  handleChange = (event) => {
+  componentWillMount() {
+    // Configure input mask if required
+    if (this.props.mask) {
+      var maskOptions = {
+        "pattern": this.props.mask,
+        "value": this.props.value
+      };
+
+      this.mask = new InputMask(maskOptions);
+    }
+  }
+
+  _updateMaskSelection = () => {
+    this.mask.selection = utils.getSelection(this.input);
+  }
+
+  _updateInputSelection = () => {
+    let selection = this.mask.selection;
+    utils.setSelection(this.input, selection);
+  }
+
+  _getDisplayValue = () => {
+    let value = this.mask.getValue();
+    return value === this.mask.emptyValue ? '' : value;
+  }
+
+  //TODO: fix arrow navigation
+  _handleKeyDown = (event) => {
+    /* Handle proper deletion of masked input characters. 
+     * We do this onKeyDown because backspace key event
+     * won't reach onKeyPress event.
+     */
+    if (event.key === 'Backspace') {
+      event.preventDefault();
+      this._updateMaskSelection();
+      if (this.mask.backspace()) {
+        var value = this._getDisplayValue();
+        event.target.value = value;
+        if (value) {
+          this._updateInputSelection();
+        }
+      }
+    }
+
+    // Fire onKeyPress event
+    this._handleKeyPress(event);
+  }
+
+  _handleKeyPress = (event) => {
+    // Ignore modified key presses and enter key to allow form submission
+    if (event.metaKey || event.altKey || event.ctrlKey || event.key === 'Enter') { return }
+
+    event.preventDefault();
+    this._updateMaskSelection();
+
+    // Check if pressed key corresponds to mask pattern
+    if (this.mask.input((event.key || event.data))) {
+      event.target.value = this.mask.getValue();
+      this._updateInputSelection();
+    }
+
+    // Fire onChange event
+    this._handleChange(event);
+  }
+
+  _handleChange = (event) => {
     let inputValue = event.target.value;
+
+    /* Masked input validations */
+    if (this.props.mask) {
+      let maskValue = this.mask.getValue();
+
+      if (inputValue !== maskValue) {
+        // Cut or delete operations will have shortened the value
+        if (inputValue.length < maskValue.length) {
+          let sizeDiff = maskValue.length - inputValue.length;
+          this._updateMaskSelection();
+          this.mask.selection.end = this.mask.selection.start + sizeDiff;
+          this.mask.backspace();
+        }
+        // Set new input value based on mask
+        var newValue = this._getDisplayValue();
+        inputValue = newValue;
+
+        if (newValue) {
+          this._updateInputSelection();
+        }
+      }
+    }
 
     /* Validate max character length */
     if (this.props.maxLength) {
@@ -72,6 +161,11 @@ class Input extends Component {
 
     /* Regardless of validations, set value in the component state */
     this.setState({ "value": inputValue });
+
+    /* Execute application code function at this point if available */
+    if (this.props.onChange) {
+      this.props.onChange(event);
+    }
   }
 
   render() {
@@ -106,26 +200,31 @@ class Input extends Component {
       hidden
     });
 
+    let eventHandlers = {
+      onChange: this._handleChange,
+      onKeyDown: this._handleKeyDown,
+      onKeyPress: this._handleKeyPress
+    };
+
     let inputElement = multiline ? (
       <textarea
-        {...props}
         name={name}
         value={this.state.value}
         placeholder={placeholder}
         styleName={inputClasses}
         className={cx(className)}
-        onChange={this.handleChange}
+        onChange={this._handleChange}
       />
     ) : (
       <input
-        {...props}
         type={type}
         name={name}
         value={this.state.value}
         placeholder={placeholder}
         styleName={inputClasses}
         className={cx(className)}
-        onChange={this.handleChange}
+        ref={(input) => { this.input = input; }}
+        {...eventHandlers}
       />
     );
 
@@ -227,12 +326,22 @@ Input.propTypes = {
    */
   "large": PropTypes.bool,
   /**
+   * Defines a pattern for masked input.
+   * @examples '<Input type="text" mask="1111-1111-1111"/>'
+   */
+  "mask": PropTypes.string,
+  /**
    * Sets a custom validator function that will be executed onChange.
    * > Should return a boolean value, otherwise will evaluate to false.
    * > Error message to be displayed will come from errorText prop.
    * @examples '<Input type="text" validator={this.validateTest} errorText="Custom validation msg"/>'
    */
-  "validator": PropTypes.func
+  "validator": PropTypes.func,
+  /**
+     * Sets a handler function to be executed when onChange event occurs.
+     * @examples <Input type="text" onChange={this.customOnChangeFunc}/>
+     */
+  "onChange": PropTypes.func
 };
 
 Input.defaultProps = {
