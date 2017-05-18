@@ -1,96 +1,83 @@
 /* This script handles bootstrapping atlas as well as theming support. */
-let dot = require('dot');
-let fs = require('fs');
-let eol = require('os').EOL;
-const setupConf = require('./setup.config.js');
-const warningMessage = setupConf.warningMessage;
+let dot = require("dot");
+let fs = require("fs");
+const setupConf = require("./setup.config.js");
 const template = setupConf.template;
 const devTemplate = setupConf.devTemplate;
 const components = setupConf.components;
 const indexTemplate = setupConf.indexTemplate;
 const compIndexTemplate = setupConf.compIndexTemplate;
 const cwd = process.cwd();
-const configPath = cwd + '/atlas.config.js';
-const reactDocs = require('react-docgen');
-const spawn = require('cross-spawn');
-const path = require('path');
+const configPath = cwd + "/atlas.config.js";
+const reactDocs = require("react-docgen");
+const spawn = require("cross-spawn");
+const path = require("path");
 const prettier = require("prettier");
-const options = {}
+const options = {};
 
-/* Create generated component directory structure inside react-atlas/src. */
-createComponentDirectories();
-
-/* Check if a atlas config file exist or not. If the config file
-  does exist generate components. */
-if(fs.existsSync(configPath)) {
-  createComponentsFromConfig(configPath);
-} else {
-  createComponentFromGlobalTheme("react-atlas-default-theme");
-}
-
-/* Check for command line arguments. */
-if(process.argv.length >= 2) {
-  if(typeof process.argv[2] === 'undefined')
-    return;
-
-  /* Someone is switching themes so let's rebuild react-atlas/packages/react-atlas. */
-  if(process.argv[2] === "--switch") {
-    rebuild(configPath);
-  }
-}
-/* Just functions below, entire control flow(logic) is above this comment. */
-function rebuild(configPath) {
-  console.log("configPath: ", __dirname + '/../webpack.config.js');
-  let config = require(configPath);
-  if(config.theme === 'react-atlas-default-theme') {
-    spawn.sync(__dirname + '/../node_modules/webpack/bin/webpack.js', ['--config', __dirname + '/../webpack.config.js'], {
-      "env": process.env,
-      "cwd": cwd,
-      "stdio": "inherit"
-    });
+function rebuild(configurationPath) {
+  console.log("configPath: ", __dirname + "/../webpack.config.js");
+  let config = require(configurationPath);
+  if (config.theme === "react-atlas-default-theme") {
+    spawn.sync(
+      __dirname + "/../node_modules/webpack/bin/webpack.js",
+      ["--config", __dirname + "/../webpack.config.js"],
+      {
+        env: process.env,
+        cwd: cwd,
+        stdio: "inherit"
+      }
+    );
   } else {
     /* Rebuild react-atlas library, but pass the theme string to exclude
     from the rebuilding process. This allows react-atlas to rebuild with out
     having access to the theme.  */
-  spawn.sync(__dirname + '/../node_modules/webpack/bin/webpack.js', ['--config', __dirname + '/../webpack.config.js', '--env.theme', config.theme], {
-    "env": process.env,
-    "cwd": cwd,
-    "stdio": "inherit"
-   });
+    spawn.sync(
+      __dirname + "/../node_modules/webpack/bin/webpack.js",
+      [
+        "--config",
+        __dirname + "/../webpack.config.js",
+        "--env.theme",
+        config.theme
+      ],
+      {
+        env: process.env,
+        cwd: cwd,
+        stdio: "inherit"
+      }
+    );
   }
 }
 
 /* Transforms extracted information from react-docgen into a form
   that can be consumed by the dot.js templating engine. */
 function processInfo(info) {
-  let array = Object.keys(info.props).map(function (key) {
+  let array = Object.keys(info.props).map(function(key) {
     let obj = {};
 
     /* Skip empty objects. */
-    if(typeof info.props[key].type === 'undefined') {
+    if (typeof info.props[key].type === "undefined") {
       return obj;
     }
 
     let name = info.props[key].type.name;
 
     /* Check if the type is a union. */
-    if(name === 'union') {
+    if (name === "union") {
+      obj.type = '"' + key + '":' + " PropTypes.oneOfType([";
 
-      obj.type = '"' + key + '":' + " PropTypes.oneOfType(["
-
-      for(let i = 0; i < info.props[key].type.value.length; i++) {
+      for (let i = 0; i < info.props[key].type.value.length; i++) {
         let type = info.props[key].type.value[i];
-        switch(type.name) {
-          case 'number':
+        switch (type.name) {
+          case "number":
             obj.type += "PropTypes.number,";
             break;
-          case 'string':
+          case "string":
             obj.type += "PropTypes.string,";
             break;
-          case 'element':
+          case "element":
             obj.type += "PropTypes.element,";
             break;
-
           /* If we get here it means were missing this proptype and it should
             have a case added to this switch statment. */
           default:
@@ -99,9 +86,8 @@ function processInfo(info) {
       }
 
       obj.type += "])";
-
     } else {
-      obj.type = '"' + key + '":' + ' ' + "PropTypes." + name;
+      obj.type = '"' + key + '":' + " " + "PropTypes." + name;
     }
 
     obj.required = info.props[key].required;
@@ -115,19 +101,25 @@ function processInfo(info) {
 function createComponent(name, theme) {
   let component = {};
 
-  component = { 'name': name, 'theme': theme };
+  component = { name: name, theme: theme };
 
   /* Make sure leading letter is uppercase. */
   component.name = component.name[0].toUpperCase() + component.name.slice(1);
 
   /* Create component configPath. */
-  let configPath = __dirname + '/../../react-atlas-core/src/' + component.name + '/' + component.name + '.js'
+  let configurationPath =
+    __dirname +
+    "/../../react-atlas-core/src/" +
+    component.name +
+    "/" +
+    component.name +
+    ".js";
 
   /* Read the component source file. */
-  let file = fs.readFileSync(configPath);
+  let file = fs.readFileSync(configurationPath);
 
   /* Parse component source. */
-  let info = reactDocs.parse(file.toString('ascii'));
+  let info = reactDocs.parse(file.toString("ascii"));
 
   component.propTypes = processInfo(info);
 
@@ -135,7 +127,7 @@ function createComponent(name, theme) {
 }
 
 function getTemplate() {
-  if(process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === "production") {
     return template;
   } else {
     return devTemplate;
@@ -143,43 +135,70 @@ function getTemplate() {
 }
 
 function writeComponent(component) {
-  var template = getTemplate();
+  let temp = getTemplate();
 
   /* Render component template. */
-  let tempFn = dot.template(template);
-  let resultText = tempFn({'component': component});
+  let tempFn = dot.template(temp);
+  let resultText = tempFn({ component: component });
 
   /* Use prettier to format code so it looks nicer to people. */
   let text = prettier.format(resultText, options);
 
   /* Try writting component to disk. */
   try {
-    fs.writeFileSync(__dirname + '/components/' + component.name + '/' + component.name + '.js', text);
-  }
-  catch(err) {
+    fs.writeFileSync(
+      __dirname +
+        "/components/" +
+        component.name +
+        "/" +
+        component.name +
+        ".js",
+      text
+    );
+  } catch (err) {
     console.log("Failed generating modules file: ", err);
     return;
   }
 
   tempFn = dot.template(compIndexTemplate);
-  resultText = tempFn({'component': component});
+  resultText = tempFn({ component: component });
   text = prettier.format(resultText, options);
 
   try {
-    fs.writeFileSync(__dirname + '/components/' + component.name + '/index.js', text);
-  }
-  catch(err) {
+    fs.writeFileSync(
+      __dirname + "/components/" + component.name + "/index.js",
+      text
+    );
+  } catch (err) {
     console.log("Failed generating modules file: ", err);
     return;
   }
 
-  console.log(path.resolve('Generating: ', __dirname + '/components/' + component.name + '/' + component.name + '.js'));
+  console.log(
+    path.resolve(
+      "Generating: ",
+      __dirname + "/components/" + component.name + "/" + component.name + ".js"
+    )
+  );
+}
+
+function writeIndexFile(comps) {
+  let tempFn = dot.template(indexTemplate);
+  let resultText = tempFn({ components: comps });
+  let text = prettier.format(resultText, options);
+
+  /* Try writting component to disk. */
+  try {
+    fs.writeFileSync(__dirname + "/components/index.js", text);
+  } catch (err) {
+    console.log("Failed generating modules file: ", err);
+    return;
+  }
 }
 
 function createComponentFromGlobalTheme(theme) {
   let comps = [];
-  for(let i = 0; i < components.length; i++) {
-
+  for (let i = 0; i < components.length; i++) {
     let component = createComponent(components[i], theme);
 
     comps.push(component);
@@ -199,9 +218,12 @@ function createComponentFromGlobalTheme(theme) {
  react-atlas. */
 function createComponentsFromConfig() {
   let config = require(configPath);
-  if(config.theme === '') {
-    for(let i = 0; i < config.components.length; i++) {
-      let component = createComponent(config.components[i].name, config.components[i].theme);
+  if (config.theme === "") {
+    for (let i = 0; i < config.components.length; i++) {
+      let component = createComponent(
+        config.components[i].name,
+        config.components[i].theme
+      );
       writeComponent(component);
     }
 
@@ -214,48 +236,64 @@ function createComponentsFromConfig() {
 }
 
 function createComponentDirectories() {
-  const componentDirconfigPath = __dirname + '/components';
+  const componentDirconfigPath = __dirname + "/components";
   const oldconfigPath = __dirname + "/../../react-atlas-core/src/";
 
   let component;
 
-  if(!fs.existsSync(componentDirconfigPath)) {
-    fs.mkdirSync(componentDirconfigPath, 0777);
-    for(let i = 0; i < components.length; i++) {
+  if (!fs.existsSync(componentDirconfigPath)) {
+    fs.mkdirSync(componentDirconfigPath);
+    for (let i = 0; i < components.length; i++) {
       component = components[i];
 
       /* Make sure leading letter is uppercase. */
       component = component[0].toUpperCase() + component.slice(1);
-      fs.mkdir(componentDirconfigPath + '/' + component);
+      fs.mkdir(componentDirconfigPath + "/" + component);
     }
   }
-  for(let i = 0; i < components.length; i++) {
+  for (let i = 0; i < components.length; i++) {
     component = components[i];
 
     /* Make sure leading letter is uppercase. */
     component = component[0].toUpperCase() + component.slice(1);
 
-    if(fs.existsSync(oldconfigPath + component + '/README.md')) {
-      if(fs.existsSync(componentDirconfigPath + '/' + component + '/README.md')) {
-        fs.unlinkSync(componentDirconfigPath + '/' + component + '/README.md');
+    const readmePath = path.resolve(
+      componentDirconfigPath + "/" + component + "/README.md"
+    );
+
+    if (fs.existsSync(oldconfigPath + component + "/README.md")) {
+      if (fs.existsSync(readmePath)) {
+        fs.unlinkSync(readmePath);
       }
-      console.log("Linking: %s -> %s", oldconfigPath + component + '/README.md', componentDirconfigPath + '/' + component + '/README.md');
-      fs.linkSync(oldconfigPath + component + '/README.md', componentDirconfigPath + '/' + component + '/README.md');
+      console.log(
+        "Linking: %s -> %s",
+        path.resolve(oldconfigPath + component + "/README.md"),
+        readmePath
+      );
+      fs.linkSync(oldconfigPath + component + "/README.md", readmePath);
     }
   }
 }
 
-function writeIndexFile(comps) {
-  let tempFn = dot.template(indexTemplate);
-  let resultText = tempFn({'components': comps});
-  let text = prettier.format(resultText, options);
+/* Create generated component directory structure inside react-atlas/src. */
+createComponentDirectories();
 
-  /* Try writting component to disk. */
-  try {
-    fs.writeFileSync(__dirname + '/components/index.js', text);
+/* Check if a atlas config file exist or not. If the config file
+  does exist generate components. */
+if (fs.existsSync(configPath)) {
+  createComponentsFromConfig(configPath);
+} else {
+  createComponentFromGlobalTheme("react-atlas-default-theme");
+}
+
+/* Check for command line arguments. */
+if (process.argv.length >= 2) {
+  if (typeof process.argv[2] === "undefined") {
+    process.exit();
   }
-  catch(err) {
-    console.log("Failed generating modules file: ", err);
-    return;
+
+  /* Someone is switching themes so let's rebuild react-atlas/packages/react-atlas. */
+  if (process.argv[2] === "--switch") {
+    rebuild(configPath);
   }
 }
