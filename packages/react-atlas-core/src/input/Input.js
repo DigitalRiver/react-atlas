@@ -17,10 +17,8 @@ class Input extends Component {
       "errorText": undefined,
       "isValid": true,
       "remaining": props.maxLength
-    };
-  }
+    }
 
-  componentWillMount() {
     // Configure input mask if required
     if (this.props.mask) {
       var maskOptions = {
@@ -46,43 +44,69 @@ class Input extends Component {
     return value === this.mask.emptyValue ? '' : value;
   }
 
-  //TODO: fix arrow navigation
   _handleKeyDown = (event) => {
-    /* Handle proper deletion of masked input characters. 
+    /**
+     * Handle proper deletion of masked input characters. 
      * We do this onKeyDown because backspace key event
      * won't reach onKeyPress event.
      */
-    if (event.key === 'Backspace') {
-      event.preventDefault();
-      this._updateMaskSelection();
-      if (this.mask.backspace()) {
-        var value = this._getDisplayValue();
-        event.target.value = value;
-        if (value) {
-          this._updateInputSelection();
+    if (this.props.mask) {
+      if (event.key === 'Backspace') {
+
+        event.preventDefault();
+        this._updateMaskSelection();
+
+        if (this.mask.backspace()) {
+          var value = this._getDisplayValue();
+          event.target.value = value;
+          if (value) {
+            this._updateInputSelection();
+          }
         }
       }
-    }
 
-    // Fire onKeyPress event
-    this._handleKeyPress(event);
+      // Fire onChange event
+      this._handleChange(event);
+    }
   }
 
   _handleKeyPress = (event) => {
-    // Ignore modified key presses and enter key to allow form submission
-    if (event.metaKey || event.altKey || event.ctrlKey || event.key === 'Enter') { return }
+    if (this.props.mask) {
+      // Ignore modified key presses and enter key to allow form submission
+      if (event.metaKey || event.altKey || event.ctrlKey || event.key === 'Enter') { return; }
 
-    event.preventDefault();
-    this._updateMaskSelection();
+      event.preventDefault();
+      this._updateMaskSelection();
 
-    // Check if pressed key corresponds to mask pattern
-    if (this.mask.input((event.key || event.data))) {
-      event.target.value = this.mask.getValue();
-      this._updateInputSelection();
+      // Check if pressed key corresponds to mask pattern
+      if (this.mask.input((event.key || event.data))) {
+        event.target.value = this.mask.getValue();
+        this._updateInputSelection();
+      }
+
+      // Fire onChange event
+      this._handleChange(event);
     }
+  }
 
-    // Fire onChange event
-    this._handleChange(event);
+  _handlePaste = (event) => {
+    /**
+     * Support pasting text in masked input. If text doesn't 
+     * pass mask validation, it won't be pasted. 
+     */
+    if (this.props.mask) {
+      event.preventDefault();
+      this._updateMaskSelection();
+
+      if (this.mask.paste(event.clipboardData.getData('Text'))) {
+        event.target.value = this.mask.getValue();
+        // Timeout needed for IE
+        setTimeout(this._updateInputSelection, 0);
+      }
+
+      // Fire onChange event
+      this._handleChange(event);
+    }
   }
 
   _handleChange = (event) => {
@@ -201,9 +225,10 @@ class Input extends Component {
     });
 
     let eventHandlers = {
-      onChange: this._handleChange,
-      onKeyDown: this._handleKeyDown,
-      onKeyPress: this._handleKeyPress
+      "onChange": this._handleChange,
+      "onKeyDown": this._handleKeyDown,
+      "onKeyPress": this._handleKeyPress,
+      "onPaste": this._handlePaste
     };
 
     let inputElement = multiline ? (
