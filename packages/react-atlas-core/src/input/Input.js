@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import InputMask from "inputmask-core";
 import { utils } from "../utils";
-import cx from 'classNames';
+import cx from "classNames";
 
 /**
  * Master Input component. To be used as core for different input types
@@ -12,16 +12,16 @@ class Input extends Component {
   constructor(props) {
     super(props);
     // Initial state
-    this.state = { 
+    this.state = {
       "value": props.value || "",
-      "errorText": undefined,
+      "errorText": undefined, // eslint-disable-line no-undefined
       "isValid": true,
       "remaining": props.maxLength
-    }
+    };
 
     // Configure input mask if required
     if (this.props.mask) {
-      var maskOptions = {
+      let maskOptions = {
         "pattern": this.props.mask,
         "value": this.props.value
       };
@@ -32,32 +32,31 @@ class Input extends Component {
 
   _updateMaskSelection = () => {
     this.mask.selection = utils.getSelection(this.input);
-  }
+  };
 
   _updateInputSelection = () => {
     let selection = this.mask.selection;
     utils.setSelection(this.input, selection);
-  }
+  };
 
   _getDisplayValue = () => {
     let value = this.mask.getValue();
-    return value === this.mask.emptyValue ? '' : value;
-  }
+    return value === this.mask.emptyValue ? "" : value;
+  };
 
-  _handleKeyDown = (event) => {
+  _handleKeyDown = event => {
     /**
      * Handle proper deletion of masked input characters. 
      * We do this onKeyDown because backspace key event
      * won't reach onKeyPress event.
      */
     if (this.props.mask) {
-      if (event.key === 'Backspace') {
-
+      if (event.key === "Backspace") {
         event.preventDefault();
         this._updateMaskSelection();
 
         if (this.mask.backspace()) {
-          var value = this._getDisplayValue();
+          let value = this._getDisplayValue();
           event.target.value = value;
           if (value) {
             this._updateInputSelection();
@@ -68,18 +67,25 @@ class Input extends Component {
       // Fire onChange event
       this._handleChange(event);
     }
-  }
+  };
 
-  _handleKeyPress = (event) => {
+  _handleKeyPress = event => {
     if (this.props.mask) {
       // Ignore modified key presses and enter key to allow form submission
-      if (event.metaKey || event.altKey || event.ctrlKey || event.key === 'Enter') { return; }
+      if (
+        event.metaKey ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.key === "Enter"
+      ) {
+        return;
+      }
 
       event.preventDefault();
       this._updateMaskSelection();
 
       // Check if pressed key corresponds to mask pattern
-      if (this.mask.input((event.key || event.data))) {
+      if (this.mask.input(event.key || event.data)) {
         event.target.value = this.mask.getValue();
         this._updateInputSelection();
       }
@@ -87,9 +93,9 @@ class Input extends Component {
       // Fire onChange event
       this._handleChange(event);
     }
-  }
+  };
 
-  _handlePaste = (event) => {
+  _handlePaste = event => {
     /**
      * Support pasting text in masked input. If text doesn't 
      * pass mask validation, it won't be pasted. 
@@ -98,7 +104,7 @@ class Input extends Component {
       event.preventDefault();
       this._updateMaskSelection();
 
-      if (this.mask.paste(event.clipboardData.getData('Text'))) {
+      if (this.mask.paste(event.clipboardData.getData("Text"))) {
         event.target.value = this.mask.getValue();
         // Timeout needed for IE
         setTimeout(this._updateInputSelection, 0);
@@ -107,9 +113,9 @@ class Input extends Component {
       // Fire onChange event
       this._handleChange(event);
     }
-  }
+  };
 
-  _handleChange = (event) => {
+  _handleChange = event => {
     let inputValue = event.target.value;
 
     /* Masked input validations */
@@ -125,7 +131,7 @@ class Input extends Component {
           this.mask.backspace();
         }
         // Set new input value based on mask
-        var newValue = this._getDisplayValue();
+        let newValue = this._getDisplayValue();
         inputValue = newValue;
 
         if (newValue) {
@@ -166,15 +172,15 @@ class Input extends Component {
 
     /* If the field is required, and it has no value, change state and display error message */
     if (this.props.required) {
-      if(!inputValue.length) {
+      if (!inputValue.length) {
         this.setState({
           "errorText": this.props.requiredText || "This field is required.",
           "isValid": false
         });
       } else {
         /* Set state after both validation checks to display both when required */
-        if(this.props.validator) {
-          if(customValidationPass) {
+        if (this.props.validator) {
+          if (customValidationPass) {
             this.setState({ "isValid": true });
           }
         } else {
@@ -190,32 +196,29 @@ class Input extends Component {
     if (this.props.onChange) {
       this.props.onChange(event);
     }
-  }
+  };
 
   render() {
-    const { 
-      className, 
-      small, 
-      medium, 
-      large, 
-      type, 
+    const {
+      className,
+      small,
+      medium,
+      large,
+      type,
       name,
-      value, 
       multiline,
-      maxLength, 
-      placeholder, 
-      disabled, 
-      hidden, 
-      errorText, 
+      placeholder,
+      disabled,
+      hidden,
       errorLocation,
-      ...props 
+      ...props // eslint-disable-line no-unused-vars
     } = this.props;
 
     let inputClasses = cx({
       "input": type !== "checkbox",
       "checkbox": type === "checkbox",
       "invalid": !this.state.isValid,
-      "blockInput": errorLocation === "bottom", 
+      "blockInput": errorLocation === "bottom",
       "small": small,
       "medium": medium,
       "large": large,
@@ -231,31 +234,31 @@ class Input extends Component {
       "onPaste": this._handlePaste
     };
 
-    let inputElement = multiline ? (
-      <textarea
-        name={name}
-        value={this.state.value}
-        placeholder={placeholder}
-        styleName={inputClasses}
-        className={cx(className)}
-        onChange={this._handleChange}
-      />
-    ) : (
-      <input
-        type={type}
-        name={name}
-        value={this.state.value}
-        placeholder={placeholder}
-        styleName={inputClasses}
-        className={cx(className)}
-        ref={(input) => { this.input = input; }}
-        {...eventHandlers}
-      />
-    );
+    let inputElement = multiline
+      ? <textarea
+          name={name}
+          value={this.state.value}
+          placeholder={placeholder}
+          styleName={inputClasses}
+          className={cx(className)}
+          onChange={this._handleChange}
+        />
+      : <input
+          type={type}
+          name={name}
+          value={this.state.value}
+          placeholder={placeholder}
+          styleName={inputClasses}
+          className={cx(className)}
+          ref={input => {
+            this.input = input;
+          }}
+          {...eventHandlers}
+        />;
 
-    let errorTextElement = this.state.errorText && (
-      <span styleName={cx("error")}>{this.state.errorText}</span>
-    );
+    let errorTextElement =
+      this.state.errorText &&
+      <span styleName={cx("error")}>{this.state.errorText}</span>;
 
     return (
       <div styleName={cx("container")}>
@@ -380,8 +383,7 @@ Input.defaultProps = {
 Input.styleguide = {
   "category": "Form Components",
   "index": "3.6",
-  "example": 
-    `
+  "example": `
 <section>
   <h5>Inputs</h5>
   <Input 
@@ -397,7 +399,6 @@ Input.styleguide = {
   <Button>Submit</Button>
 </section>
 `
-  
 };
 
 export default Input;
