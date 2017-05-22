@@ -1,44 +1,70 @@
+Input component should be used as core part of other components such as TextField, TextArea, CheckBox, Switch, Radio, etc. It is not recommended to use directly. For each particular example, refer to specific component documentation.
 
-Regular Buttons:
+###### Default text input:
 
-    <div>
-        <Button>Button</Button>
-        <Button secondary>Secondary</Button>
-        <Button success>Success</Button>
-        <Button warning>Warning</Button>
-        <Button danger>Danger</Button>
-        <Button href="#" link>Link</Button>
-    </div>
-    
-Disabled Regular Buttons:
+    <Input type="text"/>
 
-    <div>
-        <Button disabled primary>Button</Button>
-        <Button disabled secondary>Secondary</Button>
-        <Button disabled success>Success</Button>
-        <Button disabled warning>Warning</Button>
-        <Button disabled danger>Danger</Button>
-        <Button href="#" disabled link>Link</Button>
-    </div>
-    
-Outline Buttons:
+###### Text input with different sizes (default is 100% width):
 
-    <div>
-        <Button outline primary>Button</Button>
-        <Button outline secondary>Secondary</Button>
-        <Button success outline>Success</Button>
-        <Button warning outline>Warning</Button>
-        <Button danger outline>Danger</Button>
-        <Button href="#" link outline>Link</Button>
-    </div>
-    
-Diabled Outline Buttons
+    <Input type="text" small/>
+    <Input type="text" medium/>
+    <Input type="text" large/>
 
-    <div>
-        <Button disabled outline primary>Button</Button>
-        <Button disabled secondary outline>Secondary</Button>
-        <Button disabled success outline>Success</Button>
-        <Button disabled warning outline>Warning</Button>
-        <Button disabled danger outline>Danger</Button>
-        <Button href="#" disabled link outline>Link</Button>
-    </div>
+###### Text input with placeholders:
+
+    <Input type="text" placeholder="Add information"/>
+
+###### Text input with required validation:
+
+    <Input type="text" required/>
+    <Input type="text" required requiredText="Custom required message"/>
+
+###### Text input with maximum length validation:
+
+    <Input type="text" maxLength={20}/>
+
+###### Text input with custom validation (application code):
+
+    function validateTest(value) {
+        return value === 'test';
+    }
+
+    <Input type="text"
+         large
+         validator={this.validateTest} 
+         errorText="Custom validation message"/>
+
+###### Masked text input:
+
+The following format characters define editable parts of the mask:
+
+- 1: number
+- a: letter
+- A: letter, forced to upper case when entered
+- *: alphanumeric
+- #: alphanumeric, forced to upper case when entered
+
+    <Input type="text" placeholder="(54) 111-1111" large mask="(54) 111-1111"/>
+    <Input type="text" placeholder="ABC 1234" large mask="AAA 1111"/>
+
+###### Default textarea:
+
+    <Input type="text" multiline/>
+
+###### Default checkbox input:
+
+    <Input type="checkbox"/>
+
+###### Default radio input:
+
+    <Input type="radio"/>
+
+###### HTML5 type inputs:
+
+    <Input type="email"/>
+    <Input type="password"/>
+
+###### Disabled or hidden inputs:
+
+    <Input type="text" disabled/>
+    <Input type="text" hidden/>

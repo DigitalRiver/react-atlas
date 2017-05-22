@@ -57,5 +57,48 @@ export default {
       return value ? "on" : null;
     }
     return value;
+  },
+  getSelection(elem) {
+    let start, end, rangeElem, clone;
+
+    if (elem.selectionStart !== undefined) {
+      start = elem.selectionStart;
+      end = elem.selectionEnd;
+    }
+    else {
+      try {
+        elem.focus();
+        rangeElem = elem.createTextRange();
+        clone = rangeElem.duplicate();
+
+        rangeElem.moveToBookmark(document.selection.createRange().getBookmark());
+        clone.setEndPoint('EndToStart', rangeElem);
+
+        start = clone.text.length;
+        end = start + rangeElem.text.length;
+      }
+      catch (e) { /* not focused or not visible */ }
+    }
+
+    return { start, end };
+  },
+  setSelection(elem, selection) {
+    let rangeElem;
+
+    try {
+      if (elem.selectionStart !== undefined) {
+        elem.focus();
+        elem.setSelectionRange(selection.start, selection.end);
+      }
+      else {
+        elem.focus();
+        rangeElem = elem.createTextRange();
+        rangeElem.collapse(true);
+        rangeElem.moveStart('character', selection.start);
+        rangeElem.moveEnd('character', selection.end - selection.start);
+        rangeElem.select();
+      }
+    }
+    catch (e) { /* not focused or not visible */ }
   }
 };

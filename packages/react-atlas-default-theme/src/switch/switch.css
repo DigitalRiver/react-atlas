@@ -137,6 +137,11 @@
   
 }
 
+.hidden{
+  display: none;
+  visibility: hidden;
+}
+
 .inputSmall{
   composes: input;
 }
