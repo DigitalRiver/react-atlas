@@ -14,7 +14,7 @@ class Input extends Component {
     // Initial state
     this.state = {
       "value": props.value || "",
-      "errorText": undefined, // eslint-disable-line no-undefined
+      "errorText": null,
       "isValid": true,
       "remaining": props.maxLength
     };
@@ -27,6 +27,11 @@ class Input extends Component {
       };
 
       this.mask = new InputMask(maskOptions);
+    }
+
+    // Display a console warning if custom validation is set w/o an error message
+    if (this.props.validator && !this.props.errorText) {
+      console.warn("You set a custom validator without error text message. Please use 'errorText' property to set it up.");
     }
   }
 
@@ -378,27 +383,6 @@ Input.defaultProps = {
   "hidden": false,
   "focus": false,
   "errorLocation": "right"
-};
-
-Input.styleguide = {
-  "category": "Form Components",
-  "index": "3.6",
-  "example": `
-<section>
-  <h5>Inputs</h5>
-  <Input 
-    type="text" 
-    placeholder="small input" 
-    small 
-    required 
-    maxLength={25} 
-    validator={this.validateTest} 
-    errorText="custom validation msg"/>
-  <Input type="text" placeholder="medium input" medium required maxLength={25}/>
-  <Input type="text" placeholder="large input" large required maxLength={25}/>
-  <Button>Submit</Button>
-</section>
-`
 };
 
 export default Input;
