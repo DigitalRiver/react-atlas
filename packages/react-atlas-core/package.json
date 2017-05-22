@@ -21,6 +21,7 @@
   "dependencies": {
     "blacklist": "^1.1.4",
     "classnames": "^2.2.5",
+    "inputmask-core": "^2.2.0",
     "react": "^15.5.4",
     "react-autosuggest": "^9.0.1",
     "react-dom": "^15.5.4"
