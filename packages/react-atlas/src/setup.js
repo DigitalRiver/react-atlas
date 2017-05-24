@@ -121,6 +121,8 @@ function createComponent(name, theme) {
   /* Parse component source. */
   let info = reactDocs.parse(file.toString("ascii"));
 
+  /* Transform info into a form that's easier for the
+   * text templating engine to handle. */
   component.propTypes = processInfo(info);
 
   return component;
