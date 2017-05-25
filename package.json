@@ -15,8 +15,8 @@
     "lerna:publish": "lerna publish",
     "packages:build": "node buildPackages.js",
     "setup": "npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
-    "generateFiles": "node packages/react-atlas/src/setup.js",
-    "bootstrap": "npm run lerna:init && npm run lerna:bootstrap && npm run generateFiles && npm run packages:build",
+    "codegen": "node packages/react-atlas/src/codegen.js",
+    "bootstrap": "npm run lerna:init && npm run lerna:bootstrap && npm run codegen && npm run packages:build",
     "docs": "cd packages/react-atlas && npm run styleguide"
   },
   "jest": {
@@ -45,8 +45,8 @@
     "colors": "^1.1.2",
     "loaders": "^1.1.3",
     "react": "^15.5.4",
-    "react-docgen": "^2.14.1",
     "react-autosuggest": "^9.0.1",
+    "react-docgen": "^2.14.1",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
@@ -61,7 +61,7 @@
     "eslint-plugin-react": "^7.0.1",
     "glob": "^7.1.1",
     "jest": "^20.0.1",
-    "lerna": "^2.0.0-rc.4",
+    "lerna": "^2.0.0-rc.5",
     "prettier": "^1.3.1",
     "react-addons-test-utils": "^15.5.1",
     "sinon": "^2.2.0"

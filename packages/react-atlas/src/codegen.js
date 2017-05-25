@@ -1,12 +1,12 @@
 /* This script handles bootstrapping atlas as well as theming support. */
 let dot = require("dot");
 let fs = require("fs");
-const setupConf = require("./setup.config.js");
-const template = setupConf.template;
-const devTemplate = setupConf.devTemplate;
-const components = setupConf.components;
-const indexTemplate = setupConf.indexTemplate;
-const compIndexTemplate = setupConf.compIndexTemplate;
+const codegenConf = require("./codegen.config.js");
+const template = codegenConf.template;
+const devTemplate = codegenConf.devTemplate;
+const components = codegenConf.components;
+const indexTemplate = codegenConf.indexTemplate;
+const compIndexTemplate = codegenConf.compIndexTemplate;
 const cwd = process.cwd();
 const configPath = cwd + "/atlas.config.js";
 const reactDocs = require("react-docgen");
