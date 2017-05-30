@@ -216,6 +216,7 @@ class Input extends Component {
       disabled,
       hidden,
       errorLocation,
+      checked,
       ...props // eslint-disable-line no-unused-vars
     } = this.props;
 
@@ -255,6 +256,7 @@ class Input extends Component {
           placeholder={placeholder}
           styleName={inputClasses}
           className={cx(className)}
+          defaultChecked={checked}
           ref={input => {
             this.input = input;
           }}
@@ -328,6 +330,11 @@ Input.propTypes = {
    * @examples '<Input type="text" hidden/>'
    */
   "hidden": PropTypes.bool,
+  /**
+   * Only for input type checkbox. Determines if the input is checked.
+   * @examples '<Input type="checkbox" checked/>'
+   */
+  "checked": PropTypes.bool,
   /**
    * Sets a maximum character lenght that will be validated onChange.
    * @examples '<Input type="text" maxLenght={25}/>'
