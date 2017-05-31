@@ -23,7 +23,10 @@ class Checkbox extends React.PureComponent {
 
     /* Check if onClick has been passed, if so call it. */
     if (this.props.onClick) {
-      this.props.onClick(event);
+      /* Pass the event object, and a data object to the click handler.
+       The data object contains a boolean for whether the checkbox was
+       clicked or not, plus all the props passed to the object.  */
+      this.props.onClick(event, {"checked": this.state.checked, "props": this.state.checked});
     }
   };
 
