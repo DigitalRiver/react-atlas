@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { InputCore } from "../input";
 import cx from "classNames";
 
@@ -66,10 +66,10 @@ const Switch = ({
       className={cx(className)}
       style={offColorStyle}
     >
-      <InputCore 
-        type="checkbox" 
-        name={name} 
-        styleName={inputClassName} 
+      <InputCore
+        type="checkbox"
+        name={name}
+        styleName={inputClassName}
         onChange={onChange}
       />
       <div styleName={buttonClassName} style={buttonColorStyle} />

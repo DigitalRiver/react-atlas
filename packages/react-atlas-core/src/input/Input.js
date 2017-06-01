@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import InputMask from "inputmask-core";
 import { utils } from "../utils";
 import cx from "classNames";
@@ -32,7 +32,9 @@ class Input extends React.Component {
 
     // Display a console warning if custom validation is set w/o an error message
     if (this.props.validator && !this.props.errorText) {
-      console.warn("You set a custom validator without error text message. Please use 'errorText' property to set it up.");
+      console.warn(
+        "You set a custom validator without error text message. Please use 'errorText' property to set it up."
+      );
     }
   }
 
@@ -271,21 +273,19 @@ class Input extends React.Component {
       this.state.errorText &&
       <span styleName={cx("error")}>{this.state.errorText}</span>;
 
-    return (
-      isCheckbox 
-        ? <input
-            type="checkbox"
-            name={name}
-            styleName={inputClasses}
-            className={cx(className)}
-            defaultChecked={checked}
-            {...eventHandlers}
-          /> 
-        : <div styleName={cx("container")}>
-            {inputElement}
-            {this.state.isValid ? null : errorTextElement}
-          </div>
-    );
+    return isCheckbox
+      ? <input
+          type="checkbox"
+          name={name}
+          styleName={inputClasses}
+          className={cx(className)}
+          defaultChecked={checked}
+          {...eventHandlers}
+        />
+      : <div styleName={cx("container")}>
+          {inputElement}
+          {this.state.isValid ? null : errorTextElement}
+        </div>;
   }
 }
 
