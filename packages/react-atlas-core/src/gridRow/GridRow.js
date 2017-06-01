@@ -3,7 +3,8 @@
  * Copyright (c) 2016 Thinkmill Pty Ltd
  */
 
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import blacklist from "blacklist";
 import A from "../constants";
 import cx from "classNames";

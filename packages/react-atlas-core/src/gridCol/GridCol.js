@@ -3,7 +3,8 @@
  * Copyright (c) 2016 Thinkmill Pty Ltd
  */
 
-import React, { Component, PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import blacklist from "blacklist";
 import A from "../constants";
 import cx from 'classNames';
@@ -11,7 +12,7 @@ import cx from 'classNames';
 /**
  * Component that handles Col/Column part of a Grid system. Syntax  somewhat similar to bootstraps grid class syntax.
  */
-class GridCol extends Component {
+class GridCol extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

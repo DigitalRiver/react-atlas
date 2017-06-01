@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import InputMask from "inputmask-core";
 import { utils } from "../utils";
 import cx from "classNames";
@@ -8,7 +9,7 @@ import cx from "classNames";
  * components. Accepts all input properties and also supports custom 
  * and maxlenght/required validations. Allows input masking.
  */
-class Input extends Component {
+class Input extends React.Component {
   constructor(props) {
     super(props);
     // Initial state

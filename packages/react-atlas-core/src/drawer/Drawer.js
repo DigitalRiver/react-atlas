@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import { OverlayCore } from "../index.js";
 import cx from "classNames";
 
@@ -19,11 +20,11 @@ const Drawer = ({ active, className, type, onOverlayClick, ...props }) => {
 };
 
 Drawer.propTypes = {
-  "active": React.PropTypes.bool,
-  "children": React.PropTypes.node,
-  "className": React.PropTypes.string,
-  "onOverlayClick": React.PropTypes.func,
-  "type": React.PropTypes.oneOf(["left", "right"])
+  "active": PropTypes.bool,
+  "children": PropTypes.node,
+  "className": PropTypes.string,
+  "onOverlayClick": PropTypes.func,
+  "type": PropTypes.oneOf(["left", "right"])
 };
 
 Drawer.defaultProps = { "active": false, "className": "", "type": "left" };
