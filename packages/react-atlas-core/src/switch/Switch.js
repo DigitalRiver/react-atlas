@@ -135,39 +135,4 @@ Switch.defaultProps = {
   "hidden": false
 };
 
-Switch.styleguide = {
-  "category": "Form Components",
-  "index": "3.12",
-  "example": `
-<section>
-  <h5>Toggle Switches</h5>
-  <Switch />
-
-  <h5>Toggle Switch Colors</h5>
-
-  <p>On Switch Color</p>
-  <Switch onColor="black"/>
-
-  <p>Off Switch Color</p>
-  <Switch offColor="black"/>
-
-  <p>Button Switch Color</p>
-  <Switch buttonColor='black'/>
-
-  <p>Disabled</p>
-  <Switch disabled/>
-
-  <h5>Switch sizes</h5>
-  <p>Small</p>
-  <Switch small/>
-
-  <p>Medium</p>
-  <Switch medium checked />
-
-  <p>Large</p>
-  <Switch large/>
-</section>
-`
-};
-
 export default Switch;

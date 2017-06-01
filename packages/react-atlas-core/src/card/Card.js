@@ -23,6 +23,4 @@ Card.propTypes = {
 
 Card.defaultProps = { "children": <p>Some card text.</p> };
 
-Card.styleguide = { "category": "Layout", "index": "4.1" };
-
 export default Card;

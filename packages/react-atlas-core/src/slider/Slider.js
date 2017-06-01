@@ -384,32 +384,4 @@ Slider.defaultProps = {
   "value": 0
 };
 
-Slider.styleguide = {
-  "category": "Form Components",
-  "index": "3.11",
-  "wrappedExample": true,
-  "example": 
-    `
-// Internal Methods {
-class SliderExample extends React.Component {
-// }
-  render () {
-    return (
-      <section>
-        <h5>Sliders</h5>
-        <p>Normal slider</p>
-        <Slider  />
-        <p>Disabled slider</p>
-        <Slider disabled defaultValue={45}/>
-      </section>
-    );
-  }
-// Mount Component {
-}
-ReactDOM.render(<SliderExample/>, mountNode);
-// }
-`
-  
-};
-
 export default Slider;
