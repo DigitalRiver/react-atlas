@@ -3,79 +3,111 @@ import PropTypes from "prop-types";
 import { InputCore } from "../input";
 import cx from "classNames";
 
-const Switch = ({
-  className,
-  name,
-  disabled,
-  hidden,
-  small,
-  medium,
-  large,
-  offColor,
-  onColor,
-  buttonColor,
-  onChange,
-  ...props
-}) => {
-  let offClassName = cx({
-    "sliderSmall": small && !medium && !large,
-    "sliderMedium": !small && !large,
-    "sliderLarge": large && !medium && !small,
-    disabled,
-    hidden
-  });
+class Switch extends React.PureComponent {
 
-  let inputClassName = cx({
-    "inputSmall": small && !medium && !large,
-    "inputMedium": !small && !large,
-    "inputLarge": large && !medium && !small,
-    disabled,
-    hidden
-  });
+  constructor(props) {
+    super(props);
+    // Initial state
+    this.state = {
+      "checked": this.props.checked || false
+    };
+  }
 
-  let buttonClassName = cx({
-    "handleSmall": small && !medium && !large,
-    "handleMedium": !small && !large,
-    "handleLarge": large && !medium && !small,
-    disabled,
-    hidden
-  });
-
-  let onClassName = cx({
-    "onColorSmall": small && !medium && !large,
-    "onColorMedium": !small && !large,
-    "onColorLarge": large && !medium && !small
-  });
-
-  let offColorStyle = {
-    "background": offColor
+  _handleClick = event => {
+    if (this.props.onClick) {
+      this.props.onClick(event);
+    }
   };
 
-  let onColorStyle = {
-    "background": onColor
+  _handleChange = event => {
+    if (this.state.checked === true) {
+      this.setState({ "checked": false });
+    } else {
+      this.setState({ "checked": true });
+    }
+
+    /* Check if onChange has been passed, if so call it. */
+    if (this.props.onChange) {
+      this.props.onChange(event);
+    }
   };
 
-  let buttonColorStyle = {
-    "background": buttonColor
-  };
+  render() {
+    const {
+      className,
+      name,
+      disabled,
+      hidden,
+      small,
+      medium,
+      large,
+      offColor,
+      onColor,
+      buttonColor,
+      ...props
+    } = this.props;
 
-  return (
-    <label
-      {...props}
-      styleName={offClassName}
-      className={cx(className)}
-      style={offColorStyle}
-    >
-      <InputCore
-        type="checkbox"
-        name={name}
-        styleName={inputClassName}
-        onChange={onChange}
-      />
-      <div styleName={buttonClassName} style={buttonColorStyle} />
-      <div styleName={onClassName} style={onColorStyle} />
-    </label>
-  );
+    let offClassName = cx({
+      "sliderSmall": small && !medium && !large,
+      "sliderMedium": !small && !large,
+      "sliderLarge": large && !medium && !small,
+      disabled,
+      hidden
+    });
+
+    let inputClassName = cx({
+      "inputSmall": small && !medium && !large,
+      "inputMedium": !small && !large,
+      "inputLarge": large && !medium && !small,
+      disabled,
+      hidden
+    });
+
+    let buttonClassName = cx({
+      "handleSmall": small && !medium && !large,
+      "handleMedium": !small && !large,
+      "handleLarge": large && !medium && !small,
+      disabled,
+      hidden
+    });
+
+    let onClassName = cx({
+      "onColorSmall": small && !medium && !large,
+      "onColorMedium": !small && !large,
+      "onColorLarge": large && !medium && !small
+    });
+
+    let offColorStyle = {
+      "background": offColor
+    };
+
+    let onColorStyle = {
+      "background": onColor
+    };
+
+    let buttonColorStyle = {
+      "background": buttonColor
+    };
+
+    return (
+      <label
+        {...props}
+        styleName={offClassName}
+        className={cx(className)}
+        style={offColorStyle}
+      >
+        <InputCore
+          type="checkbox"
+          name={name}
+          styleName={inputClassName}
+          onClick={this._handleClick}
+          onChange={this._handleChange}
+        />
+        <div styleName={buttonClassName} style={buttonColorStyle} />
+        <div styleName={onClassName} style={onColorStyle} />
+      </label>
+    );
+  }
 };
 
 Switch.propTypes = {
