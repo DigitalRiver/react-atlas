@@ -4,7 +4,7 @@
 
 .slider {
   composes: cursor-pointer from '../styles.css';
-  composes: bg-primary from '../styles.css';
+  composes: bg-med-gray from '../styles.css';
   composes: z1 from '../styles.css';
   overflow:hidden;
   display: block;

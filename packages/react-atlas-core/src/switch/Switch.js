@@ -1,4 +1,6 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
+import { InputCore } from "../input";
 import cx from "classNames";
 
 const Switch = ({
@@ -12,6 +14,7 @@ const Switch = ({
   offColor,
   onColor,
   buttonColor,
+  onChange,
   ...props
 }) => {
   let offClassName = cx({
@@ -63,11 +66,11 @@ const Switch = ({
       className={cx(className)}
       style={offColorStyle}
     >
-      <input
-        name={name}
-        styleName={inputClassName}
-        style={onColorStyle}
-        type="checkbox"
+      <InputCore 
+        type="checkbox" 
+        name={name} 
+        styleName={inputClassName} 
+        onChange={onChange}
       />
       <div styleName={buttonClassName} style={buttonColorStyle} />
       <div styleName={onClassName} style={onColorStyle} />
@@ -125,7 +128,12 @@ Switch.propTypes = {
    * Defines a large sized switch element.
    * @examples '<Switch large/>'
    */
-  "large": PropTypes.bool
+  "large": PropTypes.bool,
+  /**
+   * Sets a handler function to be executed when onChange event occurs (at input element).
+   * @examples <Switch onChange={this.customOnChangeFunc}/>
+   */
+  "onChange": PropTypes.func
 };
 
 Switch.defaultProps = {
@@ -133,41 +141,6 @@ Switch.defaultProps = {
   "className": "",
   "disabled": false,
   "hidden": false
-};
-
-Switch.styleguide = {
-  "category": "Form Components",
-  "index": "3.12",
-  "example": `
-<section>
-  <h5>Toggle Switches</h5>
-  <Switch />
-
-  <h5>Toggle Switch Colors</h5>
-
-  <p>On Switch Color</p>
-  <Switch onColor="black"/>
-
-  <p>Off Switch Color</p>
-  <Switch offColor="black"/>
-
-  <p>Button Switch Color</p>
-  <Switch buttonColor='black'/>
-
-  <p>Disabled</p>
-  <Switch disabled/>
-
-  <h5>Switch sizes</h5>
-  <p>Small</p>
-  <Switch small/>
-
-  <p>Medium</p>
-  <Switch medium checked />
-
-  <p>Large</p>
-  <Switch large/>
-</section>
-`
 };
 
 export default Switch;

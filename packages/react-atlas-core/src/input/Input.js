@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import InputMask from "inputmask-core";
 import { utils } from "../utils";
 import cx from "classNames";
@@ -8,7 +9,7 @@ import cx from "classNames";
  * components. Accepts all input properties and also supports custom 
  * and maxlenght/required validations. Allows input masking.
  */
-class Input extends Component {
+class Input extends React.Component {
   constructor(props) {
     super(props);
     // Initial state
@@ -220,9 +221,12 @@ class Input extends Component {
       ...props // eslint-disable-line no-unused-vars
     } = this.props;
 
+    /* If checkbox, we need to render only input component (no wrappers) */
+    let isCheckbox = type === "checkbox";
+
     let inputClasses = cx({
-      "input": type !== "checkbox",
-      "checkbox": type === "checkbox",
+      "input": !isCheckbox,
+      "checkbox": isCheckbox,
       "invalid": !this.state.isValid,
       "blockInput": errorLocation === "bottom",
       "small": small,
@@ -268,10 +272,19 @@ class Input extends Component {
       <span styleName={cx("error")}>{this.state.errorText}</span>;
 
     return (
-      <div styleName={cx("container")}>
-        {inputElement}
-        {this.state.isValid ? null : errorTextElement}
-      </div>
+      isCheckbox 
+        ? <input
+            type="checkbox"
+            name={name}
+            styleName={inputClasses}
+            className={cx(className)}
+            defaultChecked={checked}
+            {...eventHandlers}
+          /> 
+        : <div styleName={cx("container")}>
+            {inputElement}
+            {this.state.isValid ? null : errorTextElement}
+          </div>
     );
   }
 }
