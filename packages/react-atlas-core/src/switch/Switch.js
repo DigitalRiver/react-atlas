@@ -13,10 +13,24 @@ class Switch extends React.PureComponent {
     };
   }
 
-  _handleClick = event => {
+  _onBeforeChange = (event, callback) => {
     if (this.props.onClick) {
       this.props.onClick(event);
     }
+
+    callback();
+  };
+
+  _handleClick = event => {
+    /** 
+     * We need to execute onClick function, and when it's done, execute onChange function.
+     * If onClick is not passed, it will only execute onChange.
+     * Callback approach was taken instead of promises/generators as team decision to
+     * avoid adding a new dependency like bluebird (native es6 promises are slower)
+    **/
+    this._onBeforeChange(event, () => {
+      this._handleChange(event);
+    });
   };
 
   _handleChange = event => {
@@ -101,7 +115,6 @@ class Switch extends React.PureComponent {
           name={name}
           styleName={inputClassName}
           onClick={this._handleClick}
-          onChange={this._handleChange}
         />
         <div styleName={buttonClassName} style={buttonColorStyle} />
         <div styleName={onClassName} style={onColorStyle} />
@@ -165,7 +178,12 @@ Switch.propTypes = {
    * Sets a handler function to be executed when onChange event occurs (at input element).
    * @examples <Switch onChange={this.customOnChangeFunc}/>
    */
-  "onChange": PropTypes.func
+  "onChange": PropTypes.func,
+  /**
+   * Sets a handler function to be executed before the onChange event occurs.
+   * @examples <Switch onClick={this.customOnChangeFunc}/>
+   */
+  "onClick": PropTypes.func
 };
 
 Switch.defaultProps = {
