@@ -125,9 +125,9 @@ class Input extends React.Component {
 
   _handleClick = event => {
     if (this.props.onClick) {
-      this.props.onClick(event);
+      this.props.onClick();
     }
-  }
+  };
 
   _handleChange = event => {
     let inputValue = event.target.value;
@@ -269,7 +269,6 @@ class Input extends React.Component {
           placeholder={placeholder}
           styleName={inputClasses}
           className={cx(className)}
-          defaultChecked={checked}
           ref={input => {
             this.input = input;
           }}
@@ -286,7 +285,7 @@ class Input extends React.Component {
           name={name}
           styleName={inputClasses}
           className={cx(className)}
-          defaultChecked={checked}
+          checked={checked}
           {...eventHandlers}
         />
       : <div styleName={cx("container")}>

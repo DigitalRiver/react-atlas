@@ -14,11 +14,18 @@ class Switch extends React.PureComponent {
   }
 
   _onBeforeChange = (event, callback) => {
+    let triggerChange = true;
     if (this.props.onClick) {
-      this.props.onClick(event);
+      triggerChange = this.props.onClick(this.state.checked);
     }
-
-    callback();
+    /** 
+     * allow the user to prevent the execution of onChange event by passing a 
+     * function that returns a falsy value. If onClick handler is not specified,
+     * onChange function will be called by default.
+    **/
+    if(triggerChange) {
+      callback();
+    }
   };
 
   _handleClick = event => {
@@ -42,7 +49,7 @@ class Switch extends React.PureComponent {
 
     /* Check if onChange has been passed, if so call it. */
     if (this.props.onChange) {
-      this.props.onChange(event);
+      this.props.onChange(this.state.checked);
     }
   };
 
@@ -115,6 +122,7 @@ class Switch extends React.PureComponent {
           name={name}
           styleName={inputClassName}
           onClick={this._handleClick}
+          checked={this.state.checked}
         />
         <div styleName={buttonClassName} style={buttonColorStyle} />
         <div styleName={onClassName} style={onColorStyle} />
