@@ -123,9 +123,9 @@ class Input extends React.Component {
     }
   };
 
-  _handleClick = event => {
-    if (this.props.onClick) {
-      this.props.onClick();
+  _handleBeforeChange = event => {
+    if (this.props.onBeforeChange) {
+      this.props.onBeforeChange();
     }
   };
 
@@ -246,7 +246,7 @@ class Input extends React.Component {
     });
 
     let eventHandlers = {
-      "onClick": this._handleClick,
+      "onClick": this._handleBeforeChange,
       "onChange": this._handleChange,
       "onKeyDown": this._handleKeyDown,
       "onKeyPress": this._handleKeyPress,
@@ -397,10 +397,10 @@ Input.propTypes = {
    */
   "validator": PropTypes.func,
   /**
-     * Sets a handler function to be executed when onClick event occurs.
-     * @examples <Input type="text" onClick={this.customOnClickFunc}/>
+     * Sets a handler function to be executed before onChange event occurs (executed onClick).
+     * @examples <Input type="text" onBeforeChange={this.customOnClickFunc}/>
      */
-  "onClick": PropTypes.func,
+  "onBeforeChange": PropTypes.func,
   /**
      * Sets a handler function to be executed when onChange event occurs.
      * @examples <Input type="text" onChange={this.customOnChangeFunc}/>

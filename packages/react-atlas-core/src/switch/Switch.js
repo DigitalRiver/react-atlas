@@ -15,8 +15,8 @@ class Switch extends React.PureComponent {
 
   _onBeforeChange = (event, callback) => {
     let triggerChange = true;
-    if (this.props.onClick) {
-      triggerChange = this.props.onClick(this.state.checked);
+    if (this.props.onBeforeChange) {
+      triggerChange = this.props.onBeforeChange(this.state.checked);
     }
     /** 
      * allow the user to prevent the execution of onChange event by passing a 
@@ -28,7 +28,7 @@ class Switch extends React.PureComponent {
     }
   };
 
-  _handleClick = event => {
+  _handleBeforeChange = event => {
     /** 
      * We need to execute onClick function, and when it's done, execute onChange function.
      * If onClick is not passed, it will only execute onChange.
@@ -116,7 +116,7 @@ class Switch extends React.PureComponent {
           type="checkbox"
           name={name}
           styleName={inputClassName}
-          onClick={this._handleClick}
+          onBeforeChange={this._handleBeforeChange}
           checked={this.state.checked}
         />
         <div styleName={buttonClassName} style={buttonColorStyle} />
@@ -186,7 +186,7 @@ Switch.propTypes = {
    * Sets a handler function to be executed before the onChange event occurs.
    * @examples <Switch onClick={this.customOnChangeFunc}/>
    */
-  "onClick": PropTypes.func
+  "onBeforeChange": PropTypes.func
 };
 
 Switch.defaultProps = {
