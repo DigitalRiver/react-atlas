@@ -46,11 +46,6 @@ class Switch extends React.PureComponent {
     } else {
       this.setState({ "checked": true });
     }
-
-    /* Check if onChange has been passed, if so call it. */
-    if (this.props.onChange) {
-      this.props.onChange(this.state.checked);
-    }
   };
 
   render() {
