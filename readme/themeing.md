@@ -14,7 +14,7 @@ To create a theme for React Atlas first `npm install react-atlas-default-theme` 
   ```
   Now run from you main application.
   ```bash
-  $ node node_modules/react-atlas/packages/react-atlas/src/setup.js --switch
+  $ node node_modules/react-atlas/packages/react-atlas/src/codegen.js --switch
 
   $ npm install react-atlas-new-theme
   ```
@@ -31,7 +31,7 @@ module.exports = {
 ```
 Now run from you main application.
 ```bash
-$ node node_modules/react-atlas/packages/react-atlas/src/setup.js --switch
+$ node node_modules/react-atlas/packages/react-atlas/src/codegen.js --switch
 
 $ npm install react-atlas-new-theme
 ```
