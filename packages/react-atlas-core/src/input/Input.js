@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import InputMask from "inputmask-core";
 import { utils } from "../utils";
 import cx from "classNames";
@@ -8,7 +9,7 @@ import cx from "classNames";
  * components. Accepts all input properties and also supports custom 
  * and maxlenght/required validations. Allows input masking.
  */
-class Input extends Component {
+class Input extends React.Component {
   constructor(props) {
     super(props);
     // Initial state
@@ -31,7 +32,9 @@ class Input extends Component {
 
     // Display a console warning if custom validation is set w/o an error message
     if (this.props.validator && !this.props.errorText) {
-      console.warn("You set a custom validator without error text message. Please use 'errorText' property to set it up.");
+      console.warn(
+        "You set a custom validator without error text message. Please use 'errorText' property to set it up."
+      );
     }
   }
 
@@ -117,6 +120,12 @@ class Input extends Component {
 
       // Fire onChange event
       this._handleChange(event);
+    }
+  };
+
+  _handleBeforeChange = event => {
+    if (this.props.onBeforeChange) {
+      this.props.onBeforeChange();
     }
   };
 
@@ -220,9 +229,12 @@ class Input extends Component {
       ...props // eslint-disable-line no-unused-vars
     } = this.props;
 
+    /* If checkbox, we need to render only input component (no wrappers) */
+    let isCheckbox = type === "checkbox";
+
     let inputClasses = cx({
-      "input": type !== "checkbox",
-      "checkbox": type === "checkbox",
+      "input": !isCheckbox,
+      "checkbox": isCheckbox,
       "invalid": !this.state.isValid,
       "blockInput": errorLocation === "bottom",
       "small": small,
@@ -234,6 +246,7 @@ class Input extends Component {
     });
 
     let eventHandlers = {
+      "onClick": this._handleBeforeChange,
       "onChange": this._handleChange,
       "onKeyDown": this._handleKeyDown,
       "onKeyPress": this._handleKeyPress,
@@ -256,7 +269,6 @@ class Input extends Component {
           placeholder={placeholder}
           styleName={inputClasses}
           className={cx(className)}
-          defaultChecked={checked}
           ref={input => {
             this.input = input;
           }}
@@ -267,12 +279,19 @@ class Input extends Component {
       this.state.errorText &&
       <span styleName={cx("error")}>{this.state.errorText}</span>;
 
-    return (
-      <div styleName={cx("container")}>
-        {inputElement}
-        {this.state.isValid ? null : errorTextElement}
-      </div>
-    );
+    return isCheckbox
+      ? <input
+          type="checkbox"
+          name={name}
+          styleName={inputClasses}
+          className={cx(className)}
+          checked={checked}
+          {...eventHandlers}
+        />
+      : <div styleName={cx("container")}>
+          {inputElement}
+          {this.state.isValid ? null : errorTextElement}
+        </div>;
   }
 }
 
@@ -377,6 +396,11 @@ Input.propTypes = {
    * @examples '<Input type="text" validator={this.validateTest} errorText="Custom validation msg"/>'
    */
   "validator": PropTypes.func,
+  /**
+     * Sets a handler function to be executed before onChange event occurs (executed onClick).
+     * @examples <Input type="text" onBeforeChange={this.customOnClickFunc}/>
+     */
+  "onBeforeChange": PropTypes.func,
   /**
      * Sets a handler function to be executed when onChange event occurs.
      * @examples <Input type="text" onChange={this.customOnChangeFunc}/>
