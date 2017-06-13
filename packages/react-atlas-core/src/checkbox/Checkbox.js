@@ -1,5 +1,6 @@
-import React, { PropTypes } from "react";
-import cx from "classNames";
+import React from "react";
+import PropTypes from 'prop-types';
+import cx from 'classNames';
 import { InputCore } from "../input";
 
 /**
@@ -9,7 +10,8 @@ class Checkbox extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      checked: this.props.checked || false
+      "inputValue": '',
+      "checked": this.props.defaultChecked || false
     };
   }
 
@@ -48,22 +50,24 @@ class Checkbox extends React.PureComponent {
       : cx("not_checked", display);
 
     return (
-      <label
-        styleName={controlStyle}
-        title={title_label}
-        className={cx(className)}
-      >
+      <div onClick={this._clickHandler}>  
         <InputCore
           label={label}
           type="checkbox"
           disabled={disabled}
           checked={this.state.checked}
         />
+        <label
+          styleName={controlStyle}
+          title={title_label}
+          className={cx(className)}
+        >
         {label &&
-          <div styleName={labelClasses} onClick={this._clickHandler}>
+          <div styleName={labelClasses}>
             <div styleName={"label_left"}>{label}</div>
           </div>}
-      </label>
+        </label>
+      </div>  
     );
   }
 }
