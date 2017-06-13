@@ -168,11 +168,7 @@ ProgressBar.propTypes = {
    * @examples '{"from": 10, "to": 80" }'
    */
   "value": React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.shape({
-      "from": React.PropTypes.number,
-      "to": React.PropTypes.number
-    })
+    React.PropTypes.number
   ])
 };
 

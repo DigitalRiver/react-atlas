@@ -9,7 +9,7 @@ import cx from 'classNames';
 class Avatar extends React.PureComponent  {
   constructor(props) {
     super(props);
-
+    
     let image;
 
     if (typeof props.image === "undefined") {

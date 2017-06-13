@@ -1,1 +1,0 @@
-Need to rewrite autocomplete to handle internal state or find out how to write a wrapper component for Autocomplete

@@ -367,9 +367,7 @@ Slider.propTypes = {
    * Default value of the slider
    * @examples 'Some Label'
    */
-  "value": React.PropTypes.oneOfType([
-    React.PropTypes.number
-  ])
+  "value": React.PropTypes.number
 };
 
 Slider.defaultProps = {
