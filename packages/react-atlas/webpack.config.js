@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 let config =  {
   entry: [
-    './src/index.js'
+    path.join(__dirname, './src/index.js')
   ],
   output: {
     filename: 'index.js',
@@ -23,6 +23,16 @@ let config =  {
           },
         ],
       },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+         
+          }
+        }
+      }
     ],
   },
   plugins: [
@@ -43,6 +53,16 @@ if(process.env.NODE_ENV === "production") {
   config.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
 }
 
-module.exports = function() {
+module.exports = function(env) {
+  if(typeof env != 'undefined') {
+    let theme = env.theme;
+    config.externals = {};
+    config.externals[theme] = {
+      root: theme,
+      commonjs2: theme,
+      commonjs: theme,
+      amd: theme
+    };
+  }
   return config;
 }

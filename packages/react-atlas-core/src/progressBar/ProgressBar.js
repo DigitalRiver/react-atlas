@@ -168,12 +168,8 @@ ProgressBar.propTypes = {
    * The default value(s) of the progress bar.  Can be a number, or an object containing keys of "from" and "to"
    * @examples '{"from": 10, "to": 80" }'
    */
-  "value": PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.shape({
-      "from": PropTypes.number,
-      "to": PropTypes.number
-    })
+  "value": React.PropTypes.oneOfType([
+    React.PropTypes.number
   ])
 };
 
@@ -239,7 +235,6 @@ class ProgressBarExample extends React.Component {
         <p style={{margin: "10px auto"}}>Circular Determinate</p>
         <ProgressBar type="circular" mode="determinate" value={this.state.progress}/>
         <p style={{margin: '10px auto'}}>Range</p>
-        <ProgressBar mode='determinate' value={{from: 10, to: 80}}/>
       </section>
     );
   }
