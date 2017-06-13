@@ -50,40 +50,4 @@ Overlay.defaultProps = {
   "invisible": false
 };
 
-Overlay.styleguide = {
-  "category": "Layout",
-  "index": "3.6",
-  "wrappedExample": true,
-  "example": 
-    `
-// Internal Methods {
-class App extends React.Component {
-  state = {
-    active: false
-  };
-
-  handleToggle = () => {
-    this.setState({
-      active: !this.state.active
-    });
-  };
-// }
-  render () {
-    return (
-      <section>
-        <h5>Overlay Example</h5>
-        <Button onClick={this.handleToggle}>Show Overlay</Button>
-        <Overlay active={this.state.active} onClick={this.handleToggle} />
-      </section>
-    );
-  }
-// Mount Component {
-}
-
-ReactDOM.render(<App/>, mountNode);
-// }
-  `
-  
-};
-
 export default Overlay;
