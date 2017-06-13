@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from 'classNames';
 
 /**
@@ -9,7 +10,7 @@ import cx from 'classNames';
 class Avatar extends React.PureComponent  {
   constructor(props) {
     super(props);
-
+    
     let image;
 
     if (typeof props.image === "undefined") {

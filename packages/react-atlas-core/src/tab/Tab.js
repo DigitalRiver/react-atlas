@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from "classNames";
 
 /**
  * Individual Tab component used within `<Tabs>`. Can be disabled, hidden and also sent an onActive event trigger.
  */
-class Tab extends Component {
+class Tab extends React.Component {
   componentDidUpdate(prevProps) {
     if (!prevProps.active && this.props.active && this.props.onActive) {
       this.props.onActive();
@@ -92,58 +93,6 @@ Tab.defaultProps = {
   "disabled": false,
   "hidden": false,
   "label": "Tab Title"
-};
-
-Tab.styleguide = {
-  "category": "Layout",
-  "index": "4.9",
-  "wrappedExample": true,
-  "example": `
-// Internal Methods {
-class TabsExample extends React.Component {
-  state = {
-    index: 1
-  };
-
-  handleTabChange = (index) => {
-    this.setState({index});
-  };
-
-  handleActive = () => {
-    console.log("Special one activated");
-  };
-// }
-  render () {
-    return (
-      <section>
-        <h5>Tabs</h5>
-        <p>This tabs can be disabled or hidden</p>
-        <Tabs index={this.state.index} onChange={this.handleTabChange}>
-          <Tab label="Primary">
-            <small>Primary content</small>
-          </Tab>
-          <Tab label="Secondary" onActive={this.handleActive}>
-            <small>Secondary content</small>
-          </Tab>
-          <Tab label="Third" disabled>
-            <small>Disabled content</small>
-          </Tab>
-          <Tab label="Fourth" hidden>
-            <small>Fourth content hidden</small>
-          </Tab>
-          <Tab label="Fifth">
-            <small>Fifth content</small>
-          </Tab>
-        </Tabs>
-      </section>
-    );
-  }
-// Mount Component {
-}
-
-ReactDOM.render(<TabsExample />, mountNode);
-// }
-`
 };
 
 export default Tab;

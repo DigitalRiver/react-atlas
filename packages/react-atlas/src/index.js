@@ -1,1 +1,1 @@
-export * from './generatedModules'
+export * from './components/index.js';

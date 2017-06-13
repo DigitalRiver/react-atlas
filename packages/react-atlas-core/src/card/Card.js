@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from 'classNames';
 
 /**
@@ -22,7 +23,5 @@ Card.propTypes = {
 };
 
 Card.defaultProps = { "children": <p>Some card text.</p> };
-
-Card.styleguide = { "category": "Layout", "index": "4.1" };
 
 export default Card;

@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from "classNames";
 
 /**
@@ -41,61 +42,6 @@ TabContent.propTypes = {
 TabContent.defaultProps = {
   "className": "",
   "active": false
-};
-
-TabContent.styleguide = {
-  "category": "Layout",
-  "index": "4.10",
-  "wrappedExample": true,
-  "example": `
-// Internal Methods {
-class TabsExample extends React.Component {
-  state = {
-    index: 1
-  };
-
-  handleTabChange = (index) => {
-    this.setState({index});
-  };
-
-  handleActive = () => {
-    console.log("Can trigger events on active");
-  };
-// }
-  render () {
-    return (
-      <section>
-        <h5>Tabs</h5>
-        <p>This tabs can be disabled or hidden</p>
-        <Tabs index={this.state.index} onChange={this.handleTabChange}>
-          <Tab label="Primary">
-            <TabContent>
-              lorem ipsum
-            </TabContent>
-            <small>Primary content</small>
-          </Tab>
-          <Tab label="Secondary" onActive={this.handleActive}>
-            <small>Secondary content</small>
-          </Tab>
-          <Tab label="Third" disabled>
-            <small>Disabled content</small>
-          </Tab>
-          <Tab label="Fourth" hidden>
-            <small>Fourth content hidden</small>
-          </Tab>
-          <Tab label="Fifth">
-            <small>Fifth content</small>
-          </Tab>
-        </Tabs>
-      </section>
-    );
-  }
-// Mount Component {
-}
-
-ReactDOM.render(<TabsExample />, mountNode);
-// }
-`
 };
 
 export default TabContent;

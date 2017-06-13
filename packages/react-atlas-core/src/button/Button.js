@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from 'classNames';
 
 /**
@@ -59,57 +60,6 @@ const Button = (
   return (
     <button {...props} className={cx(className)} styleName={classes}>{children}</button>
   )
-};
-
-Button.styleguide = {
-  "index": "1.1",
-  "category": "Buttons",
-  "example": 
-    `
-  <section>
-    <h2>Styled with parameters</h2>
-    <p>Regular Buttons</p>
-    <Button>Button</Button>
-    <Button secondary>Secondary</Button>
-    <Button success>Success</Button>
-    <Button warning>Warning</Button>
-    <Button danger>Danger</Button>
-    <p>Regular Buttons With Icons</p>
-    <Button><i className="fa fa-github"></i> Button</Button>
-    <Button secondary><i className="fa fa-github"></i> Secondary</Button>
-    <Button success><i className="fa fa-github"></i> Success</Button>
-    <Button warning><i className="fa fa-github"></i> Warning</Button>
-    <Button danger><i className="fa fa-github"></i> Danger</Button>
-    <p>Disabled Regular Buttons</p>
-    <Button disabled primary>Button</Button>
-    <Button disabled secondary>Secondary</Button>
-    <Button disabled success>Success</Button>
-    <Button disabled warning>Warning</Button>
-    <Button disabled danger>Danger</Button>
-    <Button href="#" disabled link>Link</Button>
-    <p>Disabled Regular Buttons With Icons</p>
-    <Button disabled primary><i className="fa fa-github"></i> Button</Button>
-    <Button disabled secondary><i className="fa fa-github"></i> Secondary</Button>
-    <Button disabled success><i className="fa fa-github"></i> Success</Button>
-    <Button disabled warning><i className="fa fa-github"></i> Warning</Button>
-    <Button disabled danger><i className="fa fa-github"></i> Danger</Button>
-    <p>Outline Buttons</p>
-    <Button outline primary>Button</Button>
-    <Button outline secondary>Secondary</Button>
-    <Button success outline>Success</Button>
-    <Button warning outline>Warning</Button>
-    <Button danger outline>Danger</Button>
-    <Button href="#" link outline>Link</Button>
-    <p>Disabled Outline Buttons</p>
-    <Button disabled outline primary>Button</Button>
-    <Button disabled secondary outline>Secondary</Button>
-    <Button disabled success outline>Success</Button>
-    <Button disabled warning outline>Warning</Button>
-    <Button disabled danger outline>Danger</Button>
-    <Button href="#" disabled link outline>Link</Button>
-  </section>
-  `
-  
 };
 
 Button.propTypes = {

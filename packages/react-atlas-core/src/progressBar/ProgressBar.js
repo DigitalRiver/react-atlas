@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { classNames } from "../utils";
 import prefixer from "../utils/prefixer";
 import cx from 'classNames';
@@ -127,52 +128,48 @@ ProgressBar.propTypes = {
    * The value of a second progress bar
    * @examples ''
    */
-  "buffer": React.PropTypes.number,
+  "buffer": PropTypes.number,
   /**
    * Additional classname provided to component for further styling
    * @examples ''
    */
-  "className": React.PropTypes.string,
+  "className": PropTypes.string,
   /**
    * Length of time in seconds for the transition (can use decimals)
    * @examples '35'
    */
-  "transitionDuration": React.PropTypes.string,
+  "transitionDuration": PropTypes.string,
   /**
    * The max value of the progress bar
    * @examples ''
    */
-  "max": React.PropTypes.number,
+  "max": PropTypes.number,
   /**
    * The min value of the progress bar
    * @examples ''
    */
-  "min": React.PropTypes.number,
+  "min": PropTypes.number,
   /**
    * Defines the type of Progress bar: 'determinate', 'indeterminate'
    * @examples 'circular'
    */
-  "mode": React.PropTypes.string,
+  "mode": PropTypes.string,
   /**
    * If true, progressbar will change colors during transition
    * @examples ''
    */
-  "multicolor": React.PropTypes.bool,
+  "multicolor": PropTypes.bool,
   /**
    * Type of progress bar; 'circular' or 'linear'
    * @examples ''
    */
-  "type": React.PropTypes.oneOf(["linear", "circular"]),
+  "type": PropTypes.oneOf(["linear", "circular"]),
   /**
    * The default value(s) of the progress bar.  Can be a number, or an object containing keys of "from" and "to"
    * @examples '{"from": 10, "to": 80" }'
    */
   "value": React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.shape({
-      "from": React.PropTypes.number,
-      "to": React.PropTypes.number
-    })
+    React.PropTypes.number
   ])
 };
 
@@ -186,68 +183,6 @@ ProgressBar.defaultProps = {
   "multicolor": false,
   "type": "linear",
   "value": 0
-};
-
-ProgressBar.styleguide = {
-  "category": "Form Components",
-  "index": "3.7",
-  "wrappedExample": true,
-  "example": 
-    `
-// Internal Methods {
-class ProgressBarExample extends React.Component {
-  state = {
-    progress: 0,
-    buffer: 10
-  };
-  componentWillMount () {
-    this.simulateProgress();
-  }
-  simulateProgress () {
-    setTimeout(() => {
-      if (this.state.progress < 100) {
-        this.increaseProgress();
-        if (this.state.progress > this.state.buffer) this.increaseBuffer();
-      } else {
-        this.setState(this.state);
-      }
-      this.simulateProgress();
-    }, (Math.random() * 1 + 1) * 1000);
-  }
-  increaseProgress () {
-    this.setState({
-      progress: Math.random() * 30 + this.state.progress
-    });
-  }
-  increaseBuffer () {
-    this.setState({
-      buffer: Math.random() * (100 - this.state.progress) + this.state.progress
-    });
-  }
-// }
-  render () {
-    return (
-      <section>
-        <h5>Progress bars</h5>
-        <p style={{margin: "10px auto"}}>Determinate</p>
-        <ProgressBar mode="determinate" value={this.state.progress} buffer={this.state.buffer}/>
-        <p style={{margin: "10px auto"}}>Indeterminate...</p>
-        <ProgressBar mode="indeterminate"/>
-        <p style={{margin: "10px auto"}}>Circular Indeterminate</p>
-        <ProgressBar type="circular" mode="indeterminate"/>
-        <p style={{margin: "10px auto"}}>Circular Determinate</p>
-        <ProgressBar type="circular" mode="determinate" value={this.state.progress}/>
-        <p style={{margin: '10px auto'}}>Range</p>
-        <ProgressBar mode='determinate' value={{from: 10, to: 80}}/>
-      </section>
-    );
-  }
-// Mount Component {
-}
-ReactDOM.render(<ProgressBarExample/>, mountNode);
-// }
-`
-  
 };
 
 export default ProgressBar;

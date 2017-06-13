@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import cx from 'classNames';
 
 /**
@@ -13,29 +14,8 @@ const ListItem = ({ children, ...props }) => {
 };
 
 ListItem.propTypes = {
-  "className": React.PropTypes.string,
-  "children": React.PropTypes.node
-};
-
-ListItem.styleguide = {
-  "category": "Lists",
-  "index": "7.2",
-  "example": 
-    `
-<section>
-  <h5>Simple List with ListIem</h5>
-  <div style={{
-    display: "inline-block",
-    minWidth: 340
-  }}>
-    <ListItem caption="Inbox">Inbox</ListItem>
-    <ListItem caption="Outbox">Outbox</ListItem>
-    <ListItem caption="Trash">Trash</ListItem>
-    <ListItem caption="Spam">Spam</ListItem>
-  </div>
-</section>
-`
-  
+  "className": PropTypes.string,
+  "children": PropTypes.node
 };
 
 export default ListItem;

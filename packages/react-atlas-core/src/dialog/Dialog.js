@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import { OverlayCore } from "../index.js";
 import cx from 'classNames';
 
@@ -45,51 +46,5 @@ Dialog.propTypes = {
 };
 
 Dialog.defaultProps = { "active": false, "type": "normal", "className": "" };
-
-Dialog.styleguide = {
-  "category": "Layout",
-  "index": "4.2",
-  "wrappedExample": true,
-  "example": 
-    `
-// Internal Methods {
-class App extends React.Component {
-  state = {
-    active: false
-  };
-
-  handleToggle = () => {
-    this.setState({
-      active: !this.state.active
-    });
-  };
-// }
-  render () {
-    return (
-      <section>
-        <h5>Dialog</h5>
-        <p>lorem ipsum...</p>
-        <Button onClick={this.handleToggle}>Show Dialog</Button>
-        <Dialog
-          active={this.state.active}
-          onOverlayClick={this.handleToggle}
-        >
-          <h6><strong>Use Google's location service?</strong></h6>
-          <p>Let Google help apps <strong>determine location</strong>. This means sending anonymous location data to Google, even when no apps are running.</p>
-
-          <Button warning onClick={this.handleToggle}>Disagree</Button>
-          <Button success onClick={this.handleToggle}>Agree</Button>
-        </Dialog>
-      </section>
-    );
-  }
-// Mount Component {
-}
-
-ReactDOM.render(<App/>, mountNode);
-// }
-  `
-  
-};
 
 export default Dialog;

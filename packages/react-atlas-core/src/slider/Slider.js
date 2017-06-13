@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import ReactDOM from "react-dom";
 import cx from 'classNames';
 import events from "../utils/events";
@@ -7,7 +8,7 @@ import utils from "../utils/utils";
 import { default as ProgressBar } from "../progressBar/ProgressBar";
 import { default as Input } from "../input/Input";
 
-class Slider extends Component {
+class Slider extends React.Component {
   state = {
     "inputFocused": false,
     "inputValue": null,
@@ -367,9 +368,7 @@ Slider.propTypes = {
    * Default value of the slider
    * @examples 'Some Label'
    */
-  "value": React.PropTypes.oneOfType([
-    React.PropTypes.number
-  ])
+  "value": React.PropTypes.number
 };
 
 Slider.defaultProps = {
@@ -382,34 +381,6 @@ Slider.defaultProps = {
   "snaps": false,
   "step": 0.01,
   "value": 0
-};
-
-Slider.styleguide = {
-  "category": "Form Components",
-  "index": "3.11",
-  "wrappedExample": true,
-  "example": 
-    `
-// Internal Methods {
-class SliderExample extends React.Component {
-// }
-  render () {
-    return (
-      <section>
-        <h5>Sliders</h5>
-        <p>Normal slider</p>
-        <Slider  />
-        <p>Disabled slider</p>
-        <Slider disabled defaultValue={45}/>
-      </section>
-    );
-  }
-// Mount Component {
-}
-ReactDOM.render(<SliderExample/>, mountNode);
-// }
-`
-  
 };
 
 export default Slider;

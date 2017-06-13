@@ -1,4 +1,5 @@
-import React, { PropTypes, cloneElement } from "react";
+import React, { cloneElement } from "react";
+import PropTypes from 'prop-types';
 import cx from "classNames";
 
 const RadioGroup = ({ className, children, name, inline, ...props }) => {
@@ -39,22 +40,6 @@ RadioGroup.propTypes = {
    * @examples '<RadioGroup inline></RadioGroup>'
    */
   "inline": PropTypes.bool
-};
-
-RadioGroup.styleguide = {
-  "category": "Form Components",
-  "index": "3.9",
-  "example": `
-<section>
-  <h5>RadioGroup with Radio Buttons</h5>
-  <RadioGroup name="comic">
-    <Radio label="Checked Radio" value="checkedRadio" defaultChecked />
-    <Radio label="Disabled Radio" value="disabledRadio" disabled/>
-    <Radio label="Inlined 1" value="inlined1" className="someClassIMadeUp" inline onFocus={this.handleFocus}/>
-    <Radio label="Inlined2" value="inlined2" inline onBlur={this.handleBlur}/>
-  </RadioGroup>
-</section>
-`
 };
 
 export default RadioGroup;

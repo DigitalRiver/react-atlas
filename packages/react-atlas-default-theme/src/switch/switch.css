@@ -4,18 +4,18 @@
 
 .slider {
   composes: cursor-pointer from '../styles.css';
-  composes: bg-primary from '../styles.css';
+  composes: bg-med-gray from '../styles.css';
   composes: z1 from '../styles.css';
   overflow:hidden;
   display: block;
   position:relative;
+  margin: 16px;
 }
 
 .sliderSmall{
   composes: slider;
   width: 42px;
   height: 19px;
-  margin: 12px;
   border-radius: 12px;
 }
 
@@ -23,7 +23,6 @@
   composes: slider;
   width: 70px;
   height:32px;
-  margin: 20px;
   border-radius: 20px;
 }
 
@@ -31,7 +30,6 @@
   composes: slider;
   width: 105px;
   height: 48px;
-  margin: 30px;
   border-radius: 30px;
 }
 
@@ -134,7 +132,6 @@
   composes: cursor-not-allowed from '../styles.css';
   opacity: .65;
   pointer-events: none;
-  
 }
 
 .hidden{

@@ -3,7 +3,8 @@
  * Read https://github.com/moroshko/react-autosuggest for documentation
  */
 
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import Autosuggest from "react-autosuggest";
 
 /**
@@ -128,105 +129,6 @@ Autocomplete.defaultProps = {
   "theme": {
     "value": true
   }
-};
-
-Autocomplete.styleguide = {
-  "category": "Form Components",
-  "index": "3.1",
-  "wrappedExample": true,
-  "example": 
-    `
-// languages {
-var languages = [
-  {
-    name: 'C',
-    year: 1972
-  },
-  {
-    name: 'C#',
-    year: 2000
-  },
-  {
-    name: 'C++',
-    year: 1983
-  }
-];
-// }
-// internal component methods {
-var AutoCompleteExample = React.createClass({
-
-  getInitialState: function() {
-    return ({
-      value: '',
-      suggestions: this.getSuggestions('')
-    });
-  },
-
-  escapeRegexCharacters: function(str) {
-    return str.replace(/[.*+?^{}()|[\]\\]/g, "\\$&");
-  },
-
-  getSuggestions: function (value) {
-    const escapedValue = this.escapeRegexCharacters(value.trim());
-
-    if (escapedValue === '') {
-      return [];
-    }
-
-    const regex = new RegExp('^' + escapedValue, 'i');
-
-    return languages.filter(language => regex.test(language.name));
-  },
-
-  getSuggestionValue: function(suggestion) {
-    return suggestion.name;
-  },
-
-  renderSuggestion: function(suggestion) {
-    return (
-      <span>{suggestion.name}</span>
-    );
-  },
-
-  onChange: function(event, { newValue, method }) {
-    this.setState({
-      value: newValue
-    });
-  },
-
-  onSuggestionsUpdateRequested: function({ value }) {
-    this.setState({
-      suggestions: this.getSuggestions(value)
-    });
-  },
-// }
-  render() {
-    var inputProps = {
-      placeholder: "Type 'c'",
-      value: this.state.value,
-      onChange: this.onChange
-    };
-      return (
-      <section>
-        <h5>Autocomplete</h5>
-        <p>You can have a multiple or simple autocomplete.</p>
-
-        <Autocomplete suggestions={this.state.suggestions}
-                   onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
-                   getSuggestionValue={this.getSuggestionValue}
-                   renderSuggestion={this.renderSuggestion}
-                   inputProps={inputProps} />
-
-      </section>
-      );
-    }
-// Mount component {
-})
-
-ReactDOM.render(<AutoCompleteExample />, mountNode);
-// }
-`
-  
 };
 
 export default Autocomplete;

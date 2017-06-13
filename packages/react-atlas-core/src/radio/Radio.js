@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from "classNames";
 
 const Radio = ({ className, disabled, inline, name, label, ...props }) => {
@@ -88,21 +89,6 @@ Radio.defaultProps = {
   "className": "",
   "disabled": false,
   "inline": false
-};
-
-Radio.styleguide = {
-  "category": "Form Components",
-  "index": "3.8",
-  "example": `
-<section>
-  <h5>Individual Radio Buttons</h5>
-  <p>Not aware of each other, use RadioGroup for that.</p>
-  <Radio label="Checked Radio" value="checkedRadio" defaultChecked />
-  <Radio label="Disabled Radio" value="disabledRadio" disabled/>
-  <Radio label="Inlined 1" value="inlined1" className="someClassIMadeUp" inline />
-  <Radio label="Inlined 2" value="inlined2" inline />
-</section>
-`
 };
 
 export default Radio;

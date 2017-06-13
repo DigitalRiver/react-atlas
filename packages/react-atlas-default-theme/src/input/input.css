@@ -7,7 +7,6 @@
 	composes: pad-1 from '../styles.css';
 	composes: border-gray from '../styles.css';
 	position: relative;
-	display: block;
 	box-shadow: none;
 	transition: box-shadow 0.3s, border 0.3s;
 	appearance: none;
@@ -37,6 +36,10 @@
 	width: 100%;
 }
 
+.blockInput {
+	display: block;
+}
+
 .checkbox {
 	composes: marg-b-1 from '../styles.css';
 	position: relative;
@@ -53,6 +56,14 @@
 
 .invalid {
 	composes: border-red from '../styles.css';
+}
+
+.invalid:focus {
+	border: solid 1px #ea0f43;
+  	outline: none;
+  	-webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .075), 0 0 5px 1px rgba(234, 15, 67, .6);
+          	box-shadow: 0 0 5px 1px rgba(0, 0, 0, .075), 0 0 5px 1px rgba(234, 15, 67, .6);
+	
 }
 
 .disabled {

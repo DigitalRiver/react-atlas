@@ -3,7 +3,8 @@
  * Copyright (c) 2016 Thinkmill Pty Ltd
  */
 
-import React, { Component, PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import blacklist from "blacklist";
 import A from "../constants";
 import cx from 'classNames';
@@ -11,7 +12,7 @@ import cx from 'classNames';
 /**
  * Component that handles Col/Column part of a Grid system. Syntax  somewhat similar to bootstraps grid class syntax.
  */
-class GridCol extends Component {
+class GridCol extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -112,47 +113,6 @@ GridCol.propTypes = {
 
 GridCol.defaultProps = {
   "gutter": A.width.gutter
-};
-
-GridCol.styleguide = {
-  "category": "Layout",
-  "index": "4.3",
-  "example": 
-    `
-<section>
-  <h5>GridCol Example</h5>
-    <GridRow>
-
-      <GridCol sm="1" md="1/2">
-        <Card>
-          <h1>Title Goes Here</h1>
-          <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
-          <Button>Action 1</Button>
-          <Button>Action 2</Button>
-        </Card>
-      </GridCol>
-
-      <GridCol sm="1" md="1/2">
-        <Card>
-          <h1>Title Goes Here</h1>
-          <p>So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities.</p>
-          <Button>Action 1</Button>
-          <Button>Action 2</Button>
-        </Card>
-      </GridCol>
-
-      <GridCol sm="1">
-        <Card>
-            <h1>Basic Card</h1>
-          <h2>You can also use a subtitle like this</h2>
-          <p>I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
-        </Card>
-      </GridCol>
-
-    </GridRow>
-</section>
-`
-  
 };
 
 export default GridCol;
