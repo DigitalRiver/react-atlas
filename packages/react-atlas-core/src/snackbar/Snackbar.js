@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from 'classNames';
 
-class Snackbar extends Component {
+class Snackbar extends React.Component {
   componentDidUpdate() {
     if (this.props.active && this.props.timeout) {
       setTimeout(

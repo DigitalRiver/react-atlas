@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import cx from 'classNames';
 
 /**
@@ -13,8 +14,8 @@ const ListText = ({ children, ...props }) => {
 };
 
 ListText.propTypes = {
-  "className": React.PropTypes.string,
-  "children": React.PropTypes.node
+  "className": PropTypes.string,
+  "children": PropTypes.node
 };
 
 ListText.styleguide = {

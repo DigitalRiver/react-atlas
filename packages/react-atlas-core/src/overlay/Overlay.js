@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from 'classNames';
 
 /**
  * Overlay component adds a 'shadowbox' to screen. Mostly used internally in the lib on the `<Dialog>` component.
  */
-class Overlay extends Component {
+class Overlay extends React.Component {
   render() {
     const {
       className,
@@ -39,11 +39,11 @@ class Overlay extends Component {
 }
 
 Overlay.propTypes = {
-  "active": React.PropTypes.bool,
-  "children": React.PropTypes.node,
-  "className": React.PropTypes.string,
-  "invisible": React.PropTypes.bool,
-  "onClick": React.PropTypes.func
+  "active": PropTypes.bool,
+  "children": PropTypes.node,
+  "className": PropTypes.string,
+  "invisible": PropTypes.bool,
+  "onClick": PropTypes.func
 };
 
 Overlay.defaultProps = {

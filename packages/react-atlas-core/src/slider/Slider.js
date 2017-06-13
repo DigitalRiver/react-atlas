@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import ReactDOM from "react-dom";
 import cx from 'classNames';
 import events from "../utils/events";
@@ -7,7 +8,7 @@ import utils from "../utils/utils";
 import { default as ProgressBar } from "../progressBar/ProgressBar";
 import { default as Input } from "../input/Input";
 
-class Slider extends Component {
+class Slider extends React.Component {
   state = {
     "inputFocused": false,
     "inputValue": null,

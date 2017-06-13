@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import cx from 'classNames';
 
 const Header = ({ className, fixed, children, ...props }) => {
@@ -12,10 +13,10 @@ const Header = ({ className, fixed, children, ...props }) => {
 };
 
 Header.propTypes = {
-  "children": React.PropTypes.node,
-  "className": React.PropTypes.string,
-  "fixed": React.PropTypes.bool,
-  "theme": React.PropTypes.object
+  "children": PropTypes.node,
+  "className": PropTypes.string,
+  "fixed": PropTypes.bool,
+  "theme": PropTypes.object
 };
 
 Header.defaultProps = { "className": "", "fixed": false };

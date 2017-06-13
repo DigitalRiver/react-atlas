@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from "classNames";
 
 /**
  * Wrapper component to organize and produce tabs using multiple `<Tab>` components as children.
  */
-class Tabs extends Component {
+class Tabs extends React.Component {
   render() {
     let { children, className, onClick, index, ...props } = this.props;
 

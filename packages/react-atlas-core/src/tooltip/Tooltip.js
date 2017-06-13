@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from 'classNames';
 
 /*
  * A CSS driven tooltip that gives more information when an element it wraps is hovered over.
  */
-class Tooltip extends Component {
+class Tooltip extends React.Component {
   render() {
     const { children, position, tooltip, inline, ...other } = this.props;
 

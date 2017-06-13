@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import InputMask from "inputmask-core";
 import { utils } from "../utils";
 import cx from "classNames";

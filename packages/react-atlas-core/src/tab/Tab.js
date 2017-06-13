@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from "classNames";
 
 /**
  * Individual Tab component used within `<Tabs>`. Can be disabled, hidden and also sent an onActive event trigger.
  */
-class Tab extends Component {
+class Tab extends React.Component {
   componentDidUpdate(prevProps) {
     if (!prevProps.active && this.props.active && this.props.onActive) {
       this.props.onActive();
