@@ -1,7 +1,0 @@
-.base {
-    composes: clearfix from '../styles.css';
-    composes: font-size-6 from '../styles.css';
-    composes: default-text from '../styles.css';
-    display: block;
-    white-space: normal;
-}

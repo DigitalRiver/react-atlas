@@ -143,42 +143,17 @@ dot.templateSettings = {
 
 /* TODO: Replace hardcoded array with a dynamic solution. */
 let components = [
-  "autocomplete",
   "avatar",
   "button",
-  "card",
   "checkbox",
-  "dialog",
-  "drawer",
   "dropdown",
   "form",
-  "gridCol",
-  "gridRow",
-  "header",
-  "hint",
   "input",
-  "list",
-  "listItem",
-  "listText",
-  "media",
-  "overlay",
-  "progressBar",
   "radio",
   "radioGroup",
-  "slider",
-  "snackbar",
   "switch",
-  "tab",
-  "tabContent",
   "table",
-  "tabs",
-  "tbody",
-  "td",
-  "tfoot",
-  "th",
-  "thead",
-  "tooltip",
-  "tr"
+  "tooltip"
 ];
 
 module.exports = {

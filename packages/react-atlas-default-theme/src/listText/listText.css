@@ -1,4 +1,0 @@
-.text {
-  composes: marg-h-2 from '../styles.css';
-  flex-grow: 1;
-}
