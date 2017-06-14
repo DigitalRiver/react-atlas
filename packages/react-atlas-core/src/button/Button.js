@@ -1,52 +1,60 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import cx from 'classNames';
+import PropTypes from "prop-types";
+import cx from "classNames";
 
 /**
  * A Generic button component.
  */
-const Button = (
-  {
-    className,
-    outline,
-    primary,
-    secondary,
-    success,
-    warning,
-    danger,
-    link,
-    disabled,
-    children,
-    mini,
-    large,
-    small
+class Button extends React.PureComponent {
+  constructor(props) {
+    super(props);
   }
-) => {
-  const classes = cx({"disabled": disabled, 
-                     "large": large, 
-                     "small": small, 
-                     "mini": mini, 
-                     "primary": primary,
-                     "secondary": secondary,
-                     "warning": warning,
-                     "danger": danger,
-                     "link": link,
-                     "outline": outline,
-                     "button": true});
-  return (
-    <button className={cx(className)} styleName={classes}>{children}</button>
-  )
-};
+
+  render() {
+    const {
+      onClick,
+      className,
+      children,
+      disabled,
+      large,
+      small,
+      primary,
+      secondary,
+      warning,
+      danger,
+      link,
+      outline
+    } = this.props;
+
+    /**
+     * Use cx to construct a CSS class object.
+     * cx will automatically remove falsy values
+     * for us. This way only passed props will be
+     * transformed into CSS classes.
+     */
+    const classes = cx({
+      "disabled": disabled,
+      "large": large,
+      "small": small,
+      "primary": primary,
+      "secondary": secondary,
+      "warning": warning,
+      "danger": danger,
+      "link": link,
+      "button": true
+    });
+    return (
+      <button onClick={onClick} className={cx(className)} styleName={classes}>
+        {children}
+      </button>
+    );
+  }
+}
 
 Button.propTypes = {
   /**
      * Define a mini button.
      *
-     */
-  "mini": PropTypes.bool,
-  /**
-     * Anything that can be in a button. Usually text, but could also be icons/glyphs.
-     * @examples 'Save', 'Cancel'
      */
   "children": PropTypes.node,
   /**
@@ -68,18 +76,7 @@ Button.propTypes = {
      * define button href if anchor
      * @examples '#', 'http://some-website.com/'
      */
-  "href": PropTypes.string,
-  /**
-     * set loading animation on button
-     * @examples <Button loading>
-     */
-  "loading": PropTypes.bool,
-  /**
-     * use primary style button (button is set to this by default)
-     * @examples <Button primary>
-     */
   "primary": PropTypes.bool,
-  "type": PropTypes.string,
   /**
      * use secondary style button
      * @examples <Button secondary>
@@ -114,26 +111,18 @@ Button.propTypes = {
      * use small style button
      * @examples <Button small>
      */
-  "small": PropTypes.bool,
-  /**
-     * use block style button
-     * @examples <Button block>
-     */
-  "block": PropTypes.bool
+  "small": PropTypes.bool
 };
 
 Button.defaultProps = {
   "children": "Default Button",
   "outline": false,
-  "loading": false,
-  "mini": false,
   "primary": false,
   "secondary": false,
   "success": false,
   "warning": false,
   "danger": false,
   "link": false,
-  "raised": false,
   "large": false,
   "small": false,
   "disabled": false
