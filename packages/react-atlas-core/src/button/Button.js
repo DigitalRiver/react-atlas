@@ -9,7 +9,6 @@ const Button = (
   {
     className,
     outline,
-    loading,
     primary,
     secondary,
     success,
@@ -20,45 +19,22 @@ const Button = (
     children,
     mini,
     large,
-    small,
-    ...props
+    small
   }
 ) => {
-  const disabledStyle = disabled || loading ? "disabled" : "";
-
-  let size;
-  if(large) {
-    size = "large";
-  } else if(small) {
-    size = "small";
-  } else if(mini) {
-    size = "mini";
-  }
-
-  let mainStyle = "button";
-  if (primary) {
-    mainStyle = "primary";
-  } else if (secondary) {
-    mainStyle = "secondary";
-  } else if (success) {
-    mainStyle = "success";
-  } else if (warning) {
-    mainStyle = "warning";
-  } else if (danger) {
-    mainStyle = "danger";
-  } else if (link) {
-    mainStyle = "link";
-  }
-
-  let outlineStyle = "button";
-  if(outline) {
-    mainStyle += "_outline";
-  }
-
-  const classes = cx(mainStyle, disabledStyle, size, outlineStyle);
-  
+  const classes = cx({"disabled": disabled, 
+                     "large": large, 
+                     "small": small, 
+                     "mini": mini, 
+                     "primary": primary,
+                     "secondary": secondary,
+                     "warning": warning,
+                     "danger": danger,
+                     "link": link,
+                     "outline": outline,
+                     "button": true});
   return (
-    <button {...props} className={cx(className)} styleName={classes}>{children}</button>
+    <button className={cx(className)} styleName={classes}>{children}</button>
   )
 };
 
