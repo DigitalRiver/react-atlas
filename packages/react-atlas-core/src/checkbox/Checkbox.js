@@ -11,7 +11,7 @@ class Checkbox extends React.PureComponent {
     super(props);
     this.state = {
       "inputValue": '',
-      "checked": this.props.defaultChecked || false
+      "checked": this.props.checked || false
     };
   }
 
@@ -42,31 +42,34 @@ class Checkbox extends React.PureComponent {
 
   render() {
     const { title, label, disabled, inline, className } = this.props;
-    const display = inline ? "inline" : "block";
-    const controlStyle = cx("control", "control--checkbox", display);
+    const labelStyle = cx("label_left");
     const title_label = title ? title : label;
-    const labelClasses = this.state.checked
-      ? cx("checked", display)
-      : cx("not_checked", display);
+    const disabledClass = disabled ? cx("relative", "disabled") : cx("relative");
+    const checkboxClass = this.state.checked ?  cx("checked") : cx("not_checked");
 
     return (
       <div onClick={this._clickHandler}>  
-        <InputCore
-          label={label}
-          type="checkbox"
-          disabled={disabled}
-          checked={this.state.checked}
-        />
-        <label
-          styleName={controlStyle}
-          title={title_label}
-          className={cx(className)}
-        >
-        {label &&
-          <div styleName={labelClasses}>
-            <div styleName={"label_left"}>{label}</div>
-          </div>}
-        </label>
+        <div styleName={disabledClass}>
+          <InputCore
+            label={label}
+            type="checkbox"
+            disabled={disabled}
+            checked={this.state.checked}
+            hidden={disabled}
+          />
+          <div styleName={checkboxClass}>
+            {this.state.checked &&
+              <div styleName={cx("checkmark")}></div>
+            }
+          </div>
+          <label
+            styleName={labelStyle}
+            title={title_label}
+            className={cx(className)}
+          >
+          {label}
+          </label>
+        </div>
       </div>  
     );
   }

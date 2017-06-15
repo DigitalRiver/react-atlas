@@ -1,6 +1,7 @@
 export { AvatarStyle } from "./avatar";
 export { ButtonStyle } from "./button";
 export { CheckboxStyle } from "./checkbox";
+export { CheckboxGroupStyle } from "./checkboxGroup";
 export { DropdownStyle } from "./dropdown";
 export { FormStyle } from "./form";
 export { InputStyle } from "./input";

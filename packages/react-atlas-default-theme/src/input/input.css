@@ -66,13 +66,6 @@
 	
 }
 
-.disabled {
-	composes: cursor-not-allowed from '../styles.css';
-	opacity: .65;
-	pointer-events: none;
-}
-
 .hidden {
-	display: none;
 	visibility: hidden;
 }

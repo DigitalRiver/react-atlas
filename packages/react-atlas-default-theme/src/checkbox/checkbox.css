@@ -1,17 +1,3 @@
-.base {
-    composes: marg-b-1 from '../styles.css';
-}
-
-.block {
-    composes: base;
-    display: block;
-}
-
-.inline {
-    composes: base;
-    display: inline-block;
-}
-
 .disabled {
     composes: default-text from '../styles.css';
 }
@@ -20,81 +6,67 @@
     composes: marg-l-1 from '../styles.css';
 }
 
+.relative {
+    position:relative;
+}
+
 .input {
-    position: relative;
+    composes: relative;
     top: 1px;
 }
 
-.control {
-  position: relative;
-  margin-bottom: 15px;
-  padding-left: 30px;
-  padding: 10px;
-}
-
-.checked:after {
-  position: absolute;
-  content: '';
-  top: 3px;
-  left: 8px;
-  width: 4px;
-  height: 11px;
-  transform: rotate(45deg);
-  border: solid #fff;
-  border-width: 0 5px 5px 0;
-}
-
-.checked {
+.checkbox {
   composes: rounded from '../styles.css';
   composes: default-border from "../styles.css";
-  composes: bg-silver from "../styles.css";
-  background: #007EB5;
-  border: 1px solid #007EB5;
-  position: absolute;
-  top: 2px;
-  left: 0;
-  width: 25px;
-  height: 25px;
+  composes: bg-silver from "../styles.css"; /* For browsers that do not support gradients */
+  composes: relative;
+  top: -20px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
   cursor: pointer;
 }
 
+.disabled {
+  opacity: 0.5;
+}
+
+.large {
+  width: 25px;
+  height: 25px;
+}
+
+.checked {
+  composes: checkbox;
+  background: #007EB5;
+  border: 1px solid #007EB5;
+}
+
 .checkmark {
-  top: 3px;
-  left: 8px;
+  composes: relative;
+  top: 0px;
+  left: 4px;
   width: 4px;
-  height: 11px;
+  height: 10px;
   transform: rotate(45deg);
   border: solid #fff;
-  border-width: 0 5px 5px 0;    
+  border-width: 0 3px 3px 0;    
 }
 
 /* Display checkbox with out the checkbox selected.  */
 .not_checked {
-  composes: rounded from '../styles.css';
-  composes: default-border from "../styles.css";
-  composes: bg-silver from "../styles.css"; /* For browsers that do not support gradients */
+  composes: checkbox;
   background: -webkit-linear-gradient(#fff, #e6e6e6); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(#fff, #e6e6e6); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(#fff, #e6e6e6); /* For Firefox 3.6 to 15 */
   background: linear-gradient(#fff, #e6e6e6); /* Standard syntax */
-  position: absolute;
-  top: 2px;
-  left: 0;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
 }
 
 /* label text */
 .label_left {
   position: absolute;
-  top: 5px;
-  left: 35px;
+  left: 24px;
   cursor: pointer;
-  margin: 5px;
-}
-
-/* nowrap text */
-.control--checkbox .inline {
   white-space: nowrap;
+  top: 0px;
 }

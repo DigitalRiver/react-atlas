@@ -241,9 +241,11 @@ class Input extends React.Component {
       "medium": medium,
       "large": large,
       "max": !small && !medium && !large,
-      disabled,
-      hidden
+      "hidden": hidden
     });
+
+    console.log(inputClasses);
+    console.log(hidden);
 
     let eventHandlers = {
       "onClick": this._handleBeforeChange,
@@ -258,6 +260,7 @@ class Input extends React.Component {
           name={name}
           value={this.state.value}
           placeholder={placeholder}
+          disabled={disabled}
           styleName={inputClasses}
           className={cx(className)}
           onChange={this._handleChange}
@@ -267,6 +270,7 @@ class Input extends React.Component {
           name={name}
           value={this.state.value}
           placeholder={placeholder}
+          disabled={disabled}
           styleName={inputClasses}
           className={cx(className)}
           ref={input => {
@@ -282,9 +286,9 @@ class Input extends React.Component {
     return isCheckbox
       ? <input
           type="checkbox"
+          disabled={disabled}
           name={name}
           styleName={inputClasses}
-          className={cx(className)}
           checked={checked}
           {...eventHandlers}
         />

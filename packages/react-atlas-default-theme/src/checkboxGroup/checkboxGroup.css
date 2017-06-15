@@ -1,0 +1,18 @@
+.checkboxGroup {
+	margin: 20px 0;
+}
+
+.block {
+	composes: marg-b-1 from '../styles.css';
+	display: block;
+	line-height: 30px;
+}
+
+.inline {
+	composes: marg-r-2 from '../styles.css';
+	display: inline-block;
+}
+
+.disabled {
+	composes: default-text from '../styles.css';
+}

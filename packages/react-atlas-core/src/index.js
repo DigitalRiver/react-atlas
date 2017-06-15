@@ -8,4 +8,5 @@ export { TableCore } from "./table";
 export { SwitchCore } from "./switch";
 export { TooltipCore } from "./tooltip";
 export { CheckboxCore } from "./checkbox";
+export { CheckboxGroupCore } from "./checkboxGroup";
 export { DropdownCore } from "./dropdown";
