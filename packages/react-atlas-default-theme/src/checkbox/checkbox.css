@@ -2,10 +2,6 @@
     composes: default-text from '../styles.css';
 }
 
-.label {
-    composes: marg-l-1 from '../styles.css';
-}
-
 .relative {
     position:relative;
 }
@@ -64,9 +60,20 @@
 
 /* label text */
 .label_left {
+  cursor: pointer;
+  white-space: nowrap;
+  padding-right: 2px;
+}
+
+/* label text */
+.label_right {
   position: absolute;
   left: 24px;
   cursor: pointer;
   white-space: nowrap;
   top: 0px;
+}
+
+.inline_block {
+  display: inline-block;
 }

@@ -17,58 +17,67 @@ class Checkbox extends React.PureComponent {
 
   // Handles new checkbox clicks and sets value and checked status of hidden input
   _clickHandler = event => {
-    /* Check if onClick has been passed, if so call it. */
-    if (this.props.onClick) {
-      /* Pass the event object, and a data object to the click handler.
-       The data object contains a boolean for whether the checkbox was
-       clicked or not, plus all the props passed to the object.  */
-      this.props.onClick(event, {"checked": this.state.checked, "props": this.props});
-    }
+    if(!this.props.disabled){  
+      /* Check if onClick has been passed, if so call it. */
+      if (this.props.onClick) {
+        /* Pass the event object, and a data object to the click handler.
+         The data object contains a boolean for whether the checkbox was
+         clicked or not, plus all the props passed to the object.  */
+        this.props.onClick(event, {"checked": this.state.checked, "props": this.props});
+      }
 
-    if (this.state.checked === true) {
-      this.setState({ checked: false });
-    } else {
-      this.setState({ checked: true });
-    }
+      if (this.state.checked === true) {
+        this.setState({ checked: false });
+      } else {
+        this.setState({ checked: true });
+      }
 
-    /* Check if onChange has been passed, if so call it. */
-    if (this.props.onChange) {
-      /* Pass the event object, and a data object to the click handler.
-       The data object contains a boolean for whether the checkbox was
-       clicked or not, plus all the props passed to the object.  */
-      this.props.onChange(event, {"checked": this.state.checked, "props": this.props});
+      /* Check if onChange has been passed, if so call it. */
+      if (this.props.onChange) {
+        /* Pass the event object, and a data object to the click handler.
+         The data object contains a boolean for whether the checkbox was
+         clicked or not, plus all the props passed to the object.  */
+        this.props.onChange(event, {"checked": this.state.checked, "props": this.props});
+      }
     }
   };
 
   render() {
-    const { title, label, disabled, inline, className } = this.props;
-    const labelStyle = cx("label_left");
+    const { title, label, labelPosition, disabled, inline, className, name } = this.props;
+    const inlineCheckbox = (inline) ? cx("inline_block") : cx();
+    const labelStyle = (labelPosition === "left") ? cx("label_left") : cx("label_right");
     const title_label = title ? title : label;
     const disabledClass = disabled ? cx("relative", "disabled") : cx("relative");
     const checkboxClass = this.state.checked ?  cx("checked") : cx("not_checked");
+    const checkboxDisplay = (labelPosition === "left") ? cx("inline_block") : cx();
 
     return (
-      <div onClick={this._clickHandler}>  
+      <div onClick={this._clickHandler} styleName={inlineCheckbox}>  
         <div styleName={disabledClass}>
-          <InputCore
-            label={label}
-            type="checkbox"
-            disabled={disabled}
-            checked={this.state.checked}
-            hidden={disabled}
-          />
-          <div styleName={checkboxClass}>
-            {this.state.checked &&
-              <div styleName={cx("checkmark")}></div>
-            }
+          {label &&
+            <label
+              styleName={labelStyle}
+              title={title_label}
+              className={cx(className)}
+            >
+            {label}
+            </label>
+          }
+          <div styleName={checkboxDisplay}>  
+            <InputCore
+              label={label}
+              type="checkbox"
+              disabled={disabled}
+              checked={this.state.checked}
+              hidden={disabled}
+              name={name}
+            />
+            <div styleName={checkboxClass}>
+              {this.state.checked &&
+                <div styleName={cx("checkmark")}></div>
+              }
+            </div>
           </div>
-          <label
-            styleName={labelStyle}
-            title={title_label}
-            className={cx(className)}
-          >
-          {label}
-          </label>
         </div>
       </div>  
     );

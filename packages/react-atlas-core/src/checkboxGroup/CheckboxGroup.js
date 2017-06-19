@@ -4,6 +4,7 @@ import cx from "classNames";
 const CheckboxGroup = ({ className, children, name, inline, ...props }) => {
   return (
     <div {...props} className={className} styleName={cx("checkboxGroup")}>
+      <h3>{name}</h3>
       {React.Children.map(children, child => {
         if (child.type.displayName === "Checkbox") {
           child = cloneElement(child, {
@@ -20,7 +21,7 @@ const CheckboxGroup = ({ className, children, name, inline, ...props }) => {
 
 CheckboxGroup.propTypes = {
   /**
-   * Anything that can be in a checkbox group. Almost always checkbox components alone.
+   * Anything that can be in a checkbox group. Typically only includes Checkbox components and a header.
    * @examples '<CheckboxGroup><Checkbox/><Checkbox/></CheckboxGroup>'
    */
   "children": PropTypes.node,
@@ -30,7 +31,7 @@ CheckboxGroup.propTypes = {
    */
   "className": PropTypes.string,
   /**
-   * Form name for the element, this will set all Checkbox children the same form name (so they can't be selected at the same time).
+   * Form name for the element, this will set all Checkbox children the same form name.
    * @examples '<CheckboxGroup name="test"></CheckboxGroup>'
    */
   "name": PropTypes.string,

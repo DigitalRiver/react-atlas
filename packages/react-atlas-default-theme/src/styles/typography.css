@@ -1,6 +1,5 @@
 @import './variables.css';
 /* Utility Typography */
-
 .bold    { font-weight: var(--bold-font-weight, bold) }
 .regular { font-weight: normal }
 .italic  { font-style: italic }

@@ -244,9 +244,6 @@ class Input extends React.Component {
       "hidden": hidden
     });
 
-    console.log(inputClasses);
-    console.log(hidden);
-
     let eventHandlers = {
       "onClick": this._handleBeforeChange,
       "onChange": this._handleChange,
@@ -289,6 +286,7 @@ class Input extends React.Component {
           disabled={disabled}
           name={name}
           styleName={inputClasses}
+          className={cx(className)}
           checked={checked}
           {...eventHandlers}
         />
