@@ -31,10 +31,12 @@
     "react-css-modules": "^4.1.0",
     "react-dom": "^15.5.4",
     "react-modal": "^1.6.5",
-    "react-styleguidist": "^5.0.0",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1",
     "css-loader": "^0.28.1"
   },
-  "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas"
+  "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas",
+  "devDependencies": {
+    "react-styleguidist": "^5.4.4"
+  }
 }

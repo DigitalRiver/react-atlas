@@ -80,7 +80,7 @@ devTemplate +=
   eol +
   "const {{=it.component.name}}Comp = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true, errorWhenNotFound: true});" +
   eol +
-  "export class {{=it.component.name}} extends React.Component {" +
+  "export default class {{=it.component.name}} extends React.Component {" +
   eol +
   "constructor(props){" +
   eol +

@@ -12,7 +12,8 @@ module.exports = {
   // Regex should be: 'src/components/NAME_OF_COMPONENT_FOLDER/[A-Z]*.js'
 	components: 'src/components/**/[Button|Avatar|Card]*.js',
 	contextDependencies: [
-		'../react-atlas-core/src'
+		'../react-atlas-core/src',
+    	'../react-atlas-theme/src'
 	],
 	defaultExample: true,
 	webpackConfig: {
