@@ -62,18 +62,31 @@
   composes: border-kelly from '../styles.css';
   composes: hover-bg-secondary from '../styles.css';
 }
-.success {
-  composes: bg-green from '../styles.css';
-}
 
 .warning {
   composes: default_btn;
-  composes: bg-orange from '../styles.css';
+  color: #FFFFFF;
+  border-color: #E24024;
+  background-color: #F07822;
 }
 
-.danger {
+.warning:hover {
+  color: #FFFFFF;
+  border-color: #E24024;
+  background-color: #E24024;
+}
+
+.error {
   composes: default_btn;
-  composes: bg-red from '../styles.css';
+  color: #FFFFFF;
+  border-color: #BD0A33;
+  background-color: #EA0F43;
+}
+
+.error:hover {
+  color: #FFFFFF;
+  border-color: #BD0A33;
+  background-color: #BD0A33;
 }
 
 .link {
@@ -128,7 +141,7 @@
   composes: border-orange from '../styles.css';
 }
 
-.danger_outline {
+.error_outline {
   composes: outline;
   composes: red from '../styles.css';
   composes: hover-bg-red from '../styles.css';
@@ -167,4 +180,8 @@
 .block {
   display: block;
   width: 100%;
+}
+
+.icon-left {
+  margin-right: 1rem;
 }
