@@ -2,6 +2,9 @@ const path =  require('path');
 const loaders = require('loaders');
 
 module.exports = {
+	require: [
+		path.join(__dirname, 'src/assets/font-awesome/css/font-awesome.min.css')
+	],
   // Use this to select all components in the src/components folder
   // components: 'src/components/**/[A-Z]*.js',
 

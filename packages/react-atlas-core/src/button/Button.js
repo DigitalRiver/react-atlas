@@ -27,7 +27,7 @@ class Button extends React.PureComponent {
       icon
     } = this.props;
 
-    let mainStyle;
+    let mainStyle = "button";
     if (primary) {
       mainStyle = "primary";
     } else if (secondary) {
