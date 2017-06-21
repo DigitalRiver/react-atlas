@@ -18,20 +18,25 @@
     "components"
   ],
   "license": "MIT",
+  "scripts": {
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build"
+  },
   "dependencies": {
+    "babel-loader": "^7.0.0",
     "dot": "^1.1.1",
-    "normalize.css": "^4.1.1",
-    "react": "^15.0.2",
-    "react-addons-css-transition-group": "^15.0.2",
+    "react": "^15.5.4",
     "react-atlas-core": "^0.0.10",
     "react-atlas-default-theme": "^0.0.10",
     "react-css-modules": "^4.1.0",
-    "react-dom": "^15.0.2",
-    "style-loader": "^0.16.0",
-    "webpack": "^2.3.1"
+    "react-dom": "^15.5.4",
+    "react-modal": "^1.6.5",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.1",
+    "css-loader": "^0.28.1"
   },
+  "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas",
   "devDependencies": {
-    "css-loader": "^0.27.3"
-  },
-  "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas"
+    "react-styleguidist": "^5.4.4"
+  }
 }

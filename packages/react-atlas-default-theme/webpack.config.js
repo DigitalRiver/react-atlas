@@ -2,7 +2,7 @@ var path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = {
+let config = {
   entry: [
     './src/index.js'
   ],
@@ -14,7 +14,19 @@ module.exports = {
   },
   module: {
     rules: [
-    {
+    ],
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    })
+  ]
+};
+
+if(process.env.NODE_ENV === "production") {
+  config.module.rules.push({
       test: /\.css$/,
       loader: ExtractTextPlugin.extract({
                     fallbackLoader: 'style-loader',
@@ -30,10 +42,25 @@ module.exports = {
                      'postcss-loader'
                      ]
                 })
+    })
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
     }
-    ],
-  },
-  plugins: [
-    new ExtractTextPlugin("atlasThemes.min.css"),
-  ]
-};
+  }))
+  config.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
+  config.plugins.push(new ExtractTextPlugin("atlasThemes.min.css"));
+} else {
+  config.module.rules.push({
+    test: /\.css$/,
+    loaders: [
+        'style-loader?sourceMap',
+        'css-loader?modules&importLoaders=1&localIdentName=ra_[name]__[local]',
+        'postcss-loader'
+    ]
+});
+}
+
+module.exports = function() {
+  return config;
+}

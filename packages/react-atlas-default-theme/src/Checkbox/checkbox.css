@@ -1,0 +1,106 @@
+.base {
+    composes: marg-b-1 from '../styles.css';
+}
+
+.block {
+    composes: base;
+    display: block;
+}
+
+.inline {
+    composes: base;
+    dispaly: inline-block;
+}
+
+.disabled {
+    composes: default-text from '../styles.css';
+}
+
+.label {
+    composes: marg-l-1 from '../styles.css';
+}
+
+.input {
+    position: relative;
+    top: 1px;
+}
+
+.control {
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+    padding-left: 30px;
+    padding: 10px;
+}
+
+.control input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.control__indicator {
+    composes: rounded from '../styles.css';
+    composes: default-border from "../styles.css";
+    composes: bg-silver from "../styles.css"; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#fff, #e6e6e6); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#fff, #e6e6e6); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#fff, #e6e6e6); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#fff, #e6e6e6); /* Standard syntax */
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.control__indicator span {
+    padding-left: 27px;
+}
+
+/* Checked state */
+.control input:checked ~ .control__indicator {
+    background: #007EB5;
+    border: 1px solid #007EB5;
+}
+
+/* Disabled state */
+.control input:disabled ~ .control__indicator {
+    pointer-events: none;
+    opacity: .6;
+}
+
+/* Check mark */
+.control__indicator:after {
+    position: absolute;
+    display: none;
+    content: '';
+}
+
+/* Show check mark */
+.control input:checked ~ .control__indicator:after {
+    display: block;
+}
+
+/* Checkbox tick */
+.control--checkbox .control__indicator:after {
+    top: 3px;
+    left: 8px;
+    width: 4px;
+    height: 11px;
+    transform: rotate(45deg);
+    border: solid #fff;
+    border-width: 0 5px 5px 0;
+}
+
+/* label text */
+.control--checkbox .control__label {
+    position: absolute;
+    top: 5px;
+    left: 35px;
+    cursor: pointer;
+}
+
+/* nowrap text */
+.control--checkbox .inline {
+    white-space: nowrap;
+}

@@ -5,31 +5,64 @@
 @custom-media --breakpoint-lg (min-width: 64em);
 
 :root {
+  /* Primary Theme Colors */
+  --primary:                    var(--primary-blue);
+  --primary-hover:              var(--primary-blue-hover);
+  --secondary:                  var(--primary-green);  /* Matches Primary Green */
+  --secondary-hover:            var(--primary-green-hover);
+  --default:                    var(--charcoal);
+  --default-hover:              var(--primary-gray-hover);
+
+  --error:      var(--red);
+  --warning:    var(--gold);
+  --success:    var(--primary-green);
+  --info:       var(--primary-blue);
+  --alert:      var(--red);
+
+  /* Blue */
+  --primary-blue:       var(--sky-blue);
+  --primary-blue-hover: var(--blue);
+  --aqua:               #7fdbff;
+  --blue:               #007EB5;
+  --navy:               #001f3f;
+  --teal:               #39cccc;
+  --sky-blue:           #00A7E1;
+
   /* Cool */
-  --aqua:   #7fdbff;
-  --blue:   #0074d9;
-  --navy:   #001f3f;
-  --teal:   #39cccc;
-  --green:  #2ecc40;
-  --olive:  #3d9970;
-  --lime:   #01ff70;
+  --primary-green:        var(--light-green);
+  --primary-green-hover:  var(--kelly-green);
+  --green:                #b2d23c;
+  --kelly-green:          #81b315;
+  --olive:                #3d9970;
+  --lime:                 #01ff70;
+  --light-green:          #a8c628;
 
   /* Warm */
-  --yellow: #ffdc00;
-  --orange: #ff851b;
-  --red:    #ff4136;
-  --fuchsia:#f012be;
-  --purple: #b10dc9;
-  --maroon: #85144b;
+  --yellow:       #ffdc00;
+  --orange:       #ff5b00;
+  --red:          #ea0f43;
+  --fuchsia:      #f012be;
+  --purple:       #b10dc9;
+  --maroon:       #85144b;
+  --gold:         #be9500;
 
-  /* Gray scale */
-  --white:  #fff;
-  --silver: #ddd;
-  --gray:   #aaa;
-  --black:  #111;
+    /* Gray scale */
+  --primary-gray:       var(--silver);
+  --primary-gray-hover: var(--gray);
+
+  --primary-gray-border:      var(--med-gray);
+  --primary-gray-border-hover: var(--dark-gray);
+  --white:              #fff;
+  --silver:             #e6e6e6;
+  --gray:               #ccc;
+  --med-gray:           #999;
+  --dark-gray:          #666;
+  --charcoal:           #333;
+  --black:              #111;
 
   /*standard variables*/
-  --font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  --font-family: arial;
+  --font-size: 16px;
   --line-height: 1.5;
   --heading-font-family: var(--font-family);
   --heading-font-weight: bold;
@@ -42,10 +75,12 @@
   --h5: .875rem;
   --h6: .75rem;
   --bold-font-weight: bold;
-  --space-1: .5rem;
-  --space-2: 1rem;
-  --space-3: 2rem;
-  --space-4: 4rem;
+  --space-1:    .5rem;
+  --space-1-1:  .625rem;
+  --space-1-2:  .75rem;
+  --space-2:    1rem;
+  --space-3:    2rem;
+  --space-4:    4rem;
   --form-field-font-size: 1rem;
   --form-field-height: 2.25rem;
   --form-field-padding-y: .5rem;
@@ -67,7 +102,10 @@
   --lighten-3: rgba(255,255,255,.25);
   --lighten-4: rgba(255,255,255,.5);
 
+  --default-border-width:   var(--border-width);
+  --default-border-color:   var(--border-color);
   --border-width: 1px;
+  --button-border-width: 2px;
   --border-radius: .25rem;
-  --border-color: var(--darken-2);
+  --border-color: var(--med-gray);
 }

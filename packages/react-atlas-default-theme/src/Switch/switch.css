@@ -1,0 +1,152 @@
+/*
+  The circle
+*/
+
+.slider {
+  composes: cursor-pointer from '../styles.css';
+  composes: bg-med-gray from '../styles.css';
+  composes: z1 from '../styles.css';
+  overflow:hidden;
+  display: block;
+  position:relative;
+  margin: 16px;
+}
+
+.sliderSmall{
+  composes: slider;
+  width: 42px;
+  height: 19px;
+  border-radius: 12px;
+}
+
+.sliderMedium{
+  composes: slider;
+  width: 70px;
+  height:32px;
+  border-radius: 20px;
+}
+
+.sliderLarge{
+  composes: slider;
+  width: 105px;
+  height: 48px;
+  border-radius: 30px;
+}
+
+/*
+  the off color
+*/
+.handle {
+  composes: circle from '../styles.css';
+  composes: bg-white from '../styles.css';
+  display:block;
+  position:absolute;
+  top: 2px;
+  left: 3px;
+  box-shadow: 0 0 8px 1px rgba(0,0,0,0.3);
+  transition:left 0.2s;
+}
+
+.handleSmall{
+  composes: handle;
+  width: 15px;
+  height: 15px;
+}
+
+.handleMedium{
+  composes: handle;
+  width: 28px;
+  height: 28px;
+}
+
+.handleLarge{
+  composes: handle;
+  width: 44px;
+  height: 44px;
+}
+
+.input {
+    display:none;
+}
+
+/*
+  Distance the button translates left to right
+*/
+
+.inputSmall:checked + .handle{
+    left:25px;
+}
+.inputMedium:checked + .handle{
+    left:39px;
+}
+.inputLarge:checked + .handle{
+    left:58px;
+}
+
+/*
+  On color
+*/
+
+.onColor{
+  composes: bg-primary from '../styles.css';
+  position: relative;
+  composes: zNeg from '../styles.css';
+  left: -48px;
+}
+
+.onColorSmall{
+  composes: onColor;
+  width: 19px;
+  height: 19px;
+}
+
+.onColorMedium{
+  composes: onColor;
+  width: 32px;
+  height: 32px;
+}
+
+.onColorLarge{
+  composes: onColor;
+  width: 48px;
+  height: 48px;
+}
+
+.input:checked ~ .onColorSmall{
+    width: 100px;
+    transition: 0.2s;
+}
+
+.input:checked ~ .onColorMedium{
+    width: 132px;
+    transition: 0.2s;
+}
+
+.input:checked ~ .onColorLarge{
+    width: 158px;
+    transition: 0.2s;
+}
+
+.disabled{
+  text-decoration: none;
+  composes: cursor-not-allowed from '../styles.css';
+  opacity: .65;
+  pointer-events: none;
+}
+
+.hidden{
+  display: none;
+  visibility: hidden;
+}
+
+.inputSmall{
+  composes: input;
+}
+
+.inputMedium{
+  composes: input;
+}
+
+.inputLarge{
+  composes: input;
+}

@@ -1,9 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
 
-module.exports = {
+let config =  {
   entry: [
-    './src/index.js'
+    path.join(__dirname, './src/index.js')
   ],
   output: {
     filename: 'index.js',
@@ -23,6 +23,46 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+         
+          }
+        }
+      }
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    })
+  ]
 };
+
+if(process.env.NODE_ENV === "production") {
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    }
+  }))
+  config.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
+}
+
+module.exports = function(env) {
+  if(typeof env != 'undefined') {
+    let theme = env.theme;
+    config.externals = {};
+    config.externals[theme] = {
+      root: theme,
+      commonjs2: theme,
+      commonjs: theme,
+      amd: theme
+    };
+  }
+  return config;
+}

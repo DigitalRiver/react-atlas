@@ -1,0 +1,78 @@
+.container {
+	margin: 10px 0;
+	clear: both;
+}
+
+.input {
+	composes: pad-1 from '../styles.css';
+	composes: border-gray from '../styles.css';
+	position: relative;
+	box-shadow: none;
+	transition: box-shadow 0.3s, border 0.3s;
+	appearance: none;
+	box-sizing: border-box;
+}
+
+.input:focus {
+  	border: solid 1px #66afe9;
+  	outline: none;
+  	-webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
+          	box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
+}
+
+.small {
+	width: 15%;
+}
+
+.medium {
+	width: 30%;
+}
+
+.large {
+	width: 60%;
+}
+
+.max {
+	width: 100%;
+}
+
+.blockInput {
+	display: block;
+}
+
+.checkbox {
+	composes: marg-b-1 from '../styles.css';
+	position: relative;
+    top: 1px;
+}
+
+.input::placeholder {
+  	color: #aaa;
+}
+
+.error {
+	composes: red from '../styles.css';
+}
+
+.invalid {
+	composes: border-red from '../styles.css';
+}
+
+.invalid:focus {
+	border: solid 1px #ea0f43;
+  	outline: none;
+  	-webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .075), 0 0 5px 1px rgba(234, 15, 67, .6);
+          	box-shadow: 0 0 5px 1px rgba(0, 0, 0, .075), 0 0 5px 1px rgba(234, 15, 67, .6);
+	
+}
+
+.disabled {
+	composes: cursor-not-allowed from '../styles.css';
+	opacity: .65;
+	pointer-events: none;
+}
+
+.hidden {
+	display: none;
+	visibility: hidden;
+}
