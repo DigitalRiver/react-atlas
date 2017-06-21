@@ -63,6 +63,8 @@
   composes: hover-bg-secondary from '../styles.css';
 }
 
+/* TODO: Remove hardcoded color values and
+ * compose from styles.css */
 .warning {
   composes: default_btn;
   color: #FFFFFF;
@@ -70,12 +72,16 @@
   background-color: #F07822;
 }
 
+/* TODO: Remove hardcoded color values and
+ * compose from styles.css */
 .warning:hover {
   color: #FFFFFF;
   border-color: #E24024;
   background-color: #E24024;
 }
 
+/* TODO: Remove hardcoded color values and
+ * compose from styles.css */
 .error {
   composes: default_btn;
   color: #FFFFFF;
@@ -83,6 +89,8 @@
   background-color: #EA0F43;
 }
 
+/* TODO: Remove hardcoded color values and
+ * compose from styles.css */
 .error:hover {
   color: #FFFFFF;
   border-color: #BD0A33;
