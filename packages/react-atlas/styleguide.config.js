@@ -1,5 +1,4 @@
 const path =  require('path');
-const loaders = require('loaders');
 
 module.exports = {
 	require: [
@@ -18,7 +17,42 @@ module.exports = {
 	defaultExample: true,
 	webpackConfig: {
 		module: {
-			loaders: loaders.all,
+			loaders: [
+        { // babel loader
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+          query: {
+            // Don‘t try to find .babelrc because we want to force this configuration.
+            babelrc: false,
+            presets: [require.resolve('babel-preset-react-app')],
+            // This is a feature of `babel-loader` for webpack (not Babel itself).
+            // It enables caching results in ./node_modules/.cache/babel-loader/ directory for faster rebuilds.
+            cacheDirectory: true,
+          },
+        },
+        { //CSS loader
+          test: /\.css$/,
+          loader: 'style-loader!css-loader',
+        },
+        { //JSON loader
+          test: /\.json$/,
+          loader: 'json-loader',
+        },
+        { //URL loader
+          exclude: [
+            /\.html$/,
+            /\.(js|jsx)$/,
+            /\.css$/,
+            /\.json$/
+          ],
+          loader: 'url-loader',
+          query: {
+            limit: 10000,
+            name: 'static/media/[name].[hash:8].[ext]',
+          },
+        }
+      ]
 		},
 	},
 };
