@@ -1,17 +1,66 @@
-Basic button:
+Primary Button:
 
-    <Button>Push Me</Button>
+	<Button primary>Primary</Button>
 
+Secondary Button:
 
-Outlined button:
+	<Button secondary>Secondary</Button>
 
-    <Button outline>Lick Me</Button>
+Warning Button:
 
+	<Button warning>Warning</Button>
 
-And you *can* **use** `any` [Markdown](http://daringfireball.net/projects/markdown/) here.
+Error Button:
 
-If you define a fenced code block with a language flag it will be rendered as a regular Markdown code snippet:
+	<Button error>Error</Button>
 
-```javascript
-import React from 'react';
-```
+Default Button:
+
+    <Button>Default</Button>
+
+Disabled Button:
+	<div>
+	  <Button disabled>Disabled</Button>
+	  <Button disabled primary>Primary</Button>
+      <Button disabled secondary>Secondary</Button>
+      <Button disabled warning>Warning</Button>
+      <Button disabled error>Error</Button>
+	</div>
+
+Link Button:
+
+    <Button link>Link</Button>
+
+Outlined Buttons:
+    <div>
+      <Button outline primary>Primary</Button>
+      <Button outline secondary>Secondary</Button>
+      <Button outline warning>Warning</Button>
+      <Button outline error>Error</Button>
+      <Button outline>Default</Button>
+    </div>
+Small Buttons:
+	<div>
+      <Button small>Small</Button>
+      <Button small primary>Primary</Button>
+      <Button small secondary>Secondary</Button>
+      <Button small warning>Warning</Button>
+      <Button small error>Error</Button>
+    </div>
+
+Large Button:
+	<div>
+	  <Button large>Large</Button>
+	  <Button large primary>Primary</Button>
+      <Button large secondary>Secondary</Button>
+      <Button large warning>Warning</Button>
+      <Button large error>Error</Button>
+    </div>
+
+Button text with icon:
+
+	<Button icon={"fa fa-id-card"}>Text</Button>
+
+Button with icon:
+
+	<Button icon={"fa fa-id-card"}></Button>
