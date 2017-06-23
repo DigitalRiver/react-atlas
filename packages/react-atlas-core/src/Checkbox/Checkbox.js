@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import cx from 'classNames';
+import cx from 'classnames';
 
 /**
  * Simple component for a basic checkbox

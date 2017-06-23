@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { InputCore } from "../Input";
-import cx from "classNames";
+import cx from "classnames";
 
 class Switch extends React.PureComponent {
 

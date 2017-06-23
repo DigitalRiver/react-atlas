@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import cx from 'classNames';
+import cx from 'classnames';
 import { ButtonCore } from "../index";
 
 const buttonClasses = cx({
