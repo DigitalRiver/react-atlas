@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import cx from "classNames";
+import cx from "classnames";
 
 const Radio = ({ className, disabled, inline, name, label, ...props }) => {
   const labelClasses = cx(
