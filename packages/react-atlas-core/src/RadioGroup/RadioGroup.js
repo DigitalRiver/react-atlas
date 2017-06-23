@@ -1,6 +1,6 @@
 import React, { cloneElement } from "react";
 import PropTypes from 'prop-types';
-import cx from "classNames";
+import cx from "classnames";
 
 const RadioGroup = ({ className, children, name, inline, ...props }) => {
   return (

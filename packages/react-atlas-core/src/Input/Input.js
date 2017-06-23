@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import InputMask from "inputmask-core";
 import { utils } from "../utils";
-import cx from "classNames";
+import cx from "classnames";
 
 /**
  * Master Input component. To be used as core for different input types
