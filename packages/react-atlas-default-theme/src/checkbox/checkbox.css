@@ -6,6 +6,10 @@
     position:relative;
 }
 
+.padding {
+    padding-bottom: 5px;
+}
+
 .input {
     composes: relative;
     top: 1px;
@@ -16,8 +20,8 @@
   composes: default-border from "../styles.css";
   composes: bg-silver from "../styles.css"; /* For browsers that do not support gradients */
   composes: relative;
-  top: -20px;
-  left: 2px;
+  position: absolute;
+  top: 0px;
   width: 16px;
   height: 16px;
   cursor: pointer;
@@ -38,6 +42,10 @@
   border: 1px solid #007EB5;
 }
 
+.focus {
+  box-shadow: 0 0 6px rgba(35, 173, 255, 1)
+}
+
 .checkmark {
   composes: relative;
   top: 0px;
@@ -49,6 +57,10 @@
   border-width: 0 3px 3px 0;    
 }
 
+.error {
+  border: solid 1px #BD0A33;
+}
+
 /* Display checkbox with out the checkbox selected.  */
 .not_checked {
   composes: checkbox;
@@ -58,22 +70,35 @@
   background: linear-gradient(#fff, #e6e6e6); /* Standard syntax */
 }
 
-/* label text */
-.label_left {
+.label {
+  composes: default-font from '../styles.css';
   cursor: pointer;
   white-space: nowrap;
-  padding-right: 2px;
+  padding-right:5px;
 }
 
 /* label text */
-.label_right {
-  position: absolute;
-  left: 24px;
-  cursor: pointer;
-  white-space: nowrap;
-  top: 0px;
+.label_left {
+  composes: label;
+  padding-right: 2px;
+}
+
+.error_message {
+  composes: default-font from '../styles.css';
+  color: #BD0A33;
 }
 
 .inline_block {
   display: inline-block;
+}
+
+.float_left {
+  float:left;
+  padding-right: 3px;
+}
+
+.float_right {
+  float:right;
+  padding-left: 3px;
+  position: relative;
 }

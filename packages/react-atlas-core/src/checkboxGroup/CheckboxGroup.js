@@ -1,23 +1,71 @@
-import React, { PropTypes, cloneElement } from "react";
+import React, { cloneElement } from "react";
+import PropTypes from "prop-types";
 import cx from "classNames";
 
-const CheckboxGroup = ({ className, children, name, inline, ...props }) => {
-  return (
-    <div {...props} className={className} styleName={cx("checkboxGroup")}>
-      <h3>{name}</h3>
-      {React.Children.map(children, child => {
-        if (child.type.displayName === "Checkbox") {
-          child = cloneElement(child, {
-            name,
-            inline
-          });
-        }
+class CheckboxGroup extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      "totalChecked": 0,
+      "groupError": false
+    };
+  }
 
-        return child;
-      })}
-    </div>
-  );
-};
+  componentDidMount() {
+    let newChecked = 0
+    React.Children.map(this.props.children, child => {
+      if(child.props.checked) {
+        newChecked++;
+      }
+    });
+    this.setState({ totalChecked: newChecked });
+  }
+
+  groupHandleClick = (checked) => {
+    const newChecked = (checked) ? this.state.totalChecked - 1 : this.state.totalChecked + 1;
+    if (checked) {
+      this.setState({ totalChecked: newChecked });
+    } else {
+      this.setState({ totalChecked: newChecked });
+    }
+  }
+
+  maxMinMessage = () => {
+    if (this.props.max && this.state.totalChecked > this.props.max) {
+      this.setState({ groupError: true });
+      return "Please select no more than " + this.props.max + " of the options below";
+    } else if (this.props.min && this.state.totalChecked < this.props.min){
+      this.setState({ groupError: true });
+      return "Please select at least " + this.props.min + " of the options below";
+    } else {
+      this.setState({ groupError: false });
+    }
+  }
+
+  render() {
+    const { className, children, name, inline, title, max, min } = this.props;
+
+    return (
+      <div className={className} styleName={cx("checkboxGroup")}>
+        <div styleName={cx("header")}>
+          <span styleName={cx("headerFont")}>{title}</span>
+          {(max || min) &&
+            <span styleName={cx("error_message")}>{this.maxMinMessage()}</span>
+          }
+        </div>
+        {React.Children.map(children, child => {
+          child = cloneElement(child, {
+            "inline": inline,
+            "name": name,
+            "groupHandleClick": this.groupHandleClick,
+            "groupError": this.state.groupError
+          });
+          return child;
+        })}
+      </div>
+    );
+  }
+}
 
 CheckboxGroup.propTypes = {
   /**

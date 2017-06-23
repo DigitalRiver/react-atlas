@@ -1,5 +1,14 @@
 @import './variables.css';
 /* Utility Typography */
+.default-font { 
+	font-family: var(--font-family);
+	font-size: var(--font-size);
+ }
+.header-font { 
+	font-family: var(--heading-font-family);
+	font-size: var(--header-font-size);
+	font-weight: var(--heading-font-weight);
+}
 .bold    { font-weight: var(--bold-font-weight, bold) }
 .regular { font-weight: normal }
 .italic  { font-style: italic }
