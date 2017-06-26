@@ -46,7 +46,6 @@
     "colors": "^1.1.2",
     "react": "^15.5.4",
     "react-autosuggest": "^9.0.1",
-    "react-bootstrap-table": "file:C:/dev/react-bootstrap-table",
     "react-docgen": "^2.14.1",
     "react-dom": "^15.5.4"
   },
