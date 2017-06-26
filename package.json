@@ -13,6 +13,7 @@
     "lerna:bootstrap": "lerna bootstrap",
     "lerna:updated": "lerna updated",
     "lerna:publish": "lerna publish",
+    "clean": "lerna clean",
     "packages:build": "node buildPackages.js",
     "setup": "npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
     "codegen": "node packages/react-atlas/src/codegen.js",
