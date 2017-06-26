@@ -97,9 +97,30 @@
   border-left-color: var(--default-border-color)
 }
 .border-left {
-  border-left-style: solid;
+  border-style: solid;
   border-left-width: var(--default-border-width);
   border-left-color: var(--default-border-color);
+}
+
+.border-colorless {
+  border-style: solid;
+  border-width: var(--default-border-width);
+}
+.border-left-colorless {
+  border-style: solid;
+  border-left-width: var(--default-border-width);
+}
+.border-right-colorless {
+  border-style: solid;
+  border-right-width: var(--default-border-width);
+}
+.border-top-colorless {
+  border-style: solid;
+  border-top-width: var(--default-border-width);
+}
+.border-bottom-colorless {
+  border-style: solid;
+  border-bottom-width: var(--default-border-width);
 }
 
 .border-none { border: 0 }
