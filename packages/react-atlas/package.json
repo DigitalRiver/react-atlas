@@ -33,7 +33,8 @@
     "react-modal": "^1.6.5",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1",
-    "css-loader": "^0.28.1"
+    "css-loader": "^0.28.1",
+    "loaders": "^1.1.3"
   },
   "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas",
   "devDependencies": {
