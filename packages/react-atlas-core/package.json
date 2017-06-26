@@ -25,7 +25,8 @@
     "proptypes": "^1.0.0",
     "react": "^15.5.4",
     "react-autosuggest": "^9.0.1",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-bootstrap-table": "file:C:/dev/react-bootstrap-table"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -34,8 +35,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.1",
     "style-loader": "^0.17.0",
-    "webpack": "^2.5.1",
-    "react-bootstrap-table": "^3.1.1"
+    "webpack": "^2.5.1"
   },
   "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas-core"
 }
