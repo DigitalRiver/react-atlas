@@ -21,8 +21,7 @@
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-autosuggest": "^9.0.1",
-    "react-bootstrap-table": "file:C:/dev/react-bootstrap-table"
+    "react-autosuggest": "^9.0.1"
   },
   "devDependencies": {
     "css-loader": "^0.28.1",
