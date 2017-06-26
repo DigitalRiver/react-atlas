@@ -116,14 +116,14 @@ let indexTemplate = warningMessage;
 indexTemplate +=
   "{{~it.components :value:index}}" +
   eol +
-  "export {{=value.name}} from './{{=value.name}}';" +
+  "export {{{=value.name}}} from './{{=value.name}}';" +
   eol +
   "{{~}}" +
   eol;
 
 let compIndexTemplate = warningMessage;
 compIndexTemplate +=
-  "export { {{=it.component.name}} as default } from './{{=it.component.name}}.js';";
+  "export {{=it.component.name}} from './{{=it.component.name}}.js';";
 
 /* Dot template settings. Keep defaults except turn off stripping newlines feature
  * of dot.js. */
