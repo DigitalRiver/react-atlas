@@ -78,7 +78,7 @@ class Dropdown extends React.Component {
     });
 
     return (
-      <div {...props} ref={(node) => (this.wrapperRef = node)} className={className} styleName={classes} onClick={this._toggle}>
+      <div ref={(node) => (this.wrapperRef = node)} className={className} styleName={classes} onClick={this._toggle}>
         <ButtonCore className={buttonClasses}>{this.state.output}<i styleName="arrow"></i></ButtonCore>
         {this.state.active ? <div styleName={"list"}>{bound_children}</div> : null}
       </div>

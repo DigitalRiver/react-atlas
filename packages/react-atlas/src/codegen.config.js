@@ -156,6 +156,7 @@ let components = [
   "radioGroup",
   "switch",
   "table",
+  "tableHeader",
   "tooltip"
 ];
 

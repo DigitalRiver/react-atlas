@@ -25,7 +25,8 @@
     "proptypes": "^1.0.0",
     "react": "^15.5.4",
     "react-autosuggest": "^9.0.1",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-bootstrap-table": "^4.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

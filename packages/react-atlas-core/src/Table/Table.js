@@ -1,24 +1,44 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { BootstrapTable } from "react-bootstrap-table";
 import cx from 'classnames';
 
-const Table = ({ className, children, ...props }) => {
-  const classes = cx(
-    {
-      "table": true
-    }
-  );
+class Table extends React.PureComponent {
+  render() {
+    const { className, children, styles, ...props } = this.props;
 
-  return (
-    <table {...props} styleName={classes} className={cx(className)}>
-      {children}
-    </table>
-  );
-};
+    return (
+      <BootstrapTable
+        {...props}
+        className={cx(className)}
+        containerClass={styles["react-bs-table-container"]}
+        tableContainerClass={styles["react-bs-table"]}
+        headerContainerClass={styles["react-bs-container-header"]}
+        bodyContainerClass={styles["react-bs-container-body"]}
+      >
+        {children}
+      </BootstrapTable>
+    );
+  }
+}
 
 Table.propTypes = {
   "children": PropTypes.any,
+  "data": PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  "pagination": PropTypes.bool,
+  "options": PropTypes.shape({
+    "defaultSortName": PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+    "defaultSortOrder": PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+  }),
   "className": PropTypes.string
+};
+
+Table.defaultProps = {
+  "pagination": false,
+  "options": {
+    "defaultSortName": "",
+    "defaultSortOrder": ""
+  }
 };
 
 export default Table;
