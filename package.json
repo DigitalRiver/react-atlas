@@ -18,7 +18,7 @@
     "setup": "npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
     "codegen": "node packages/react-atlas/src/codegen.js",
     "bootstrap": "npm run lerna:init && npm run lerna:bootstrap && npm run codegen && npm run packages:build",
-    "docs": "cd packages/react-atlas && npm run styleguide"
+    "docs": "cd packages/react-atlas-docs && node src/codegen.js && npm run styleguide"
   },
   "jest": {
     "collectCoverageFrom": [
