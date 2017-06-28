@@ -10,4 +10,5 @@ jsconfig.json
 lerna-debug.log
 coverage
 packages/react-atlas/src/components/
+packages/react-atlas-docs/src/components/
 atlas.config.js

@@ -72,9 +72,7 @@ let devTemplate = warningMessage;
 devTemplate +=
   "import CSSModules from 'react-css-modules';" +
   eol +
-  "import React from 'react';" +
-  eol + 
-  "import PropTypes from 'prop-types';" +
+  "import React, { PropTypes } from 'react';" +
   eol +
   "import { {{=it.component.name}}Core } from 'react-atlas-core';" +
   eol +
@@ -82,7 +80,7 @@ devTemplate +=
   eol +
   "const {{=it.component.name}}Comp = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true, errorWhenNotFound: true});" +
   eol +
-  "export default class {{=it.component.name}} extends React.Component {" +
+  "export class {{=it.component.name}} extends React.Component {" +
   eol +
   "constructor(props){" +
   eol +
@@ -118,15 +116,14 @@ let indexTemplate = warningMessage;
 indexTemplate +=
   "{{~it.components :value:index}}" +
   eol +
-  "export {{{=value.name}}} from './{{=value.name}}';" +
+  "export {{=value.name}} from './{{=value.name}}';" +
   eol +
   "{{~}}" +
   eol;
 
-
 let compIndexTemplate = warningMessage;
 compIndexTemplate +=
-  "export {{{=it.component.name}}} from './{{=it.component.name}}.js';";
+  "export { {{=it.component.name}} as default } from './{{=it.component.name}}.js';";
 
 /* Dot template settings. Keep defaults except turn off stripping newlines feature
  * of dot.js. */
