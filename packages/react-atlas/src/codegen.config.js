@@ -72,7 +72,9 @@ let devTemplate = warningMessage;
 devTemplate +=
   "import CSSModules from 'react-css-modules';" +
   eol +
-  "import React, { PropTypes } from 'react';" +
+  "import React from 'react';" +
+  eol + 
+  "import PropTypes from 'prop-types';" +
   eol +
   "import { {{=it.component.name}}Core } from 'react-atlas-core';" +
   eol +
@@ -120,6 +122,7 @@ indexTemplate +=
   eol +
   "{{~}}" +
   eol;
+
 
 let compIndexTemplate = warningMessage;
 compIndexTemplate +=
