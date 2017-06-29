@@ -156,7 +156,8 @@ let components = [
   "radioGroup",
   "switch",
   "table",
-  "tooltip"
+  "tooltip",
+  "hint"
 ];
 
 module.exports = {
