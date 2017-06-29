@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { InputCore } from "../input";
+import { InputCore } from "../Input";
 import messages from "../utils/messages.js";
 
 let inlineCheckbox, labelStyle, title_label, disabledClass, checkboxDisplay;
