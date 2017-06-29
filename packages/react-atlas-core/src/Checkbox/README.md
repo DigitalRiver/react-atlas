@@ -66,11 +66,3 @@ Custom Function Before Change:
       	label="Checkbox onBeforeChange" 
       	onBeforeChange={ function(value){ if (!value) { let accept = confirm("Do you want to check this?"); return accept; } return true; } }
       />
-
-And you *can* **use** `any` [Markdown](http://daringfireball.net/projects/markdown/) here.
-
-If you define a fenced code block with a language flag it will be rendered as a regular Markdown code snippet:
-
-```javascript
-import React from 'react'; 
-```
