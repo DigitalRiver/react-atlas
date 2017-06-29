@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import InputMask from "inputmask-core";
 import { utils } from "../utils";
-import cx from "classnames";
+import cx from "classNames";
 
 /**
  * Master Input component. To be used as core for different input types
@@ -241,8 +241,7 @@ class Input extends React.Component {
       "medium": medium,
       "large": large,
       "max": !small && !medium && !large,
-      disabled,
-      hidden
+      "hidden": hidden
     });
 
     let eventHandlers = {
@@ -258,6 +257,7 @@ class Input extends React.Component {
           name={name}
           value={this.state.value}
           placeholder={placeholder}
+          disabled={disabled}
           styleName={inputClasses}
           className={cx(className)}
           onChange={this._handleChange}
@@ -267,6 +267,7 @@ class Input extends React.Component {
           name={name}
           value={this.state.value}
           placeholder={placeholder}
+          disabled={disabled}
           styleName={inputClasses}
           className={cx(className)}
           ref={input => {
@@ -282,6 +283,7 @@ class Input extends React.Component {
     return isCheckbox
       ? <input
           type="checkbox"
+          disabled={disabled}
           name={name}
           styleName={inputClasses}
           className={cx(className)}

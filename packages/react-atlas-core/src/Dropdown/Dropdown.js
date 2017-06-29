@@ -14,7 +14,7 @@ const buttonClasses = cx({
   'ra_styles__border': true,
   'ra_styles__cursor-pointer': true,
   'ra_styles__charcoal': true,
-  'ra_styles__border-med-grey': true,
+  'ra_styles__border-med-grey': true
 });
 
 class Dropdown extends React.Component {
@@ -78,8 +78,8 @@ class Dropdown extends React.Component {
     });
 
     return (
-      <div {...props} ref={(node) => (this.wrapperRef = node)} className={className} styleName={classes} onClick={this._toggle}>
-        <ButtonCore className={buttonClasses}>{this.state.output}<i styleName="arrow"></i></ButtonCore>
+      <div {...props} ref={(node) => this.wrapperRef = node} className={className} styleName={classes} onClick={this._toggle}>
+        <ButtonCore className={buttonClasses}>{this.state.output}<i styleName="arrow" /></ButtonCore>
         {this.state.active ? <div styleName={"list"}>{bound_children}</div> : null}
       </div>
     );
