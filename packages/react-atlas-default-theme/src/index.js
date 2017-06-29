@@ -9,3 +9,4 @@ export { RadioGroupStyle } from "./RadioGroup";
 export { TableStyle } from "./Table";
 export { SwitchStyle } from "./Switch";
 export { TooltipStyle } from "./Tooltip";
+export { HintStyle } from "./Hint";
