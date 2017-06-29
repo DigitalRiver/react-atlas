@@ -6,7 +6,7 @@ class CheckboxGroup extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      totalChecked: initialChecked(),
+      totalChecked: this.initialChecked(),
       groupError: false
     };
   }
@@ -74,7 +74,7 @@ class CheckboxGroup extends React.PureComponent {
         {title &&
           <div styleName={cx("header")}>
             <span styleName={cx("headerFont")}>{title}</span>
-            {(max || min) &&
+            {this.state.groupError &&
               <span styleName={cx("error_message")}>
                 {this.maxMinMessage()}
               </span>}

@@ -1,2 +1,3 @@
-import * as CheckboxGroupStyle from "./checkboxGroup.css";
+import * as CheckboxGroupStyle from "./CheckboxGroup.css";
 export { CheckboxGroupStyle };
+

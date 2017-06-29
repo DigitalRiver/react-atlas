@@ -20,7 +20,7 @@ Inline Checkbox Group
 
 Checkbox Group with Checked Minimum
 
-	<CheckboxGroup inline title="Checkbox Group: Select at least one" name="inlineGroup" min="1" limitMessage="This is a custom message. Please select at least {0} checkboxes below.">
+	<CheckboxGroup inline title="Checkbox Group: Select at least one" name="inlineGroup" min={1} limitMessage="This is a custom message. Please select at least {0} checkboxes below.">
 		<Checkbox
 			label="Checkbox"
 		/>
@@ -31,7 +31,7 @@ Checkbox Group with Checked Minimum
 
 Checkbox Group with Checked Maximum
 
-	<CheckboxGroup inline title="Checkbox Group: Select no more than one" name="inlineGroup" max="1" limitMessage="This is a custom message. Please select no more than {0} checkboxes below.">
+	<CheckboxGroup inline title="Checkbox Group: Select no more than one" name="inlineGroup" max={1} limitMessage="This is a custom message. Please select no more than {0} checkboxes below.">
 		<Checkbox
 			label="Checkbox"
 		/>
