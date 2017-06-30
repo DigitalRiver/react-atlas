@@ -6,9 +6,11 @@ Switch component allows to define a particular-styled checkbox.
 
 ###### Different sized switches:
 
-    <Switch small/>
-    <Switch medium/>
-    <Switch large/>
+    <div>
+      <Switch small/>
+      <Switch medium/>
+      <Switch large/>
+    </div>
 
 ###### Switch with custom onChange handler:
 
@@ -16,19 +18,25 @@ Switch component allows to define a particular-styled checkbox.
 
 ###### Multiple switches tied to same behavior (name prop):
 
-    <Switch name="customFeature"/>
-    <Switch name="customFeature"/>
-    <Switch name="customFeature"/>
+    <div>
+      <Switch name="customFeature"/>
+      <Switch name="customFeature"/>
+      <Switch name="customFeature"/>
+    </div>
 
 ###### Set other colors for on/off states (hex, rgb, css-valid color name):
 
-    <Switch onColor="#00bbaa" offColor="#000000"/>
-    <Switch onColor="green" offColor="black"/>
+    <div>
+      <Switch onColor="#00bbaa" offColor="#000000"/>
+      <Switch onColor="green" offColor="black"/>
+    </div>
 
 ###### Disabled or hidden switch:
 
-    <Switch disabled/>
-    <Switch hidden/>
+    <div>
+      <Switch disabled/>
+      <Switch hidden/>
+    </div>
 
 ###### Execute method when onChange event occurs:
 
