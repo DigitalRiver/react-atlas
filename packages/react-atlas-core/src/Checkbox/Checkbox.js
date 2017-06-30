@@ -4,7 +4,7 @@ import cx from "classnames";
 import { InputCore } from "../Input";
 import messages from "../utils/messages.js";
 
-let inlineCheckbox, labelStyle, title_label, disabledClass, checkboxDisplay;
+let labelStyle, title_label, disabledClass, checkboxDisplay;
 /**
  * Simple component for a basic checkbox
  */
@@ -17,8 +17,7 @@ class Checkbox extends React.PureComponent {
       errorMessage: "",
       focus: false
     };
-
-    inlineCheckbox = cx({ inline_block: props.inline, checkbox_padding: true });
+    console.log(props.inline + ", " + props.name);
     labelStyle = cx({
       label: props.labelPosition !== "left",
       label_left: props.labelPosition === "left"
@@ -115,8 +114,10 @@ class Checkbox extends React.PureComponent {
       className,
       name,
       groupError,
-      errorCallback
+      errorCallback,
+      inline
     } = this.props;
+    const inlineCheckbox = cx({ inline_block: inline, checkbox_padding: true }); // Leave in render function, If moved to constructor it will cause an error with CheckboxGroup
     const error = groupError || !this.state.valid;
     let checkboxClass = cx({
       checked: this.state.checked,

@@ -32,9 +32,7 @@ class CheckboxGroup extends React.PureComponent {
     } else {
       this.setState({ totalChecked: newChecked });
     }
-    if (this.props.max && newChecked > this.props.max) {
-      this.setState({ groupError: true });
-    } else if (this.props.min && newChecked < this.props.min) {
+    if ((this.props.max && newChecked > this.props.max) || (this.props.min && newChecked < this.props.min)) {
       this.setState({ groupError: true });
     } else {
       this.setState({ groupError: false });
@@ -68,7 +66,6 @@ class CheckboxGroup extends React.PureComponent {
 
   render() {
     const { className, children, name, inline, title, max, min } = this.props;
-
     return (
       <div className={cx(className)} styleName={cx("checkboxGroup")}>
         {title &&
@@ -134,6 +131,10 @@ CheckboxGroup.propTypes = {
    * @examples '<CheckboxGroup min="3" limitMessage="Please select at least {0} of the checkboxes below."></CheckboxGroup>'
    */
   limitMessage: PropTypes.string
+};
+
+CheckboxGroup.defaultProps = {
+  inline: false
 };
 
 export default CheckboxGroup;
