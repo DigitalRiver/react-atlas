@@ -158,6 +158,9 @@ class Checkbox extends React.PureComponent {
               {this.state.checked && <div styleName={cx("checkmark")} />}
             </div>
           </div>
+          {this.props.required &&
+            <span styleName={"error_text"}>*</span>
+          }
         </div>
         {error &&
           !groupError &&

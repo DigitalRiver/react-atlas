@@ -80,9 +80,13 @@
   padding-right: 2px;
 }
 
-.error_message {
+.error_text {
   composes: default-font from '../styles.css';
   color: #BD0A33;
+}
+
+.error_message {
+  composes: error_text;
   margin-left:23px;
 }
 
