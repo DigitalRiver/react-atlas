@@ -149,6 +149,7 @@ let components = [
   "avatar",
   "button",
   "checkbox",
+  "checkboxGroup",
   "dropdown",
   "form",
   "input",
