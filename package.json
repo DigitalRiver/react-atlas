@@ -43,10 +43,7 @@
     "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "babel-plugin-transform-react-inline-elements": "^6.22.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.2",
-    "colors": "^1.1.2",
     "react": "^15.5.4",
-    "react-autosuggest": "^9.0.1",
-    "react-docgen": "^2.14.1",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
