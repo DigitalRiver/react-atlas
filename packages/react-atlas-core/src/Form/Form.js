@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-/**
- * A simple wrapper around the regular HTML `<form>` element.
- */
-const Form = ({ children, ...props }) => {
-  return (
-    <form {...props}>
-      {children}
-    </form>
-  );
-};
+class Form extends React.PureComponent {
+  render() {
+    const { className, children} = this.props;
+    return (
+      <form className={cx(className)}>
+        {children}
+      </form>
+    );
+  }
+}
 
 Form.propTypes = {
   "children": PropTypes.node
