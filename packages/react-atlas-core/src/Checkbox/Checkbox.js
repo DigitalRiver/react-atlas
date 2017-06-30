@@ -4,7 +4,6 @@ import cx from "classnames";
 import { InputCore } from "../Input";
 import messages from "../utils/messages.js";
 
-let labelStyle, title_label, disabledClass, checkboxDisplay;
 /**
  * Simple component for a basic checkbox
  */
@@ -17,17 +16,6 @@ class Checkbox extends React.PureComponent {
       errorMessage: "",
       focus: false
     };
-    labelStyle = cx({
-      label: props.labelPosition !== "left",
-      label_left: props.labelPosition === "left"
-    });
-    title_label = props.title ? props.title : props.label;
-    disabledClass = props.disabled
-      ? cx("disabled", "inline_block", "relative", "padding")
-      : cx("inline_block", "relative", "padding");
-    checkboxDisplay = props.labelPosition === "left"
-      ? cx("float_right")
-      : cx("float_left");
   }
 
   // Handles new checkbox clicks and sets value and checked status of hidden input
@@ -109,14 +97,28 @@ class Checkbox extends React.PureComponent {
   render() {
     const {
       label,
+      title,
       disabled,
       className,
       name,
       groupError,
       errorCallback,
-      inline
+      inline,
+      labelPosition
     } = this.props;
-    const inlineCheckbox = cx({ inline_block: inline, checkbox_padding: true }); // TODO: Figure out why, if moved to constructor, this causes an error with CheckboxGroup
+    // TODO: Figure out why, if moved to constructor, the following variables cause issues on click
+    const inlineCheckbox = cx({ inline_block: inline, checkbox_padding: true });
+    const labelStyle = cx({
+      label: labelPosition !== "left",
+      label_left: labelPosition === "left"
+    });
+    const checkboxDisplay = labelPosition === "left"
+      ? cx("float_right")
+      : cx("float_left");
+    const title_label = title ? title : label;
+    const disabledClass = disabled
+      ? cx("disabled", "inline_block", "relative", "padding")
+      : cx("inline_block", "relative", "padding");
     const error = groupError || !this.state.valid;
     let checkboxClass = cx({
       checked: this.state.checked,
@@ -158,9 +160,7 @@ class Checkbox extends React.PureComponent {
               {this.state.checked && <div styleName={cx("checkmark")} />}
             </div>
           </div>
-          {this.props.required &&
-            <span styleName={"error_text"}>*</span>
-          }
+          {this.props.required && <span styleName={"error_text"}>*</span>}
         </div>
         {error &&
           !groupError &&
