@@ -17,7 +17,6 @@ class Checkbox extends React.PureComponent {
       errorMessage: "",
       focus: false
     };
-    console.log(props.inline + ", " + props.name);
     labelStyle = cx({
       label: props.labelPosition !== "left",
       label_left: props.labelPosition === "left"
@@ -117,7 +116,7 @@ class Checkbox extends React.PureComponent {
       errorCallback,
       inline
     } = this.props;
-    const inlineCheckbox = cx({ inline_block: inline, checkbox_padding: true }); // Leave in render function, If moved to constructor it will cause an error with CheckboxGroup
+    const inlineCheckbox = cx({ inline_block: inline, checkbox_padding: true }); // TODO: Figure out why, if moved to constructor, this causes an error with CheckboxGroup
     const error = groupError || !this.state.valid;
     let checkboxClass = cx({
       checked: this.state.checked,
