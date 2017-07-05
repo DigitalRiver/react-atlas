@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import cx from "classnames";
 import { TableHeaderColumn as BTableHeader } from "react-bootstrap-table";
 
-class TableHeader extends Component {
+class TableHeader extends React.PureComponent {
   render() {
     const { className, children, ...props } = this.props;
     return (
