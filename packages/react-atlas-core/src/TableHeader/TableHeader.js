@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import cx from "classNames";
+import cx from "classnames";
 import { TableHeaderColumn as BTableHeader } from "react-bootstrap-table";
 
 class TableHeader extends Component {
