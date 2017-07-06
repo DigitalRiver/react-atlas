@@ -5,16 +5,16 @@ import { BootstrapTable } from "react-bootstrap-table";
 
 class Table extends React.PureComponent {
   render() {
-    const { className, children, styles, ...props } = this.props;
+    const { className, children, ...props } = this.props;
 
     return (
       <BootstrapTable
         {...props}
         className={cx(className)}
-        containerClass={styles["react-bs-table-container"]}
-        tableContainerClass={styles["react-bs-table"]}
-        headerContainerClass={styles["react-bs-container-header"]}
-        bodyContainerClass={styles["react-bs-container-body"]}
+        containerClass={"ra_table__react-bs-table-container"}
+        tableContainerClass={"ra_table__react-bs-table"}
+        headerContainerClass={"ra_table__react-bs-container-header"}
+        bodyContainerClass={"ra_table__react-bs-container-body"}
       >
         {children}
       </BootstrapTable>
