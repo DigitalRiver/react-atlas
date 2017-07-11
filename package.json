@@ -13,7 +13,7 @@
     "lerna:bootstrap": "lerna bootstrap",
     "lerna:updated": "lerna updated",
     "lerna:publish": "lerna publish",
-    "clean": "lerna clean",
+    "clean": "node cleanPackages.js",
     "packages:build": "node buildPackages.js",
     "setup": "npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
     "codegen": "node packages/react-atlas/src/codegen.js",
@@ -43,10 +43,7 @@
     "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "babel-plugin-transform-react-inline-elements": "^6.22.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.2",
-    "colors": "^1.1.2",
     "react": "^15.5.4",
-    "react-autosuggest": "^9.0.1",
-    "react-docgen": "^2.14.1",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
@@ -64,6 +61,7 @@
     "lerna": "^2.0.0-rc.5",
     "prettier": "^1.3.1",
     "react-addons-test-utils": "^15.5.1",
+    "rimraf": "^2.6.1",
     "sinon": "^2.2.0"
   },
   "repository": {

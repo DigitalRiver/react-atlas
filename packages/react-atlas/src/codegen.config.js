@@ -72,7 +72,9 @@ let devTemplate = warningMessage;
 devTemplate +=
   "import CSSModules from 'react-css-modules';" +
   eol +
-  "import React, { PropTypes } from 'react';" +
+  "import React from 'react';" +
+  eol + 
+  "import PropTypes from 'prop-types';" +
   eol +
   "import { {{=it.component.name}}Core } from 'react-atlas-core';" +
   eol +
@@ -121,6 +123,7 @@ indexTemplate +=
   "{{~}}" +
   eol;
 
+
 let compIndexTemplate = warningMessage;
 compIndexTemplate +=
   "export {{=it.component.name}} from './{{=it.component.name}}.js';";
@@ -146,6 +149,7 @@ let components = [
   "avatar",
   "button",
   "checkbox",
+  "checkboxGroup",
   "dropdown",
   "form",
   "input",
@@ -153,7 +157,8 @@ let components = [
   "radioGroup",
   "switch",
   "table",
-  "tooltip"
+  "tooltip",
+  "hint"
 ];
 
 module.exports = {
