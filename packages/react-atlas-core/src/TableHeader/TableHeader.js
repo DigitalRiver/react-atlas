@@ -5,9 +5,9 @@ import { TableHeaderColumn as BTableHeader } from "react-bootstrap-table";
 
 class TableHeader extends React.PureComponent {
   render() {
-    const { className, children, ...props } = this.props;
+    const { className, children } = this.props;
     return (
-      <BTableHeader {...props} className={cx(className)}>
+      <BTableHeader className={cx(className)} tableHeaderClass={"row-hover"}>
         {children}
       </BTableHeader>
     );
