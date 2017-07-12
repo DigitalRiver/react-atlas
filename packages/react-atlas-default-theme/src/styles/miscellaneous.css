@@ -11,3 +11,18 @@
     -webkit-opacity: 0;
     -o-opacity: 0;
 }
+
+.silver-to-white-gradient {
+	background: white;
+	background: -webkit-linear-gradient(#ffffff, #e6e6e6);
+	background: -o-linear-gradient(#ffffff, #e6e6e6);
+	background: -moz-linear-gradient(#ffffff, #e6e6e6);
+	background: linear-gradient(#ffffff, #e6e6e6);
+}
+
+.white-inset-shadow {
+	box-shadow: inset 0px 0px 0px 3px white;
+	-webkit-box-shadow: inset 0px 0px 0px 3px white;
+	-moz-box-shadow: inset 0px 0px 0px 3px white;
+	-o-box-shadow: inset 0px 0px 0px 3px white;
+}
