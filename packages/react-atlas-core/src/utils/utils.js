@@ -100,5 +100,9 @@ export default {
       }
     }
     catch (e) { /* not focused or not visible */ }
+  },
+  getComponentName(comp) {
+    const name = comp.type.displayName || comp.type.name || comp.type;
+    return name;
   }
 };
