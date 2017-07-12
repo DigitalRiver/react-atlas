@@ -1,5 +1,5 @@
 import React, { cloneElement } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import cx from "classnames";
 
 class RadioGroup extends React.PureComponent {
@@ -7,25 +7,28 @@ class RadioGroup extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      checkedRadio: null
-    }
+      "checkedRadio": null
+    };
   }
 
   groupSetChecked = value => {
-    this.setState({checkedRadio: value});
+    this.setState({ "checkedRadio": value });
   };
 
   componentWillMount() {
     React.Children.map(this.props.children, (child, index) => {
-      if(child.props.defaultChecked || (!this.state.checkedRadio && index === 0)) {
-        this.setState({checkedRadio: child.props.value});
+      if (
+        child.props.defaultChecked ||
+        !this.state.checkedRadio && index === 0
+      ) {
+        this.setState({ "checkedRadio": child.props.value });
       }
     });
   }
 
   render() {
     const { className, children, name, inline, title } = this.props;
-    
+
     return (
       <div className={cx(className)} styleName={cx("radioGroup")}>
         {title &&
@@ -34,10 +37,10 @@ class RadioGroup extends React.PureComponent {
           </div>}
         {React.Children.map(children, (child, index) => {
           child = cloneElement(child, {
-            inline: inline,
-            name: name,
-            groupSetChecked: this.groupSetChecked,
-            checked: this.state.checkedRadio === child.props.value
+            "inline": inline,
+            "name": name,
+            "groupSetChecked": this.groupSetChecked,
+            "checked": this.state.checkedRadio === child.props.value
           });
 
           return child;
@@ -45,7 +48,7 @@ class RadioGroup extends React.PureComponent {
       </div>
     );
   }
-};
+}
 
 RadioGroup.propTypes = {
   /**

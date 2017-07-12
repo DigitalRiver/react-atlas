@@ -8,14 +8,17 @@ class Radio extends React.PureComponent {
     super(props);
 
     /* Classes and styles setup */
-    let inlineRadio = cx({ 
-      inline_block: this.props.inline,
-      hidden: this.props.hidden
-    }, "radio_padding");
+    let inlineRadio = cx(
+      {
+        "inline_block": this.props.inline,
+        "hidden": this.props.hidden
+      },
+      "radio_padding"
+    );
 
     let labelStyle = cx({
-      label: this.props.labelPosition !== "left",
-      label_left: this.props.labelPosition === "left"
+      "label": this.props.labelPosition !== "left",
+      "label_left": this.props.labelPosition === "left"
     });
 
     let radioDisplay = this.props.labelPosition === "left"
@@ -29,7 +32,7 @@ class Radio extends React.PureComponent {
       labelStyle,
       labelTitle,
       radioDisplay
-    }
+    };
   }
 
   // Handles new radio clicks and sets value and checked status of hidden input
@@ -41,8 +44,8 @@ class Radio extends React.PureComponent {
          The data object contains a boolean for whether the radio was
          clicked or not, plus all the props passed to the object.  */
         this.props.onClick(event, {
-          checked: this.props.checked,
-          props: this.props
+          "checked": this.props.checked,
+          "props": this.props
         });
       }
 
@@ -54,8 +57,8 @@ class Radio extends React.PureComponent {
          The data object contains a boolean for whether the radio was
          clicked or not, plus all the props passed to the object.  */
         this.props.onChange(event, {
-          checked: this.props.checked,
-          props: this.props
+          "checked": this.props.checked,
+          "props": this.props
         });
       }
     }
@@ -83,16 +86,11 @@ class Radio extends React.PureComponent {
       hidden
     } = this.props;
 
-    const { 
-      inlineRadio,
-      labelStyle,
-      labelTitle,
-      radioDisplay
-    } = this.classes;
+    const { inlineRadio, labelStyle, labelTitle, radioDisplay } = this.classes;
 
     let radioClass = cx({
-      checked: checked,
-      not_checked: !checked
+      "checked": checked,
+      "not_checked": !checked
     });
 
     let disabledClass = disabled
@@ -100,10 +98,7 @@ class Radio extends React.PureComponent {
       : cx("inline_block", "relative", "padding");
 
     return (
-      <div
-        onClick={this._clickHandler}
-        styleName={inlineRadio}
-      >
+      <div onClick={this._clickHandler} styleName={inlineRadio}>
         <div styleName={disabledClass}>
           {label &&
             <label
@@ -131,8 +126,7 @@ class Radio extends React.PureComponent {
       </div>
     );
   }
-
-};
+}
 
 Radio.propTypes = {
   /**
