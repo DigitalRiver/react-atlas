@@ -29,22 +29,24 @@ class RadioGroup extends React.PureComponent {
   render() {
     const { className, children, name, inline, title } = this.props;
 
+    const radioButtons =
+      React.Children.map(children, (child, index) => {
+        child = cloneElement(child, {
+          "inline": inline,
+          "name": name,
+          "groupSetChecked": this.groupSetChecked,
+          "checked": this.state.checkedRadio === child.props.value
+        });
+        return child;
+      });
+
     return (
       <div className={cx(className)} styleName={cx("radioGroup")}>
         {title &&
           <div styleName={cx("header")}>
             <span styleName={cx("headerFont")}>{title}</span>
           </div>}
-        {React.Children.map(children, (child, index) => {
-          child = cloneElement(child, {
-            "inline": inline,
-            "name": name,
-            "groupSetChecked": this.groupSetChecked,
-            "checked": this.state.checkedRadio === child.props.value
-          });
-
-          return child;
-        })}
+        {radioButtons}
       </div>
     );
   }
@@ -55,7 +57,7 @@ RadioGroup.propTypes = {
    * Anything that can be in a radio group. Almost always radio components alone.
    * @examples '<RadioGroup><Radio/><Radio/></RadioGroup>'
    */
-  "children": PropTypes.node,
+  "children": PropTypes.node.isRequired,
   /**
    * Define a custom css class name.
    * @examples 'radioGroup', 'radio-group'
