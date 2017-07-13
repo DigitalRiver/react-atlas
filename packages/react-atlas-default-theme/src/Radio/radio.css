@@ -1,58 +1,97 @@
-.radioLabel {
-	composes: cursor-pointer from '../styles.css';
+.disabled {
+    composes: default-text from '../styles.css';
 }
 
-.radioInput {
+.relative {
+    position:relative;
+}
+
+.padding {
+    padding-bottom: 5px;
+}
+
+.input {
+    composes: relative;
+    top: 1px;
+}
+
+.radio {
 	position: absolute;
-	composes: opacity-0 from '../styles.css';
-}
-
-.radioInput + span { 
-	position: relative;
-}
-
-	/* we can't use composes here due to pseudo-element */
-	.radioInput + span:before {
-		cursor: pointer;
-		position: relative;
-		content: "";
-	    display: inline-block;
-	    margin-right: 5px;
-	    top: 5px;
-	    height: 18px;
-	    width: 18px;
-		background: white;
-		background: -webkit-linear-gradient(#ffffff, #e6e6e6);
-		background: -o-linear-gradient(#ffffff, #e6e6e6);
-		background: -moz-linear-gradient(#ffffff, #e6e6e6);
-		background: linear-gradient(#ffffff, #e6e6e6);
-		border: 1px solid #999999;
-		border-radius: 50%;
-		-webkit-border-radius: 50%;
-		-moz-border-radius: 50%;
-		-o-border-radius: 50%;
-	}
-
-	.radioInput:checked + span:before {
-		background: #007eb5;
-		box-shadow: inset 0px 0px 0px 3px white;
-		-webkit-box-shadow: inset 0px 0px 0px 3px white;
-		-moz-box-shadow: inset 0px 0px 0px 3px white;
-		-o-box-shadow: inset 0px 0px 0px 3px white;
-	}
-
-
-.block {
-	composes: marg-b-1 from '../styles.css';
-	display: block;
-	line-height: 30px;
-}
-
-.inline {
-	composes: marg-r-2 from '../styles.css';
+	top: 0px;
+	height: 16px;
+	width: 16px;
 	display: inline-block;
+	composes: cursor-pointer from '../styles.css';
+	composes: silver-to-white-gradient from '../styles.css';
+	composes: default-border from '../styles.css';
+	composes: circle from '../styles.css';
 }
 
 .disabled {
-	composes: gray from '../styles.css';
+  opacity: 0.65;
+  composes: cursor-not-allowed from '../styles.css'; 
+  pointer-events: none;
+}
+
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+
+.checked {
+	composes: radio;
+	composes: white-inset-shadow from '../styles.css';
+	background: #007EB5;
+}
+
+.focus {
+  box-shadow: 0 0 6px rgba(35, 173, 255, 1);
+}
+
+.checkmark {
+  composes: relative;
+  top: 0px;
+}
+
+.error {
+  border: solid 1px #BD0A33;
+}
+
+.not_checked {
+  composes: radio;
+  background: -webkit-linear-gradient(#fff, #e6e6e6); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#fff, #e6e6e6); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#fff, #e6e6e6); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#fff, #e6e6e6); /* Standard syntax */
+}
+
+.label {
+  composes: default-font from '../styles.css';
+  cursor: pointer;
+  white-space: nowrap;
+  padding-right:5px;
+}
+
+.label_left {
+  composes: label;
+  padding-right: 2px;
+}
+
+.inline_block {
+  display: inline-block;
+}
+
+.radio_padding {
+  padding: 10px 10px 0 0;
+}
+
+.float_left {
+  float:left;
+  padding-right: 3px;
+}
+
+.float_right {
+  float:right;
+  padding-left: 3px;
+  position: relative;
 }
