@@ -1,4 +1,4 @@
 <Form>
-  <Input type="text"></Input>
-  <Button primary>Submit</Button>
+  <Input type="email"></Input>
+  <Input type="password"></Input>
 </Form>
