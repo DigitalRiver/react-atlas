@@ -102,7 +102,12 @@ export default {
     catch (e) { /* not focused or not visible */ }
   },
   getComponentName(comp) {
-    const name = comp.type.displayName || comp.type.name || comp.type;
-    return name;
+    if(comp.type) {
+      if(Object.keys(comp.type).length === 0 && comp.type.constructor === Object) {
+        return null;
+      }
+      return comp.type.displayName || comp.type.name || comp.type || null;
+    }
+    return null;
   }
 };
