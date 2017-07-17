@@ -25,15 +25,31 @@ const buttonClasses = cx({
 
 
 class Form extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    let childState = [];
+
+    React.Children.map(props.children, (child, i) => {
+
+      let state = {
+                    index: i, 
+                    value: child.props.value || '', 
+                    name: child.props.name || ''
+                  };
+
+      childState.push(state)
+
+      return child
+    });
+
+    this.state = {
+      "childState": childState
+    };
+  }
 
   clearForm = () => {
 
-  }
-
-  setupInitialState = (childArray) => {
-  	for(let i = 0; i < childArray.length; i++) {
-
-  	}
   }
 
   validate = () => {
@@ -63,19 +79,43 @@ class Form extends React.PureComponent {
   }
 
   /* Fires whenever a child input is changed. */
-  onChangeHandler = (e) => {
-  	console.log("Click: ", e);
+  onChangeHandler = (event, state) => {
+    let index = state.index;
+    // let childState = this.state.childState;
+    let childState = [];
+    let count = React.Children.count(this.props.children);
+
+    for(let i = 0; i < count; i++) {
+      if(i === index) {
+        let child = {index: i, value: event.target.value};
+        childState.push(child);
+        continue;
+      }
+
+      let child = this.state.childState[i];
+      childState.push(child);
+    }
+   
+    this.setState({"childState": childState});
   }
 
   render() {
     const { className, children, action, buttonText} = this.props;
 
+    /* Loop through children components and set onChange handlers
+     * and add CSS classes. */
     let kids = React.Children.map(children, (child, i) => {
-        const classes = cx(child.props.className, "ra_form__component");
-        return React.cloneElement(child, {className: classes, onChange: this.onChangeHandler, index: i});
-    });
 
-    this.setupInitialState(kids);
+        const classes = cx(child.props.className, "ra_form__component");
+
+        let props = {
+          className: classes, 
+          onChange: (e, childState) => this.onChangeHandler(e, this.state.childState[i]),
+          value: this.state.childState[i].value
+        };
+
+        return React.cloneElement(child, props);
+    });
 
     return (
       <form action={action} className={cx(className)} styleName={"container"}>
