@@ -9,3 +9,6 @@
 
 .text-input-active { box-shadow: 0 0 4px #00a7e1;border-color: rgba(0, 167, 225, 0.6);outline: none; }
 .text-input-invalid { box-shadow: 0 0 4px #bd0a33;border-color: rgba(189, 10, 51, 0.6); }
+
+.silver-to-white-gradient { background: white;background: -webkit-linear-gradient(#ffffff, #e6e6e6);background: -o-linear-gradient(#ffffff, #e6e6e6);background: -moz-linear-gradient(#ffffff, #e6e6e6);background: linear-gradient(#ffffff, #e6e6e6); }
+.white-inset-shadow { box-shadow: inset 0px 0px 0px 3px white;-webkit-box-shadow: inset 0px 0px 0px 3px white;-moz-box-shadow: inset 0px 0px 0px 3px white;-o-box-shadow: inset 0px 0px 0px 3px white; }
