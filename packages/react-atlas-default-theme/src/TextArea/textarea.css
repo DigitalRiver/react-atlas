@@ -1,0 +1,59 @@
+.textarea {
+	composes: primary-gray-border from '../styles.css';
+	width: 100%;
+	padding: 5px;
+	resize: none;
+	transition: all 200ms ease-out;
+}
+
+.textareaWrapper {
+	/* 1% difference is textarea inner padding */
+	width: 99%;
+}
+
+.small {
+	width: 30%;
+}
+
+.medium {
+	width: 60%;
+}
+
+.large {
+	width: 90%;
+}
+
+.resizable {
+	resize: vertical;
+}
+
+.remainingCount {
+	color: #999;
+	position: relative;
+	text-align: right;
+	left: 12px;
+}
+
+.active {
+	composes: text-input-active from '../styles.css';
+}
+
+.invalid {
+	composes: text-input-invalid from '../styles.css';
+}
+
+.invalid + span {
+	color: #bd0a33;
+	float: left;
+}
+
+.disabled {
+	composes: cursor-not-allowed from '../styles.css';
+	pointer-events: none;
+	background-color: #ccc;
+}
+
+.hidden {
+	display: none;
+	visibility: hidden;
+}

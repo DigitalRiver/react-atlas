@@ -15,6 +15,11 @@
   border-width: var(--default-border-width);
   border-color: var(--default-border-color)
 }
+.primary-gray-border {
+  border-style: solid;
+  border-width: var(--default-border-width);
+  border-color: var(--primary-gray-border);
+}
 
 .primary-border-top {
   border-style: solid;
