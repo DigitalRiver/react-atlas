@@ -45,14 +45,17 @@ class TextArea extends React.PureComponent {
 
   render() {
     const {
+      name,
+      header,
+      placeholder,
       maxLength,
       resizable,
       small,
       medium,
       large,
+      required,
       disabled,
-      hidden,
-      ...props
+      hidden
     } = this.props;
 
     let remainingCount =
@@ -60,6 +63,13 @@ class TextArea extends React.PureComponent {
       <div styleName={cx("remainingCount")}>
         {maxLength - this.state.remaining}/{maxLength}
       </div>;
+
+    let textAreaHeader =
+      header &&
+      <div styleName={cx("header")}>
+        <span styleName={cx("headerFont")}>{header}</span>
+        {required && <span styleName={"error_text"}> *</span>}
+      </div>
 
     let wrapperClasses = cx(
       {
@@ -87,15 +97,18 @@ class TextArea extends React.PureComponent {
         onFocus={this._handleFocus}
         onBlur={this._handleBlur}
       >
+        {textAreaHeader}
         <InputCore
           multiline
+          name={name}
+          placeholder={placeholder}
           maxLength={maxLength}
           styleName={textAreaClasses}
           onChange={this._handleChange}
+          required={required}
           disabled={disabled}
           hidden={hidden}
           ref={node => this.inputRef = node}
-          {...props}
         />
         {remainingCount}
       </div>
@@ -106,7 +119,7 @@ class TextArea extends React.PureComponent {
 TextArea.PropTypes = {
   /**
 	 * Define a custom css class name.
-	 * @examples 'switch', 'switch-elem'
+	 * @examples 'textarea', 'textarea-elem'
 	 */
   "className": PropTypes.string,
   /**
@@ -115,25 +128,45 @@ TextArea.PropTypes = {
 	 */
   "name": PropTypes.string,
   /**
+   * Define a title or header to be displayed above the textarea.
+   * @examples '<TextArea header="test"/>'
+   */
+  "header": PropTypes.string,
+  /**
 	 * Defines a small sized textarea.
-	 * @examples '<Switch small/>'
+	 * @examples '<TextArea small/>'
 	 */
   "small": PropTypes.bool,
   /**
 	 * Defines a medium sized textarea.
-	 * @examples '<Switch medium/>'
+	 * @examples '<TextArea medium/>'
 	 */
   "medium": PropTypes.bool,
   /**
 	 * Defines a large sized textarea.
-	 * @examples '<Switch large/>'
+	 * @examples '<TextArea large/>'
 	 */
   "large": PropTypes.bool,
+  /**
+   * Sets a maximum character length that will be validated onChange.
+   * @examples '<TextArea maxLenght={25}/>'
+   */
+  "maxLength": PropTypes.number,
+  /**
+   * Defines placeholder text.
+   * @examples '<TextArea placeholder="test input"/>'
+   */
+  "placeholder": PropTypes.string,
   /**
 	 * Sets a handler function to be executed when onChange event occurs (at input element).
 	 * @examples <TextArea onChange={this.customOnChangeFunc}/>
 	 */
   "onChange": PropTypes.func,
+  /**
+   * Sets the field as required. Will be validated onChange.
+   * @examples '<TextArea required/>'
+   */
+  "required": PropTypes.bool,
   /**
 	 * Determines if the textarea is disabled.
 	 * @examples '<TextArea disabled/>'

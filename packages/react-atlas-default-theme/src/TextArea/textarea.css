@@ -9,6 +9,7 @@
 .textareaWrapper {
 	/* 1% difference is textarea inner padding */
 	width: 99%;
+	composes: default-font from '../styles.css';
 }
 
 .small {
@@ -38,6 +39,14 @@
 	composes: text-input-active from '../styles.css';
 }
 
+.header {
+	padding-bottom: 5px;
+}
+
+.headerFont {
+	composes: header-font from '../styles.css';
+}
+
 .invalid {
 	composes: text-input-invalid from '../styles.css';
 }
@@ -56,4 +65,9 @@
 .hidden {
 	display: none;
 	visibility: hidden;
+}
+
+.error_text {
+  composes: header-font from '../styles.css';
+  color: #BD0A33;
 }

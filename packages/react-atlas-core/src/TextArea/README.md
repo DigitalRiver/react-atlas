@@ -11,6 +11,10 @@
 	    <TextArea placeholder="Enter text here..." resizable={false}/>
     </div>
 
+###### Textarea with header above:
+
+    <TextArea header="This is a TextArea"/>
+
 ###### Small textarea:
 
     <TextArea small/>
@@ -33,7 +37,7 @@
 
 ###### Required validation:
 
-    <TextArea required/>
+    <TextArea required header="Description"/>
 
 ###### Maximum length validation:
 
