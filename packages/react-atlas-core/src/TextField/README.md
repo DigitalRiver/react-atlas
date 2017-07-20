@@ -22,6 +22,17 @@
 
     <TextField placeholder="Enter product details here..."/>
 
+###### HTML5 types texfields (default: "text"):
+
+	<div>
+		<TextField type="email" header="Email"/>
+    	<TextField type="password" header="Password"/>
+    </div>
+
+###### Default or app controlled value:
+
+	<TextField value="textfield value here"/>
+
 ###### Disabled textfield:
 
     <TextField disabled/>

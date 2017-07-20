@@ -44,6 +44,7 @@ class TextField extends React.PureComponent {
   render() {
     const {
       name,
+      type,
       header,
       placeholder,
       maxLength,
@@ -92,9 +93,10 @@ class TextField extends React.PureComponent {
       >
         {textFieldHeader}
         <InputCore
-          type="text"
+          type={type}
           name={name}
           placeholder={placeholder}
+          value={this.state.value}
           maxLength={maxLength}
           styleName={textFieldClasses}
           onChange={this._handleChange}
@@ -122,6 +124,16 @@ TextField.PropTypes = {
 	 * @examples '<TextField name="test"/>'
 	 */
   "name": PropTypes.string,
+  /**
+   * Define a type for the text input. Default is "text".
+   * @examples '<TextField type="password"/>'
+   */
+  "type": PropTypes.string,
+  /**
+   * Define a default value for the text input.
+   * @examples '<TextField value="Textfield value here"/>'
+   */
+  "value": PropTypes.string,
   /**
 	 * Defines a small sized text input.
 	 * @examples '<TextField small/>'
@@ -176,6 +188,7 @@ TextField.PropTypes = {
 
 TextField.defaultProps = {
   "className": "",
+  "type": "text",
   "disabled": false,
   "hidden": false
 };
