@@ -160,6 +160,21 @@ TextField.PropTypes = {
    */
   "maxLength": PropTypes.number,
   /**
+   * Sets a handler function to be executed and validate against. If it returns any falsy value, validation error will trigger.
+   * @examples '<TextField validator={this.customValidator}/>'
+   */
+  "validator": PropTypes.func,
+  /**
+   * Defines the error text to be shown when custom validation occurs.
+   * @examples '<TextField errorText="Custom error message."/>'
+   */
+  "errorText": PropTypes.string,
+  /**
+   * Sets a mask for the input field.
+   * @examples '<TextField mask="AAA 11111"/>'
+   */
+  "mask": PropTypes.string,
+  /**
    * Defines placeholder text.
    * @examples '<TextField placeholder="test input"/>'
    */
