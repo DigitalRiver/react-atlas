@@ -158,7 +158,8 @@ let components = [
   "switch",
   "table",
   "tooltip",
-  "hint"
+  "hint",
+  "textArea"
 ];
 
 module.exports = {
