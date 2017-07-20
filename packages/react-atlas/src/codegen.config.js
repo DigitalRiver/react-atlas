@@ -159,6 +159,7 @@ let components = [
   "table",
   "tooltip",
   "hint",
+  "textArea",
   "textField"
 ];
 

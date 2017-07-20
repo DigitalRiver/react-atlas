@@ -190,6 +190,11 @@ class Input extends React.Component {
         this.setState({
           "errorText": this.props.requiredText || "This field is required.",
           "isValid": false
+        }, () => {
+          /* Execute application code function at this point if available */
+          if (this.props.onChange) {
+            this.props.onChange(event);
+          }
         });
       } else {
         /* Set state after both validation checks to display both when required */
@@ -198,7 +203,14 @@ class Input extends React.Component {
             this.setState({ "isValid": true });
           }
         } else {
-          this.setState({ "isValid": true });
+          this.setState({ 
+            "isValid": true 
+          }, () => {
+            /* Execute application code function at this point if available */
+            if (this.props.onChange) {
+              this.props.onChange(event);
+            }
+          });
         }
       }
     }
