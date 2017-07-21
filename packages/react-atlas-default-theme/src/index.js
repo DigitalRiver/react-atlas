@@ -12,3 +12,4 @@ export { SwitchStyle } from "./Switch";
 export { TooltipStyle } from "./Tooltip";
 export { HintStyle } from "./Hint";
 export { TextAreaStyle } from "./TextArea";
+export { TextFieldStyle } from "./TextField";
