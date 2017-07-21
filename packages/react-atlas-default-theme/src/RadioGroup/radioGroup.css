@@ -2,6 +2,14 @@
 	margin: 20px 0;
 }
 
+.header {
+	padding-bottom: 5px;
+}
+
+.headerFont {
+	composes: header-font from '../styles.css';
+}
+
 .block {
 	composes: marg-b-1 from '../styles.css';
 	display: block;

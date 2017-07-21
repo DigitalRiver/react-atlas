@@ -15,6 +15,11 @@
   border-width: var(--default-border-width);
   border-color: var(--default-border-color)
 }
+.primary-gray-border {
+  border-style: solid;
+  border-width: var(--default-border-width);
+  border-color: var(--primary-gray-border);
+}
 
 .primary-border-top {
   border-style: solid;
@@ -128,7 +133,7 @@
 .rounded { border-radius: var(--border-radius) }
 .rounded-top { border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius) }
 .rounded-bottom { border-bottom-left-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius) }
-.circle  { border-radius: 50% }
+.circle  { border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%; }
 
 .rounded-top    { border-radius: var(--border-radius) var(--border-radius) 0 0 }
 .rounded-right  { border-radius: 0 var(--border-radius) var(--border-radius) 0 }
