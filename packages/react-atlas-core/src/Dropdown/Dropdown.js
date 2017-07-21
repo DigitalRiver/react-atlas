@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { ButtonCore } from "../index";
+import { ButtonCore } from "../Button";
+import messages from "../utils/messages.js";
 
 /**
  * Master Dropdown Component
@@ -13,23 +14,42 @@ class Dropdown extends React.PureComponent {
     super(props);
     this.state = {
       "active": false,
-      "output": this.props.customDefaultText
-        ? this.props.customDefaultText
-        : "Select One",
-      "inputValue": "",
+      "output": this._getOutput(),
+      "value": this._getValue(),
       "valid": true,
-      "errorMessage": "",
+      "errorMessage": "This field is required",
       "onChange": "",
       "focus": false,
       "zIndex": false
     };
+    let isFocus = false;
+  }
+
+  _getOutput = () => {
+    for(var i = 0; i < this.props.children.length; i++) {
+      if(this.props.children[i].props.selected){
+        return this.props.children[i].props.children  
+      }
+    }
+    if(this.props.defaultText){
+      return this.props.defaultText;
+    } else {
+      return messages.selectOne;
+    }
+  }
+
+  _getValue = () => {
+    for(var i = 0; i < this.props.children.length; i++) {
+      if(this.props.children[i].props.selected){
+        return this.props.children[i].props.value  
+      }
+    }
   }
 
   /**
    * Listeners added which call functions for window click outside of dropdown and blur outside of browser
    */
   componentDidMount() {
-    window.addEventListener("click", this._onWindowClick);
     window.addEventListener("blur", this._onWindowBlur);
   }
 
@@ -37,23 +57,8 @@ class Dropdown extends React.PureComponent {
    * Listeners added which call functions for window click outside of dropdown and blur outside of browser
    */
   componentWillUnmount() {
-    window.removeEventListener("click", this._onWindowClick);
-    window.addEventListener("blur", this._onWindowBlur);
+    window.removeEventListener("blur", this._onWindowBlur);
   }
-
-  /**
-   * close dropdown on window click if outside of dropdown
-   */
-  _onWindowClick = event => {
-    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-      if (this.state.active === true) {
-        this.setState({
-          "active": false,
-          "zIndex": false
-        });
-      }
-    }
-  };
 
   /**
    * closes dropdown click outside of browser window
@@ -71,124 +76,134 @@ class Dropdown extends React.PureComponent {
    *  _clickHandler is used when the dropdown option is selected.
    *
    */
-  _clickHandler = (i, event) => {
+  _clickHandler = (i) => {
     if (!this.props.disabled) {
       if (
         typeof this.props.onBeforeChange === "undefined" ||
         this.props.onBeforeChange(this.state.active)
       ) {
-        const output = event.target.innerText;
-        const inputValue = event.target.firstElementChild &&
-          event.target.firstElementChild.getAttribute("value")
-          ? event.target.firstElementChild.getAttribute("value")
-          : "";
+        const output = this.props.children[i].props.children;
+        const inputValue = this.props.children[i].props.value;
         this.setState({
           "index": i,
           "output": output,
           "active": !this.state.active,
-          "inputValue": inputValue,
+          "value": inputValue,
           "valid": true,
           "zIndex": false
+        }, function(){
+          this._validationHandler(this.props.errorCallback);
+          if (this.props.onChange) {
+            this._customOnchangeEvent(i, this.props.children);
+          }
+          if (this.props.onClick) {
+            this._customOnclickEvent(i, this.props.children);
+          }
         });
-
-        this._customOnchangeEvent(event);
-        this._customOnclickEvent(event);
+        
       }
     }
   };
 
-  _customOnchangeEvent = event => {
+  _customOnChangeEvent = event => {
     /* Pass the event object, and a data object to the click handler.
     The data object contains a boolean for whether the dropdown was
     changed or not, plus all the props passed to the object.  */
-    if (this.props.onChange) {
-      this.props.onClick(event, {
-        "active": this.state.valid,
-        "props": this.props
-      });
-    }
+    this.props.onClick(event, {
+      "active": this.state.valid,
+      "props": this.props
+    });
   };
 
-  _customOnclickEvent = event => {
+  _customOnClickEvent = event => {
     /* Pass the event object, and a data object to the click handler.
       The data object contains a boolean for whether the dropdown was
       clicked or not, plus all the props passed to the object.  */
-    if (this.props.onClick) {
-      this.props.onClick(event, {
-        "active": this.state.valid,
-        "props": this.props
-      });
-    }
+    
+    this.props.onClick(event, {
+      "active": this.state.valid,
+      "props": this.props
+    });
   };
 
-
-  _customOnchangeEvent = event => {
-    /* Pass the event object, and a data object to the click handler.
-    The data object contains a boolean for whether the dropdown was
-    changed or not, plus all the props passed to the object.  */
-    if (this.props.onChange) {
-      this.props.onClick(event, {
-        "active": this.state.valid,
-        "props": this.props
-      });
-    }
-  }
-
-  _customOnclickEvent = event => {
-    /* Pass the event object, and a data object to the click handler.
-      The data object contains a boolean for whether the dropdown was
-      clicked or not, plus all the props passed to the object.  */
-    if (this.props.onClick) {
-
-      this.props.onClick(event, {
-        "active": this.state.valid,
-        "props": this.props
-      });
-    }
-  }
-
-  _toggle = event => {
+  _toggle = (focus, event) => {
     /* Toggles the dropdown from active to inactive state, sets valid to true and zIndex to true.
       Active is used to show/hide options, valid is used to show/hide error messaging related to validation and zIndex sets a class on the component to ensure it has the proper index on the DOM
      */
-    if (!this.props.disabled) {
-      this.setState({
-        "active": !this.state.active,
-        "valid": true,
-        "zIndex": !this.state.zIndex
-      });
-
-      this._customOnclickEvent(event);
+    let canProceed = true;
+    if(focus === "click" && this.isFocus) {
+      canProceed = false;
+      this.isFocus = false;
+    } else if (focus === true) {
+      this.isFocus = true;
     }
+    if (!this.props.disabled && canProceed) {
+      console.log(focus + ", " + this.state.active);
+      const action = (focus && !this.state.active) ? true : false;
+      console.log(action);
+      if(action){  
+        this.setState({
+          "focus": true,
+          "active": true,
+          "valid": true,
+          "zIndex": true
+        });
+      } else {
+        /* When the user exits dropdown the state is change for focus and validation method is called
+         */
+        this.setState({ "focus": false, "active": false, "zIndex": false });
+        this._validationHandler(this.props.errorCallback);
+      }
+
+      if (this.props.onClick) {
+        this._customOnclickEvent(event);
+      }
+    } 
   };
 
   _validationHandler = callback => {
     /* Checks that required has been set to true and determines if errorCallback message was passed in a custom error message.
       Also sets state of valid depending on user action
       */
-    const validationObject = callback
-      ? callback(event, this.state.inputValue)
-      : {
-          "valid":
-            this.props.required && this.state.inputValue !== "" ||
-              !this.props.required,
-          "message": "This field is required"
-        };
-
+    let validationObject = {
+      "valid":
+        this.props.required && this.state.value !== "" ||
+          !this.props.required,
+      "message": this.state.errorMessage
+    };
+    if(callback){
+      validationObject = callback(event, this.state.value);
+    }
     this.setState({
       "valid": validationObject.valid,
       "errorMessage": validationObject.message
     });
   };
 
-  _blur = callback => {
-    /* When the user exits dropdown the state is change for focus and validation method is called
-     */
-    if (!this.props.disabled) {
-      this.setState({ "focus": false });
-      this._validationHandler(callback);
+  _keyDown = event => {
+    const indexValid = (typeof this.state.index === "number");
+    let newIndex;
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      newIndex = (indexValid) ? this.state.index + 1 : 0;
+      if(newIndex < this.props.children.length) {
+        this.setState({
+          index: newIndex
+        });
+      }
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      newIndex = this.state.index - 1;
+      if(newIndex >= 0) {
+        this.setState({
+          index: newIndex
+        });
+      }
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+      this._clickHandler(this.state.index);
     }
-  };
+  }
 
   render() {
     const {
@@ -197,7 +212,6 @@ class Dropdown extends React.PureComponent {
       required,
       customLabel,
       buttonWidth,
-      errorCallback,
       disabled
     } = this.props;
     const active = this.state.active;
@@ -227,7 +241,7 @@ class Dropdown extends React.PureComponent {
         <li
           key={i}
           className={"ra_dropdown__item " + childClasses}
-          onClick={e => {
+          onMouseDown={e => { // onMouseDown fires before onBlur. If changed to onClick it will fire after onBlur and not work.
             this._clickHandler(i, e);
           }}
         >
@@ -246,20 +260,25 @@ class Dropdown extends React.PureComponent {
         }}
         className={className}
         styleName={classes}
-        onFocus={() => {
-          this.setState({ "focus": true });
+        onFocus={(e) => {
+          this._toggle(true, e);
         }}
-        onBlur={() => {
-          this._blur(errorCallback);
+        onBlur={(e) => {
+          this._toggle(false, e);
+        }}
+        onKeyDown={e => {
+          this._keyDown(e);
         }}
       >
-        {customLabel
-          ? <div styleName={"labelSpacing"}>
-              {customLabel}
-              {required ? <span styleName={"requiredIndicator"}>*</span> : null}
-            </div>
-          : null}
-        <div onClick={this._toggle} styleName={cx("content")}>
+        {customLabel &&
+          <div styleName={"labelSpacing"}>
+            {customLabel}
+            {required &&
+              <span styleName={"requiredIndicator"}>*</span>
+            }
+          </div>
+        }
+        <div onClick={(e) => { this._toggle("click", e); }} styleName={cx("content")}>
           <div style={{ "width": buttonWidth + "px" }}>
             <ButtonCore
               styleName={cx("buttonClass")}
@@ -268,15 +287,16 @@ class Dropdown extends React.PureComponent {
               <span>{this.state.output}</span><i styleName="arrow" />
             </ButtonCore>
           </div>
-          {this.state.active
-            ? <span styleName={"list"}>{bound_children}</span>
-            : null}
-          <input type="hidden" value={this.state.inputValue} />
+          {this.state.active &&
+            <span styleName={"list"}>{bound_children}</span>
+          }
+          <input type="hidden" value={this.state.value} />
         </div>
         {error &&
           <span styleName={cx("error_message")}>
             {this.state.errorMessage}
-          </span>}
+          </span>
+        }
       </div>
     );
   }
@@ -331,13 +351,13 @@ Dropdown.propTypes = {
   "errorCallback": PropTypes.func,
 
   /* The children elements to be wrapped by the dropdown menu. */
-  "children": PropTypes.node,
+  "children": PropTypes.node.isRequired,
 
   /* Pass CSS styles to className to set them on the dropdown component. */
   "className": PropTypes.string,
 
   /* Default text to show in collapsed dropdown on initial render */
-  "customDefaultText": PropTypes.string,
+  "defaultText": PropTypes.string,
 
   /* Allows user to ask for user feedback before changing the selected value of the Dropdown. */
   "onBeforeChange": PropTypes.func,

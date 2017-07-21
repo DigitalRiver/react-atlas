@@ -2,7 +2,7 @@ Basic Dropdown:
     
     <Dropdown customLabel="Choose" buttonWidth={160}>
        <span value="bird">Bird</span>
-       <span value="cow">Cow</span>
+       <span value="cow" selected>Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
        <span value="monkey">Monkey</span>
        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
