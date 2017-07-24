@@ -12,4 +12,5 @@ export { SwitchCore } from "./Switch";
 export { TableCore } from "./Table";
 export { TableHeaderCore } from "./tableHeader";
 export { TooltipCore } from "./Tooltip";
-
+export { TextAreaCore } from "./TextArea";
+export { TextFieldCore } from "./TextField";

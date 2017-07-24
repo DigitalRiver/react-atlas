@@ -6,18 +6,21 @@ Input component should be used as core part of other components such as TextFiel
 
 ###### Text input with different sizes (default is 100% width):
 
-    <Input type="text" small/>
-    <Input type="text" medium/>
-    <Input type="text" large/>
+    <div>
+      <Input type="text" small/>
+      <Input type="text" medium/>
+      <Input type="text" large/>
+    </div>
 
 ###### Text input with placeholders:
 
     <Input type="text" placeholder="Add information"/>
 
 ###### Text input with required validation:
-
-    <Input type="text" required/>
-    <Input type="text" required requiredText="Custom required message"/>
+    <div>
+      <Input type="text" required/>
+      <Input type="text" required requiredText="Custom required message"/>
+    </div>
 
 ###### Text input with maximum length validation:
 
@@ -38,14 +41,10 @@ Input component should be used as core part of other components such as TextFiel
 
 The following format characters define editable parts of the mask:
 
-- 1: number
-- a: letter
-- A: letter, forced to upper case when entered
-- *: alphanumeric
-- #: alphanumeric, forced to upper case when entered
-
-    <Input type="text" placeholder="(54) 111-1111" large mask="(54) 111-1111"/>
-    <Input type="text" placeholder="ABC 1234" large mask="AAA 1111"/>
+    <div>
+      <Input type="text" placeholder="(54) 111-1111" large mask="(54) 111-1111"/>
+      <Input type="text" placeholder="ABC 1234" large mask="AAA 1111"/>
+    </div>
 
 ###### Default textarea:
 
@@ -61,10 +60,14 @@ The following format characters define editable parts of the mask:
 
 ###### HTML5 type inputs:
 
-    <Input type="email"/>
-    <Input type="password"/>
+    <div>
+      <Input type="email"/>
+      <Input type="password"/>
+    </div>
 
 ###### Disabled or hidden inputs:
 
-    <Input type="text" disabled/>
-    <Input type="text" hidden/>
+    <div>
+      <Input type="text" disabled/>
+      <Input type="text" hidden/>
+    </div>

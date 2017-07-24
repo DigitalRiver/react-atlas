@@ -5,20 +5,19 @@ import { BootstrapTable } from "react-bootstrap-table";
 
 class Table extends React.PureComponent {
   render() {
-    const { className, children, data, options, maxHeight, search, strictSearch } = this.props;
+    const { className, children, data, options, maxHeight, search, strictSearch, pagination } = this.props;
 
     return (
       <BootstrapTable
         data={data}
         options={options}
+        pagination={pagination}
         maxHeight={maxHeight}
-        columnFilter={ true }
         className={cx(className)}
         containerClass={"ra_table__react-bs-table-container"}
         tableContainerClass={"ra_table__react-bs-table"}
         headerContainerClass={"ra_table__react-bs-container-header"}
-        bodyContainerClass={"ra_table__react-bs-container-body"}
-      >
+        bodyContainerClass={"ra_table__react-bs-container-body"}>
         {children}
       </BootstrapTable>
     );

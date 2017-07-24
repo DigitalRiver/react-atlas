@@ -159,7 +159,9 @@ let components = [
   "table",
   "tableHeader",
   "tooltip",
-  "hint"
+  "hint",
+  "textArea",
+  "textField"
 ];
 
 module.exports = {
