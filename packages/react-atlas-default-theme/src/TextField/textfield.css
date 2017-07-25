@@ -1,0 +1,58 @@
+.textfield {
+	composes: primary-gray-border from '../styles.css';
+	width: 100%;
+	padding: 5px;
+}
+
+.textfieldWrapper {
+	width: 99%;
+	composes: default-font from '../styles.css';
+}
+
+.header {
+	padding: 10px 0 5px 0;
+}
+
+.headerFont {
+	composes: header-font from '../styles.css';
+}
+
+.small {
+	width: 30%;
+}
+
+.medium {
+	width: 60%;
+}
+
+.large {
+	width: 90%;
+}
+
+.active {
+	composes: text-input-active from '../styles.css';
+}
+
+.invalid {
+	composes: text-input-invalid from '../styles.css';
+}
+
+.invalid + span {
+	color: #bd0a33;
+}
+
+.disabled {
+	composes: cursor-not-allowed from '../styles.css';
+	pointer-events: none;
+	background-color: #ccc;
+}
+
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+
+.error_text {
+  composes: header-font from '../styles.css';
+  color: #BD0A33;
+}
