@@ -71,7 +71,7 @@ if(process.env.NODE_ENV === "production") {
 module.exports = function(env) {
   if(typeof env != 'undefined') {
     let theme = env.theme;
-    config.externals = {};
+    config.externals = config.externals || {};
     config.externals[theme] = {
       root: theme,
       commonjs2: theme,

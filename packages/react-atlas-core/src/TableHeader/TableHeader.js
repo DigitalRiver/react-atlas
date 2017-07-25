@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import cx from "classnames";
-import { TableHeaderColumn as BTableHeader } from "react-bootstrap-table";
+import { TableHeaderColumn as BTableHeader } from "react-bootstrap-table/src";
 
 class TableHeader extends React.PureComponent {
   render() {

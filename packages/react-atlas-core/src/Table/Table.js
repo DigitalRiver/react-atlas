@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import cx from "classnames";
-import { BootstrapTable } from "react-bootstrap-table";
+import { BootstrapTable } from "react-bootstrap-table/src";
 
 class Table extends React.PureComponent {
   render() {
