@@ -5,10 +5,11 @@ import { BootstrapTable } from "react-bootstrap-table";
 
 class Table extends React.PureComponent {
   render() {
-    const { className, children, data, options, maxHeight, search, strictSearch, pagination } = this.props;
+    const { className, children, data, options, maxHeight, search, pagination } = this.props;
 
     return (
       <BootstrapTable
+        search={search}
         data={data}
         options={options}
         pagination={pagination}

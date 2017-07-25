@@ -15,9 +15,9 @@
     "lerna:publish": "lerna publish",
     "clean": "node cleanPackages.js",
     "packages:build": "node buildPackages.js",
-    "setup": "npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
+    "setup": "npm run lerna:bootstrap && npm run packages:build",
     "codegen": "node packages/react-atlas/src/codegen.js",
-    "bootstrap": "npm run lerna:init && npm run lerna:bootstrap && npm run codegen && npm run packages:build",
+    "bootstrap": "npm run lerna:bootstrap && npm run codegen && npm run packages:build",
     "docs": "cd packages/react-atlas && npm run styleguide"
   },
   "jest": {
