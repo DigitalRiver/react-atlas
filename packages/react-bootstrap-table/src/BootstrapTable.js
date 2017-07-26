@@ -13,6 +13,7 @@ import { TableDataStore } from './store/TableDataStore';
 import Util from './util';
 import exportCSVUtil from './csv_export_util';
 import { Filter } from './Filter';
+import Alert from 'react-s-alert';
 
 class BootstrapTable extends Component {
 
@@ -464,6 +465,7 @@ class BootstrapTable extends Component {
         </div>
         { tableFilter }
         { showPaginationOnBottom ? pagination : null }
+        <Alert stack={ { limit: 3 } } />
       </div>
     );
   }
@@ -1261,7 +1263,8 @@ class BootstrapTable extends Component {
             btnGroup={ this.props.options.btnGroup }
             toolBar={ this.props.options.toolBar }
             reset={ this.state.reset }
-            isValidKey={ this.store.isValidKey } />
+            isValidKey={ this.store.isValidKey }
+            insertFailIndicator={ this.props.options.insertFailIndicator || Const.INSERT_FAIL_INDICATOR } />
         </div>
       );
     } else {
@@ -1517,13 +1520,13 @@ BootstrapTable.propTypes = {
     onSortChange: PropTypes.func,
     onPageChange: PropTypes.func,
     onSizePerPageList: PropTypes.func,
-    onFilterChange: React.PropTypes.func,
-    onSearchChange: React.PropTypes.func,
-    onAddRow: React.PropTypes.func,
-    onExportToCSV: React.PropTypes.func,
-    onCellEdit: React.PropTypes.func,
+    onFilterChange: PropTypes.func,
+    onSearchChange: PropTypes.func,
+    onAddRow: PropTypes.func,
+    onExportToCSV: PropTypes.func,
+    onCellEdit: PropTypes.func,
     noDataText: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
-    withoutNoDataText: React.PropTypes.bool,
+    withoutNoDataText: PropTypes.bool,
     handleConfirmDeleteRow: PropTypes.func,
     prePage: PropTypes.any,
     nextPage: PropTypes.any,
@@ -1568,6 +1571,7 @@ BootstrapTable.propTypes = {
     expandParentClass: PropTypes.oneOfType([ PropTypes.string, PropTypes.func ]),
     beforeShowError: PropTypes.func,
     printToolBar: PropTypes.bool,
+    insertFailIndicator: PropTypes.string,
     noAutoBOM: PropTypes.bool
   }),
   fetchInfo: PropTypes.shape({
@@ -1724,6 +1728,7 @@ BootstrapTable.defaultProps = {
     expandParentClass: null,
     beforeShowError: undefined,
     printToolBar: true,
+    insertFailIndicator: Const.INSERT_FAIL_INDICATOR,
     noAutoBOM: true
   },
   fetchInfo: {

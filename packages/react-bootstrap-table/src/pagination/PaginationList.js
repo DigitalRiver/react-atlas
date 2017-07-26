@@ -65,6 +65,7 @@ class PaginationList extends Component {
         this.props.onSizePerPageList(selectSize);
       }
     }
+
     this.setState(() => { return { open: false }; });
   }
 

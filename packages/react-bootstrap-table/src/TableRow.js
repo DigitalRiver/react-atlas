@@ -1,8 +1,8 @@
 /* eslint no-nested-ternary: 0 */
 import classSet from 'classnames';
-import Utils from './util';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Utils from './util';
 
 class TableRow extends Component {
 

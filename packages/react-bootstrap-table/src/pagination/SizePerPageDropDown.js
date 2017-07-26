@@ -16,7 +16,7 @@ class SizePerPageDropDown extends Component {
       currSizePerPage
     } = this.props;
 
-    const openClass = open ? 'open' : '';
+    const openClass = open ? 'open show' : '';
     const dropDownStyle = { visibility: hidden ? 'hidden' : 'visible' };
 
     return (
