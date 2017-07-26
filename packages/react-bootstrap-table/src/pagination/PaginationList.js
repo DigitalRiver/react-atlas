@@ -123,20 +123,7 @@ class PaginationList extends Component {
 
     const hidePageList = hidePageListOnlyOnePage && this.totalPages === 1 ? 'none' : 'block';
     return (
-      <div className='row' style={ { marginTop: 15 } }>
-        {
-          content ||
-          <div>
-            <div className='col-md-6 col-xs-6 col-sm-6 col-lg-6'>
-              { total }{ sizePerPageList.length > 1 ? dropdown : null }
-            </div>
-            <div style={ { display: hidePageList } }
-              className='col-md-6 col-xs-6 col-sm-6 col-lg-6'>
-              { pageBtns }
-            </div>
-          </div>
-        }
-      </div>
+      <p>Test</p>
     );
   }
 
