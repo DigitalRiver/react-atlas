@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import cx from 'classnames';
 
 class SearchField extends Component {
 
@@ -21,14 +22,16 @@ class SearchField extends Component {
       ...rest
     } = this.props;
     return (
-      <input
-        className={ `form-control ${className}` }
-        type='text'
-        defaultValue={ defaultValue }
-        placeholder={ placeholder || SearchField.defaultProps.placeholder }
-        onKeyUp={ onKeyUp }
-        style={ { zIndex: 0 } }
+      <div>
+        <input
+          className={cx("form-control", className)}
+          type='text'
+          defaultValue={ defaultValue }
+          placeholder={ placeholder || SearchField.defaultProps.placeholder }
+          onKeyUp={ onKeyUp }
+          style={ { zIndex: 0 } }
         { ...rest }/>
+      </div>
     );
   }
 }

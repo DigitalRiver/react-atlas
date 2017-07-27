@@ -36,8 +36,6 @@
 
 :global .pagination > li:first-child > a {
     margin-left: 0;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
 }
 
 :global .pagination > li > a:hover,
@@ -110,11 +108,15 @@
     border: 0;
     border-top: 1px solid #ddd;
     outline: none !important;
+    padding-left: .8em;
 }
 
 .col-lg-6 {
     width: 50%;
     float: left;
+}
+:global .page-link {
+
 }
 
 :global .react-bs-table-pagination {
@@ -152,6 +154,12 @@
   margin-bottom: 0;
 }
 
+:global .react-bs-table-search-form {
+  margin-bottom: .5em;
+  margin-right: .75em;
+  float: right;
+}
+
 .react-bs-table-bordered {
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -167,6 +175,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  padding: 10px;
 }
 
 :global .react-bs-table-pagination {
@@ -257,6 +266,7 @@
 
 .react-bs-table .react-bs-container-header > table > thead > tr > th {
   vertical-align: middle;
+  padding-left: .8em;
 }
 
 .react-bs-table .react-bs-container-header > table > thead > tr > th .filter{
@@ -297,6 +307,8 @@
 .react-bs-table .react-bs-container-header .sort-column {
   cursor: pointer;
 }
+
+height:20px; margin:0; padding-left: 30px;
 
 /*inline editor default style*/
 .react-bs-container .form-control.editor{
@@ -451,4 +463,38 @@ td.react-bs-table-expand-cell {
 
 .bounceOut {
   animation-name: bounceOut;
+}
+
+.input_container { position:relative; padding:0; margin:0; }
+
+.magnifying-glass
+{
+ font-size: 1.2em; /* This controls the size. */
+ display: inline-block;
+ width: 0.4em;
+ height: 0.4em;
+ border: 0.1em solid #333333;
+ position: relative;
+ border-radius: 0.35em;
+}
+
+.magnifying-glass::before
+{
+ content: "";
+ display: inline-block;
+ position: absolute;
+ right: -0.25em;
+ bottom: -0.1em;
+ border-width: 0;
+ background: #333333;
+ width: 0.35em;
+ height: 0.08em;
+ -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+     -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+}
+
+.form-control {
+  height:20px; margin:0; padding-left: 30px;
 }

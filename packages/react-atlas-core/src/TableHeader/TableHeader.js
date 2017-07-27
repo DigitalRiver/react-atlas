@@ -5,9 +5,9 @@ import { TableHeaderColumn as BTableHeader } from "react-bootstrap-table/src";
 
 class TableHeader extends React.PureComponent {
   render() {
-    const { className, children } = this.props;
+    const { className, children, dataSort, isKey, searchable } = this.props;
     return (
-      <BTableHeader className={cx(className)} tableHeaderClass={"row-hover"}>
+      <BTableHeader dataSort={dataSort} isKey={isKey} searchable={searchable} className={cx(className)} tableHeaderClass={"row-hover"}>
         {children}
       </BTableHeader>
     );
@@ -17,12 +17,14 @@ class TableHeader extends React.PureComponent {
 TableHeader.propTypes = {
   dataField: PropTypes.string,
   isKey: PropTypes.bool,
-  dataSort: PropTypes.bool
+  dataSort: PropTypes.bool,
+  searchable: PropTypes.bool
 };
 
 TableHeader.defaultProps = {
   isKey: false,
-  dataSort: false
+  dataSort: false,
+  searchable: true
 };
 
 export default TableHeader;

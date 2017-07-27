@@ -5,7 +5,7 @@ import { BootstrapTable } from "react-bootstrap-table/src";
 
 class Table extends React.PureComponent {
   render() {
-    const { className, children, data, options, maxHeight, search, pagination } = this.props;
+    const { className, children, data, options, maxHeight, search, pagination,  multiColumnSort } = this.props;
 
     return (
       <BootstrapTable
@@ -14,6 +14,7 @@ class Table extends React.PureComponent {
         options={options}
         pagination={pagination}
         maxHeight={maxHeight}
+        multiColumnSort={multiColumnSort}
         className={cx(className)}
         containerClass={"ra_table__react-bs-table-container"}
         tableContainerClass={"ra_table__react-bs-table"}

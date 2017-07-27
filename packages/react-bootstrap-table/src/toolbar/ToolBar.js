@@ -32,13 +32,9 @@ class ToolBar extends Component {
   }
 
   componentWillMount() {
-    const delay = this.props.searchDelayTime ? this.props.searchDelayTime : 0;
-    this.debounceCallback = this.handleDebounce(() => {
-      const { seachInput } = this.refs;
-      seachInput && this.props.onSearch(seachInput.getValue());
-    },
-      delay
-    );
+    this.debounceCallback = function(event) {
+      this.props.onSearch(event.target.value);
+    };
   }
 
   componentWillReceiveProps(nextProps) {

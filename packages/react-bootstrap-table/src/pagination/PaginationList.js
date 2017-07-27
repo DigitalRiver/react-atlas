@@ -123,7 +123,20 @@ class PaginationList extends Component {
 
     const hidePageList = hidePageListOnlyOnePage && this.totalPages === 1 ? 'none' : 'block';
     return (
-      <p>Test</p>
+      <div className='row' style={ { marginTop: 15 } }>
+        {
+          content ||
+          <div>
+            <div className='col-md-6 col-xs-6 col-sm-6 col-lg-6'>
+              { total }{ sizePerPageList.length > 1 ? dropdown : null }
+            </div>
+            <div style={ { display: hidePageList } }
+              className='col-md-6 col-xs-6 col-sm-6 col-lg-6'>
+              { pageBtns }
+            </div>
+          </div>
+        }
+      </div>
     );
   }
 
@@ -210,10 +223,13 @@ class PaginationList extends Component {
         } else if (page === this.props.prePage) {
           title = this.props.prePageTitle;
         } else if (page === this.props.firstPage) {
-          title = this.props.firstPageTitle;
+          // title = this.props.firstPageTitle;
+          console.log("FirstPage: ", page);
         } else if (page === this.props.lastPage) {
           title = this.props.lastPageTitle;
         }
+
+        console.log("Page: ", page);
 
         return (
           <PageButton key={ page }
@@ -275,6 +291,8 @@ class PaginationList extends Component {
     if (endPage !== this.lastPage && this.props.withFirstAndLast) {
       pages.push(this.props.lastPage);
     }
+
+    console.log("Pages: ", pages);
 
     return pages;
   }

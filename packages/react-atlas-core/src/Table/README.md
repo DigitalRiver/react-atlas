@@ -1,10 +1,8 @@
 
-Basic Table:
+###### Basic Table:
 
-  <div>
-    <Table data={ [{id: 0, name: "bear", price: "50"}, {id: 1, name: "gorilla", price: "75"}, {id: 2, name: "shark", price: "97"}] }>
-      <TableHeader dataField='id' isKey>Product ID</TableHeader>
-      <TableHeader dataField='name' dataSort>Product Name</TableHeader>
-      <TableHeader dataField='price' dataSort>Product Price</TableHeader>
+	<Table data={[{id: 0, name: "Bear", price: "$100"}, {id: 1, name: "Corn", price: "$2"}, {id: 2, name: "Shark Banana", price: "$125"}]}>
+      <TableHeader dataField='id' isKey={ true }>Product ID</TableHeader>
+      <TableHeader dataField='name'>Product Name</TableHeader>
+      <TableHeader dataField='price'>Product Price</TableHeader>
     </Table>
-  </div>
