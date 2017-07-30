@@ -24,11 +24,8 @@ class TextField extends React.PureComponent {
       this.setState({ "remaining": this.props.maxLength - value.length });
     }
 
-    // Set value and valid state depending on InputCore state
-    this.setState({ 
-      "value": this.inputRef.state.value,
-      "valid": this.inputRef.state.isValid 
-    });
+    // Set valid state depending on InputCore state
+    this.setState({ "valid": this.inputRef.state.isValid });
 
     if (this.props.onChange) {
       // Execute app code

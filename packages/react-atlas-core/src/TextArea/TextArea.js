@@ -23,12 +23,11 @@ class TextArea extends React.PureComponent {
       // Keep difference between maxlength and input value in state for count
       this.setState({ "remaining": this.props.maxLength - value.length });
     }
-    
-    // Set value and valid state depending on InputCore state
-    this.setState({ 
-      "value": this.inputRef.state.value,
-      "valid": this.inputRef.state.isValid 
-    });
+
+    if (this.props.required) {
+      // Set valid state depending on InputCore state
+      this.setState({ "valid": this.inputRef.state.isValid });
+    }
 
     if (this.props.onChange) {
       // Execute app code

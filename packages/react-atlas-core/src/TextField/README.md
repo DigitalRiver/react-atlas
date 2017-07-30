@@ -48,7 +48,6 @@
 ###### Custom validation:
 
     <TextField 
-        required
     	errorText="Only numbers are allowed." 
     	validator={ (value) => { return /^\d+$/.test(value) } } 
     	header="Only numbers allowed"/>
