@@ -42,7 +42,7 @@ if(process.env.NODE_ENV === "production") {
                      'postcss-loader'
                      ]
                 })
-    })
+    });
   config.plugins.push(new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: false
