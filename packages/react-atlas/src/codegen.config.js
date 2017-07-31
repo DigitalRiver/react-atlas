@@ -80,7 +80,7 @@ devTemplate +=
   eol +
   "import { {{=it.component.name}}Style } from '{{=it.component.theme}}';" +
   eol +
-  "const {{=it.component.name}}Comp = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true, errorWhenNotFound: true});" +
+  "const {{=it.component.name}}Comp = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});" +
   eol +
   "export default class {{=it.component.name}} extends React.Component {" +
   eol +
