@@ -59,7 +59,8 @@ class TextField extends React.PureComponent {
       errorText,
       mask,
       disabled,
-      hidden
+      hidden,
+      className
     } = this.props;
 
     let textFieldHeader =
@@ -93,6 +94,7 @@ class TextField extends React.PureComponent {
         styleName={wrapperClasses}
         onFocus={this._handleFocus}
         onBlur={this._handleBlur}
+        className={cx(className)}
       >
         {textFieldHeader}
         <InputCore
