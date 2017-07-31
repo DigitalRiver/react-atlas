@@ -1,0 +1,17 @@
+/* The CSS class applied to all form children components.  */
+.component {
+  display: block;
+  margin: auto;
+  margin-top: .5rem;
+}
+
+/* The class applied to the container around
+ * the form component. */
+.container {
+}
+
+.button {
+  margin: auto;
+  margin-top: .5rem;
+  display: block;
+}
