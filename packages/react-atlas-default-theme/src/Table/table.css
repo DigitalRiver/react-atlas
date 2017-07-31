@@ -1,6 +1,4 @@
-/* :global is needed for some classes to bypass
- * css modules and because bootstrap table does 
- * not allow setting custom classes for pagination. */
+/* :global is needed for some classes to bypass */
 :global .dropdown-menu{
   background-color: red;
 }
@@ -101,6 +99,117 @@
 
 .react-bs-container-header table th {
     vertical-align: middle;
+    border-top: 4px dashed;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.react-bs-container-header .sort-column .dropup .caret {
+    border-top: 0;
+    border-bottom: 4px dashed;
+    content: "";
+}
+
+.react-bs-table-container .react-bs-table-search-form {
+  margin-bottom: 0;
+}
+
+:global .react-bs-table-search-form {
+  margin-bottom: .5em;
+  margin-right: .75em;
+  float: right;
+}
+
+.react-bs-table-bordered {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.react-bs-table table {
+  margin-bottom: 0;
+  table-layout: fixed;
+}
+
+.react-bs-table table td,
+.react-bs-table table th {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 10px;
+}
+
+:global .react-bs-table-pagination {
+  margin-top: 10px;
+}
+
+.react-bs-table-tool-bar {
+  margin-bottom: 5px;
+}
+
+.react-bs-container-header {
+  overflow: hidden;
+  width: 100%;
+}
+
+.react-bs-container-body {
+  /*height: 154px;*/
+  overflow: auto;
+  width: 100%;
+}
+
+:global .react-bootstrap-table-page-btns-ul {
+  float: right;
+  /* override the margin-top defined in .pagination class in bootstrap. */
+  margin-top: 0;
+}
+
+.react-bs-table .table-bordered {
+    border: 0;
+    outline: none !important;
+}
+
+.react-bs-table .table-bordered > thead > tr > th,
+.react-bs-table .table-bordered > thead > tr > td {
+  border-bottom-width: 2px;
+}
+
+.react-bs-table .table-bordered > tbody > tr > td {
+  outline: none !important;
+}
+
+.react-bs-table .table-bordered > tbody > tr > td.default-focus-cell {
+  outline: 3px solid cornflowerblue !important;
+  outline-offset: -1px;
+}
+
+.react-bs-table .table-bordered > tfoot > tr > th,
+.react-bs-table .table-bordered > tfoot > tr > td {
+  border-top-width: 2px;
+}
+
+.react-bs-table .table-bordered > tfoot > tr > th,
+.react-bs-table .table-bordered > tfoot > tr > td {
+  border-bottom-width: 0;
+}
+
+/*Esquerda*/
+.react-bs-table .table-bordered > thead > tr > th:first-child,
+.react-bs-table .table-bordered > tbody > tr > th:first-child,
+.react-bs-table .table-bordered > tfoot > tr > th:first-child,
+.react-bs-table .table-bordered > thead > tr > td:first-child,
+.react-bs-table .table-bordered > tbody > tr > td:first-child,
+.react-bs-table .table-bordered > tfoot > tr > td:first-child {
+  border-left-width: 0;
+}
+
+/*Direita*/
+.react-bs-table .table-bordered > thead > tr > th:last-child,
+.react-bs-table .table-bordered > tbody > tr > th:last-child,
+.react-bs-table .table-bordered > tfoot > tr > th:last-child,
+.react-bs-table .table-bordered > thead > tr > td:last-child,
+.react-bs-table .table-bordered > tbody > tr > td:last-child,
+.react-bs-table .table-bordered > tfoot > tr > td:last-child {
+  border-right-width: 0;
 }
 
 .react-bs-container-body {

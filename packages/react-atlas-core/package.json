@@ -33,7 +33,8 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.1",
     "style-loader": "^0.17.0",
-    "webpack": "^2.5.1"
+    "webpack": "^2.5.1",
+    "react-bootstrap-table": "4.0.0-beta.8"
   },
   "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas-core"
 }

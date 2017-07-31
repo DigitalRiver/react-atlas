@@ -7,13 +7,6 @@ class Table extends React.PureComponent {
   render() {
     const { className, children, data, options, maxHeight, search, pagination, sort } = this.props;
 
-    // if(sort) {
-    //   Object.assign(options, {
-    //     defaultSortName: 'name', 
-    //     defaultSortOrder: 'desc'
-    //   });
-    // }
-
     return (
       <LightTable
         search={search}
@@ -45,7 +38,11 @@ Table.propTypes = {
 };
 
 Table.defaultProps = {
-  "pagination": false
+  "pagination": false,
+  "options": {
+    "defaultSortName": "",
+    "defaultSortOrder": ""
+  }
 };
 
 export default Table;
