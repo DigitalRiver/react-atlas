@@ -138,9 +138,7 @@ class Dropdown extends React.PureComponent {
       this.isFocus = true;
     }
     if (!this.props.disabled && canProceed) {
-      console.log(focus + ", " + this.state.active);
       const action = (focus && !this.state.active) ? true : false;
-      console.log(action);
       if(action){  
         this.setState({
           "focus": true,
