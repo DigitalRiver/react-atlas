@@ -47,3 +47,13 @@ Dropdown with Custom Function Before Change:
        <span value="monkey">Monkey</span>
        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
     </Dropdown>
+
+Dropdown with onClick function:
+
+    <Dropdown onClick={ function(event, value){ console.log("Click: ", event, value) }} >
+       <span value="bird">Bird</span>
+       <span value="cow">Cow</span>
+       <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+       <span value="monkey">Monkey</span>
+       <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+    </Dropdown>
