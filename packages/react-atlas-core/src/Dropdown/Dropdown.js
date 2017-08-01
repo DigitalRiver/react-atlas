@@ -94,10 +94,10 @@ class Dropdown extends React.PureComponent {
         }, function(){
           this._validationHandler(this.props.errorCallback);
           if (this.props.onChange) {
-            this._customOnchangeEvent(i, this.props.children);
+            this._customOnChangeEvent(i, this.props.children);
           }
           if (this.props.onClick) {
-            this._customOnclickEvent(i, this.props.children);
+            this._customOnClickEvent(i, this.props.children);
           }
         });
         
@@ -138,9 +138,7 @@ class Dropdown extends React.PureComponent {
       this.isFocus = true;
     }
     if (!this.props.disabled && canProceed) {
-      console.log(focus + ", " + this.state.active);
       const action = (focus && !this.state.active) ? true : false;
-      console.log(action);
       if(action){  
         this.setState({
           "focus": true,
@@ -156,7 +154,7 @@ class Dropdown extends React.PureComponent {
       }
 
       if (this.props.onClick) {
-        this._customOnclickEvent(event);
+        this._customOnClickEvent(event);
       }
     } 
   };
