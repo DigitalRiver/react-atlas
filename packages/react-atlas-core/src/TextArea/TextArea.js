@@ -56,7 +56,8 @@ class TextArea extends React.PureComponent {
       large,
       required,
       disabled,
-      hidden
+      hidden,
+      className
     } = this.props;
 
     let remainingCount =
@@ -97,6 +98,7 @@ class TextArea extends React.PureComponent {
         styleName={wrapperClasses}
         onFocus={this._handleFocus}
         onBlur={this._handleBlur}
+        className={cx(className)}
       >
         {textAreaHeader}
         <InputCore
