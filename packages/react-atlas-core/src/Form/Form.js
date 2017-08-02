@@ -34,8 +34,7 @@ class Form extends React.PureComponent {
 
       let state = {
                     index: i, 
-                    value: child.props.value || '', 
-                    name: child.props.name || ''
+                    value: child.props.value || ''
                   };
 
       childState.push(state)
@@ -53,11 +52,25 @@ class Form extends React.PureComponent {
   }
 
   validate = () => {
-  	{React.Children.map(this.props.children, (child, i) => {
+  	const data = React.Children.map(this.props.children, (child, i) => {
   		const name = utils.getComponentName(child);
 
-        return child;
-    })}
+      if(typeof child.props.required !== 'undefined') {
+        if(this.state.childState[i].value === '') {
+          console.log('Must pass value for required prop');
+          return;
+        }
+      }
+
+      let childData = {
+                        "name": child.props.name, 
+                        "value": this.state.childState[i].value
+                      };
+
+      return childData;
+    })
+
+    return data;
   }
 
   clickHandler = (e) => {
@@ -67,12 +80,12 @@ class Form extends React.PureComponent {
   	}
 
   	/* Validate children components before submiting. */
-  	this.validate();
+  	let data = this.validate();
 
   	/* Check if onSubmit was set. Call onSubmit if
   	 * it was passed throw a error if not set. */
   	if(this.props.onSubmit) {
-  		this.props.onSubmit(e);
+  		this.props.onSubmit(e, data);
   	} else {
         throw "Pass either onSubmit or action";
   	}
@@ -99,6 +112,14 @@ class Form extends React.PureComponent {
     this.setState({"childState": childState});
   }
 
+  /* Throw error message if value is not truthy/set */
+  validator = (value) => {
+    if(value)
+      return true
+    else
+      return false
+  }
+
   render() {
     const { className, children, action, buttonText} = this.props;
 
@@ -111,7 +132,9 @@ class Form extends React.PureComponent {
         let props = {
           className: classes, 
           onChange: (e, childState) => this.onChangeHandler(e, this.state.childState[i]),
-          value: this.state.childState[i].value
+          value: this.state.childState[i].value,
+          validator: this.validator,
+          errorText: "This field is required"
         };
 
         return React.cloneElement(child, props);
