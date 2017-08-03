@@ -130,7 +130,6 @@ class Input extends React.Component {
   };
 
   _validate = (inputValue) => {
-
     /* Validate max character length */
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
@@ -184,6 +183,7 @@ class Input extends React.Component {
   }
 
   _handleChange = event => {
+    event.persist();
     let inputValue = event.target.value;
 
     /* Masked input validations */
@@ -208,21 +208,14 @@ class Input extends React.Component {
       }
     }
 
-    if(this._validate(inputValue) != false) {
-      /* Regardless of validations, set value in the component state */
-      this.setState({ 
+    this._validate(inputValue);
+    this.setState({ 
         "value": inputValue 
         }, () => {
-        if (this.props.onChange) {
-          this.props.onChange(event);
-        }
-      });
-    } else {
-      /* Execute application code function at this point if available */
-      if (this.props.onChange) {
-        this.props.onChange(event);
-      }
-    }
+          if (this.props.onChange) {
+            this.props.onChange(event);
+          }
+        });
   };
 
   render() {
