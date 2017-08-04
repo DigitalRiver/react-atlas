@@ -39,6 +39,6 @@
   },
   "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas",
   "devDependencies": {
-    "react-styleguidist": "^5.4.4"
+    "react-styleguidist": "^6.0.8"
   }
 }
