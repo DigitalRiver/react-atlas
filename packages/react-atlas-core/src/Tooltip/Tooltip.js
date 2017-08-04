@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import cx from 'classNames';
+import cx from 'classnames';
 
 /*
  * A CSS driven tooltip that gives more information when an element it wraps is hovered over.

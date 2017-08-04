@@ -63,7 +63,7 @@ template +=
   eol +
   "import { {{=it.component.name}}Style } from '{{=it.component.theme}}';" +
   eol +
-  "export const {{=it.component.name}} = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true, errorWhenNotFound: true});";
+  "export const {{=it.component.name}} = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});";
 
 /* The template used to generate the development react-atlas components. The
  * development component is actually a wrapper around the "real" component
@@ -72,13 +72,15 @@ let devTemplate = warningMessage;
 devTemplate +=
   "import CSSModules from 'react-css-modules';" +
   eol +
-  "import React, { PropTypes } from 'react';" +
+  "import React from 'react';" +
+  eol + 
+  "import PropTypes from 'prop-types';" +
   eol +
-  "import { {{=it.component.name}}Core } from 'react-atlas-core';" +
+  "import { {{=it.component.name}}Core } from 'react-atlas-core/src';" +
   eol +
   "import { {{=it.component.name}}Style } from '{{=it.component.theme}}';" +
   eol +
-  "const {{=it.component.name}}Comp = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true, errorWhenNotFound: true});" +
+  "const {{=it.component.name}}Comp = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});" +
   eol +
   "export default class {{=it.component.name}} extends React.Component {" +
   eol +
@@ -116,14 +118,15 @@ let indexTemplate = warningMessage;
 indexTemplate +=
   "{{~it.components :value:index}}" +
   eol +
-  "export {{=value.name}} from './{{=value.name}}';" +
+  "export {{{=value.name}}} from './{{=value.name}}';" +
   eol +
   "{{~}}" +
   eol;
 
+
 let compIndexTemplate = warningMessage;
 compIndexTemplate +=
-  "export { {{=it.component.name}} as default } from './{{=it.component.name}}.js';";
+  "export {{=it.component.name}} from './{{=it.component.name}}.js';";
 
 /* Dot template settings. Keep defaults except turn off stripping newlines feature
  * of dot.js. */
@@ -146,6 +149,7 @@ let components = [
   "avatar",
   "button",
   "checkbox",
+  "checkboxGroup",
   "dropdown",
   "form",
   "input",
@@ -153,7 +157,10 @@ let components = [
   "radioGroup",
   "switch",
   "table",
-  "tooltip"
+  "tooltip",
+  "hint",
+  "textArea",
+  "textField"
 ];
 
 module.exports = {

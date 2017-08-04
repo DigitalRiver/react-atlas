@@ -78,9 +78,16 @@ function processInfo(info) {
           case "element":
             obj.type += "PropTypes.element,";
             break;
+          case "array":
+            obj.type += "PropTypes.array,";
+            break;
+          case "object":
+            obj.type += "PropTypes.object,";
+            break;
           /* If we get here it means were missing this proptype and it should
             have a case added to this switch statment. */
           default:
+          console.log("Missing proptype: " + type.name);
             throw "Missing proptype: " + type.name;
         }
       }

@@ -85,7 +85,8 @@ $ npm run coverage        // Runs test suite with code coverage.
 $ npm run format          // Format all code with prettier.
 $ npm run lint            // Lint code with eslint.
 $ npm run setup           // Builds react-atlas.
-$ npm run codegen   // Runs just the code generator.
+$ npm run codegen         // Runs just the code generator.
+$ npm run clean           // Clean all node_modules folders.
 
 ```
 For more in depth information on development check out our contributors [readme](readme/CONTRIBUTING.md#contributing).

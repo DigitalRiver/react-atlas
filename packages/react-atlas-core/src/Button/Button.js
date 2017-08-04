@@ -1,166 +1,164 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import cx from 'classNames';
+import PropTypes from "prop-types";
+import cx from "classnames";
 
 /**
  * A Generic button component.
  */
-const Button = (
-  {
-    className,
-    outline,
-    loading,
-    primary,
-    secondary,
-    success,
-    warning,
-    danger,
-    link,
-    disabled,
-    children,
-    mini,
-    large,
-    small,
-    ...props
-  }
-) => {
-  const disabledStyle = disabled || loading ? "disabled" : "";
-
-  let size;
-  if(large) {
-    size = "large";
-  } else if(small) {
-    size = "small";
-  } else if(mini) {
-    size = "mini";
+class Button extends React.PureComponent {
+  constructor(props) {
+    super(props);
   }
 
-  let mainStyle = "button";
-  if (primary) {
-    mainStyle = "primary";
-  } else if (secondary) {
-    mainStyle = "secondary";
-  } else if (success) {
-    mainStyle = "success";
-  } else if (warning) {
-    mainStyle = "warning";
-  } else if (danger) {
-    mainStyle = "danger";
-  } else if (link) {
-    mainStyle = "link";
-  }
+  render() {
+    const {
+      onClick,
+      className,
+      children,
+      disabled,
+      large,
+      small,
+      primary,
+      secondary,
+      warning,
+      error,
+      link,
+      outline,
+      icon
+    } = this.props;
 
-  let outlineStyle = "button";
-  if(outline) {
-    mainStyle += "_outline";
-  }
+    let mainStyle = "button";
+    if (primary) {
+      mainStyle = "primary";
+    } else if (secondary) {
+      mainStyle = "secondary";
+    } else if (warning) {
+      mainStyle = "warning";
+    } else if (error) {
+      mainStyle = "error";
+    } else if (link) {
+      mainStyle = "link";
+    }
 
-  const classes = cx(mainStyle, disabledStyle, size, outlineStyle);
-  
-  return (
-    <button {...props} className={cx(className)} styleName={classes}>{children}</button>
-  )
-};
+    if (outline) {
+      mainStyle += "_outline";
+    }
+
+    /**
+     * Use cx to construct a CSS class object.
+     * cx will automatically remove falsy values
+     * for us. This way only passed props will be
+     * transformed into CSS classes.
+     */
+    const classes = cx(
+      {
+        disabled: disabled,
+        large: large,
+        small: small,
+        button: true
+      },
+      mainStyle
+    );
+
+    let text = children;
+    let iconClass = false;
+
+    /* Just use the icon instead of text when an icon
+     * is passed and no children(text) is set. */
+    if (icon && children === "Default Button") {
+      text = null;
+    } else if (icon) {
+      text = children;
+      iconClass = "ra_button__icon-left";
+    }
+
+    return (
+      <button onClick={onClick} className={cx(className)} styleName={classes}>
+        {icon ? <i className={cx(icon, iconClass)} /> : null}
+        {text}
+      </button>
+    );
+  }
+}
 
 Button.propTypes = {
   /**
      * Define a mini button.
      *
      */
-  "mini": PropTypes.bool,
+  children: PropTypes.node,
   /**
-     * Anything that can be in a button. Usually text, but could also be icons/glyphs.
-     * @examples 'Save', 'Cancel'
-     */
-  "children": PropTypes.node,
-  /**
-     * define a custom css class name
-     * @examples "btn", "btn-active"
-     */
-  "className": PropTypes.string,
+   * Click event handler.
+   */
+  onClick: PropTypes.func,
   /**
      * define a custom css class name
      * @examples "btn", "btn-active"
      */
-  "disabled": PropTypes.bool,
+  className: PropTypes.string,
+  /**
+     * define a custom css class name
+     * @examples "btn", "btn-active"
+     */
+  disabled: PropTypes.bool,
   /**
      * use outline styled button
      * @examples <Button outline>
      */
-  "outline": PropTypes.bool,
+  outline: PropTypes.bool,
   /**
      * define button href if anchor
      * @examples '#', 'http://some-website.com/'
      */
-  "href": PropTypes.string,
-  /**
-     * set loading animation on button
-     * @examples <Button loading>
-     */
-  "loading": PropTypes.bool,
-  /**
-     * use primary style button (button is set to this by default)
-     * @examples <Button primary>
-     */
-  "primary": PropTypes.bool,
-  "type": PropTypes.string,
+  primary: PropTypes.bool,
   /**
      * use secondary style button
      * @examples <Button secondary>
      */
-  "secondary": PropTypes.bool,
-  /**
-     * use success style button
-     * @examples <Button success>
-     */
-  "success": PropTypes.bool,
+  secondary: PropTypes.bool,
   /**
      * use warning style button
      * @examples <Button warning>
      */
-  "warning": PropTypes.bool,
+  warning: PropTypes.bool,
   /**
-     * use danger style button
-     * @examples <Button danger>
+     * use error style button
+     * @examples <Button error>
      */
-  "danger": PropTypes.bool,
+  error: PropTypes.bool,
   /**
      * use link style button
      * @examples <Button link>
      */
-  "link": PropTypes.bool,
+  link: PropTypes.bool,
   /**
      * use large style button
      * @examples <Button large>
      */
-  "large": PropTypes.bool,
+  large: PropTypes.bool,
   /**
      * use small style button
      * @examples <Button small>
      */
-  "small": PropTypes.bool,
+  small: PropTypes.bool,
+
   /**
-     * use block style button
-     * @examples <Button block>
-     */
-  "block": PropTypes.bool
+    * The class name of the icon you want to set.
+    */
+  icon: PropTypes.string
 };
 
 Button.defaultProps = {
-  "children": "Default Button",
-  "outline": false,
-  "loading": false,
-  "mini": false,
-  "primary": false,
-  "secondary": false,
-  "success": false,
-  "warning": false,
-  "danger": false,
-  "link": false,
-  "raised": false,
-  "large": false,
-  "small": false,
-  "disabled": false
+  children: "Default Button",
+  outline: false,
+  primary: false,
+  secondary: false,
+  warning: false,
+  error: false,
+  link: false,
+  large: false,
+  small: false,
+  disabled: false
 };
 
 export default Button;
