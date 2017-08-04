@@ -76,7 +76,7 @@ devTemplate +=
   eol + 
   "import PropTypes from 'prop-types';" +
   eol +
-  "import { {{=it.component.name}}Core } from 'react-atlas-core';" +
+  "import { {{=it.component.name}}Core } from 'react-atlas-core/src';" +
   eol +
   "import { {{=it.component.name}}Style } from '{{=it.component.theme}}';" +
   eol +
