@@ -239,9 +239,6 @@ class Dropdown extends React.PureComponent {
 
     return (
       <div
-        ref={node => {
-          this.wrapperRef = node;
-        }}
         className={className}
         styleName={classes}
         onFocus={(e) => {
