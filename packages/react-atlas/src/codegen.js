@@ -84,6 +84,9 @@ function processInfo(info) {
           case "object":
             obj.type += "PropTypes.object,";
             break;
+          case "shape":
+            obj.type += "PropTypes.shape(" + JSON.stringify(type.value) + ")";
+            break;
           /* If we get here it means were missing this proptype and it should
             have a case added to this switch statment. */
           default:
@@ -92,7 +95,9 @@ function processInfo(info) {
         }
       }
 
-      obj.type += "])";
+      if(obj.type !== "shape") {
+        obj.type += "])";
+      }
     } else {
       obj.type = '"' + key + '":' + " " + "PropTypes." + name;
     }
