@@ -5,6 +5,7 @@ export { CheckboxGroupCore } from "./CheckboxGroup";
 export { DropdownCore } from "./Dropdown";
 export { FormCore } from "./Form";
 export { InputCore } from "./Input";
+export { ProgressBarCore } from "./ProgressBar";
 export { RadioCore } from "./Radio";
 export { RadioGroupCore } from "./RadioGroup";
 export { SwitchCore } from "./Switch";

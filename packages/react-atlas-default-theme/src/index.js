@@ -5,6 +5,7 @@ export { CheckboxGroupStyle } from "./CheckboxGroup";
 export { DropdownStyle } from "./Dropdown";
 export { FormStyle } from "./Form";
 export { InputStyle } from "./Input";
+export { ProgressBarStyle } from "./ProgressBar";
 export { RadioStyle } from "./Radio";
 export { RadioGroupStyle } from "./RadioGroup";
 export { TableStyle } from "./Table";
