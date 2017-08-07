@@ -3,7 +3,7 @@ import prefixer from "../utils/prefixer";
 import cx from 'classnames';
 
 //TODO Change this to a self contained component from the current version that requires too much logic in the parent component
-class ProgressBar extends React.Component {
+class ProgressBar extends React.PureComponent {
   calculateRatio(value) {
     if (value < this.props.min) {
       return 0;
