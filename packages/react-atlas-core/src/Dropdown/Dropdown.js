@@ -28,7 +28,7 @@ class Dropdown extends React.PureComponent {
   _getOutput = () => {
     for(var i = 0; i < this.props.children.length; i++) {
       if(this.props.children[i].props.selected){
-        return this.props.children[i].props.children  
+        return this.props.children[i].props.children
       }
     }
     if(this.props.defaultText){
@@ -41,23 +41,9 @@ class Dropdown extends React.PureComponent {
   _getValue = () => {
     for(var i = 0; i < this.props.children.length; i++) {
       if(this.props.children[i].props.selected){
-        return this.props.children[i].props.value  
+        return this.props.children[i].props.value
       }
     }
-  }
-
-  /**
-   * Listeners added which call functions for window click outside of dropdown and blur outside of browser
-   */
-  componentDidMount() {
-    window.addEventListener("blur", this._onWindowBlur);
-  }
-
-  /**
-   * Listeners added which call functions for window click outside of dropdown and blur outside of browser
-   */
-  componentWillUnmount() {
-    window.removeEventListener("blur", this._onWindowBlur);
   }
 
   /**
@@ -100,7 +86,7 @@ class Dropdown extends React.PureComponent {
             this._customOnClickEvent(i, this.props.children);
           }
         });
-        
+
       }
     }
   };
@@ -109,7 +95,7 @@ class Dropdown extends React.PureComponent {
     /* Pass the event object, and a data object to the click handler.
     The data object contains a boolean for whether the dropdown was
     changed or not, plus all the props passed to the object.  */
-    this.props.onClick(event, {
+    this.props.onChange(event, {
       "active": this.state.valid,
       "props": this.props
     });
@@ -119,7 +105,7 @@ class Dropdown extends React.PureComponent {
     /* Pass the event object, and a data object to the click handler.
       The data object contains a boolean for whether the dropdown was
       clicked or not, plus all the props passed to the object.  */
-    
+
     this.props.onClick(event, {
       "active": this.state.valid,
       "props": this.props
@@ -139,7 +125,7 @@ class Dropdown extends React.PureComponent {
     }
     if (!this.props.disabled && canProceed) {
       const action = (focus && !this.state.active) ? true : false;
-      if(action){  
+      if(action){
         this.setState({
           "focus": true,
           "active": true,
@@ -156,7 +142,7 @@ class Dropdown extends React.PureComponent {
       if (this.props.onClick) {
         this._customOnClickEvent(event);
       }
-    } 
+    }
   };
 
   _validationHandler = callback => {
@@ -235,7 +221,7 @@ class Dropdown extends React.PureComponent {
         "ra_dropdown__firstChild": i === 0,
         "ra_dropdown__lastChild": i === children.length - 1
       });
-      let kid = 
+      let kid =
         <li
           key={i}
           className={"ra_dropdown__item " + childClasses}
