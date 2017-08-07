@@ -6,6 +6,7 @@ export { DropdownCore } from "./Dropdown";
 export { FormCore } from "./Form";
 export { HintCore } from "./Hint";
 export { InputCore } from "./Input";
+export { ProgressBarCore } from "./ProgressBar";
 export { RadioCore } from "./Radio";
 export { RadioGroupCore } from "./RadioGroup";
 export { SwitchCore } from "./Switch";

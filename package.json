@@ -17,8 +17,9 @@
     "packages:build": "node buildPackages.js",
     "setup": "npm run lerna:bootstrap && npm run packages:build",
     "codegen": "node packages/react-atlas/src/codegen.js",
-    "bootstrap": "npm run lerna:bootstrap && npm run codegen && npm run packages:build",
-    "docs": "cd packages/react-atlas && npm run styleguide"
+    "bootstrap": "npm run lerna:init && npm run lerna:bootstrap && npm run codegen && npm run packages:build",
+    "docs": "cross-env NODE_ENV=production node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
+    "docsDev": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -49,6 +50,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "cross-env": "^5.0.3",
     "cross-spawn": "^5.1.0",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",

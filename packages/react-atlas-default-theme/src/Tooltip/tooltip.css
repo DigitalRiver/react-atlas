@@ -1,8 +1,17 @@
 
 /* Base styles for the element that has a tooltip */
 .tooltip {
+  composes: charcoal from '../styles.css';
+  composes: default-font from '../styles.css';
   position: relative;
   display: inline-block;
+  font-size: 0.8333rem !important;
+}
+
+.tooltip > i , .block > i {
+  opacity: 0.2;
+  font-size: 1rem !important;
+  cursor: pointer;
 }
 
 .block {

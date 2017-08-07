@@ -61,22 +61,25 @@ There are several ways to style/theme react-atlas components.
 - [Themeing components.](readme/themeing.md#Components)
 
 ### Docs
-To start documentation site locally you'd need to install dependencies from the main package, setup the monorepo and then just run the docs script:
+To start documentation site locally you'd need to install dependencies from the main package, setup the monorepo and then just run the docs script.
+`npm run docsPrd` runs the production version of the docsite and will not hotload
 
 ```bash
 $ git clone https://github.com/DigitalRiver/react-atlas.git
 $ npm install
 $ npm run bootstrap
-$ npm run docs
+$ npm run docsPrd
 ```
 ## Development and Contributing
-To setup atlas for development first make sure `NODE_ENV` is not set or is
-set to `dev`. If `NODE_ENV` is set to production, the doc site wouldn't work, as well as hot loading, etc. Next follow the steps below.
+To setup atlas for development, run the following commands:
+
 ```bash
 $ git clone https://github.com/DigitalRiver/react-atlas.git
 $ npm install
 $ npm run bootstrap
+$ npm run docsDev
 ```
+
 There are other npm commands which may be of use in your development.
 ```bash
 

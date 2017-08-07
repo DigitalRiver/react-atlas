@@ -7,6 +7,7 @@ export { DropdownStyle } from "./Dropdown";
 export { FormStyle } from "./Form";
 export { HintStyle } from "./Hint";
 export { InputStyle } from "./Input";
+export { ProgressBarStyle } from "./ProgressBar";
 export { RadioStyle } from "./Radio";
 export { RadioGroupStyle } from "./RadioGroup";
 export { SwitchStyle } from "./Switch";

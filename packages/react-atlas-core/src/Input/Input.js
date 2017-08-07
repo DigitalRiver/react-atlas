@@ -129,36 +129,12 @@ class Input extends React.Component {
     }
   };
 
-  _handleChange = event => {
-    let inputValue = event.target.value;
-
-    /* Masked input validations */
-    if (this.props.mask) {
-      let maskValue = this.mask.getValue();
-
-      if (inputValue !== maskValue) {
-        // Cut or delete operations will have shortened the value
-        if (inputValue.length < maskValue.length) {
-          let sizeDiff = maskValue.length - inputValue.length;
-          this._updateMaskSelection();
-          this.mask.selection.end = this.mask.selection.start + sizeDiff;
-          this.mask.backspace();
-        }
-        // Set new input value based on mask
-        let newValue = this._getDisplayValue();
-        inputValue = newValue;
-
-        if (newValue) {
-          this._updateInputSelection();
-        }
-      }
-    }
-
+  _validate = (inputValue) => {
     /* Validate max character length */
     if (this.props.maxLength) {
-      // Keep difference between maxlenght and input value in state for count
+      // Keep difference between maxlength and input value in state for count
       this.setState({
-        "remaining": this.props.maxLength - event.target.value.length
+        "remaining": this.props.maxLength - inputValue.length
       });
       // Make sure the user input is less than maxLength value
       if (inputValue.length > this.props.maxLength) {
@@ -166,7 +142,7 @@ class Input extends React.Component {
           "value": inputValue.substring(0, this.props.maxLength),
           "remaining": 0
         });
-        return;
+        return false;
       }
     }
 
@@ -214,14 +190,42 @@ class Input extends React.Component {
         }
       }
     }
+  }
 
-    /* Regardless of validations, set value in the component state */
-    this.setState({ "value": inputValue });
+  _handleChange = event => {
+    event.persist();
+    let inputValue = event.target.value;
 
-    /* Execute application code function at this point if available */
-    if (this.props.onChange) {
-      this.props.onChange(event);
+    /* Masked input validations */
+    if (this.props.mask) {
+      let maskValue = this.mask.getValue();
+
+      if (inputValue !== maskValue) {
+        // Cut or delete operations will have shortened the value
+        if (inputValue.length < maskValue.length) {
+          let sizeDiff = maskValue.length - inputValue.length;
+          this._updateMaskSelection();
+          this.mask.selection.end = this.mask.selection.start + sizeDiff;
+          this.mask.backspace();
+        }
+        // Set new input value based on mask
+        let newValue = this._getDisplayValue();
+        inputValue = newValue;
+
+        if (newValue) {
+          this._updateInputSelection();
+        }
+      }
     }
+
+    this._validate(inputValue);
+    this.setState({ 
+        "value": inputValue 
+        }, () => {
+          if (this.props.onChange) {
+            this.props.onChange(event);
+          }
+        });
   };
 
   render() {
