@@ -261,10 +261,10 @@ class Dropdown extends React.PureComponent {
             }
           </div>
         }
-        <div onClick={(e) => { this._toggle("click", e); }} styleName={cx("content")}>
+        <div onClick={(e) => { this._toggle("click", e); }} styleName={"content"}>
           <div style={{ "width": buttonWidth + "px" }}>
             <ButtonCore
-              styleName={cx("buttonClass")}
+              styleName={"buttonClass"}
               className={dropdownButtonClasses}
             >
               <span>{this.state.output}</span><i styleName="arrow" />
@@ -276,7 +276,7 @@ class Dropdown extends React.PureComponent {
           <input type="hidden" value={this.state.value} />
         </div>
         {error &&
-          <span styleName={cx("error_message")}>
+          <span styleName={"error_message"}>
             {this.state.errorMessage}
           </span>
         }
