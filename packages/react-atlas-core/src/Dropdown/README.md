@@ -1,6 +1,6 @@
 Basic Dropdown:
-    
-    <Dropdown customLabel="Choose" buttonWidth={"160"}>
+
+    <Dropdown customLabel="Choose">
        <span value="bird">Bird</span>
        <span value="cow" selected>Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -9,8 +9,8 @@ Basic Dropdown:
     </Dropdown>
 
 Disabled Dropdown:
-    
-    <Dropdown customLabel="Disabled Dropdown" buttonWidth={"250"} disabled>
+
+    <Dropdown customLabel="Disabled Dropdown" disabled>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -19,8 +19,8 @@ Disabled Dropdown:
     </Dropdown>
 
 Dropdown with Required Property:
-    
-    <Dropdown customLabel="Required Dropdown" buttonWidth={"250"} required>
+
+    <Dropdown customLabel="Required Dropdown" required>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -29,8 +29,8 @@ Dropdown with Required Property:
     </Dropdown>
 
 Dropdown with Required Property and Custom Error Message:
-    
-    <Dropdown customLabel="Error Message Dropdown" buttonWidth={"160"} required errorCallback={ function(event, value){ return {valid: value !== "", message: "Dropdown is required"} } }>
+
+    <Dropdown customLabel="Error Message Dropdown" required errorCallback={ function(event, value){ return {valid: value !== "", message: "Dropdown is required"} } }>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -39,8 +39,8 @@ Dropdown with Required Property and Custom Error Message:
     </Dropdown>
 
 Dropdown with Custom Function Before Change:
-    
-    <Dropdown customLabel="onChange Dropdown" buttonWidth={"160"} onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } >
+
+    <Dropdown customLabel="onChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } >
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -60,7 +60,7 @@ Dropdown with onClick function:
 
 Dropdown with onChange function:
 
-    <Dropdown customLabel="onChange Dropdown" buttonWidth={"160"} onChange={(e) => {console.log("onChange: ", e)}} >
+    <Dropdown customLabel="onChange Dropdown" onChange={(e) => {console.log("onChange: ", e)}} >
     <span value="bird">Bird</span>
     <span value="cow">Cow</span>
     <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
