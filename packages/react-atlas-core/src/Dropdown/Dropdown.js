@@ -26,7 +26,8 @@ class Dropdown extends React.PureComponent {
   }
 
   _getOutput = () => {
-    for(var i = 0; i < this.props.children.length; i++) {
+    let count = React.Children.count(this.props.children);
+    for(var i = 0; i < count; i++) {
       if(this.props.children[i].props.selected){
         return this.props.children[i].props.children
       }
@@ -39,7 +40,8 @@ class Dropdown extends React.PureComponent {
   }
 
   _getValue = () => {
-    for(var i = 0; i < this.props.children.length; i++) {
+    let count = React.Children.count(this.props.children);
+    for(var i = 0; i < count; i++) {
       if(this.props.children[i].props.selected){
         return this.props.children[i].props.value
       }
@@ -170,7 +172,8 @@ class Dropdown extends React.PureComponent {
     event.preventDefault();
     if (event.key === "ArrowDown") {
       newIndex = (indexValid) ? this.state.index + 1 : 0;
-      if(newIndex < this.props.children.length) {
+      let count = React.Children.count(this.props.children);
+      if(newIndex < count) {
         this.setState({
           index: newIndex
         });
@@ -214,10 +217,11 @@ class Dropdown extends React.PureComponent {
     // Builds the option list from the children passed in
     // firstChild, lastChild and selected each have unique styling and those classes are added here
     const bound_children = children.map((child, i) => {
+      let count = React.Children.count(this.props.children);
       let childClasses = cx({
         "ra_dropdown__selected": i === this.state.index,
         "ra_dropdown__firstChild": i === 0,
-        "ra_dropdown__lastChild": i === children.length - 1
+        "ra_dropdown__lastChild": i === count - 1
       });
       let kid =
         <li
