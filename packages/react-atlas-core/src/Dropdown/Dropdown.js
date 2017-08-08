@@ -15,7 +15,7 @@ class Dropdown extends React.PureComponent {
     this.state = {
       "active": false,
       "output": this._getOutput(),
-      "value": this._getValue(),
+      "value": this._getValue() || '',
       "valid": true,
       "errorMessage": "This field is required",
       "onChange": "",
@@ -26,9 +26,10 @@ class Dropdown extends React.PureComponent {
   }
 
   _getOutput = () => {
-    for(var i = 0; i < this.props.children.length; i++) {
+    let count = React.Children.count(this.props.children);
+    for(var i = 0; i < count; i++) {
       if(this.props.children[i].props.selected){
-        return this.props.children[i].props.children  
+        return this.props.children[i].props.children
       }
     }
     if(this.props.defaultText){
@@ -39,25 +40,12 @@ class Dropdown extends React.PureComponent {
   }
 
   _getValue = () => {
-    for(var i = 0; i < this.props.children.length; i++) {
+    let count = React.Children.count(this.props.children);
+    for(var i = 0; i < count; i++) {
       if(this.props.children[i].props.selected){
-        return this.props.children[i].props.value  
+        return this.props.children[i].props.value
       }
     }
-  }
-
-  /**
-   * Listeners added which call functions for window click outside of dropdown and blur outside of browser
-   */
-  componentDidMount() {
-    window.addEventListener("blur", this._onWindowBlur);
-  }
-
-  /**
-   * Listeners added which call functions for window click outside of dropdown and blur outside of browser
-   */
-  componentWillUnmount() {
-    window.removeEventListener("blur", this._onWindowBlur);
   }
 
   /**
@@ -76,7 +64,8 @@ class Dropdown extends React.PureComponent {
    *  _clickHandler is used when the dropdown option is selected.
    *
    */
-  _clickHandler = (i) => {
+  _clickHandler = (i, event) => {
+    event.persist();
     if (!this.props.disabled) {
       if (
         typeof this.props.onBeforeChange === "undefined" ||
@@ -94,13 +83,13 @@ class Dropdown extends React.PureComponent {
         }, function(){
           this._validationHandler(this.props.errorCallback);
           if (this.props.onChange) {
-            this._customOnChangeEvent(i, this.props.children);
+            this._customOnChangeEvent(event);
           }
           if (this.props.onClick) {
-            this._customOnClickEvent(i, this.props.children);
+            this._customOnClickEvent(event);
           }
         });
-        
+
       }
     }
   };
@@ -109,21 +98,16 @@ class Dropdown extends React.PureComponent {
     /* Pass the event object, and a data object to the click handler.
     The data object contains a boolean for whether the dropdown was
     changed or not, plus all the props passed to the object.  */
-    this.props.onClick(event, {
-      "active": this.state.valid,
-      "props": this.props
-    });
+    event.persist();
+    this.props.onChange(event.target.innerText, event);
   };
 
   _customOnClickEvent = event => {
     /* Pass the event object, and a data object to the click handler.
       The data object contains a boolean for whether the dropdown was
       clicked or not, plus all the props passed to the object.  */
-    
-    this.props.onClick(event, {
-      "active": this.state.valid,
-      "props": this.props
-    });
+    event.persist();
+    this.props.onClick(event.target.innerText, event);
   };
 
   _toggle = (focus, event) => {
@@ -139,7 +123,7 @@ class Dropdown extends React.PureComponent {
     }
     if (!this.props.disabled && canProceed) {
       const action = (focus && !this.state.active) ? true : false;
-      if(action){  
+      if(action){
         this.setState({
           "focus": true,
           "active": true,
@@ -156,7 +140,7 @@ class Dropdown extends React.PureComponent {
       if (this.props.onClick) {
         this._customOnClickEvent(event);
       }
-    } 
+    }
   };
 
   _validationHandler = callback => {
@@ -181,16 +165,16 @@ class Dropdown extends React.PureComponent {
   _keyDown = event => {
     const indexValid = (typeof this.state.index === "number");
     let newIndex;
+    event.preventDefault();
     if (event.key === "ArrowDown") {
-      event.preventDefault();
       newIndex = (indexValid) ? this.state.index + 1 : 0;
-      if(newIndex < this.props.children.length) {
+      let count = React.Children.count(this.props.children);
+      if(newIndex < count) {
         this.setState({
           index: newIndex
         });
       }
     } else if (event.key === "ArrowUp") {
-      event.preventDefault();
       newIndex = this.state.index - 1;
       if(newIndex >= 0) {
         this.setState({
@@ -198,7 +182,6 @@ class Dropdown extends React.PureComponent {
         });
       }
     } else if (event.key === "Enter") {
-      event.preventDefault();
       this._clickHandler(this.state.index);
     }
   }
@@ -230,12 +213,13 @@ class Dropdown extends React.PureComponent {
     // Builds the option list from the children passed in
     // firstChild, lastChild and selected each have unique styling and those classes are added here
     const bound_children = children.map((child, i) => {
+      let count = React.Children.count(this.props.children);
       let childClasses = cx({
         "ra_dropdown__selected": i === this.state.index,
         "ra_dropdown__firstChild": i === 0,
-        "ra_dropdown__lastChild": i === children.length - 1
+        "ra_dropdown__lastChild": i === count - 1
       });
-      let kid = 
+      let kid =
         <li
           key={i}
           className={"ra_dropdown__item " + childClasses}
@@ -253,9 +237,6 @@ class Dropdown extends React.PureComponent {
 
     return (
       <div
-        ref={node => {
-          this.wrapperRef = node;
-        }}
         className={className}
         styleName={classes}
         onFocus={(e) => {
@@ -276,22 +257,22 @@ class Dropdown extends React.PureComponent {
             }
           </div>
         }
-        <div onClick={(e) => { this._toggle("click", e); }} styleName={cx("content")}>
+        <div onClick={(e) => { this._toggle("click", e); }} styleName={"content"}>
           <div style={{ "width": buttonWidth + "px" }}>
             <ButtonCore
-              styleName={cx("buttonClass")}
+              styleName={"buttonClass"}
               className={dropdownButtonClasses}
             >
               <span>{this.state.output}</span><i styleName="arrow" />
             </ButtonCore>
           </div>
           {this.state.active &&
-            <span styleName={"list"}>{bound_children}</span>
+            <ul styleName={"list"}>{bound_children}</ul>
           }
           <input type="hidden" value={this.state.value} />
         </div>
         {error &&
-          <span styleName={cx("error_message")}>
+          <span styleName={"error_message"}>
             {this.state.errorMessage}
           </span>
         }
