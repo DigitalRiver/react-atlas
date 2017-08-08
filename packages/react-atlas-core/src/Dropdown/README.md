@@ -40,7 +40,7 @@ Dropdown with Required Property and Custom Error Message:
 
 Dropdown with Custom Function Before Change:
 
-    <Dropdown customLabel="onChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } >
+    <Dropdown customLabel="onBeforeChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } >
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -50,7 +50,7 @@ Dropdown with Custom Function Before Change:
 
 Dropdown with onClick function:
 
-    <Dropdown onClick={ function(event, value){ console.log("Click: ", event, value) }} >
+    <Dropdown onClick={ function(value, event){ console.log("Click: ", event, value) }} >
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -60,7 +60,7 @@ Dropdown with onClick function:
 
 Dropdown with onChange function:
 
-    <Dropdown customLabel="onChange Dropdown" onChange={(e) => {console.log("onChange: ", e)}} >
+    <Dropdown customLabel="onChange Dropdown" onChange={(value, event) => {console.log("onChange: ", value, event)}} >
     <span value="bird">Bird</span>
     <span value="cow">Cow</span>
     <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
