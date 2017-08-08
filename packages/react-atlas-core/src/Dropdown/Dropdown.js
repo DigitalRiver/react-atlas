@@ -193,7 +193,8 @@ class Dropdown extends React.PureComponent {
       required,
       customLabel,
       buttonWidth,
-      disabled
+      disabled,
+      name
     } = this.props;
     const active = this.state.active;
     const error = !this.state.valid && !disabled ? true : false;
@@ -237,6 +238,7 @@ class Dropdown extends React.PureComponent {
 
     return (
       <div
+        name={name}
         className={className}
         styleName={classes}
         onFocus={(e) => {
@@ -334,6 +336,9 @@ Dropdown.propTypes = {
 
   /* Pass CSS styles to className to set them on the dropdown component. */
   "className": PropTypes.string,
+
+  /* The name of the key value used when submitting the dropdown value. */
+  "name": PropTypes.string,
 
   /* Default text to show in collapsed dropdown on initial render */
   "defaultText": PropTypes.string,
