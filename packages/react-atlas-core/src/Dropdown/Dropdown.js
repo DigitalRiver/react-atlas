@@ -167,8 +167,8 @@ class Dropdown extends React.PureComponent {
   _keyDown = event => {
     const indexValid = (typeof this.state.index === "number");
     let newIndex;
+    event.preventDefault();
     if (event.key === "ArrowDown") {
-      event.preventDefault();
       newIndex = (indexValid) ? this.state.index + 1 : 0;
       if(newIndex < this.props.children.length) {
         this.setState({
@@ -176,7 +176,6 @@ class Dropdown extends React.PureComponent {
         });
       }
     } else if (event.key === "ArrowUp") {
-      event.preventDefault();
       newIndex = this.state.index - 1;
       if(newIndex >= 0) {
         this.setState({
@@ -184,7 +183,6 @@ class Dropdown extends React.PureComponent {
         });
       }
     } else if (event.key === "Enter") {
-      event.preventDefault();
       this._clickHandler(this.state.index);
     }
   }
