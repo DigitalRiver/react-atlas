@@ -99,9 +99,7 @@ class Dropdown extends React.PureComponent {
     The data object contains a boolean for whether the dropdown was
     changed or not, plus all the props passed to the object.  */
     event.persist();
-    /* Use event.target.innerText instead of this.state.value because
-     * if an elipsis is applied this.state.value does not contain the correct value. */
-    this.props.onChange(event.target.innerText, event);
+    this.props.onChange(this.state.value, event);
   };
 
   _customOnClickEvent = event => {
@@ -109,7 +107,7 @@ class Dropdown extends React.PureComponent {
       The data object contains a boolean for whether the dropdown was
       clicked or not, plus all the props passed to the object.  */
     event.persist();
-    this.props.onClick(event.target.innerText, event);
+    this.props.onClick(this.state.value, event);
   };
 
   _toggle = (focus, event) => {
