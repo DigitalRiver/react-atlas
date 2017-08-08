@@ -65,6 +65,7 @@ class Dropdown extends React.PureComponent {
    *
    */
   _clickHandler = (i, event) => {
+    event.persist();
     if (!this.props.disabled) {
       if (
         typeof this.props.onBeforeChange === "undefined" ||
@@ -97,23 +98,16 @@ class Dropdown extends React.PureComponent {
     /* Pass the event object, and a data object to the click handler.
     The data object contains a boolean for whether the dropdown was
     changed or not, plus all the props passed to the object.  */
-    this.props.onChange(event, {
-      "active": this.state.valid,
-      "props": this.props,
-      "value": this.state.value
-    });
+    event.persist();
+    this.props.onChange(event.target.innerText, event);
   };
 
   _customOnClickEvent = event => {
     /* Pass the event object, and a data object to the click handler.
       The data object contains a boolean for whether the dropdown was
       clicked or not, plus all the props passed to the object.  */
-
-    this.props.onClick(event, {
-      "active": this.state.valid,
-      "props": this.props,
-      "value": this.state.value
-    });
+    event.persist();
+    this.props.onClick(event.target.innerText, event);
   };
 
   _toggle = (focus, event) => {
@@ -273,7 +267,7 @@ class Dropdown extends React.PureComponent {
             </ButtonCore>
           </div>
           {this.state.active &&
-            <span styleName={"list"}>{bound_children}</span>
+            <ul styleName={"list"}>{bound_children}</ul>
           }
           <input type="hidden" value={this.state.value} />
         </div>
