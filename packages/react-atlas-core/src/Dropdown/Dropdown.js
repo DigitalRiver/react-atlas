@@ -15,7 +15,7 @@ class Dropdown extends React.PureComponent {
     this.state = {
       "active": false,
       "output": this._getOutput(),
-      "value": this._getValue(),
+      "value": this._getValue() || '',
       "valid": true,
       "errorMessage": "This field is required",
       "onChange": "",
