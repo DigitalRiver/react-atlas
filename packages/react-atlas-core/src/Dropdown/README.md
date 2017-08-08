@@ -57,3 +57,13 @@ Dropdown with onClick function:
        <span value="monkey">Monkey</span>
        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
     </Dropdown>
+
+Dropdown with onChange function:
+
+    <Dropdown customLabel="onChange Dropdown" buttonWidth={"160"} onChange={(e) => {console.log("onChange: ", e)}} >
+    <span value="bird">Bird</span>
+    <span value="cow">Cow</span>
+    <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+    <span value="monkey">Monkey</span>
+    <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+    </Dropdown>
