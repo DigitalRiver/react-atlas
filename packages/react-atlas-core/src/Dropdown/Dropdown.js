@@ -64,7 +64,7 @@ class Dropdown extends React.PureComponent {
    *  _clickHandler is used when the dropdown option is selected.
    *
    */
-  _clickHandler = (i) => {
+  _clickHandler = (i, event) => {
     if (!this.props.disabled) {
       if (
         typeof this.props.onBeforeChange === "undefined" ||
@@ -82,10 +82,10 @@ class Dropdown extends React.PureComponent {
         }, function(){
           this._validationHandler(this.props.errorCallback);
           if (this.props.onChange) {
-            this._customOnChangeEvent(i, this.props.children);
+            this._customOnChangeEvent(event);
           }
           if (this.props.onClick) {
-            this._customOnClickEvent(i, this.props.children);
+            this._customOnClickEvent(event);
           }
         });
 
@@ -99,7 +99,8 @@ class Dropdown extends React.PureComponent {
     changed or not, plus all the props passed to the object.  */
     this.props.onChange(event, {
       "active": this.state.valid,
-      "props": this.props
+      "props": this.props,
+      "value": this.state.value
     });
   };
 
@@ -110,7 +111,8 @@ class Dropdown extends React.PureComponent {
 
     this.props.onClick(event, {
       "active": this.state.valid,
-      "props": this.props
+      "props": this.props,
+      "value": this.state.value
     });
   };
 
