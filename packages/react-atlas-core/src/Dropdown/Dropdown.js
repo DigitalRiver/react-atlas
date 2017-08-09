@@ -99,7 +99,7 @@ class Dropdown extends React.PureComponent {
     The data object contains a boolean for whether the dropdown was
     changed or not, plus all the props passed to the object.  */
     event.persist();
-    this.props.onChange(event.target.innerText, event);
+    this.props.onChange(this.state.value, event);
   };
 
   _customOnClickEvent = event => {
@@ -107,7 +107,7 @@ class Dropdown extends React.PureComponent {
       The data object contains a boolean for whether the dropdown was
       clicked or not, plus all the props passed to the object.  */
     event.persist();
-    this.props.onClick(event.target.innerText, event);
+    this.props.onClick(this.state.value, event);
   };
 
   _toggle = (focus, event) => {
@@ -193,7 +193,8 @@ class Dropdown extends React.PureComponent {
       required,
       customLabel,
       buttonWidth,
-      disabled
+      disabled,
+      name
     } = this.props;
     const active = this.state.active;
     const error = !this.state.valid && !disabled ? true : false;
@@ -237,6 +238,7 @@ class Dropdown extends React.PureComponent {
 
     return (
       <div
+        name={name}
         className={className}
         styleName={classes}
         onFocus={(e) => {
@@ -334,6 +336,9 @@ Dropdown.propTypes = {
 
   /* Pass CSS styles to className to set them on the dropdown component. */
   "className": PropTypes.string,
+
+  /* The name of the key value used when submitting the dropdown value. */
+  "name": PropTypes.string,
 
   /* Default text to show in collapsed dropdown on initial render */
   "defaultText": PropTypes.string,
