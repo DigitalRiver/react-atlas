@@ -1,12 +1,6 @@
 var fs = require("fs");
-var path = require("path");
 var spawn = require("cross-spawn");
-var glob = require("glob");
-
-// get packages paths
-var packages = glob.sync("./packages/react-atlas*", { realpath: true });
-
-packages.push(packages.shift());
+var packages = ["./packages/react-atlas", "./packages/react-atlas-core", "./packages/react-atlas-default-theme"];
 
 packages.forEach(function(pack) {
   spawn.sync('npm', ['publish', '--access', 'public'], {
