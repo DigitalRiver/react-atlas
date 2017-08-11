@@ -35,7 +35,8 @@ class Form extends React.PureComponent {
       let state = {
                     index: i,
                     value: child.props.value || '',
-                    ref: null
+                    ref: null,
+                    isValid: true
                   };
 
       childState.push(state)
@@ -46,10 +47,6 @@ class Form extends React.PureComponent {
     this.state = {
       "childState": childState
     };
-  }
-
-  clearForm = () => {
-
   }
 
   validate = () => {
@@ -65,8 +62,12 @@ class Form extends React.PureComponent {
         }
       }
 
-      // let isValid = this.state.childState[i].ref._validate();
-      // console.log("isValid: ", isValid);
+      // console.log("Here: ", this.state.childState[i].ref);
+      //
+      // let value = this.state.childState[i].value;
+      // let valid = this.state.childState[i].ref.input._validate();
+      // console.log("value: ", value);
+      // console.log("valid: ", valid);
 
       let childData = {
                         "name": child.props.name,
@@ -105,7 +106,11 @@ class Form extends React.PureComponent {
   }
 
   /* Fires whenever a child input is changed. */
-  onChangeHandler = (event, state) => {
+  onChangeHandler = (value, event, isValid, state) => {
+    console.log("value: ", value);
+    console.log("e: ", event);
+    console.log("isValid: ", isValid);
+    console.log("state: ", state);
     let index = state.index;
     // let childState = this.state.childState;
     let childState = [];
@@ -113,7 +118,7 @@ class Form extends React.PureComponent {
 
     for(let i = 0; i < count; i++) {
       if(i === index) {
-        let child = {index: i, value: event.target.value};
+        let child = {index: i, value: event.target.value, isValid: isValid};
         childState.push(child);
         continue;
       }
@@ -134,7 +139,7 @@ class Form extends React.PureComponent {
   }
 
   render() {
-    const { className, children, action, buttonText, group} = this.props;
+    const { className, children, action, buttonText, group, method, childClasses} = this.props;
 
     /* Loop through children components and set onChange handlers
      * and add CSS classes. */
@@ -144,25 +149,25 @@ class Form extends React.PureComponent {
          * together, if yes set the form_component class. */
         let classes;
         if(group) {
-          classes = cx(child.props.className, "ra_form__component");
+          classes = cx(child.props.className, childClasses, "ra_form__component");
         } else {
-          classes = cx(child.props.className);
+          classes = cx(child.props.className, childClasses);
         }
 
         let props = {
           className: classes,
-          onChange: (e, childState) => this.onChangeHandler(e, this.state.childState[i]),
+          onChange: (value, e, isValid, childState) => this.onChangeHandler(value, e, isValid, this.state.childState[i]),
           value: this.state.childState[i].value,
           validator: this.validator,
           errorText: "This field is required",
-          ref: (input) => { this.state.childState[i].ref = input; }
+          isValid: this.state.childState[i].isValid
         };
 
         return React.cloneElement(child, props);
     });
 
     return (
-      <form action={action} className={cx(className)}>
+      <form action={action} method={method} className={cx(className)}>
         {kids}
         <ButtonCore className={buttonClasses} onClick={this.clickHandler}>{buttonText}</ButtonCore>
       </form>
@@ -171,15 +176,28 @@ class Form extends React.PureComponent {
 }
 
 Form.propTypes = {
+  /* Children components, Usually a Textfield, Dropdown, Input, etc */
   "children": PropTypes.node,
-  "className": PropTypes.string,
+  /* An Object, array, or string of CSS classes to apply to form.*/
+  "className": PropTypes.node,
+  /* A callback that is fired when the form has passed validation
+   * and is ready to submit. Returns the form data and the event object.  */
   "onSubmit": PropTypes.func,
+  /* The URL of the server to send data to. */
   "action": PropTypes.string,
-  "buttonText": PropTypes.string
+  /* The text displayed inside the submit button. */
+  "buttonText": PropTypes.string,
+  /* The HTTP method to use when action is set and
+   * the form is submitting. */
+  "method": PropTypes.string,
+    /* An Object, array, or string of CSS classes to
+     * apply to form children components.*/
+  "childClasses": PropTypes.node
 };
 
 Form.defaultProps = {
-  "buttonText": "Submit"
+  "buttonText": "Submit",
+  "method": "POST"
 }
 
 export default Form;

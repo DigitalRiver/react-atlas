@@ -6,7 +6,7 @@ import cx from "classnames";
 
 /**
  * Master Input component. To be used as core for different input types
- * components. Accepts all input properties and also supports custom 
+ * components. Accepts all input properties and also supports custom
  * and maxlenght/required validations. Allows input masking.
  */
 class Input extends React.Component {
@@ -16,7 +16,7 @@ class Input extends React.Component {
     this.state = {
       "value": props.value || "",
       "errorText": null,
-      "isValid": true,
+      "isValid": props.isValid || true,
       "remaining": props.maxLength
     };
 
@@ -54,7 +54,7 @@ class Input extends React.Component {
 
   _handleKeyDown = event => {
     /**
-     * Handle proper deletion of masked input characters. 
+     * Handle proper deletion of masked input characters.
      * We do this onKeyDown because backspace key event
      * won't reach onKeyPress event.
      */
@@ -105,8 +105,8 @@ class Input extends React.Component {
 
   _handlePaste = event => {
     /**
-     * Support pasting text in masked input. If text doesn't 
-     * pass mask validation, it won't be pasted. 
+     * Support pasting text in masked input. If text doesn't
+     * pass mask validation, it won't be pasted.
      */
     if (this.props.mask) {
       event.preventDefault();
@@ -130,6 +130,7 @@ class Input extends React.Component {
   };
 
   _validate = (inputValue) => {
+    console.log("Validating");
     /* Validate max character length */
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
@@ -174,12 +175,13 @@ class Input extends React.Component {
             this.setState({ "isValid": true });
           }
         } else {
-          this.setState({ 
-            "isValid": true 
+          this.setState({
+            "isValid": true
           });
         }
       }
     }
+    console.log("Here");
   }
 
   _handleChange = event => {
@@ -209,11 +211,12 @@ class Input extends React.Component {
     }
 
     this._validate(inputValue);
-    this.setState({ 
-        "value": inputValue 
+    console.log("isValidInput: ", this.state.isValid);
+    this.setState({
+        "value": inputValue
         }, () => {
           if (this.props.onChange) {
-            this.props.onChange(event);
+            this.props.onChange(this.state.value, event, this.state.isValid);
           }
         });
   };
@@ -237,6 +240,8 @@ class Input extends React.Component {
 
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";
+
+    console.log("isValidRender: ", this.state.isValid);
 
     let inputClasses = cx({
       "input": !isCheckbox,
@@ -302,6 +307,7 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
+  "isValid": PropTypes.bool,
   /**
    * Defines a custom css class name.
    * @examples 'custom-imput'
@@ -334,7 +340,7 @@ Input.propTypes = {
    */
   "errorText": PropTypes.string,
   /**
-   * Defines error messages location (on validation). 
+   * Defines error messages location (on validation).
    * > Valid values are 'right' and 'bottom'.
    * > Default value is 'right'.
    * @examples '<Input type="text" required requiredText="Custom required msg" errorLocation="buttom"/>'
