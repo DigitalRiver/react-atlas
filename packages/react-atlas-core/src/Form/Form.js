@@ -33,8 +33,9 @@ class Form extends React.PureComponent {
     React.Children.map(props.children, (child, i) => {
 
       let state = {
-                    index: i, 
-                    value: child.props.value || ''
+                    index: i,
+                    value: child.props.value || '',
+                    ref: null
                   };
 
       childState.push(state)
@@ -52,25 +53,34 @@ class Form extends React.PureComponent {
   }
 
   validate = () => {
+    let isValid = true;
   	const data = React.Children.map(this.props.children, (child, i) => {
   		const name = utils.getComponentName(child);
 
       if(typeof child.props.required !== 'undefined') {
         if(this.state.childState[i].value === '') {
           console.log('Must pass value for required prop');
+          isValid = false;
           return;
         }
       }
 
+      // let isValid = this.state.childState[i].ref._validate();
+      // console.log("isValid: ", isValid);
+
       let childData = {
-                        "name": child.props.name, 
+                        "name": child.props.name,
                         "value": this.state.childState[i].value
                       };
 
       return childData;
-    })
+    });
 
-    return data;
+    if(isValid) {
+      return data;
+    } else {
+      return null;
+    }
   }
 
   clickHandler = (e) => {
@@ -81,6 +91,9 @@ class Form extends React.PureComponent {
 
   	/* Validate children components before submiting. */
   	let data = this.validate();
+    if(!data) {
+      return;
+    }
 
   	/* Check if onSubmit was set. Call onSubmit if
   	 * it was passed throw a error if not set. */
@@ -108,7 +121,7 @@ class Form extends React.PureComponent {
       let child = this.state.childState[i];
       childState.push(child);
     }
-   
+
     this.setState({"childState": childState});
   }
 
@@ -121,27 +134,35 @@ class Form extends React.PureComponent {
   }
 
   render() {
-    const { className, children, action, buttonText} = this.props;
+    const { className, children, action, buttonText, group} = this.props;
 
     /* Loop through children components and set onChange handlers
      * and add CSS classes. */
     let kids = React.Children.map(children, (child, i) => {
 
-        const classes = cx(child.props.className, "ra_form__component");
+        /* Check if the user wants the form inputs grouped
+         * together, if yes set the form_component class. */
+        let classes;
+        if(group) {
+          classes = cx(child.props.className, "ra_form__component");
+        } else {
+          classes = cx(child.props.className);
+        }
 
         let props = {
-          className: classes, 
+          className: classes,
           onChange: (e, childState) => this.onChangeHandler(e, this.state.childState[i]),
           value: this.state.childState[i].value,
           validator: this.validator,
-          errorText: "This field is required"
+          errorText: "This field is required",
+          ref: (input) => { this.state.childState[i].ref = input; }
         };
 
         return React.cloneElement(child, props);
     });
 
     return (
-      <form action={action} className={cx(className)} styleName={"container"}>
+      <form action={action} className={cx(className)}>
         {kids}
         <ButtonCore className={buttonClasses} onClick={this.clickHandler}>{buttonText}</ButtonCore>
       </form>
