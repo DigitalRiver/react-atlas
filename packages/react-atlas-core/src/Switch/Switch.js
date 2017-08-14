@@ -116,8 +116,7 @@ class Switch extends React.PureComponent {
       className,
       name,
       disabled,
-      hidden,
-      ...props
+      hidden
     } = this.props;
 
     const classes = this.classes;
@@ -130,7 +129,6 @@ class Switch extends React.PureComponent {
 
     return (
       <label
-        {...props}
         styleName={labelClasses}
         className={cx(className)}
         style={styles.offColorStyle}
