@@ -16,9 +16,7 @@ class TextField extends React.PureComponent {
   }
 
   _handleChange = (value, event) => {
-    console.log("Event: ", event);
     event.persist();
-    // let value = event.target.value;
 
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
