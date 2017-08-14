@@ -12,7 +12,7 @@
     "lerna:init": "lerna init",
     "lerna:bootstrap": "lerna bootstrap",
     "lerna:updated": "lerna updated",
-    "lerna:publish": "lerna publish",
+    "publish": "node publishPackages.js",
     "clean": "node cleanPackages.js",
     "packages:build": "node buildPackages.js",
     "setup": "npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
