@@ -130,7 +130,6 @@ class Input extends React.Component {
   };
 
   _validate = (inputValue) => {
-    console.log("Validating");
     /* Validate max character length */
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
@@ -181,7 +180,6 @@ class Input extends React.Component {
         }
       }
     }
-    console.log("Here");
   }
 
   _handleChange = event => {
@@ -211,7 +209,6 @@ class Input extends React.Component {
     }
 
     this._validate(inputValue);
-    console.log("isValidInput: ", this.state.isValid);
     this.setState({
         "value": inputValue
         }, () => {
@@ -240,8 +237,6 @@ class Input extends React.Component {
 
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";
-
-    console.log("isValidRender: ", this.state.isValid);
 
     let inputClasses = cx({
       "input": !isCheckbox,

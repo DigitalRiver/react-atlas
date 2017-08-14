@@ -35,7 +35,6 @@ class Form extends React.PureComponent {
       let state = {
                     index: i,
                     value: child.props.value || '',
-                    ref: null,
                     isValid: true
                   };
 
@@ -52,7 +51,6 @@ class Form extends React.PureComponent {
   validate = () => {
     let isValid = true;
   	const data = React.Children.map(this.props.children, (child, i) => {
-  		const name = utils.getComponentName(child);
 
       if(typeof child.props.required !== 'undefined') {
         if(this.state.childState[i].value === '') {
@@ -61,13 +59,6 @@ class Form extends React.PureComponent {
           return;
         }
       }
-
-      // console.log("Here: ", this.state.childState[i].ref);
-      //
-      // let value = this.state.childState[i].value;
-      // let valid = this.state.childState[i].ref.input._validate();
-      // console.log("value: ", value);
-      // console.log("valid: ", valid);
 
       let childData = {
                         "name": child.props.name,
@@ -107,18 +98,13 @@ class Form extends React.PureComponent {
 
   /* Fires whenever a child input is changed. */
   onChangeHandler = (value, event, isValid, state) => {
-    console.log("value: ", value);
-    console.log("e: ", event);
-    console.log("isValid: ", isValid);
-    console.log("state: ", state);
     let index = state.index;
-    // let childState = this.state.childState;
     let childState = [];
     let count = React.Children.count(this.props.children);
 
     for(let i = 0; i < count; i++) {
       if(i === index) {
-        let child = {index: i, value: event.target.value, isValid: isValid};
+        let child = {index: i, value: value, isValid: isValid};
         childState.push(child);
         continue;
       }
@@ -128,14 +114,6 @@ class Form extends React.PureComponent {
     }
 
     this.setState({"childState": childState});
-  }
-
-  /* Throw error message if value is not truthy/set */
-  validator = (value) => {
-    if(value)
-      return true
-    else
-      return false
   }
 
   render() {
@@ -158,7 +136,6 @@ class Form extends React.PureComponent {
           className: classes,
           onChange: (value, e, isValid, childState) => this.onChangeHandler(value, e, isValid, this.state.childState[i]),
           value: this.state.childState[i].value,
-          validator: this.validator,
           errorText: "This field is required",
           isValid: this.state.childState[i].isValid
         };
@@ -176,21 +153,21 @@ class Form extends React.PureComponent {
 }
 
 Form.propTypes = {
-  /* Children components, Usually a Textfield, Dropdown, Input, etc */
+  /** Children components, Usually a Textfield, Dropdown, Input, etc */
   "children": PropTypes.node,
-  /* An Object, array, or string of CSS classes to apply to form.*/
+  /** An Object, array, or string of CSS classes to apply to form.*/
   "className": PropTypes.node,
-  /* A callback that is fired when the form has passed validation
+  /** A callback that is fired when the form has passed validation
    * and is ready to submit. Returns the form data and the event object.  */
   "onSubmit": PropTypes.func,
-  /* The URL of the server to send data to. */
+  /** The URL of the server to send data to. */
   "action": PropTypes.string,
-  /* The text displayed inside the submit button. */
+  /** The text displayed inside the submit button. */
   "buttonText": PropTypes.string,
-  /* The HTTP method to use when action is set and
+  /** The HTTP method to use when action is set and
    * the form is submitting. */
   "method": PropTypes.string,
-    /* An Object, array, or string of CSS classes to
+    /** An Object, array, or string of CSS classes to
      * apply to form children components.*/
   "childClasses": PropTypes.node
 };
