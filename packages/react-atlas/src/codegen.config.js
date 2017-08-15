@@ -63,7 +63,9 @@ template +=
   eol +
   "import { {{=it.component.name}}Style } from '{{=it.component.theme}}';" +
   eol +
-  "export const {{=it.component.name}} = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});";
+  "const {{=it.component.name}} = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});" + 
+  eol +
+  "export default {{=it.component.name}}";
 
 /* The template used to generate the development react-atlas components. The
  * development component is actually a wrapper around the "real" component
