@@ -11,10 +11,6 @@ class RadioGroup extends React.PureComponent {
     };
   }
 
-  groupSetChecked = value => {
-    this.setState({ "checkedRadio": value });
-  };
-
   componentWillMount() {
     React.Children.map(this.props.children, (child, index) => {
       if (
@@ -26,11 +22,15 @@ class RadioGroup extends React.PureComponent {
     });
   }
 
+  groupSetChecked = value => {
+    this.setState({ "checkedRadio": value });
+  };
+
   render() {
     const { className, children, name, inline, title } = this.props;
 
     const radioButtons =
-      React.Children.map(children, (child, index) => {
+      React.Children.map(children, (child) => {
         child = cloneElement(child, {
           "inline": inline,
           "name": name,
@@ -68,6 +68,11 @@ RadioGroup.propTypes = {
    * @examples '<RadioGroup name="test"></RadioGroup>'
    */
   "name": PropTypes.string,
+  /**
+   * Define the element title.
+   * @examples '<RadioGroup title="Test"></RadioGroup>'
+   */
+  "title": PropTypes.string,
   /**
    * Defines if the radio group should display as an inline element.
    * @examples '<RadioGroup inline></RadioGroup>'

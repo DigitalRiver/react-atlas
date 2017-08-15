@@ -1,4 +1,4 @@
-import React, { cloneElement } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { InputCore } from "../Input";
 import cx from "classnames";
@@ -36,11 +36,11 @@ class TextArea extends React.PureComponent {
     }
   };
 
-  _handleFocus = event => {
+  _handleFocus = () => {
     this.setState({ "active": true });
   };
 
-  _handleBlur = event => {
+  _handleBlur = () => {
     this.setState({ "active": false });
   };
 
@@ -111,7 +111,7 @@ class TextArea extends React.PureComponent {
           required={required}
           disabled={disabled}
           hidden={hidden}
-          ref={node => this.inputRef = node}
+          ref={node => this.inputRef = node} // eslint-disable-line no-return-assign
         />
         {remainingCount}
       </div>
@@ -119,7 +119,7 @@ class TextArea extends React.PureComponent {
   }
 }
 
-TextArea.PropTypes = {
+TextArea.propTypes = {
   /**
 	 * Define a custom css class name.
 	 * @examples 'textarea', 'textarea-elem'
@@ -131,10 +131,20 @@ TextArea.PropTypes = {
 	 */
   "name": PropTypes.string,
   /**
+   * Define a value for the textarea input.
+   * @examples '<TextArea value="test"/>'
+   */
+  "value": PropTypes.string,
+  /**
    * Define a title or header to be displayed above the textarea.
    * @examples '<TextArea header="test"/>'
    */
   "header": PropTypes.string,
+  /**
+   * Defines a resizable textarea. Default: true.
+   * @examples '<TextArea resizable={false}/>'
+   */
+  "resizable": PropTypes.bool,
   /**
 	 * Defines a small sized textarea.
 	 * @examples '<TextArea small/>'
