@@ -1,9 +1,9 @@
 import React from "react";
 import { mount } from "enzyme";
-import { FormCore } from "react-atlas-core";
+import { default as Form } from "../../../react-atlas-core/src/Form/Form";
 
 describe("Test form component", () => {
   it("Test default props", function() {
-    const result = mount(<FormCore />);
+    const result = mount(<Form />);
   });
 });
