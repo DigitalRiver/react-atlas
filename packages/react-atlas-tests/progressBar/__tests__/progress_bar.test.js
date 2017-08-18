@@ -1,9 +1,9 @@
 import React from "react";
 import { mount } from "enzyme";
-import { ProgressBarCore } from "react-atlas-core";
+import { default as ProgressBar } from "../../../react-atlas-core/src/ProgressBar/ProgressBar"
 
 describe("#calculateRatio", function() {
-  let progressBar = mount(<ProgressBarCore min={100} max={300} />);
+  let progressBar = mount(<ProgressBar min={100} max={300} />);
 
   // it("calculates the right ratio", function() {
   //   expect(progressBar.calculateRatio(150)).to.equal(0.25);
