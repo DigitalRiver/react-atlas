@@ -24,7 +24,9 @@ class Button extends React.PureComponent {
       error,
       link,
       outline,
-      icon
+      icon,
+      type,
+      href
     } = this.props;
 
     let mainStyle = "button";
@@ -73,7 +75,11 @@ class Button extends React.PureComponent {
     }
 
     return (
-      <button onClick={onClick} className={cx(className)} styleName={classes}>
+      <button onClick={onClick}
+         className={cx(className)}
+         styleName={classes}
+         type={type}
+         href={href}>
         {icon ? <i className={cx(icon, iconClass)} /> : null}
         {text}
       </button>
@@ -82,6 +88,10 @@ class Button extends React.PureComponent {
 }
 
 Button.propTypes = {
+  /** HTML5 button type, eg submit, button, etc */
+  "type": PropTypes.string,
+  /** The URL to link to. */
+  "href": PropTypes.string,
   /**
      * Define a mini button.
      *
@@ -158,7 +168,8 @@ Button.defaultProps = {
   "link": false,
   "large": false,
   "small": false,
-  "disabled": false
+  "disabled": false,
+  "type": "button"
 };
 
 export default Button;
