@@ -97,7 +97,7 @@ class Form extends React.PureComponent {
   }
 
   render() {
-    const { className, children, action, buttonText, group, method, childClasses} = this.props;
+    const { className, children, action, buttonText, group, method, childClasses, buttonClasses} = this.props;
 
     /* Loop through children components and set onChange handlers
      * and add CSS classes. */
@@ -126,13 +126,15 @@ class Form extends React.PureComponent {
     return (
       <form action={action} method={method} className={cx(className)}>
         {kids}
-        <ButtonCore styleName={"form-button"} onClick={this.clickHandler}>{buttonText}</ButtonCore>
+        <ButtonCore className={cx(buttonClasses)} styleName={"form-button"} onClick={this.clickHandler}>{buttonText}</ButtonCore>
       </form>
     );
   }
 }
 
 Form.propTypes = {
+  /** An Object, array, or string of CSS classes to apply to the form submit button.  */
+  "buttonClasses": PropTypes.node,
   /** Children components, Usually a Textfield, Dropdown, Input, etc */
   "children": PropTypes.node,
   /** An Object, array, or string of CSS classes to apply to form.*/
