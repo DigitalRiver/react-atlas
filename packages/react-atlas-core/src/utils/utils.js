@@ -61,7 +61,7 @@ export default {
   getSelection(elem) {
     let start, end, rangeElem, clone;
 
-    if (elem.selectionStart !== undefined) {
+    if (typeof elem.selectionStart !== "undefined") {
       start = elem.selectionStart;
       end = elem.selectionEnd;
     }
@@ -86,7 +86,7 @@ export default {
     let rangeElem;
 
     try {
-      if (elem.selectionStart !== undefined) {
+      if (typeof elem.selectionStart !== "undefined") {
         elem.focus();
         elem.setSelectionRange(selection.start, selection.end);
       }

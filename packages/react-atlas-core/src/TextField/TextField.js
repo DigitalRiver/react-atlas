@@ -1,4 +1,4 @@
-import React, { cloneElement } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { InputCore } from "../Input";
 import cx from "classnames";
@@ -35,11 +35,11 @@ class TextField extends React.PureComponent {
     }
   };
 
-  _handleFocus = event => {
+  _handleFocus = () => {
     this.setState({ "active": true });
   };
 
-  _handleBlur = event => {
+  _handleBlur = () => {
     this.setState({ "active": false });
   };
 
@@ -110,7 +110,7 @@ class TextField extends React.PureComponent {
           mask={mask}
           disabled={disabled}
           hidden={hidden}
-          ref={node => this.inputRef = node}
+          ref={node => this.inputRef = node} // eslint-disable-line no-return-assign
         />
       </div>
     );
