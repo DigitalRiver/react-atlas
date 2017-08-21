@@ -4,26 +4,6 @@ import { ButtonCore } from '../Button';
 import utils from '../utils/utils';
 import cx from "classnames";
 
-const buttonClasses = cx({
-  'ra_button__button': true,
-  'ra_button__default_btn': true,
-  'ra_button__base': true,
-  'ra_form__button': true,
-  'ra_styles__marg-0': true,
-  'ra_styles__bold': true,
-  'ra_styles__button-pad-1': true,
-  'ra_styles__default-text': true,
-  'ra_styles__default-border': true,
-  'ra_styles__cursor-pointer': true,
-  'ra_styles__primary-button-border-width': true,
-  'ra_button__primary': true,
-  'ra_styles__bg-primary': true,
-  'ra_styles__hover-bg-primary': true,
-  'ra_styles__border-blue': true,
-  'ra_styles__white': true,
-});
-
-
 class Form extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -146,7 +126,7 @@ class Form extends React.PureComponent {
     return (
       <form action={action} method={method} className={cx(className)}>
         {kids}
-        <ButtonCore className={buttonClasses} onClick={this.clickHandler}>{buttonText}</ButtonCore>
+        <ButtonCore styleName={"form-button"} onClick={this.clickHandler}>{buttonText}</ButtonCore>
       </form>
     );
   }
