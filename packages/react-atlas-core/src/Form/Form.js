@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import messages from '../utils/messages';
 import { ButtonCore } from '../Button';
 import utils from '../utils/utils';
 import cx from "classnames";
@@ -34,7 +35,6 @@ class Form extends React.PureComponent {
 
       if(typeof child.props.required !== 'undefined') {
         if(this.state.childState[i].value === '') {
-          console.log('Must pass value for required prop');
           isValid = false;
           return;
         }
@@ -72,7 +72,7 @@ class Form extends React.PureComponent {
   	if(this.props.onSubmit) {
   		this.props.onSubmit(e, data);
   	} else {
-        throw "Pass either onSubmit or action";
+      throw messages.onSubmitAction;
   	}
   }
 
