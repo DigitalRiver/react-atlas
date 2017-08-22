@@ -1,6 +1,6 @@
 ###### Default tooltip:
 
-    <Tooltip tooltip="default" tooltipDelay={1000}/>
+    <Tooltip tooltip="default"/>
 
 ###### Default tooltip with bottom position set:
 
