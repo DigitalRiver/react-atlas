@@ -5,6 +5,7 @@ Basic Form:
       <TextField small placeholder="Email" required type="email" name="email"></TextField>
 			<TextField small placeholder="Password" required type="password" name="password"></TextField>
 			<TextField small placeholder="Confirm Password" required type="password" name="confirm"></TextField>
+			<TextField small placeholder="Confirm Password" required type="password" name="corn"></TextField>
     </Form>
 
 Another Form:

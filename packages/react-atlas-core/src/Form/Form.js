@@ -24,6 +24,8 @@ class Form extends React.PureComponent {
       return child
     });
 
+    console.log("state: ", childState);
+
     this.state = {
       "childState": childState
     };
@@ -35,9 +37,17 @@ class Form extends React.PureComponent {
 
       if(typeof child.props.required !== 'undefined') {
         if(this.state.childState[i].value === '') {
+          const state = this.state.childState;
+          state[i].isValid = false;
+          this.setState({state});
           isValid = false;
           return;
         }
+      }
+
+      /* Skip children with no name prop. */
+      if(!child.props.name) {
+        return;
       }
 
       let childData = {
@@ -78,6 +88,7 @@ class Form extends React.PureComponent {
 
   /* Fires whenever a child input is changed. */
   onChangeHandler = (value, event, isValid, state) => {
+    console.log("FormIsValid: ", isValid);
     let index = state.index;
     let childState = [];
     let count = React.Children.count(this.props.children);
@@ -98,7 +109,7 @@ class Form extends React.PureComponent {
 
   render() {
     const { className, children, action, buttonText, group, method, childClasses, buttonClasses} = this.props;
-
+    console.log("children: ", this.props.children);
     /* Loop through children components and set onChange handlers
      * and add CSS classes. */
     let kids = React.Children.map(children, (child, i) => {
@@ -114,7 +125,7 @@ class Form extends React.PureComponent {
 
         let props = {
           className: classes,
-          onChange: (value, e, isValid, childState) => this.onChangeHandler(value, e, isValid, this.state.childState[i]),
+          onChange: (value, event, isValid, state) => this.onChangeHandler(value, event, isValid, this.state.childState[i]),
           value: this.state.childState[i].value,
           errorText: "This field is required",
           isValid: this.state.childState[i].isValid

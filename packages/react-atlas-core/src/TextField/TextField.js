@@ -15,7 +15,13 @@ class TextField extends React.PureComponent {
     };
   }
 
-  _handleChange = (value, event) => {
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.isValid !== this.state.valid) {
+      this.setState({"valid": nextProps.isValid});
+    }
+  }
+
+  _handleChange = (value, event, isValid) => {
     event.persist();
 
     if (this.props.maxLength) {
@@ -23,15 +29,17 @@ class TextField extends React.PureComponent {
       this.setState({ "remaining": this.props.maxLength - value.length });
     }
 
+    console.log("TextFieldIsValid: ", isValid);
+
     // Set value and valid state depending on InputCore state
     this.setState({
-      "value": this.inputRef.state.value,
-      "valid": this.inputRef.state.isValid
+      "value": value,
+      "valid": isValid
     });
 
     if (this.props.onChange) {
       // Execute app code
-      this.props.onChange(event);
+      this.props.onChange(value, event, isValid);
     }
   };
 
@@ -103,14 +111,14 @@ class TextField extends React.PureComponent {
           value={this.state.value}
           maxLength={maxLength}
           styleName={textFieldClasses}
-          onChange={this._handleChange}
+          onChange={ (value, event, isValid) => this._handleChange(value, event, isValid)}
           required={required}
           validator={validator}
           errorText={errorText}
           mask={mask}
           disabled={disabled}
+          isValid={this.state.valid}
           hidden={hidden}
-          ref={node => this.inputRef = node} // eslint-disable-line no-return-assign
         />
       </div>
     );

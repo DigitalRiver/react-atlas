@@ -20,6 +20,8 @@ class Input extends React.Component {
       "remaining": props.maxLength
     };
 
+    console.log("InitialInputIsValid: ", this.state.isValid);
+
     // Configure input mask if required
     if (this.props.mask) {
       let maskOptions = {
@@ -35,6 +37,24 @@ class Input extends React.Component {
       console.warn(
         "You set a custom validator without error text message. Please use 'errorText' property to set it up."
       );
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.isValid) {
+      if(nextProps.isValid !== this.state.isValid) {
+        this.setState({
+          "errorText": this.props.requiredText || "This field is required.",
+          "isValid": nextProps.isValid
+        });
+      }
+    } else if(nextProps.isValid === false) {
+      this.setState({
+        "errorText": this.props.requiredText || "This field is required.",
+        "isValid": nextProps.isValid
+      });
+    } else {
+      console.log("Here");
     }
   }
 
@@ -211,10 +231,12 @@ class Input extends React.Component {
     }
 
     this._validate(inputValue);
+    console.log("InputIsValid: ", this.state.isValid);
     this.setState({
         "value": inputValue
         }, () => {
           if (this.props.onChange) {
+            console.log("Input Calling OnChange: ", this.state.value, event, this.state.isValid);
             this.props.onChange(this.state.value, event, this.state.isValid);
           }
         });

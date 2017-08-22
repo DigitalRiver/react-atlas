@@ -15,7 +15,7 @@ class TextArea extends React.PureComponent {
     };
   }
 
-  _handleChange = (value, event) => {
+  _handleChange = (value, event, isValid) => {
     event.persist();
 
     if (this.props.maxLength) {
@@ -25,13 +25,13 @@ class TextArea extends React.PureComponent {
 
     // Set value and valid state depending on InputCore state
     this.setState({
-      "value": this.inputRef.state.value,
-      "valid": this.inputRef.state.isValid
+      "value": value,
+      "valid": isValid
     });
 
     if (this.props.onChange) {
       // Execute app code
-      this.props.onChange(event);
+      this.props.onChange(value, event, isValid);
     }
   };
 
