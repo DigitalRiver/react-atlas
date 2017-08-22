@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import prefixer from "../utils/prefixer";
 import cx from 'classnames';
 
@@ -22,6 +23,8 @@ class ProgressBar extends React.PureComponent {
         
       };
     }
+
+    return null;
   }
 
   linearStyle() {
@@ -126,51 +129,51 @@ ProgressBar.propTypes = {
    * The value of a second progress bar
    * @examples ''
    */
-  "buffer": React.PropTypes.number,
+  "buffer": PropTypes.number,
   /**
    * Additional classname provided to component for further styling
    * @examples ''
    */
-  "className": React.PropTypes.string,
+  "className": PropTypes.string,
   /**
    * Length of time in seconds for the transition (can use decimals)
    * @examples '35'
    */
-  "transitionDuration": React.PropTypes.string,
+  "transitionDuration": PropTypes.string,
   /**
    * The max value of the progress bar
    * @examples ''
    */
-  "max": React.PropTypes.number,
+  "max": PropTypes.number,
   /**
    * The min value of the progress bar
    * @examples ''
    */
-  "min": React.PropTypes.number,
+  "min": PropTypes.number,
   /**
    * Defines the type of Progress bar: 'determinate', 'indeterminate'
    * @examples 'circular'
    */
-  "mode": React.PropTypes.string,
+  "mode": PropTypes.string,
   /**
    * If true, progressbar will change colors during transition
    * @examples ''
    */
-  "multicolor": React.PropTypes.bool,
+  "multicolor": PropTypes.bool,
   /**
    * Type of progress bar; 'circular' or 'linear'
    * @examples ''
    */
-  "type": React.PropTypes.oneOf(["linear", "circular"]),
+  "type": PropTypes.oneOf(["linear", "circular"]),
   /**
    * The default value(s) of the progress bar.  Can be a number, or an object containing keys of "from" and "to"
    * @examples '{"from": 10, "to": 80" }'
    */
-  "value": React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.shape({
-      "from": React.PropTypes.number,
-      "to": React.PropTypes.number
+  "value": PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.shape({
+      "from": PropTypes.number,
+      "to": PropTypes.number
     })
   ])
 };

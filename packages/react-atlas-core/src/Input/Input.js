@@ -123,7 +123,7 @@ class Input extends React.Component {
     }
   };
 
-  _handleBeforeChange = event => {
+  _handleBeforeChange = () => {
     if (this.props.onBeforeChange) {
       this.props.onBeforeChange();
     }
@@ -190,6 +190,8 @@ class Input extends React.Component {
         }
       }
     }
+
+    return true;
   }
 
   _handleChange = event => {

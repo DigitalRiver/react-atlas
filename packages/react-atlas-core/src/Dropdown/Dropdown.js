@@ -22,12 +22,12 @@ class Dropdown extends React.PureComponent {
       "focus": false,
       "zIndex": false
     };
-    let isFocus = false;
+    let isFocus = false; // eslint-disable-line no-unused-vars
   }
 
   _getOutput = () => {
     let count = React.Children.count(this.props.children);
-    for(var i = 0; i < count; i++) {
+    for(let i = 0; i < count; i++) {
       if(this.props.children[i].props.selected){
         return this.props.children[i].props.children
       }
@@ -41,11 +41,14 @@ class Dropdown extends React.PureComponent {
 
   _getValue = () => {
     let count = React.Children.count(this.props.children);
-    for(var i = 0; i < count; i++) {
+
+    for(let i = 0; i < count; i++) {
       if(this.props.children[i].props.selected){
-        return this.props.children[i].props.value
+        return this.props.children[i].props.value;
       }
     }
+
+    return null;
   }
 
   /**
@@ -122,7 +125,7 @@ class Dropdown extends React.PureComponent {
       this.isFocus = true;
     }
     if (!this.props.disabled && canProceed) {
-      const action = (focus && !this.state.active) ? true : false;
+      const action = focus && !this.state.active ? true : false;
       if(action){
         this.setState({
           "focus": true,
@@ -163,22 +166,22 @@ class Dropdown extends React.PureComponent {
   };
 
   _keyDown = event => {
-    const indexValid = (typeof this.state.index === "number");
+    const indexValid = typeof this.state.index === "number";
     let newIndex;
     event.preventDefault();
     if (event.key === "ArrowDown") {
-      newIndex = (indexValid) ? this.state.index + 1 : 0;
+      newIndex = indexValid ? this.state.index + 1 : 0;
       let count = React.Children.count(this.props.children);
       if(newIndex < count) {
         this.setState({
-          index: newIndex
+          "index": newIndex
         });
       }
     } else if (event.key === "ArrowUp") {
       newIndex = this.state.index - 1;
       if(newIndex >= 0) {
         this.setState({
-          index: newIndex
+          "index": newIndex
         });
       }
     } else if (event.key === "Enter") {
@@ -325,11 +328,6 @@ Dropdown.propTypes = {
 
   /* . */
   "clickEvent": PropTypes.func,
-
-  /**
-   * Allows the user to pass a function for custom validation. Should return either true or false.
-   */
-  "errorCallback": PropTypes.func,
 
   /* The children elements to be wrapped by the dropdown menu. */
   "children": PropTypes.node.isRequired,

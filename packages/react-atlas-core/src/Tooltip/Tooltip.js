@@ -20,7 +20,7 @@ class Tooltip extends React.PureComponent {
     }
 
 
-    _active = (focus, event) => {
+    _active = (focus) => {
         if(focus === true) {
             if (!this.props.tooltipDelay) {
                 this.setState({
@@ -45,9 +45,7 @@ class Tooltip extends React.PureComponent {
             children,
             className,
             icon,
-            position,
-            tooltip,
-            tooltipDelay
+            position
         } = this.props;
 
         let tooltipClasses;
@@ -60,24 +58,29 @@ class Tooltip extends React.PureComponent {
             "tooltip-top": position === "top",
             "tooltip-right": position === "right"
         });
-    
+
+        let TooltipContainer = this.state.active ? <span>{this.state.tooltip}</span> : null ;
+
         let Icon = icon && !children ? <i className={cx(icon)} /> : null;
 
-    return (
-        <div data-tooltip={this.state.tooltip}
-          styleName={'block ' + tooltipClasses}
-          onMouseEnter ={(e) => {
-            this._active(true, e);
-          }}
-          onMouseLeave={(e) => {
-            this._active(false, e);
-          }}
-        >
-        {Icon}
-        {children}
-      </div>
-    )
-  }
+        return (
+            <div data-tooltip={this.state.tooltip}
+              styleName={'block ' + tooltipClasses}
+              className={cx(className)}
+              onMouseEnter ={(e) => {
+                this._active(true, e);
+              }}
+              onMouseLeave={(e) => {
+                this._active(false, e);
+              }}
+            >
+
+            {TooltipContainer}
+            {Icon}
+            {children}
+          </div>
+        )
+    }
 }
 
 Tooltip.propTypes = {
