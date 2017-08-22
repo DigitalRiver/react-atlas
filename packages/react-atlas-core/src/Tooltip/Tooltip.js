@@ -20,7 +20,7 @@ class Tooltip extends React.PureComponent {
     }
 
 
-    _active = (focus, event) => {
+    _active = (focus) => {
         if(focus === true) {
             if (!this.props.tooltipDelay) {
                 this.setState({
