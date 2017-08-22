@@ -1,5 +1,6 @@
 export { AvatarCore } from "./Avatar";
 export { ButtonCore } from "./Button";
+export { Card } from "./Card";
 export { CheckboxCore } from "./Checkbox";
 export { CheckboxGroupCore } from "./CheckboxGroup";
 export { DropdownCore } from "./Dropdown";
