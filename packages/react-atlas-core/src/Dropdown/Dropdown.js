@@ -267,6 +267,7 @@ class Dropdown extends React.PureComponent {
             <ButtonCore
               styleName={"buttonClass"}
               className={dropdownButtonClasses}
+              type={"button"}
             >
               <span>{this.state.output}</span><i styleName="arrow" />
             </ButtonCore>

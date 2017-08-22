@@ -6,7 +6,7 @@ import cx from "classnames";
 
 /**
  * Master Input component. To be used as core for different input types
- * components. Accepts all input properties and also supports custom 
+ * components. Accepts all input properties and also supports custom
  * and maxlenght/required validations. Allows input masking.
  */
 class Input extends React.Component {
@@ -16,9 +16,11 @@ class Input extends React.Component {
     this.state = {
       "value": props.value || "",
       "errorText": null,
-      "isValid": true,
+      "isValid": props.isValid || true,
       "remaining": props.maxLength
     };
+
+    console.log("InitialInputIsValid: ", this.state.isValid);
 
     // Configure input mask if required
     if (this.props.mask) {
@@ -38,6 +40,24 @@ class Input extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.isValid) {
+      if(nextProps.isValid !== this.state.isValid) {
+        this.setState({
+          "errorText": this.props.requiredText || "This field is required.",
+          "isValid": nextProps.isValid
+        });
+      }
+    } else if(nextProps.isValid === false) {
+      this.setState({
+        "errorText": this.props.requiredText || "This field is required.",
+        "isValid": nextProps.isValid
+      });
+    } else {
+      console.log("Here");
+    }
+  }
+
   _updateMaskSelection = () => {
     this.mask.selection = utils.getSelection(this.input);
   };
@@ -54,7 +74,7 @@ class Input extends React.Component {
 
   _handleKeyDown = event => {
     /**
-     * Handle proper deletion of masked input characters. 
+     * Handle proper deletion of masked input characters.
      * We do this onKeyDown because backspace key event
      * won't reach onKeyPress event.
      */
@@ -105,8 +125,8 @@ class Input extends React.Component {
 
   _handlePaste = event => {
     /**
-     * Support pasting text in masked input. If text doesn't 
-     * pass mask validation, it won't be pasted. 
+     * Support pasting text in masked input. If text doesn't
+     * pass mask validation, it won't be pasted.
      */
     if (this.props.mask) {
       event.preventDefault();
@@ -179,13 +199,8 @@ class Input extends React.Component {
             this.setState({ "isValid": true });
           }
         } else {
-          this.setState({ 
-            "isValid": true 
-          }, () => {
-            /* Execute application code function at this point if available */
-            if (this.props.onChange) {
-              this.props.onChange(event);
-            }
+          this.setState({
+            "isValid": true
           });
         }
       }
@@ -221,11 +236,13 @@ class Input extends React.Component {
     }
 
     this._validate(inputValue);
-    this.setState({ 
-        "value": inputValue 
+    console.log("InputIsValid: ", this.state.isValid);
+    this.setState({
+        "value": inputValue
         }, () => {
           if (this.props.onChange) {
-            this.props.onChange(event);
+            console.log("Input Calling OnChange: ", this.state.value, event, this.state.isValid);
+            this.props.onChange(this.state.value, event, this.state.isValid);
           }
         });
   };
@@ -314,6 +331,7 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
+  "isValid": PropTypes.bool,
   /**
    * Defines a custom css class name.
    * @examples 'custom-imput'
@@ -346,7 +364,7 @@ Input.propTypes = {
    */
   "errorText": PropTypes.string,
   /**
-   * Defines error messages location (on validation). 
+   * Defines error messages location (on validation).
    * > Valid values are 'right' and 'bottom'.
    * > Default value is 'right'.
    * @examples '<Input type="text" required requiredText="Custom required msg" errorLocation="buttom"/>'

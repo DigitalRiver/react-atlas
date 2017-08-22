@@ -47,20 +47,20 @@
 
 ###### Custom validation:
 
-    <TextField 
+    <TextField
         required
-    	errorText="Only numbers are allowed." 
-    	validator={ (value) => { return /^\d+$/.test(value) } } 
+    	errorText="Only numbers are allowed."
+    	validator={ (value) => { return /^\d+$/.test(value) } }
     	header="Only numbers allowed"/>
 
 ###### Input Mask:
 
 	<div>
-	    <TextField 
+	    <TextField
 	    	placeholder="(54) 111-1111"
 	    	mask="(54) 111-1111"
 	    	header="Phone"/>
-    	<TextField 
+    	<TextField
 	    	placeholder="ABC 1234"
 	    	mask="AAA 1111"
 	    	header="Lincese Plate"/>
@@ -68,4 +68,4 @@
 
 ###### onChange handler:
 
-    <TextField onChange={ () => { alert('onChange executed!'); } }/>
+    <TextField onChange={ (value) => { console.log('onChange executed: ', value); } }/>
