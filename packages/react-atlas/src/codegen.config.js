@@ -150,6 +150,7 @@ dot.templateSettings = {
 let components = [
   "avatar",
   "button",
+  "card",
   "checkbox",
   "checkboxGroup",
   "dropdown",
