@@ -80,7 +80,7 @@ class Dropdown extends React.PureComponent {
       function() {
         this._validationHandler(this.props.errorCallback);
         if (this.props.onChange) {
-          this.props.onChange(event);
+          this.props.onChange(inputValue, event, this.state.valid);
         }
         if (this.props.onClick) {
           this.props.onClick(event);
