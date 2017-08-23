@@ -12,10 +12,22 @@ import messages from "../utils/messages.js";
 class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    let childrenState = React.Children.map(this.props.children, child => {
+      let value = child.props.value || " ";
+      let display = child.props.children;
+      let childState = {"value": value, "display": display};
+      return childState;
+    });
+
+    let initialValue = childrenState[0].value;
+    let initialDisplay = childrenState[0].display;
+
     this.state = {
       active: false,
-      output: this._getOutput(),
-      value: this._getValue() || "",
+      childrenState: childrenState,
+      value: initialValue,
+      output: initialDisplay,
       valid: true,
       errorMessage: "This field is required",
       onChange: "",
@@ -24,32 +36,6 @@ class Dropdown extends React.PureComponent {
     };
     let isFocus = false; // eslint-disable-line no-unused-vars
   }
-
-  _getOutput = () => {
-    let count = React.Children.count(this.props.children);
-    for (let i = 0; i < count; i++) {
-      if (this.props.children[i].props.selected) {
-        return this.props.children[i].props.children;
-      }
-    }
-    if (this.props.defaultText) {
-      return this.props.defaultText;
-    } else {
-      return messages.selectOne;
-    }
-  };
-
-  _getValue = () => {
-    let count = React.Children.count(this.props.children);
-
-    for (let i = 0; i < count; i++) {
-      if (this.props.children[i].props.selected) {
-        return this.props.children[i].props.value;
-      }
-    }
-
-    return null;
-  };
 
   /**
    * closes dropdown click outside of browser window
@@ -80,8 +66,9 @@ class Dropdown extends React.PureComponent {
       }
     }
 
-    const output = this.props.children[i].props.children;
-    const inputValue = this.props.children[i].props.value;
+    const output = this.state.childrenState[i].display;
+    const inputValue = this.state.childrenState[i].value;
+
     this.setState(
       {
         index: i,
@@ -94,29 +81,13 @@ class Dropdown extends React.PureComponent {
       function() {
         this._validationHandler(this.props.errorCallback);
         if (this.props.onChange) {
-          this._customOnChangeEvent(event);
+          this.props.onChange(event);
         }
         if (this.props.onClick) {
-          this._customOnClickEvent(event);
+          this.props.onClick(event);
         }
       }
     );
-  };
-
-  _customOnChangeEvent = event => {
-    /* Pass the event object, and a data object to the click handler.
-    The data object contains a boolean for whether the dropdown was
-    changed or not, plus all the props passed to the object.  */
-    event.persist();
-    this.props.onChange(this.state.value, event);
-  };
-
-  _customOnClickEvent = event => {
-    /* Pass the event object, and a data object to the click handler.
-      The data object contains a boolean for whether the dropdown was
-      clicked or not, plus all the props passed to the object.  */
-    event.persist();
-    this.props.onClick(this.state.value, event);
   };
 
   _toggle = (focus, event) => {
@@ -147,7 +118,7 @@ class Dropdown extends React.PureComponent {
       }
 
       if (this.props.onClick) {
-        this._customOnClickEvent(event);
+        this.props.onClick(event);
       }
     }
   };
@@ -220,10 +191,11 @@ class Dropdown extends React.PureComponent {
       ra_dropdown__disabledClass: disabled
     });
 
+    let count = React.Children.count(this.props.children);
+
     // Builds the option list from the children passed in
     // firstChild, lastChild and selected each have unique styling and those classes are added here
-    const bound_children = children.map((child, i) => {
-      let count = React.Children.count(this.props.children);
+    const bound_children = React.Children.map(this.props.children, (child, i) => {
       let childClasses = cx({
         ra_dropdown__selected: i === this.state.index,
         ra_dropdown__firstChild: i === 0,
