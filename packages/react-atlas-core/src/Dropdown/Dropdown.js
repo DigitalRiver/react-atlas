@@ -28,12 +28,18 @@ class Dropdown extends React.PureComponent {
       childrenState: childrenState,
       value: initialValue,
       output: initialDisplay,
-      valid: true,
+      isValid: true,
       errorMessage: "This field is required",
       focus: false,
       zIndex: false
     };
     let isFocus = false; // eslint-disable-line no-unused-vars
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.isValid !== this.state.isValid) {
+      this.setState({"isValid": nextProps.isValid});
+    }
   }
 
   /**
@@ -74,13 +80,13 @@ class Dropdown extends React.PureComponent {
         output: output,
         active: !this.state.active,
         value: inputValue,
-        valid: true,
+        isValid: true,
         zIndex: false
       },
       function() {
         this._validationHandler(this.props.errorCallback);
         if (this.props.onChange) {
-          this.props.onChange(inputValue, event, this.state.valid);
+          this.props.onChange(inputValue, event, this.state.isValid);
         }
         if (this.props.onClick) {
           this.props.onClick(event);
@@ -106,7 +112,7 @@ class Dropdown extends React.PureComponent {
         this.setState({
           focus: true,
           active: true,
-          valid: true,
+          isValid: true,
           zIndex: true
         });
       } else {
@@ -127,7 +133,7 @@ class Dropdown extends React.PureComponent {
       Also sets state of valid depending on user action
       */
     let validationObject = {
-      valid:
+      isValid:
         (this.props.required && this.state.value !== "") ||
         !this.props.required,
       message: this.state.errorMessage
@@ -136,7 +142,7 @@ class Dropdown extends React.PureComponent {
       validationObject = callback(event, this.state.value);
     }
     this.setState({
-      valid: validationObject.valid,
+      isValid: validationObject.isValid,
       errorMessage: validationObject.message
     });
   };
@@ -176,7 +182,7 @@ class Dropdown extends React.PureComponent {
       name
     } = this.props;
     const active = this.state.active;
-    const error = !this.state.valid && !disabled ? true : false;
+    const error = !this.state.isValid && !disabled ? true : false;
     let zIndex = this.state.zIndex ? true : false;
     const classes = cx({
       active: active,
@@ -282,7 +288,7 @@ Dropdown.propTypes = {
   active: PropTypes.bool,
 
   /* Boolean value that tells the dropdown whether the value is valid and controls error message is returns false.*/
-  valid: PropTypes.bool,
+  isValid: PropTypes.bool,
 
   /**
    * If included, dropdown is disabled
