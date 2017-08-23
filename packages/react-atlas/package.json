@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },
-  "version": "0.1.0-alpha12",
+  "version": "0.1.0-alpha13",
   "description": "Composable React components with CSS Modules.",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib",
@@ -26,8 +26,8 @@
     "babel-loader": "^7.0.0",
     "react-docgen": "^2.14.1",
     "dot": "^1.1.1",
-    "react-atlas-core": "0.1.0-alpha12",
-    "react-atlas-default-theme": "0.1.0-alpha12",
+    "react-atlas-core": "0.1.0-alpha13",
+    "react-atlas-default-theme": "0.1.0-alpha13",
     "react-css-modules": "^4.1.0",
     "react-modal": "^1.6.5",
     "style-loader": "^0.17.0",
