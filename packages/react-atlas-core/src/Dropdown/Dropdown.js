@@ -185,7 +185,7 @@ class Dropdown extends React.PureComponent {
         });
       }
     } else if (event.key === "Enter") {
-      this._clickHandler(this.state.index);
+      this._clickHandler(this.state.index, event);
     }
   }
 
