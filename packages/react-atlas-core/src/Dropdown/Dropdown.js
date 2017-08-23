@@ -68,32 +68,34 @@ class Dropdown extends React.PureComponent {
    *
    */
   _clickHandler = (i, event) => {
-    event.persist();
-    if (!this.props.disabled) {
-      if (
-        typeof this.props.onBeforeChange === "undefined" ||
-        this.props.onBeforeChange(this.state.active)
-      ) {
-        const output = this.props.children[i].props.children;
-        const inputValue = this.props.children[i].props.value;
-        this.setState({
-          "index": i,
-          "output": output,
-          "active": !this.state.active,
-          "value": inputValue,
-          "valid": true,
-          "zIndex": false
-        }, function(){
-          this._validationHandler(this.props.errorCallback);
-          if (this.props.onChange) {
-            this._customOnChangeEvent(event);
-          }
-          if (this.props.onClick) {
-            this._customOnClickEvent(event);
-          }
-        });
+    if(this.props.disabled) {
+      return;
+    }
 
-      }
+    event.persist();
+
+    if (
+      typeof this.props.onBeforeChange === "undefined" ||
+      this.props.onBeforeChange(this.state.active)
+    ) {
+      const output = this.props.children[i].props.children;
+      const inputValue = this.props.children[i].props.value;
+      this.setState({
+        "index": i,
+        "output": output,
+        "active": !this.state.active,
+        "value": inputValue,
+        "valid": true,
+        "zIndex": false
+      }, function(){
+         this._validationHandler(this.props.errorCallback);
+         if (this.props.onChange) {
+           this._customOnChangeEvent(event);
+         }
+         if (this.props.onClick) {
+           this._customOnClickEvent(event);
+         }
+      });
     }
   };
 
