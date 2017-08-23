@@ -249,22 +249,39 @@ function createComponentsFromConfig() {
   createComponentFromGlobalTheme(config.theme);
 }
 
+function deleteFolder(path) {
+  if( fs.existsSync(path) ) {
+    fs.readdirSync(path).forEach(function(file,index){
+      var curPath = path + "/" + file;
+      if(fs.lstatSync(curPath).isDirectory()) { // recurse
+        deleteFolder(curPath);
+      } else {
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(path);
+  }
+};
+
 function createComponentDirectories() {
   const componentDirconfigPath = __dirname + "/components";
   const oldconfigPath = __dirname + "/../../react-atlas-core/src/";
 
   let component;
 
-  if (!fs.existsSync(componentDirconfigPath)) {
-    fs.mkdirSync(componentDirconfigPath);
-    for (let i = 0; i < components.length; i++) {
-      component = components[i];
-
-      /* Make sure leading letter is uppercase. */
-      component = component[0].toUpperCase() + component.slice(1);
-      fs.mkdir(componentDirconfigPath + "/" + component);
-    }
+  if (fs.existsSync(componentDirconfigPath)) {
+    deleteFolder(componentDirconfigPath);
   }
+
+  fs.mkdirSync(componentDirconfigPath);
+  for (let i = 0; i < components.length; i++) {
+    component = components[i];
+
+    /* Make sure leading letter is uppercase. */
+    component = component[0].toUpperCase() + component.slice(1);
+    fs.mkdir(componentDirconfigPath + "/" + component);
+  }
+
   for (let i = 0; i < components.length; i++) {
     component = components[i];
 
