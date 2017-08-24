@@ -28,9 +28,9 @@ Dropdown with Required Property:
        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
     </Dropdown>
 
-Dropdown with Required Property and Custom Error Message:
+Dropdown with custom validation and error message:
 
-    <Dropdown customLabel="Error Message Dropdown" required errorCallback={ function(event, value){ return {valid: value !== "", message: "Dropdown is required"} } }>
+    <Dropdown customLabel="Error Message Dropdown" errorCallback={ function(event, value){ return {isValid: false , message: "Custom error message!"} } }>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
