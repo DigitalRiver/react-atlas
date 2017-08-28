@@ -77,7 +77,7 @@ To setup atlas for development, run the following commands:
 $ git clone https://github.com/DigitalRiver/react-atlas.git
 $ npm install
 $ npm run bootstrap
-$ npm run doc:dev
+$ npm run docs:dev
 ```
 
 ## Publishing to your own github page
