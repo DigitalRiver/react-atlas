@@ -1,8 +1,10 @@
+build
 lib
 node_modules
 npm-debug.log
 .idea
 .vscode
+styleguide
 .npmrc
 jsconfig.json
 lerna-debug.log
