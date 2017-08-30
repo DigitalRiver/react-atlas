@@ -6,10 +6,10 @@ import cx from "classnames";
 
 /**
  * Master Input component. To be used as core for different input types
- * components. Accepts all input properties and also supports custom 
+ * components. Accepts all input properties and also supports custom
  * and maxlenght/required validations. Allows input masking.
  */
-class Input extends React.Component {
+class Input extends React.PureComponent {
   constructor(props) {
     super(props);
     // Initial state
@@ -54,7 +54,7 @@ class Input extends React.Component {
 
   _handleKeyDown = event => {
     /**
-     * Handle proper deletion of masked input characters. 
+     * Handle proper deletion of masked input characters.
      * We do this onKeyDown because backspace key event
      * won't reach onKeyPress event.
      */
@@ -105,8 +105,8 @@ class Input extends React.Component {
 
   _handlePaste = event => {
     /**
-     * Support pasting text in masked input. If text doesn't 
-     * pass mask validation, it won't be pasted. 
+     * Support pasting text in masked input. If text doesn't
+     * pass mask validation, it won't be pasted.
      */
     if (this.props.mask) {
       event.preventDefault();
@@ -174,8 +174,8 @@ class Input extends React.Component {
             this.setState({ "isValid": true });
           }
         } else {
-          this.setState({ 
-            "isValid": true 
+          this.setState({
+            "isValid": true
           });
         }
       }
@@ -211,8 +211,8 @@ class Input extends React.Component {
     }
 
     this._validate(inputValue);
-    this.setState({ 
-        "value": inputValue 
+    this.setState({
+        "value": inputValue
         }, () => {
           if (this.props.onChange) {
             this.props.onChange(event);
@@ -336,7 +336,7 @@ Input.propTypes = {
    */
   "errorText": PropTypes.string,
   /**
-   * Defines error messages location (on validation). 
+   * Defines error messages location (on validation).
    * > Valid values are 'right' and 'bottom'.
    * > Default value is 'right'.
    * @examples '<Input type="text" required requiredText="Custom required msg" errorLocation="buttom"/>'
