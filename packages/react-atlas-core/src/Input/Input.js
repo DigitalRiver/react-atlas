@@ -9,7 +9,7 @@ import cx from "classnames";
  * components. Accepts all input properties and also supports custom
  * and maxlenght/required validations. Allows input masking.
  */
-class Input extends React.Component {
+class Input extends React.PureComponent {
   constructor(props) {
     super(props);
     // Initial state
