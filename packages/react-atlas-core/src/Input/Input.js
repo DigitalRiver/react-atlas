@@ -187,7 +187,6 @@ class Input extends React.Component {
   _handleChange = event => {
     event.persist();
     let inputValue = event.target.value;
-    console.log("inputValue: ", inputValue);
 
     /* Masked input validations */
     if (this.props.mask) {
