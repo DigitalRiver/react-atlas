@@ -1,0 +1,14 @@
+.modal {
+	composes: default-font from '../styles.css';
+}
+.active {
+	background-color: rgb(255, 255, 255);
+	border-radius: 2px;
+	box-shadow: 0 19px 60px rgba(0, 0, 0, .3), 0 15px 20px rgba(0, 0, 0, .22);
+	transform: translateY(-40px);
+	padding: 24px;
+}
+
+.title {
+	margin: 0 0 16px;
+}

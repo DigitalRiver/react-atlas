@@ -14,3 +14,6 @@ export { TooltipStyle } from "./Tooltip";
 export { HintStyle } from "./Hint";
 export { TextAreaStyle } from "./TextArea";
 export { TextFieldStyle } from "./TextField";
+export { OverlayStyle } from "./Overlay";
+export { ModalStyle } from "./Modal";
+export { PortalStyle } from "./Portal";
