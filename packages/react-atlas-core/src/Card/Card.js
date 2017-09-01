@@ -12,9 +12,9 @@ class Card extends React.PureComponent {
   render() {
     const { children, className, legend } = this.props;
     return (
-      <fieldset styleName={cx("card")} className={cx(className)}>
+      <fieldset styleName={"card"} className={cx(className)}>
         { legend &&
-          <legend styleName={cx("legend")}>{legend}</legend>
+          <legend styleName={"legend"}>{legend}</legend>
         } 
         {children}
       </fieldset>
