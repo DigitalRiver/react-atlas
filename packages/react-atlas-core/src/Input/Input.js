@@ -238,9 +238,11 @@ class Input extends React.PureComponent {
 
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";
+    let isRadio = type === "radio";
+    const isInput = (isCheckbox || isRadio) ? false : true;
 
     let inputClasses = cx({
-      "input": !isCheckbox,
+      "input": isInput,
       "checkbox": isCheckbox,
       "invalid": !this.state.isValid,
       "blockInput": errorLocation === "bottom",
