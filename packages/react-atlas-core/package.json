@@ -22,8 +22,8 @@
     "classnames": "^2.2.5",
     "inputmask-core": "^2.2.0",
     "proptypes": "^1.0.0",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
