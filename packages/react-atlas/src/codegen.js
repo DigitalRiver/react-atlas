@@ -252,7 +252,7 @@ function createComponentsFromConfig() {
 function deleteFolder(path) {
   if( fs.existsSync(path) ) {
     fs.readdirSync(path).forEach(function(file,index){
-      var curPath = path + "/" + file;
+      let curPath = path + "/" + file;
       if(fs.lstatSync(curPath).isDirectory()) { // recurse
         deleteFolder(curPath);
       } else {
@@ -261,7 +261,7 @@ function deleteFolder(path) {
     });
     fs.rmdirSync(path);
   }
-};
+}
 
 function createComponentDirectories() {
   const componentDirconfigPath = __dirname + "/components";

@@ -1,7 +1,11 @@
 .card {
 	composes: marg-b-2 from '../styles.css';
-	composes: pad-2 from '../styles.css';
 	composes: rounded from '../styles.css';
 	composes: bg-white from '../styles.css';
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.075), 0 0 0 1px rgba(0,0,0,0.1);
+	border: 1px solid #666;
 }
+
+.legend {
+	composes: header-font from '../styles.css';
+}
+

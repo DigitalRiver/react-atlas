@@ -10,9 +10,14 @@ class Card extends React.PureComponent {
     super(props);
   }
   render() {
-    const { children, className } = this.props;
+    const { children, className, legend } = this.props;
     return (
-      <div styleName={cx("card")} className={cx(className)}>{children}</div>
+      <fieldset styleName={cx("card")} className={cx(className)}>
+        { legend &&
+          <legend styleName={cx("legend")}>{legend}</legend>
+        } 
+        {children}
+      </fieldset>
     );
   }
 }
@@ -27,7 +32,12 @@ Card.propTypes = {
   /**
    * Custom classnames prop
    */
-   "className": PropTypes.string
+   "className": PropTypes.string,
+
+  /**
+   * Title of the Card
+   */
+   "legend": PropTypes.string
 };
 
 Card.defaultProps = { "children": <p>Some card text.</p> };
