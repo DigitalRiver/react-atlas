@@ -240,11 +240,7 @@ class Input extends React.Component {
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";
     let isRadio = type === "radio";
-    let isInput = true;
-
-    if(isCheckbox || isRadio) {
-      isInput = false;
-    }
+    const isInput = (isCheckbox || isRadio) ? false : true;
 
     let inputClasses = cx({
       "input": isInput,
