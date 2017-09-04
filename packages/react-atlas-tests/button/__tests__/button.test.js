@@ -1,71 +1,71 @@
 import React from "react";
 import { mount } from "enzyme";
-import { default as Button } from "../../../react-atlas-core/src/button/Button";
+import { ButtonCore } from "../../../react-atlas-core/src/button/index";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
 describe("Test ButtonCore component", () => {
   it("Test default props", function() {
-    const result = mount(<Button />);
+    const result = mount(<ButtonCore />);
     expect(result.props().children).toBe("Default Button");
     expect(result.props().outline).toBe(false);
   });
 
   it("Make sure main style is set correctly.", function() {
-    let result = mount(<Button />);
+    let result = mount(<ButtonCore />);
     expect(result.props().primary).toBe(false);
 
-    result = mount(<Button primary />);
+    result = mount(<ButtonCore primary />);
     expect(result.props().primary).toBe(true);
 
-    result = mount(<Button secondary />);
+    result = mount(<ButtonCore secondary />);
     expect(result.props().secondary).toBe(true);
 
-    result = mount(<Button success />);
+    result = mount(<ButtonCore success />);
     expect(result.props().success).toBe(true);
 
-    result = mount(<Button warning />);
+    result = mount(<ButtonCore warning />);
     expect(result.props().warning).toBe(true);
 
-    result = mount(<Button danger />);
+    result = mount(<ButtonCore danger />);
     expect(result.props().danger).toBe(true);
 
-    result = mount(<Button link />);
+    result = mount(<ButtonCore link />);
     expect(result.props().link).toBe(true);
   });
   
 describe("Test Button component", () => {
 	
 	it("Base case - Primary Button", function() {
-		const comp = mount(<Button primary/>);
+		const comp = mount(<ButtonCore primary/>);
 	});
 	
 	it("Base case - Secondary Button", function() {
-		const comp = mount(<Button secondary/>);
+		const comp = mount(<ButtonCore secondary/>);
 	});
 
 	it("Base case - Warning Button", function() {
-		const comp = mount(<Button warning/>);
+		const comp = mount(<ButtonCore warning/>);
 	});
 
 	it("Base case - Error Button", function() {
-		const comp = mount(<Button error/>);
+		const comp = mount(<ButtonCore error/>);
 	});
 
 	it("Base case - Link Button", function() {
-		const comp = mount(<Button link/>);
+		const comp = mount(<ButtonCore link/>);
 	});
 
 	it("Base case - Button with icon", function() {
-		const comp = mount(<Button icon={"FakeIcon"}/>);
+		const comp = mount(<ButtonCore icon={"FakeIcon"}/>);
 	});
 
 	it("Base case - Button with icon 2", function() {
-		const comp = mount(<Button icon={"FakeIcon"} children={"FakeChildren"}/>);
+		const comp = mount(<ButtonCore icon={"FakeIcon"} children={"FakeChildren"}/>);
 	});
 	
 	it("Base case - Button default properties", function() {
-		const comp = mount(<Button />);
+		const comp = mount(<ButtonCore />);
 		const expected = new Map([
 			["children", "Default Button"],
 			["outline", false],
@@ -82,7 +82,7 @@ describe("Test Button component", () => {
 	});
   
 	it("Base case - Button custom properties", function() {
-		const comp = mount(<Button secondary={true} warning={true} large={true} disabled={true} />);
+		const comp = mount(<ButtonCore secondary={true} warning={true} large={true} disabled={true} />);
 		const expected = new Map([
 			["children", "Default Button"],
 			["outline", false],
@@ -99,7 +99,7 @@ describe("Test Button component", () => {
 	});
   
 	it("Click Button test", function() {
-		const comp = mount(<Button onClick={ function(){buttonWasClicked = true} } />);
+		const comp = mount(<ButtonCore onClick={ function(){buttonWasClicked = true} } />);
 		
 		let buttonWasClicked = false;
 		

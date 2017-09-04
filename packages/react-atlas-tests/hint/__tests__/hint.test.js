@@ -1,9 +1,18 @@
 import React from "react";
 import { mount } from "enzyme";
-import { default as Hint } from "../../../react-atlas-core/src/Hint/Hint"
+import { HintCore } from "../../../react-atlas-core/src/Hint/index"
 
 describe("Test Hint component", () => {
+	
   it("Test default props", function() {
-    const result = mount(<Hint />);
+    const result = mount(<HintCore text="Some text"/>);
   });
+  
+  it("Test default props", function() {
+    const result = mount(<HintCore>
+							"Some text"
+						 </HintCore>
+						);
+  });
+
 });

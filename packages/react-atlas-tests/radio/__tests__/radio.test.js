@@ -1,10 +1,78 @@
 import React from "react";
 import { mount } from "enzyme";
-import { default as Radio } from "../../../react-atlas-core/src/Radio/Radio"
+import { RadioCore } from "../../../react-atlas-core/src/Radio/index"
 
 describe("Testing radio component", () => {
-  it("Set props should match what was passed in", function() {
-    const result = mount(<Radio label="Checked Radio" value="checkedRadio" />);
-    // expect(result.props().aspectRatio).to.equal(aspectRatio);
-  });
+
+	it("Radio - Basic test", function() {
+		const result = mount(<RadioCore label={"Checked Radio"} 
+									value={"checkedRadio"} 
+									defaultChecked={true}
+									className={"class"}
+									title={"TITLE"}
+									hidden={false}
+									inline={true}
+									name={"Mr radio"}
+							 />);
+	});
+	
+	it("Radio - Basic test", function() {
+		const result = mount(<RadioCore label="Checked Radio" value="checkedRadio" labelPosition={"left"}/>);
+		//expect(result.props().aspectRatio).toEqual(aspectRatio);
+	}); 
+
+	it("Radio - Default checked test", function() {
+		const rad = mount(<RadioCore checked={true} label="Checked Radio" value="checkedRadio" groupSetChecked={ function(){} } />);
+		expect(rad.props().checked).toEqual(true);
+	});
+  
+	it("Radio - Simple click test", function() {
+		const rad = mount(<RadioCore label="Checked Radio" 
+	                             value="checkedRadio" 
+								 groupSetChecked={ function(){} } 
+						   />);
+		rad.simulate('click');
+	});
+
+	it("Radio - Simple click test (disabled)", function() {
+		const rad = mount(<RadioCore disabled={true}
+								 label="Checked Radio" 
+	                             value="checkedRadio" 
+								 groupSetChecked={ function(){} } 
+						   />);
+		rad.simulate('click');
+	});
+	
+	it("Radio - Simple click test (with onBeforeChange)", function() {
+		const rad = mount(<RadioCore label="Checked Radio" 
+	                             value="checkedRadio" 
+								 groupSetChecked={ function(){} } 
+								 onClick={ function() {console.log('onclick')} }
+								 onChange={ function() {console.log('onchange')} }
+								 onBeforeChange={ function() {console.log('onbeforechange')} }
+						   />);
+		rad.simulate('click');
+	});
+
+	it("Radio - Simple click test (without onBeforeChange)", function() {
+		const rad = mount(<RadioCore label="Checked Radio" 
+								 value="checkedRadio" 
+								 groupSetChecked={ function(){} } 
+								 onClick={ function() {console.log('onclick')} }
+								 onChange={ function() {console.log('onchange')} }	
+						   />);
+		rad.simulate('click');
+	});
+	
+	it("Radio - Simple click test (without onBeforeChange) checked", function() {
+		const rad = mount(<RadioCore checked={true}
+								 label="Checked Radio" 
+								 value="checkedRadio" 
+								 groupSetChecked={ function(){} } 
+								 onClick={ function() {console.log('onclick')} }
+								 onChange={ function() {console.log('onchange')} }	
+						   />);
+		rad.simulate('click');
+	});
+  
 });
