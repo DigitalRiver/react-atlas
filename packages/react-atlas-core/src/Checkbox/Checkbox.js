@@ -21,6 +21,7 @@ class Checkbox extends React.PureComponent {
   // Handles new checkbox clicks and sets value and checked status of hidden input
   _clickHandler = event => {
     if (!this.props.disabled) {
+      event.persist();
       this.setState({ "checked": !this.state.checked }, function() {
         this._validationHandler(this.props.errorCallback);
 
@@ -29,10 +30,7 @@ class Checkbox extends React.PureComponent {
           /* Pass the event object, and a data object to the click handler.
            The data object contains a boolean for whether the checkbox was
            clicked or not, plus all the props passed to the object.  */
-          this.props.onClick(event, {
-            "checked": this.state.checked,
-            "props": this.props
-          });
+          this.props.onClick(this.state.checked, event, this.state.valid);
         }
 
         if(typeof this.props.onBeforeChange !== "undefined") {
@@ -48,10 +46,7 @@ class Checkbox extends React.PureComponent {
           /* Pass the event object, and a data object to the click handler.
            The data object contains a boolean for whether the checkbox was
            clicked or not, plus all the props passed to the object.  */
-          this.props.onChange(event, {
-            "checked": this.state.checked,
-            "props": this.props
-          });
+          this.props.onChange(this.state.checked, event, this.state.valid);
         }
       });
     }
