@@ -21,29 +21,39 @@ class Checkbox extends React.PureComponent {
   // Handles new checkbox clicks and sets value and checked status of hidden input
   _clickHandler = event => {
     if (!this.props.disabled) {
-      /* Check if onClick has been passed, if so call it. */
-      if (this.props.onClick) {
-        /* Pass the event object, and a data object to the click handler.
-         The data object contains a boolean for whether the checkbox was
-         clicked or not, plus all the props passed to the object.  */
-        this.props.onClick(event, {
-          "checked": this.state.checked,
-          "props": this.props
-        });
-      }
+      this.setState({ "checked": !this.state.checked }, function() {
+        this._validationHandler(this.props.errorCallback);
 
-      this._handleChange();
+        /* Check if onClick has been passed, if so call it. */
+        if (this.props.onClick) {
+          /* Pass the event object, and a data object to the click handler.
+           The data object contains a boolean for whether the checkbox was
+           clicked or not, plus all the props passed to the object.  */
+          this.props.onClick(event, {
+            "checked": this.state.checked,
+            "props": this.props
+          });
+        }
 
-      /* Check if onChange has been passed, if so call it. */
-      if (this.props.onChange) {
-        /* Pass the event object, and a data object to the click handler.
-         The data object contains a boolean for whether the checkbox was
-         clicked or not, plus all the props passed to the object.  */
-        this.props.onChange(event, {
-          "checked": this.state.checked,
-          "props": this.props
-        });
-      }
+        if(typeof this.props.onBeforeChange !== "undefined") {
+          this.props.onBeforeChange(this.state.checked)
+        }
+
+        if (typeof this.props.groupHandleClick !== "undefined") {
+          this.props.groupHandleClick(this.state.checked);
+        }
+
+        /* Check if onChange has been passed, if so call it. */
+        if (this.props.onChange) {
+          /* Pass the event object, and a data object to the click handler.
+           The data object contains a boolean for whether the checkbox was
+           clicked or not, plus all the props passed to the object.  */
+          this.props.onChange(event, {
+            "checked": this.state.checked,
+            "props": this.props
+          });
+        }
+      });
     }
   };
 
@@ -69,29 +79,6 @@ class Checkbox extends React.PureComponent {
 
   _focus = () => {
     this.setState({ "focus": true });
-  };
-
-  _handleChange = () => {
-    if (
-      typeof this.props.onBeforeChange === "undefined" ||
-      this.props.onBeforeChange(this.state.checked)
-    ) {
-      if (this.state.checked) {
-        this.setState({ "checked": false }, function() {
-          this._validationHandler(this.props.errorCallback);
-          if (typeof this.props.groupHandleClick !== "undefined") {
-            this.props.groupHandleClick(this.state.checked);
-          }
-        });
-      } else {
-        this.setState({ "checked": true }, function() {
-          this._validationHandler(this.props.errorCallback);
-          if (typeof this.props.groupHandleClick !== "undefined") {
-            this.props.groupHandleClick(this.state.checked);
-          }
-        });
-      }
-    }
   };
 
   render() {
