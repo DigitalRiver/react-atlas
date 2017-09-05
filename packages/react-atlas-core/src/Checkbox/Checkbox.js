@@ -27,10 +27,7 @@ class Checkbox extends React.PureComponent {
 
         /* Check if onClick has been passed, if so call it. */
         if (this.props.onClick) {
-          /* Pass the event object, and a data object to the click handler.
-           The data object contains a boolean for whether the checkbox was
-           clicked or not, plus all the props passed to the object.  */
-          this.props.onClick(this.state.checked, event, this.state.valid);
+          this.props.onClick(this.props.value, event, this.state.valid, this.state.checked);
         }
 
         if(typeof this.props.onBeforeChange !== "undefined") {
@@ -43,10 +40,7 @@ class Checkbox extends React.PureComponent {
 
         /* Check if onChange has been passed, if so call it. */
         if (this.props.onChange) {
-          /* Pass the event object, and a data object to the click handler.
-           The data object contains a boolean for whether the checkbox was
-           clicked or not, plus all the props passed to the object.  */
-          this.props.onChange(this.state.checked, event, this.state.valid);
+          this.props.onChange(this.props.value, event, this.state.valid, this.state.checked);
         }
       });
     }
@@ -212,6 +206,10 @@ Checkbox.propTypes = {
    * Sets the html "name" property on the input element.
    */
   "name": PropTypes.string,
+  /**
+   * The value of the checkbox. This value is used by forms.
+   */
+  "value": PropTypes.string,
   /**
    * Updates the parent CheckboxGroup component when state changes.
    */

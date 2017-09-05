@@ -32,14 +32,16 @@ Custom onClick Method:
 
       <Checkbox
         label="Checkbox onClick"
-        onClick={this.clickHandler}
+        value="Bat"
+        onClick={function(value, event, isValid, checked) { console.log(value, event, isValid, checked); }}
       />
 
 onChange callback:
 
     <Checkbox
       label="Checkbox onChange"
-      onClick={function(value, event, isValid) { console.log(value, event, isValid); }}
+      value="Duck"
+      onChange={function(value, event, isValid, checked) { console.log(value, event, isValid, checked); }}
       />
 
 No Label:
