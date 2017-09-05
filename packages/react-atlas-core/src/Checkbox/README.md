@@ -5,7 +5,7 @@ Checkbox:
 	  />
 
 Checked:	  
-          
+
       <Checkbox
         label="Checkbox Checked"
         checked
@@ -35,6 +35,13 @@ Custom onClick Method:
         onClick={this.clickHandler}
       />
 
+onChange callback:
+
+    <Checkbox
+      label="Checkbox onChange"
+      onClick={function(value, event, isValid) { console.log(value, event, isValid); }}
+      />
+
 No Label:
 
       <Checkbox
@@ -62,7 +69,7 @@ Custom Validation:
 
 Custom Function Before Change:
 
-      <Checkbox 
-      	label="Checkbox onBeforeChange" 
+      <Checkbox
+      	label="Checkbox onBeforeChange"
       	onBeforeChange={ function(value){ if (!value) { let accept = confirm("Do you want to check this?"); return accept; } return true; } }
       />
