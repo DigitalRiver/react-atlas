@@ -23,7 +23,8 @@ class CheckboxGroup extends React.PureComponent {
   }
 
   // When child <Checkbox /> component changes state, update "totalChecked" value and verify against min or max props value
-  groupHandleClick = checked => {
+  handleChange = (value, event, isValid, checked) => {
+    event.persist();
     const newChecked = checked
       ? this.state.totalChecked + 1
       : this.state.totalChecked - 1;
@@ -36,6 +37,10 @@ class CheckboxGroup extends React.PureComponent {
       this.setState({ "groupError": true });
     } else {
       this.setState({ "groupError": false });
+    }
+
+    if(typeof this.props.onChange !== 'undefined') {
+      this.props.onChange(value, event, isValid, checked);
     }
   };
 
@@ -80,7 +85,7 @@ class CheckboxGroup extends React.PureComponent {
           child = cloneElement(child, {
             "inline": inline,
             "name": name,
-            "groupHandleClick": this.groupHandleClick,
+            "onChange": this.handleChange,
             "groupError": this.state.groupError
           });
           return child;
@@ -91,6 +96,12 @@ class CheckboxGroup extends React.PureComponent {
 }
 
 CheckboxGroup.propTypes = {
+  /**
+   * An optional callback that is fired when any checkbox in the
+   * CheckboxGroup changes value. The callback has four arguments.
+   * function(value, event, isValid, checked).
+   */
+  "onChange": PropTypes.func,
   /**
    * Anything that can be in a checkbox group. Typically only includes Checkbox components and a header.
    * @examples '<CheckboxGroup><Checkbox/><Checkbox/></CheckboxGroup>'
