@@ -263,11 +263,12 @@ class Dropdown extends React.PureComponent {
           this._keyDown(e);
         }}
       >
-        {customLabel &&
+        {customLabel && (
           <div styleName={"labelSpacing"}>
             {customLabel}
             {required && <span styleName={"requiredIndicator"}>*</span>}
-          </div>}
+          </div>
+        )}
         <div
           onClick={e => {
             this._toggle("click", e);
@@ -279,22 +280,16 @@ class Dropdown extends React.PureComponent {
               styleName={"buttonClass"}
               className={dropdownButtonClasses}
             >
-              <span>
-                {this.state.output}
-              </span>
+              <span>{this.state.output}</span>
               <i styleName="arrow" />
             </ButtonCore>
           </div>
-          {this.state.active &&
-            <ul styleName={"list"}>
-              {bound_children}
-            </ul>}
+          {this.state.active && <ul styleName={"list"}>{bound_children}</ul>}
           <input type="hidden" value={this.state.value} />
         </div>
-        {error &&
-          <span styleName={"error_message"}>
-            {this.state.errorMessage}
-          </span>}
+        {error && (
+          <span styleName={"error_message"}>{this.state.errorMessage}</span>
+        )}
       </div>
     );
   }

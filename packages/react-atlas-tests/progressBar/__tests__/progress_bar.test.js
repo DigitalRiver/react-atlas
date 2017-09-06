@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { default as ProgressBar } from "../../../react-atlas-core/src/ProgressBar/ProgressBar"
+import { default as ProgressBar } from "../../../react-atlas-core/src/ProgressBar/ProgressBar";
 
 describe("#calculateRatio", function() {
   let progressBar = mount(<ProgressBar min={100} max={300} />);

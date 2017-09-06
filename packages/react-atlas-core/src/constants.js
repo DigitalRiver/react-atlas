@@ -2,42 +2,44 @@
  * mainly used for Grid functionality, Col & Row components
  * Copyright (c) 2016 Thinkmill Pty Ltd
  */
-let canUseDOM = !!(typeof window !== "undefined" &&
+let canUseDOM = !!(
+  typeof window !== "undefined" &&
   window.document &&
-  window.document.createElement);
+  window.document.createElement
+);
 
 exports.canUseDOM = canUseDOM;
 
 // breakpoints
 exports.breakpoint = {
-  "xs": 480,
-  "sm": 768,
-  "md": 992,
-  "lg": 1200
+  xs: 480,
+  sm: 768,
+  md: 992,
+  lg: 1200
 };
 
 // border radii
 exports.borderRadius = {
-  "xs": 2,
-  "sm": 4,
-  "md": 8,
-  "lg": 16,
-  "xl": 32
+  xs: 2,
+  sm: 4,
+  md: 8,
+  lg: 16,
+  xl: 32
 };
 
 // spacing
 exports.spacing = {
-  "xs": 5,
-  "sm": 10,
-  "md": 20,
-  "lg": 40,
-  "xl": 80
+  xs: 5,
+  sm: 10,
+  md: 20,
+  lg: 40,
+  xl: 80
 };
 
 // widths
 exports.width = {
-  "container": 1170,
-  "gutter": 20
+  container: 1170,
+  gutter: 20
 };
 
 // fractions (for col widths)

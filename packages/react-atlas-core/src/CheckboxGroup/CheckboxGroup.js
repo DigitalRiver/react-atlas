@@ -6,8 +6,8 @@ class CheckboxGroup extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      "totalChecked": this.initialChecked(),
-      "groupError": false
+      totalChecked: this.initialChecked(),
+      groupError: false
     };
   }
 
@@ -29,14 +29,17 @@ class CheckboxGroup extends React.PureComponent {
       ? this.state.totalChecked + 1
       : this.state.totalChecked - 1;
     if (checked) {
-      this.setState({ "totalChecked": newChecked });
+      this.setState({ totalChecked: newChecked });
     } else {
-      this.setState({ "totalChecked": newChecked });
+      this.setState({ totalChecked: newChecked });
     }
-    if (this.props.max && newChecked > this.props.max || this.props.min && newChecked < this.props.min) {
-      this.setState({ "groupError": true });
+    if (
+      (this.props.max && newChecked > this.props.max) ||
+      (this.props.min && newChecked < this.props.min)
+    ) {
+      this.setState({ groupError: true });
     } else {
-      this.setState({ "groupError": false });
+      this.setState({ groupError: false });
     }
 
     if(typeof this.props.onChange !== 'undefined') {
@@ -73,14 +76,16 @@ class CheckboxGroup extends React.PureComponent {
     const { className, children, name, inline, title } = this.props;
     return (
       <div className={cx(className)} styleName={cx("checkboxGroup")}>
-        {title &&
+        {title && (
           <div styleName={cx("header")}>
             <span styleName={cx("headerFont")}>{title}</span>
-            {this.state.groupError &&
+            {this.state.groupError && (
               <span styleName={cx("error_message")}>
                 {this.maxMinMessage()}
-              </span>}
-          </div>}
+              </span>
+            )}
+          </div>
+        )}
         {React.Children.map(children, child => {
           child = cloneElement(child, {
             "inline": inline,
@@ -106,46 +111,46 @@ CheckboxGroup.propTypes = {
    * Anything that can be in a checkbox group. Typically only includes Checkbox components and a header.
    * @examples '<CheckboxGroup><Checkbox/><Checkbox/></CheckboxGroup>'
    */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   /**
    * Define a custom css class name.
    * @examples 'checkboxGroup', 'checkbox-group'
    */
-  "className": PropTypes.string,
+  className: PropTypes.string,
   /**
    * Form name for the element, this will set all Checkbox children the same form name.
    * @examples '<CheckboxGroup name="test"></CheckboxGroup>'
    */
-  "name": PropTypes.string,
+  name: PropTypes.string,
   /**
    * Displayed header text for the CheckboxGroup.
    * @examples '<CheckboxGroup title="Options"></CheckboxGroup>'
    */
-  "title": PropTypes.string,
+  title: PropTypes.string,
   /**
    * Defines if the checkbox group should display as an inline element.
    * @examples '<CheckboxGroup inline></CheckboxGroup>'
    */
-  "inline": PropTypes.bool,
+  inline: PropTypes.bool,
   /**
    * Defines a minimum number of checkboxes the user must select in order to proceed.
    * @examples '<CheckboxGroup min="3"></CheckboxGroup>'
    */
-  "min": PropTypes.number,
+  min: PropTypes.number,
   /**
    * Defines a maximum number of checkboxes the user is allowed to select before proceeding.
    * @examples '<CheckboxGroup max="3"></CheckboxGroup>'
    */
-  "max": PropTypes.number,
+  max: PropTypes.number,
   /**
    * Defines a custom message to show if either min or max properties are not met. {0} can be used in the message to be replaced by the appropriate min or max property.
    * @examples '<CheckboxGroup min="3" limitMessage="Please select at least {0} of the checkboxes below."></CheckboxGroup>'
    */
-  "limitMessage": PropTypes.string
+  limitMessage: PropTypes.string
 };
 
 CheckboxGroup.defaultProps = {
-  "inline": false
+  inline: false
 };
 
 export default CheckboxGroup;
