@@ -1,9 +1,9 @@
 Checkbox Group
 
-	<CheckboxGroup title="Checkbox Group" name="checkboxGroup">
-		<Checkbox label="Checkbox 1" checked />
-		<Checkbox label="Checkbox 2" />
-		<Checkbox label="Checkbox 3" />
+	<CheckboxGroup title="Checkbox Group" name="checkboxGroup" onChange={(value, event, isValid, checked) => { console.log(value, event, isValid, checked)}}>
+		<Checkbox label="Checkbox 1" value="first" checked />
+		<Checkbox label="Checkbox 2" value="second" />
+		<Checkbox label="Checkbox 3" value="third" />
 	</CheckboxGroup>
 
 Inline Checkbox Group

@@ -39,10 +39,6 @@ class Checkbox extends React.PureComponent {
           this.props.onBeforeChange(this.state.checked);
         }
 
-        if (typeof this.props.groupHandleClick !== "undefined") {
-          this.props.groupHandleClick(this.state.checked);
-        }
-
         /* Check if onChange has been passed, if so call it. */
         if (typeof this.props.onChange !== "undefined") {
           this.props.onChange(
@@ -221,10 +217,6 @@ Checkbox.propTypes = {
    * The value of the checkbox. This value is used by forms.
    */
   value: PropTypes.string,
-  /**
-   * Updates the parent CheckboxGroup component when state changes.
-   */
-  groupHandleClick: PropTypes.func,
   /**
    * States whether or not an error state has been passed down from the parent CheckboxGroup.
    */
