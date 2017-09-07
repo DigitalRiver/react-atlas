@@ -34,7 +34,7 @@ Input component should be used as core part of other components such as TextFiel
 
     <Input type="text"
          large
-         validator={this.validateTest} 
+         validator={this.validateTest}
          errorText="Custom validation message"/>
 
 ###### Masked text input:
@@ -56,7 +56,10 @@ The following format characters define editable parts of the mask:
 
 ###### Default radio input:
 
-    <Input type="radio"/>
+    <div>
+      <Input name="h" type="radio"/>
+      <Input name="h" type="radio"/>
+    </div>
 
 ###### HTML5 type inputs:
 

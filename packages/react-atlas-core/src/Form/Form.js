@@ -24,8 +24,6 @@ class Form extends React.PureComponent {
       return child
     });
 
-    console.log("state: ", childState);
-
     this.state = {
       "childState": childState
     };
@@ -137,7 +135,7 @@ class Form extends React.PureComponent {
     return (
       <form action={action} method={method} className={cx(className)}>
         {kids}
-        <ButtonCore className={cx(buttonClasses)} styleName={"form-button"} onClick={this.clickHandler}>{buttonText}</ButtonCore>
+        <ButtonCore type={"submit"} className={cx(buttonClasses)} styleName={"form-button"} onClick={this.clickHandler}>{buttonText}</ButtonCore>
       </form>
     );
   }

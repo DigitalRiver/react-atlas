@@ -30,8 +30,8 @@ export default {
   },
   getViewport() {
     return {
-      "height": window.innerHeight || document.documentElement.offsetHeight,
-      "width": window.innerWidth || document.documentElement.offsetWidth
+      height: window.innerHeight || document.documentElement.offsetHeight,
+      width: window.innerWidth || document.documentElement.offsetWidth
     };
   },
   cloneObject(object) {
@@ -64,20 +64,22 @@ export default {
     if (typeof elem.selectionStart !== "undefined") {
       start = elem.selectionStart;
       end = elem.selectionEnd;
-    }
-    else {
+    } else {
       try {
         elem.focus();
         rangeElem = elem.createTextRange();
         clone = rangeElem.duplicate();
 
-        rangeElem.moveToBookmark(document.selection.createRange().getBookmark());
-        clone.setEndPoint('EndToStart', rangeElem);
+        rangeElem.moveToBookmark(
+          document.selection.createRange().getBookmark()
+        );
+        clone.setEndPoint("EndToStart", rangeElem);
 
         start = clone.text.length;
         end = start + rangeElem.text.length;
+      } catch (e) {
+        /* not focused or not visible */
       }
-      catch (e) { /* not focused or not visible */ }
     }
 
     return { start, end };
@@ -89,21 +91,24 @@ export default {
       if (typeof elem.selectionStart !== "undefined") {
         elem.focus();
         elem.setSelectionRange(selection.start, selection.end);
-      }
-      else {
+      } else {
         elem.focus();
         rangeElem = elem.createTextRange();
         rangeElem.collapse(true);
-        rangeElem.moveStart('character', selection.start);
-        rangeElem.moveEnd('character', selection.end - selection.start);
+        rangeElem.moveStart("character", selection.start);
+        rangeElem.moveEnd("character", selection.end - selection.start);
         rangeElem.select();
       }
+    } catch (e) {
+      /* not focused or not visible */
     }
-    catch (e) { /* not focused or not visible */ }
   },
   getComponentName(comp) {
-    if(comp.type) {
-      if(Object.keys(comp.type).length === 0 && comp.type.constructor === Object) {
+    if (comp.type) {
+      if (
+        Object.keys(comp.type).length === 0 &&
+        comp.type.constructor === Object
+      ) {
         return null;
       }
       return comp.type.displayName || comp.type.name || comp.type || null;

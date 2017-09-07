@@ -16,7 +16,7 @@ class Dropdown extends React.PureComponent {
     let childrenState = React.Children.map(this.props.children, child => {
       let value = child.props.value || " ";
       let display = child.props.children;
-      let childState = {"value": value, "display": display};
+      let childState = { value: value, display: display };
       return childState;
     });
 
@@ -132,18 +132,49 @@ class Dropdown extends React.PureComponent {
     /* Checks that required has been set to true and determines if errorCallback message was passed in a custom error message.
       Also sets state of valid depending on user action
       */
+<<<<<<< HEAD
     let validationObject = {
+=======
+    let validation;
+    if (callback) {
+      validation = callback(event, this.state.value);
+
+      if (typeof validation === "undefined") {
+        throw "undefined returned from the error callback";
+      }
+
+      if (typeof validation === "object") {
+        this.setState({
+          isValid: validation.isValid,
+          errorMessage: validation.message
+        });
+        return;
+      }
+
+      if (typeof validation === "boolean") {
+        this.setState({
+          isValid: validation,
+          errorMessage: this.state.errorMessage
+        });
+        return;
+      }
+    }
+    /* No error Callback was passed so just check if required was set. */
+    validation = {
+>>>>>>> 037231a9325589863b006bb4d7543348e8dd053e
       isValid:
         (this.props.required && this.state.value !== "") ||
         !this.props.required,
       message: this.state.errorMessage
     };
-    if (callback) {
-      validationObject = callback(event, this.state.value);
-    }
     this.setState({
+<<<<<<< HEAD
       isValid: validationObject.isValid,
       errorMessage: validationObject.message
+=======
+      isValid: validation.isValid,
+      errorMessage: validation.message
+>>>>>>> 037231a9325589863b006bb4d7543348e8dd053e
     });
   };
 
@@ -200,26 +231,29 @@ class Dropdown extends React.PureComponent {
 
     // Builds the option list from the children passed in
     // firstChild, lastChild and selected each have unique styling and those classes are added here
-    const bound_children = React.Children.map(this.props.children, (child, i) => {
-      let childClasses = cx({
-        ra_dropdown__selected: i === this.state.index,
-        ra_dropdown__firstChild: i === 0,
-        ra_dropdown__lastChild: i === count - 1
-      });
-      let kid = (
-        <li
-          key={i}
-          className={"ra_dropdown__item " + childClasses}
-          onMouseDown={e => {
-            // onMouseDown fires before onBlur. If changed to onClick it will fire after onBlur and not work.
-            this._clickHandler(i, e);
-          }}
-        >
-          {child}
-        </li>
-      );
-      return kid;
-    });
+    const bound_children = React.Children.map(
+      this.props.children,
+      (child, i) => {
+        let childClasses = cx({
+          ra_dropdown__selected: i === this.state.index,
+          ra_dropdown__firstChild: i === 0,
+          ra_dropdown__lastChild: i === count - 1
+        });
+        let kid = (
+          <li
+            key={i}
+            className={"ra_dropdown__item " + childClasses}
+            onMouseDown={e => {
+              // onMouseDown fires before onBlur. If changed to onClick it will fire after onBlur and not work.
+              this._clickHandler(i, e);
+            }}
+          >
+            {child}
+          </li>
+        );
+        return kid;
+      }
+    );
 
     const dropdownButtonClasses = cx(buttonClasses);
 
@@ -238,11 +272,12 @@ class Dropdown extends React.PureComponent {
           this._keyDown(e);
         }}
       >
-        {customLabel &&
+        {customLabel && (
           <div styleName={"labelSpacing"}>
             {customLabel}
             {required && <span styleName={"requiredIndicator"}>*</span>}
-          </div>}
+          </div>
+        )}
         <div
           onClick={e => {
             this._toggle("click", e);
@@ -255,22 +290,16 @@ class Dropdown extends React.PureComponent {
               className={dropdownButtonClasses}
               type={"button"}
             >
-              <span>
-                {this.state.output}
-              </span>
+              <span>{this.state.output}</span>
               <i styleName="arrow" />
             </ButtonCore>
           </div>
-          {this.state.active &&
-            <ul styleName={"list"}>
-              {bound_children}
-            </ul>}
+          {this.state.active && <ul styleName={"list"}>{bound_children}</ul>}
           <input type="hidden" value={this.state.value} />
         </div>
-        {error &&
-          <span styleName={"error_message"}>
-            {this.state.errorMessage}
-          </span>}
+        {error && (
+          <span styleName={"error_message"}>{this.state.errorMessage}</span>
+        )}
       </div>
     );
   }
@@ -312,7 +341,10 @@ Dropdown.propTypes = {
   required: PropTypes.bool,
 
   /**
-   * Allows the user to pass a function for custom validation. Should return either true or false.
+   * Allows the user to pass a function for custom validation. Should return either true or false, or
+   * an object with the properties valid and message. If false is returned the default error message
+   * is used. If an object is used and the valid property is false, the string in the property message
+   * will be used for the error message.
    */
   errorCallback: PropTypes.func,
 
