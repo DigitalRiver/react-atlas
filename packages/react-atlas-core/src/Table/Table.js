@@ -5,10 +5,11 @@ import { LightTable } from "light-table/src";
 
 class Table extends React.PureComponent {
   render() {
-    const { className, children, data, options, maxHeight, search, pagination, sort } = this.props;
+    const { className, children, data, options, maxHeight, search, pagination, sort, ...props } = this.props;
 
     return (
       <LightTable
+        {...props}
         search={search}
         data={data}
         options={options}
