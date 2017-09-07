@@ -23,9 +23,9 @@ function rebuild(configurationPath) {
       __dirname + "/../node_modules/webpack/bin/webpack.js",
       ["--config", __dirname + "/../webpack.config.js"],
       {
-        "env": process.env,
-        "cwd": cwd,
-        "stdio": "inherit"
+        env: process.env,
+        cwd: cwd,
+        stdio: "inherit"
       }
     );
   } else {
@@ -41,9 +41,9 @@ function rebuild(configurationPath) {
         config.theme
       ],
       {
-        "env": process.env,
-        "cwd": cwd,
-        "stdio": "inherit"
+        env: process.env,
+        cwd: cwd,
+        stdio: "inherit"
       }
     );
   }
@@ -90,12 +90,12 @@ function processInfo(info) {
           /* If we get here it means were missing this proptype and it should
             have a case added to this switch statment. */
           default:
-          console.log("Missing proptype: " + type.name);
+            console.log("Missing proptype: " + type.name);
             throw "Missing proptype: " + type.name;
         }
       }
 
-      if(obj.type !== "shape") {
+      if (obj.type !== "shape") {
         obj.type += "])";
       }
     } else {
@@ -113,7 +113,7 @@ function processInfo(info) {
 function createComponent(name, theme) {
   let component = {};
 
-  component = { "name": name, "theme": theme };
+  component = { name: name, theme: theme };
 
   /* Make sure leading letter is uppercase. */
   component.name = component.name[0].toUpperCase() + component.name.slice(1);
@@ -153,7 +153,7 @@ function writeComponent(component) {
 
   /* Render component template. */
   let tempFn = dot.template(temp);
-  let resultText = tempFn({ "component": component });
+  let resultText = tempFn({ component: component });
 
   /* Use prettier to format code so it looks nicer to people. */
   let text = prettier.format(resultText, options);
@@ -175,7 +175,7 @@ function writeComponent(component) {
   }
 
   tempFn = dot.template(compIndexTemplate);
-  resultText = tempFn({ "component": component });
+  resultText = tempFn({ component: component });
   text = prettier.format(resultText, options);
 
   try {
@@ -198,7 +198,7 @@ function writeComponent(component) {
 
 function writeIndexFile(comps) {
   let tempFn = dot.template(indexTemplate);
-  let resultText = tempFn({ "components": comps });
+  let resultText = tempFn({ components: comps });
   let text = prettier.format(resultText, options);
 
   /* Try writting component to disk. */
@@ -249,22 +249,40 @@ function createComponentsFromConfig() {
   createComponentFromGlobalTheme(config.theme);
 }
 
+function deleteFolder(path) {
+  if (fs.existsSync(path)) {
+    fs.readdirSync(path).forEach(function(file, index) {
+      var curPath = path + "/" + file;
+      if (fs.lstatSync(curPath).isDirectory()) {
+        // recurse
+        deleteFolder(curPath);
+      } else {
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(path);
+  }
+}
+
 function createComponentDirectories() {
   const componentDirconfigPath = __dirname + "/components";
   const oldconfigPath = __dirname + "/../../react-atlas-core/src/";
 
   let component;
 
-  if (!fs.existsSync(componentDirconfigPath)) {
-    fs.mkdirSync(componentDirconfigPath);
-    for (let i = 0; i < components.length; i++) {
-      component = components[i];
-
-      /* Make sure leading letter is uppercase. */
-      component = component[0].toUpperCase() + component.slice(1);
-      fs.mkdir(componentDirconfigPath + "/" + component);
-    }
+  if (fs.existsSync(componentDirconfigPath)) {
+    deleteFolder(componentDirconfigPath);
   }
+
+  fs.mkdirSync(componentDirconfigPath);
+  for (let i = 0; i < components.length; i++) {
+    component = components[i];
+
+    /* Make sure leading letter is uppercase. */
+    component = component[0].toUpperCase() + component.slice(1);
+    fs.mkdir(componentDirconfigPath + "/" + component);
+  }
+
   for (let i = 0; i < components.length; i++) {
     component = components[i];
 

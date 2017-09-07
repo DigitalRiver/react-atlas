@@ -18,6 +18,10 @@
     "components"
   ],
   "license": "MIT",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
   "devDependencies": {
     "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^2.1.0",

@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { default as Radio } from "../../../react-atlas-core/src/Radio/Radio"
+import { default as Radio } from "../../../react-atlas-core/src/Radio/Radio";
 
 describe("Testing radio component", () => {
   it("Set props should match what was passed in", function() {

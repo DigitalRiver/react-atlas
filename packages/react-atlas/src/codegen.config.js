@@ -63,7 +63,7 @@ template +=
   eol +
   "import { {{=it.component.name}}Style } from '{{=it.component.theme}}';" +
   eol +
-  "const {{=it.component.name}} = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});" + 
+  "const {{=it.component.name}} = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});" +
   eol +
   "export default {{=it.component.name}}";
 
@@ -75,7 +75,7 @@ devTemplate +=
   "import CSSModules from 'react-css-modules';" +
   eol +
   "import React from 'react';" +
-  eol + 
+  eol +
   "import PropTypes from 'prop-types';" +
   eol +
   "import { {{=it.component.name}}Core } from 'react-atlas-core/src';" +
@@ -125,7 +125,6 @@ indexTemplate +=
   "{{~}}" +
   eol;
 
-
 let compIndexTemplate = warningMessage;
 compIndexTemplate +=
   "export {{=it.component.name}} from './{{=it.component.name}}.js';";
@@ -133,17 +132,17 @@ compIndexTemplate +=
 /* Dot template settings. Keep defaults except turn off stripping newlines feature
  * of dot.js. */
 dot.templateSettings = {
-  "evaluate": /\{\{([\s\S]+?)\}\}/g,
-  "interpolate": /\{\{=([\s\S]+?)\}\}/g,
-  "encode": /\{\{!([\s\S]+?)\}\}/g,
-  "use": /\{\{#([\s\S]+?)\}\}/g,
-  "define": /\{\{##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\}\}/g,
-  "conditional": /\{\{\?(\?)?\s*([\s\S]*?)\s*\}\}/g,
-  "iterate": /\{\{~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\}\})/g,
-  "varname": "it",
-  "strip": false,
-  "append": true,
-  "selfcontained": false
+  evaluate: /\{\{([\s\S]+?)\}\}/g,
+  interpolate: /\{\{=([\s\S]+?)\}\}/g,
+  encode: /\{\{!([\s\S]+?)\}\}/g,
+  use: /\{\{#([\s\S]+?)\}\}/g,
+  define: /\{\{##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\}\}/g,
+  conditional: /\{\{\?(\?)?\s*([\s\S]*?)\s*\}\}/g,
+  iterate: /\{\{~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\}\})/g,
+  varname: "it",
+  strip: false,
+  append: true,
+  selfcontained: false
 };
 
 /* TODO: Replace hardcoded array with a dynamic solution. */
@@ -169,10 +168,10 @@ let components = [
 ];
 
 module.exports = {
-  "warningMessage": warningMessage,
-  "template": template,
-  "components": components,
-  "indexTemplate": indexTemplate,
-  "compIndexTemplate": compIndexTemplate,
-  "devTemplate": devTemplate
+  warningMessage: warningMessage,
+  template: template,
+  components: components,
+  indexTemplate: indexTemplate,
+  compIndexTemplate: compIndexTemplate,
+  devTemplate: devTemplate
 };
