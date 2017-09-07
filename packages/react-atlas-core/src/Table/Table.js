@@ -1,5 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
 import PropTypes from 'prop-types';
 import cx from "classnames";
 import { LightTable } from "light-table/src";
