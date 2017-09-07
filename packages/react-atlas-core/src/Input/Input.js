@@ -428,7 +428,6 @@ Input.defaultProps = {
   className: "",
   disabled: false,
   hidden: false,
-  focus: false,
   errorLocation: "right"
 };
 
