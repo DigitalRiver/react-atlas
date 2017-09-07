@@ -1,6 +1,5 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
-import { expect } from "chai";
 import { CheckboxGroupCore } from "../../../react-atlas-core/src/CheckboxGroup/index";
 import { CheckboxCore } from "../../../react-atlas-core/src/checkbox/index";
 import { verifyPropsDefaultValue } from "../../Utils/propsVerification";
@@ -21,7 +20,7 @@ describe("Test CheckboxGroup component - the bascis", () => {
 	
 		component.childAt(1).simulate('click');
 		
-		expect(component.state().totalChecked).to.equal(1);
+		expect(component.state().totalChecked).toBe(1);
 	});
 
 	it("Checkbox group - 4 checkboxes, 2 checked 1 from creation", function() {
@@ -34,7 +33,7 @@ describe("Test CheckboxGroup component - the bascis", () => {
 	
 		component.childAt(2).simulate('click');
 		
-		expect(component.state().totalChecked).to.equal(2);
+		expect(component.state().totalChecked).toBe(2);
 	});
 
 	it("Checkbox group - 4 checkboxes, 0 checked with 1 checked from creation", function() {
@@ -47,7 +46,7 @@ describe("Test CheckboxGroup component - the bascis", () => {
 
 		component.childAt(0).simulate('click');
 		
-		expect(component.state().totalChecked).to.equal(0);
+		expect(component.state().totalChecked).toBe(0);
 	});
 	
 	it("Checkbox group - 4 checkboxes, 3 checked", function() {
@@ -62,7 +61,7 @@ describe("Test CheckboxGroup component - the bascis", () => {
 		component.childAt(2).simulate('click');
 		component.childAt(3).simulate('click');
 		
-		expect(component.state().totalChecked).to.equal(3);
+		expect(component.state().totalChecked).toBe(3);
 	});
 
 	it("Checkbox group - 4 checkboxes, 2 checked", function() {
@@ -77,11 +76,11 @@ describe("Test CheckboxGroup component - the bascis", () => {
 		component.childAt(2).simulate('click');
 		component.childAt(3).simulate('click');
 		
-		expect(component.state().totalChecked).to.equal(3);
+		expect(component.state().totalChecked).toBe(3);
 		
 		component.childAt(1).simulate('click');
 		
-		expect(component.state().totalChecked).to.equal(2);
+		expect(component.state().totalChecked).toBe(2);
 	});
 });
 	
@@ -100,7 +99,7 @@ function _verifyMinMax(mi, ma, numberOfClicks, message, expectedResult)	{
 		component.childAt(i).simulate('click');
 	}
 	
-	expect(component.state().groupError).to.equal(expectedResult);	
+	expect(component.state().groupError).toBe(expectedResult);	
 }
 	
 describe("Test CheckboxGroup component - Min/Max tests", () => {
@@ -125,11 +124,11 @@ describe("Test CheckboxGroup component - Min/Max tests", () => {
 			component.childAt(i).simulate('click');
 		}
 
-		expect(component.state().groupError).to.equal(true);
+		expect(component.state().groupError).toBe(true);
 		
 		component.childAt(2).simulate('click');
 		component.childAt(0).simulate('click');
 		
-		expect(component.state().groupError).to.equal(false);
+		expect(component.state().groupError).toBe(false);
 	});
 });
