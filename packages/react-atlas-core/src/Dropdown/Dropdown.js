@@ -132,9 +132,6 @@ class Dropdown extends React.PureComponent {
     /* Checks that required has been set to true and determines if errorCallback message was passed in a custom error message.
       Also sets state of valid depending on user action
       */
-<<<<<<< HEAD
-    let validationObject = {
-=======
     let validation;
     if (callback) {
       validation = callback(event, this.state.value);
@@ -161,20 +158,14 @@ class Dropdown extends React.PureComponent {
     }
     /* No error Callback was passed so just check if required was set. */
     validation = {
->>>>>>> 037231a9325589863b006bb4d7543348e8dd053e
       isValid:
         (this.props.required && this.state.value !== "") ||
         !this.props.required,
       message: this.state.errorMessage
     };
     this.setState({
-<<<<<<< HEAD
       isValid: validationObject.isValid,
       errorMessage: validationObject.message
-=======
-      isValid: validation.isValid,
-      errorMessage: validation.message
->>>>>>> 037231a9325589863b006bb4d7543348e8dd053e
     });
   };
 
