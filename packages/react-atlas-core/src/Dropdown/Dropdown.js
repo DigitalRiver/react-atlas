@@ -164,8 +164,8 @@ class Dropdown extends React.PureComponent {
       message: this.state.errorMessage
     };
     this.setState({
-      isValid: validationObject.isValid,
-      errorMessage: validationObject.message
+      isValid: validation.isValid,
+      errorMessage: validation.message
     });
   };
 
