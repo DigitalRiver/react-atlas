@@ -140,7 +140,7 @@ class Form extends React.PureComponent {
           className: classes,
           onChange: (value, event, isValid, state) => this.onChangeHandler(value, event, isValid, this.state.childState[i]),
           value: this.state.childState[i].value,
-          errorText: "This field is required",
+          errorText: messages.requiredMessage,
           isValid: this.state.childState[i].isValid
         };
 
