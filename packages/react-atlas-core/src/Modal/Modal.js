@@ -13,10 +13,10 @@ class Modal extends React.PureComponent {
       onEscKeyDown,
       title,
       overlay,
-
       lockScroll
     } = this.props;
     const classes = cx("modal", { active });
+    const classNames = cx("ra_modal__modal", { "ra_modal__active": active }, className);
     return (
       active &&
       <PortalCore>
@@ -27,11 +27,11 @@ class Modal extends React.PureComponent {
             onEscKeyDown={onEscKeyDown}
             lockScroll={lockScroll}
           />}
-        <div styleName={classes} className={className}>
+        <div styleName={classes} className={classNames}>
           {title &&
-            <h2 styleName={cx("title")}>
+            <h3 styleName={cx("title")}>
               {title}
-            </h2>}
+            </h3>}
           {this.props.children}
         </div>
       </PortalCore>
@@ -52,10 +52,6 @@ Modal.propTypes = {
    * Anything that can be in a modal.
    */
   "children": PropTypes.node.isRequired,
-  /**
-   * Click event handler.
-   */
-  "onClick": PropTypes.func,
   /**
    * Determines show Modal or not
    */

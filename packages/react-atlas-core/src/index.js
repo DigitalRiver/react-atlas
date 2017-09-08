@@ -15,3 +15,4 @@ export { HintCore } from "./Hint";
 export { TextAreaCore } from "./TextArea";
 export { TextFieldCore } from "./TextField";
 export { ModalCore } from "./Modal";
+export { DialogCore } from "./Dialog";

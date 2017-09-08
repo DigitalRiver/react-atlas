@@ -6,9 +6,10 @@
 	border-radius: 2px;
 	box-shadow: 0 19px 60px rgba(0, 0, 0, .3), 0 15px 20px rgba(0, 0, 0, .22);
 	transform: translateY(-40px);
-	padding: 24px;
 }
 
 .title {
-	margin: 0 0 16px;
+	composes: bg-primary from '../styles.css';
+	margin: 0;
+	padding: 6px 2px 5px 10px;
 }

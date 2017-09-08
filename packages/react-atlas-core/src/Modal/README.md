@@ -14,7 +14,7 @@ Basic Modal:
             title="Modal Example Title"
         >
             <div>This is Modal example<br/>Any child components could be put here.</div>
-            <Switch medium/>
+            <Switch small/>
             <Button raised primary onClick={handleToggle} >Close!</Button>
         </Modal>
 	</div>

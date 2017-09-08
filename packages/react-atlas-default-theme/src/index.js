@@ -17,3 +17,4 @@ export { TextFieldStyle } from "./TextField";
 export { OverlayStyle } from "./Overlay";
 export { ModalStyle } from "./Modal";
 export { PortalStyle } from "./Portal";
+export { DialogStyle } from "./Dialog";

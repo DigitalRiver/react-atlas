@@ -76,7 +76,7 @@ Overlay.propTypes = {
 Overlay.defaultProps = {
   "active": false,
   "className": "",
-  "lockScroll": true
+  "lockScroll": false
 };
 
 export default Overlay;
