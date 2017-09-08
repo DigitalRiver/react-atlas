@@ -5,6 +5,10 @@ import { ButtonCore } from '../Button';
 import utils from '../utils/utils';
 import cx from "classnames";
 
+const errorCodes = {
+  "MISSING_REQUIRED": 0
+}
+
 class Form extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -85,6 +89,9 @@ class Form extends React.PureComponent {
   	/* Validate children components before submiting. */
   	let data = this.validate();
     if(!data) {
+      if(typeof this.props.onError !== 'undefined') {
+        this.props.onError(errorCodes.MISSING_REQUIRED, messages.missingRequired);
+      }
       return;
     }
 
@@ -103,6 +110,9 @@ class Form extends React.PureComponent {
 
   /* Fires whenever a child input is changed. */
   onChangeHandler = (value, event, isValid, state) => {
+    if(isValid === false && typeof this.props.onError !== 'undefined') {
+      this.props.onError(errorCodes.MISSING_REQUIRED, messages.missingRequired);
+    }
     let index = state.index;
     let childState = [];
     let count = React.Children.count(this.props.children);
@@ -166,6 +176,8 @@ Form.propTypes = {
   /** A callback that is fired when the form has passed validation
    * and is ready to submit. Returns the form data and the event object.  */
   "onSubmit": PropTypes.func,
+  /** A Callback that is called when there is a form error. */
+  "onError": PropTypes.func,
   /** The URL of the server to send data to. */
   "action": PropTypes.string,
   /** The text displayed inside the submit button. */
