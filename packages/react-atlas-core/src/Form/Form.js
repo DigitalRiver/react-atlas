@@ -63,6 +63,19 @@ class Form extends React.PureComponent {
     }
   }
 
+  transformData = (data) => {
+    let sumbitData = {};
+    for(let i = 0; i < data.length; i++) {
+      let key = data[i].name;
+      let value = data[i].value;
+
+      sumbitData[key] = value;
+
+    }
+
+    return sumbitData;
+  }
+
   clickHandler = (e) => {
   	/* Prevent form submission if action prop is not set. */
   	if(!this.props.action) {
@@ -75,10 +88,14 @@ class Form extends React.PureComponent {
       return;
     }
 
+    /* Tranform data array from validate() to an object using name
+     * as the key and the child's value as the object value. */
+    let sumbitData = this.transformData(data);
+
   	/* Check if onSubmit was set. Call onSubmit if
   	 * it was passed throw a error if not set. */
   	if(this.props.onSubmit) {
-  		this.props.onSubmit(e, data);
+  		this.props.onSubmit(e, sumbitData);
   	} else {
       throw messages.onSubmitAction;
   	}
