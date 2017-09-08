@@ -103,7 +103,6 @@ class Form extends React.PureComponent {
 
   /* Fires whenever a child input is changed. */
   onChangeHandler = (value, event, isValid, state) => {
-    console.log("FormIsValid: ", isValid);
     let index = state.index;
     let childState = [];
     let count = React.Children.count(this.props.children);
@@ -124,7 +123,6 @@ class Form extends React.PureComponent {
 
   render() {
     const { className, children, action, buttonText, group, method, childClasses, buttonClasses} = this.props;
-    console.log("children: ", this.props.children);
     /* Loop through children components and set onChange handlers
      * and add CSS classes. */
     let kids = React.Children.map(children, (child, i) => {

@@ -20,8 +20,6 @@ class Input extends React.PureComponent {
       "remaining": props.maxLength
     };
 
-    console.log("InitialInputIsValid: ", this.state.isValid);
-
     // Configure input mask if required
     if (this.props.mask) {
       let maskOptions = {
@@ -53,8 +51,6 @@ class Input extends React.PureComponent {
         "errorText": this.props.requiredText || "This field is required.",
         "isValid": nextProps.isValid
       });
-    } else {
-      console.log("Here");
     }
   }
 
@@ -231,12 +227,10 @@ class Input extends React.PureComponent {
     }
 
     this._validate(inputValue);
-    console.log("InputIsValid: ", this.state.isValid);
     this.setState({
         "value": inputValue
         }, () => {
           if (this.props.onChange) {
-            console.log("Input Calling OnChange: ", this.state.value, event, this.state.isValid);
             this.props.onChange(this.state.value, event, this.state.isValid);
           }
         });
