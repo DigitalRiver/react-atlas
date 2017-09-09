@@ -1,2 +1,2 @@
-import * as RadioGroupStyle from "./radioGroup.css";
+import * as RadioGroupStyle from "./RadioGroup.css";
 export { RadioGroupStyle };
