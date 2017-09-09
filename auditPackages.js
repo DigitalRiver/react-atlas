@@ -20,7 +20,7 @@ packages.forEach(function(pack) {
  //
  // vulnsFound = vulnsFound + obj.root.attributes.failures;
  //
- // });
+ });
  //
  // if(vulnsFound > 0) {
  //   //throw 'Vulns Found';
