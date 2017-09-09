@@ -141,6 +141,8 @@ class Input extends React.PureComponent {
         this.setState({
           value: inputValue.substring(0, this.props.maxLength),
           remaining: 0
+        }, function() {
+          console.log("value: ", this.state.value);
         });
         return false;
       }
@@ -210,17 +212,18 @@ class Input extends React.PureComponent {
       }
     }
 
-    this._validate(inputValue);
-    this.setState(
-      {
-        value: inputValue
-      },
-      () => {
-        if (this.props.onChange) {
-          this.props.onChange(event);
+    if(this._validate(inputValue) !== false) {
+      this.setState(
+        {
+          value: inputValue
+        },
+        () => {
+          if (this.props.onChange) {
+            this.props.onChange(event);
+          }
         }
-      }
-    );
+      );
+    }
   };
 
   render() {
