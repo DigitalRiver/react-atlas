@@ -1,2 +1,2 @@
-import * as TableStyle from "./table.css";
+import * as TableStyle from "./Table.css";
 export { TableStyle };

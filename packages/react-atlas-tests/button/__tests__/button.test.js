@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { default as Button } from "../../../react-atlas-core/src/button/Button";
+import { default as Button } from "../../../react-atlas-core/src/Button/Button";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
