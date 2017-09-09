@@ -6,5 +6,5 @@ install:
   - npm install
 script:
   - npm run bootstrap
-  - npm run tests
+  - npm run test
   - npm run audit
