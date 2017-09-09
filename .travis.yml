@@ -7,3 +7,4 @@ install:
 script:
   - npm run bootstrap
   - npm run tests
+  - npm run audit
