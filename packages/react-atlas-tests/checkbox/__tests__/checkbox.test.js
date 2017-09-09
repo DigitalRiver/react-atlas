@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { default as Checkbox } from "../../../react-atlas-core/src/checkbox/Checkbox";
+import { default as Checkbox } from "../../../react-atlas-core/src/Checkbox/Checkbox";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 

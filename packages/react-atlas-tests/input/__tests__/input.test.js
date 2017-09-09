@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 
-import { default as Input } from "../../../react-atlas-core/src/input/Input";
+import { default as Input } from "../../../react-atlas-core/src/Input/Input";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
@@ -55,8 +55,8 @@ describe("Suite - Validator checking", () => {
 	it("Check validator use - Only number greater than zero allowed - Negative case ", function() { _validate('aa', false)} );
 	it("Check validator use - Only number greater than zero allowed - Negative case ", function() { _validate('1a1', false)} );
 	it("Check validator use - Only number greater than zero allowed - Negative case ", function() { _validate('-2', false)} );
-	it("Check validator use - Only number greater than zero allowed - Negative case ", function() { _validate('', false)} );	
-	
+	it("Check validator use - Only number greater than zero allowed - Negative case ", function() { _validate('', false)} );
+
 	it("Check validator use - unproper validator", function(){
 		let myTrackedMessage;
 		let originalConsole = console.warn;
@@ -72,28 +72,28 @@ describe("Suite - Validator checking", () => {
 
 describe("Check mask behavior ", () => {
 	it("Date 1", function() {_validateMask("11-11-1111", "10081974sd", "10-08-1974") });
-	it("Date 2", function() {_validateMask("11/11/1111", "1s0081J974", "10/08/1974") });	
-	it("Date 3", function() {_validateMask("11 11 1111", "1s0081\\9 74", "10 08 1974") });	
-	
+	it("Date 2", function() {_validateMask("11/11/1111", "1s0081J974", "10/08/1974") });
+	it("Date 3", function() {_validateMask("11 11 1111", "1s0081\\9 74", "10 08 1974") });
+
 	it("Credit card 1", function() {_validateMask("1111 1111 1111 1111", "4519348134566546", "4519 3481 3456 6546") });
 	it("Credit card 2", function() {_validateMask("1111 1111 1111 1111", "4519s3g4j813j456f6546", "4519 3481 3456 6546") });
 	it("Credit card 3", function() {_validateMask("1111 1111 1111 1111", "4519 3481 3456 6546", "4519 3481 3456 6546") });
 
 	it("Time 1", function() {_validateMask("11:11", "1234", "12:34") });
-	it("Time 2", function() {_validateMask("11:11", "1234", "12:34") });	
+	it("Time 2", function() {_validateMask("11:11", "1234", "12:34") });
 	it("Time 3", function() {_validateMask("11:11:11", "123", "12:3_:__") });
 	it("Time 4", function() {_validateMask("11:11:11", "", "") });
 	it("Time 5", function() {_validateMask("11:11:11", "123h4345k345", "12:34:34") });
-	
+
 	it("Name 1", function() {_validateMask("Aaaaaa", "adrian", "Adrian") });
-	it("Name 2", function() {_validateMask("Aaaaaa", "driAn", "DriAn_") });	
-	it("Name 3", function() {_validateMask("Aaaaaa", "__adrIan", "AdrIan") });	
-	
+	it("Name 2", function() {_validateMask("Aaaaaa", "driAn", "DriAn_") });
+	it("Name 3", function() {_validateMask("Aaaaaa", "__adrIan", "AdrIan") });
+
 	it("Backspace key test 1", function() {
 		let comp = mount(<Input mask={'Aaaaaa'}/>);
-		
+
 		expect(comp.state().value).toEqual('');
-		
+
 		_pressOneByOne(comp, 'Adrii');
 		comp.find('input').simulate('keyDown', {key: 'Backspace'});
 		comp.find('input').simulate('keyPress', {key: 'i'});
@@ -102,30 +102,30 @@ describe("Check mask behavior ", () => {
 
 		expect(comp.state().value).toEqual("Adrian");
 	});
-	
+
 	it("Backspace key test 2", function() {
 		let comp = mount(<Input mask={'Aaaaaa'}/>);
 
 		expect(comp.state().value).toEqual('');
-		
+
 		_pressOneByOne(comp, 'a');
 		comp.find('input').simulate('keyDown', {key: 'Backspace'});
 		_pressOneByOne(comp, 'Adriaaa');
 		comp.find('input').simulate('keyDown', {key: 'Backspace'});
 		_pressOneByOne(comp, 'n');
-		
+
 		expect(comp.state().value).toEqual("Adrian");
-	});	
-	
+	});
+
 	it("Control & Enter keys test", function() {
 		let comp = mount(<Input mask={'Aaaaaa'}/>);
-		
+
 		comp.find('input').simulate('keyPress', {key: 'Ctrl'})
-		
+
 		comp.find('input').simulate('keyPress', {key: 'Enter'})
-		
+
 	});
-	
+
 })
 
 describe("Suite - Basic functionality", () => {
@@ -137,39 +137,39 @@ describe("Suite - Basic functionality", () => {
 			['focus', false],
 			['errorLocation', 'right']
 		]);
-		const component = mount(<Input/>);		
-	
+		const component = mount(<Input/>);
+
 		expect(verifyPropsDefaultValue(component, expectedProps)).toEqual(true);
 	});
 
 	it("Simulate text entered", function() {
 		const component = mount(<Input onChange = { function(){component.state().isValid = false } } />);
-		
+
 		expect(component.state().isValid).toEqual(true);
-	
+
 		component.find('input').simulate("change", { "target": { "value": "1234567890!!!" } });
 
 		expect(component.state().isValid).toEqual(false);
-		
+
 		expect(component.state().value).toEqual("1234567890!!!");
 	});
-	
+
 	it("Simulate text entered(keypressed)", function() {
 		const component = mount(<Input />);
-		
+
 		_pressOneByOne(component, "Text");
-		
+
 	});
-		
+
 	it("Backspace test last", function() {
 		let comp = mount(<Input />);
-		
+
 		_pressOneByOne(comp, 'Adrii');
 		comp.find('input').simulate('keyDown', {key: 'Backspace'});
 		comp.find('input').simulate('keyDown', {key: 'Backspace'});
 
 	});
-	
+
 });*/
 
 describe("Suite - Max length limit", () => {
@@ -208,7 +208,7 @@ describe("Suite - Required field", () => {
 		expect(component.state().isValid).toEqual(false);
 		expect(component.state().errorText).toEqual('This field is required.');
 	});
-	
+
 	it("Check behavior when field is set to required - Positive case", () => {
 		const component = mount(<Input required = {true} />);
 
@@ -224,7 +224,7 @@ describe("Suite - Required field", () => {
 		expect(component.state().isValid).toEqual(true);
 		expect(component.state().errorText).toEqual(null);
 	});
-	
+
 	it("Check behavior when field is set to required and validated - Positive case", () => {
 		const component = mount(<Input required = {true} validator = {function(){return true}} errorText = {'That is NOT a number'} />);
 
@@ -232,7 +232,7 @@ describe("Suite - Required field", () => {
 		expect(component.state().isValid).toEqual(true);
 		expect(component.state().errorText).toEqual(null);
 	});
-	
+
 	it("Check behavior when field is set to required and validated - Negative case", () => {
 		const component = mount(<Input required = {true} validator = {function(){return false}} errorText = {'That is NOT a number'} />);
 
@@ -240,8 +240,8 @@ describe("Suite - Required field", () => {
 		expect(component.state().errorText).toEqual('That is NOT a number');
 		expect(component.state().isValid).toEqual(false);
 	});
-	
-	
+
+
 });
 
 describe("Suite - checkbox", () => {
@@ -255,7 +255,7 @@ describe("Suite - checkbox", () => {
 			['defaultChecked', false]
 		]);
 		const component = mount(<Input type="checkbox"/>);
-		
+
 	});
 });
 
@@ -263,13 +263,13 @@ describe("Suite - radio", () => {
 	it("Check radio - base base", () => {
 		const component = mount(<Input type="radio"  />)
 	});
-});	
-	
+});
+
 describe("Suite - password", () => {
 	it("Check password - base case", () => {
 		const component = mount(<Input type="password"  />)
 	});
-});	
+});
 
 describe("Suite - email", () => {
 	it("Check email", () => {
