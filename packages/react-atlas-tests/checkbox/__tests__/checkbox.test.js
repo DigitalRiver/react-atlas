@@ -123,6 +123,6 @@ describe("Test checkbox component - Default values", () => {
     );
     expect(comp.state().checked).toEqual(false);
     comp.simulate("click");
-    expect(comp.state().checked).toEqual(false);
+    expect(comp.state().checked).toEqual(true);
   });
 });
