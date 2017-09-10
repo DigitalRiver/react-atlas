@@ -25,19 +25,19 @@ Card.propTypes = {
    * Any HTML element or React Component.
    * @examples <p>Some Text.</p>
    */
-  children: PropTypes.node.isRequired,
+  "children": PropTypes.node.isRequired,
 
   /**
    * Custom classnames prop
    */
-  className: PropTypes.string,
+  "className": PropTypes.string,
 
   /**
    * Title of the Card
    */
-  legend: PropTypes.string
+  "legend": PropTypes.string
 };
 
-Card.defaultProps = { children: <p>Some card text.</p> };
+Card.defaultProps = { "children": <p>Some card text.</p> };
 
 export default Card;

@@ -1,14 +1,14 @@
 export default {
   getMousePosition(event) {
     return {
-      x: event.pageX,
-      y: event.pageY
+      "x": event.pageX,
+      "y": event.pageY
     };
   },
   getTouchPosition(event) {
     return {
-      x: event.touches[0].pageX,
-      y: event.touches[0].pageY
+      "x": event.touches[0].pageX,
+      "y": event.touches[0].pageY
     };
   },
   pauseEvent(event) {

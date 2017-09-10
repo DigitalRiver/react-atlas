@@ -8,10 +8,10 @@ class TextArea extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      value: props.value || "",
-      remaining: props.maxLength,
-      active: false,
-      valid: true
+      "value": props.value || "",
+      "remaining": props.maxLength,
+      "active": false,
+      "valid": true
     };
   }
 
@@ -21,13 +21,13 @@ class TextArea extends React.PureComponent {
 
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
-      this.setState({ remaining: this.props.maxLength - value.length });
+      this.setState({ "remaining": this.props.maxLength - value.length });
     }
 
     // Set value and valid state depending on InputCore state
     this.setState({
-      value: this.inputRef.state.value,
-      valid: this.inputRef.state.isValid
+      "value": this.inputRef.state.value,
+      "valid": this.inputRef.state.isValid
     });
 
     if (this.props.onChange) {
@@ -37,11 +37,11 @@ class TextArea extends React.PureComponent {
   };
 
   _handleFocus = () => {
-    this.setState({ active: true });
+    this.setState({ "active": true });
   };
 
   _handleBlur = () => {
-    this.setState({ active: false });
+    this.setState({ "active": false });
   };
 
   render() {
@@ -60,18 +60,18 @@ class TextArea extends React.PureComponent {
       className
     } = this.props;
 
-    let remainingCount = maxLength && (
+    let remainingCount = maxLength && 
       <div styleName={cx("remainingCount")}>
         {maxLength - this.state.remaining}/{maxLength}
       </div>
-    );
+    ;
 
-    let textAreaHeader = header && (
+    let textAreaHeader = header && 
       <div styleName={cx("header")}>
         <span styleName={cx("headerFont")}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
       </div>
-    );
+    ;
 
     let wrapperClasses = cx(
       {
@@ -87,8 +87,8 @@ class TextArea extends React.PureComponent {
       {
         resizable,
         disabled,
-        active: this.state.active,
-        invalid: !this.state.valid
+        "active": this.state.active,
+        "invalid": !this.state.valid
       },
       "textarea"
     );
@@ -111,7 +111,7 @@ class TextArea extends React.PureComponent {
           required={required}
           disabled={disabled}
           hidden={hidden}
-          ref={node => (this.inputRef = node)} // eslint-disable-line no-return-assign
+          ref={node => this.inputRef = node} // eslint-disable-line no-return-assign
         />
         {remainingCount}
       </div>
@@ -124,79 +124,79 @@ TextArea.propTypes = {
 	 * Define a custom css class name.
 	 * @examples 'textarea', 'textarea-elem'
 	 */
-  className: PropTypes.string,
+  "className": PropTypes.string,
   /**
 	 * Define a name for the textarea input.
 	 * @examples '<TextArea name="test"/>'
 	 */
-  name: PropTypes.string,
+  "name": PropTypes.string,
   /**
    * Define a value for the textarea input.
    * @examples '<TextArea value="test"/>'
    */
-  value: PropTypes.string,
+  "value": PropTypes.string,
   /**
    * Define a title or header to be displayed above the textarea.
    * @examples '<TextArea header="test"/>'
    */
-  header: PropTypes.string,
+  "header": PropTypes.string,
   /**
    * Defines a resizable textarea. Default: true.
    * @examples '<TextArea resizable={false}/>'
    */
-  resizable: PropTypes.bool,
+  "resizable": PropTypes.bool,
   /**
 	 * Defines a small sized textarea.
 	 * @examples '<TextArea small/>'
 	 */
-  small: PropTypes.bool,
+  "small": PropTypes.bool,
   /**
 	 * Defines a medium sized textarea.
 	 * @examples '<TextArea medium/>'
 	 */
-  medium: PropTypes.bool,
+  "medium": PropTypes.bool,
   /**
 	 * Defines a large sized textarea.
 	 * @examples '<TextArea large/>'
 	 */
-  large: PropTypes.bool,
+  "large": PropTypes.bool,
   /**
    * Sets a maximum character length that will be validated onChange.
    * @examples '<TextArea maxLenght={25}/>'
    */
-  maxLength: PropTypes.number,
+  "maxLength": PropTypes.number,
   /**
    * Defines placeholder text.
    * @examples '<TextArea placeholder="test input"/>'
    */
-  placeholder: PropTypes.string,
+  "placeholder": PropTypes.string,
   /**
 	 * Sets a handler function to be executed when onChange event occurs (at input element).
 	 * @examples <TextArea onChange={this.customOnChangeFunc}/>
 	 */
-  onChange: PropTypes.func,
+  "onChange": PropTypes.func,
   /**
    * Sets the field as required. Will be validated onChange.
    * @examples '<TextArea required/>'
    */
-  required: PropTypes.bool,
+  "required": PropTypes.bool,
   /**
 	 * Determines if the textarea is disabled.
 	 * @examples '<TextArea disabled/>'
 	 */
-  disabled: PropTypes.bool,
+  "disabled": PropTypes.bool,
   /**
 	 * Determines if the textarea is hidden.
 	 * @examples '<TextArea hidden/>'
 	 */
-  hidden: PropTypes.bool
+  "hidden": PropTypes.bool
 };
 
 TextArea.defaultProps = {
-  className: "",
-  resizable: true,
-  disabled: false,
-  hidden: false
+  "className": "",
+  "resizable": true,
+  "disabled": false,
+  "hidden": false
 };
 
 export default TextArea;
