@@ -2,7 +2,7 @@ const WEBKIT = "Webkit";
 const MICROSOFT = "Ms";
 
 const properties = {
-  transform: [WEBKIT, MICROSOFT]
+  "transform": [WEBKIT, MICROSOFT]
 };
 
 function capitalize(string) {

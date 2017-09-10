@@ -1,2 +1,2 @@
-import * as AvatarStyle from "./avatar.css";
+import * as AvatarStyle from "./Avatar.css";
 export { AvatarStyle };

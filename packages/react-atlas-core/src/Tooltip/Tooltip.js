@@ -11,11 +11,11 @@ class Tooltip extends React.PureComponent {
 
     // Initial state
     this.state = {
-      tooltip: props.tooltip,
-      position: props.position,
-      icon: props.icon,
-      delay: props.tooltipDelay || null,
-      active: false
+      "tooltip": props.tooltip,
+      "position": props.position,
+      "icon": props.icon,
+      "delay": props.tooltipDelay || null,
+      "active": false
     };
   }
 
@@ -23,18 +23,18 @@ class Tooltip extends React.PureComponent {
     if (focus === true) {
       if (!this.props.tooltipDelay) {
         this.setState({
-          active: true
+          "active": true
         });
       } else {
         setTimeout(() => {
           this.setState({
-            active: true
+            "active": true
           });
         }, this.props.tooltipDelay);
       }
     } else {
       this.setState({
-        active: false
+        "active": false
       });
     }
   };
@@ -44,7 +44,7 @@ class Tooltip extends React.PureComponent {
 
     let tooltipClasses;
     tooltipClasses = cx({
-      tooltip: this.state.active,
+      "tooltip": this.state.active,
       "tooltip-bottom":
         position !== "left" && position !== "top" && position !== "right",
       "tooltip-left": position === "left",
@@ -52,9 +52,9 @@ class Tooltip extends React.PureComponent {
       "tooltip-right": position === "right"
     });
 
-    let TooltipContainer = this.state.active ? (
+    let TooltipContainer = this.state.active ? 
       <span>{this.state.tooltip}</span>
-    ) : null;
+     : null;
 
     let Icon = icon && !children ? <i className={cx(icon)} /> : null;
 
@@ -83,46 +83,46 @@ Tooltip.propTypes = {
      * For displaying all children which can include anything from Form to button to a custom icon like in the example.
      * @examples <GithubIcon />, <i className="fa fa-github"></i>
      */
-  children: PropTypes.any,
+  "children": PropTypes.any,
   /**
      * For using unique classes in components
      * @examples <i className="fa fa-github"></i>
      */
-  className: PropTypes.string,
+  "className": PropTypes.string,
   /**
      * For the text displayed within the tooltip
      * @examples <Tooltip tooltip="default"/>
      */
-  tooltip: PropTypes.string,
+  "tooltip": PropTypes.string,
   /**
      *  For delay of tooltip message
      *  @example <Tooltip tooltipDelay={10000}/>
      */
-  tooltipDelay: PropTypes.number,
+  "tooltipDelay": PropTypes.number,
   /**
      * For disabling tooltip
      * @example <Tooltip disabled />
      */
-  disabled: PropTypes.bool,
+  "disabled": PropTypes.bool,
   /**
      * For positioning the tooltip to top, left, right or bottom.  Default is to the bottom
      * @example <Tooltip position="top"/>
      */
-  position: PropTypes.string,
+  "position": PropTypes.string,
   /**
      * For displaying an icon/glphyicon. Normally these will be another component or an element with a class on it.
      * @examples <GithubIcon />, <i class="fa fa-github"></i>
      */
-  icon: PropTypes.string
+  "icon": PropTypes.string
 };
 
 Tooltip.defaultProps = {
-  className: "",
-  children: "",
-  icon: "fa fa-info-circle",
-  disabled: false,
-  tooltip: "",
-  tooltipDelay: null
+  "className": "",
+  "children": "",
+  "icon": "fa fa-info-circle",
+  "disabled": false,
+  "tooltip": "",
+  "tooltipDelay": null
 };
 
 export default Tooltip;

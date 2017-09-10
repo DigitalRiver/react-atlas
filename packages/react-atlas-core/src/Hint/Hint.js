@@ -10,15 +10,15 @@ class Hint extends React.PureComponent {
   render() {
     const { className, children, text } = this.props;
 
-    return text ? (
+    return text ? 
       <span className={cx(className)} styleName={cx("hintLabel")}>
         {text}
       </span>
-    ) : (
+     : 
       <span className={cx(className)} styleName={cx("hintLabel")}>
         {children}
       </span>
-    );
+    ;
   }
 }
 
@@ -27,21 +27,21 @@ Hint.propTypes = {
    * Defines a custom css class name.
    * @examples '<Hint className="custom">This is a text hint</Hint>'
    */
-  className: PropTypes.string,
+  "className": PropTypes.string,
   /**
    * Text to be displayed can be passed as a child.
    * @examples '<Hint>This is a text hint</Hint>'
    */
-  children: PropTypes.node,
+  "children": PropTypes.node,
   /**
    * Text to be displayed (will override children if passed).
    * @examples '<Hint text="This is a text hint"/>'
    */
-  text: PropTypes.string
+  "text": PropTypes.string
 };
 
 Hint.defaultProps = {
-  className: ""
+  "className": ""
 };
 
 export default Hint;

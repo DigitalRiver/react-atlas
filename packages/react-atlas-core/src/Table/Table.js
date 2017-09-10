@@ -4,7 +4,7 @@ import cx from "classnames";
 
 const Table = ({ className, children, ...props }) => {
   const classes = cx({
-    table: true
+    "table": true
   });
 
   return (
@@ -15,8 +15,8 @@ const Table = ({ className, children, ...props }) => {
 };
 
 Table.propTypes = {
-  children: PropTypes.any,
-  className: PropTypes.string
+  "children": PropTypes.any,
+  "className": PropTypes.string
 };
 
 export default Table;

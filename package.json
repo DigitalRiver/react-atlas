@@ -5,6 +5,7 @@
   "main": "./lib",
   "scripts": {
     "test": "jest",
+    "audit": "node auditPackages.js",
     "coverage": "jest --coverage",
     "format": "prettier packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas/src/**/*.js packages/react-atlas-default-theme/src/**/*.js packages/react-atlas-tests/**/*.js --write",
     "lint": "eslint packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas/src/**/*.js packages/react-atlas-default-theme/src/**/*.js --fix",
@@ -66,7 +67,8 @@
     "prettier": "^1.6.1",
     "react-test-renderer": "^15.6.1",
     "rimraf": "^2.6.1",
-    "sinon": "^2.2.0"
+    "sinon": "^2.2.0",
+    "xml-parser": "^1.2.1"
   },
   "repository": {
     "type": "git",

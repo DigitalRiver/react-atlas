@@ -7,7 +7,7 @@ class RadioGroup extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      checkedRadio: null
+      "checkedRadio": null
     };
   }
 
@@ -15,15 +15,15 @@ class RadioGroup extends React.PureComponent {
     React.Children.map(this.props.children, (child, index) => {
       if (
         child.props.defaultChecked ||
-        (!this.state.checkedRadio && index === 0)
+        !this.state.checkedRadio && index === 0
       ) {
-        this.setState({ checkedRadio: child.props.value });
+        this.setState({ "checkedRadio": child.props.value });
       }
     });
   }
 
   groupSetChecked = value => {
-    this.setState({ checkedRadio: value });
+    this.setState({ "checkedRadio": value });
   };
 
   render() {
@@ -31,21 +31,21 @@ class RadioGroup extends React.PureComponent {
 
     const radioButtons = React.Children.map(children, child => {
       child = cloneElement(child, {
-        inline: inline,
-        name: name,
-        groupSetChecked: this.groupSetChecked,
-        checked: this.state.checkedRadio === child.props.value
+        "inline": inline,
+        "name": name,
+        "groupSetChecked": this.groupSetChecked,
+        "checked": this.state.checkedRadio === child.props.value
       });
       return child;
     });
 
     return (
       <div className={cx(className)} styleName={cx("radioGroup")}>
-        {title && (
+        {title && 
           <div styleName={cx("header")}>
             <span styleName={cx("headerFont")}>{title}</span>
           </div>
-        )}
+        }
         {radioButtons}
       </div>
     );
@@ -57,27 +57,27 @@ RadioGroup.propTypes = {
    * Anything that can be in a radio group. Almost always radio components alone.
    * @examples '<RadioGroup><Radio/><Radio/></RadioGroup>'
    */
-  children: PropTypes.node.isRequired,
+  "children": PropTypes.node.isRequired,
   /**
    * Define a custom css class name.
    * @examples 'radioGroup', 'radio-group'
    */
-  className: PropTypes.string,
+  "className": PropTypes.string,
   /**
    * Form name for the element, this will set all Radio children the same form name (so they can't be selected at the same time).
    * @examples '<RadioGroup name="test"></RadioGroup>'
    */
-  name: PropTypes.string,
+  "name": PropTypes.string,
   /**
    * Define the element title.
    * @examples '<RadioGroup title="Test"></RadioGroup>'
    */
-  title: PropTypes.string,
+  "title": PropTypes.string,
   /**
    * Defines if the radio group should display as an inline element.
    * @examples '<RadioGroup inline></RadioGroup>'
    */
-  inline: PropTypes.bool
+  "inline": PropTypes.bool
 };
 
 export default RadioGroup;

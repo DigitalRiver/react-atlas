@@ -1,2 +1,2 @@
-import * as RadioStyle from "./radio.css";
+import * as RadioStyle from "./Radio.css";
 export { RadioStyle };
