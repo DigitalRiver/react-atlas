@@ -314,7 +314,7 @@ createComponentDirectories();
 if (fs.existsSync(configPath)) {
   createComponentsFromConfig(configPath);
 } else {
-  createComponentFromGlobalTheme("react-atlas-default-theme");
+  createComponentFromGlobalTheme("react-atlas-default-theme/src");
 }
 
 /* Check for command line arguments. */
