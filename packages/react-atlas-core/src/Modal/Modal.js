@@ -44,41 +44,41 @@ Modal.propTypes = {
   /**
    * Modal's title
    */
-  "title": PropTypes.string,
+  title: PropTypes.string,
   /**
    * Define a custom css class name.
    */
-  "className": PropTypes.string,
+  className: PropTypes.string,
   /**
    * Anything that can be in a modal.
    */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   /**
    * Determines show Modal or not
    */
-  "active": PropTypes.bool,
+  active: PropTypes.bool,
   /**
    * Event handler for esc key down, normally use to close modal if needed.
    */
-  "onEscKeyDown": PropTypes.func,
+  onEscKeyDown: PropTypes.func,
   /**
    * Determines show Modal with overlay or not
    */
-  "overlay": PropTypes.bool,
+  overlay: PropTypes.bool,
   /**
    * Event handler for clicking on overlay, normally use to close modal if needed.
    */
-  "onOverlayClick": PropTypes.func,
+  onOverlayClick: PropTypes.func,
   /**
    * Determines to hide page scroll
    */
-  "lockScroll": PropTypes.bool
+  lockScroll: PropTypes.bool
 };
 
 Modal.defaultProps = {
-  "active": false,
-  "className": "",
-  "overlay": false
+  active: false,
+  className: "",
+  overlay: false
 };
 
 export default Modal;

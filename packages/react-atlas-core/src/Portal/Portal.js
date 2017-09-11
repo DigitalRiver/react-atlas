@@ -72,12 +72,12 @@ class Portal extends Component {
 }
 
 Portal.propTypes = {
-  "children": PropTypes.node,
-  "className": PropTypes.string
+  children: PropTypes.node,
+  className: PropTypes.string
 };
 
 Portal.defaultProps = {
-  "className": ""
+  className: ""
 };
 
 export default Portal;
