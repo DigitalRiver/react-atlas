@@ -1,11 +1,22 @@
 .modal {
-	composes: default-font from '../styles.css';
+    composes: default-font from '../styles.css';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    border: 1px solid rgb(0, 126, 181);
+    background: black;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 .active {
-	background-color: rgb(255, 255, 255);
-	border-radius: 2px;
-	box-shadow: 0 19px 60px rgba(0, 0, 0, .3), 0 15px 20px rgba(0, 0, 0, .22);
-	transform: translateY(-40px);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 19px 60px rgba(0, 0, 0, .3), 0 15px 20px rgba(0, 0, 0, .22);
 }
 
 .title {
