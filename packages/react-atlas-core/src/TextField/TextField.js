@@ -8,10 +8,10 @@ class TextField extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      "value": props.value || "",
-      "remaining": props.maxLength,
-      "active": false,
-      "valid": true
+      value: props.value || "",
+      remaining: props.maxLength,
+      active: false,
+      valid: true
     };
   }
 
@@ -21,13 +21,13 @@ class TextField extends React.PureComponent {
 
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
-      this.setState({ "remaining": this.props.maxLength - value.length });
+      this.setState({ remaining: this.props.maxLength - value.length });
     }
 
     // Set value and valid state depending on InputCore state
-    this.setState({ 
-      "value": this.inputRef.state.value,
-      "valid": this.inputRef.state.isValid 
+    this.setState({
+      value: this.inputRef.state.value,
+      valid: this.inputRef.state.isValid
     });
 
     if (this.props.onChange) {
@@ -37,11 +37,11 @@ class TextField extends React.PureComponent {
   };
 
   _handleFocus = () => {
-    this.setState({ "active": true });
+    this.setState({ active: true });
   };
 
   _handleBlur = () => {
-    this.setState({ "active": false });
+    this.setState({ active: false });
   };
 
   render() {
@@ -63,12 +63,12 @@ class TextField extends React.PureComponent {
       className
     } = this.props;
 
-    let textFieldHeader =
-      header &&
+    let textFieldHeader = header && (
       <div styleName={cx("header")}>
         <span styleName={cx("headerFont")}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
-      </div>;
+      </div>
+    );
 
     let wrapperClasses = cx(
       {
@@ -83,8 +83,8 @@ class TextField extends React.PureComponent {
     let textFieldClasses = cx(
       {
         disabled,
-        "active": this.state.active,
-        "invalid": !this.state.valid
+        active: this.state.active,
+        invalid: !this.state.valid
       },
       "textfield"
     );
@@ -111,7 +111,7 @@ class TextField extends React.PureComponent {
           mask={mask}
           disabled={disabled}
           hidden={hidden}
-          ref={node => this.inputRef = node} // eslint-disable-line no-return-assign
+          ref={node => (this.inputRef = node)} // eslint-disable-line no-return-assign
         />
       </div>
     );
@@ -123,94 +123,94 @@ TextField.propTypes = {
 	 * Define a custom css class name.
 	 * @examples 'textfield', 'textfield-elem'
 	 */
-  "className": PropTypes.string,
+  className: PropTypes.string,
   /**
 	 * Define a name for the text input.
 	 * @examples '<TextField name="test"/>'
 	 */
-  "name": PropTypes.string,
+  name: PropTypes.string,
   /**
    * Define a type for the text input. Default is "text".
    * @examples '<TextField type="password"/>'
    */
-  "type": PropTypes.string,
+  type: PropTypes.string,
   /**
    * Define a default value for the text input.
    * @examples '<TextField value="Textfield value here"/>'
    */
-  "value": PropTypes.string,
+  value: PropTypes.string,
   /**
 	 * Defines a small sized text input.
 	 * @examples '<TextField small/>'
 	 */
-  "small": PropTypes.bool,
+  small: PropTypes.bool,
   /**
    * Define a title or header to be displayed above the textfield.
    * @examples '<TextField header="test"/>'
    */
-  "header": PropTypes.string,
+  header: PropTypes.string,
   /**
 	 * Defines a medium sized text input.
 	 * @examples '<TextField medium/>'
 	 */
-  "medium": PropTypes.bool,
+  medium: PropTypes.bool,
   /**
 	 * Defines a large sized text input.
 	 * @examples '<TextField large/>'
 	 */
-  "large": PropTypes.bool,
+  large: PropTypes.bool,
   /**
    * Sets a maximum character length that will be validated onChange.
    * @examples '<TextField maxLenght={25}/>'
    */
-  "maxLength": PropTypes.number,
+  maxLength: PropTypes.number,
   /**
    * Sets a handler function to be executed and validate against. If it returns any falsy value, validation error will trigger.
    * @examples '<TextField validator={this.customValidator}/>'
    */
-  "validator": PropTypes.func,
+  validator: PropTypes.func,
   /**
    * Defines the error text to be shown when custom validation occurs.
    * @examples '<TextField errorText="Custom error message."/>'
    */
-  "errorText": PropTypes.string,
+  errorText: PropTypes.string,
   /**
    * Sets a mask for the input field.
    * @examples '<TextField mask="AAA 11111"/>'
    */
-  "mask": PropTypes.string,
+  mask: PropTypes.string,
   /**
    * Defines placeholder text.
    * @examples '<TextField placeholder="test input"/>'
    */
-  "placeholder": PropTypes.string,
+  placeholder: PropTypes.string,
   /**
 	 * Sets a handler function to be executed when onChange event occurs (at input element).
 	 * @examples <TextField onChange={this.customOnChangeFunc}/>
 	 */
-  "onChange": PropTypes.func,
+  onChange: PropTypes.func,
   /**
    * Sets the field as required. Will be validated onChange.
    * @examples '<TextField required/>'
    */
-  "required": PropTypes.bool,
+  required: PropTypes.bool,
   /**
 	 * Determines if the text input is disabled.
 	 * @examples '<TextField disabled/>'
 	 */
-  "disabled": PropTypes.bool,
+  disabled: PropTypes.bool,
   /**
 	 * Determines if the text input is hidden.
 	 * @examples '<TextField hidden/>'
 	 */
-  "hidden": PropTypes.bool
+  hidden: PropTypes.bool
 };
 
 TextField.defaultProps = {
-  "className": "",
-  "type": "text",
-  "disabled": false,
-  "hidden": false
+  className: "",
+  type: "text",
+  disabled: false,
+  hidden: false
 };
 
 export default TextField;

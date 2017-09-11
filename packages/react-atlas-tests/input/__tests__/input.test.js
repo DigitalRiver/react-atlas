@@ -6,43 +6,47 @@ import { default as Input } from "../../../react-atlas-core/src/input/Input";
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
 function _validate(input, positiveCase) {
-	const component = mount(<Input validator = { 
-		function (){
-			if(!isNaN(component.state().value)){
-				if (parseInt(component.state().value) > 0){
-					return true;
-				}
-			}
-			return false; 
-		} } errorText = {'That is NOT a number'} />);
-	
-	expect(component.state().errorText).toEqual(null);
-	expect(component.state().isValid).toEqual(true);
-	component.setState({'value' : input});
-	component.find('input').simulate("change");
-	if(positiveCase){
-		expect(component.state().errorText).toEqual(null);
-		expect(component.state().isValid).toEqual(true);
-	} else {
-		expect(component.state().errorText).toEqual('That is NOT a number');
-		expect(component.state().isValid).toEqual(false);
-	}
+  const component = mount(
+    <Input
+      validator={function() {
+        if (!isNaN(component.state().value)) {
+          if (parseInt(component.state().value) > 0) {
+            return true;
+          }
+        }
+        return false;
+      }}
+      errorText={"That is NOT a number"}
+    />
+  );
+
+  expect(component.state().errorText).toEqual(null);
+  expect(component.state().isValid).toEqual(true);
+  component.setState({ value: input });
+  component.find("input").simulate("change");
+  if (positiveCase) {
+    expect(component.state().errorText).toEqual(null);
+    expect(component.state().isValid).toEqual(true);
+  } else {
+    expect(component.state().errorText).toEqual("That is NOT a number");
+    expect(component.state().isValid).toEqual(false);
+  }
 }
 
-function _pressOneByOne(comp, str){
-	for (var i in str){
-		comp.find('input').simulate('keyPress', {key: str[i]});
-	}
+function _pressOneByOne(comp, str) {
+  for (var i in str) {
+    comp.find("input").simulate("keyPress", { key: str[i] });
+  }
 }
 
-function _validateMask(msk, inputText, expText){
-	const component = mount(<Input mask={msk}/>);
-	
-	expect(component.state().value).toEqual('');
-	_pressOneByOne(component, inputText);
-	component.find('input').simulate('keyPress', {key: 'enter'});
+function _validateMask(msk, inputText, expText) {
+  const component = mount(<Input mask={msk} />);
 
-	expect(component.state().value).toEqual(expText);
+  expect(component.state().value).toEqual("");
+  _pressOneByOne(component, inputText);
+  component.find("input").simulate("keyPress", { key: "enter" });
+
+  expect(component.state().value).toEqual(expText);
 }
 /*
 describe("Suite - Validator checking", () => {
@@ -167,31 +171,33 @@ describe("Suite - Basic functionality", () => {
 	});
 	
 });*/
-	
-describe("Suite - Max length limit", () => {	
-	it("Check text max-size - Text entered lower than maxsize", function() {
-		const component = mount(<Input maxLength = {5} />);
-		
-		component.find('input').simulate("change", { "target": { "value": "1234" } });
-		expect(component.state().value).toEqual('1234');
-		expect(component.state().remaining).toEqual(1);
-	});
-	
-	it("Check text max-size - Text entered equal to maxsize", function() {
-		const component = mount(<Input maxLength = {5} />);
-		
-		component.find('input').simulate("change", { "target": { "value": "12345" } });
-		expect(component.state().value).toEqual('12345');
-		expect(component.state().remaining).toEqual(0);
-	});
 
-	it("Check text max-size - Text entered greater than maxsize", function() {
-		const component = mount(<Input maxLength = {5} />);
-		
-		component.find('input').simulate("change", { "target": { "value": "123456789!" } });
-		expect(component.state().value).toEqual('12345');
-		expect(component.state().remaining).toEqual(0);
-	});
+describe("Suite - Max length limit", () => {
+  it("Check text max-size - Text entered lower than maxsize", function() {
+    const component = mount(<Input maxLength={5} />);
+
+    component.find("input").simulate("change", { target: { value: "1234" } });
+    expect(component.state().value).toEqual("1234");
+    expect(component.state().remaining).toEqual(1);
+  });
+
+  it("Check text max-size - Text entered equal to maxsize", function() {
+    const component = mount(<Input maxLength={5} />);
+
+    component.find("input").simulate("change", { target: { value: "12345" } });
+    expect(component.state().value).toEqual("12345");
+    expect(component.state().remaining).toEqual(0);
+  });
+
+  it("Check text max-size - Text entered greater than maxsize", function() {
+    const component = mount(<Input maxLength={5} />);
+
+    component
+      .find("input")
+      .simulate("change", { target: { value: "123456789!" } });
+    expect(component.state().value).toEqual("12345");
+    expect(component.state().remaining).toEqual(0);
+  });
 });
 /*
 describe("Suite - Required field", () => {
@@ -270,4 +276,3 @@ describe("Suite - email", () => {
 		const component = mount(<Input type="email"  />)
 	});
 });*/
-

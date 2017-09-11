@@ -2,7 +2,7 @@ const WEBKIT = "Webkit";
 const MICROSOFT = "Ms";
 
 const properties = {
-  "transform": [WEBKIT, MICROSOFT]
+  transform: [WEBKIT, MICROSOFT]
 };
 
 function capitalize(string) {
@@ -10,13 +10,10 @@ function capitalize(string) {
 }
 
 function getPrefixes(property, value) {
-  return properties[property].reduce(
-    function(acc, item) {
-      acc[`${item}${capitalize(property)}`] = value;
-      return acc;
-    },
-    {}
-  );
+  return properties[property].reduce(function(acc, item) {
+    acc[`${item}${capitalize(property)}`] = value;
+    return acc;
+  }, {});
 }
 
 function addPrefixesTo(style, property, value) {
