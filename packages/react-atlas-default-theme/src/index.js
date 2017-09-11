@@ -3,6 +3,7 @@ export { ButtonStyle } from "./Button";
 export { CardStyle } from "./Card";
 export { CheckboxStyle } from "./Checkbox";
 export { CheckboxGroupStyle } from "./CheckboxGroup";
+export { DatePickerStyle } from './DatePicker';
 export { DropdownStyle } from "./Dropdown";
 export { FormStyle } from "./Form";
 export { InputStyle } from "./Input";
