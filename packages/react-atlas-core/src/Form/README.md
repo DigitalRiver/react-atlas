@@ -5,6 +5,7 @@ Basic Form:
 
 		<Form action={"/some/random/url"}>
 		  <TextField small placeholder="Text" required type="text" name="textName"></TextField>
+			<Button type="submit">Submit</Button>
 		</Form>
 
 
