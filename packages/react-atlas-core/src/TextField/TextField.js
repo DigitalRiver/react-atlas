@@ -8,16 +8,21 @@ class TextField extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      value: props.value || "",
-      remaining: props.maxLength,
-      active: false,
-      valid: true
+      "value": props.value || "",
+      "remaining": props.maxLength,
+      "active": false,
+      "valid": props.isValid || true
     };
   }
 
-  _handleChange = event => {
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.isValid !== this.state.valid) {
+      this.setState({"valid": nextProps.isValid});
+    }
+  }
+
+  _handleChange = (value, event, isValid) => {
     event.persist();
-    let value = event.target.value;
 
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
@@ -26,13 +31,13 @@ class TextField extends React.PureComponent {
 
     // Set value and valid state depending on InputCore state
     this.setState({
-      value: this.inputRef.state.value,
-      valid: this.inputRef.state.isValid
+      "value": value,
+      "valid": isValid
     });
 
     if (this.props.onChange) {
       // Execute app code
-      this.props.onChange(event);
+      this.props.onChange(value, event, isValid);
     }
   };
 
@@ -104,21 +109,22 @@ class TextField extends React.PureComponent {
           value={this.state.value}
           maxLength={maxLength}
           styleName={textFieldClasses}
-          onChange={this._handleChange}
+          onChange={ (value, event, isValid) => this._handleChange(value, event, isValid)}
           required={required}
           validator={validator}
           errorText={errorText}
           mask={mask}
           disabled={disabled}
+          isValid={this.state.valid}
           hidden={hidden}
-          ref={node => (this.inputRef = node)} // eslint-disable-line no-return-assign
         />
       </div>
     );
   }
 }
 
-TextField.propTypes = {
+TextField.PropTypes = {
+  "isValid": PropTypes.bool,
   /**
 	 * Define a custom css class name.
 	 * @examples 'textfield', 'textfield-elem'

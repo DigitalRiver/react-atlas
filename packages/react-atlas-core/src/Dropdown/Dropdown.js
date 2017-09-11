@@ -37,8 +37,8 @@ class Dropdown extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.isValid !== this.state.isValid) {
-      this.setState({ isValid: nextProps.isValid });
+    if(nextProps.isValid !== this.state.isValid) {
+      this.setState({"isValid": nextProps.isValid});
     }
   }
 
@@ -279,6 +279,7 @@ class Dropdown extends React.PureComponent {
             <ButtonCore
               styleName={"buttonClass"}
               className={dropdownButtonClasses}
+              type={"button"}
             >
               <span>{this.state.output}</span>
               <i styleName="arrow" />

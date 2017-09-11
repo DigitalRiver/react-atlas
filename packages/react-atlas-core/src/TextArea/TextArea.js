@@ -8,16 +8,15 @@ class TextArea extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      value: props.value || "",
-      remaining: props.maxLength,
-      active: false,
-      valid: true
+      "value": props.value || "",
+      "remaining": props.maxLength,
+      "active": false,
+      "valid": props.isValid || true
     };
   }
 
-  _handleChange = event => {
+  _handleChange = (value, event, isValid) => {
     event.persist();
-    let value = event.target.value;
 
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
@@ -26,13 +25,13 @@ class TextArea extends React.PureComponent {
 
     // Set value and valid state depending on InputCore state
     this.setState({
-      value: this.inputRef.state.value,
-      valid: this.inputRef.state.isValid
+      "value": value,
+      "valid": isValid
     });
 
     if (this.props.onChange) {
       // Execute app code
-      this.props.onChange(event);
+      this.props.onChange(value, event, isValid);
     }
   };
 
@@ -119,7 +118,8 @@ class TextArea extends React.PureComponent {
   }
 }
 
-TextArea.propTypes = {
+TextArea.PropTypes = {
+  "isValid": PropTypes.bool,
   /**
 	 * Define a custom css class name.
 	 * @examples 'textarea', 'textarea-elem'
