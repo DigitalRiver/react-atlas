@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import messages from '../utils/messages';
-import { ButtonCore } from '../Button';
 import utils from '../utils/utils';
 import cx from "classnames";
 
@@ -80,7 +79,7 @@ class Form extends React.PureComponent {
     return sumbitData;
   }
 
-  clickHandler = (e) => {
+  submitHandler = (e) => {
   	/* Prevent form submission if action prop is not set. */
   	if(!this.props.action) {
   	  e.preventDefault();
@@ -151,16 +150,16 @@ class Form extends React.PureComponent {
           onChange: (value, event, isValid, state) => this.onChangeHandler(value, event, isValid, this.state.childState[i]),
           value: this.state.childState[i].value,
           errorText: messages.requiredMessage,
-          isValid: this.state.childState[i].isValid
+          isValid: this.state.childState[i].isValid,
+          novalidate: true
         };
 
         return React.cloneElement(child, props);
     });
 
     return (
-      <form action={action} method={method} className={cx(className)}>
+      <form action={action} method={method} className={cx(className)} onSubmit={this.submitHandler} noValidate>
         {kids}
-        <ButtonCore type={"submit"} className={cx(buttonClasses)} styleName={"form-button"} onClick={this.clickHandler}>{buttonText}</ButtonCore>
       </form>
     );
   }
