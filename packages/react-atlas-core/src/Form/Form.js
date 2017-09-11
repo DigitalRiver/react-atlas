@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import messages from '../utils/messages';
-import { ButtonCore } from '../Button';
 import utils from '../utils/utils';
 import cx from "classnames";
+
+const errorCodes = {
+  "MISSING_REQUIRED": 0
+}
 
 class Form extends React.PureComponent {
   constructor(props) {
@@ -23,8 +26,6 @@ class Form extends React.PureComponent {
 
       return child
     });
-
-    console.log("state: ", childState);
 
     this.state = {
       "childState": childState
@@ -65,7 +66,20 @@ class Form extends React.PureComponent {
     }
   }
 
-  clickHandler = (e) => {
+  transformData = (data) => {
+    let sumbitData = {};
+    for(let i = 0; i < data.length; i++) {
+      let key = data[i].name;
+      let value = data[i].value;
+
+      sumbitData[key] = value;
+
+    }
+
+    return sumbitData;
+  }
+
+  submitHandler = (e) => {
   	/* Prevent form submission if action prop is not set. */
   	if(!this.props.action) {
   	  e.preventDefault();
@@ -74,13 +88,20 @@ class Form extends React.PureComponent {
   	/* Validate children components before submiting. */
   	let data = this.validate();
     if(!data) {
+      if(typeof this.props.onError !== 'undefined') {
+        this.props.onError(errorCodes.MISSING_REQUIRED, messages.missingRequired);
+      }
       return;
     }
+
+    /* Tranform data array from validate() to an object using name
+     * as the key and the child's value as the object value. */
+    let sumbitData = this.transformData(data);
 
   	/* Check if onSubmit was set. Call onSubmit if
   	 * it was passed throw a error if not set. */
   	if(this.props.onSubmit) {
-  		this.props.onSubmit(e, data);
+  		this.props.onSubmit(e, sumbitData);
   	} else {
       throw messages.onSubmitAction;
   	}
@@ -88,7 +109,9 @@ class Form extends React.PureComponent {
 
   /* Fires whenever a child input is changed. */
   onChangeHandler = (value, event, isValid, state) => {
-    console.log("FormIsValid: ", isValid);
+    if(isValid === false && typeof this.props.onError !== 'undefined') {
+      this.props.onError(errorCodes.MISSING_REQUIRED, messages.missingRequired);
+    }
     let index = state.index;
     let childState = [];
     let count = React.Children.count(this.props.children);
@@ -109,7 +132,6 @@ class Form extends React.PureComponent {
 
   render() {
     const { className, children, action, buttonText, group, method, childClasses, buttonClasses} = this.props;
-    console.log("children: ", this.props.children);
     /* Loop through children components and set onChange handlers
      * and add CSS classes. */
     let kids = React.Children.map(children, (child, i) => {
@@ -127,17 +149,17 @@ class Form extends React.PureComponent {
           className: classes,
           onChange: (value, event, isValid, state) => this.onChangeHandler(value, event, isValid, this.state.childState[i]),
           value: this.state.childState[i].value,
-          errorText: "This field is required",
-          isValid: this.state.childState[i].isValid
+          errorText: messages.requiredMessage,
+          isValid: this.state.childState[i].isValid,
+          novalidate: true
         };
 
         return React.cloneElement(child, props);
     });
 
     return (
-      <form action={action} method={method} className={cx(className)}>
+      <form action={action} method={method} className={cx(className)} onSubmit={this.submitHandler} noValidate>
         {kids}
-        <ButtonCore className={cx(buttonClasses)} styleName={"form-button"} onClick={this.clickHandler}>{buttonText}</ButtonCore>
       </form>
     );
   }
@@ -153,6 +175,8 @@ Form.propTypes = {
   /** A callback that is fired when the form has passed validation
    * and is ready to submit. Returns the form data and the event object.  */
   "onSubmit": PropTypes.func,
+  /** A Callback that is called when there is a form error. */
+  "onError": PropTypes.func,
   /** The URL of the server to send data to. */
   "action": PropTypes.string,
   /** The text displayed inside the submit button. */
