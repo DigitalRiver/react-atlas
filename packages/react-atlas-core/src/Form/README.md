@@ -16,6 +16,7 @@ onSubmit Form:
 		  <TextField small placeholder="Email" required type="email" name="email"></TextField>
 		  <TextField small placeholder="Password" required type="password" name="password"></TextField>
 		  <TextField small placeholder="Confirm Password" required type="password" name="confirm"></TextField>
+			<Button type="submit">Submit</Button>
 		</Form>
 
 But what about errors? good question. To get Form errors use the onError prop. This callback will fire whenever an error has occured. The callback looks like this `function(errorCode, errorMsg)`. The errorCode can be used to lookup the type of error and errorMsg provides a generic error message for this specific error. Below is an example of using onError with onSubmit.
@@ -26,4 +27,5 @@ Error Form:
 	  <TextField small placeholder="Email" required type="email" name="email"></TextField>
 	  <TextField small placeholder="Password" required type="password" name="password"></TextField>
 	  <TextField small placeholder="Confirm Password" required type="password" name="confirm"></TextField>
+		<Button type="submit">Submit</Button>
 	</Form>
