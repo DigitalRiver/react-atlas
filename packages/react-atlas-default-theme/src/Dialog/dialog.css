@@ -1,6 +1,5 @@
 .dialog {
 	composes: default-font from '../styles.css';
-	padding: 14px;
 	display: inline-block;
 }
 

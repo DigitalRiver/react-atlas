@@ -32,7 +32,9 @@ class Modal extends React.PureComponent {
             <h3 styleName={cx("title")}>
               {title}
             </h3>}
-          {this.props.children}
+          <div styleName="content">
+            {this.props.children}
+          </div>
         </div>
       </PortalCore>
     );
