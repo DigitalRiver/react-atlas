@@ -16,7 +16,6 @@ class Modal extends React.PureComponent {
       lockScroll
     } = this.props;
     const classes = cx("modal", { active });
-    const classNames = cx("ra_modal__modal", { "ra_modal__active": active }, className);
     return (
       active &&
       <PortalCore>
@@ -27,7 +26,7 @@ class Modal extends React.PureComponent {
             onEscKeyDown={onEscKeyDown}
             lockScroll={lockScroll}
           />}
-        <div styleName={classes} className={classNames}>
+        <div styleName={classes} className={className}>
           {title &&
             <h3 styleName={cx("title")}>
               {title}

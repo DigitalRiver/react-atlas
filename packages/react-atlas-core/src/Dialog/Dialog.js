@@ -1,51 +1,42 @@
 import React from "react";
 import PropTypes from "prop-types";
-import cx from "classnames";
 
 class Dialog extends React.PureComponent {
   _getButtonContent = () => {
-    const { confirm, warning, onOk, onCancel, styles } = this.props;
-    if(confirm) {
-      return (
-        <div>
-          <Button small primary onClick={onOk}>
-            OK
-          </Button>
-          <Button small onClick={onCancel}>
-            Cancel
-          </Button>
-        </div>
-      );
-    } else if (warning) {
-      this.titleStyle = styles.warning;
-      return (
-        <div>
-          <Button small warning onClick={onOk}>
-            OK
-          </Button>
-          <Button small onClick={onCancel}>
-            Cancel
-          </Button>
-        </div>
-      );
-    } else {
-      return (
-        <Button small primary onClick={onOk}>
+    const { info, warning, onOk, onCancel } = this.props;
+    const okButton = warning
+      ? <Button small warning onClick={onOk}>
           OK
         </Button>
-      );
-    }
+      : <Button small primary onClick={onOk}>
+          OK
+        </Button>;
+    return (
+      <div>
+        {okButton}
+        {!info &&
+          <Button small onClick={onCancel}>
+            Cancel
+          </Button>}
+      </div>
+    );
   };
-  render() {
-    const { active, className, children, ...others } = this.props;
 
-    const classes = cx("dialog");
+  render() {
+    const {
+      active,
+      warning,
+      className,
+      children,
+      styles,
+      ...others
+    } = this.props;
     return (
       active &&
-      <Modal active={active} className={this.titleStyle} {...others}>
-        <div styleName={classes} className={className}>
+      <Modal active={active} className={warning && styles.warning} {...others}>
+        <div styleName="dialog" className={className}>
           {children}
-          <div styleName={"buttons"}>
+          <div styleName="buttons">
             {this._getButtonContent()}
           </div>
         </div>
@@ -105,7 +96,7 @@ Dialog.defaultProps = {
   active: false,
   className: "",
   overlay: false,
-  info: true
+  info: false
 };
 
 export default Dialog;

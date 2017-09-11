@@ -14,6 +14,7 @@ INFO Dialog:
             onOk={handleOk} 
             title="INFO"
             overlay
+            info
         >
             <div>This is Dialog example<br/>Any child components could be put here.</div>
         </Dialog>
