@@ -20,8 +20,6 @@ class Input extends React.PureComponent {
       "remaining": props.maxLength
     };
 
-    console.log("InitialInputIsValid: ", this.state.isValid);
-
     // Configure input mask if required
     if (this.props.mask) {
       let maskOptions = {
@@ -182,13 +180,8 @@ class Input extends React.PureComponent {
     if (this.props.required) {
       if (!inputValue.length) {
         this.setState({
-          "errorText": this.props.requiredText || "This field is required.",
-          "isValid": false
-        }, () => {
-          /* Execute application code function at this point if available */
-          if (this.props.onChange) {
-            this.props.onChange(event);
-          }
+          errorText: this.props.requiredText || "This field is required.",
+          isValid: false
         });
       } else {
         /* Set state after both validation checks to display both when required */
