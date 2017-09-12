@@ -33,6 +33,7 @@ describe("Test ButtonCore component", () => {
     result = mount(<ButtonCore link />);
     expect(result.props().link).toBe(true);
   });
+});
   
 describe("Test Button component", () => {
 	
@@ -110,4 +111,3 @@ describe("Test Button component", () => {
   
 });
   
-});

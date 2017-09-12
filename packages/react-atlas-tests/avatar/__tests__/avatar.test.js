@@ -72,4 +72,5 @@ describe("Testing Avatar component", () => {
       expect(child.text()).toBe(title[0]);
     }
   );
+  
 });

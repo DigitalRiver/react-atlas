@@ -4,35 +4,39 @@ import { InputCore } from "../../../react-atlas-core/src/input/index";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
-
 function _validate(input, positiveCase) {
-	const component = mount(<InputCore validator = { 
-		function (){
-			if(!isNaN(component.state().value)){
-				if (parseInt(component.state().value) > 0){
-					return true;
-				}
-			}
-			return false; 
-		} } errorText = {'That is NOT a number'} />);
-	
-	expect(component.state().errorText).toEqual(null);
-	expect(component.state().isValid).toEqual(true);
-	component.setState({'value' : input});
-	component.find('input').simulate("change");
-	if(positiveCase){
-		expect(component.state().errorText).toEqual(null);
-		expect(component.state().isValid).toEqual(true);
-	} else {
-		expect(component.state().errorText).toEqual('That is NOT a number');
-		expect(component.state().isValid).toEqual(false);
-	}
+
+  const component = mount(
+    <InputCore
+      validator={function() {
+        if (!isNaN(component.state().value)) {
+          if (parseInt(component.state().value) > 0) {
+            return true;
+          }
+        }
+        return false;
+      }}
+      errorText={"That is NOT a number"}
+    />
+  );
+
+  expect(component.state().errorText).toEqual(null);
+  expect(component.state().isValid).toEqual(true);
+  component.setState({ value: input });
+  component.find("input").simulate("change");
+  if (positiveCase) {
+    expect(component.state().errorText).toEqual(null);
+    expect(component.state().isValid).toEqual(true);
+  } else {
+    expect(component.state().errorText).toEqual("That is NOT a number");
+    expect(component.state().isValid).toEqual(false);
+  }
 }
 
-function _pressOneByOne(comp, str){
-	for (var i in str){
-		comp.find('input').simulate('keyPress', {key: str[i]});
-	}
+function _pressOneByOne(comp, str) {
+  for (var i in str) {
+    comp.find("input").simulate("keyPress", { key: str[i] });
+  }
 }
 
 function _validateMask(msk, inputText, expText){
@@ -41,7 +45,6 @@ function _validateMask(msk, inputText, expText){
 	expect(component.state().value).toEqual('');
 	_pressOneByOne(component, inputText);
 	component.find('input').simulate('keyPress', {key: 'enter'});
-
 	expect(component.state().value).toEqual(expText);
 }
 
@@ -130,7 +133,6 @@ describe("Suite - Basic functionality", () => {
 			['className', ''],
 			['disabled', false],
 			['hidden', false],
-			['focus', false],
 			['errorLocation', 'right']
 		]);
 		const component = mount(<InputCore/>);		
@@ -165,7 +167,6 @@ describe("Suite - Basic functionality", () => {
 		comp.find('input').simulate('keyDown', {key: 'Backspace'});
 
 	});
-	
 });
 	
 describe("Suite - Max length limit", () => {	
@@ -270,4 +271,3 @@ describe("Suite - email", () => {
 		const component = mount(<InputCore type="email"  />)
 	});
 });
-

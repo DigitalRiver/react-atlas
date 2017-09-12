@@ -2,6 +2,7 @@ import React from "react";
 import { mount } from "enzyme";
 import { RadioCore } from "../../../react-atlas-core/src/Radio/index"
 
+
 describe("Testing radio component", () => {
 
 	it("Radio - Basic test", function() {
@@ -18,7 +19,6 @@ describe("Testing radio component", () => {
 	
 	it("Radio - Basic test", function() {
 		const result = mount(<RadioCore label="Checked Radio" value="checkedRadio" labelPosition={"left"}/>);
-		//expect(result.props().aspectRatio).toEqual(aspectRatio);
 	}); 
 
 	it("Radio - Default checked test", function() {

@@ -4,10 +4,24 @@ import { CheckboxGroupCore } from "../../../react-atlas-core/src/CheckboxGroup/i
 import { CheckboxCore } from "../../../react-atlas-core/src/checkbox/index";
 import { verifyPropsDefaultValue } from "../../Utils/propsVerification";
 
-
 import { default as Button } from "../../../react-atlas-core/src/button/Button";
 
+describe("Test CheckboxGroup component - the bascis", () => {
+  it("Checkbox group - 4 checkboxes, 1 checked", function() {
+    const component = mount(
+      <CheckboxGroupCore title={"CheckboxGroup test"}>
+        <CheckboxCore name={"1"} />
+        <CheckboxCore name={"2"} />
+        <CheckboxCore name={"3"} />
+        <CheckboxCore name={"4"} />
+      </CheckboxGroupCore>
+    );
 
+    component.childAt(1).simulate("click");
+
+    expect(component.state().totalChecked).toBe(1);
+  });
+});
 
 describe("Test CheckboxGroup component - the bascis", () => {
 	it("Checkbox group - 4 checkboxes, 1 checked", function(){
@@ -101,7 +115,7 @@ function _verifyMinMax(mi, ma, numberOfClicks, message, expectedResult)	{
 	
 	expect(component.state().groupError).toBe(expectedResult);	
 }
-	
+
 describe("Test CheckboxGroup component - Min/Max tests", () => {
 	it("Checkbox group - 5 checkboxes, max=4, min=2, 1 checked", function() { _verifyMinMax(2, 4, 1, 'Limit exceed!!', true); });
 	it("Checkbox group - 5 checkboxes, max=4, min=2, 1 checked", function() { _verifyMinMax(2, 4, 2, 'Limit exceed!!', false); });

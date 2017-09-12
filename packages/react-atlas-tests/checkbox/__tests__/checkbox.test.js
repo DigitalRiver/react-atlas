@@ -104,4 +104,3 @@ describe("Test checkbox component - Default values", () => {
 	});
 	
 });
-

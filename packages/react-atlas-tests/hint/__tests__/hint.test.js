@@ -1,6 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
-import { HintCore } from "../../../react-atlas-core/src/Hint/index"
+import { HintCore } from "../../../react-atlas-core/src/Hint/index";
+
 
 describe("Test Hint component", () => {
 	
