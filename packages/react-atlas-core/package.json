@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },
-  "version": "0.0.10",
+  "version": "0.1.0-alpha14",
   "description": "Core set of composable components for react-atlas",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib/index.js",
@@ -23,6 +23,7 @@
     "inputmask-core": "^2.2.0",
     "moment": "^2.18.1",
     "proptypes": "^1.0.0",
+    "light-table": "0.1.0",
     "react": "^15.6.1",
     "react-datepicker": "^0.54.0",
     "react-dom": "^15.6.1"

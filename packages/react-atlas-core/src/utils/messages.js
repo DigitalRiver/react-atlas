@@ -5,5 +5,4 @@ const messages = {
 	"missingRequired": "Required input value is empty"
 }
 
-
 export default messages;

@@ -1,3 +1,4 @@
+
 export { AvatarStyle } from "./Avatar";
 export { ButtonStyle } from "./Button";
 export { CardStyle } from "./Card";
@@ -6,13 +7,14 @@ export { CheckboxGroupStyle } from "./CheckboxGroup";
 export { DatePickerStyle } from './DatePicker';
 export { DropdownStyle } from "./Dropdown";
 export { FormStyle } from "./Form";
+export { HintStyle } from "./Hint";
 export { InputStyle } from "./Input";
 export { ProgressBarStyle } from "./ProgressBar";
 export { RadioStyle } from "./Radio";
 export { RadioGroupStyle } from "./RadioGroup";
-export { TableStyle } from "./Table";
 export { SwitchStyle } from "./Switch";
+export { TableStyle } from "./Table";
+export { TableHeaderStyle } from "./tableHeader";
 export { TooltipStyle } from "./Tooltip";
-export { HintStyle } from "./Hint";
 export { TextAreaStyle } from "./TextArea";
 export { TextFieldStyle } from "./TextField";

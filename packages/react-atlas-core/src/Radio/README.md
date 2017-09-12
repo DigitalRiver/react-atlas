@@ -1,3 +1,5 @@
+Radio:
+<Radio/>
 ###### Default radio:
 
     <RadioGroup name="test">

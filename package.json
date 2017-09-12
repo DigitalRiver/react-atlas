@@ -15,7 +15,7 @@
     "publish": "node publishPackages.js",
     "clean": "node cleanPackages.js",
     "packages:build": "node buildPackages.js",
-    "setup": "npm run lerna:init && npm run lerna:bootstrap && npm run packages:build",
+    "setup": "npm run lerna:bootstrap && npm run packages:build",
     "codegen": "node packages/react-atlas/src/codegen.js",
     "bootstrap": "npm run lerna:init && npm run lerna:bootstrap && npm run codegen && npm run packages:build",
     "docs:prd": "cross-env NODE_ENV=production node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",

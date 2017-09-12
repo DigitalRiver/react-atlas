@@ -11,6 +11,21 @@ let config =  {
     publicPath: '/lib/',
     libraryTarget: 'commonjs2'
   },
+  externals: [{
+      'react': {
+          root: 'React',
+          commonjs2: 'react',
+          commonjs: 'react',
+          amd: 'react'
+      }
+  }, {
+      'react-dom': {
+          root: 'ReactDOM',
+          commonjs2: 'react-dom',
+          commonjs: 'react-dom',
+          amd: 'react-dom'
+      }
+  }],
   module: {
     rules: [
       {
@@ -65,7 +80,7 @@ if(process.env.NODE_ENV === "production") {
 module.exports = function(env) {
   if(typeof env != 'undefined') {
     let theme = env.theme;
-    config.externals = {};
+    config.externals = config.externals || {};
     config.externals[theme] = {
       root: theme,
       commonjs2: theme,
