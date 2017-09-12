@@ -3,6 +3,7 @@ export { ButtonCore } from "./Button";
 export { CardCore } from "./Card";
 export { CheckboxCore } from "./Checkbox";
 export { CheckboxGroupCore } from "./CheckboxGroup";
+export { DatePickerCore } from './DatePicker';
 export { DropdownCore } from "./Dropdown";
 export { FormCore } from "./Form";
 export { InputCore } from "./Input";
