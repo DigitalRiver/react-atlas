@@ -2,20 +2,20 @@ let dot = require("dot");
 let fs = require("fs"); // eslint-disable-line no-unused-vars
 let eol = require("os").EOL;
 
-/* Below are the templates used by react-atlas to generate files for themeing. 
+/* Below are the templates used by react-atlas to generate files for themeing.
  * The templating library used by react-atlas is dot.js. More info about dot.js
  * can be found here: http://olado.github.io/doT/index.html . Dot.js was chosen
- * because it has no dependencies, is MIT licensed and works. 
+ * because it has no dependencies, is MIT licensed and works.
  *
  * Dot.js templates are just strings of text. To print out a variable with dot.js
  * Use double curly brackets, followed by the variable name. You will need to put =it.
  * on the begining of the variable you pass dot.js. Then make sure to close the double
- * curly brackets. Here's an example using a variable called component: 
+ * curly brackets. Here's an example using a variable called component:
  *
  * {{=it.component.name}}
- * 
+ *
  * Here's a full example:
- * 
+ *
  * let dot = require("dot");
  *
  * let component = { 'name': 'input'};
@@ -31,7 +31,7 @@ let eol = require("os").EOL;
  * The example above only evaluates a single variable, to render an array
  * you will have to change a few things. First use ~it. instead of =it. like
  * before. The ~ means evaluate an array, use {{~}} to tell dot.js to stop repeating
- * over. Here's an example of the template: 
+ * over. Here's an example of the template:
  *
  * "{{~it.components :value:index}}" +
  *  eol +
@@ -152,6 +152,7 @@ let components = [
   "card",
   "checkbox",
   "checkboxGroup",
+  "datePicker",
   "dropdown",
   "form",
   "input",
@@ -162,6 +163,7 @@ let components = [
   "radioGroup",
   "switch",
   "table",
+  "tableHeader",
   "tooltip",
   "hint",
   "textArea",

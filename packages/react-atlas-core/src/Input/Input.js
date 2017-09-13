@@ -14,10 +14,10 @@ class Input extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      value: props.value || "",
-      errorText: null,
-      isValid: true,
-      remaining: props.maxLength
+      "value": props.value || "",
+      "errorText": null,
+      "isValid": props.isValid || true,
+      "remaining": props.maxLength
     };
 
     // Configure input mask if required
@@ -35,6 +35,22 @@ class Input extends React.PureComponent {
       console.warn(
         "You set a custom validator without error text message. Please use 'errorText' property to set it up."
       );
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.isValid) {
+      if(nextProps.isValid !== this.state.isValid) {
+        this.setState({
+          "errorText": this.props.requiredText || "This field is required.",
+          "isValid": nextProps.isValid
+        });
+      }
+    } else if(nextProps.isValid === false) {
+      this.setState({
+        "errorText": this.props.requiredText || "This field is required.",
+        "isValid": nextProps.isValid
+      });
     }
   }
 
@@ -175,7 +191,7 @@ class Input extends React.PureComponent {
           }
         } else {
           this.setState({
-            isValid: true
+            "isValid": true
           });
         }
       }
@@ -211,16 +227,13 @@ class Input extends React.PureComponent {
     }
 
     this._validate(inputValue);
-    this.setState(
-      {
-        value: inputValue
-      },
-      () => {
-        if (this.props.onChange) {
-          this.props.onChange(event);
-        }
-      }
-    );
+    this.setState({
+        "value": inputValue
+        }, () => {
+          if (this.props.onChange) {
+            this.props.onChange(this.state.value, event, this.state.isValid);
+          }
+        });
   };
 
   render() {
@@ -312,6 +325,7 @@ class Input extends React.PureComponent {
 }
 
 Input.propTypes = {
+  "isValid": PropTypes.bool,
   /**
    * Defines a custom css class name.
    * @examples 'custom-imput'
