@@ -1,5 +1,5 @@
 .container {
-  display: inline-block;
+  display: block;
   position: relative;
   min-width: 10rem;
 }
