@@ -89,7 +89,7 @@ class Dropdown extends React.PureComponent {
           this.props.onChange(inputValue, event, this.state.isValid);
         }
         if (this.props.onClick) {
-          this.props.onClick(event);
+          this.props.onClick(inputValue, event, this.state.isValid);
         }
       }
     );
@@ -123,7 +123,7 @@ class Dropdown extends React.PureComponent {
       }
 
       if (this.props.onClick) {
-        this.props.onClick(event);
+        this.props.onClick(this.state.value, event, this.state.isValid);
       }
     }
   };
