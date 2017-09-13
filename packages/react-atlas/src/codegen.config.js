@@ -156,6 +156,8 @@ let components = [
   "dropdown",
   "form",
   "input",
+  "modal",
+  "dialog",
   "progressBar",
   "radio",
   "radioGroup",
