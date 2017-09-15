@@ -13,6 +13,10 @@ class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    if(typeof this.props.children === 'undefined') {
+      throw 'You must pass at least one child component to Dropdown';
+    }
+
     let childrenState = React.Children.map(this.props.children, child => {
       let value = child.props.value || " ";
       let display = child.props.children;
