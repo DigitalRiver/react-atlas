@@ -12,16 +12,16 @@
     "lerna:init": "lerna init",
     "lerna:bootstrap": "lerna bootstrap",
     "lerna:updated": "lerna updated",
-    "publish": "node publishPackages.js",
-    "clean": "node cleanPackages.js",
-    "packages:build": "node buildPackages.js",
+    "publish": "node scripts/publishPackages.js",
+    "clean": "node scripts/cleanPackages.js",
+    "packages:build": "node scripts/buildPackages.js",
     "setup": "npm run lerna:bootstrap && npm run packages:build",
     "codegen": "node packages/react-atlas/src/codegen.js",
     "bootstrap": "npm run lerna:init && npm run lerna:bootstrap && npm run codegen && npm run packages:build",
     "docs:prd": "cross-env NODE_ENV=production node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
     "docs:dev": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
     "docs:build": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide:build",
-    "gh-pages:publish": "node gh-pages.js"
+    "gh-pages:publish": "scripts/node gh-pages.js"
   },
   "jest": {
     "collectCoverageFrom": [
