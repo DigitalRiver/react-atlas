@@ -14,10 +14,10 @@ class Input extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      "value": props.value || "",
-      "errorText": null,
-      "isValid": props.isValid || true,
-      "remaining": props.maxLength
+      value: props.value || "",
+      errorText: null,
+      isValid: props.isValid || true,
+      remaining: props.maxLength
     };
 
     // Configure input mask if required
@@ -39,17 +39,17 @@ class Input extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.isValid) {
-      if(nextProps.isValid !== this.state.isValid) {
+    if (nextProps.isValid) {
+      if (nextProps.isValid !== this.state.isValid) {
         this.setState({
-          "errorText": this.props.requiredText || "This field is required.",
-          "isValid": nextProps.isValid
+          errorText: this.props.requiredText || "This field is required.",
+          isValid: nextProps.isValid
         });
       }
-    } else if(nextProps.isValid === false) {
+    } else if (nextProps.isValid === false) {
       this.setState({
-        "errorText": this.props.requiredText || "This field is required.",
-        "isValid": nextProps.isValid
+        errorText: this.props.requiredText || "This field is required.",
+        isValid: nextProps.isValid
       });
     }
   }
@@ -146,6 +146,7 @@ class Input extends React.PureComponent {
   };
 
   _validate = inputValue => {
+    let valid = true;
     /* Validate max character length */
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
@@ -154,14 +155,18 @@ class Input extends React.PureComponent {
       });
       // Make sure the user input is less than maxLength value
       if (inputValue.length > this.props.maxLength) {
-        this.setState({
-          value: inputValue.substring(0, this.props.maxLength),
-          remaining: 0
-        });
+        this.setState(
+          {
+            value: inputValue.substring(0, this.props.maxLength),
+            remaining: 0
+          },
+          function() {
+          valid = false;
+          }
+        );
         return false;
       }
     }
-
     /* Execute custom validator and change state and error messages accordingly */
     let customValidationPass = false;
     if (this.props.validator) {
@@ -191,7 +196,7 @@ class Input extends React.PureComponent {
           }
         } else {
           this.setState({
-            "isValid": true
+            isValid: true
           });
         }
       }
@@ -226,14 +231,20 @@ class Input extends React.PureComponent {
       }
     }
 
-    this._validate(inputValue);
-    this.setState({
-        "value": inputValue
-        }, () => {
+    let valid = this._validate(inputValue);
+
+    if (valid !== false) {
+      this.setState(
+        {
+          value: inputValue
+        },
+        () => {
           if (this.props.onChange) {
             this.props.onChange(this.state.value, event, this.state.isValid);
           }
-        });
+        }
+      );
+    }
   };
 
   render() {
@@ -325,7 +336,7 @@ class Input extends React.PureComponent {
 }
 
 Input.propTypes = {
-  "isValid": PropTypes.bool,
+  isValid: PropTypes.bool,
   /**
    * Defines a custom css class name.
    * @examples 'custom-imput'
