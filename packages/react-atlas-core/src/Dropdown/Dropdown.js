@@ -31,7 +31,8 @@ class Dropdown extends React.PureComponent {
       isValid: true,
       errorMessage: "This field is required",
       focus: false,
-      zIndex: false
+      zIndex: false,
+      clicked: false
     };
     let isFocus = false; // eslint-disable-line no-unused-vars
   }
@@ -65,6 +66,8 @@ class Dropdown extends React.PureComponent {
 
     event.persist();
 
+    this.setState({clicked: !this.state.clicked});
+
     if (typeof this.props.onBeforeChange !== "undefined") {
       if (this.props.onBeforeChange(this.state.active) === false) {
         return;
@@ -96,6 +99,10 @@ class Dropdown extends React.PureComponent {
   };
 
   _toggle = (focus, event) => {
+    if(this.state.clicked === true) {
+      this.setState({clicked: false});
+      return;
+    }
     /* Toggles the dropdown from active to inactive state, sets valid to true and zIndex to true.
       Active is used to show/hide options, valid is used to show/hide error messaging related to validation and zIndex sets a class on the component to ensure it has the proper index on the DOM
      */
@@ -270,9 +277,6 @@ class Dropdown extends React.PureComponent {
           </div>
         )}
         <div
-          onClick={e => {
-            this._toggle("click", e);
-          }}
           styleName={"content"}
         >
           <div style={{ width: buttonWidth + "px" }}>
