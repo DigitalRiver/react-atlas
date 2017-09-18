@@ -112,6 +112,10 @@ class Dropdown extends React.PureComponent {
   };
 
   handleButtonClick = (event) => {
+    if (this.props.disabled === true) {
+      return;
+    }
+
     if(this.state.focus === true) {
       this.setState({ focus: false, active: false, zIndex: false });
     } else if (this.state.focus === false) {
