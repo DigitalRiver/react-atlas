@@ -48,19 +48,6 @@ class Dropdown extends React.PureComponent {
   }
 
   /**
-   * closes dropdown click outside of browser window
-   */
-  _onWindowBlur = () => {
-    console.log("Blur");
-    if (this.state.active === true) {
-      this.setState({
-        active: false,
-        zIndex: false
-      });
-    }
-  };
-
-  /**
    *  _clickHandler is used when the dropdown option is selected.
    *
    */
@@ -68,8 +55,6 @@ class Dropdown extends React.PureComponent {
     if (this.props.disabled) {
       return;
     }
-
-    console.log("Click");
 
     event.persist();
 
@@ -106,12 +91,10 @@ class Dropdown extends React.PureComponent {
   };
 
   _toggle = (focus, event) => {
-    console.log("Focus: ", focus);
-
     if(this.props.disabled === true) {
       return;
     }
-    
+
     /* Toggles the dropdown from active to inactive state, sets valid to true and zIndex to true.
       Active is used to show/hide options, valid is used to show/hide error messaging related to validation and zIndex sets a class on the component to ensure it has the proper index on the DOM
      */
@@ -212,7 +195,6 @@ class Dropdown extends React.PureComponent {
       name
     } = this.props;
     const active = this.state.active;
-    console.log("Rendering: ", active);
     const error = !this.state.isValid && !disabled ? true : false;
     let zIndex = this.state.zIndex ? true : false;
     const classes = cx({
@@ -261,8 +243,6 @@ class Dropdown extends React.PureComponent {
     if(active === true) {
       list = <ul styleName={"list"}>{bound_children}</ul>;
     }
-
-    console.log("List: ", list);
 
     return (
       <div
