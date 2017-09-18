@@ -236,6 +236,34 @@ class Dropdown extends React.PureComponent {
       list = <ul styleName={"list"}>{bound_children}</ul>;
     }
 
+    let label = null;
+    if (customLabel) {
+      label = (
+        <div styleName={"labelSpacing"}>
+          {customLabel}{" "}
+          {required && <span styleName={"requiredIndicator"}>*</span>}
+        </div>
+      );
+    }
+
+    let errorMessage = null;
+    if (error) {
+      errorMessage = (
+        <span styleName={"error_message"}>{this.state.errorMessage}</span>
+      );
+    }
+
+    let button = (
+      <ButtonCore
+        styleName={"buttonClass"}
+        className={dropdownButtonClasses}
+        type={"button"}
+      >
+        <span>{this.state.output}</span>
+        <i styleName="arrow" />
+      </ButtonCore>
+    );
+
     return (
       <div
         name={name}
@@ -251,29 +279,13 @@ class Dropdown extends React.PureComponent {
           this._keyDown(e);
         }}
       >
-        {customLabel && (
-          <div styleName={"labelSpacing"}>
-            {customLabel}
-            {required && <span styleName={"requiredIndicator"}>*</span>}
-          </div>
-        )}
+        {label}
         <div styleName={"content"}>
-          <div style={{ width: buttonWidth + "px" }}>
-            <ButtonCore
-              styleName={"buttonClass"}
-              className={dropdownButtonClasses}
-              type={"button"}
-            >
-              <span>{this.state.output}</span>
-              <i styleName="arrow" />
-            </ButtonCore>
-          </div>
+          <div style={{ width: buttonWidth + "px" }}>{button}</div>
           {list}
           <input type="hidden" value={this.state.value} />
         </div>
-        {error && (
-          <span styleName={"error_message"}>{this.state.errorMessage}</span>
-        )}
+        {errorMessage}
       </div>
     );
   }
