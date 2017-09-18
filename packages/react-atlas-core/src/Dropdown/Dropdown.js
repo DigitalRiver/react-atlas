@@ -13,8 +13,8 @@ class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    if(typeof this.props.children === 'undefined') {
-      throw 'You must pass at least one child component to Dropdown';
+    if (typeof this.props.children === "undefined") {
+      throw "You must pass at least one child component to Dropdown";
     }
 
     let childrenState = React.Children.map(this.props.children, child => {
@@ -41,8 +41,8 @@ class Dropdown extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.isValid !== this.state.isValid) {
-      this.setState({"isValid": nextProps.isValid});
+    if (nextProps.isValid !== this.state.isValid) {
+      this.setState({ isValid: nextProps.isValid });
     }
   }
 
@@ -57,7 +57,7 @@ class Dropdown extends React.PureComponent {
 
     event.persist();
 
-    this.setState({clicked: !this.state.clicked});
+    this.setState({ clicked: !this.state.clicked });
 
     if (typeof this.props.onBeforeChange !== "undefined") {
       if (this.props.onBeforeChange(this.state.active) === false) {
@@ -74,7 +74,6 @@ class Dropdown extends React.PureComponent {
         output: output,
         active: !this.state.active,
         value: inputValue,
-        isValid: true,
         zIndex: false
       },
       function() {
@@ -89,29 +88,25 @@ class Dropdown extends React.PureComponent {
     );
   };
 
+  /* Toggles the dropdown from active to inactive state, sets valid to true and zIndex to true.
+   * Active is used to show/hide options, valid is used to show/hide error messaging related to
+   * validation and zIndex sets a class on the component to ensure it has the proper index on the DOM
+   */
   _toggle = (focus, event) => {
-    if(this.props.disabled === true) {
+    if (this.props.disabled === true) {
       return;
     }
 
-    /* Toggles the dropdown from active to inactive state, sets valid to true and zIndex to true.
-      Active is used to show/hide options, valid is used to show/hide error messaging related to validation and zIndex sets a class on the component to ensure it has the proper index on the DOM
-     */
     if (focus === false) {
       this.setState({ focus: false, active: false, zIndex: false });
       return;
     } else if (focus === true) {
-      this.setState({
-        focus: true,
-        active: true,
-        isValid: true,
-        zIndex: true
-      });
+      this.setState({ focus: true, active: true, zIndex: true });
     }
 
-    this._validationHandler(this.props.errorCallback)
+    this._validationHandler(this.props.errorCallback);
 
-    if (typeof this.props.onClick !== 'undefined') {
+    if (typeof this.props.onClick !== "undefined") {
       this.props.onClick(this.state.value, event, this.state.isValid);
     }
   };
@@ -237,7 +232,7 @@ class Dropdown extends React.PureComponent {
     const dropdownButtonClasses = cx(buttonClasses);
 
     let list = null;
-    if(active === true) {
+    if (active === true) {
       list = <ul styleName={"list"}>{bound_children}</ul>;
     }
 
@@ -262,9 +257,7 @@ class Dropdown extends React.PureComponent {
             {required && <span styleName={"requiredIndicator"}>*</span>}
           </div>
         )}
-        <div
-          styleName={"content"}
-        >
+        <div styleName={"content"}>
           <div style={{ width: buttonWidth + "px" }}>
             <ButtonCore
               styleName={"buttonClass"}
