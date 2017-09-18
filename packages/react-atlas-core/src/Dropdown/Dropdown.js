@@ -13,8 +13,8 @@ class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    if(typeof this.props.children === 'undefined') {
-      throw 'You must pass at least one child component to Dropdown';
+    if (typeof this.props.children === "undefined") {
+      throw "You must pass at least one child component to Dropdown";
     }
 
     let childrenState = React.Children.map(this.props.children, child => {
@@ -33,31 +33,18 @@ class Dropdown extends React.PureComponent {
       value: initialValue,
       output: initialDisplay,
       isValid: true,
-      errorMessage: "This field is required",
+      errorMessage: messages.requiredMessage,
       focus: false,
       zIndex: false,
       clicked: false
     };
-    let isFocus = false; // eslint-disable-line no-unused-vars
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.isValid !== this.state.isValid) {
-      this.setState({"isValid": nextProps.isValid});
+    if (nextProps.isValid !== this.state.isValid) {
+      this.setState({ isValid: nextProps.isValid });
     }
   }
-
-  /**
-   * closes dropdown click outside of browser window
-   */
-  _onWindowBlur = () => {
-    if (this.state.active === true) {
-      this.setState({
-        active: false,
-        zIndex: false
-      });
-    }
-  };
 
   /**
    *  _clickHandler is used when the dropdown option is selected.
@@ -70,7 +57,7 @@ class Dropdown extends React.PureComponent {
 
     event.persist();
 
-    this.setState({clicked: !this.state.clicked});
+    this.setState({ clicked: !this.state.clicked });
 
     if (typeof this.props.onBeforeChange !== "undefined") {
       if (this.props.onBeforeChange(this.state.active) === false) {
@@ -87,7 +74,6 @@ class Dropdown extends React.PureComponent {
         output: output,
         active: !this.state.active,
         value: inputValue,
-        isValid: true,
         zIndex: false
       },
       function() {
@@ -102,42 +88,40 @@ class Dropdown extends React.PureComponent {
     );
   };
 
+  /* Toggles the dropdown from active to inactive state, sets valid to true and zIndex to true.
+   * Active is used to show/hide options, valid is used to show/hide error messaging related to
+   * validation and zIndex sets a class on the component to ensure it has the proper index on the DOM
+   */
   _toggle = (focus, event) => {
-    if(this.state.clicked === true) {
-      this.setState({clicked: false});
+    if (this.props.disabled === true) {
       return;
     }
-    /* Toggles the dropdown from active to inactive state, sets valid to true and zIndex to true.
-      Active is used to show/hide options, valid is used to show/hide error messaging related to validation and zIndex sets a class on the component to ensure it has the proper index on the DOM
-     */
-    let canProceed = true;
-    if (focus === "click" && this.isFocus) {
-      canProceed = false;
-      this.isFocus = false;
-    } else if (focus === true) {
-      this.isFocus = true;
-    }
-    if (!this.props.disabled && canProceed) {
-      const action = focus && !this.state.active ? true : false;
-      if (action) {
-        this.setState({
-          focus: true,
-          active: true,
-          isValid: true,
-          zIndex: true
-        });
-      } else {
-        /* When the user exits dropdown the state is change for focus and validation method is called
-         */
-        this.setState({ focus: false, active: false, zIndex: false });
-        this._validationHandler(this.props.errorCallback);
-      }
 
-      if (this.props.onClick) {
-        this.props.onClick(this.state.value, event, this.state.isValid);
-      }
+    if (focus === false) {
+      this.setState({ focus: false, active: false, zIndex: false });
+      return;
+    } else if (focus === true) {
+      this.setState({ focus: true, active: true, zIndex: true });
+    }
+
+    this._validationHandler(this.props.errorCallback);
+
+    if (typeof this.props.onClick !== "undefined") {
+      this.props.onClick(this.state.value, event, this.state.isValid);
     }
   };
+
+  handleButtonClick = (event) => {
+    if (this.props.disabled === true) {
+      return;
+    }
+
+    if(this.state.focus === true) {
+      this.setState({ focus: false, active: false, zIndex: false });
+    } else if (this.state.focus === false) {
+      this.setState({ focus: true, active: true, zIndex: true });
+    }
+  }
 
   _validationHandler = callback => {
     /* Checks that required has been set to true and determines if errorCallback message was passed in a custom error message.
@@ -259,14 +243,45 @@ class Dropdown extends React.PureComponent {
 
     const dropdownButtonClasses = cx(buttonClasses);
 
+    let list = null;
+    if (active === true) {
+      list = <ul styleName={"list"}>{bound_children}</ul>;
+    }
+
+    let label = null;
+    if (customLabel) {
+      label = (
+        <div styleName={"labelSpacing"}>
+          {customLabel}{" "}
+          {required && <span styleName={"requiredIndicator"}>*</span>}
+        </div>
+      );
+    }
+
+    let errorMessage = null;
+    if (error) {
+      errorMessage = (
+        <span styleName={"error_message"}>{this.state.errorMessage}</span>
+      );
+    }
+
+    let button = (
+      <ButtonCore
+        onClick={this.handleButtonClick}
+        styleName={"buttonClass"}
+        className={dropdownButtonClasses}
+        type={"button"}
+      >
+        <span>{this.state.output}</span>
+        <i styleName="arrow" />
+      </ButtonCore>
+    );
+
     return (
       <div
         name={name}
         className={className}
         styleName={classes}
-        onFocus={e => {
-          this._toggle(true, e);
-        }}
         onBlur={e => {
           this._toggle(false, e);
         }}
@@ -274,31 +289,13 @@ class Dropdown extends React.PureComponent {
           this._keyDown(e);
         }}
       >
-        {customLabel && (
-          <div styleName={"labelSpacing"}>
-            {customLabel}
-            {required && <span styleName={"requiredIndicator"}>*</span>}
-          </div>
-        )}
-        <div
-          styleName={"content"}
-        >
-          <div style={{ width: buttonWidth + "px" }}>
-            <ButtonCore
-              styleName={"buttonClass"}
-              className={dropdownButtonClasses}
-              type={"button"}
-            >
-              <span>{this.state.output}</span>
-              <i styleName="arrow" />
-            </ButtonCore>
-          </div>
-          {this.state.active && <ul styleName={"list"}>{bound_children}</ul>}
+        {label}
+        <div styleName={"content"}>
+          <div style={{ width: buttonWidth + "px" }}>{button}</div>
+          {list}
           <input type="hidden" value={this.state.value} />
         </div>
-        {error && (
-          <span styleName={"error_message"}>{this.state.errorMessage}</span>
-        )}
+        {errorMessage}
       </div>
     );
   }
