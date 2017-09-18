@@ -38,7 +38,6 @@ class Dropdown extends React.PureComponent {
       zIndex: false,
       clicked: false
     };
-    let isFocus = false; // eslint-disable-line no-unused-vars
   }
 
   componentWillReceiveProps(nextProps) {
