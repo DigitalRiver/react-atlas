@@ -93,7 +93,6 @@ class Dropdown extends React.PureComponent {
    * validation and zIndex sets a class on the component to ensure it has the proper index on the DOM
    */
   _toggle = (focus, event) => {
-    console.log("Focus: ", focus);
     if (this.props.disabled === true) {
       return;
     }
