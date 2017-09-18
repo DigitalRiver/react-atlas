@@ -24,6 +24,7 @@ class Avatar extends React.PureComponent {
     }
 
     this.state = { image: image };
+    this.handleBadImage.bind(this);
   }
 
   handleBadImage() {
@@ -55,7 +56,7 @@ class Avatar extends React.PureComponent {
         <img
           src={image}
           title={title}
-          onError={this.handleBadImage.bind(this)}
+          onError={this.handleBadImage}
           styleName={cx("image")}
         />
       );
