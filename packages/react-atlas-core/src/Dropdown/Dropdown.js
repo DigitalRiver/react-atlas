@@ -51,6 +51,7 @@ class Dropdown extends React.PureComponent {
    * closes dropdown click outside of browser window
    */
   _onWindowBlur = () => {
+    console.log("Blur");
     if (this.state.active === true) {
       this.setState({
         active: false,
@@ -67,6 +68,8 @@ class Dropdown extends React.PureComponent {
     if (this.props.disabled) {
       return;
     }
+
+    console.log("Click");
 
     event.persist();
 
@@ -103,39 +106,33 @@ class Dropdown extends React.PureComponent {
   };
 
   _toggle = (focus, event) => {
-    if(this.state.clicked === true) {
-      this.setState({clicked: false});
+    console.log("Focus: ", focus);
+
+    if(this.props.disabled === true) {
       return;
     }
+    
     /* Toggles the dropdown from active to inactive state, sets valid to true and zIndex to true.
       Active is used to show/hide options, valid is used to show/hide error messaging related to validation and zIndex sets a class on the component to ensure it has the proper index on the DOM
      */
-    let canProceed = true;
-    if (focus === "click" && this.isFocus) {
-      canProceed = false;
-      this.isFocus = false;
+    if (focus === false) {
+      this.setState({ focus: false, active: false, zIndex: false });
+      return;
     } else if (focus === true) {
-      this.isFocus = true;
+      this.setState({
+        focus: true,
+        active: true,
+        isValid: true,
+        zIndex: true
+      });
     }
-    if (!this.props.disabled && canProceed) {
-      const action = focus && !this.state.active ? true : false;
-      if (action) {
-        this.setState({
-          focus: true,
-          active: true,
-          isValid: true,
-          zIndex: true
-        });
-      } else {
-        /* When the user exits dropdown the state is change for focus and validation method is called
-         */
-        this.setState({ focus: false, active: false, zIndex: false });
-        this._validationHandler(this.props.errorCallback);
-      }
 
-      if (this.props.onClick) {
-        this.props.onClick(this.state.value, event, this.state.isValid);
-      }
+    if (typeof this._validationHandler !== 'undefined') {
+      this._validationHandler(this.props.errorCallback)
+    }
+
+    if (typeof this.props.onClick !== 'undefined') {
+      this.props.onClick(this.state.value, event, this.state.isValid);
     }
   };
 
@@ -215,6 +212,7 @@ class Dropdown extends React.PureComponent {
       name
     } = this.props;
     const active = this.state.active;
+    console.log("Rendering: ", active);
     const error = !this.state.isValid && !disabled ? true : false;
     let zIndex = this.state.zIndex ? true : false;
     const classes = cx({
@@ -259,6 +257,13 @@ class Dropdown extends React.PureComponent {
 
     const dropdownButtonClasses = cx(buttonClasses);
 
+    let list = null;
+    if(active === true) {
+      list = <ul styleName={"list"}>{bound_children}</ul>;
+    }
+
+    console.log("List: ", list);
+
     return (
       <div
         name={name}
@@ -293,7 +298,7 @@ class Dropdown extends React.PureComponent {
               <i styleName="arrow" />
             </ButtonCore>
           </div>
-          {this.state.active && <ul styleName={"list"}>{bound_children}</ul>}
+          {list}
           <input type="hidden" value={this.state.value} />
         </div>
         {error && (
