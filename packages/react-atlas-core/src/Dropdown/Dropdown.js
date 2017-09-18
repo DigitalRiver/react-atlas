@@ -33,7 +33,7 @@ class Dropdown extends React.PureComponent {
       value: initialValue,
       output: initialDisplay,
       isValid: true,
-      errorMessage: "This field is required",
+      errorMessage: messages.requiredMessage,
       focus: false,
       zIndex: false,
       clicked: false
