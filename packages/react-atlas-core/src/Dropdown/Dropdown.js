@@ -93,6 +93,7 @@ class Dropdown extends React.PureComponent {
    * validation and zIndex sets a class on the component to ensure it has the proper index on the DOM
    */
   _toggle = (focus, event) => {
+    console.log("Focus: ", focus);
     if (this.props.disabled === true) {
       return;
     }
@@ -110,6 +111,14 @@ class Dropdown extends React.PureComponent {
       this.props.onClick(this.state.value, event, this.state.isValid);
     }
   };
+
+  handleButtonClick = (event) => {
+    if(this.state.focus === true) {
+      this.setState({ focus: false, active: false, zIndex: false });
+    } else if (this.state.focus === false) {
+      this.setState({ focus: true, active: true, zIndex: true });
+    }
+  }
 
   _validationHandler = callback => {
     /* Checks that required has been set to true and determines if errorCallback message was passed in a custom error message.
@@ -255,6 +264,7 @@ class Dropdown extends React.PureComponent {
 
     let button = (
       <ButtonCore
+        onClick={this.handleButtonClick}
         styleName={"buttonClass"}
         className={dropdownButtonClasses}
         type={"button"}
@@ -269,9 +279,6 @@ class Dropdown extends React.PureComponent {
         name={name}
         className={className}
         styleName={classes}
-        onFocus={e => {
-          this._toggle(true, e);
-        }}
         onBlur={e => {
           this._toggle(false, e);
         }}
