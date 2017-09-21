@@ -41,8 +41,9 @@ class Dropdown extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.isValid !== this.state.isValid) {
-      this.setState({ isValid: nextProps.isValid });
+    if (typeof nextProps.isValid !== 'undefined' &&
+        nextProps.isValid !== this.state.isValid) {
+          this.setState({ isValid: nextProps.isValid });
     }
   }
 
