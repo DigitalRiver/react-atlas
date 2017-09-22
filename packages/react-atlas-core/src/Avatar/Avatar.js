@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import cx from "classnames";
 
 /**
  * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
@@ -24,6 +23,7 @@ class Avatar extends React.PureComponent {
     }
 
     this.state = { image: image };
+    this.handleBadImage = this.handleBadImage.bind(this);
   }
 
   handleBadImage() {
@@ -44,7 +44,7 @@ class Avatar extends React.PureComponent {
     let { children, icon, title } = this.props;
     let kids = children;
     if (React.Children.count(children) === 1 && typeof children === "string") {
-      kids = <span styleName={cx("letter")}>{children[0]}</span>;
+      kids = <span styleName={"letter"}>{children[0]}</span>;
     }
 
     let avatar = null;
@@ -55,8 +55,8 @@ class Avatar extends React.PureComponent {
         <img
           src={image}
           title={title}
-          onError={this.handleBadImage.bind(this)}
-          styleName={cx("image")}
+          onError={this.handleBadImage}
+          styleName={"image"}
         />
       );
     } else if (image) {
@@ -64,11 +64,11 @@ class Avatar extends React.PureComponent {
     } else if (icon) {
       avatar = icon;
     } else if (title) {
-      avatar = <span styleName={cx("letter")}>{title[0]}</span>;
+      avatar = <span styleName={"letter"}>{title[0]}</span>;
     }
 
     return (
-      <div styleName={cx("avatar")}>
+      <div styleName={"avatar"}>
         {kids}
         {avatar}
       </div>
