@@ -67,15 +67,6 @@ class Checkbox extends React.PureComponent {
     });
   };
 
-  _blur = callback => {
-    this.setState({ focus: false });
-    this._validationHandler(callback);
-  };
-
-  _focus = () => {
-    this.setState({ focus: true });
-  };
-
   render() {
     const {
       label,
@@ -112,12 +103,6 @@ class Checkbox extends React.PureComponent {
       <div
         onClick={this._clickHandler}
         styleName={inlineCheckbox}
-        onFocus={() => {
-          this._focus();
-        }}
-        onBlur={() => {
-          this._blur(errorCallback);
-        }}
       >
         <div styleName={disabledClass}>
           {label && (
