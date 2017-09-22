@@ -147,6 +147,7 @@ dot.templateSettings = {
 
 /* TODO: Replace hardcoded array with a dynamic solution. */
 let components = [
+  "accordion",
   "avatar",
   "button",
   "card",
