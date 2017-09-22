@@ -1,0 +1,65 @@
+.accordion {
+    composes: default-border from '../styles.css';
+    composes: border-bottom-none from '../styles.css';
+}
+.accordion_header {
+    composes: marg-0  from '../styles.css';
+    composes: default-text from '../styles.css';
+    composes: bold from '../styles.css';
+    composes: cursor-pointer from '../styles.css';
+    composes: bg-silver from '../styles.css';
+    composes: default-border-bottom from '../styles.css';
+    composes: border-top-none from '../styles.css';
+    composes: border-left-none from '../styles.css';
+    composes: border-right-none from '../styles.css';
+    line-height: 1.5rem;
+    vertical-align: middle;
+    text-align: center;
+}
+.accordion_header.active {
+    border-bottom: 0;
+    background-color: #00a7e1;
+    color: white;
+}
+.accordion_header:hover {
+    background-color: #ccc;
+    color: white;
+}.accordion_header.active:hover {
+     background-color: #00a7e1;
+ }
+
+.accordion_panel {
+    composes: default-text from '../styles.css';
+    composes: border-top-none from '../styles.css';
+    composes: border-bottom-none from '../styles.css';
+    composes: border-left-none from '../styles.css';
+    composes: border-right-none from '../styles.css';
+    max-height: 0;
+}
+.accordion_panel div {
+    display: none;
+}
+.accordion_panel.active{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #999;
+    max-height: 100%;
+    transition: max-height .25s ease-in-out;
+    -moz-transition: max-height .25s ease-in-out;
+    -webkit-transition: max-height .25s ease-in-out;
+    padding: 1rem;
+}
+.accordion_panel.active div {
+    display: block;
+}
+
+.expandAll {
+    composes: marg-b-1 from '../styles.css';
+    composes: default-text from '../styles.css';
+    composes: primary from '../styles.css';
+    cursor: pointer;
+}
+.expandAll:hover {
+    text-decoration: underline;
+}
