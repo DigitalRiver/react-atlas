@@ -4,7 +4,6 @@ import cx from "classnames";
 import ReactDOM from 'react-dom';
 import { default as DP } from 'react-datepicker';
 import moment from 'moment';
-import 'react-datepicker/dist/react-datepicker.css';
 
 class DatePicker extends React.PureComponent {
   constructor (props) {
