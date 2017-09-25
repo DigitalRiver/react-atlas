@@ -1,5 +1,7 @@
 .container {
   display: block;
+  position: relative;
+  z-index: 0;
 }
 
 .content {
@@ -13,7 +15,6 @@
   text-align: left;
   left: 0;
   position: relative;
-  max-width: 10rem;
 }
 
 .content:hover {
@@ -52,6 +53,12 @@
   max-height: 250px;
   overflow: auto;
 }
+.fullWidth{
+  width:100%;
+}
+.convertedWidth {
+  width:calc(100% - 2px);
+}
 .item {
   padding: .5rem;
   -o-text-overflow: ellipsis;
@@ -86,13 +93,12 @@
   border: 1px solid #999;
   background-color: white !important;
   text-transform: none !important;
-  min-width: 100%;
+  width: 100%;
   padding-left: 0.5rem;
   text-align: left;
   white-space: nowrap;
   height: 1.8rem;
   line-height: normal;
-  max-width: 100%;
 }
 .dropdown-button:hover {
   border-color: #666;
