@@ -1,6 +1,5 @@
 .container {
   display: block;
-  max-width: 10rem;
 }
 
 .content {
@@ -13,6 +12,8 @@
   font-size: 12px;
   text-align: left;
   left: 0;
+  position: relative;
+  max-width: 10rem;
 }
 
 .content:hover {
@@ -32,7 +33,6 @@
 
 .active button {
   border: 1px solid #00a7e1;
-  border-radius: .25rem .25rem 0 0;
 }
 
 .list {
@@ -45,7 +45,8 @@
   composes: primary-border-top from '../styles.css';
   composes: rounded-bottom from '../styles.css';
   left: 0;
-  top: 46px;
+  top: 1.8rem;
+  position: absolute;
   list-style: none;
   transition: height 1s;
   max-height: 250px;
@@ -81,7 +82,6 @@
 }
 
 .dropdown-button {
-  border-radius: .25rem;
   color: #333;
   border: 1px solid #999;
   background-color: white !important;
