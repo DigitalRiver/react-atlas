@@ -46,8 +46,6 @@ class Form extends React.PureComponent {
         }
       }
 
-      console.log("STATE: ", this.state);
-
       /* Skip children with no name prop. */
       if(!child.props.name) {
         return;
@@ -146,8 +144,6 @@ class Form extends React.PureComponent {
         } else {
           classes = cx(child.props.className, childClasses);
         }
-
-        console.log("STATE_RENDER: ", this.state);
 
         let props = {
           className: classes,

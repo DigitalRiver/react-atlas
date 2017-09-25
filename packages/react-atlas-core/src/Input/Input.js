@@ -20,8 +20,6 @@ class Input extends React.PureComponent {
       remaining: props.maxLength
     };
 
-      console.log("isValidInputConstructor: ", this.state.isValid);
-
     // Configure input mask if required
     if (this.props.mask) {
       let maskOptions = {
@@ -41,11 +39,8 @@ class Input extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("UpdatePropIsValid: ", nextProps.isValid);
-    console.log("UpdateStateIsValid: ", this.state.isValid);
     if (nextProps.isValid) {
       if (nextProps.isValid !== this.state.isValid) {
-          console.log("Update: ", nextProps.isValid);
         this.setState({
           errorText: this.props.requiredText || "This field is required.",
           isValid: nextProps.isValid
@@ -267,8 +262,6 @@ class Input extends React.PureComponent {
       errorLocation,
       checked
     } = this.props;
-
-    console.log("isValidInputRender: ", this.props.isValid);
 
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";

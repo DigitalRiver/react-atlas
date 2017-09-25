@@ -69,8 +69,6 @@ class TextField extends React.PureComponent {
       className
     } = this.props;
 
-    console.log("isValid: ", this.state.isValid);
-
     let textFieldHeader = header && (
       <div styleName={cx("header")}>
         <span styleName={cx("headerFont")}>{header}</span>
