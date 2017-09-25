@@ -1,7 +1,7 @@
 .textfield {
 	composes: primary-gray-border from '../styles.css';
 	width: 100%;
-	height: 1.2rem;
+	height: 1.45rem;
 	padding: 5px;
 }
 
