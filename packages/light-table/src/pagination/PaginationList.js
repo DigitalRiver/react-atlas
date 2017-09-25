@@ -183,7 +183,7 @@ class PaginationList extends Component {
           </li>
         );
       });
-      dropdown = 
+      dropdown =
         <SizePerPageDropDown
           open={this.state.open}
           hidden={hideSizePerPage}
@@ -223,13 +223,10 @@ class PaginationList extends Component {
         } else if (page === this.props.prePage) {
           title = this.props.prePageTitle;
         } else if (page === this.props.firstPage) {
-          // title = this.props.firstPageTitle;
-          console.log("FirstPage: ", page);
+          title = this.props.firstPageTitle;
         } else if (page === this.props.lastPage) {
           title = this.props.lastPageTitle;
         }
-
-        console.log("Page: ", page);
 
         return (
           <PageButton key={page}
@@ -291,8 +288,6 @@ class PaginationList extends Component {
     if (endPage !== this.lastPage && this.props.withFirstAndLast) {
       pages.push(this.props.lastPage);
     }
-
-    console.log("Pages: ", pages);
 
     return pages;
   }
