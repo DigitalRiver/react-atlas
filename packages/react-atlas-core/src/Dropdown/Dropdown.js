@@ -41,9 +41,11 @@ class Dropdown extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (typeof nextProps.isValid !== 'undefined' &&
-        nextProps.isValid !== this.state.isValid) {
-          this.setState({ isValid: nextProps.isValid });
+    if (
+      typeof nextProps.isValid !== "undefined" &&
+      nextProps.isValid !== this.state.isValid
+    ) {
+      this.setState({ isValid: nextProps.isValid });
     }
   }
 
@@ -112,17 +114,17 @@ class Dropdown extends React.PureComponent {
     }
   };
 
-  handleButtonClick = (event) => {
+  handleButtonClick = () => {
     if (this.props.disabled === true) {
       return;
     }
 
-    if(this.state.focus === true) {
+    if (this.state.focus === true) {
       this.setState({ focus: false, active: false, zIndex: false });
     } else if (this.state.focus === false) {
       this.setState({ focus: true, active: true, zIndex: true });
     }
-  }
+  };
 
   _validationHandler = callback => {
     /* Checks that required has been set to true and determines if errorCallback message was passed in a custom error message.
@@ -191,11 +193,10 @@ class Dropdown extends React.PureComponent {
 
   render() {
     const {
-      children,
       className,
       required,
       customLabel,
-      buttonWidth,
+      width,
       disabled,
       name
     } = this.props;
@@ -244,9 +245,15 @@ class Dropdown extends React.PureComponent {
 
     const dropdownButtonClasses = cx(buttonClasses);
 
+    const listClasses = cx({
+      list: true,
+      convertedWidth: true,
+      zIndex: true
+    });
+
     let list = null;
     if (active === true) {
-      list = <ul styleName={"list"}>{bound_children}</ul>;
+      list = <ul styleName={listClasses}>{bound_children}</ul>;
     }
 
     let label = null;
@@ -291,8 +298,8 @@ class Dropdown extends React.PureComponent {
         }}
       >
         {label}
-        <div styleName={"content"}>
-          <div style={{ width: buttonWidth + "px" }}>{button}</div>
+        <div styleName={"content"} style={{ width: width }}>
+          <div styleName={"fullWidth"}>{button}</div>
           {list}
           <input type="hidden" value={this.state.value} />
         </div>
@@ -364,12 +371,11 @@ Dropdown.propTypes = {
   onBeforeChange: PropTypes.func,
 
   /* Allows user to set custom width of dropdown */
-  buttonWidth: PropTypes.string
+  width: PropTypes.string
 };
 
 Dropdown.defaultProps = {
   className: "",
-  buttonWidth: "160",
   required: false,
   disabled: false
 };
