@@ -25,8 +25,9 @@ class DatePicker extends React.PureComponent {
   }
 
   render() {
-    let { format, name, className } = this.props;
+    let { format, name, className, style } = this.props;
     return (<DP
+        style={style}
         className={cx(className)}
         name={name}
         dateFormat={format}
@@ -40,7 +41,9 @@ DatePicker.propTypes = {
   "name": PropTypes.string,
   "format": PropTypes.string,
   "value": PropTypes.string,
-  "onChange": PropTypes.func
+  "onChange": PropTypes.func,
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 export default DatePicker;

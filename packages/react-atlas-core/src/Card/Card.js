@@ -10,9 +10,9 @@ class Card extends React.PureComponent {
     super(props);
   }
   render() {
-    const { children, className, legend } = this.props;
+    const { children, className, legend, style } = this.props;
     return (
-      <fieldset styleName={"card"} className={cx(className)}>
+      <fieldset style={style} styleName={"card"} className={cx(className)}>
         {legend && <legend styleName={"legend"}>{legend}</legend>}
         {children}
       </fieldset>
@@ -35,7 +35,10 @@ Card.propTypes = {
   /**
    * Title of the Card
    */
-  legend: PropTypes.string
+  legend: PropTypes.string,
+
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 Card.defaultProps = { children: <p>Some card text.</p> };

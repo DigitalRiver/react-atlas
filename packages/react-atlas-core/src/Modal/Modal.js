@@ -13,7 +13,8 @@ class Modal extends React.PureComponent {
       onEscKeyDown,
       title,
       overlay,
-      lockScroll
+      lockScroll,
+      style
     } = this.props;
     const classes = cx("modal", { active });
     return (
@@ -26,7 +27,7 @@ class Modal extends React.PureComponent {
             onEscKeyDown={onEscKeyDown}
             lockScroll={lockScroll}
           />}
-        <div styleName={classes} className={className}>
+        <div style={style} styleName={classes} className={className}>
           {title &&
             <h3 styleName={cx("title")}>
               {title}
@@ -72,7 +73,10 @@ Modal.propTypes = {
   /**
    * Determines to hide page scroll
    */
-  lockScroll: PropTypes.bool
+  lockScroll: PropTypes.bool,
+
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 Modal.defaultProps = {

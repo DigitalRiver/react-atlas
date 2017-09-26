@@ -5,9 +5,9 @@ import { TableColumn } from "light-table/src";
 
 class TableHeader extends React.PureComponent {
   render() {
-    const { className, children, dataSort, isKey, searchable } = this.props;
+    const { className, children, dataSort, isKey, searchable, style } = this.props;
     return (
-      <TableColumn dataSort={dataSort} isKey={isKey} searchable={searchable} className={cx(className)} tableHeaderClass={"row-hover"}>
+      <TableColumn style={style} dataSort={dataSort} isKey={isKey} searchable={searchable} className={cx(className)} tableHeaderClass={"row-hover"}>
         {children}
       </TableColumn>
     );
@@ -18,7 +18,9 @@ TableHeader.propTypes = {
   dataField: PropTypes.string,
   isKey: PropTypes.bool,
   dataSort: PropTypes.bool,
-  searchable: PropTypes.bool
+  searchable: PropTypes.bool,
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 TableHeader.defaultProps = {

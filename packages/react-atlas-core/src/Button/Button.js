@@ -26,7 +26,8 @@ class Button extends React.PureComponent {
       outline,
       icon,
       type,
-      href
+      href,
+      style
     } = this.props;
 
     let mainStyle = "button";
@@ -79,6 +80,7 @@ class Button extends React.PureComponent {
         onClick={onClick}
         className={cx(className)}
         styleName={classes}
+        style={style}
         type={type}
         href={href}
       >
@@ -157,7 +159,10 @@ Button.propTypes = {
   /**
     * The class name of the icon you want to set.
     */
-  icon: PropTypes.string
+  icon: PropTypes.string,
+
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 Button.defaultProps = {

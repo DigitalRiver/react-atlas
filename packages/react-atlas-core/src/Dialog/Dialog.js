@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 class Dialog extends React.PureComponent {
   _getButtonContent = () => {
-    const { info, warning, onOk, onCancel } = this.props;
+    const { info, warning, onOk, onCancel, style } = this.props;
     const okButton = warning
       ? <Button small warning onClick={onOk}>
           OK
@@ -29,11 +29,12 @@ class Dialog extends React.PureComponent {
       className,
       children,
       styles,
-      ...others
+      style,
+      ...others,
     } = this.props;
     return (
       active &&
-      <Modal active={active} className={warning && styles.warning} {...others}>
+      <Modal style={style} active={active} className={warning && styles.warning} {...others}>
         <div styleName="dialog" className={className}>
           {children}
           <div styleName="buttons">

@@ -260,7 +260,8 @@ class Input extends React.PureComponent {
       disabled,
       hidden,
       errorLocation,
-      checked
+      checked,
+      style
     } = this.props;
 
     /* If checkbox, we need to render only input component (no wrappers) */
@@ -319,6 +320,7 @@ class Input extends React.PureComponent {
 
     return isCheckbox ? (
       <input
+        style={style}
         type="checkbox"
         name={name}
         styleName={inputClasses}
@@ -446,7 +448,10 @@ Input.propTypes = {
      * Sets a handler function to be executed when onChange event occurs.
      * @examples <Input type="text" onChange={this.customOnChangeFunc}/>
      */
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 Input.defaultProps = {

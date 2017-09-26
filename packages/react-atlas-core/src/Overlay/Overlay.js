@@ -40,7 +40,7 @@ class Overlay extends React.PureComponent {
   };
 
   render() {
-    const { active, className } = this.props;
+    const { active, className, style } = this.props;
     const classNames = cx(
       "ra_overlay__overlay",
       { ra_overlay__active: active },
@@ -70,7 +70,10 @@ Overlay.propTypes = {
   /**
    * Event handler for esc key down
    */
-  onEscKeyDown: PropTypes.func
+  onEscKeyDown: PropTypes.func,
+
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 Overlay.defaultProps = {

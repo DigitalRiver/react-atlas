@@ -73,9 +73,9 @@ class CheckboxGroup extends React.PureComponent {
   };
 
   render() {
-    const { className, children, name, inline, title } = this.props;
+    const { className, children, name, inline, title, style } = this.props;
     return (
-      <div className={cx(className)} styleName={cx("checkboxGroup")}>
+      <div style={style} className={cx(className)} styleName={cx("checkboxGroup")}>
         {title && (
           <div styleName={cx("header")}>
             <span styleName={cx("headerFont")}>{title}</span>
@@ -146,7 +146,10 @@ CheckboxGroup.propTypes = {
    * Defines a custom message to show if either min or max properties are not met. {0} can be used in the message to be replaced by the appropriate min or max property.
    * @examples '<CheckboxGroup min="3" limitMessage="Please select at least {0} of the checkboxes below."></CheckboxGroup>'
    */
-  limitMessage: PropTypes.string
+  limitMessage: PropTypes.string,
+
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 CheckboxGroup.defaultProps = {

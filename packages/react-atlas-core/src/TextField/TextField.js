@@ -11,7 +11,7 @@ class TextField extends React.PureComponent {
       "value": props.value || "",
       "remaining": props.maxLength,
       "active": false,
-      "valid": props.isValid || true
+      "isValid": props.isValid || true
     };
   }
 
@@ -33,7 +33,7 @@ class TextField extends React.PureComponent {
     // Set value and valid state depending on InputCore state
     this.setState({
       "value": value,
-      "valid": isValid
+      "isValid": isValid
     });
 
     if (this.props.onChange) {
@@ -66,7 +66,8 @@ class TextField extends React.PureComponent {
       mask,
       disabled,
       hidden,
-      className
+      className,
+      style
     } = this.props;
 
     let textFieldHeader = header && (
@@ -90,13 +91,14 @@ class TextField extends React.PureComponent {
       {
         disabled,
         active: this.state.active,
-        invalid: !this.state.valid
+        invalid: !this.state.isValid
       },
       "textfield"
     );
 
     return (
       <div
+        style={style}
         styleName={wrapperClasses}
         onFocus={this._handleFocus}
         onBlur={this._handleBlur}
@@ -116,7 +118,7 @@ class TextField extends React.PureComponent {
           errorText={errorText}
           mask={mask}
           disabled={disabled}
-          isValid={this.state.valid}
+          isValid={this.state.isValid}
           hidden={hidden}
         />
       </div>
@@ -210,7 +212,10 @@ TextField.PropTypes = {
 	 * Determines if the text input is hidden.
 	 * @examples '<TextField hidden/>'
 	 */
-  hidden: PropTypes.bool
+  hidden: PropTypes.bool,
+
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 TextField.defaultProps = {
