@@ -40,7 +40,7 @@ class Tooltip extends React.PureComponent {
   };
 
   render() {
-    const { children, className, icon, position } = this.props;
+    const { children, className, icon, position, style } = this.props;
 
     let tooltipClasses;
     tooltipClasses = cx({
@@ -60,6 +60,7 @@ class Tooltip extends React.PureComponent {
 
     return (
       <div
+        style={style}
         data-tooltip={this.state.tooltip}
         styleName={"block " + tooltipClasses}
         className={cx(className)}
@@ -113,7 +114,9 @@ Tooltip.propTypes = {
      * For displaying an icon/glphyicon. Normally these will be another component or an element with a class on it.
      * @examples <GithubIcon />, <i class="fa fa-github"></i>
      */
-  icon: PropTypes.string
+  icon: PropTypes.string,
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 Tooltip.defaultProps = {

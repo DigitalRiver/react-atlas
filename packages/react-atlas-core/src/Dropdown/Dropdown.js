@@ -198,7 +198,8 @@ class Dropdown extends React.PureComponent {
       customLabel,
       width,
       disabled,
-      name
+      name,
+      style
     } = this.props;
     const active = this.state.active;
     const error = !this.state.isValid && !disabled ? true : false;
@@ -287,6 +288,7 @@ class Dropdown extends React.PureComponent {
 
     return (
       <div
+        style={style}
         name={name}
         className={className}
         styleName={classes}
@@ -371,6 +373,9 @@ Dropdown.propTypes = {
   onBeforeChange: PropTypes.func,
 
   /* Allows user to set custom width of dropdown */
+  /* Pass inline styles here. */
+  style: PropTypes.node,
+
   width: PropTypes.string
 };
 

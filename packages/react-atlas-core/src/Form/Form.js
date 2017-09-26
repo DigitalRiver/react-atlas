@@ -131,7 +131,7 @@ class Form extends React.PureComponent {
   }
 
   render() {
-    const { className, children, action, buttonText, group, method, childClasses, buttonClasses} = this.props;
+    const { className, children, action, buttonText, group, method, childClasses, buttonClasses, style} = this.props;
     /* Loop through children components and set onChange handlers
      * and add CSS classes. */
     let kids = React.Children.map(children, (child, i) => {
@@ -158,7 +158,7 @@ class Form extends React.PureComponent {
     });
 
     return (
-      <form action={action} method={method} className={cx(className)} onSubmit={this.submitHandler} noValidate>
+      <form style={style} action={action} method={method} className={cx(className)} onSubmit={this.submitHandler} noValidate>
         {kids}
       </form>
     );
@@ -186,7 +186,9 @@ Form.propTypes = {
   "method": PropTypes.string,
     /** An Object, array, or string of CSS classes to
      * apply to form children components.*/
-  "childClasses": PropTypes.node
+  "childClasses": PropTypes.node,
+  /* Pass inline styles here. */
+  "style": PropTypes.node
 };
 
 Form.defaultProps = {

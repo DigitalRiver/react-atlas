@@ -66,7 +66,8 @@ class TextField extends React.PureComponent {
       mask,
       disabled,
       hidden,
-      className
+      className,
+      style
     } = this.props;
 
     let textFieldHeader = header && (
@@ -97,6 +98,7 @@ class TextField extends React.PureComponent {
 
     return (
       <div
+        style={style}
         styleName={wrapperClasses}
         onFocus={this._handleFocus}
         onBlur={this._handleBlur}
@@ -210,7 +212,10 @@ TextField.PropTypes = {
 	 * Determines if the text input is hidden.
 	 * @examples '<TextField hidden/>'
 	 */
-  hidden: PropTypes.bool
+  hidden: PropTypes.bool,
+
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 TextField.defaultProps = {
