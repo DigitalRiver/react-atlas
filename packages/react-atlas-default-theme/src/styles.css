@@ -3,3 +3,24 @@
 @import './styles/typography.css';
 @import './styles/colors.css';
 @import './styles/miscellaneous.css';
+/* Custom Font Family for Digital River */
+@font-face {
+  font-family: 'MrEavesXLModOT';
+  src: url('./fonts/MrEavesXLModOT-Reg.otf') format("opentype");
+}
+@font-face {
+    font-family: 'MrEavesXLModOT';
+    src: url('./fonts/MrEavesXLModOT-Bold.otf') format("opentype");
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'MrEavesXLModOT';
+    src: url('./fonts/MrEavesXLModOT-BoldItalic.otf') format("opentype");
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'MrEavesXLModOT';
+    src: url('./fonts/MrEavesXLModOT-RegItalic.otf') format("opentype");
+    font-style: italic;
+}
