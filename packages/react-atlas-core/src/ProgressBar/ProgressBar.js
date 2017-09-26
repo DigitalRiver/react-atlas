@@ -71,7 +71,7 @@ class ProgressBar extends React.PureComponent {
   renderRange() {
     let rangeStyle = prefixer({
       transform: `translateX(${this.calculateRatio(this.props.value.from) *
-        100}%) 
+        100}%)
                    scaleX(${this.calculateRatio(
                      this.props.value.to - this.props.value.from
                    )})`
@@ -90,11 +90,12 @@ class ProgressBar extends React.PureComponent {
   }
 
   render() {
-    const { type, mode, value, min, max, className } = this.props;
+    const { type, mode, value, min, max, className, style } = this.props;
     const classes = [type, mode, className];
 
     return (
       <div
+        style={style}
         aria-valuenow={value}
         aria-valuemin={min}
         aria-valuemax={max}
@@ -157,7 +158,10 @@ ProgressBar.propTypes = {
       from: PropTypes.number,
       to: PropTypes.number
     })
-  ])
+  ]),
+
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 ProgressBar.defaultProps = {

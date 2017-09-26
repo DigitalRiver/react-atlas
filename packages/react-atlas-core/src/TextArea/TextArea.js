@@ -56,7 +56,8 @@ class TextArea extends React.PureComponent {
       required,
       disabled,
       hidden,
-      className
+      className,
+      style
     } = this.props;
 
     let remainingCount = maxLength && (
@@ -94,6 +95,7 @@ class TextArea extends React.PureComponent {
 
     return (
       <div
+      style={style}
         styleName={wrapperClasses}
         onFocus={this._handleFocus}
         onBlur={this._handleBlur}
