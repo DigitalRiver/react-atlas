@@ -47,6 +47,10 @@ let config =  {
 
           }
         }
+      },
+      { 
+        test: /\.(otf)$/, 
+        loader: 'url-loader'
       }
     ],
   },

@@ -42,6 +42,10 @@ if(process.env.NODE_ENV === "production") {
                      'postcss-loader'
                      ]
                 })
+    },
+    { 
+      test: /\.(otf)$/, 
+      loader: 'url-loader' // TO-DO: Optimize for production build
     });
   config.plugins.push(new webpack.optimize.UglifyJsPlugin({
       mangle: true,
@@ -67,7 +71,11 @@ if(process.env.NODE_ENV === "production") {
         'css-loader?modules&importLoaders=1&localIdentName=ra_[name]__[local]',
         'postcss-loader'
     ]
-});
+  },
+  { 
+    test: /\.(otf)$/, 
+    loader: 'url-loader'
+  });
 }
 
 module.exports = function() {
