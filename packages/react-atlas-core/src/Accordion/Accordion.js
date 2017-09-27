@@ -111,7 +111,7 @@ class Accordion extends React.PureComponent {
         return (
             <div style={style}>
                 { this.state.expandAll && !this.props.disabled ? <div styleName={"expandAll"} onClick={() => {this._expandAll()}}>Expand All</div> : null }
-                <div styleName={"accordion"} style={{ width: width + "px" }}>
+                <div styleName={"accordion"} style={{ width: width }}>
                     {accordion_panels}
                 </div>
             </div>
@@ -161,7 +161,7 @@ Accordion.propTypes = {
 };
 
 Accordion.defaultProps = {
-    width: "300",
+    width: "100%",
     disabled: false
 };
 

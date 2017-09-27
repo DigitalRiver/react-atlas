@@ -2,7 +2,11 @@
     composes: default-border from '../styles.css';
     composes: border-bottom-none from '../styles.css';
     composes: bg-white from '../styles.css';
+    composes: default-text from '../styles.css';
     cursor: default;
+}
+.accordion .disabled {
+    opacity: 0.6;
 }
 .rightAlign {
     text-align: right;
@@ -17,14 +21,13 @@
 }
 .accordion_header {
     composes: marg-0  from '../styles.css';
-    composes: default-text from '../styles.css';
-    composes: bold from '../styles.css';
     composes: cursor-pointer from '../styles.css';
     composes: bg-silver from '../styles.css';
     composes: default-border-bottom from '../styles.css';
     composes: border-top-none from '../styles.css';
     composes: border-left-none from '../styles.css';
     composes: border-right-none from '../styles.css';
+    composes: header-font from '../styles.css';
     line-height: 1.5rem;
     vertical-align: middle;
 }
@@ -43,9 +46,6 @@
 .accordion_header.inactive {
 
 }
-.accordion_header.disabled {
-    opacity: 0.6;
-}
 .accordion_header.disabled:hover {
     background-color: #e6e6e6;
     color: #333;
@@ -58,6 +58,7 @@
     composes: border-bottom-none from '../styles.css';
     composes: border-left-none from '../styles.css';
     composes: border-right-none from '../styles.css';
+    composes: default-font from '../styles.css';
 }
 .accordion_panel div {
     display: none;
