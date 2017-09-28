@@ -11,40 +11,40 @@ Accordion:
 
 Accordion with expand all:
 
-     <Accordion expandAll={true}>
+     <Accordion expandAll>
           <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
           <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
 
 Accordion with multiOpen functionality:
 
-     <Accordion multiOpen={true}>
+     <Accordion multiOpen>
           <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
           <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
 
-Accordion with Width set in props as number (This is translated to NUMBERpx)
+Accordion with Width set in props as number (This is translated to NUMBERpx):
 
      <Accordion width={400}>
           <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
           <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
 
-Accordion with Width set in props as a string
+Accordion with Width set in props as a string:
 
      <Accordion width='50rem'>
           <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
           <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
 
-Accordion with defined open panel
+Accordion with defined open panel:
 
      <Accordion>
           <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
           <div title="Second" expanded>Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
 
-Accordion with disabled prop
+Accordion with disabled prop:
 
      <Accordion disabled>
           <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>

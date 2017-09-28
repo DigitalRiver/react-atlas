@@ -3,9 +3,8 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 
 /**
- * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
- *
- * **NOTE**: children will always take precedence over props passed into component.
+ * Accordion component creates a tab structure featuring a header and panel.  The MVP implementation requires the use of a div as the accordion child with a title prop
+ * @examples <Accordion><div title="accordion title">Some text</div><div title="accordion title 2">Some more text</div></Accordion> *
  */
 class Accordion extends React.PureComponent {
     constructor(props) {
