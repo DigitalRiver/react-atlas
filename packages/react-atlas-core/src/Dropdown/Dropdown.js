@@ -232,6 +232,7 @@ class Dropdown extends React.PureComponent {
           <li
             key={i}
             className={"ra_dropdown__item " + childClasses}
+            styleName={"default-font"}
             onMouseDown={e => {
               // onMouseDown fires before onBlur. If changed to onClick it will fire after onBlur and not work.
               this._clickHandler(i, e);
@@ -281,7 +282,7 @@ class Dropdown extends React.PureComponent {
         className={dropdownButtonClasses}
         type={"button"}
       >
-        <span>{this.state.output}</span>
+        <span styleName={"default-font"}>{this.state.output}</span>
         <i styleName="arrow" />
       </ButtonCore>
     );

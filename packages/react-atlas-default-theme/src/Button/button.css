@@ -2,19 +2,21 @@
 
 /*Main Styles*/
 .base {
-  composes: marg-0  from '../styles.css';
-  composes: bold from '../styles.css';
+  composes: button-marg-1  from '../styles.css';
   composes: button-pad-1 from '../styles.css';
   composes: default-text from '../styles.css';
   composes: default-border from '../styles.css';
   composes: cursor-pointer from '../styles.css';
   composes: primary-button-border-width from '../styles.css';
+  composes: default-font from '../styles.css';
+  border-radius: 2px;
   text-decoration: none;
   display: inline-block;
   vertical-align: middle;
   line-height: 1.125rem;
   -webkit-appearance: none;
   text-transform: uppercase;
+  font-size: 1.0625rem;
 }
 
 .base:hover {
@@ -50,17 +52,15 @@
 .primary {
   composes: bg-primary from '../styles.css';
   composes: hover-bg-primary from '../styles.css';
-  composes: border-blue from '../styles.css';
   composes: white from '../styles.css';
 }
 .button {
   composes: default_btn;
 }
 .secondary {
-  composes: white from '../styles.css';
   composes: bg-secondary from '../styles.css';
-  composes: border-kelly from '../styles.css';
   composes: hover-bg-secondary from '../styles.css';
+  composes: inverse-blue-text from '../styles.css';
 }
 
 /* TODO: Remove hardcoded color values and

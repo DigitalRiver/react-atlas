@@ -99,6 +99,7 @@
   white-space: nowrap;
   height: 1.8rem;
   line-height: normal;
+  composes: default-font from '../styles.css';
 }
 .dropdown-button:hover {
   border-color: #666;
@@ -121,6 +122,10 @@
 }
 .selected:hover {
   background-color: #E6E6E6;
+}
+
+.default-font {
+  composes: default-font from '../styles.css';
 }
 
 .error {

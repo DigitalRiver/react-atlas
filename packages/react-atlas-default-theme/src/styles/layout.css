@@ -53,6 +53,9 @@
 .marg-h-4 { margin-left: var(--space-4); margin-right: var(--space-4); }
 
 .marg-h-auto { margin-left: auto; margin-right: auto; }
+
+.button-marg-1 { margin:	0 3px 0 0; }
+
 .pad-0 { padding: 0 }
 
 .pad-1   { padding:       var(--space-1) }
@@ -71,4 +74,4 @@
 .pad-v-4 { padding-top:   var(--space-4); padding-bottom: var(--space-4) }
 .pad-h-4 { padding-left:  var(--space-4); padding-right:  var(--space-4) }
 
-.button-pad-1 { padding:  var(--space-1-1) }
+.button-pad-1 { padding:  var(--button-padding) }
