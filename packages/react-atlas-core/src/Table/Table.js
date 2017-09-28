@@ -5,24 +5,25 @@ import { LightTable } from "light-table/src";
 
 class Table extends React.PureComponent {
   render() {
-    const { className, children, data, options, maxHeight, search, pagination, sort, ...props } = this.props;
+    const { className, children, data, options, maxHeight, search, pagination, style, sort, ...props } = this.props;
 
     return (
-      <LightTable
-        style={style}
-        {...props}
-        search={search}
-        data={data}
-        options={options}
-        pagination={pagination}
-        maxHeight={maxHeight}
-        className={cx(className)}
-        containerClass={"ra_table__react-bs-table-container"}
-        tableContainerClass={"ra_table__react-bs-table"}
-        headerContainerClass={"ra_table__react-bs-container-header"}
-        bodyContainerClass={"ra_table__react-bs-container-body"}>
-        {children}
-      </LightTable>
+      <div style={style}>
+        <LightTable
+          {...props}
+          search={search}
+          data={data}
+          options={options}
+          pagination={pagination}
+          maxHeight={maxHeight}
+          className={cx(className)}
+          containerClass={"ra_table__react-bs-table-container"}
+          tableContainerClass={"ra_table__react-bs-table"}
+          headerContainerClass={"ra_table__react-bs-container-header"}
+          bodyContainerClass={"ra_table__react-bs-container-body"}>
+          {children}
+        </LightTable>
+      </div>
     );
   }
 }
@@ -36,7 +37,8 @@ Table.propTypes = {
     "defaultSortOrder": PropTypes.oneOfType([PropTypes.string, PropTypes.array])
   }),
   "className": PropTypes.string,
-  "maxHeight": PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  "maxHeight": PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  "style": PropTypes.node
 };
 
 Table.defaultProps = {
