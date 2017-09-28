@@ -1,32 +1,56 @@
 .accordion {
     composes: default-border from '../styles.css';
     composes: border-bottom-none from '../styles.css';
+    composes: bg-white from '../styles.css';
+    composes: default-text from '../styles.css';
+    cursor: default;
+}
+.accordion .disabled {
+    opacity: 0.6;
+}
+.rightAlign {
+    text-align: right;
+    composes: pad-h-2 from '../styles.css';
+}
+.leftAlign {
+    text-align: left;
+    composes: pad-h-2 from '../styles.css';
+}
+.centerAlign {
+    text-align: right;
 }
 .accordion_header {
     composes: marg-0  from '../styles.css';
-    composes: default-text from '../styles.css';
-    composes: bold from '../styles.css';
     composes: cursor-pointer from '../styles.css';
     composes: bg-silver from '../styles.css';
     composes: default-border-bottom from '../styles.css';
     composes: border-top-none from '../styles.css';
     composes: border-left-none from '../styles.css';
     composes: border-right-none from '../styles.css';
+    composes: header-font from '../styles.css';
     line-height: 1.5rem;
     vertical-align: middle;
-    text-align: center;
+}
+.accordion_header:hover {
+    background-color: #ccc;
+    color: white;
 }
 .accordion_header.active {
     border-bottom: 0;
     background-color: #00a7e1;
     color: white;
 }
-.accordion_header:hover {
-    background-color: #ccc;
-    color: white;
-}.accordion_header.active:hover {
-     background-color: #00a7e1;
- }
+.accordion_header.active:hover {
+    background-color: #00a7e1;
+}
+.accordion_header.inactive {
+
+}
+.accordion_header.disabled:hover {
+    background-color: #e6e6e6;
+    color: #333;
+    cursor: default;
+}
 
 .accordion_panel {
     composes: default-text from '../styles.css';
@@ -34,30 +58,48 @@
     composes: border-bottom-none from '../styles.css';
     composes: border-left-none from '../styles.css';
     composes: border-right-none from '../styles.css';
-    max-height: 0;
+    composes: default-font from '../styles.css';
 }
 .accordion_panel div {
     display: none;
+    padding-left: 0rem;
+    padding-right: 0rem;
 }
-.accordion_panel.active{
+.accordion_panel.active {
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid #999;
     max-height: 100%;
-    transition: max-height .25s ease-in-out;
-    -moz-transition: max-height .25s ease-in-out;
-    -webkit-transition: max-height .25s ease-in-out;
-    padding: 1rem;
+    opacity: 1;
+    padding: 1rem 0rem 1rem 0rem;
+    -moz-transition: .25s;
+    -ms-transition: .25s;
+    -o-transition: .25s;
+    -webkit-transition: .25s;
+    transition: .25s;
+    transition-timing-function: ease-in;
 }
 .accordion_panel.active div {
     display: block;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.accordion_panel.inactive {
+    max-height: 0;
+    padding: 0rem;
+    opacity: 0;
+    -moz-transition: .1s;
+    -ms-transition: .1s;
+    -o-transition: .1s;
+    -webkit-transition: .1s;
+    transition: .1s;
 }
 
 .expandAll {
     composes: marg-b-1 from '../styles.css';
-    composes: default-text from '../styles.css';
-    composes: primary from '../styles.css';
+    composes: primary-text from '../styles.css';
     cursor: pointer;
 }
 .expandAll:hover {

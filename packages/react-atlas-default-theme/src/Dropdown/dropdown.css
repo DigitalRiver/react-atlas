@@ -1,7 +1,7 @@
 .container {
   display: block;
   position: relative;
-  min-width: 10rem;
+  z-index: 0;
 }
 
 .content {
@@ -14,6 +14,7 @@
   font-size: 12px;
   text-align: left;
   left: 0;
+  position: relative;
 }
 
 .content:hover {
@@ -33,7 +34,6 @@
 
 .active button {
   border: 1px solid #00a7e1;
-  border-radius: .25rem .25rem 0 0;
 }
 
 .list {
@@ -45,14 +45,19 @@
   composes: default-border-bottom from '../styles.css';
   composes: primary-border-top from '../styles.css';
   composes: rounded-bottom from '../styles.css';
-  position:absolute;
   left: 0;
-  top: 46px;
+  top: 1.8rem;
+  position: absolute;
   list-style: none;
   transition: height 1s;
   max-height: 250px;
   overflow: auto;
-  max-width: 99%;
+}
+.fullWidth{
+  width:100%;
+}
+.convertedWidth {
+  width:calc(100% - 2px);
 }
 .item {
   padding: .5rem;
@@ -84,19 +89,16 @@
 }
 
 .dropdown-button {
-  border-radius: .25rem;
   color: #333;
   border: 1px solid #999;
   background-color: white !important;
   text-transform: none !important;
-  min-width: 100%;
+  width: 100%;
   padding-left: 0.5rem;
   text-align: left;
   white-space: nowrap;
   height: 1.8rem;
   line-height: normal;
-  margin-bottom: .25rem;
-  max-width: 100%;
 }
 .dropdown-button:hover {
   border-color: #666;

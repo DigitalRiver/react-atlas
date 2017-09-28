@@ -9,6 +9,7 @@ class Table extends React.PureComponent {
 
     return (
       <LightTable
+        style={style}
         {...props}
         search={search}
         data={data}

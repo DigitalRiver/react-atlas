@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 
 /**
- * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
+ * Accordion component creates a tab structure featuring a header and panel.  The MVP implementation requires the use of a div as the accordion child with a title prop
+ * @examples <Accordion><div title="accordion title">Some text</div><div title="accordion title 2">Some more text</div></Accordion>
  *
- * **NOTE**: children will always take precedence over props passed into component.
  */
 class Accordion extends React.PureComponent {
     constructor(props) {
@@ -28,7 +28,7 @@ class Accordion extends React.PureComponent {
             title: props.title,
             activeChildArray: childArray,
             expandAll: this.props.expandAll || false,
-            expanded: false,
+            expand: false,
             multiOpen: this.props.multiOpen || false
         };
     }
@@ -54,51 +54,64 @@ class Accordion extends React.PureComponent {
     _expandAll = () => {
         let newChildArray = [];
         for(var i = 0; i < this.state.activeChildArray.length; i++) {
-            newChildArray.push(!this.state.expanded);
+            newChildArray.push(!this.state.expand);
         }
         this.setState({
             activeChildArray: newChildArray,
-            expanded: !this.state.expanded
+            expand: !this.state.expand
         });
     }
 
     render() {
-        let { className, children, title, accordionWidth } = this.props;
+        let { className, children, title, width, disabled, titlePosition, style } = this.props;
 
         // activeClass is added to activ
-        let activeClass;
+        let stateClasses, styleClasses, headerClasses, panelClasses;
+
+        styleClasses = cx({
+            "leftAlign": titlePosition !== "right" && titlePosition !== "center",
+            "rightAlign": titlePosition === "right",
+            "centerAlign": titlePosition === "center"
+        });
 
         // A list of children of the Accordion component
         const accordion_panels = React.Children.map(children, (child, i) => {
-
-            if(this.state.activeChildArray[i] === true){
-                activeClass = cx({
-                    ra_accordion__active: true
-                });
+            if(this.state.activeChildArray[i] === true && !this.props.disabled){
+                stateClasses = cx(
+                    'active'
+                );
+            } else if(this.props.disabled) {
+                stateClasses = cx(
+                    'disabled'
+                );
             } else {
-                activeClass = "";
+                stateClasses = cx(
+                    'inactive'
+                );
             }
+
+            headerClasses = cx("accordion_header", stateClasses, styleClasses);
+            panelClasses = cx("accordion_panel", stateClasses);
 
             let accordion_panel = (
                 <div>
                     <div
-                        styleName={"accordion_header"}
-                        className={activeClass}
+                        styleName={headerClasses}
                         onClick={() => {
                             this._click(i);
                         }}>
                             {child.props.title}
                     </div>
-                    <div styleName={"accordion_panel"} className={activeClass}>{child}</div>
+                    <div styleName={panelClasses}>{child}</div>
                 </div>
             );
             return accordion_panel;
         });
 
         return (
-            <div>
-                { this.state.expandAll ? <div styleName={"expandAll"} onClick={() => {this._expandAll()}}>Expand All</div> : null }
-                <div styleName={"accordion"} style={{ width: accordionWidth + "px" }}>
+            <div style={style}>
+                { this.state.expandAll && !this.props.disabled ? <div styleName={"expandAll"} onClick={() => {this._expandAll()}}>Expand All</div> : null }
+                <div styleName={"accordion"} style={{ width: width }}>
                     {accordion_panels}
                 </div>
             </div>
@@ -109,7 +122,7 @@ class Accordion extends React.PureComponent {
 Accordion.propTypes = {
     /**
      * Children should be either a string, an icon/glyphicon, or an image tag.
-     * @examples "SomeName", <SomeIcon />, <img src="/path/to/image.jpg"/>
+     * @examples "SomeName", <Accordion>{child}{child}</Accordion>
      */
     children: PropTypes.node,
     /**
@@ -117,14 +130,38 @@ Accordion.propTypes = {
      */
     className: PropTypes.string,
     /**
-     * A string. Accordion will use First letter of the string.
-     * @examples "Nathan" will output "N"
+     * A string. Accordion will use title prop from each child as the title for header of each accordion
+     * @examples <Accordion><div title={title 1}>value 1</div><div title={title 2}>value 2</div></Accordion>
      */
-    title: PropTypes.string
+    title: PropTypes.string,
+    /**
+     * multiOpen
+     * boolean property.  Accordion will allow multiple open panels with this set to true
+     * @examples <Accordion multiOpen={true}>{children}</Accordion>
+     */
+    multiOpen: PropTypes.bool,
+    /**
+     * expandAll
+     * boolean property.  Accordion will add an "expand all" link which when clicked open all panels or collapse all panels
+     * @examples <Accordion expandAll={true}>{children}</Accordion>
+     */
+    expandAll: PropTypes.bool,
+    /**
+     * expanded
+     * boolean property.  Accordion will expand this child on load
+     * @examples <Accordion><div>value 1</div><div expanded>value 2</div></Accordion>
+     */
+    expanded: PropTypes.bool,
+    /**
+     * titlePosition
+     * string property. Accordion will set the title text position based on this property
+     * @examples <Accordion titlePosition={left}>{children}</Accordion>
+     */
+    titlePosition: PropTypes.string
 };
 
 Accordion.defaultProps = {
-    accordionWidth: "300",
+    width: "100%",
     disabled: false
 };
 

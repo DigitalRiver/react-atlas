@@ -2,9 +2,10 @@ var fs = require("fs");
 var path = require("path");
 var spawn = require("cross-spawn");
 var glob = require("glob");
+var path = require("path");
 
 // get packages paths
-var packages = glob.sync("./packages/react-atlas*/", { realpath: true });
+var packages = glob.sync(path.join(__dirname, "../packages/react-atlas*/"), { realpath: true });
 
 packages.push(packages.shift());
 
@@ -26,6 +27,3 @@ packages.forEach(function(pack) {
     });
   }
  });
-
-
-

@@ -1,12 +1,38 @@
 Basic Dropdown:
 
-    <Dropdown customLabel="Choose">
-       <span value="bird">Bird</span>
-       <span value="cow" selected>Cow</span>
-       <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
-       <span value="monkey">Monkey</span>
-       <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
-    </Dropdown>
+    <div>
+      <Dropdown customLabel="Choose">
+        <span value="bird">Bird</span>
+        <span value="cow" selected>Cow</span>
+        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+        <span value="monkey">Monkey</span>
+        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+      </Dropdown>
+    </div>
+
+Dropdowns with Custom Widths:
+
+    <div>
+      <div>
+        <Dropdown customLabel="Choose" width="300px">
+          <span value="bird">Bird</span>
+          <span value="cow" selected>Cow</span>
+          <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+          <span value="monkey">Monkey</span>
+          <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+        </Dropdown>
+      </div>
+      <br  />
+      <div>
+        <Dropdown customLabel="Choose" width="7rem">
+          <span value="bird">Bird</span>
+          <span value="cow" selected>Cow</span>
+          <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+          <span value="monkey">Monkey</span>
+          <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+        </Dropdown>
+      </div>
+    </div>
 
 Disabled Dropdown:
 

@@ -80,7 +80,7 @@ devTemplate +=
   eol +
   "import { {{=it.component.name}}Core } from 'react-atlas-core/src';" +
   eol +
-  "import { {{=it.component.name}}Style } from '{{=it.component.theme}}';" +
+  "import { {{=it.component.name}}Style } from '{{=it.component.theme}}/src';" +
   eol +
   "const {{=it.component.name}}Comp = CSSModules({{=it.component.name}}Core, {{=it.component.name}}Style, {allowMultiple: true});" +
   eol +
@@ -147,7 +147,7 @@ dot.templateSettings = {
 
 /* TODO: Replace hardcoded array with a dynamic solution. */
 let components = [
-  "Accordion",
+  "accordion",
   "avatar",
   "button",
   "card",

@@ -1,40 +1,53 @@
-Standard Accordion:
+Accordion:
 
      <Accordion>
-          <div title="first">this is the first panelasdasdasdas asdasd asda asda asd asd asdas dasda asdddd sad sd a asdadasd asd ad dsadasd asd asdasd ad asd </div>
-          <div title="second">this is the second panel</div>
-          <div title="third">this is the third panel</div>
+          <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu. An his nonumy tritani scripserit, essent nostro sadipscing mea te, indoctum referrentur mea eu. Te unum urbanitas usu, et sed partem postea neglegentur. Pri dicunt sensibus ex, est prodesset efficiendi id, senserit eloquentiam sit ex.
+
+                             Ius ea patrioque pertinacia moderatius. Ius errem aliquam splendide te, ne qui exerci diceret mnesarchum. Erant ludus copiosae ad pri, an illum conclusionemque vim. Mel alia consequat in, velit mundi saperet te pro. Tractatos consequuntur id mea.</div>
+          <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
+          <div title="Third"><Button/></div>
      </Accordion>
 
 
 Accordion with expand all:
 
-     <Accordion expandAll={true} multiOpen={true}>
-          <div title="first">this is the first panel</div>
-          <div title="second">this is the second panel</div>
-          <div title="third">this is the third panel</div>
+     <Accordion expandAll>
+          <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
+          <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
 
 Accordion with multiOpen functionality:
 
-     <Accordion multiOpen={true}>
-          <div title="first">this is the first panel</div>
-          <div title="second">this is the second panel</div>
-          <div title="third">this is the third panel</div>
+     <Accordion multiOpen>
+          <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
+          <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
 
-Accordion with Width set in props:
+Accordion with Width set in props as number (This is translated to NUMBERpx)
 
-     <Accordion accordionWidth={400}>
-          <div title="first">this is the first panel</div>
-          <div title="second">this is the second panel</div>
-          <div title="third">this is the third panel</div>
+     <Accordion width={400}>
+          <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
+          <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
 
-Accordion with defined open panel:
+Accordion with Width set in props as a string
+
+     <Accordion width='50rem'>
+          <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
+          <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
+     </Accordion>
+
+Accordion with defined open panel
 
      <Accordion>
-          <div title="first">this is the first panel</div>
-          <div title="second" expanded>this is the second panel</div>
-          <div title="third">this is the third panel</div>
+          <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
+          <div title="Second" expanded>Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
+     </Accordion>
+
+Accordion with disabled prop
+
+     <Accordion disabled>
+          <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
+          <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
+          <div title="Third">this is the third panel</div>
      </Accordion>

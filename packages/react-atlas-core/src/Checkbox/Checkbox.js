@@ -67,15 +67,6 @@ class Checkbox extends React.PureComponent {
     });
   };
 
-  _blur = callback => {
-    this.setState({ focus: false });
-    this._validationHandler(callback);
-  };
-
-  _focus = () => {
-    this.setState({ focus: true });
-  };
-
   render() {
     const {
       label,
@@ -86,7 +77,8 @@ class Checkbox extends React.PureComponent {
       groupError,
       errorCallback,
       inline,
-      labelPosition
+      labelPosition,
+      style
     } = this.props;
     // TODO: Figure out why, if moved to constructor, the following variables cause issues on click
     const inlineCheckbox = cx({ inline_block: inline, checkbox_padding: true });
@@ -112,12 +104,7 @@ class Checkbox extends React.PureComponent {
       <div
         onClick={this._clickHandler}
         styleName={inlineCheckbox}
-        onFocus={() => {
-          this._focus();
-        }}
-        onBlur={() => {
-          this._blur(errorCallback);
-        }}
+        style={style}
       >
         <div styleName={disabledClass}>
           {label && (
@@ -220,7 +207,10 @@ Checkbox.propTypes = {
   /**
    * States whether or not an error state has been passed down from the parent CheckboxGroup.
    */
-  groupError: PropTypes.bool
+  groupError: PropTypes.bool,
+
+  /* Pass inline styles here. */
+  style: PropTypes.node
 };
 
 Checkbox.defaultProps = {
