@@ -11,14 +11,14 @@ Accordion:
 
 Accordion with expand all:
 
-     <Accordion expandAll={true}>
+     <Accordion expandAll>
           <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
           <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
 
 Accordion with multiOpen functionality:
 
-     <Accordion multiOpen={true}>
+     <Accordion multiOpen>
           <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
           <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
