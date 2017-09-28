@@ -8,8 +8,8 @@ class Table extends React.PureComponent {
     const { className, children, data, options, maxHeight, search, pagination, style, sort, ...props } = this.props;
 
     return (
-      <div style={style}>
         <LightTable
+          style={style}
           {...props}
           search={search}
           data={data}
@@ -23,7 +23,6 @@ class Table extends React.PureComponent {
           bodyContainerClass={"ra_table__react-bs-container-body"}>
           {children}
         </LightTable>
-      </div>
     );
   }
 }
