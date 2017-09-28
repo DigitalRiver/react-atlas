@@ -41,7 +41,7 @@ class Avatar extends React.PureComponent {
   }
 
   render() {
-    let { children, icon, title } = this.props;
+    let { children, icon, title, style } = this.props;
     let kids = children;
     if (React.Children.count(children) === 1 && typeof children === "string") {
       kids = <span styleName={"letter"}>{children[0]}</span>;
@@ -68,7 +68,7 @@ class Avatar extends React.PureComponent {
     }
 
     return (
-      <div styleName={"avatar"}>
+      <div style={style} styleName={"avatar"}>
         {kids}
         {avatar}
       </div>
@@ -104,7 +104,10 @@ Avatar.propTypes = {
   /**
     * A URL to a image that is displayed when the main image fails to load.
     */
-  defaultImage: PropTypes.string
+  defaultImage: PropTypes.string,
+
+  /* Prop to pass inline styles. */
+  style: PropTypes.node
 };
 
 export default Avatar;

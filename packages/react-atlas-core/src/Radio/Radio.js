@@ -84,7 +84,8 @@ class Radio extends React.PureComponent {
       name,
       checked,
       disabled,
-      hidden
+      hidden,
+      style
     } = this.props;
 
     const { inlineRadio, labelStyle, labelTitle, radioDisplay } = this.classes;
@@ -99,7 +100,7 @@ class Radio extends React.PureComponent {
       : cx("inline_block", "relative", "padding");
 
     return (
-      <div onClick={this._clickHandler} styleName={inlineRadio}>
+      <div style={style} onClick={this._clickHandler} styleName={inlineRadio}>
         <div styleName={disabledClass}>
           {label && (
             <label
