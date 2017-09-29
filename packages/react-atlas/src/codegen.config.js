@@ -154,21 +154,22 @@ let components = [
   "checkbox",
   "checkboxGroup",
   "datePicker",
+  "dialog",
   "dropdown",
   "form",
+  "hint",
   "input",
+  "menu",
   "modal",
-  "dialog",
   "progressBar",
   "radio",
   "radioGroup",
   "switch",
   "table",
   "tableHeader",
-  "tooltip",
-  "hint",
   "textArea",
-  "textField"
+  "textField",
+  "tooltip"
 ];
 
 module.exports = {

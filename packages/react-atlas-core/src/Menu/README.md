@@ -1,0 +1,3 @@
+Basic Menu:
+	
+	<Menu />
