@@ -22,6 +22,9 @@ const babel = {
 // "style" loader turns CSS into JS modules that inject <style> tags.
 const css = {
   test: /\.css$/,
+  exclude: [
+    path.resolve(__dirname, 'src/assets/font-awesome/css/'),
+  ],
   loaders: [
     'style-loader?sourceMap',
     'css-loader?modules&importLoaders=1&localIdentName=ra_[name]__[local]',
@@ -34,6 +37,12 @@ const css = {
       }
     }
   ]
+}
+
+const fontawesome = {
+  test: /\.css$/,
+  include: path.resolve(__dirname, 'src/assets/font-awesome/css/'),
+  loader: 'style-loader!css-loader',
 }
 
 // JSON is not enabled by default in Webpack but both Node and Browserify allow it implicitly so we also enable it.
@@ -58,6 +67,7 @@ const url = {
     babel.test,
     css.test,
     json.test,
+    fontawesome.test,
   ],
   loader: 'url-loader',
   query: {
@@ -86,11 +96,10 @@ module.exports = {
         [
         babel,
         css,
+        fontawesome,
         json,
         url
         ]
-
-
     },
   },
 };
