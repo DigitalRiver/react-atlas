@@ -160,6 +160,7 @@ let components = [
   "hint",
   "input",
   "menu",
+  "menuItem",
   "modal",
   "progressBar",
   "radio",

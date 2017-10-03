@@ -11,6 +11,7 @@ export { FormStyle } from "./Form";
 export { HintStyle } from "./Hint";
 export { InputStyle } from "./Input";
 export { MenuStyle } from "./Menu";
+export { MenuItemStyle } from "./MenuItem";
 export { ModalStyle } from "./Modal";
 export { OverlayStyle } from "./Overlay";
 export { PortalStyle } from "./Portal";

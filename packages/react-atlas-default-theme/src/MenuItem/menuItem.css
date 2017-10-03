@@ -1,0 +1,31 @@
+.menuItem {
+	display: inline-block;
+	text-align: center;
+}
+
+.menuItemLink {
+	composes: default-font from '../styles.css';
+  	font-size: 19px;
+	color: #666666;
+	line-height: 27px;
+	text-decoration:none;
+	padding-right: 45px;
+	padding-left: 45px;
+	padding-top: 11.5px;
+	padding-bottom: 11.5px;
+	display: inline-block;
+}
+
+.menuItemLink:hover {
+	color: #00A7E1;
+}
+
+.borderTop {
+	border-top: solid 1px #E9E9E9;
+}
+
+.leftMenuItem {
+	width: 100%;
+	border-left: solid 1px #E9E9E9;
+	border-right: solid 1px #E9E9E9;
+}

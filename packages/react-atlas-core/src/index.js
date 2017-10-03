@@ -11,6 +11,7 @@ export { FormCore } from "./Form";
 export { HintCore } from "./Hint";
 export { InputCore } from "./Input";
 export { MenuCore } from "./Menu";
+export { MenuItemCore } from "./MenuItem";
 export { ModalCore } from "./Modal";
 export { ProgressBarCore } from "./ProgressBar";
 export { RadioCore } from "./Radio";
