@@ -23,6 +23,7 @@
 .blue           { color: var(--blue) }
 .navy           { color: var(--navy) }
 .sky-blue       { color: var(--sky-blue) }
+.inverse-blue-text { color: var(--inverseBlueText) }
 .kelly          { color: var(--kelly-green) }
 .teal           { color: var(--teal) }
 .green          { color: var(--green) }

@@ -17,21 +17,26 @@ class Dropdown extends React.PureComponent {
       throw "You must pass at least one child component to Dropdown";
     }
 
+    let initialValue = "";
+    let initialDisplay = "";
+    const dropdownValue = this.props.value;
+
     let childrenState = React.Children.map(this.props.children, child => {
       let value = child.props.value || " ";
       let display = child.props.children;
+      if (value === dropdownValue) {
+        initialValue = value;
+        initialDisplay = display;
+      }
       let childState = { value: value, display: display };
       return childState;
     });
 
-    let initialValue = childrenState[0].value;
-    let initialDisplay = childrenState[0].display;
-
     this.state = {
       active: false,
       childrenState: childrenState,
-      value: initialValue,
-      output: initialDisplay,
+      value: props.value ? initialValue : childrenState[0].value,
+      output: props.value ? initialDisplay : childrenState[0].display,
       isValid: true,
       errorMessage: messages.requiredMessage,
       focus: false,
@@ -170,8 +175,8 @@ class Dropdown extends React.PureComponent {
   _keyDown = event => {
     const indexValid = typeof this.state.index === "number";
     let newIndex;
-    event.preventDefault();
     if (event.key === "ArrowDown") {
+      event.preventDefault();
       newIndex = indexValid ? this.state.index + 1 : 0;
       let count = React.Children.count(this.props.children);
       if (newIndex < count) {
@@ -180,6 +185,7 @@ class Dropdown extends React.PureComponent {
         });
       }
     } else if (event.key === "ArrowUp") {
+      event.preventDefault();
       newIndex = this.state.index - 1;
       if (newIndex >= 0) {
         this.setState({
@@ -187,6 +193,7 @@ class Dropdown extends React.PureComponent {
         });
       }
     } else if (event.key === "Enter") {
+      event.preventDefault();
       this._clickHandler(this.state.index, event);
     }
   };
@@ -199,21 +206,28 @@ class Dropdown extends React.PureComponent {
       width,
       disabled,
       name,
+      inline,
       style
     } = this.props;
     const active = this.state.active;
     const error = !this.state.isValid && !disabled ? true : false;
     let zIndex = this.state.zIndex ? true : false;
     const classes = cx({
-      active: active,
       container: true,
-      zIndex: zIndex
+      zIndex: zIndex,
+      inline: inline
     });
 
     const buttonClasses = cx({
-      "ra_dropdown__dropdown-button": true,
-      ra_dropdown__error: error,
-      ra_dropdown__disabledClass: disabled
+      buttonClass: true,
+      "dropdown-button": true,
+      error: error,
+      disabledClass: disabled
+    });
+
+    const contentClasses = cx({
+      content: true,
+      focus: this.state.focus
     });
 
     let count = React.Children.count(this.props.children);
@@ -232,6 +246,7 @@ class Dropdown extends React.PureComponent {
           <li
             key={i}
             className={"ra_dropdown__item " + childClasses}
+            styleName={"default-font"}
             onMouseDown={e => {
               // onMouseDown fires before onBlur. If changed to onClick it will fire after onBlur and not work.
               this._clickHandler(i, e);
@@ -243,8 +258,6 @@ class Dropdown extends React.PureComponent {
         return kid;
       }
     );
-
-    const dropdownButtonClasses = cx(buttonClasses);
 
     const listClasses = cx({
       list: true,
@@ -277,11 +290,10 @@ class Dropdown extends React.PureComponent {
     let button = (
       <ButtonCore
         onClick={this.handleButtonClick}
-        styleName={"buttonClass"}
-        className={dropdownButtonClasses}
+        styleName={buttonClasses}
         type={"button"}
       >
-        <span>{this.state.output}</span>
+        <span styleName={"default-font"}>{this.state.output}</span>
         <i styleName="arrow" />
       </ButtonCore>
     );
@@ -292,6 +304,9 @@ class Dropdown extends React.PureComponent {
         name={name}
         className={className}
         styleName={classes}
+        onFocus={e => {
+          this._toggle(true, e);
+        }}
         onBlur={e => {
           this._toggle(false, e);
         }}
@@ -300,7 +315,7 @@ class Dropdown extends React.PureComponent {
         }}
       >
         {label}
-        <div styleName={"content"} style={{ width: width }}>
+        <div styleName={contentClasses} style={{ width: width }}>
           <div styleName={"fullWidth"}>{button}</div>
           {list}
           <input type="hidden" value={this.state.value} />
@@ -324,6 +339,9 @@ Dropdown.propTypes = {
 
   /* Boolean value that tells the dropdown whether the value is valid and controls error message is returns false.*/
   isValid: PropTypes.bool,
+
+  /* Boolean value that determines if the dropdown component will display inline*/
+  inline: PropTypes.bool,
 
   /**
    * If included, dropdown is disabled
@@ -365,6 +383,9 @@ Dropdown.propTypes = {
 
   /* The name of the key value used when submitting the dropdown value. */
   name: PropTypes.string,
+
+  /* The initial value that the dropdown will default to. */
+  value: PropTypes.string,
 
   /* Default text to show in collapsed dropdown on initial render */
   defaultText: PropTypes.string,

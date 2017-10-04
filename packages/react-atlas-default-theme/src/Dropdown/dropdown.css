@@ -2,6 +2,12 @@
   display: block;
   position: relative;
   z-index: 0;
+  top: 8px;
+  margin: 0 .25rem .25rem 0;
+}
+
+.inline {
+  display: inline-block;
 }
 
 .content {
@@ -32,8 +38,8 @@
   composes: cursor-pointer from '../styles.css';
 }
 
-.active button {
-  border: 1px solid #00a7e1;
+.focus {
+  composes: text-input-active from '../styles.css';
 }
 
 .list {
@@ -99,6 +105,7 @@
   white-space: nowrap;
   height: 1.8rem;
   line-height: normal;
+  composes: default-font from '../styles.css';
 }
 .dropdown-button:hover {
   border-color: #666;
@@ -121,6 +128,10 @@
 }
 .selected:hover {
   background-color: #E6E6E6;
+}
+
+.default-font {
+  composes: default-font from '../styles.css';
 }
 
 .error {

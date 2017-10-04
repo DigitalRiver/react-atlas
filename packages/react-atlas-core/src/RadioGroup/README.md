@@ -1,13 +1,26 @@
-###### Inline radio group:
+Radio Group
 
-    <RadioGroup inline name="test">
+    <RadioGroup inline name="test" title="Radio Group">
 		<Radio label="Option 1" value="first"/>
 		<Radio label="Option 2" value="second"/>
 	</RadioGroup>
 
-###### Radio group with title:
+Inline Radio Group
 
-    <RadioGroup inline name="test" title="This is a radio group">
+	<div>    
+	    <RadioGroup title="Radio Group One" inline name="test">
+			<Radio label="Option 1" value="first"/>
+			<Radio label="Option 2" value="second"/>
+		</RadioGroup>
+		<RadioGroup title="Radio Group Two" inline name="test2">
+			<Radio label="Option 1" value="first"/>
+			<Radio label="Option 2" value="second"/>
+		</RadioGroup>
+	</div>
+
+Radio Group with Inline Children
+
+    <RadioGroup title="Radio Group" inlineChildren name="test">
 		<Radio label="Option 1" value="first"/>
 		<Radio label="Option 2" value="second"/>
 	</RadioGroup>

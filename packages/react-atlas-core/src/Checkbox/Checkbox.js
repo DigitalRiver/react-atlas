@@ -75,13 +75,16 @@ class Checkbox extends React.PureComponent {
       className,
       name,
       groupError,
-      errorCallback,
       inline,
       labelPosition,
       style
     } = this.props;
     // TODO: Figure out why, if moved to constructor, the following variables cause issues on click
-    const inlineCheckbox = cx({ inline_block: inline, checkbox_padding: true });
+    const inlineCheckbox = cx({
+      inline_block: inline,
+      checkbox_padding: !inline,
+      inline_padding: inline
+    });
     const labelStyle = cx({
       label: labelPosition !== "left",
       label_left: labelPosition === "left"
@@ -90,8 +93,13 @@ class Checkbox extends React.PureComponent {
       labelPosition === "left" ? cx("float_right") : cx("float_left");
     const title_label = title ? title : label;
     const disabledClass = disabled
-      ? cx("disabled", "inline_block", "relative", "padding")
-      : cx("inline_block", "relative", "padding");
+      ? cx({
+          disabled: true,
+          inline_block: true,
+          relative: true,
+          padding: !inline
+        })
+      : cx({ inline_block: true, relative: true, padding: !inline });
     const error = groupError || !this.state.valid;
     let checkboxClass = cx({
       checked: this.state.checked,
@@ -132,9 +140,9 @@ class Checkbox extends React.PureComponent {
           {this.props.required && <span styleName={"error_text"}>*</span>}
         </div>
         {error &&
-        !groupError && (
-          <div styleName={cx("error_message")}>{this.state.errorMessage}</div>
-        )}
+          !groupError && (
+            <div styleName={cx("error_message")}>{this.state.errorMessage}</div>
+          )}
       </div>
     );
   }

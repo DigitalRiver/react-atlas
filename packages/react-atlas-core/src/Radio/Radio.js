@@ -202,6 +202,8 @@ Radio.propTypes = {
    * @examples '<Radio groupSetChecked={...}/>'
    */
   groupSetChecked: PropTypes.func,
+  /* Pass inline styles here. */
+  style: PropTypes.node,
   /**
    * Define a value for the radio button.
    * @examples '<Radio value="100"/>'

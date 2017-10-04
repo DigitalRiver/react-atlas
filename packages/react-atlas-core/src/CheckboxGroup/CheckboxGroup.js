@@ -42,7 +42,7 @@ class CheckboxGroup extends React.PureComponent {
       this.setState({ groupError: false });
     }
 
-    if(typeof this.props.onChange !== 'undefined') {
+    if (typeof this.props.onChange !== "undefined") {
       this.props.onChange(value, event, isValid, checked);
     }
   };
@@ -73,9 +73,25 @@ class CheckboxGroup extends React.PureComponent {
   };
 
   render() {
-    const { className, children, name, inline, title, style } = this.props;
+    const {
+      className,
+      children,
+      name,
+      inline,
+      inlineChildren,
+      title,
+      style
+    } = this.props;
+    const checkboxGroupStyles = cx({
+      checkboxGroup: !inline,
+      inline: inline
+    });
     return (
-      <div style={style} className={cx(className)} styleName={cx("checkboxGroup")}>
+      <div
+        style={style}
+        className={cx(className)}
+        styleName={checkboxGroupStyles}
+      >
         {title && (
           <div styleName={cx("header")}>
             <span styleName={cx("headerFont")}>{title}</span>
@@ -88,10 +104,10 @@ class CheckboxGroup extends React.PureComponent {
         )}
         {React.Children.map(children, child => {
           child = cloneElement(child, {
-            "inline": inline,
-            "name": name,
-            "onChange": this.handleChange,
-            "groupError": this.state.groupError
+            inline: inlineChildren,
+            name: name,
+            onChange: this.handleChange,
+            groupError: this.state.groupError
           });
           return child;
         })}
@@ -106,7 +122,7 @@ CheckboxGroup.propTypes = {
    * CheckboxGroup changes value. The callback has four arguments.
    * function(value, event, isValid, checked).
    */
-  "onChange": PropTypes.func,
+  onChange: PropTypes.func,
   /**
    * Anything that can be in a checkbox group. Typically only includes Checkbox components and a header.
    * @examples '<CheckboxGroup><Checkbox/><Checkbox/></CheckboxGroup>'
@@ -132,6 +148,11 @@ CheckboxGroup.propTypes = {
    * @examples '<CheckboxGroup inline></CheckboxGroup>'
    */
   inline: PropTypes.bool,
+  /**
+   * Defines if the checkbox group should display child Checkbox components inline.
+   * @examples '<CheckboxGroup inlineChildren></CheckboxGroup>'
+   */
+  inlineChildren: PropTypes.bool,
   /**
    * Defines a minimum number of checkboxes the user must select in order to proceed.
    * @examples '<CheckboxGroup min="3"></CheckboxGroup>'
