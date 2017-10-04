@@ -17,21 +17,26 @@ class Dropdown extends React.PureComponent {
       throw "You must pass at least one child component to Dropdown";
     }
 
+    let initialValue = "";
+    let initialDisplay = "";
+    const dropdownValue = this.props.value;
+
     let childrenState = React.Children.map(this.props.children, child => {
       let value = child.props.value || " ";
       let display = child.props.children;
+      if (value === dropdownValue) {
+        initialValue = value;
+        initialDisplay = display;
+      }
       let childState = { value: value, display: display };
       return childState;
     });
 
-    let initialValue = childrenState[0].value;
-    let initialDisplay = childrenState[0].display;
-
     this.state = {
       active: false,
       childrenState: childrenState,
-      value: initialValue,
-      output: initialDisplay,
+      value: props.value ? initialValue : childrenState[0].value,
+      output: props.value ? initialDisplay : childrenState[0].display,
       isValid: true,
       errorMessage: messages.requiredMessage,
       focus: false,
@@ -378,6 +383,9 @@ Dropdown.propTypes = {
 
   /* The name of the key value used when submitting the dropdown value. */
   name: PropTypes.string,
+
+  /* The initial value that the dropdown will default to. */
+  value: PropTypes.string,
 
   /* Default text to show in collapsed dropdown on initial render */
   defaultText: PropTypes.string,
