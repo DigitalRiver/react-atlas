@@ -20,6 +20,7 @@ const babel = {
 
 // "css" loader resolves paths in CSS and adds assets as dependencies.
 // "style" loader turns CSS into JS modules that inject <style> tags.
+// The exclude section is put there because font-awesome can't be handed with these loaders
 const css = {
   test: /\.css$/,
   exclude: [
@@ -39,6 +40,7 @@ const css = {
   ]
 }
 
+// A specific test for font-awesome files
 const fontawesome = {
   test: /\.css$/,
   include: path.resolve(__dirname, 'src/assets/font-awesome/css/'),
