@@ -27,11 +27,24 @@ class RadioGroup extends React.PureComponent {
   };
 
   render() {
-    const { className, children, name, inline, title, style } = this.props;
+    const {
+      className,
+      children,
+      name,
+      inline,
+      inlineChildren,
+      title,
+      style
+    } = this.props;
+
+    const radioGroupStyles = cx({
+      radioGroup: !inline,
+      inline: inline
+    });
 
     const radioButtons = React.Children.map(children, child => {
       child = cloneElement(child, {
-        inline: inline,
+        inline: inlineChildren,
         name: name,
         groupSetChecked: this.groupSetChecked,
         checked: this.state.checkedRadio === child.props.value
@@ -40,9 +53,9 @@ class RadioGroup extends React.PureComponent {
     });
 
     return (
-      <div style={style} className={cx(className)} styleName={cx("radioGroup")}>
+      <div style={style} className={cx(className)} styleName={radioGroupStyles}>
         {title && (
-          <div styleName={cx("header")}>
+          <div styleName={cx({ header: !inline })}>
             <span styleName={cx("headerFont")}>{title}</span>
           </div>
         )}
@@ -78,6 +91,11 @@ RadioGroup.propTypes = {
    * @examples '<RadioGroup inline></RadioGroup>'
    */
   inline: PropTypes.bool,
+  /**
+   * Defines if the radio group should display child Radio components inline.
+   * @examples '<RadioGroup inlineChildren></RadioGroup>'
+   */
+  inlineChildren: PropTypes.bool,
 
   /* Pass inline styles here. */
   style: PropTypes.node
