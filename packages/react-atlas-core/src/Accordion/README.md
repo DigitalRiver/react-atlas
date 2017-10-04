@@ -51,3 +51,9 @@ Accordion with disabled prop:
           <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
           <div title="Third">this is the third panel</div>
      </Accordion>
+
+Accordion with panel component:
+
+     <Accordion>
+          <Panel >text</Panel>
+     </Accordion>
