@@ -9,7 +9,7 @@ class Panel extends React.PureComponent {
     render() {
         const { className, children, style } = this.props;
         return (
-            <div style={style}>
+            <div style={style} className={cx(className)}>
                 {children}
             </div>
         );

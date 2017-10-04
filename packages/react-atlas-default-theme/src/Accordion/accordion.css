@@ -36,7 +36,6 @@
     color: white;
 }
 .accordion_header.active {
-    border-bottom: 0;
     background-color: #00a7e1;
     color: white;
 }
