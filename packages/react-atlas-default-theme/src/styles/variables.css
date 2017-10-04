@@ -9,7 +9,7 @@
   --primary-hover:              var(--primary-blue-hover);
   --secondary:                  var(--secondary-blue);
   --secondary-hover:            var(--secondary-blue-hover);
-  --default:                    var(--charcoal);
+  --default:                    var(--dark-gray);
   --default-hover:              var(--primary-gray-hover);
 
   --error:      var(--red);
@@ -56,11 +56,11 @@
   --primary-gray:       var(--silver);
   --primary-gray-hover: var(--gray);
 
-  --primary-gray-border:      var(--med-gray);
-  --primary-gray-border-hover: var(--dark-gray);
+  --primary-gray-border:      var(--gray);
+  --primary-gray-border-hover: var(--gray);
   --white:              #fff;
-  --silver:             #e6e6e6;
-  --gray:               #ccc;
+  --silver:             #e9e9e9;
+  --gray:               #bebebe;
   --med-gray:           #999;
   --dark-gray:          #666;
   --charcoal:           #333;
@@ -115,6 +115,6 @@
   --default-border-color:   var(--border-color);
   --border-width: 1px;
   --button-border-width: 0px;
-  --border-radius: .25rem;
+  --border-radius: 2px;
   --border-color: var(--med-gray);
 }

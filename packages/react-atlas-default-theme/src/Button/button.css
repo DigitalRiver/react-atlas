@@ -9,7 +9,7 @@
   composes: cursor-pointer from '../styles.css';
   composes: primary-button-border-width from '../styles.css';
   composes: default-font from '../styles.css';
-  border-radius: 2px;
+  composes: rounded from '../styles.css';
   text-decoration: none;
   display: inline-block;
   vertical-align: middle;
