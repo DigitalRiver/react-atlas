@@ -8,17 +8,19 @@ class TextField extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      "value": props.value || "",
-      "remaining": props.maxLength,
-      "active": false,
-      "isValid": props.isValid || true
+      value: props.value || "",
+      remaining: props.maxLength,
+      active: false,
+      isValid: props.isValid || true
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (typeof nextProps.isValid !== 'undefined' &&
-        nextProps.isValid !== this.state.isValid) {
-          this.setState({ isValid: nextProps.isValid });
+    if (
+      typeof nextProps.isValid !== "undefined" &&
+      nextProps.isValid !== this.state.isValid
+    ) {
+      this.setState({ isValid: nextProps.isValid });
     }
   }
 
@@ -32,8 +34,8 @@ class TextField extends React.PureComponent {
 
     // Set value and valid state depending on InputCore state
     this.setState({
-      "value": value,
-      "isValid": isValid
+      value: value,
+      isValid: isValid
     });
 
     if (this.props.onChange) {
@@ -67,6 +69,7 @@ class TextField extends React.PureComponent {
       disabled,
       hidden,
       className,
+      inline,
       style
     } = this.props;
 
@@ -82,7 +85,8 @@ class TextField extends React.PureComponent {
         hidden,
         small,
         medium,
-        large
+        large,
+        inline
       },
       "textfieldWrapper"
     );
@@ -112,7 +116,8 @@ class TextField extends React.PureComponent {
           value={this.state.value}
           maxLength={maxLength}
           styleName={textFieldClasses}
-          onChange={ (value, event, isValid) => this._handleChange(value, event, isValid)}
+          onChange={(value, event, isValid) =>
+            this._handleChange(value, event, isValid)}
           required={required}
           validator={validator}
           errorText={errorText}
@@ -127,7 +132,10 @@ class TextField extends React.PureComponent {
 }
 
 TextField.PropTypes = {
-  "isValid": PropTypes.bool,
+  /**
+   * Sets if the TextField is valid.
+   */
+  isValid: PropTypes.bool,
   /**
 	 * Define a custom css class name.
 	 * @examples 'textfield', 'textfield-elem'
@@ -215,7 +223,10 @@ TextField.PropTypes = {
   hidden: PropTypes.bool,
 
   /* Pass inline styles here. */
-  style: PropTypes.node
+  style: PropTypes.node,
+
+  /* Sets whether or not TextField will display as inline */
+  inline: PropTypes.bool
 };
 
 TextField.defaultProps = {

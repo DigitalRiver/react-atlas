@@ -1,13 +1,14 @@
 .textfield {
 	composes: primary-gray-border from '../styles.css';
 	composes: default-font from '../styles.css';
-	width: 100%;
-	height: 1.45rem;
+	width: calc(100% - 10px);
+	height: 1.05rem;
 	padding: 5px;
 }
 
 .textfieldWrapper {
-	width: 99%;
+	margin: 0 .25rem .25rem 0;
+	width: 100%;
 	composes: default-font from '../styles.css';
 }
 
@@ -57,4 +58,8 @@
 .error_text {
   composes: header-font from '../styles.css';
   color: #BD0A33;
+}
+
+.inline {
+  display: inline-block;
 }

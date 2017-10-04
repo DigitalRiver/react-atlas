@@ -9,7 +9,7 @@
   overflow:hidden;
   display: block;
   position:relative;
-  margin: 16px;
+  margin: 0 .25rem .25rem 0;
 }
 
 .sliderSmall{
@@ -149,4 +149,10 @@
 
 .inputLarge{
   composes: input;
+}
+
+.inline {
+  display: inline-block;
+  position: relative;
+  top: 16px;
 }
