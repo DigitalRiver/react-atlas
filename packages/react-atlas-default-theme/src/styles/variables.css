@@ -115,6 +115,6 @@
   --default-border-color:   var(--border-color);
   --border-width: 1px;
   --button-border-width: 0px;
-  --border-radius: 2px;
+  --border-radius: .1rem;
   --border-color: var(--med-gray);
 }
