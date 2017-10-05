@@ -17,26 +17,62 @@ class Dropdown extends React.PureComponent {
       throw "You must pass at least one child component to Dropdown";
     }
 
-    let initialValue = "";
-    let initialDisplay = "";
+    let initialValue;
+    let initialDisplay;
+    let initialIndex;
     const dropdownValue = this.props.value;
 
-    let childrenState = React.Children.map(this.props.children, child => {
-      let value = child.props.value || " ";
-      let display = child.props.children;
-      if (value === dropdownValue) {
-        initialValue = value;
-        initialDisplay = display;
+    let childrenState = React.Children.map(
+      this.props.children,
+      (child, index) => {
+        let value = child.props.value || " ";
+        let display = child.props.children;
+        if (value === dropdownValue) {
+          initialValue = value;
+          initialDisplay = display;
+          initialIndex = index;
+        }
+        let childState = { value: value, display: display };
+        return childState;
       }
-      let childState = { value: value, display: display };
-      return childState;
-    });
+    );
+
+    this.getInitialValue = function() {
+      if (props.value) {
+        return initialValue;
+      } else if (props.defaultText) {
+        return "";
+      } else {
+        return childrenState[0].value;
+      }
+    };
+
+    this.getInitialDisplay = function() {
+      if (props.value) {
+        return initialDisplay;
+      } else if (props.defaultText) {
+        return props.defaultText;
+      } else {
+        return childrenState[0].display;
+      }
+    };
+
+    this.getInitialIndex = function() {
+      if (props.value) {
+        return initialIndex;
+      } else if (props.defaultText) {
+        return null;
+      } else {
+        return 0;
+      }
+    };
 
     this.state = {
       active: false,
       childrenState: childrenState,
-      value: props.value ? initialValue : childrenState[0].value,
-      output: props.value ? initialDisplay : childrenState[0].display,
+      value: this.getInitialValue(),
+      output: this.getInitialDisplay(),
+      index: this.getInitialIndex(),
       isValid: true,
       errorMessage: messages.requiredMessage,
       focus: false,
@@ -100,34 +136,25 @@ class Dropdown extends React.PureComponent {
    * Active is used to show/hide options, valid is used to show/hide error messaging related to
    * validation and zIndex sets a class on the component to ensure it has the proper index on the DOM
    */
-  _toggle = (focus, event) => {
+  _toggle = event => {
     if (this.props.disabled === true) {
       return;
     }
 
-    if (focus === false) {
+    if (this.state.active === true && event.type === "click") {
+      this.setState({ active: false, zIndex: false });
+    } else if (this.state.active === false && event.type === "click") {
+      this.setState({ active: true, zIndex: true });
+    } else if (event.type === "focus") {
+      this.setState({ focus: true });
+    } else if (event.type === "blur") {
       this.setState({ focus: false, active: false, zIndex: false });
-      return;
-    } else if (focus === true) {
-      this.setState({ focus: true, active: true, zIndex: true });
     }
 
     this._validationHandler(this.props.errorCallback);
 
     if (typeof this.props.onClick !== "undefined") {
       this.props.onClick(this.state.value, event, this.state.isValid);
-    }
-  };
-
-  handleButtonClick = () => {
-    if (this.props.disabled === true) {
-      return;
-    }
-
-    if (this.state.focus === true) {
-      this.setState({ focus: false, active: false, zIndex: false });
-    } else if (this.state.focus === false) {
-      this.setState({ focus: true, active: true, zIndex: true });
     }
   };
 
@@ -181,7 +208,9 @@ class Dropdown extends React.PureComponent {
       let count = React.Children.count(this.props.children);
       if (newIndex < count) {
         this.setState({
-          index: newIndex
+          index: newIndex,
+          value: this.props.children[newIndex].props.value,
+          output: this.props.children[newIndex].props.children
         });
       }
     } else if (event.key === "ArrowUp") {
@@ -189,12 +218,16 @@ class Dropdown extends React.PureComponent {
       newIndex = this.state.index - 1;
       if (newIndex >= 0) {
         this.setState({
-          index: newIndex
+          index: newIndex,
+          value: this.props.children[newIndex].props.value,
+          output: this.props.children[newIndex].props.children
         });
       }
     } else if (event.key === "Enter") {
       event.preventDefault();
-      this._clickHandler(this.state.index, event);
+      if (!this.props.disabled) {
+        this.setState({ active: !this.state.active, zIndex: !this.state.active });
+      }
     }
   };
 
@@ -289,7 +322,9 @@ class Dropdown extends React.PureComponent {
 
     let button = (
       <ButtonCore
-        onClick={this.handleButtonClick}
+        onClick={e => {
+          this._toggle(e);
+        }}
         styleName={buttonClasses}
         type={"button"}
       >
@@ -305,10 +340,10 @@ class Dropdown extends React.PureComponent {
         className={className}
         styleName={classes}
         onFocus={e => {
-          this._toggle(true, e);
+          this._toggle(e);
         }}
         onBlur={e => {
-          this._toggle(false, e);
+          this._toggle(e);
         }}
         onKeyDown={e => {
           this._keyDown(e);
