@@ -225,7 +225,9 @@ class Dropdown extends React.PureComponent {
       }
     } else if (event.key === "Enter") {
       event.preventDefault();
-      this.setState({ active: !this.state.active, zIndex: !this.state.active });
+      if (!this.props.disabled) {
+        this.setState({ active: !this.state.active, zIndex: !this.state.active });
+      }
     }
   };
 
@@ -338,7 +340,6 @@ class Dropdown extends React.PureComponent {
         className={className}
         styleName={classes}
         onFocus={e => {
-          console.log(e);
           this._toggle(e);
         }}
         onBlur={e => {
