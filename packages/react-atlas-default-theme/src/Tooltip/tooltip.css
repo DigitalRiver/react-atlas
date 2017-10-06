@@ -21,7 +21,7 @@
 /* Base styles for the entire tooltip */
 
 .tooltip:before,
-.tooltip span {
+.tooltip > span {
   position: absolute;
   visibility: hidden;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -47,9 +47,9 @@
 
 /* Show the entire tooltip on hover and focus */
 .tooltip:hover:before,
-.tooltip:hover span,
+.tooltip:hover > span,
 .tooltip:focus:before,
-.tooltip:focus span {
+.tooltip:focus > span {
   visibility: visible;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
@@ -65,7 +65,7 @@
 }
 
 /* Base styles for the tooltip's content area */
-.tooltip span {
+.tooltip > span {
   z-index: 1000;
   padding: 8px;
   width: 160px;
@@ -80,9 +80,9 @@
 
 /* Top (default) */
 .tooltip:before,
-.tooltip span,
+.tooltip > span,
 .tooltip-top:before,
-.tooltip-top span {
+.tooltip-top > span {
   bottom: 100%;
   left: 50%;
 }
@@ -103,10 +103,10 @@
 
 .tooltip:hover:before,
 .tooltip:focus:before,
-.tooltip-top:hover span,
-.tooltip-top:focus span,
-.tooltip:hover span,
-.tooltip:focus span {
+.tooltip-top:hover > span,
+.tooltip-top:focus > span,
+.tooltip:hover > span,
+.tooltip:focus > span {
   -webkit-transform: translateY(-12px);
   -moz-transform:    translateY(-12px);
   transform:         translateY(-12px);
@@ -114,7 +114,7 @@
 
 /* Left */
 .tooltip-left:before,
-.tooltip-left span {
+.tooltip-left > span {
   right: 100%;
   bottom: 50%;
   left: auto;
@@ -130,9 +130,9 @@
 }
 
 .tooltip-left:hover:before,
-.tooltip-left:hover span,
+.tooltip-left:hover > span,
 .tooltip-left:focus:before,
-.tooltip-left:focus span {
+.tooltip-left:focus > span {
   -webkit-transform: translateX(-12px);
   -moz-transform:    translateX(-12px);
   transform:         translateX(-12px);
@@ -140,7 +140,7 @@
 
 /* Bottom */
 .tooltip-bottom:before,
-.tooltip-bottom span {
+.tooltip-bottom > span {
   top: 100%;
   bottom: auto;
   left: 50%;
@@ -156,8 +156,8 @@
 
 .tooltip-bottom:hover:before,
 .tooltip-bottom:focus:before,
-.tooltip-bottom:hover span,
-.tooltip-bottom:focus span{
+.tooltip-bottom:hover > span,
+.tooltip-bottom:focus > span{
   -webkit-transform: translateY(12px);
   -moz-transform:    translateY(12px);
   transform:         translateY(12px);
@@ -165,7 +165,7 @@
 
 /* Right */
 .tooltip-right:before,
-.tooltip-right span {
+.tooltip-right > span {
   bottom: 50%;
   left: 100%;
 }
@@ -179,9 +179,9 @@
 }
 
 .tooltip-right:hover:before,
-.tooltip-right:hover span,
+.tooltip-right:hover > span,
 .tooltip-right:focus:before,
-.tooltip-right:focus span {
+.tooltip-right:focus > span {
   -webkit-transform: translateX(12px);
   -moz-transform:    translateX(12px);
   transform:         translateX(12px);
@@ -194,8 +194,8 @@
 }
 
 /* Vertically center tooltip content for left/right tooltips */
-.tooltip-left span,
-.tooltip-right span {
+.tooltip-left > span,
+.tooltip-right > span {
   margin-left: 0;
   margin-bottom: -16px;
 }
