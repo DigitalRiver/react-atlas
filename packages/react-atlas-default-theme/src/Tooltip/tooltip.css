@@ -96,8 +96,8 @@
 }
 
 /* Horizontally align top/bottom tooltips */
-.tooltip-top span,
-.tooltip-bottom span {
+.tooltip-top > span,
+.tooltip-bottom > span {
   margin-left: -80px;
 }
 
