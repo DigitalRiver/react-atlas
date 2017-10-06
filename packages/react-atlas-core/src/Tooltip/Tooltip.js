@@ -11,17 +11,17 @@ class Tooltip extends React.PureComponent {
 
     // Initial state
     this.state = {
-      tooltip: props.tooltip,
+      tooltip: props.text,
       position: props.position,
       icon: props.icon,
-      delay: props.tooltipDelay || null,
+      delay: props.delay || null,
       active: false
     };
   }
 
   _active = focus => {
     if (focus === true) {
-      if (!this.props.tooltipDelay) {
+      if (!this.props.delay) {
         this.setState({
           active: true
         });
@@ -30,7 +30,7 @@ class Tooltip extends React.PureComponent {
           this.setState({
             active: true
           });
-        }, this.props.tooltipDelay);
+        }, this.props.delay);
       }
     } else {
       this.setState({
@@ -92,14 +92,14 @@ Tooltip.propTypes = {
   className: PropTypes.string,
   /**
      * For the text displayed within the tooltip
-     * @examples <Tooltip tooltip="default"/>
+     * @examples <Tooltip text="default"/>
      */
-  tooltip: PropTypes.string,
+  text: PropTypes.string,
   /**
      *  For delay of tooltip message
-     *  @example <Tooltip tooltipDelay={10000}/>
+     *  @example <Tooltip delay={10000}/>
      */
-  tooltipDelay: PropTypes.number,
+  delay: PropTypes.number,
   /**
      * For disabling tooltip
      * @example <Tooltip disabled />
@@ -124,8 +124,8 @@ Tooltip.defaultProps = {
   children: "",
   icon: "fa fa-info-circle",
   disabled: false,
-  tooltip: "",
-  tooltipDelay: null
+  text: "",
+  delay: null
 };
 
 export default Tooltip;
