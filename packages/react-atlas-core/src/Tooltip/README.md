@@ -1,36 +1,36 @@
 ###### Default tooltip:
 
-    <Tooltip tooltip="default"/>
+    <Tooltip text="default"/>
 
 ###### Default tooltip with bottom position set:
 
 
-    <Tooltip tooltip="Bottom tooltip position" position="bottom"/>
+    <Tooltip text="Bottom tooltip position" position="bottom"/>
 
 ###### Top tooltip:
 
-    <Tooltip tooltip="Top tooltip position" position="top"/>
+    <Tooltip text="Top tooltip position" position="top"/>
 
 ###### Left tooltip:
 
-    <Tooltip tooltip="Left tooltip position" position="left"/>
+    <Tooltip text="Left tooltip position" position="left"/>
 
 ###### Right tooltip:
 
-    <Tooltip tooltip="Right tooltip position" position="right"/>
+    <Tooltip text="Right tooltip position" position="right"/>
 
 ###### Custom icon prop tooltip:
 
-    <Tooltip tooltip="Custom icon prop" icon="fa fa-question-circle"/>
+    <Tooltip text="Custom icon prop" icon="fa fa-question-circle"/>
 
 ###### Icon child tooltip:
 
-    <Tooltip tooltip="Icon child"><i className="fa fa-question"></i></Tooltip>
+    <Tooltip text="Icon child"><i className="fa fa-question"></i></Tooltip>
 
 ###### Tooltip with child element:
 
-    <Tooltip tooltip="Tooltip with child element"><Button primary small>Button</Button></Tooltip>
+    <Tooltip text="Tooltip with child element"><Button primary small>Button</Button></Tooltip>
 
 ###### Tooltip with delay:
 
-    <Tooltip tooltip="Delayed" tooltipDelay={1000}/>
+    <Tooltip text="Delayed" delay={1000}/>
