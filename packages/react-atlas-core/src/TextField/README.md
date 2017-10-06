@@ -18,6 +18,13 @@
 
     <TextField large/>
 
+###### Inline textfields:
+
+    <div>
+        <TextField small inline header="TextField One"/>
+        <TextField small inline header="TextField Two"/>
+    </div>
+
 ###### Placeholder text:
 
     <TextField placeholder="Enter product details here..."/>

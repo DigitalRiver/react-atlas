@@ -3,14 +3,13 @@
 @custom-media --breakpoint-sm (min-width: 40em);
 @custom-media --breakpoint-md (min-width: 52em);
 @custom-media --breakpoint-lg (min-width: 64em);
-
 :root {
   /* Primary Theme Colors */
   --primary:                    var(--primary-blue);
   --primary-hover:              var(--primary-blue-hover);
-  --secondary:                  var(--primary-green);  /* Matches Primary Green */
-  --secondary-hover:            var(--primary-green-hover);
-  --default:                    var(--charcoal);
+  --secondary:                  var(--secondary-blue);
+  --secondary-hover:            var(--secondary-blue-hover);
+  --default:                    var(--dark-gray);
   --default-hover:              var(--primary-gray-hover);
 
   --error:      var(--red);
@@ -20,13 +19,20 @@
   --alert:      var(--red);
 
   /* Blue */
-  --primary-blue:       var(--sky-blue);
-  --primary-blue-hover: var(--blue);
-  --aqua:               #7fdbff;
-  --blue:               #007EB5;
-  --navy:               #001f3f;
-  --teal:               #39cccc;
-  --sky-blue:           #00A7E1;
+  --primary-blue:         var(--lightBlue);
+  --primary-blue-hover:   var(--lightBlueHover);
+  --secondary-blue:       var(--blue);
+  --secondary-blue-hover: var(--blueHover);
+  --aqua:                 #7fdbff;
+  --blue:                 #003058;
+  --blueHover:            #001425;
+  --inverseBlueText:      #B6E8FB;
+  --lightBlue:            #00a7e1;
+  --lightBlueHover:       #0081ae;
+  --altBlue:              #b6e8fb;
+  --navy:                 #001f3f;
+  --teal:                 #39cccc;
+  --sky-blue:             #00A7E1;
 
   /* Cool */
   --primary-green:        var(--light-green);
@@ -50,19 +56,19 @@
   --primary-gray:       var(--silver);
   --primary-gray-hover: var(--gray);
 
-  --primary-gray-border:      var(--med-gray);
-  --primary-gray-border-hover: var(--dark-gray);
+  --primary-gray-border:      var(--gray);
+  --primary-gray-border-hover: var(--gray);
   --white:              #fff;
-  --silver:             #e6e6e6;
-  --gray:               #ccc;
+  --silver:             #e9e9e9;
+  --gray:               #bebebe;
   --med-gray:           #999;
   --dark-gray:          #666;
   --charcoal:           #333;
   --black:              #111;
 
   /*standard variables*/
-  --font-family: Arial, Helvetica, sans-serif;
-  --font-size: 12px;
+  --font-family: 'MrEavesXLModOT', Arial, Helvetica, sans-serif;
+  --font-size: 14px;
   --header-font-size: 16px;
   --line-height: 1.5;
   --heading-font-family: var(--font-family);
@@ -92,6 +98,7 @@
   --button-line-height: 1.125rem;
   --button-padding-y: .5rem;
   --button-padding-x: 1rem;
+  --button-padding: 0.625rem 1.125rem 0.5rem;
   --container-width: 64em;
 
   --darken-1: rgba(0,0,0,.0625);
@@ -107,7 +114,7 @@
   --default-border-width:   var(--border-width);
   --default-border-color:   var(--border-color);
   --border-width: 1px;
-  --button-border-width: 2px;
-  --border-radius: .25rem;
+  --button-border-width: 0px;
+  --border-radius: .1rem;
   --border-color: var(--med-gray);
 }

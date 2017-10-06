@@ -1,14 +1,44 @@
 Basic Dropdown:
 
     <div>
-      <Dropdown customLabel="Choose">
+      <Dropdown>
         <span value="bird">Bird</span>
-        <span value="cow" selected>Cow</span>
+        <span value="cow">Cow</span>
         <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
         <span value="monkey">Monkey</span>
         <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
       </Dropdown>
     </div>
+
+Dropdown with Label
+
+      <Dropdown customLabel="Dropdown Example" >
+        <span value="bird">Bird</span>
+        <span value="cow">Cow</span>
+        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+        <span value="monkey">Monkey</span>
+        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+      </Dropdown>
+
+Dropdown with Default Select Value
+
+      <Dropdown defaultText="Select One ...">
+        <span value="bird">Bird</span>
+        <span value="cow">Cow</span>
+        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+        <span value="monkey">Monkey</span>
+        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+      </Dropdown>
+
+Dropdown with Pre-Set Value
+
+      <Dropdown value="cow">
+        <span value="bird">Bird</span>
+        <span value="cow">Cow</span>
+        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+        <span value="monkey">Monkey</span>
+        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+      </Dropdown>
 
 Dropdowns with Custom Widths:
 
@@ -43,6 +73,25 @@ Disabled Dropdown:
        <span value="monkey">Monkey</span>
        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
     </Dropdown>
+
+Inline Dropdowns:
+
+    <div>
+      <Dropdown customLabel="Dropdown One" name="dropdown1" inline>
+         <span value="bird">Bird</span>
+         <span value="cow">Cow</span>
+         <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+         <span value="monkey">Monkey</span>
+         <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+      </Dropdown>
+      <Dropdown customLabel="Dropdown Two" name="dropdown2" inline>
+         <span value="bird">Bird</span>
+         <span value="cow">Cow</span>
+         <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+         <span value="monkey">Monkey</span>
+         <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+      </Dropdown>
+    </div>
 
 Dropdown with Required Property:
 

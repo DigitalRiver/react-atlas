@@ -1,3 +1,4 @@
+export { AccordionCore } from "./Accordion";
 export { AvatarCore } from "./Avatar";
 export { ButtonCore } from "./Button";
 export { CardCore } from "./Card";
@@ -10,6 +11,7 @@ export { FormCore } from "./Form";
 export { HintCore } from "./Hint";
 export { InputCore } from "./Input";
 export { ModalCore } from "./Modal";
+export { PanelCore } from "./Panel";
 export { ProgressBarCore } from "./ProgressBar";
 export { RadioCore } from "./Radio";
 export { RadioGroupCore } from "./RadioGroup";
