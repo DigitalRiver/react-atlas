@@ -2,16 +2,29 @@ import React from "react";
 import PropTypes from "prop-types";
 import { InputCore } from "../Input";
 import cx from "classnames";
+import messages from "../utils/messages";
 
 class TextArea extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    let isValid, errorText;
+    if(typeof props.isValid === 'undefined') {
+      isValid = true;
+    } else if(props.isValid === false) {
+      isValid = props.isValid;
+      errorText = messages.requiredMessage;
+    } else {
+      isValid = props.isValid;
+      errorText = null;
+    }
+
     // Initial state
     this.state = {
       "value": props.value || "",
       "remaining": props.maxLength,
       "active": false,
-      "valid": props.isValid || true
+      "valid": isValid
     };
   }
 
