@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import InputMask from "inputmask-core";
 import { utils } from "../utils";
 import cx from "classnames";
+import messages from "../utils/messages";
 
 /**
  * Master Input component. To be used as core for different input types
@@ -12,11 +13,23 @@ import cx from "classnames";
 class Input extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    let isValid, errorText;
+    if(typeof props.isValid === 'undefined') {
+      isValid = true;
+    } else if(props.isValid === false) {
+      isValid = props.isValid;
+      errorText = messages.requiredMessage;
+    } else {
+      isValid = props.isValid;
+      errorText = null;
+    }
+
     // Initial state
     this.state = {
       value: props.value || "",
-      errorText: null,
-      isValid: props.isValid || true,
+      errorText: errorText,
+      isValid: isValid,
       remaining: props.maxLength
     };
 
@@ -39,6 +52,7 @@ class Input extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
+
     if (nextProps.isValid) {
       if (nextProps.isValid !== this.state.isValid) {
         this.setState({
