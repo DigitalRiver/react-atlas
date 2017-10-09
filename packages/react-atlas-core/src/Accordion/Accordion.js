@@ -158,7 +158,7 @@ Accordion.propTypes = {
      * @examples <Accordion titlePosition={left}>{children}</Accordion>
      */
     titlePosition: PropTypes.string,
-    /* The width of the according as a string or number. */
+    /* The width of the accordion as a string or number. */
     width: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number
