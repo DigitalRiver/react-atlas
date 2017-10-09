@@ -16,6 +16,7 @@
 
 .block {
   display: inline-block;
+  vertical-align: top;
 }
 
 /* Base styles for the entire tooltip */
