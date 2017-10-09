@@ -4,7 +4,7 @@
 }
 
 :global .column:hover {
-  background-color: #E6E6E6; 
+  background-color: #E6E6E6;
 }
 
 :global .dropdown-menu li a {
@@ -62,7 +62,7 @@
     display: none;
 }
 
-.react-bs-table {
+:global .react-bs-table {
     margin: 5px 10px 5px 10px;
     border-bottom: 1px solid #ddd;
     border-left: none;
@@ -71,7 +71,7 @@
     outline: none !important;
 }
 
-.react-bs-table table {
+:global .react-bs-table table {
     border-collapse: collapse;
     border-spacing: 0;
     margin-bottom: 0;
@@ -80,8 +80,8 @@
     max-width: 100%;
 }
 
-.react-bs-table table th,
-.react-bs-table table td {
+:global .react-bs-table table th,
+:global .react-bs-table table td {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -89,28 +89,27 @@
     font-size: 14px;
 }
 
-.react-bs-container-header {
-    composes: bg-silver from '../styles.css';
+:global .react-bs-container-header {
     overflow: hidden;
     width: 100%;
     background-color: #4D4D4D;
     color: #FFFFFF;
 }
 
-.react-bs-container-header table th {
+:global .react-bs-container-header table th {
     vertical-align: middle;
     border-top: 4px dashed;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
 }
 
-.react-bs-container-header .sort-column .dropup .caret {
+:global .react-bs-container-header .sort-column .dropup .caret {
     border-top: 0;
     border-bottom: 4px dashed;
     content: "";
 }
 
-.react-bs-table-container .react-bs-table-search-form {
+:global .react-bs-table-container .react-bs-table-search-form {
   margin-bottom: 0;
 }
 
@@ -120,18 +119,18 @@
   float: right;
 }
 
-.react-bs-table-bordered {
+:global .react-bs-table-bordered {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
 
-.react-bs-table table {
+:global .react-bs-table table {
   margin-bottom: 0;
   table-layout: fixed;
 }
 
-.react-bs-table table td,
-.react-bs-table table th {
+:global .react-bs-table table td,
+:global .react-bs-table table th {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -142,16 +141,16 @@
   margin-top: 10px;
 }
 
-.react-bs-table-tool-bar {
+:global .react-bs-table-tool-bar {
   margin-bottom: 5px;
 }
 
-.react-bs-container-header {
+:global .react-bs-container-header {
   overflow: hidden;
   width: 100%;
 }
 
-.react-bs-container-body {
+:global .react-bs-container-body {
   /*height: 154px;*/
   overflow: auto;
   width: 100%;
@@ -163,68 +162,68 @@
   margin-top: 0;
 }
 
-.react-bs-table .table-bordered {
+:global .react-bs-table .table-bordered {
     border: 0;
     outline: none !important;
 }
 
-.react-bs-table .table-bordered > thead > tr > th,
-.react-bs-table .table-bordered > thead > tr > td {
+:global .react-bs-table .table-bordered > thead > tr > th,
+:global .react-bs-table .table-bordered > thead > tr > td {
   border-bottom-width: 2px;
 }
 
-.react-bs-table .table-bordered > tbody > tr > td {
+:global .react-bs-table .table-bordered > tbody > tr > td {
   outline: none !important;
 }
 
-.react-bs-table .table-bordered > tbody > tr > td.default-focus-cell {
+:global .react-bs-table .table-bordered > tbody > tr > td.default-focus-cell {
   outline: 3px solid cornflowerblue !important;
   outline-offset: -1px;
 }
 
-.react-bs-table .table-bordered > tfoot > tr > th,
-.react-bs-table .table-bordered > tfoot > tr > td {
+:global .react-bs-table .table-bordered > tfoot > tr > th,
+:global .react-bs-table .table-bordered > tfoot > tr > td {
   border-top-width: 2px;
 }
 
-.react-bs-table .table-bordered > tfoot > tr > th,
-.react-bs-table .table-bordered > tfoot > tr > td {
+:global .react-bs-table .table-bordered > tfoot > tr > th,
+:global .react-bs-table .table-bordered > tfoot > tr > td {
   border-bottom-width: 0;
 }
 
 /*Esquerda*/
-.react-bs-table .table-bordered > thead > tr > th:first-child,
-.react-bs-table .table-bordered > tbody > tr > th:first-child,
-.react-bs-table .table-bordered > tfoot > tr > th:first-child,
-.react-bs-table .table-bordered > thead > tr > td:first-child,
-.react-bs-table .table-bordered > tbody > tr > td:first-child,
-.react-bs-table .table-bordered > tfoot > tr > td:first-child {
+:global .react-bs-table .table-bordered > thead > tr > th:first-child,
+:global .react-bs-table .table-bordered > tbody > tr > th:first-child,
+:global .react-bs-table .table-bordered > tfoot > tr > th:first-child,
+:global .react-bs-table .table-bordered > thead > tr > td:first-child,
+:global .react-bs-table .table-bordered > tbody > tr > td:first-child,
+:global .react-bs-table .table-bordered > tfoot > tr > td:first-child {
   border-left-width: 0;
 }
 
 /*Direita*/
-.react-bs-table .table-bordered > thead > tr > th:last-child,
-.react-bs-table .table-bordered > tbody > tr > th:last-child,
-.react-bs-table .table-bordered > tfoot > tr > th:last-child,
-.react-bs-table .table-bordered > thead > tr > td:last-child,
-.react-bs-table .table-bordered > tbody > tr > td:last-child,
-.react-bs-table .table-bordered > tfoot > tr > td:last-child {
+:global .react-bs-table .table-bordered > thead > tr > th:last-child,
+:global .react-bs-table .table-bordered > tbody > tr > th:last-child,
+:global .react-bs-table .table-bordered > tfoot > tr > th:last-child,
+:global .react-bs-table .table-bordered > thead > tr > td:last-child,
+:global .react-bs-table .table-bordered > tbody > tr > td:last-child,
+:global .react-bs-table .table-bordered > tfoot > tr > td:last-child {
   border-right-width: 0;
 }
 
-.react-bs-container-body {
+:global .react-bs-container-body {
     overflow: auto;
     width: 100%;
 }
 
-.react-bs-container-body table td {
+:global .react-bs-container-body table td {
     border: 0;
     border-top: 1px solid #ddd;
     outline: none !important;
     padding-left: .8em;
 }
 
-.col-lg-6 {
+:global .col-lg-6 {
     width: 50%;
     float: left;
 }
@@ -242,11 +241,11 @@
     margin-top: 0;
 }
 
-.react-bs-container-header .sort-column {
+:global .react-bs-container-header .sort-column {
     cursor: pointer;
 }
 
-.caret {
+:global .caret {
     display: inline-block;
     width: 0;
     height: 0;
@@ -257,13 +256,13 @@
     border-left: 4px solid transparent;
 }
 
-.react-bs-container-header .sort-column .dropup .caret {
+:global .react-bs-container-header .sort-column .dropup .caret {
     border-top: 0;
     border-bottom: 4px dashed;
     content: "";
 }
 
-.react-bs-table-container .react-bs-table-search-form {
+:global .react-bs-table-container .react-bs-table-search-form {
   margin-bottom: 0;
 }
 
@@ -273,18 +272,18 @@
   float: right;
 }
 
-.react-bs-table-bordered {
+:global .react-bs-table-bordered {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
 
-.react-bs-table table {
+:global .react-bs-table table {
   margin-bottom: 0;
   table-layout: fixed;
 }
 
-.react-bs-table table td,
-.react-bs-table table th {
+:global .react-bs-table table td,
+:global .react-bs-table table th {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -295,16 +294,16 @@
   margin-top: 10px;
 }
 
-.react-bs-table-tool-bar {
+:global .react-bs-table-tool-bar {
   margin-bottom: 5px;
 }
 
-.react-bs-container-header {
+:global .react-bs-container-header {
   overflow: hidden;
   width: 100%;
 }
 
-.react-bs-container-body {
+:global .react-bs-container-body {
   /*height: 154px;*/
   overflow: auto;
   width: 100%;
@@ -316,115 +315,115 @@
   margin-top: 0;
 }
 
-.react-bs-table .table-bordered {
+:global .react-bs-table .table-bordered {
     border: 0;
     outline: none !important;
 }
 
-.react-bs-table .table-bordered > thead > tr > th,
-.react-bs-table .table-bordered > thead > tr > td {
+:global .react-bs-table .table-bordered > thead > tr > th,
+:global .react-bs-table .table-bordered > thead > tr > td {
   border-bottom-width: 2px;
 }
 
-.react-bs-table .table-bordered > tbody > tr > td {
+:global .react-bs-table .table-bordered > tbody > tr > td {
   outline: none !important;
 }
 
-.react-bs-table .table-bordered > tbody > tr > td.default-focus-cell {
+:global .react-bs-table .table-bordered > tbody > tr > td.default-focus-cell {
   outline: 3px solid cornflowerblue !important;
   outline-offset: -1px;
 }
 
-.react-bs-table .table-bordered > tfoot > tr > th,
-.react-bs-table .table-bordered > tfoot > tr > td {
+:global .react-bs-table .table-bordered > tfoot > tr > th,
+:global .react-bs-table .table-bordered > tfoot > tr > td {
   border-top-width: 2px;
 }
 
-.react-bs-table .table-bordered > tfoot > tr > th,
-.react-bs-table .table-bordered > tfoot > tr > td {
+:global .react-bs-table .table-bordered > tfoot > tr > th,
+:global .react-bs-table .table-bordered > tfoot > tr > td {
   border-bottom-width: 0;
 }
 
 /*Esquerda*/
-.react-bs-table .table-bordered > thead > tr > th:first-child,
-.react-bs-table .table-bordered > tbody > tr > th:first-child,
-.react-bs-table .table-bordered > tfoot > tr > th:first-child,
-.react-bs-table .table-bordered > thead > tr > td:first-child,
-.react-bs-table .table-bordered > tbody > tr > td:first-child,
-.react-bs-table .table-bordered > tfoot > tr > td:first-child {
+:global .react-bs-table .table-bordered > thead > tr > th:first-child,
+:global .react-bs-table .table-bordered > tbody > tr > th:first-child,
+:global .react-bs-table .table-bordered > tfoot > tr > th:first-child,
+:global .react-bs-table .table-bordered > thead > tr > td:first-child,
+:global .react-bs-table .table-bordered > tbody > tr > td:first-child,
+:global .react-bs-table .table-bordered > tfoot > tr > td:first-child {
   border-left-width: 0;
 }
 
 /*Direita*/
-.react-bs-table .table-bordered > thead > tr > th:last-child,
-.react-bs-table .table-bordered > tbody > tr > th:last-child,
-.react-bs-table .table-bordered > tfoot > tr > th:last-child,
-.react-bs-table .table-bordered > thead > tr > td:last-child,
-.react-bs-table .table-bordered > tbody > tr > td:last-child,
-.react-bs-table .table-bordered > tfoot > tr > td:last-child {
+:global .react-bs-table .table-bordered > thead > tr > th:last-child,
+:global .react-bs-table .table-bordered > tbody > tr > th:last-child,
+:global .react-bs-table .table-bordered > tfoot > tr > th:last-child,
+:global .react-bs-table .table-bordered > thead > tr > td:last-child,
+:global .react-bs-table .table-bordered > tbody > tr > td:last-child,
+:global .react-bs-table .table-bordered > tfoot > tr > td:last-child {
   border-right-width: 0;
 }
 
 /*Topo*/
-.react-bs-table .table-bordered > thead > tr:first-child > th,
-.react-bs-table .table-bordered > thead > tr:first-child > td {
+:global .react-bs-table .table-bordered > thead > tr:first-child > th,
+:global .react-bs-table .table-bordered > thead > tr:first-child > td {
   border-top-width: 0;
 }
 
 /*Baixo*/
-.react-bs-table .table-bordered > tfoot > tr:last-child > th,
-.react-bs-table .table-bordered > tfoot > tr:last-child > td {
+:global .react-bs-table .table-bordered > tfoot > tr:last-child > th,
+:global .react-bs-table .table-bordered > tfoot > tr:last-child > td {
   border-bottom-width: 0;
 }
 
-.react-bs-table .react-bs-container-header > table > thead > tr > th {
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th {
   vertical-align: middle;
   padding-left: .8em;
 }
 
-.react-bs-table .react-bs-container-header > table > thead > tr > th .filter{
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .filter{
   font-weight: normal;
 }
 
-.react-bs-table .react-bs-container-header > table > thead > tr > th .select-filter option[value=''],
-.react-bs-table .react-bs-container-header > table > thead > tr > th .select-filter.placeholder-selected,
-.react-bs-table .react-bs-container-header > table > thead > tr > th .filter::-webkit-input-placeholder,
-.react-bs-table .react-bs-container-header > table > thead > tr > th .number-filter-input::-webkit-input-placeholder{
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .select-filter option[value=''],
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .select-filter.placeholder-selected,
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .filter::-webkit-input-placeholder,
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .number-filter-input::-webkit-input-placeholder{
   color: lightgrey;
   font-style: italic;
 }
 
-.react-bs-table .react-bs-container-header > table > thead > tr > th .select-filter.placeholder-selected option:not([value='']) {
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .select-filter.placeholder-selected option:not([value='']) {
   color: initial;
   font-style: initial;
 }
 
-.react-bs-table .react-bs-container-header > table > thead > tr > th .number-filter,
-.react-bs-table .react-bs-container-header > table > thead > tr > th .date-filter {
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .number-filter,
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .date-filter {
   display: flex;
 }
 
-.react-bs-table .react-bs-container-header > table > thead > tr > th .number-filter-input,
-.react-bs-table .react-bs-container-header > table > thead > tr > th .date-filter-input {
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .number-filter-input,
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .date-filter-input {
   margin-left: 5px;
   float: left;
   width: calc(100% - 67px - 5px);
 }
 
-.react-bs-table .react-bs-container-header > table > thead > tr > th .number-filter-comparator,
-.react-bs-table .react-bs-container-header > table > thead > tr > th .date-filter-comparator {
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .number-filter-comparator,
+:global .react-bs-table .react-bs-container-header > table > thead > tr > th .date-filter-comparator {
   width: 67px;
   float: left;
 }
 
-.react-bs-table .react-bs-container-header .sort-column {
+:global .react-bs-table .react-bs-container-header .sort-column {
   cursor: pointer;
 }
 
 height:20px; margin:0; padding-left: 30px;
 
 /*inline editor default style*/
-.react-bs-container .form-control.editor{
+:global .react-bs-container .form-control.editor{
   /*width:100%;
   top:0;
   left:0;*/
@@ -432,19 +431,19 @@ height:20px; margin:0; padding-left: 30px;
   position: absolute;*/
 }
 
-.react-bs-container  .textarea-save-btn{
+:global .react-bs-container  .textarea-save-btn{
   position: absolute;
   z-index: 100;
   right: 0;
   top: -21px;
 }
 
-.react-bs-table-no-data {
+:global .react-bs-table-no-data {
   text-align: center;
 }
 
 
-.ReactModal__Overlay {
+:global .ReactModal__Overlay {
   -webkit-perspective: 600;
   perspective: 600;
   opacity: 0;
@@ -454,52 +453,52 @@ height:20px; margin:0; padding-left: 30px;
   z-index: 101;
 }
 
-.ReactModal__Overlay--after-open {
+:global .ReactModal__Overlay--after-open {
   opacity: 1;
   transition: opacity 150ms ease-out;
 }
 
-.ReactModal__Content {
+:global .ReactModal__Content {
   -webkit-transform: scale(0.5) rotateX(-30deg);
   transform: scale(0.5) rotateX(-30deg);
 }
 
-.ReactModal__Content--after-open {
+:global .ReactModal__Content--after-open {
   -webkit-transform: scale(1) rotateX(0deg);
   transform: scale(1) rotateX(0deg);
   transition: all 150ms ease-in;
 }
 
-.ReactModal__Overlay--before-close {
+:global .ReactModal__Overlay--before-close {
   opacity: 0;
 }
 
-.ReactModal__Content--before-close {
+:global .ReactModal__Content--before-close {
   -webkit-transform: scale(0.5) rotateX(30deg);
   transform: scale(0.5) rotateX(30deg);
   transition: all 150ms ease-in;
 }
 
-.ReactModal__Content.modal-dialog {
+:global .ReactModal__Content.modal-dialog {
   border: none;
   background-color: transparent;
 }
 
 /*error tip style*/
-.animated {
+:global .animated {
   animation-fill-mode: both;
 }
 
-.animated.bounceIn,
-.animated.bounceOut{
+:global .animated.bounceIn,
+:global .animated.bounceOut{
   animation-duration: .75s;
 }
 
-.animated.shake{
+:global .animated.shake{
   animation-duration: .3s;
 }
 
-td.react-bs-table-expand-cell {
+:global td.react-bs-table-expand-cell {
     cursor: pointer;
 }
 
@@ -517,7 +516,7 @@ td.react-bs-table-expand-cell {
   }
 }
 
-.shake {
+:global .shake {
   animation-name: shake;
 }
 
@@ -554,7 +553,7 @@ td.react-bs-table-expand-cell {
   }
 }
 
-.bounceIn {
+:global .bounceIn {
   animation-name: bounceIn;
 }
 
@@ -578,9 +577,9 @@ td.react-bs-table-expand-cell {
   animation-name: bounceOut;
 }
 
-.input_container { position:relative; padding:0; margin:0; }
+:global .input_container { position:relative; padding:0; margin:0; }
 
-.magnifying-glass
+:global .magnifying-glass
 {
  font-size: 1.2em; /* This controls the size. */
  display: inline-block;
@@ -591,7 +590,7 @@ td.react-bs-table-expand-cell {
  border-radius: 0.35em;
 }
 
-.magnifying-glass::before
+:global .magnifying-glass::before
 {
  content: "";
  display: inline-block;
@@ -608,6 +607,6 @@ td.react-bs-table-expand-cell {
       -o-transform: rotate(45deg);
 }
 
-.form-control {
+:global .form-control {
   height:20px; margin:0; padding-left: 30px;
 }
