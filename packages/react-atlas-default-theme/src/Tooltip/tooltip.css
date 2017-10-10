@@ -16,6 +16,7 @@
 
 .block {
   display: inline-block;
+  vertical-align: top;
 }
 
 /* Base styles for the entire tooltip */
@@ -46,10 +47,10 @@
 }
 
 /* Show the entire tooltip on hover and focus */
-.tooltip:hover:before,
-.tooltip:hover > span,
-.tooltip:focus:before,
-.tooltip:focus > span {
+.tooltip.active:hover:before,
+.tooltip.active:hover > span,
+.tooltip.active:focus:before,
+.tooltip.active:focus > span {
   visibility: visible;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
