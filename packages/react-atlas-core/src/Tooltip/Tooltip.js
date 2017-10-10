@@ -44,7 +44,8 @@ class Tooltip extends React.PureComponent {
 
     let tooltipClasses;
     tooltipClasses = cx({
-      tooltip: this.state.active,
+      "tooltip": true,
+      "active": this.state.active,
       "tooltip-bottom":
         position !== "left" && position !== "top" && position !== "right",
       "tooltip-left": position === "left",
@@ -57,12 +58,13 @@ class Tooltip extends React.PureComponent {
     ) : null;
 
     let Icon = icon && !children ? <i className={cx(icon)} /> : null;
+    let componentClasses = cx("block", tooltipClasses);
 
     return (
       <div
         style={style}
         data-tooltip={this.state.tooltip}
-        styleName={"block " + tooltipClasses}
+        styleName={componentClasses}
         className={cx(className)}
         onMouseEnter={e => {
           this._active(true, e);
