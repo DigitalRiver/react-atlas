@@ -120,6 +120,9 @@ class Radio extends React.PureComponent {
               hidden={hidden}
               name={name}
               value={value}
+              /* Hardcode classes for InputCore because classes on styleName will not
+               * be evaluated because were using InputCore not Input.  */
+              className={"ra_input__max ra_input__opacity"}
             />
             <div styleName={radioClass}>
               {checked && <div styleName={cx("checkmark")} />}

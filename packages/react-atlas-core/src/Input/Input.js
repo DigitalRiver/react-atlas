@@ -280,6 +280,7 @@ class Input extends React.PureComponent {
 
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";
+    console.log(isCheckbox);
     let isRadio = type === "radio";
     const isInput = isCheckbox || isRadio ? false : true;
 
@@ -293,7 +294,8 @@ class Input extends React.PureComponent {
       large: large,
       max: !small && !medium && !large,
       disabled,
-      hidden
+      hidden,
+      opacity: true
     });
 
     let eventHandlers = {
@@ -331,6 +333,8 @@ class Input extends React.PureComponent {
     let errorTextElement = this.state.errorText && (
       <span styleName={cx("error")}>{this.state.errorText}</span>
     );
+
+    console.log("inputClasses: ", inputClasses);
 
     return isCheckbox ? (
       <input
