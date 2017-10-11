@@ -2,10 +2,12 @@
 	margin-top: 10px;
 	clear: both;
 }
-
+input[type="checkbox"], input[type="radio"] {
+	opacity: 0;
+}
 .input {
 	composes: pad-1 from '../styles.css';
-	composes: border-gray from '../styles.css';
+	composes: default-border from '../styles.css';
 	position: relative;
 	box-shadow: none;
 	transition: box-shadow 0.3s, border 0.3s;
@@ -16,8 +18,8 @@
 .input:focus {
   	border: solid 1px #66afe9;
   	outline: none;
-  	-webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
-          	box-shadow: 0 0 5px 1px rgba(0,0,0,.075), 0 0 5px 1px rgba(102, 175, 233, .6);
+  	-webkit-box-shadow: 0 0 1px 1px rgba(0,0,0,.05), 0 0 3px 1px rgba(102, 175, 233, .4);
+          	box-shadow: 0 0 1px 1px rgba(0,0,0,.05), 0 0 3px 1px rgba(102, 175, 233, .4);
 }
 
 .small {
