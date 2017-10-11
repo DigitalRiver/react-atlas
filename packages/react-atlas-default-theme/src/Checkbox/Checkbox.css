@@ -35,8 +35,7 @@
 
 .checked {
   composes: checkbox;
-  background: #007EB5;
-  border: 1px solid #007EB5;
+  background-color: #00a7e1;
 }
 
 .focus {
