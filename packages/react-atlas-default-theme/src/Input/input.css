@@ -2,10 +2,7 @@
 	margin-top: 10px;
 	clear: both;
 }
-.default_input {
-
-}
-input[type="checkbox"], input[type="radio"] {
+input.opacity[type="checkbox"], input.opacity[type="radio"] {
 	opacity: 0;
 }
 .input {

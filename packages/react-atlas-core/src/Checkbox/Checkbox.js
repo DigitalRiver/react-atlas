@@ -132,6 +132,9 @@ class Checkbox extends React.PureComponent {
               checked={this.state.checked}
               hidden={disabled}
               name={name}
+              /* Hardcode classes for InputCore because classes on styleName will not
+               * be evaluated because were using InputCore not Input.  */
+              className={"ra_input__checkbox ra_styles__marg-b-1 ra_input__max ra_input__opacity"}
             />
             <div styleName={checkboxClass}>
               {this.state.checked && <div styleName={cx("checkmark")} />}
