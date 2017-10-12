@@ -2,6 +2,9 @@
 	margin-top: 10px;
 	clear: both;
 }
+.default_input {
+
+}
 input[type="checkbox"], input[type="radio"] {
 	opacity: 0;
 }
@@ -57,15 +60,18 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .invalid {
-	composes: border-red from '../styles.css';
+	composes: marg-b-half from '../styles.css';
+	border: solid 1px #ea0f43;
+  	outline: none;
+  	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05), 0 0 3px 1px rgba(234, 15, 67, .4);
+          	box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05), 0 0 3px 1px rgba(234, 15, 67, .4);
 }
 
 .invalid:focus {
 	border: solid 1px #ea0f43;
   	outline: none;
   	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05), 0 0 3px 1px rgba(234, 15, 67, .4);
-          	box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05), 0 0 3px 1px rgba(234, 15, 67, .4);
-	
+          	box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05), 0 0 3px 1px rgba(234, 15, 67, .4);	
 }
 
 .disabled {
