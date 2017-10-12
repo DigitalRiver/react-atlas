@@ -2,7 +2,14 @@
 	margin-top: 10px;
 	clear: both;
 }
+<<<<<<< HEAD
 input.opacity[type="checkbox"], input.opacity[type="radio"] {
+=======
+.default_input {
+
+}
+input[type="checkbox"], input[type="radio"] {
+>>>>>>> c3a505c... fixes issue 345
 	opacity: 0;
 }
 .input {
