@@ -21,6 +21,12 @@
 .marg-b-0 { margin-bottom: 0 }
 .marg-l-0 { margin-left:   0 }
 
+.marg-half		{ margin:		var(--space-0-25) }
+.marg-t-half	{ margin-top:	var(--space-0-25) }
+.marg-r-half	{ margin-right:	var(--space-0-25) }
+.marg-b-half	{ margin-bottom:var(--space-0-25) }
+.marg-l-half	{ margin-left:	var(--space-0-25) }
+
 .marg-1   { margin:        var(--space-1) }
 .marg-t-1 { margin-top:    var(--space-1) }
 .marg-r-1 { margin-right:  var(--space-1) }

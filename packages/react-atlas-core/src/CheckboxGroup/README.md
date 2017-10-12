@@ -8,7 +8,30 @@ Checkbox Group
 
 Inline Checkbox Group
 
-	<CheckboxGroup inline title="Inline Checkbox Group" name="inlineGroup">
+	<div>
+		<CheckboxGroup inline title="Inline Checkbox Group" name="inlineGroup">
+			<Checkbox
+				label="Checkbox Inline"
+			/>
+			<Checkbox
+				label="Checkbox Inline Checked"
+				checked
+			/>
+	    </CheckboxGroup>
+	    <CheckboxGroup inline title="Inline Checkbox Group Two" name="inlineGroup2">
+			<Checkbox
+				label="Checkbox Inline"
+			/>
+			<Checkbox
+				label="Checkbox Inline Checked"
+				checked
+			/>
+	    </CheckboxGroup>
+	</div>
+
+Checkbox Group with Inline Children
+
+	<CheckboxGroup inlineChildren title="Inline Checkbox Group" name="inlineGroup">
 		<Checkbox
 			label="Checkbox Inline"
 		/>
@@ -16,7 +39,7 @@ Inline Checkbox Group
 			label="Checkbox Inline Checked"
 			checked
 		/>
-    </CheckboxGroup>
+	</CheckboxGroup>
 
 Checkbox Group with Checked Minimum
 

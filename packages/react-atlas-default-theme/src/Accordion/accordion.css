@@ -32,11 +32,10 @@
     vertical-align: middle;
 }
 .accordion_header:hover {
-    background-color: #ccc;
+    background-color: #bebebe;
     color: white;
 }
 .accordion_header.active {
-    border-bottom: 0;
     background-color: #00a7e1;
     color: white;
 }
@@ -54,10 +53,6 @@
 
 .accordion_panel {
     composes: default-text from '../styles.css';
-    composes: border-top-none from '../styles.css';
-    composes: border-bottom-none from '../styles.css';
-    composes: border-left-none from '../styles.css';
-    composes: border-right-none from '../styles.css';
     composes: default-font from '../styles.css';
 }
 .accordion_panel div {
@@ -100,6 +95,7 @@
 .expandAll {
     composes: marg-b-1 from '../styles.css';
     composes: primary-text from '../styles.css';
+    composes: default-font from '../styles.css';
     cursor: pointer;
 }
 .expandAll:hover {

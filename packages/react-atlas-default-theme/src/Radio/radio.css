@@ -70,11 +70,13 @@
   cursor: pointer;
   white-space: nowrap;
   padding-right:5px;
+  margin-left: 12px;
 }
 
 .label_left {
   composes: label;
   padding-right: 2px;
+  margin-left: 0px;
 }
 
 .inline_block {
@@ -82,7 +84,7 @@
 }
 
 .radio_padding {
-  padding: 10px 10px 0 0;
+  padding: 7px 10px 0 0;
 }
 
 .float_left {

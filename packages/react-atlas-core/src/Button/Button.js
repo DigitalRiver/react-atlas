@@ -41,6 +41,8 @@ class Button extends React.PureComponent {
       mainStyle = "error";
     } else if (link) {
       mainStyle = "link";
+    } else {
+      mainStyle = "default_btn";
     }
 
     if (outline) {

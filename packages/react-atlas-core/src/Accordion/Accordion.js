@@ -4,7 +4,8 @@ import cx from "classnames";
 
 /**
  * Accordion component creates a tab structure featuring a header and panel.  The MVP implementation requires the use of a div as the accordion child with a title prop
- * @examples <Accordion><div title="accordion title">Some text</div><div title="accordion title 2">Some more text</div></Accordion> *
+ * @examples <Accordion><div title="accordion title">Some text</div><div title="accordion title 2">Some more text</div></Accordion>
+ *
  */
 class Accordion extends React.PureComponent {
     constructor(props) {
@@ -156,7 +157,14 @@ Accordion.propTypes = {
      * string property. Accordion will set the title text position based on this property
      * @examples <Accordion titlePosition={left}>{children}</Accordion>
      */
-    titlePosition: PropTypes.string
+    titlePosition: PropTypes.string,
+    /* The width of the accordion as a string or number. */
+    width: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    /* A boolean to disable or not disable the accordion component. */
+    disabled: PropTypes.bool
 };
 
 Accordion.defaultProps = {

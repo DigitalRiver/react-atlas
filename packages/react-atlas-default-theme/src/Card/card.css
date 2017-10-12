@@ -2,7 +2,8 @@
 	composes: marg-b-2 from '../styles.css';
 	composes: rounded from '../styles.css';
 	composes: bg-white from '../styles.css';
-	border: 1px solid #666;
+	composes: default-border from '../styles.css';
+	composes: default-text from '../styles.css';
 }
 
 .legend {

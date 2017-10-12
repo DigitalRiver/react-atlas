@@ -113,7 +113,7 @@ class Switch extends React.PureComponent {
   };
 
   render() {
-    const { className, name, disabled, hidden, style } = this.props;
+    const { className, name, disabled, hidden, style, inline } = this.props;
 
     const classes = this.classes;
     const styles = this.styles;
@@ -121,7 +121,8 @@ class Switch extends React.PureComponent {
     let labelClasses = cx(
       {
         disabled,
-        hidden
+        hidden,
+        inline
       },
       classes.offClassName
     );
@@ -216,6 +217,10 @@ Switch.propTypes = {
    * @examples <Switch onBeforeChange={this.customOnBeforeChangeFunc}/>
    */
   onBeforeChange: PropTypes.func,
+  /**
+   * Sets the Switch as an inline-block element
+   */
+  inline: PropTypes.bool,
 
   /* Pass inline styles here. */
   style: PropTypes.node

@@ -162,6 +162,8 @@ let components = [
   "menu",
   "menuItem",
   "modal",
+  "dialog",
+  "panel",
   "progressBar",
   "radio",
   "radioGroup",

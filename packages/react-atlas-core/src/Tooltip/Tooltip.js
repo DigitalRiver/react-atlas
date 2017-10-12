@@ -11,17 +11,17 @@ class Tooltip extends React.PureComponent {
 
     // Initial state
     this.state = {
-      tooltip: props.tooltip,
+      tooltip: props.text,
       position: props.position,
       icon: props.icon,
-      delay: props.tooltipDelay || null,
+      delay: props.delay || null,
       active: false
     };
   }
 
   _active = focus => {
     if (focus === true) {
-      if (!this.props.tooltipDelay) {
+      if (!this.props.delay) {
         this.setState({
           active: true
         });
@@ -30,7 +30,7 @@ class Tooltip extends React.PureComponent {
           this.setState({
             active: true
           });
-        }, this.props.tooltipDelay);
+        }, this.props.delay);
       }
     } else {
       this.setState({
@@ -44,7 +44,8 @@ class Tooltip extends React.PureComponent {
 
     let tooltipClasses;
     tooltipClasses = cx({
-      tooltip: this.state.active,
+      "tooltip": true,
+      "active": this.state.active,
       "tooltip-bottom":
         position !== "left" && position !== "top" && position !== "right",
       "tooltip-left": position === "left",
@@ -57,12 +58,13 @@ class Tooltip extends React.PureComponent {
     ) : null;
 
     let Icon = icon && !children ? <i className={cx(icon)} /> : null;
+    let componentClasses = cx("block", tooltipClasses);
 
     return (
       <div
         style={style}
         data-tooltip={this.state.tooltip}
-        styleName={"block " + tooltipClasses}
+        styleName={componentClasses}
         className={cx(className)}
         onMouseEnter={e => {
           this._active(true, e);
@@ -92,14 +94,14 @@ Tooltip.propTypes = {
   className: PropTypes.string,
   /**
      * For the text displayed within the tooltip
-     * @examples <Tooltip tooltip="default"/>
+     * @examples <Tooltip text="default"/>
      */
-  tooltip: PropTypes.string,
+  text: PropTypes.string,
   /**
      *  For delay of tooltip message
-     *  @example <Tooltip tooltipDelay={10000}/>
+     *  @example <Tooltip delay={10000}/>
      */
-  tooltipDelay: PropTypes.number,
+  delay: PropTypes.number,
   /**
      * For disabling tooltip
      * @example <Tooltip disabled />
@@ -124,8 +126,8 @@ Tooltip.defaultProps = {
   children: "",
   icon: "fa fa-info-circle",
   disabled: false,
-  tooltip: "",
-  tooltipDelay: null
+  text: "",
+  delay: null
 };
 
 export default Tooltip;
