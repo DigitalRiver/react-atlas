@@ -7,6 +7,7 @@ export { CheckboxGroupStyle } from "./CheckboxGroup";
 export { DatePickerStyle } from './DatePicker';
 export { DropdownStyle } from "./Dropdown";
 export { FormStyle } from "./Form";
+export { FileUploadStyle } from "./FileUpload";
 export { HintStyle } from "./Hint";
 export { InputStyle } from "./Input";
 export { ProgressBarStyle } from "./ProgressBar";

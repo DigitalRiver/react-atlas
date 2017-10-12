@@ -156,6 +156,7 @@ let components = [
   "datePicker",
   "dropdown",
   "form",
+  "fileUpload",
   "input",
   "modal",
   "dialog",
