@@ -293,7 +293,8 @@ class Input extends React.PureComponent {
       large: large,
       max: !small && !medium && !large,
       disabled,
-      hidden
+      hidden,
+      opacity: true
     });
 
     let eventHandlers = {
