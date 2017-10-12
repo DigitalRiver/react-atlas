@@ -40,7 +40,6 @@
 	composes: text-input-invalid from '../styles.css';
 	composes: marg-b-half from '../styles.css';
 }
-
 .invalid + span {
 	color: #bd0a33;
 }
