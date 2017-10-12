@@ -38,6 +38,7 @@
 
 .invalid {
 	composes: text-input-invalid from '../styles.css';
+	composes: marg-b-half from '../styles.css';
 }
 
 .invalid + span {
