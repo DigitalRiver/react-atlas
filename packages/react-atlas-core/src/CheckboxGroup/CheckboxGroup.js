@@ -128,11 +128,12 @@ CheckboxGroup.propTypes = {
    * @examples '<CheckboxGroup><Checkbox/><Checkbox/></CheckboxGroup>'
    */
   children: PropTypes.node.isRequired,
-  /**
-   * Define a custom css class name.
-   * @examples 'checkboxGroup', 'checkbox-group'
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to CheckboxGroup.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * Form name for the element, this will set all Checkbox children the same form name.
    * @examples '<CheckboxGroup name="test"></CheckboxGroup>'

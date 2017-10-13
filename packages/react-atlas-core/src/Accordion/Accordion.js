@@ -125,10 +125,12 @@ Accordion.propTypes = {
      * @examples "SomeName", <Accordion>{child}{child}</Accordion>
      */
     children: PropTypes.node,
-    /**
-     *
-     */
-    className: PropTypes.string,
+    /** An Object, array, or string of CSS classes to apply to accordion.*/
+    className: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+      PropTypes.array
+    ]),
     /**
      * A string. Accordion will use title prop from each child as the title for header of each accordion
      * @examples <Accordion><div title={title 1}>value 1</div><div title={title 2}>value 2</div></Accordion>

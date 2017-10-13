@@ -170,8 +170,12 @@ Form.propTypes = {
   "buttonClasses": PropTypes.node,
   /** Children components, Usually a Textfield, Dropdown, Input, etc */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to form.*/
-  "className": PropTypes.node,
+  /** An Object, array, or string of CSS classes to apply to Form.*/
+  "className": PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /** A callback that is fired when the form has passed validation
    * and is ready to submit. Returns the form data and the event object.  */
   "onSubmit": PropTypes.func,

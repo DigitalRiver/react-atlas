@@ -17,11 +17,12 @@ class Panel extends React.PureComponent {
 }
 
 Panel.propTypes = {
-    /**
-     * Defines a custom css class name.
-     * @examples '<Panel className="custom">This is a text hint</Panel>'
-     */
-    className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Panel.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
     /**
      * Text to be displayed can be passed as a child.
      * @examples '<Panel>This is a text hint</Panel>'

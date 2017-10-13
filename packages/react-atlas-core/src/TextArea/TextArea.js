@@ -135,11 +135,12 @@ class TextArea extends React.PureComponent {
 
 TextArea.PropTypes = {
   "isValid": PropTypes.bool,
-  /**
-	 * Define a custom css class name.
-	 * @examples 'textarea', 'textarea-elem'
-	 */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to TextArea.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
 	 * Define a name for the textarea input.
 	 * @examples '<TextArea name="test"/>'

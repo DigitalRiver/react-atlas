@@ -107,11 +107,12 @@ Button.propTypes = {
    * Click event handler.
    */
   onClick: PropTypes.func,
-  /**
-     * define a custom css class name
-     * @examples "btn", "btn-active"
-     */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to button.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
      * define a custom css class name
      * @examples "btn", "btn-active"

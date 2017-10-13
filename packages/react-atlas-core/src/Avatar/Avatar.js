@@ -82,10 +82,12 @@ Avatar.propTypes = {
     * @examples "SomeName", <SomeIcon />, <img src="/path/to/image.jpg"/>
     */
   children: PropTypes.node,
-  /**
-    * A css class name that will be appended to the wrapping div around the avatar.
-    */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to avatar.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
     * For displaying an icon/glphyicon. Normally these will be another component or an element with a class on it.
     * @examples <GithubIcon />, <i class="fa fa-github"></i>
