@@ -34,8 +34,8 @@ class Dialog extends React.PureComponent {
     } = this.props;
     return (
       active &&
-      <Modal style={style} active={active} className={warning && styles.warning} {...others}>
-        <div styleName="dialog" className={className}>
+      <Modal className={cx(className)} style={style} active={active} className={warning && styles.warning} {...others}>
+        <div styleName="dialog">
           {children}
           <div styleName="buttons">
             {this._getButtonContent()}

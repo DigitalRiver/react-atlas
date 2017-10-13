@@ -96,6 +96,7 @@ class ProgressBar extends React.PureComponent {
     return (
       <div
         style={style}
+        className={cx(className)}
         aria-valuenow={value}
         aria-valuemin={min}
         aria-valuemax={max}
