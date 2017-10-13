@@ -157,10 +157,12 @@ Checkbox.propTypes = {
    * @examples 'Some Label'
    */
   label: PropTypes.string,
-  /**
-   * A css class name that will be appended to the wrapping <label> element around the <input> and <span> elements.
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to checkbox.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * If included, checkbox is disabled
    * @examples <Checkbox disabled />, <Checkbox disabled={true} />

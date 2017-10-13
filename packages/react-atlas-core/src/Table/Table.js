@@ -35,7 +35,12 @@ Table.propTypes = {
     "defaultSortName": PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     "defaultSortOrder": PropTypes.oneOfType([PropTypes.string, PropTypes.array])
   }),
-  "className": PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Table.*/
+  "className": PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   "maxHeight": PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   "style": PropTypes.node
 };

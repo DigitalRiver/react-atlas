@@ -152,11 +152,12 @@ class Switch extends React.PureComponent {
 }
 
 Switch.propTypes = {
-  /**
-   * Define a custom css class name.
-   * @examples 'switch', 'switch-elem'
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Switch.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * Determines if the switch input is disabled.
    * @examples '<Switch disabled={condition}/>'
