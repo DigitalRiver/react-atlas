@@ -1,9 +1,10 @@
-.menuItem {
+.task {
 	display: inline-block;
 	text-align: center;
+	position: relative;
 }
 
-.menuItemLink {
+.taskLink {
 	composes: default-font from '../styles.css';
   	font-size: 19px;
 	color: #666666;
@@ -14,18 +15,23 @@
 	padding-top: 11.5px;
 	padding-bottom: 11.5px;
 	display: inline-block;
+	cursor: pointer;
 }
 
-.menuItemLink:hover {
+.taskLink:hover {
 	color: #00A7E1;
+}
+
+.selected {
+	color: #00A7E1;
+	cursor: default;
 }
 
 .borderTop {
 	border-top: solid 1px #E9E9E9;
 }
 
-.leftMenuItem {
-	width: 100%;
-	border-left: solid 1px #E9E9E9;
-	border-right: solid 1px #E9E9E9;
+.icon-left {
+  margin-right: 0.25rem;
+  vertical-align: middle;
 }
