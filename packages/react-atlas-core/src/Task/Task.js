@@ -12,33 +12,21 @@ class Task extends React.PureComponent {
   }
 
   render() {
-  	const {
-      title,
-      selected,
-      icon,
-      link
-    } = this.props;
+    const { title, selected, icon } = this.props;
 
     const taskLinkClasses = cx({
-      "taskLink": true,
-      "selected": selected
+      taskLink: true,
+      selected: selected
     });
 
-    const iconClass = cx({
-      icon: true,
-      "icon-left": icon
-    })
-
-    const linkString = link || "";
-
-  	return (
-  		<li styleName={"task"}>
+    return (
+      <li styleName={"task"}>
         <span styleName={taskLinkClasses}>
           {icon ? <i className={cx(icon, "ra_Task__icon-left")} /> : null}
           {title}
-        </span> 
+        </span>
       </li>
-  	);
+    );
   }
 }
 
@@ -48,10 +36,18 @@ Task.propTypes = {
    * @examples 'Item One'
    */
   title: PropTypes.string,
+  /**
+   * Adds selected class if true
+   */
+  selected: PropTypes.bool,
+  /**
+   * Adds font-awesome icon to left of title
+   */
+  icon: PropTypes.string
 };
 
 Task.defaultProps = {
-	title: "Item One"
+  title: "Item One"
 };
 
 export default Task;

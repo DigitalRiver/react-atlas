@@ -1,26 +1,19 @@
-import React, { cloneElement } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import cx from "classnames";
 
 class Taskbar extends React.PureComponent {
   constructor(props) {
     super(props);
   }
 
-
   render() {
-  	const {
-      children
-    } = this.props;
+    const { children } = this.props;
 
-
-  	return (
-  		<div styleName={"taskbar"}>
-  			<div styleName={"taskbarContainer"}>
-	  			{children}
-	  		</div>
-  		</div>
-  	);
+    return (
+      <div styleName={"taskbar"}>
+        <div styleName={"taskbarContainer"}>{children}</div>
+      </div>
+    );
   }
 }
 
@@ -33,7 +26,7 @@ Taskbar.propTypes = {
 };
 
 Taskbar.defaultProps = {
-	children: <p>Some taskbar item.</p>
+  children: <p>Some taskbar item.</p>
 };
 
 export default Taskbar;
