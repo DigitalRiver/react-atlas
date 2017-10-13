@@ -149,11 +149,12 @@ TextField.PropTypes = {
    * Sets if the TextField is valid.
    */
   isValid: PropTypes.bool,
-  /**
-	 * Define a custom css class name.
-	 * @examples 'textfield', 'textfield-elem'
-	 */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to TextField.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
 	 * Define a name for the text input.
 	 * @examples '<TextField name="test"/>'

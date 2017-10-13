@@ -51,10 +51,12 @@ class Overlay extends React.PureComponent {
 }
 
 Overlay.propTypes = {
-  /**
-   * Define a custom css class name.
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Overlay.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * Determines show overlay or not
    */
