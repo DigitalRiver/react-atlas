@@ -1,2 +1,2 @@
-import * as ModalStyle from "./modal.css";
+import * as ModalStyle from "./Modal.css";
 export { ModalStyle };
