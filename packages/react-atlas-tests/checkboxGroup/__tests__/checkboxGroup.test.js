@@ -2,7 +2,7 @@ import React from "react";
 import { mount, shallow } from "enzyme";
 import { CheckboxGroupCore } from "../../../react-atlas-core/src/CheckboxGroup/index";
 import { CheckboxCore } from "../../../react-atlas-core/src/Checkbox/index";
-import { verifyPropsDefaultValue } from "../../Utils/propsVerification";
+import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
 import { default as Button } from "../../../react-atlas-core/src/button/Button";
 
