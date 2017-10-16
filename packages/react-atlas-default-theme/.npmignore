@@ -1,9 +1,0 @@
-.*rc
-.eslintignore
-.editorconfig
-webpack.config.*
-jsconfig.json
-CONTRIBUTING.md
-CODE_OF_CONDUCT.md
-src
-webpack
