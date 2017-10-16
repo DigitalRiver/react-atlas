@@ -1,2 +1,2 @@
-import * as AccordionStyle from "./accordion.css";
+import * as AccordionStyle from "./Accordion.css";
 export { AccordionStyle };

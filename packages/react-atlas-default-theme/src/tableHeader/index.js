@@ -1,2 +1,2 @@
-import * as TableHeaderStyle from "./tableHeader.css";
+import * as TableHeaderStyle from "./TableHeader.css";
 export { TableHeaderStyle };

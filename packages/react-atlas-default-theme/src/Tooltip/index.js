@@ -1,2 +1,2 @@
-import * as TooltipStyle from "./tooltip.css";
+import * as TooltipStyle from "./Tooltip.css";
 export { TooltipStyle };

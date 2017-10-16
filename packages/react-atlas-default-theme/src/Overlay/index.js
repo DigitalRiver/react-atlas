@@ -1,2 +1,2 @@
-import * as OverlayStyle from "./overlay.css";
+import * as OverlayStyle from "./Overlay.css";
 export { OverlayStyle };

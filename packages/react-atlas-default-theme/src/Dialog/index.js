@@ -1,2 +1,2 @@
-import * as DialogStyle from "./dialog.css";
+import * as DialogStyle from "./Dialog.css";
 export { DialogStyle };
