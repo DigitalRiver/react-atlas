@@ -4,7 +4,7 @@ import { CheckboxGroupCore } from "../../../react-atlas-core/src/CheckboxGroup/i
 import { CheckboxCore } from "../../../react-atlas-core/src/Checkbox/index";
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
-import { default as Button } from "../../../react-atlas-core/src/button/Button";
+import { default as Button } from "../../../react-atlas-core/src/Button/Button";
 
 describe("Test CheckboxGroup component - the bascis", () => {
   it("Checkbox group - 4 checkboxes, 1 checked", function() {
