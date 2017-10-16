@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { InputCore } from "../../../react-atlas-core/src/input/index";
+import { InputCore } from "../../../react-atlas-core/src/Input/index";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
