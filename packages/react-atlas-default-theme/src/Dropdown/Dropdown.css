@@ -1,0 +1,166 @@
+.container {
+  display: block;
+  position: relative;
+  z-index: 0;
+  top: 8px;
+  margin: 0 .25rem .25rem 0;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.content {
+  composes: clearfix from '../styles.css';
+  composes: bg-white from '../styles.css';
+  composes: z4 from '../styles.css';
+  composes: cursor-pointer from '../styles.css';
+  composes: default-font from '../styles.css';
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-align: left;
+  left: 0;
+  position: relative;
+}
+
+.content:hover {
+  text-decoration: none;
+  border: none;
+}
+
+.labelSpacing {
+  margin-bottom: 0.25rem;
+  padding-right: 5px;
+  composes: header-font from '../styles.css';
+}
+
+.buttonClass {
+  composes: cursor-pointer from '../styles.css';
+}
+
+.focus {
+  composes: text-input-active from '../styles.css';
+}
+
+.list {
+  composes: pad-0 from '../styles.css';
+  composes: marg-0 from '../styles.css';
+  composes: bg-white from '../styles.css';
+  composes: default-border-left from '../styles.css';
+  composes: default-border-right from '../styles.css';
+  composes: default-border-bottom from '../styles.css';
+  composes: primary-border-top from '../styles.css';
+  composes: rounded-bottom from '../styles.css';
+  left: 0;
+  top: 1.8rem;
+  position: absolute;
+  list-style: none;
+  transition: height 1s;
+  max-height: 250px;
+  overflow: auto;
+}
+.fullWidth{
+  width:100%;
+}
+.convertedWidth {
+  width:calc(100% - 2px);
+}
+.item {
+  padding: .5rem;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  composes: default-font from '../styles.css';
+}
+.item:hover {
+  text-decoration: none;
+  background-color: #E6E6E6;
+}
+.firstChild {
+  margin-top: 5px;
+}
+.lastChild {
+  margin-bottom: 5px;
+}
+.arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 4px 0 4px;
+  border-color: #000000 transparent transparent transparent;
+  float: right;
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
+}
+
+.dropdown-button {
+  color: #333;
+  border: 1px solid #999;
+  background-color: white !important;
+  text-transform: none !important;
+  width: 100%;
+  padding-left: 0.5rem;
+  text-align: left;
+  white-space: nowrap;
+  height: 1.8rem;
+  line-height: normal;
+  composes: default-font from '../styles.css';
+}
+.dropdown-button:hover {
+  border-color: #666;
+  background-color: #e6e6e6;
+  color: #666;
+}
+.dropdown-button span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  float: left;
+}
+
+.selected {
+  padding: .5rem;
+  background-color: #ccc;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.selected:hover {
+  background-color: #E6E6E6;
+}
+
+.default-font {
+  composes: default-font from '../styles.css';
+}
+
+.error {
+  border: 1px solid #ea0f43;
+}
+.error:hover {
+  border: 1px solid #ea0f43;
+}
+.error_message {
+  color: #ea0f43;
+  position: absolute;
+  composes: default-font from '../styles.css';
+}
+
+.disabledClass {
+  opacity: .5 !important;
+  cursor: default;
+}
+.disabledClass:hover {
+  border: 1px solid #999 !important;
+  background-color: white !important;
+  outline: none;
+}
+
+.requiredIndicator {
+  composes: red from '../styles.css';
+  margin-left: 5px;
+}
+
+.zIndex {
+  z-index: 9998;
+}

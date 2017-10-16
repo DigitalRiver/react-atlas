@@ -1,0 +1,121 @@
+/*media query breaks*/
+/*might take this out, as i think we want a col/row component instead...not sure*/
+@custom-media --breakpoint-sm (min-width: 40em);
+@custom-media --breakpoint-md (min-width: 52em);
+@custom-media --breakpoint-lg (min-width: 64em);
+:root {
+  /* Primary Theme Colors */
+  --primary:                    var(--primary-blue);
+  --primary-hover:              var(--primary-blue-hover);
+  --secondary:                  var(--secondary-blue);
+  --secondary-hover:            var(--secondary-blue-hover);
+  --default:                    var(--dark-gray);
+  --default-hover:              var(--primary-gray-hover);
+
+  --error:      var(--red);
+  --warning:    var(--gold);
+  --success:    var(--primary-green);
+  --info:       var(--primary-blue);
+  --alert:      var(--red);
+
+  /* Blue */
+  --primary-blue:         var(--lightBlue);
+  --primary-blue-hover:   var(--lightBlueHover);
+  --secondary-blue:       var(--blue);
+  --secondary-blue-hover: var(--blueHover);
+  --aqua:                 #7fdbff;
+  --blue:                 #003058;
+  --blueHover:            #001425;
+  --inverseBlueText:      #B6E8FB;
+  --lightBlue:            #00a7e1;
+  --lightBlueHover:       #0081ae;
+  --altBlue:              #b6e8fb;
+  --navy:                 #001f3f;
+  --teal:                 #39cccc;
+  --sky-blue:             #00A7E1;
+
+  /* Cool */
+  --primary-green:        var(--light-green);
+  --primary-green-hover:  var(--kelly-green);
+  --green:                #b2d23c;
+  --kelly-green:          #81b315;
+  --olive:                #3d9970;
+  --lime:                 #01ff70;
+  --light-green:          #a8c628;
+
+  /* Warm */
+  --yellow:       #ffdc00;
+  --orange:       #ff5b00;
+  --red:          #ea0f43;
+  --fuchsia:      #f012be;
+  --purple:       #b10dc9;
+  --maroon:       #85144b;
+  --gold:         #be9500;
+
+    /* Gray scale */
+  --primary-gray:       var(--silver);
+  --primary-gray-hover: var(--gray);
+
+  --primary-gray-border:      var(--gray);
+  --primary-gray-border-hover: var(--gray);
+  --white:              #fff;
+  --silver:             #e9e9e9;
+  --gray:               #bebebe;
+  --light-gray:         #ccc;
+  --med-gray:           #999;
+  --dark-gray:          #666;
+  --charcoal:           #333;
+  --black:              #111;
+
+  /*standard variables*/
+  --font-family: 'MrEavesXLModOT', Arial, Helvetica, sans-serif;
+  --font-size: 14px;
+  --header-font-size: 16px;
+  --line-height: 1.5;
+  --heading-font-family: var(--font-family);
+  --heading-font-weight: bold;
+  --heading-line-height: 1.25;
+  --monospace-font-family: 'Source Code Pro', Consolas, monospace;
+  --h1: 2rem;
+  --h2: 1.5rem;
+  --h3: 1.25rem;
+  --h4: 1rem;
+  --h5: .875rem;
+  --h6: .75rem;
+  --bold-font-weight: bold;
+  --space-0-25: .25rem;
+  --space-1:    .5rem;
+  --space-1-1:  .625rem;
+  --space-1-2:  .75rem;
+  --space-2:    1rem;
+  --space-3:    2rem;
+  --space-4:    4rem;
+  --form-field-font-size: 1rem;
+  --form-field-height: 2.25rem;
+  --form-field-padding-y: .5rem;
+  --form-field-padding-x: .5rem;
+  --button-font-size: inherit;
+  --button-font-weight: normal;
+  --button-line-height: 1.125rem;
+  --button-padding-y: .5rem;
+  --button-padding-x: 1rem;
+  --button-padding: 0.625rem 1.125rem 0.5rem;
+  --container-width: 64em;
+
+  --darken-1: rgba(0,0,0,.0625);
+  --darken-2: rgba(0,0,0,.125);
+  --darken-3: rgba(0,0,0,.25);
+  --darken-4: rgba(0,0,0,.5);
+
+  --lighten-1: rgba(255,255,255,.0625);
+  --lighten-2: rgba(255,255,255,.125);
+  --lighten-3: rgba(255,255,255,.25);
+  --lighten-4: rgba(255,255,255,.5);
+
+  --default-border-width: .05rem;
+  --default-border-color:   var(--light-gray);
+  --border-width: 1px;
+  --button-border-width: .1rem;
+  --border-radius: .1rem;
+  --border-color: var(--med-gray);
+}
