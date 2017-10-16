@@ -1,2 +1,2 @@
-import * as TextAreaStyle from "./Textarea.css";
+import * as TextAreaStyle from "./TextArea.css";
 export { TextAreaStyle };
