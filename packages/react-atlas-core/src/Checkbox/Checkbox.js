@@ -116,13 +116,13 @@ class Checkbox extends React.PureComponent {
         onClick={this._clickHandler}
         styleName={inlineCheckbox}
         style={style}
+        className={cx(className)}
       >
         <div styleName={disabledClass}>
           {label && (
             <label
               styleName={labelStyle}
               title={title_label}
-              className={cx(className)}
             >
               {label}
             </label>

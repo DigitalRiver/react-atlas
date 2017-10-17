@@ -337,7 +337,7 @@ class Dropdown extends React.PureComponent {
       <div
         style={style}
         name={name}
-        className={className}
+        className={cx(className)}
         styleName={classes}
         onFocus={e => {
           this._toggle(e);
