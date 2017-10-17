@@ -45,10 +45,14 @@ FileUpload.propTypes = {
   /* The text to be displayed on the fileupload component. */
   "text": PropTypes.string,
 
+  /* Function that gets called when a file is uploaded.
+   * Returns an array of uploaded files. */
   "onChange": PropTypes.func,
 
+   /* The MIME type of files that are accepted. */
   "accept": PropTypes.string,
 
+  /* A string of styles to apply to FileUpload. */
   "style": PropTypes.string
 
 }
