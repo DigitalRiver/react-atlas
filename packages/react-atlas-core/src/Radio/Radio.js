@@ -120,6 +120,9 @@ class Radio extends React.PureComponent {
               hidden={hidden}
               name={name}
               value={value}
+              /* Hardcode classes for InputCore because classes on styleName will not
+               * be evaluated because were using InputCore not Input.  */
+              className={"ra_input__max ra_input__opacity"}
             />
             <div styleName={radioClass}>
               {checked && <div styleName={cx("checkmark")} />}
@@ -137,11 +140,12 @@ Radio.propTypes = {
    * @examples '<Radio defaultChecked/>'
    */
   defaultChecked: PropTypes.bool,
-  /**
-   * Define a custom css class name.
-   * @examples 'radioButton', 'radio-button'
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Radio.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * Define the element title.
    * @examples '<Radio title="Test"/>'

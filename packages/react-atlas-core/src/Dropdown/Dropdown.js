@@ -337,7 +337,7 @@ class Dropdown extends React.PureComponent {
       <div
         style={style}
         name={name}
-        className={className}
+        className={cx(className)}
         styleName={classes}
         onFocus={e => {
           this._toggle(e);
@@ -413,9 +413,12 @@ Dropdown.propTypes = {
   /* The children elements to be wrapped by the dropdown menu. */
   children: PropTypes.node.isRequired,
 
-  /* Pass CSS styles to className to set them on the dropdown component. */
-  className: PropTypes.string,
-
+  /** An Object, array, or string of CSS classes to apply to Dropdown.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /* The name of the key value used when submitting the dropdown value. */
   name: PropTypes.string,
 

@@ -22,7 +22,7 @@ class Portal extends Component {
       return null;
     }
     return (
-      <div className={cx("ra_portal__portal", this.props.className)}>
+      <div styleName="portal" className={cx(className)}>
         {this.props.children}
       </div>
     );
@@ -73,7 +73,12 @@ class Portal extends Component {
 
 Portal.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Portal.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /* Pass inline styles here. */
   style: PropTypes.node
 };

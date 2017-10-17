@@ -22,6 +22,13 @@ class Checkbox extends React.PureComponent {
   _clickHandler = event => {
     if (!this.props.disabled) {
       event.persist();
+      if (typeof this.props.onBeforeChange !== "undefined") {
+        let result = this.props.onBeforeChange(this.state.checked);
+        if(result === false) {
+          return;
+        }
+      }
+
       this.setState({ checked: !this.state.checked }, function() {
         this._validationHandler(this.props.errorCallback);
 
@@ -33,10 +40,6 @@ class Checkbox extends React.PureComponent {
             this.state.valid,
             this.state.checked
           );
-        }
-
-        if (typeof this.props.onBeforeChange !== "undefined") {
-          this.props.onBeforeChange(this.state.checked);
         }
 
         /* Check if onChange has been passed, if so call it. */
@@ -113,13 +116,13 @@ class Checkbox extends React.PureComponent {
         onClick={this._clickHandler}
         styleName={inlineCheckbox}
         style={style}
+        className={cx(className)}
       >
         <div styleName={disabledClass}>
           {label && (
             <label
               styleName={labelStyle}
               title={title_label}
-              className={cx(className)}
             >
               {label}
             </label>
@@ -132,6 +135,9 @@ class Checkbox extends React.PureComponent {
               checked={this.state.checked}
               hidden={disabled}
               name={name}
+              /* Hardcode classes for InputCore because classes on styleName will not
+               * be evaluated because were using InputCore not Input.  */
+              className={"ra_input__checkbox ra_styles__marg-b-1 ra_input__max ra_input__opacity"}
             />
             <div styleName={checkboxClass}>
               {this.state.checked && <div styleName={cx("checkmark")} />}
@@ -154,10 +160,12 @@ Checkbox.propTypes = {
    * @examples 'Some Label'
    */
   label: PropTypes.string,
-  /**
-   * A css class name that will be appended to the wrapping <label> element around the <input> and <span> elements.
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to checkbox.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * If included, checkbox is disabled
    * @examples <Checkbox disabled />, <Checkbox disabled={true} />

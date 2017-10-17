@@ -35,8 +35,7 @@
 
 .checked {
   composes: checkbox;
-  background: #007EB5;
-  border: 1px solid #007EB5;
+  background-color: #00a7e1;
 }
 
 .focus {
@@ -72,12 +71,14 @@
   cursor: pointer;
   white-space: nowrap;
   padding-right:5px;
+  margin-left: 12px;
 }
 
 /* label text */
 .label_left {
   composes: label;
   padding-right: 2px;
+  margin-left: 0px;
 }
 
 .error_text {

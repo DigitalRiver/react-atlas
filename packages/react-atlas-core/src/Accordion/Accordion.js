@@ -109,7 +109,7 @@ class Accordion extends React.PureComponent {
         });
 
         return (
-            <div style={style}>
+            <div className={cx(className)} style={style}>
                 { this.state.expandAll && !this.props.disabled ? <div styleName={"expandAll"} onClick={() => {this._expandAll()}}>Expand All</div> : null }
                 <div styleName={"accordion"} style={{ width: width }}>
                     {accordion_panels}
@@ -125,10 +125,12 @@ Accordion.propTypes = {
      * @examples "SomeName", <Accordion>{child}{child}</Accordion>
      */
     children: PropTypes.node,
-    /**
-     *
-     */
-    className: PropTypes.string,
+    /** An Object, array, or string of CSS classes to apply to accordion.*/
+    className: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+      PropTypes.array
+    ]),
     /**
      * A string. Accordion will use title prop from each child as the title for header of each accordion
      * @examples <Accordion><div title={title 1}>value 1</div><div title={title 2}>value 2</div></Accordion>

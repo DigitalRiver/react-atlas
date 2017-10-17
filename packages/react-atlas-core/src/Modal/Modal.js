@@ -27,7 +27,7 @@ class Modal extends React.PureComponent {
             onEscKeyDown={onEscKeyDown}
             lockScroll={lockScroll}
           />}
-        <div style={style} styleName={classes} className={className}>
+        <div style={style} styleName={classes} className={cx(className)}>
           {title &&
             <h3 styleName={cx("title")}>
               {title}
@@ -46,10 +46,12 @@ Modal.propTypes = {
    * Modal's title
    */
   title: PropTypes.string,
-  /**
-   * Define a custom css class name.
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Modal.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * Anything that can be in a modal.
    */

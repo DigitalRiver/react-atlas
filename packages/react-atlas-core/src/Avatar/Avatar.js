@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import cx from "classnames";
 
 /**
  * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
@@ -41,7 +42,7 @@ class Avatar extends React.PureComponent {
   }
 
   render() {
-    let { children, icon, title, style } = this.props;
+    let { children, icon, title, style, className } = this.props;
     let kids = children;
     if (React.Children.count(children) === 1 && typeof children === "string") {
       kids = <span styleName={"letter"}>{children[0]}</span>;
@@ -68,7 +69,7 @@ class Avatar extends React.PureComponent {
     }
 
     return (
-      <div style={style} styleName={"avatar"}>
+      <div className={cx(className)} style={style} styleName={"avatar"}>
         {kids}
         {avatar}
       </div>
@@ -82,10 +83,12 @@ Avatar.propTypes = {
     * @examples "SomeName", <SomeIcon />, <img src="/path/to/image.jpg"/>
     */
   children: PropTypes.node,
-  /**
-    * A css class name that will be appended to the wrapping div around the avatar.
-    */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to avatar.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
     * For displaying an icon/glphyicon. Normally these will be another component or an element with a class on it.
     * @examples <GithubIcon />, <i class="fa fa-github"></i>

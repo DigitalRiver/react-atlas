@@ -70,11 +70,13 @@
   cursor: pointer;
   white-space: nowrap;
   padding-right:5px;
+  margin-left: 12px;
 }
 
 .label_left {
   composes: label;
   padding-right: 2px;
+  margin-left: 0px;
 }
 
 .inline_block {

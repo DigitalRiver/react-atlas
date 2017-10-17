@@ -61,6 +61,7 @@
   --white:              #fff;
   --silver:             #e9e9e9;
   --gray:               #bebebe;
+  --light-gray:         #ccc;
   --med-gray:           #999;
   --dark-gray:          #666;
   --charcoal:           #333;
@@ -111,10 +112,10 @@
   --lighten-3: rgba(255,255,255,.25);
   --lighten-4: rgba(255,255,255,.5);
 
-  --default-border-width:   var(--border-width);
-  --default-border-color:   var(--border-color);
+  --default-border-width: .05rem;
+  --default-border-color:   var(--light-gray);
   --border-width: 1px;
-  --button-border-width: 0px;
+  --button-border-width: .1rem;
   --border-radius: .1rem;
   --border-color: var(--med-gray);
 }

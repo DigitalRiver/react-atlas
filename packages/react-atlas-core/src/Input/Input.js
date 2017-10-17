@@ -293,7 +293,8 @@ class Input extends React.PureComponent {
       large: large,
       max: !small && !medium && !large,
       disabled,
-      hidden
+      hidden,
+      opacity: true
     });
 
     let eventHandlers = {
@@ -353,11 +354,12 @@ class Input extends React.PureComponent {
 
 Input.propTypes = {
   isValid: PropTypes.bool,
-  /**
-   * Defines a custom css class name.
-   * @examples 'custom-imput'
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Input.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * Defines the input type. Accepts HTML5 input types.
    * @examples 'text', 'checkbox', 'radio', 'password', 'email'
