@@ -1,4 +1,4 @@
-jest.dontMock('../src/BootstrapTable.js');
+jest.dontMock('../src/LightTable.js');
 jest.dontMock('../src/TableHeaderColumn.js');
 jest.dontMock('../src/TableBody.js');
 jest.dontMock('../src/TableColumn.js');
@@ -17,6 +17,6 @@ xdescribe('BootstrapTable', function() {
   ];
 
   it('init', function() {
-    
+
   });
 });

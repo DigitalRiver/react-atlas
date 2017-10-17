@@ -71,11 +71,12 @@ RadioGroup.propTypes = {
    * @examples '<RadioGroup><Radio/><Radio/></RadioGroup>'
    */
   children: PropTypes.node.isRequired,
-  /**
-   * Define a custom css class name.
-   * @examples 'radioGroup', 'radio-group'
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to RadioGroup.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * Form name for the element, this will set all Radio children the same form name (so they can't be selected at the same time).
    * @examples '<RadioGroup name="test"></RadioGroup>'

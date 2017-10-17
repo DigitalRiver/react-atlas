@@ -27,10 +27,12 @@ Card.propTypes = {
    */
   children: PropTypes.node.isRequired,
 
-  /**
-   * Custom classnames prop
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to card.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
 
   /**
    * Title of the Card

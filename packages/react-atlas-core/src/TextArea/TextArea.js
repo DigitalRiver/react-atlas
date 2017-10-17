@@ -18,7 +18,7 @@ class TextArea extends React.PureComponent {
       isValid = props.isValid;
       errorText = null;
     }
-
+    
     // Initial state
     this.state = {
       "value": props.value || "",
@@ -125,6 +125,7 @@ class TextArea extends React.PureComponent {
           required={required}
           disabled={disabled}
           hidden={hidden}
+          value={this.state.value}
           ref={node => (this.inputRef = node)} // eslint-disable-line no-return-assign
         />
         {remainingCount}
@@ -135,11 +136,12 @@ class TextArea extends React.PureComponent {
 
 TextArea.PropTypes = {
   "isValid": PropTypes.bool,
-  /**
-	 * Define a custom css class name.
-	 * @examples 'textarea', 'textarea-elem'
-	 */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to TextArea.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
 	 * Define a name for the textarea input.
 	 * @examples '<TextArea name="test"/>'

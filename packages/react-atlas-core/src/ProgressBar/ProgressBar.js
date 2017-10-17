@@ -113,11 +113,12 @@ ProgressBar.propTypes = {
    * @examples ''
    */
   buffer: PropTypes.number,
-  /**
-   * Additional classname provided to component for further styling
-   * @examples ''
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to ProgressBar.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * Length of time in seconds for the transition (can use decimals)
    * @examples '35'

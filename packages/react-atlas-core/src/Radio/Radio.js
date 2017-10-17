@@ -140,11 +140,12 @@ Radio.propTypes = {
    * @examples '<Radio defaultChecked/>'
    */
   defaultChecked: PropTypes.bool,
-  /**
-   * Define a custom css class name.
-   * @examples 'radioButton', 'radio-button'
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Radio.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * Define the element title.
    * @examples '<Radio title="Test"/>'

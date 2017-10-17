@@ -20,7 +20,13 @@ TableHeader.propTypes = {
   dataSort: PropTypes.bool,
   searchable: PropTypes.bool,
   /* Pass inline styles here. */
-  style: PropTypes.node
+  style: PropTypes.node,
+  /** An Object, array, or string of CSS classes to apply to TableHeader.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
 };
 
 TableHeader.defaultProps = {

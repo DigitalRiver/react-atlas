@@ -19,7 +19,8 @@ class Form extends React.PureComponent {
       let state = {
                     index: i,
                     value: child.props.value || '',
-                    isValid: true
+                    isValid: true,
+                    onChange: child.props.onChange || null
                   };
 
       childState.push(state)
@@ -118,7 +119,11 @@ class Form extends React.PureComponent {
 
     for(let i = 0; i < count; i++) {
       if(i === index) {
-        let child = {index: i, value: value, isValid: isValid};
+        if(this.state.childState[i].onChange) {
+          this.state.childState[i].onChange(value, event, isValid);
+        }
+        let onChange = this.state.childState[i].onChange;
+        let child = {index: i, value: value, isValid: isValid, onChange: onChange};
         childState.push(child);
         continue;
       }
@@ -170,8 +175,12 @@ Form.propTypes = {
   "buttonClasses": PropTypes.node,
   /** Children components, Usually a Textfield, Dropdown, Input, etc */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to form.*/
-  "className": PropTypes.node,
+  /** An Object, array, or string of CSS classes to apply to Form.*/
+  "className": PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /** A callback that is fired when the form has passed validation
    * and is ready to submit. Returns the form data and the event object.  */
   "onSubmit": PropTypes.func,

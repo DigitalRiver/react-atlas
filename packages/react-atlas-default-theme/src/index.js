@@ -14,7 +14,7 @@ export { RadioStyle } from "./Radio";
 export { RadioGroupStyle } from "./RadioGroup";
 export { SwitchStyle } from "./Switch";
 export { TableStyle } from "./Table";
-export { TableHeaderStyle } from "./tableHeader";
+export { TableHeaderStyle } from "./TableHeader";
 export { TooltipStyle } from "./Tooltip";
 export { TextAreaStyle } from "./TextArea";
 export { TextFieldStyle } from "./TextField";
