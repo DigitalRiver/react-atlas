@@ -35,8 +35,12 @@ class FileUpload extends React.PureComponent {
 }
 
 FileUpload.propTypes = {
-  /** An Object, array, or string of CSS classes to apply to form.*/
-  "className": PropTypes.node,
+  /** An Object, array, or string of CSS classes to apply to fileupload.*/
+  "className": PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
 
   /* The text to be displayed on the fileupload component. */
   "text": PropTypes.string,
