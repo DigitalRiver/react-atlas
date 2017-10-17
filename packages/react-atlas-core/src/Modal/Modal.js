@@ -27,7 +27,7 @@ class Modal extends React.PureComponent {
             onEscKeyDown={onEscKeyDown}
             lockScroll={lockScroll}
           />}
-        <div style={style} styleName={classes} className={className}>
+        <div style={style} styleName={classes} className={cx(className)}>
           {title &&
             <h3 styleName={cx("title")}>
               {title}

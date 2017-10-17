@@ -109,7 +109,7 @@ class Accordion extends React.PureComponent {
         });
 
         return (
-            <div style={style}>
+            <div className={cx(className)} style={style}>
                 { this.state.expandAll && !this.props.disabled ? <div styleName={"expandAll"} onClick={() => {this._expandAll()}}>Expand All</div> : null }
                 <div styleName={"accordion"} style={{ width: width }}>
                     {accordion_panels}
