@@ -87,11 +87,12 @@ Tooltip.propTypes = {
      * @examples <GithubIcon />, <i className="fa fa-github"></i>
      */
   children: PropTypes.any,
-  /**
-     * For using unique classes in components
-     * @examples <i className="fa fa-github"></i>
-     */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Tooltip.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
      * For the text displayed within the tooltip
      * @examples <Tooltip text="default"/>

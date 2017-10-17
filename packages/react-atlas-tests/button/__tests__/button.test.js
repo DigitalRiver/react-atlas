@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { ButtonCore } from "../../../react-atlas-core/src/button/index";
+import { ButtonCore } from "../../../react-atlas-core/src/Button/index";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
@@ -34,13 +34,13 @@ describe("Test ButtonCore component", () => {
     expect(result.props().link).toBe(true);
   });
 });
-  
+
 describe("Test Button component", () => {
-	
+
 	it("Base case - Primary Button", function() {
 		const comp = mount(<ButtonCore primary/>);
 	});
-	
+
 	it("Base case - Secondary Button", function() {
 		const comp = mount(<ButtonCore secondary/>);
 	});
@@ -64,7 +64,7 @@ describe("Test Button component", () => {
 	it("Base case - Button with icon 2", function() {
 		const comp = mount(<ButtonCore icon={"FakeIcon"} children={"FakeChildren"}/>);
 	});
-	
+
 	it("Base case - Button default properties", function() {
 		const comp = mount(<ButtonCore />);
 		const expected = new Map([
@@ -81,7 +81,7 @@ describe("Test Button component", () => {
 		]);
 		expect(verifyPropsDefaultValue(comp, expected)).toEqual(true);
 	});
-  
+
 	it("Base case - Button custom properties", function() {
 		const comp = mount(<ButtonCore secondary={true} warning={true} large={true} disabled={true} />);
 		const expected = new Map([
@@ -98,16 +98,15 @@ describe("Test Button component", () => {
 		]);
 		expect(verifyPropsDefaultValue(comp, expected)).toEqual(true);
 	});
-  
+
 	it("Click Button test", function() {
 		const comp = mount(<ButtonCore onClick={ function(){buttonWasClicked = true} } />);
-		
+
 		let buttonWasClicked = false;
-		
+
 		comp.simulate("click");
-		
+
 		expect(buttonWasClicked).toEqual(true);
 	});
-  
+
 });
-  

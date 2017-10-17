@@ -23,11 +23,12 @@ class Hint extends React.PureComponent {
 }
 
 Hint.propTypes = {
-  /**
-   * Defines a custom css class name.
-   * @examples '<Hint className="custom">This is a text hint</Hint>'
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Hint.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * Text to be displayed can be passed as a child.
    * @examples '<Hint>This is a text hint</Hint>'

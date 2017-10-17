@@ -18,7 +18,7 @@ export { RadioCore } from "./Radio";
 export { RadioGroupCore } from "./RadioGroup";
 export { SwitchCore } from "./Switch";
 export { TableCore } from "./Table";
-export { TableHeaderCore } from "./tableHeader";
+export { TableHeaderCore } from "./TableHeader";
 export { TooltipCore } from "./Tooltip";
 export { TextAreaCore } from "./TextArea";
 export { TextFieldCore } from "./TextField";

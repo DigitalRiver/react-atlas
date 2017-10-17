@@ -51,10 +51,12 @@ Dialog.propTypes = {
    * Dialog's title
    */
   title: PropTypes.string,
-  /**
-   * Define a custom css class name.
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to Dialog.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * Anything that can be in a Dialog.
    */

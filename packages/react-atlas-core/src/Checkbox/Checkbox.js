@@ -22,6 +22,13 @@ class Checkbox extends React.PureComponent {
   _clickHandler = event => {
     if (!this.props.disabled) {
       event.persist();
+      if (typeof this.props.onBeforeChange !== "undefined") {
+        let result = this.props.onBeforeChange(this.state.checked);
+        if(result === false) {
+          return;
+        }
+      }
+
       this.setState({ checked: !this.state.checked }, function() {
         this._validationHandler(this.props.errorCallback);
 
@@ -33,10 +40,6 @@ class Checkbox extends React.PureComponent {
             this.state.valid,
             this.state.checked
           );
-        }
-
-        if (typeof this.props.onBeforeChange !== "undefined") {
-          this.props.onBeforeChange(this.state.checked);
         }
 
         /* Check if onChange has been passed, if so call it. */
@@ -157,10 +160,12 @@ Checkbox.propTypes = {
    * @examples 'Some Label'
    */
   label: PropTypes.string,
-  /**
-   * A css class name that will be appended to the wrapping <label> element around the <input> and <span> elements.
-   */
-  className: PropTypes.string,
+  /** An Object, array, or string of CSS classes to apply to checkbox.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
   /**
    * If included, checkbox is disabled
    * @examples <Checkbox disabled />, <Checkbox disabled={true} />
