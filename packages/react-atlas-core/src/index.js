@@ -8,6 +8,7 @@ export { DatePickerCore } from './DatePicker';
 export { DialogCore } from "./Dialog";
 export { DropdownCore } from "./Dropdown";
 export { FormCore } from "./Form";
+export { FileUploadCore } from "./FileUpload";
 export { HintCore } from "./Hint";
 export { InputCore } from "./Input";
 export { ModalCore } from "./Modal";
