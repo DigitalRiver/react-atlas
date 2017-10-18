@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import cx from "classnames";
 
 class Dialog extends React.PureComponent {
   _getButtonContent = () => {
