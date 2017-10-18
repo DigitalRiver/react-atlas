@@ -311,6 +311,10 @@ class Input extends React.PureComponent {
       onPaste: this._handlePaste
     };
 
+    let tooltipElement = tooltip ? (
+      <div className={"ra_Input__tooltipInputAlignment"}><Tooltip text={tooltip}/></div>
+    ) : null;
+
     let inputElement = multiline ? (
       <textarea
         name={name}
@@ -336,7 +340,7 @@ class Input extends React.PureComponent {
     );
 
     let errorTextElement = this.state.errorText && (
-      <span styleName={cx("error")}>{this.state.errorText}</span>
+      <span className={"ra_Input__error"}>{this.state.errorText}</span>
     );
 
     return isCheckbox ? (
@@ -350,10 +354,10 @@ class Input extends React.PureComponent {
         {...eventHandlers}
       />
     ) : (
-      <div styleName={cx("container")}>
-        <div className={tooltipClasses}>
+      <div styleName={"container"}>
+        <div className={"ra_Input__tooltipInline"}>
           {inputElement}
-          {tooltip ? <div styleName={"tooltipInputAlignment"}><Tooltip text={tooltip}/></div> : null}
+          {tooltipElement}
         </div>
         {this.state.isValid ? null : errorTextElement}
       </div>
