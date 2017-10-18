@@ -1,2 +1,2 @@
-import * as PortalStyle from "./portal.css";
+import * as PortalStyle from "./Portal.css";
 export { PortalStyle };

@@ -1,4 +1,4 @@
-jest.dontMock('../src/BootstrapTable.js');
+jest.dontMock('../src/LightTable.js');
 jest.dontMock('../src/TableHeaderColumn.js');
 jest.dontMock('../src/TableBody.js');
 jest.dontMock('../src/TableColumn.js');
@@ -115,7 +115,7 @@ xdescribe('TableHeaderColumn Test', function() {
     expect(idHeaderColumn.props.dataFormat).toEqual(undefined);
     expect(idHeaderColumn.props.isKey).toBe(false);
   });
-  
+
   it('A sort header column test', function(){
     var idHeaderColumn = TestUtils.renderIntoDocument(
       <TableHeaderColumn dataField="id" dataSort={true}>Product ID</TableHeaderColumn>

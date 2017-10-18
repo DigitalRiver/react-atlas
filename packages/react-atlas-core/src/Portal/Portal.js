@@ -22,7 +22,7 @@ class Portal extends Component {
       return null;
     }
     return (
-      <div className={cx("ra_portal__portal", this.props.className)}>
+      <div styleName="portal" className={cx(className)}>
         {this.props.children}
       </div>
     );

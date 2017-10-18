@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
-import { CardCore } from "../../../react-atlas-core/src/card/index";
-import { default as Checkbox } from "../../../react-atlas-core/src/checkbox/Checkbox";
+import { CardCore } from "../../../react-atlas-core/src/Card/index";
+import { default as Checkbox } from "../../../react-atlas-core/src/Checkbox/Checkbox";
 import { default as CheckboxGroup } from "../../../react-atlas-core/src/CheckboxGroup/CheckboxGroup";
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
@@ -14,7 +14,7 @@ describe("Test Card component", () => {
 		]);
 		expect(verifyPropsDefaultValue(result, expected)).toEqual(true);
 	});
-	
+
 	it("Card - Children test", function() {
 		const result = mount(<CardCore legend="Card Example">
 								<CheckboxGroup title="Checkbox Group" name="checkboxGroup">
@@ -24,5 +24,5 @@ describe("Test Card component", () => {
 								</CheckboxGroup>
 							 </CardCore>);
 	});
-  
+
 });

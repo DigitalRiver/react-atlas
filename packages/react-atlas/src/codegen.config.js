@@ -7,6 +7,7 @@ let eol = require("os").EOL;
  * can be found here: http://olado.github.io/doT/index.html . Dot.js was chosen
  * because it has no dependencies, is MIT licensed and works.
  *
+ *
  * Dot.js templates are just strings of text. To print out a variable with dot.js
  * Use double curly brackets, followed by the variable name. You will need to put =it.
  * on the begining of the variable you pass dot.js. Then make sure to close the double
@@ -156,6 +157,7 @@ let components = [
   "datePicker",
   "dialog",
   "dropdown",
+  "fileUpload",
   "form",
   "hint",
   "input",

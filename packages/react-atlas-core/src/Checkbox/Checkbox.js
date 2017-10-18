@@ -12,6 +12,7 @@ class Checkbox extends React.PureComponent {
     super(props);
     this.state = {
       checked: this.props.checked || false,
+      disabled: this.props.disabled || false,
       valid: true,
       errorMessage: "",
       focus: false
@@ -20,8 +21,15 @@ class Checkbox extends React.PureComponent {
 
   // Handles new checkbox clicks and sets value and checked status of hidden input
   _clickHandler = event => {
-    if (!this.props.disabled) {
+    if (!this.state.disabled) {
       event.persist();
+      if (typeof this.props.onBeforeChange !== "undefined") {
+        let result = this.props.onBeforeChange(this.state.checked);
+        if(result === false) {
+          return;
+        }
+      }
+
       this.setState({ checked: !this.state.checked }, function() {
         this._validationHandler(this.props.errorCallback);
 
@@ -31,12 +39,9 @@ class Checkbox extends React.PureComponent {
             this.props.value,
             event,
             this.state.valid,
-            this.state.checked
+            this.state.checked,
+            this.state.disabled
           );
-        }
-
-        if (typeof this.props.onBeforeChange !== "undefined") {
-          this.props.onBeforeChange(this.state.checked);
         }
 
         /* Check if onChange has been passed, if so call it. */
@@ -45,7 +50,8 @@ class Checkbox extends React.PureComponent {
             this.props.value,
             event,
             this.state.valid,
-            this.state.checked
+            this.state.checked,
+            this.state.disabled
           );
         }
       });
@@ -71,7 +77,6 @@ class Checkbox extends React.PureComponent {
     const {
       label,
       title,
-      disabled,
       className,
       name,
       groupError,
@@ -92,7 +97,7 @@ class Checkbox extends React.PureComponent {
     const checkboxDisplay =
       labelPosition === "left" ? cx("float_right") : cx("float_left");
     const title_label = title ? title : label;
-    const disabledClass = disabled
+    let disabledClass = this.state.disabled
       ? cx({
           disabled: true,
           inline_block: true,
@@ -113,13 +118,13 @@ class Checkbox extends React.PureComponent {
         onClick={this._clickHandler}
         styleName={inlineCheckbox}
         style={style}
+        className={cx(className)}
       >
         <div styleName={disabledClass}>
           {label && (
             <label
               styleName={labelStyle}
               title={title_label}
-              className={cx(className)}
             >
               {label}
             </label>
@@ -128,9 +133,9 @@ class Checkbox extends React.PureComponent {
             <InputCore
               label={label}
               type="checkbox"
-              disabled={disabled}
+              disabled={this.state.disabled}
               checked={this.state.checked}
-              hidden={disabled}
+              hidden={this.state.disabled}
               name={name}
               /* Hardcode classes for InputCore because classes on styleName will not
                * be evaluated because were using InputCore not Input.  */

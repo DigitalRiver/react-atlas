@@ -1,2 +1,2 @@
-import * as FormStyle from "./form.css";
+import * as FormStyle from "./Form.css";
 export { FormStyle };
