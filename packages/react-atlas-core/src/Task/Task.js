@@ -5,10 +5,6 @@ import cx from "classnames";
 class Task extends React.PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      selected: null
-    };
   }
 
   render() {
