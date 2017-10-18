@@ -1,0 +1,16 @@
+.taskbar {
+	composes: taskbar-border-top from '../styles.css'; 
+	composes: taskbar-border-bottom from '../styles.css'; 
+	width: 100%;
+	border-radius: 2px;
+	min-height: 50px;
+	margin-bottom: 27px;
+}
+
+.taskbarContainer {
+	padding: 0 20px;
+}
+
+.center {
+	text-align: center;
+}
