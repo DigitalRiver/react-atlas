@@ -41,11 +41,12 @@ class Overlay extends React.PureComponent {
 
   render() {
     const { active, className, style } = this.props;
-    const classes = {
-      "overlay": true,
-      "active": active
-    };
-    return <div onClick={this.handleClick} styleName={classes} className={cx(className)} />;
+    const classNames = cx(
+      "ra_Overlay__overlay",
+      { ra_Overlay__active: active },
+      className
+    );
+    return <div onClick={this.handleClick} className={classNames} />;
   }
 }
 
