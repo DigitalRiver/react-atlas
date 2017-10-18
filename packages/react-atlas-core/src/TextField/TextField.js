@@ -242,7 +242,10 @@ TextField.PropTypes = {
   style: PropTypes.node,
 
   /* Sets whether or not TextField will display as inline */
-  inline: PropTypes.bool
+  inline: PropTypes.bool,
+
+  /* passes tooltip as prop if added to textField */
+  tooltip: PropTypes.string
 };
 
 TextField.defaultProps = {

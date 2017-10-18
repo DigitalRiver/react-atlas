@@ -476,7 +476,10 @@ Input.propTypes = {
   onChange: PropTypes.func,
 
   /* Pass inline styles here. */
-  style: PropTypes.node
+  style: PropTypes.node,
+
+  /* Tooltip is displayed when passed in as prop as inline tooltip */
+  tooltip: PropTypes.string
 };
 
 Input.defaultProps = {
