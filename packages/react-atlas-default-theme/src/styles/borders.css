@@ -150,3 +150,11 @@
 .last-child-rounded:last-child { border-radius: 0 0 var(--border-radius) var(--border-radius) }
 
 .primary-button-border-width { border-width: var(--button-border-width) }
+
+.taskbar-border-top {
+  border-top: solid 1px var(--primary-gray);
+}
+
+.taskbar-border-bottom {
+  border-bottom: solid 1px var(--primary-gray);
+}

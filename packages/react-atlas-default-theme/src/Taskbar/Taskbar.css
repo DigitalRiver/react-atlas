@@ -1,12 +1,10 @@
 .taskbar {
+	composes: taskbar-border-top from '../styles.css'; 
+	composes: taskbar-border-bottom from '../styles.css'; 
 	width: 100%;
 	border-radius: 2px;
 	min-height: 50px;
 	margin-bottom: 27px;
-	border-top: solid 1px;
-	border-top-color: var(--primary-gray);
-	border-bottom: solid 1px;
-	border-bottom-color: var(--primary-gray);
 }
 
 .taskbarContainer {

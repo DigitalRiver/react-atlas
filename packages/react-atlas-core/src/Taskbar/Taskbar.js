@@ -8,14 +8,14 @@ class Taskbar extends React.PureComponent {
   }
 
   render() {
-    const { children, center } = this.props;
+    const { className, style, children, center } = this.props;
     const taskbarContainerClasses = cx({
       taskbarContainer: true,
       center: center
     });
 
     return (
-      <div styleName={"taskbar"}>
+      <div styleName={"taskbar"} style={style} className={cx(className)}>
         <div styleName={taskbarContainerClasses}>{children}</div>
       </div>
     );
@@ -23,6 +23,14 @@ class Taskbar extends React.PureComponent {
 }
 
 Taskbar.propTypes = {
+  /** An Object, array, or string of CSS classes to apply to CheckboxGroup.*/
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
+  /* Pass inline styles here. */
+  style: PropTypes.node,
   /**
    * Any HTML element or React Component.
    * @examples <p>Some Text.</p>
