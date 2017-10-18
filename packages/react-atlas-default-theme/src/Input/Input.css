@@ -81,3 +81,12 @@ input.opacity[type="checkbox"], input.opacity[type="radio"] {
 	display: none;
 	visibility: hidden;
 }
+
+.tooltipInline {
+	position: relative;
+}
+.tooltipInputAlignment {
+	position: absolute;
+	top:5px;
+	right:-20px;
+}

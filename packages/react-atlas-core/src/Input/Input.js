@@ -4,6 +4,7 @@ import InputMask from "inputmask-core";
 import { utils } from "../utils";
 import cx from "classnames";
 import messages from "../utils/messages";
+import { TooltipCore } from "./../Tooltip";
 
 /**
  * Master Input component. To be used as core for different input types
@@ -275,13 +276,18 @@ class Input extends React.PureComponent {
       hidden,
       errorLocation,
       checked,
-      style
+      style,
+      tooltip
     } = this.props;
 
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";
     let isRadio = type === "radio";
     const isInput = isCheckbox || isRadio ? false : true;
+
+    let tooltipClasses = cx({ 
+      tooltipInline: tooltip ? true : false
+    }); 
 
     let inputClasses = cx({
       input: isInput,
@@ -304,6 +310,10 @@ class Input extends React.PureComponent {
       onKeyPress: this._handleKeyPress,
       onPaste: this._handlePaste
     };
+
+    let tooltipElement = tooltip ? (
+        <div className={"ra_Input__tooltipInputAlignment"}><Tooltip text={tooltip}/></div>
+    ) : null;
 
     let inputElement = multiline ? (
       <textarea
@@ -330,7 +340,7 @@ class Input extends React.PureComponent {
     );
 
     let errorTextElement = this.state.errorText && (
-      <span styleName={cx("error")}>{this.state.errorText}</span>
+      <span className={"ra_Input__error"}>{this.state.errorText}</span>
     );
 
     return isCheckbox ? (
@@ -344,8 +354,8 @@ class Input extends React.PureComponent {
         {...eventHandlers}
       />
     ) : (
-      <div styleName={cx("container")}>
-        {inputElement}
+      <div styleName={"container"}>
+        {tooltip ? <div className={"ra_Input__tooltipInline"}>{inputElement}{tooltipElement}</div> : <span>{inputElement}</span> }
         {this.state.isValid ? null : errorTextElement}
       </div>
     );
@@ -467,7 +477,10 @@ Input.propTypes = {
   onChange: PropTypes.func,
 
   /* Pass inline styles here. */
-  style: PropTypes.node
+  style: PropTypes.node,
+
+  /* Tooltip is displayed when passed in as prop as inline tooltip */
+  tooltip: PropTypes.string
 };
 
 Input.defaultProps = {
