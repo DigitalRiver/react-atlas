@@ -83,7 +83,8 @@ class TextField extends React.PureComponent {
       hidden,
       className,
       inline,
-      style
+      style,
+      tooltip
     } = this.props;
 
     let textFieldHeader = header && (
@@ -138,6 +139,7 @@ class TextField extends React.PureComponent {
           disabled={disabled}
           isValid={this.state.isValid}
           hidden={hidden}
+          tooltip={tooltip}
         />
       </div>
     );

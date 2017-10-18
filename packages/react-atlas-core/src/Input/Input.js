@@ -4,6 +4,7 @@ import InputMask from "inputmask-core";
 import { utils } from "../utils";
 import cx from "classnames";
 import messages from "../utils/messages";
+import { TooltipCore } from "./../Tooltip";
 
 /**
  * Master Input component. To be used as core for different input types
@@ -275,13 +276,18 @@ class Input extends React.PureComponent {
       hidden,
       errorLocation,
       checked,
-      style
+      style,
+      tooltip
     } = this.props;
 
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";
     let isRadio = type === "radio";
     const isInput = isCheckbox || isRadio ? false : true;
+
+    let tooltipClasses = cx({ 
+      tooltipInline: tooltip ? true : false
+    }); 
 
     let inputClasses = cx({
       input: isInput,
@@ -345,7 +351,10 @@ class Input extends React.PureComponent {
       />
     ) : (
       <div styleName={cx("container")}>
-        {inputElement}
+        <div className={tooltipClasses}>
+          {inputElement}
+          {tooltip ? <div styleName={"tooltipInputAlignment"}><Tooltip text={tooltip}/></div> : null}
+        </div>
         {this.state.isValid ? null : errorTextElement}
       </div>
     );
