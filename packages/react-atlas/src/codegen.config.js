@@ -155,12 +155,13 @@ let components = [
   "checkbox",
   "checkboxGroup",
   "datePicker",
+  "dialog",
   "dropdown",
-  "form",
   "fileUpload",
+  "form",
+  "hint",
   "input",
   "modal",
-  "dialog",
   "panel",
   "progressBar",
   "radio",
@@ -168,10 +169,11 @@ let components = [
   "switch",
   "table",
   "tableHeader",
-  "tooltip",
-  "hint",
+  "task",
+  "taskbar",
   "textArea",
-  "textField"
+  "textField",
+  "tooltip"
 ];
 
 module.exports = {
