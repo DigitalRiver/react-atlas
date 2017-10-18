@@ -1,0 +1,38 @@
+.task {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+}
+
+.taskLink {
+	composes: default-font from '../styles.css';
+  	font-size: 19px;
+	color: var(--dark-gray);
+	line-height: 27px;
+	text-decoration:none;
+	padding-right: 45px;
+	padding-left: 45px;
+	padding-top: 11.5px;
+	padding-bottom: 11.5px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.taskLink:hover {
+	color: var(--primary-blue);
+}
+
+.selected {
+	color: var(--primary-blue);
+	cursor: default;
+}
+
+.borderTop {
+	border-top: solid 1px;
+	border-top-color: var(--primary-gray);
+}
+
+.icon-left {
+  margin-right: 0.25rem;
+  vertical-align: middle;
+}
