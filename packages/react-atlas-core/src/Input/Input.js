@@ -312,7 +312,7 @@ class Input extends React.PureComponent {
     };
 
     let tooltipElement = tooltip ? (
-      <div className={"ra_Input__tooltipInputAlignment"}><Tooltip text={tooltip}/></div>
+        <div className={"ra_Input__tooltipInputAlignment"}><Tooltip text={tooltip}/></div>
     ) : null;
 
     let inputElement = multiline ? (
@@ -355,10 +355,7 @@ class Input extends React.PureComponent {
       />
     ) : (
       <div styleName={"container"}>
-        <div className={"ra_Input__tooltipInline"}>
-          {inputElement}
-          {tooltipElement}
-        </div>
+        {tooltip ? <div className={"ra_Input__tooltipInline"}>{inputElement}{tooltipElement}</div> : <span>{inputElement}</span> }
         {this.state.isValid ? null : errorTextElement}
       </div>
     );
