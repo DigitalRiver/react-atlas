@@ -18,7 +18,7 @@ class TextArea extends React.PureComponent {
       isValid = props.isValid;
       errorText = null;
     }
-    
+
     // Initial state
     this.state = {
       "value": props.value || "",
@@ -126,7 +126,6 @@ class TextArea extends React.PureComponent {
           disabled={disabled}
           hidden={hidden}
           value={this.state.value}
-          ref={node => (this.inputRef = node)} // eslint-disable-line no-return-assign
         />
         {remainingCount}
       </div>
