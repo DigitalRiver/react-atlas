@@ -18,7 +18,7 @@ class TextArea extends React.PureComponent {
       isValid = props.isValid;
       errorText = null;
     }
-    
+
     // Initial state
     this.state = {
       "value": props.value || "",
@@ -74,14 +74,14 @@ class TextArea extends React.PureComponent {
     } = this.props;
 
     let remainingCount = maxLength && (
-      <div styleName={cx("remainingCount")}>
+      <div styleName={"remainingCount"}>
         {maxLength - this.state.remaining}/{maxLength}
       </div>
     );
 
     let textAreaHeader = header && (
-      <div styleName={cx("header")}>
-        <span styleName={cx("headerFont")}>{header}</span>
+      <div styleName={"header"}>
+        <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
       </div>
     );

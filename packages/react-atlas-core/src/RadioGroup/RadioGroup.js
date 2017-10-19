@@ -56,7 +56,7 @@ class RadioGroup extends React.PureComponent {
       <div style={style} className={cx(className)} styleName={radioGroupStyles}>
         {title && (
           <div styleName={cx({ header: !inline })}>
-            <span styleName={cx("headerFont")}>{title}</span>
+            <span styleName={"headerFont"}>{title}</span>
           </div>
         )}
         {radioButtons}

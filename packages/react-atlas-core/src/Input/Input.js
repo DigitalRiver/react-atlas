@@ -330,7 +330,7 @@ class Input extends React.PureComponent {
     );
 
     let errorTextElement = this.state.errorText && (
-      <span styleName={cx("error")}>{this.state.errorText}</span>
+      <span styleName={"error"}>{this.state.errorText}</span>
     );
 
     return isCheckbox ? (
@@ -344,7 +344,7 @@ class Input extends React.PureComponent {
         {...eventHandlers}
       />
     ) : (
-      <div styleName={cx("container")}>
+      <div styleName={"container"}>
         {inputElement}
         {this.state.isValid ? null : errorTextElement}
       </div>

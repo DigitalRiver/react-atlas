@@ -77,17 +77,11 @@ class Accordion extends React.PureComponent {
         // A list of children of the Accordion component
         const accordion_panels = React.Children.map(children, (child, i) => {
             if(this.state.activeChildArray[i] === true && !this.props.disabled){
-                stateClasses = cx(
-                    'active'
-                );
+                stateClasses = 'active';
             } else if(this.props.disabled) {
-                stateClasses = cx(
-                    'disabled'
-                );
+                stateClasses = 'disabled';
             } else {
-                stateClasses = cx(
-                    'inactive'
-                );
+                stateClasses = 'inactive';
             }
 
             headerClasses = cx("accordion_header", stateClasses, styleClasses);
