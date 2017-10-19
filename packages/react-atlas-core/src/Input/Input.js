@@ -344,7 +344,7 @@ class Input extends React.PureComponent {
         {...eventHandlers}
       />
     ) : (
-      <div styleName={"ra_Input__container"}>
+      <div className={"ra_Input__container"}>
         {inputElement}
         {this.state.isValid ? null : errorTextElement}
       </div>
