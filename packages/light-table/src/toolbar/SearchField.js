@@ -22,7 +22,7 @@ class SearchField extends Component {
           onKeyUp={onKeyUp}
           style={{ "zIndex": 0 }}
         {...rest}/>
-        <icon className={"ra_table__magnifying-glass"} />
+        <icon className={"ra_Table__magnifying-glass"} />
       </div>
     );
   }

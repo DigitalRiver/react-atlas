@@ -145,7 +145,7 @@ class Form extends React.PureComponent {
          * together, if yes set the form_component class. */
         let classes;
         if(group) {
-          classes = cx(child.props.className, childClasses, "ra_form__component");
+          classes = cx(child.props.className, childClasses, "ra_Form__component");
         } else {
           classes = cx(child.props.className, childClasses);
         }

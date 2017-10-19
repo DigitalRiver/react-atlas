@@ -74,7 +74,7 @@ class Button extends React.PureComponent {
       text = null;
     } else if (icon) {
       text = children;
-      iconClass = "ra_button__icon-left";
+      iconClass = "ra_Button__icon-left";
     }
 
     return (
