@@ -275,8 +275,7 @@ class Input extends React.PureComponent {
       hidden,
       errorLocation,
       checked,
-      style,
-      tooltip
+      style
     } = this.props;
 
     /* If checkbox, we need to render only input component (no wrappers) */
@@ -305,10 +304,6 @@ class Input extends React.PureComponent {
       onKeyPress: this._handleKeyPress,
       onPaste: this._handlePaste
     };
-
-    let tooltipElement = tooltip ? (
-        <div className={tooltipClasses}><Tooltip text={tooltip}/></div>
-    ) : null;
 
     let inputElement = multiline ? (
       <textarea
@@ -349,7 +344,7 @@ class Input extends React.PureComponent {
         {...eventHandlers}
       />
     ) : (
-      <div styleName={"container"}>
+      <div styleName={"ra_Input__container"}>
         {inputElement}
         {this.state.isValid ? null : errorTextElement}
       </div>
