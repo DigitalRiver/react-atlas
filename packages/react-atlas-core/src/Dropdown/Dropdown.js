@@ -271,14 +271,14 @@ class Dropdown extends React.PureComponent {
       this.props.children,
       (child, i) => {
         let childClasses = cx({
-          ra_dropdown__selected: i === this.state.index,
-          ra_dropdown__firstChild: i === 0,
-          ra_dropdown__lastChild: i === count - 1
+          ra_Dropdown__selected: i === this.state.index,
+          ra_Dropdown__firstChild: i === 0,
+          ra_Dropdown__lastChild: i === count - 1
         });
         let kid = (
           <li
             key={i}
-            className={"ra_dropdown__item " + childClasses}
+            className={"ra_Dropdown__item " + childClasses}
             styleName={"default-font"}
             onMouseDown={e => {
               // onMouseDown fires before onBlur. If changed to onClick it will fire after onBlur and not work.
