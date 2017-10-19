@@ -4,7 +4,6 @@ import InputMask from "inputmask-core";
 import { utils } from "../utils";
 import cx from "classnames";
 import messages from "../utils/messages";
-import { TooltipCore } from "./../Tooltip";
 
 /**
  * Master Input component. To be used as core for different input types
@@ -285,10 +284,6 @@ class Input extends React.PureComponent {
     let isRadio = type === "radio";
     const isInput = isCheckbox || isRadio ? false : true;
 
-    let tooltipClasses = cx({ 
-      tooltipInline: tooltip ? true : false
-    }); 
-
     let inputClasses = cx({
       input: isInput,
       checkbox: isCheckbox,
@@ -312,7 +307,7 @@ class Input extends React.PureComponent {
     };
 
     let tooltipElement = tooltip ? (
-        <div className={"ra_Input__tooltipInputAlignment"}><Tooltip text={tooltip}/></div>
+        <div className={tooltipClasses}><Tooltip text={tooltip}/></div>
     ) : null;
 
     let inputElement = multiline ? (
@@ -355,7 +350,7 @@ class Input extends React.PureComponent {
       />
     ) : (
       <div styleName={"container"}>
-        {tooltip ? <div className={"ra_Input__tooltipInline"}>{inputElement}{tooltipElement}</div> : <span>{inputElement}</span> }
+        {inputElement}
         {this.state.isValid ? null : errorTextElement}
       </div>
     );
@@ -477,10 +472,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
 
   /* Pass inline styles here. */
-  style: PropTypes.node,
-
-  /* Tooltip is displayed when passed in as prop as inline tooltip */
-  tooltip: PropTypes.string
+  style: PropTypes.node
 };
 
 Input.defaultProps = {

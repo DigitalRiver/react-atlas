@@ -91,6 +91,7 @@ class TextField extends React.PureComponent {
       <div styleName={cx("header")}>
         <span styleName={cx("headerFont")}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
+        {tooltip && <span styleName={cx("tooltipAlignment")}><Tooltip text={tooltip} position="top"/></span>}
       </div>
     );
 
@@ -139,7 +140,6 @@ class TextField extends React.PureComponent {
           disabled={disabled}
           isValid={this.state.isValid}
           hidden={hidden}
-          tooltip={tooltip}
         />
       </div>
     );

@@ -71,3 +71,7 @@
   composes: header-font from '../styles.css';
   color: #BD0A33;
 }
+
+.tooltipAlignment {
+	margin-left: 5px;
+}

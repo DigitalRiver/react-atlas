@@ -85,8 +85,17 @@ input.opacity[type="checkbox"], input.opacity[type="radio"] {
 .tooltipInline {
 	position: relative;
 }
+.textAreaTooltipContainer {
+	width: 99%;
+}
 .tooltipInputAlignment {
 	position: absolute;
+}
+.textAreaTooltip {
+	top:0px;
+	right:-30px;
+}
+.textFieldTooltip {
 	top:5px;
 	right:-20px;
 }

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { InputCore } from "../Input";
 import cx from "classnames";
 import messages from "../utils/messages";
+import { TooltipCore } from "./../Tooltip";
 
 class TextArea extends React.PureComponent {
   constructor(props) {
@@ -70,7 +71,8 @@ class TextArea extends React.PureComponent {
       disabled,
       hidden,
       className,
-      style
+      style,
+      tooltip
     } = this.props;
 
     let remainingCount = maxLength && (
@@ -83,6 +85,7 @@ class TextArea extends React.PureComponent {
       <div styleName={cx("header")}>
         <span styleName={cx("headerFont")}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
+        {tooltip && <span styleName={cx("tooltipAlignment")}><Tooltip text={tooltip} position="top"/></span>}
       </div>
     );
 
@@ -206,7 +209,10 @@ TextArea.PropTypes = {
 	 * Determines if the textarea is hidden.
 	 * @examples '<TextArea hidden/>'
 	 */
-  hidden: PropTypes.bool
+  hidden: PropTypes.bool,
+
+  /* passes tooltip as prop if added to textArea */
+  tooltip: PropTypes.string
 };
 
 TextArea.defaultProps = {

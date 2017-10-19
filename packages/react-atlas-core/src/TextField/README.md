@@ -77,6 +77,6 @@
 
     <TextField onChange={ (value) => { console.log('onChange executed: ', value); } }/>
 
-###### tooltip textfield:
+###### Tooltip Textfield with Header:
 
     <TextField required small tooltip="some test" header="key"/>
