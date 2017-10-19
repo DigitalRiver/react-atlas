@@ -63,3 +63,10 @@
 .inline {
   display: inline-block;
 }
+
+.tooltipAlignment {
+	margin-left: 5px;
+}
+.tooltipAlignment.tooltipRight div{
+	float: right;
+}
