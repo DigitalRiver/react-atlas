@@ -140,7 +140,6 @@ class TextArea extends React.PureComponent {
           disabled={disabled}
           hidden={hidden}
           value={this.state.value}
-          ref={node => (this.inputRef = node)} // eslint-disable-line no-return-assign
         />
         {remainingCount}
       </div>
