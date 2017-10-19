@@ -47,9 +47,9 @@ class ProgressBar extends React.PureComponent {
 
   renderCircular() {
     return (
-      <svg styleName={cx("circle")}>
+      <svg styleName={"circle"}>
         <circle
-          styleName={cx("path")}
+          styleName={"path"}
           style={this.circularStyle()}
           cx="30"
           cy="30"
@@ -63,8 +63,8 @@ class ProgressBar extends React.PureComponent {
     const { buffer, value } = this.linearStyle();
     return (
       <div>
-        <span data-ref="buffer" styleName={cx("buffer")} style={buffer} />
-        <span data-ref="value" styleName={cx("value")} style={value} />
+        <span data-ref="buffer" styleName={"buffer"} style={buffer} />
+        <span data-ref="value" styleName={"value"} style={value} />
       </div>
     );
   }
@@ -76,7 +76,7 @@ class ProgressBar extends React.PureComponent {
                      this.props.value.to - this.props.value.from
                    )})`
     });
-    return <span data-ref="value" styleName={cx("value")} style={rangeStyle} />;
+    return <span data-ref="value" styleName={"value"} style={rangeStyle} />;
   }
 
   renderInner() {

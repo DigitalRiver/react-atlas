@@ -87,14 +87,14 @@ class TextArea extends React.PureComponent {
     });
 
     let remainingCount = maxLength && (
-      <div styleName={cx("remainingCount")}>
+      <div styleName={"remainingCount"}>
         {maxLength - this.state.remaining}/{maxLength}
       </div>
     );
 
     let textAreaHeader = header && (
-      <div styleName={cx("header")}>
-        <span styleName={cx("headerFont")}>{header}</span>
+      <div styleName={"header"}>
+        <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
         {tooltip && <span styleName={tooltipClasses}><Tooltip text={tooltip} position="top"/></span>}
       </div>
@@ -140,7 +140,6 @@ class TextArea extends React.PureComponent {
           disabled={disabled}
           hidden={hidden}
           value={this.state.value}
-          ref={node => (this.inputRef = node)} // eslint-disable-line no-return-assign
         />
         {remainingCount}
       </div>
