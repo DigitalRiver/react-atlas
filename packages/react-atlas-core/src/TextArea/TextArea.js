@@ -20,6 +20,10 @@ class TextArea extends React.PureComponent {
       errorText = null;
     }
     
+    if (this.props.tooltip && !this.props.header) {
+      throw "Tooltip requires Header";
+    }
+    
     // Initial state
     this.state = {
       "value": props.value || "",
