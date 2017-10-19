@@ -19,7 +19,7 @@ class TextArea extends React.PureComponent {
       isValid = props.isValid;
       errorText = null;
     }
-    
+
     if (this.props.tooltip && !this.props.header) {
       throw "Tooltip requires Header";
     }
@@ -76,8 +76,15 @@ class TextArea extends React.PureComponent {
       hidden,
       className,
       style,
-      tooltip
+      tooltip,
+      tooltipRight,
+      tooltipLeft
     } = this.props;
+
+    let tooltipClasses = cx({
+      tooltipAlignment: true,
+      tooltipRight: tooltipRight
+    });
 
     let remainingCount = maxLength && (
       <div styleName={cx("remainingCount")}>
@@ -89,7 +96,7 @@ class TextArea extends React.PureComponent {
       <div styleName={cx("header")}>
         <span styleName={cx("headerFont")}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
-        {tooltip && <span styleName={cx("tooltipAlignment")}><Tooltip text={tooltip} position="top"/></span>}
+        {tooltip && <span styleName={tooltipClasses}><Tooltip text={tooltip} position="top"/></span>}
       </div>
     );
 

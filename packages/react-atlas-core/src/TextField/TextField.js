@@ -88,14 +88,21 @@ class TextField extends React.PureComponent {
       className,
       inline,
       style,
-      tooltip
+      tooltip,
+      tooltipRight,
+      tooltipLeft
     } = this.props;
+
+    let tooltipClasses = cx({
+      tooltipAlignment: true,
+      tooltipRight: tooltipRight
+    });
 
     let textFieldHeader = header && (
       <div styleName={cx("header")}>
         <span styleName={cx("headerFont")}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
-        {tooltip && <span styleName={cx("tooltipAlignment")}><Tooltip text={tooltip} position="top"/></span>}
+        {tooltip && <span styleName={tooltipClasses}><Tooltip text={tooltip} position="top"/></span>}
       </div>
     );
 
