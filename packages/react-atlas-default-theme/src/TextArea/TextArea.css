@@ -10,6 +10,7 @@
 	/* 1% difference is textarea inner padding */
 	width: 99%;
 	composes: default-font from '../styles.css';
+	composes: default-font from '../styles.css';
 }
 
 .small {
@@ -59,7 +60,7 @@
 .disabled {
 	composes: cursor-not-allowed from '../styles.css';
 	pointer-events: none;
-	background-color: #ccc;
+	opacity: 0.6;
 }
 
 .hidden {
@@ -70,4 +71,11 @@
 .error_text {
   composes: header-font from '../styles.css';
   color: #BD0A33;
+}
+
+.tooltipAlignment {
+	margin-left: 5px;
+}
+.tooltipAlignment.tooltipRight div{
+	float: right;
 }
