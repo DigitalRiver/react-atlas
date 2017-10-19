@@ -50,3 +50,7 @@
 ###### onChange handler:
 
     <TextArea onChange={ () => { alert('onChange executed!'); } }/>
+
+###### TextArea Tooltip requires Header:
+
+    <TextArea header="tooltip header" tooltip="tip of the tool"/>
