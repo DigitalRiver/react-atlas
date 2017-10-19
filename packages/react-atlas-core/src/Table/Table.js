@@ -17,10 +17,10 @@ class Table extends React.PureComponent {
           pagination={pagination}
           maxHeight={maxHeight}
           className={cx(className)}
-          containerClass={"ra_table__react-bs-table-container"}
-          tableContainerClass={"ra_table__react-bs-table"}
-          headerContainerClass={"ra_table__react-bs-container-header"}
-          bodyContainerClass={"ra_table__react-bs-container-body"}>
+          containerClass={"ra_Table__react-bs-table-container"}
+          tableContainerClass={"ra_Table__react-bs-table"}
+          headerContainerClass={"ra_Table__react-bs-container-header"}
+          bodyContainerClass={"ra_Table__react-bs-container-body"}>
           {children}
         </LightTable>
     );
