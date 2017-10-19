@@ -29,7 +29,7 @@ class Modal extends React.PureComponent {
           />}
         <div style={style} styleName={classes} className={className}>
           {title &&
-            <h3 styleName={cx("title")}>
+            <h3 styleName={"title"}>
               {title}
             </h3>}
           <div styleName="content">

@@ -11,11 +11,11 @@ class Hint extends React.PureComponent {
     const { className, children, text, style } = this.props;
 
     return text ? (
-      <span style={style} className={cx(className)} styleName={cx("hintLabel")}>
+      <span style={style} className={cx(className)} styleName={"hintLabel"}>
         {text}
       </span>
     ) : (
-      <span className={cx(className)} styleName={cx("hintLabel")}>
+      <span className={cx(className)} styleName={"hintLabel"}>
         {children}
       </span>
     );
