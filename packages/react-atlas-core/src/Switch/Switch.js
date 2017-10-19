@@ -8,14 +8,14 @@ class Switch extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      checked: this.props.checked || false
+      checked: this.props.checked || false,
+      disabled: this.props.disabled || false
     };
 
     /* Classes and styles setup */
     let small = this.props.small && !this.props.medium && !this.props.large,
       medium = !this.props.small && !this.props.large,
       large = this.props.large && !this.props.medium && !this.props.small,
-      disabled = this.props.disabled,
       hidden = this.props.hidden,
       offColor = this.props.offColor,
       onColor = this.props.onColor,
@@ -25,7 +25,9 @@ class Switch extends React.PureComponent {
       sliderSmall: small,
       sliderMedium: medium,
       sliderLarge: large,
-      disabled,
+      sliderEnabledOffColor: !this.state.disabled,
+      sliderDisabledOffColor: this.state.disabled,
+      disabled: this.state.disabled,
       hidden
     });
 
@@ -33,7 +35,7 @@ class Switch extends React.PureComponent {
       inputSmall: small,
       inputMedium: medium,
       inputLarge: large,
-      disabled,
+      disabled: this.state.disabled,
       hidden
     });
 
@@ -41,14 +43,17 @@ class Switch extends React.PureComponent {
       handleSmall: small,
       handleMedium: medium,
       handleLarge: large,
-      disabled,
+      handleDisabledColor: this.state.disabled,
+      handleEnabledColor: !this.state.disabled,
+      disabled: this.state.disabled,
       hidden
     });
 
     let onClassName = cx({
       onColorSmall: small,
       onColorMedium: medium,
-      onColorLarge: large
+      onColorLarge: large,
+      sliderDisabledOnColor: this.state.disabled
     });
 
     let offColorStyle = {
@@ -105,22 +110,24 @@ class Switch extends React.PureComponent {
   };
 
   _handleChange = () => {
-    if (this.state.checked === true) {
-      this.setState({ checked: false });
-    } else {
-      this.setState({ checked: true });
-    }
+      this.setState({ checked: !this.state.checked });
   };
 
   render() {
-    const { className, name, disabled, hidden, style, inline } = this.props;
+    const { 
+      className, 
+      name, 
+      hidden, 
+      style,
+      inline
+    } = this.props;
 
     const classes = this.classes;
     const styles = this.styles;
 
     let labelClasses = cx(
       {
-        disabled,
+        disabled: this.state.disabled,
         hidden,
         inline
       },
@@ -128,7 +135,8 @@ class Switch extends React.PureComponent {
     );
 
     return (
-      <label
+      <div
+        onClick={this._handleChange}
         style={style}
         styleName={labelClasses}
         className={cx(className)}
@@ -140,13 +148,18 @@ class Switch extends React.PureComponent {
           styleName={classes.inputClassName}
           onBeforeChange={this._handleBeforeChange}
           checked={this.state.checked}
+          disabled={this.state.disabled}
         />
+        {/* handle */}
         <div
           styleName={classes.buttonClassName}
           style={styles.buttonColorStyle}
         />
-        <div styleName={classes.onClassName} style={styles.onColorStyle} />
-      </label>
+        {/* background */}
+        <div 
+          styleName={classes.onClassName} 
+          style={styles.onColorStyle} />
+      </div>
     );
   }
 }
