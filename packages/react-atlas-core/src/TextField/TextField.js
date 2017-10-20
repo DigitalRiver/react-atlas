@@ -19,6 +19,10 @@ class TextField extends React.PureComponent {
       errorText = null;
     }
 
+    if (this.props.tooltip && !this.props.header) {
+      throw "Tooltip requires Header";
+    }
+
     // Initial state
     this.state = {
       value: props.value || "",
@@ -83,13 +87,22 @@ class TextField extends React.PureComponent {
       hidden,
       className,
       inline,
-      style
+      style,
+      tooltip,
+      tooltipRight,
+      tooltipLeft
     } = this.props;
 
+    let tooltipClasses = cx({
+      tooltipAlignment: true,
+      tooltipRight: tooltipRight
+    });
+
     let textFieldHeader = header && (
-      <div styleName={cx("header")}>
-        <span styleName={cx("headerFont")}>{header}</span>
+      <div styleName={"header"}>
+        <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
+        {tooltip && <span styleName={tooltipClasses}><Tooltip text={tooltip} position="top"/></span>}
       </div>
     );
 
@@ -240,7 +253,10 @@ TextField.PropTypes = {
   style: PropTypes.node,
 
   /* Sets whether or not TextField will display as inline */
-  inline: PropTypes.bool
+  inline: PropTypes.bool,
+
+  /* passes tooltip as prop if added to textField */
+  tooltip: PropTypes.string
 };
 
 TextField.defaultProps = {

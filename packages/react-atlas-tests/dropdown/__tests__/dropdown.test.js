@@ -5,7 +5,7 @@ import { DropdownCore } from "../../../react-atlas-core/src/Dropdown/index";
 
 function _findItem(n, text){
 	if(n.props().className){
-		if(n.props().className.includes("ra_dropdown__item")){
+		if(n.props().className.includes("ra_Dropdown__item")){
 			let str = n.props().children.props.value;
 			if(str == text){
 				return true;

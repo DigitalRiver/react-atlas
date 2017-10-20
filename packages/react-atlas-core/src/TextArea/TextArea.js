@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { InputCore } from "../Input";
 import cx from "classnames";
 import messages from "../utils/messages";
+import { TooltipCore } from "./../Tooltip";
 
 class TextArea extends React.PureComponent {
   constructor(props) {
@@ -17,6 +18,10 @@ class TextArea extends React.PureComponent {
     } else {
       isValid = props.isValid;
       errorText = null;
+    }
+
+    if (this.props.tooltip && !this.props.header) {
+      throw "Tooltip requires Header";
     }
     
     // Initial state
@@ -70,19 +75,28 @@ class TextArea extends React.PureComponent {
       disabled,
       hidden,
       className,
-      style
+      style,
+      tooltip,
+      tooltipRight,
+      tooltipLeft
     } = this.props;
 
+    let tooltipClasses = cx({
+      tooltipAlignment: true,
+      tooltipRight: tooltipRight
+    });
+
     let remainingCount = maxLength && (
-      <div styleName={cx("remainingCount")}>
+      <div styleName={"remainingCount"}>
         {maxLength - this.state.remaining}/{maxLength}
       </div>
     );
 
     let textAreaHeader = header && (
-      <div styleName={cx("header")}>
-        <span styleName={cx("headerFont")}>{header}</span>
+      <div styleName={"header"}>
+        <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
+        {tooltip && <span styleName={tooltipClasses}><Tooltip text={tooltip} position="top"/></span>}
       </div>
     );
 
@@ -126,7 +140,6 @@ class TextArea extends React.PureComponent {
           disabled={disabled}
           hidden={hidden}
           value={this.state.value}
-          ref={node => (this.inputRef = node)} // eslint-disable-line no-return-assign
         />
         {remainingCount}
       </div>
@@ -206,7 +219,10 @@ TextArea.PropTypes = {
 	 * Determines if the textarea is hidden.
 	 * @examples '<TextArea hidden/>'
 	 */
-  hidden: PropTypes.bool
+  hidden: PropTypes.bool,
+
+  /* passes tooltip as prop if added to textArea */
+  tooltip: PropTypes.string
 };
 
 TextArea.defaultProps = {

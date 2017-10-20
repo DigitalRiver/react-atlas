@@ -23,8 +23,8 @@ class Radio extends React.PureComponent {
 
     let radioDisplay =
       this.props.labelPosition === "left"
-        ? cx("float_right")
-        : cx("float_left");
+        ? "float_right"
+        : "float_left";
 
     let labelTitle = this.props.title ? this.props.title : this.props.label;
 
@@ -122,10 +122,10 @@ class Radio extends React.PureComponent {
               value={value}
               /* Hardcode classes for InputCore because classes on styleName will not
                * be evaluated because were using InputCore not Input.  */
-              className={"ra_input__max ra_input__opacity"}
+              className={"ra_Input__max ra_Input__opacity"}
             />
             <div styleName={radioClass}>
-              {checked && <div styleName={cx("checkmark")} />}
+              {checked && <div styleName={"checkmark"} />}
             </div>
           </div>
         </div>

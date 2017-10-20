@@ -95,7 +95,7 @@ class Checkbox extends React.PureComponent {
       label_left: labelPosition === "left"
     });
     const checkboxDisplay =
-      labelPosition === "left" ? cx("float_right") : cx("float_left");
+      labelPosition === "left" ? "float_right" : "float_left";
     const title_label = title ? title : label;
     let disabledClass = this.state.disabled
       ? cx({
@@ -139,17 +139,17 @@ class Checkbox extends React.PureComponent {
               name={name}
               /* Hardcode classes for InputCore because classes on styleName will not
                * be evaluated because were using InputCore not Input.  */
-              className={"ra_input__checkbox ra_styles__marg-b-1 ra_input__max ra_input__opacity"}
+              className={"ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"}
             />
             <div styleName={checkboxClass}>
-              {this.state.checked && <div styleName={cx("checkmark")} />}
+              {this.state.checked && <div styleName={"checkmark"} />}
             </div>
           </div>
           {this.props.required && <span styleName={"error_text"}>*</span>}
         </div>
         {error &&
           !groupError && (
-            <div styleName={cx("error_message")}>{this.state.errorMessage}</div>
+            <div styleName={"error_message"}>{this.state.errorMessage}</div>
           )}
       </div>
     );
