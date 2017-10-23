@@ -110,7 +110,11 @@ class Switch extends React.PureComponent {
   };
 
   _handleChange = () => {
-      this.setState({ checked: !this.state.checked });
+      if (this.state.checked === true) {
+        this.setState({ checked: false });
+      } else {
+        this.setState({ checked: true });
+      }
   };
 
   render() {
