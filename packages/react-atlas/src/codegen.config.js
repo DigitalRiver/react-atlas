@@ -165,6 +165,7 @@ let components = [
   "progressBar",
   "radio",
   "radioGroup",
+  "slider",
   "switch",
   "table",
   "tableHeader",

@@ -16,6 +16,7 @@ export { PanelCore } from "./Panel";
 export { ProgressBarCore } from "./ProgressBar";
 export { RadioCore } from "./Radio";
 export { RadioGroupCore } from "./RadioGroup";
+export { SliderCore } from "./Slider";
 export { SwitchCore } from "./Switch";
 export { TableCore } from "./Table";
 export { TableHeaderCore } from "./TableHeader";

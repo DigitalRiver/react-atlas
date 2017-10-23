@@ -13,6 +13,7 @@ export { InputStyle } from "./Input";
 export { ProgressBarStyle } from "./ProgressBar";
 export { RadioStyle } from "./Radio";
 export { RadioGroupStyle } from "./RadioGroup";
+export { SliderStyle } from "./Slider";
 export { SwitchStyle } from "./Switch";
 export { TableStyle } from "./Table";
 export { TableHeaderStyle } from "./TableHeader";
