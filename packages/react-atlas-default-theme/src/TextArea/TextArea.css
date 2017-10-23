@@ -10,7 +10,6 @@
 	/* 1% difference is textarea inner padding */
 	width: 99%;
 	composes: default-font from '../styles.css';
-	composes: default-font from '../styles.css';
 }
 
 .small {

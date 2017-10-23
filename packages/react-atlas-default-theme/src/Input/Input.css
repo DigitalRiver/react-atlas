@@ -1,4 +1,5 @@
 .container {
+	composes: bg-white from '../styles.css';
 	clear: both;
 }
 input.opacity[type="checkbox"], input.opacity[type="radio"] {
