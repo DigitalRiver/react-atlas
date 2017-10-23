@@ -9,7 +9,8 @@ class Switch extends React.PureComponent {
     // Initial state
     this.state = {
       checked: this.props.checked || false,
-      disabled: this.props.disabled || false
+      disabled: this.props.disabled || false,
+      valid: true,
     };
 
     /* Classes and styles setup */
@@ -82,42 +83,35 @@ class Switch extends React.PureComponent {
     };
   }
 
-  _onBeforeChange = callback => {
-    let triggerChange = true;
-    if (this.props.onBeforeChange) {
-      triggerChange = this.props.onBeforeChange(this.state.checked);
-    }
-    /**
-     * allow the user to prevent the execution of onChange event by passing a
-     * function that returns a falsy value. If onClick handler is not specified,
-     * onChange function will be called by default.
-    **/
-    if (triggerChange) {
-      callback();
-    }
-  };
+  // Handles new checkbox clicks and sets value and checked status of hidden input
+  _clickHandler = () => {
 
-  _handleBeforeChange = () => {
-    /**
-     * We need to execute onClick function, and when it's done, execute onChange function.
-     * If onClick is not passed, it will only execute onChange.
-     * Callback approach was taken instead of promises/generators as team decision to
-     * avoid adding a new dependency like bluebird (native es6 promises are slower)
-    **/
-    this._onBeforeChange(() => {
-      this._handleChange();
-    });
-  };
-
-  _handleChange = () => {
     if (!this.state.disabled) {
       if (typeof this.props.onBeforeChange !== "undefined") {
         let result = this.props.onBeforeChange(this.state.checked);
         if(result === false) {
           return;
         }
-      };
-      this.setState({ checked: !this.state.checked });
+      }
+
+      this.setState({ checked: !this.state.checked }, function() {
+
+        /* Check if onClick has been passed, if so call it. */
+        if (typeof this.props.onClick !== "undefined") {
+          this.props.onClick(
+            this.state.checked,
+            this.state.disabled
+          );
+        }
+
+        /* Check if onChange has been passed, if so call it. */
+        if (typeof this.props.onChange !== "undefined") {
+          this.props.onChange(
+            this.state.checked,
+            this.state.disabled
+          );
+        }
+      });
     }
   };
 
@@ -144,7 +138,7 @@ class Switch extends React.PureComponent {
 
     return (
       <div
-        onClick={this._handleChange}
+        onClick={this._clickHandler}
         style={style}
         styleName={labelClasses}
         className={cx(className)}
@@ -154,9 +148,9 @@ class Switch extends React.PureComponent {
           type="checkbox"
           name={name}
           styleName={classes.inputClassName}
-          onBeforeChange={this._handleBeforeChange}
           checked={this.state.checked}
           disabled={this.state.disabled}
+          hidden={this.state.disabled}
         />
         {/* handle */}
         <div

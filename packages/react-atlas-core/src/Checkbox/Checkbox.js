@@ -32,7 +32,7 @@ class Checkbox extends React.PureComponent {
 
       this.setState({ checked: !this.state.checked }, function() {
         this._validationHandler(this.props.errorCallback);
-
+        debugger;
         /* Check if onClick has been passed, if so call it. */
         if (typeof this.props.onClick !== "undefined") {
           this.props.onClick(
