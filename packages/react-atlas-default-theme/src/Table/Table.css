@@ -279,14 +279,14 @@
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-bottom: none;
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 0px 0px 0px 0px;
 }
 :global .react-bs-table-bordered .react-bs-container-body {
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-top: none;
-  border-radius: 0px 0px 5px 5px;
+  border-radius: 0px 0px 0px 0px;
 
 }
 
@@ -621,8 +621,8 @@ height:20px; margin:0; padding-left: 30px;
 }
 
 :global .form-control {
-  height:20px; 
-  margin:0 0 10px 0; 
+  height:20px;
+  margin:0 0 10px 0;
   padding-left: 5px;
   border: solid 1px #ccc;
 }
