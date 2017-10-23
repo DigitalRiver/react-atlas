@@ -109,9 +109,8 @@ class Switch extends React.PureComponent {
     });
   };
 
-  _handleChange = event => {
+  _handleChange = () => {
     if (!this.state.disabled) {
-      event.persist();
       if (typeof this.props.onBeforeChange !== "undefined") {
         let result = this.props.onBeforeChange(this.state.checked);
         if(result === false) {
