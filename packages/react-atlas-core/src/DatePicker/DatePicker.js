@@ -28,7 +28,7 @@ class DatePicker extends React.PureComponent {
     let { format, name, className, style } = this.props;
     return (<DP
         style={style}
-        className={cx(className)}
+        className={cx(className, "ra_DatePicker__datepicker")}
         name={name}
         dateFormat={format}
         selected={this.state.startDate}

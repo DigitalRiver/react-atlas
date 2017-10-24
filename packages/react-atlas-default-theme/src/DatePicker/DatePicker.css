@@ -21,6 +21,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+.datepicker {
+  font-size: 14px;
+  font-family: 'MrEavesXLModOT', Arial, Helvetica, sans-serif;
+  height: 1.55rem;
+  border-style: solid;
+  border-width: .05rem;
+  border-color: #bebebe;
+}
+
 :global .react-datepicker-popper[data-placement^="bottom"] :global .react-datepicker__triangle, :global .react-datepicker-popper[data-placement^="top"] :global .react-datepicker__triangle, :global .react-datepicker__year-read-view--down-arrow,
 :global .react-datepicker__month-read-view--down-arrow {
   margin-left: -8px;
@@ -209,13 +218,13 @@ SOFTWARE.
     background-color: #216ba5;
     color: #fff; }
 :global .react-datepicker__day--selected:hover, :global .react-datepicker__day--in-selecting-range:hover, :global .react-datepicker__day--in-range:hover {
-      background-color: #1d5d90; }
+      background-color: #00a7e1; }
 :global .react-datepicker__day--keyboard-selected {
     border-radius: 0.3rem;
     background-color: #2a87d0;
     color: #fff; }
 :global .react-datepicker__day--keyboard-selected:hover {
-      background-color: #1d5d90; }
+      background-color: #00a7e1; }
 :global .react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range) {
     background-color: rgba(33, 107, 165, 0.5); }
 :global .react-datepicker__month--selecting-range :global .react-datepicker__day--in-range:not(.react-datepicker__day--in-selecting-range) {

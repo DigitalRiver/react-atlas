@@ -157,7 +157,7 @@ class TextField extends React.PureComponent {
   }
 }
 
-TextField.PropTypes = {
+TextField.propTypes = {
   /**
    * Sets if the TextField is valid.
    */
@@ -260,10 +260,8 @@ TextField.PropTypes = {
 };
 
 TextField.defaultProps = {
-  className: "",
-  type: "text",
-  disabled: false,
-  hidden: false
-};
+  type: "text"
+}
+
 
 export default TextField;
