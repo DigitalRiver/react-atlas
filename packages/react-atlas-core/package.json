@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },
-  "version": "0.1.0-beta17",
+  "version": "0.1.0-beta18",
   "description": "Core set of composable components for react-atlas",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib/index.js",
