@@ -73,7 +73,7 @@ class Dropdown extends React.PureComponent {
       value: this.getInitialValue(),
       output: this.getInitialDisplay(),
       index: this.getInitialIndex(),
-      isValid: true,
+      isValid: props.isValid,
       errorMessage: messages.requiredMessage,
       focus: false,
       zIndex: false,
@@ -81,6 +81,12 @@ class Dropdown extends React.PureComponent {
     };
   }
 
+  /* Check if isValid has been passed and if it has a different
+   * value than it's current value. If so update isValid and rerender.
+   * This method is needed so user's or other components can control if
+   * dropdown is valid or not just by passing true or false. Without
+   * this lifecycle method dropdown does not rerender.
+   */
   componentWillReceiveProps(nextProps) {
     if (
       typeof nextProps.isValid !== "undefined" &&
@@ -441,7 +447,8 @@ Dropdown.propTypes = {
 Dropdown.defaultProps = {
   className: "",
   required: false,
-  disabled: false
+  disabled: false,
+  isValid: true
 };
 
 export default Dropdown;
