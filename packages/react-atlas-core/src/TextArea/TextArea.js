@@ -23,7 +23,7 @@ class TextArea extends React.PureComponent {
     if (this.props.tooltip && !this.props.header) {
       throw "Tooltip requires Header";
     }
-    
+
     // Initial state
     this.state = {
       "value": props.value || "",
@@ -147,7 +147,7 @@ class TextArea extends React.PureComponent {
   }
 }
 
-TextArea.PropTypes = {
+TextArea.propTypes = {
   "isValid": PropTypes.bool,
   /** An Object, array, or string of CSS classes to apply to TextArea.*/
   className: PropTypes.oneOfType([
