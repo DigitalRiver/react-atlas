@@ -85,7 +85,7 @@ describe("Test Dropdown component - Mouse tests", () => {
 		expect(component.state().focus).toEqual(true);
 		component.find('Button').simulate('click');
 		expect(component.state().active).toEqual(true);
-		
+
 		component.findWhere(n => _findItem(n, 'you')).simulate('mouseDown');
 
 		expect(component.state().value).toEqual('you');
@@ -366,5 +366,18 @@ describe("Test Dropdown component - Dropdown Regression tests", () => {
 	it("Regression test for bug #249", function(){
 	  expect( function(){ const component = mount(<DropdownCore></DropdownCore>); } ).toThrow(new Error("You must pass at least one child component to Dropdown"));
 	  // expect.assertions(0);
+  });
+});
+
+describe("Test Dropdown component - Dropdown Regression tests", () => {
+	it("Regression test for bug #405", function(){
+	  const component = mount(<DropdownCore isValid={false}><span value="May">May</span>
+		  <span value="the">the</span>
+		  <span value="force">force</span>
+		  <span value="be">be</span>
+		  <span value="with">with</span>
+		  <span value="you">you</span>
+		</DropdownCore>);
+    expect(component.state().isValid).toEqual(false);
   });
 });
