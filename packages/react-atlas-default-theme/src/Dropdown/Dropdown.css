@@ -138,7 +138,8 @@
   border-color: rgba(189, 10, 51, 0.6); 
 }
 .error:hover {
-  border: 1px solid #bd0a33;
+  box-shadow: 0 0 4px #bd0a33;
+  border-color: rgba(189, 10, 51, 0.6); 
 }
 .error_message {
   color: #bd0a33;
