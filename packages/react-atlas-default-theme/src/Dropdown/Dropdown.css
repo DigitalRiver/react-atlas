@@ -103,7 +103,7 @@
   padding-left: 0.5rem;
   text-align: left;
   white-space: nowrap;
-  height: 1.75rem;
+  height: 1.77rem;
   line-height: normal;
   composes: default-font from '../styles.css';
 }
