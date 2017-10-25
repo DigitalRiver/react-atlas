@@ -2,7 +2,6 @@
   display: block;
   position: relative;
   z-index: 0;
-  top: 8px;
   margin: 0 .25rem .25rem 0;
 }
 
@@ -135,14 +134,14 @@
 }
 
 .error {
-  border: 1px solid #ea0f43;
+  box-shadow: 0 0 4px #bd0a33;
+  border-color: rgba(189, 10, 51, 0.6); 
 }
 .error:hover {
-  border: 1px solid #ea0f43;
+  border: 1px solid #bd0a33;
 }
 .error_message {
-  color: #ea0f43;
-  position: absolute;
+  color: #bd0a33;
   composes: default-font from '../styles.css';
 }
 
