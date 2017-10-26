@@ -32,10 +32,7 @@ class Dropdown extends React.PureComponent {
           initialDisplay = display;
           initialIndex = index;
         }
-        let childState = {
-          value: value,
-          display: display
-        };
+        let childState = { value: value, display: display };
         return childState;
       }
     );
