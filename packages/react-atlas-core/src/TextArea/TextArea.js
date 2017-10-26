@@ -29,7 +29,7 @@ class TextArea extends React.PureComponent {
       "value": props.value || "",
       "remaining": props.maxLength,
       "active": false,
-      "valid": isValid
+      "isValid": isValid
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -49,10 +49,10 @@ class TextArea extends React.PureComponent {
       this.setState({ remaining: this.props.maxLength - value.length });
     }
 
-    // Set value and valid state depending on InputCore state
+    // Set value and isValid state depending on InputCore state
     this.setState({
       "value": value,
-      "valid": isValid
+      "isValid": isValid
     });
 
     if (this.props.onChange) {
@@ -123,7 +123,7 @@ class TextArea extends React.PureComponent {
         resizable,
         disabled,
         active: this.state.active,
-        invalid: !this.state.valid
+        invalid: !this.state.isValid
       },
       "textarea"
     );
