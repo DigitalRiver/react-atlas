@@ -89,6 +89,12 @@ class Form extends React.PureComponent {
   	/* Validate children components before submiting. */
   	let data = this.validate();
     if(!data) {
+      /* Prevent form submission when action is set and the
+       * form is not valid. */
+      if(this.props.action) {
+        e.preventDefault();
+      }
+
       if(typeof this.props.onError !== 'undefined') {
         this.props.onError(errorCodes.MISSING_REQUIRED, messages.missingRequired);
       }
