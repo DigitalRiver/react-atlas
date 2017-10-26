@@ -54,7 +54,7 @@ class Tooltip extends React.PureComponent {
     });
 
     let TooltipContainer = this.state.active ? (
-      <span>{this.state.tooltip}</span>
+      <span styleName={'tooltipContent'}>{this.state.tooltip}</span>
     ) : null;
 
     let Icon = icon && !children ? <i className={cx(icon)} /> : null;
