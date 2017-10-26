@@ -16,9 +16,6 @@
     text-align: left;
     composes: pad-h-2 from '../styles.css';
 }
-
-
-
 .centerAlign {
     text-align: right;
 }
