@@ -25,7 +25,7 @@ class Dropdown extends React.PureComponent {
     let childrenState = React.Children.map(
       this.props.children,
       (child, index) => {
-        let value = child.props.value || " ";
+        let value = child.props.value || undefined;
         let display = child.props.children;
         if (value === dropdownValue) {
           initialValue = value;
@@ -36,7 +36,6 @@ class Dropdown extends React.PureComponent {
         return childState;
       }
     );
-
     this.getInitialValue = function() {
       if (props.value) {
         return initialValue;
@@ -194,9 +193,7 @@ class Dropdown extends React.PureComponent {
     }
     /* No error Callback was passed so just check if required was set. */
     validation = {
-      isValid:
-        (this.props.required && this.state.value !== "") ||
-        !this.props.required,
+      isValid: (this.props.required && typeof this.state.value !== 'undefined') || !this.props.required,
       message: this.state.errorMessage
     };
     this.setState({
