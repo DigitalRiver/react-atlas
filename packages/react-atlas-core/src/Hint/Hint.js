@@ -40,8 +40,8 @@ Hint.propTypes = {
    */
   text: PropTypes.string,
 
-  /* Pass inline styles here. */
-  style: PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 Hint.defaultProps = {

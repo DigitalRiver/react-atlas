@@ -15,7 +15,7 @@ class Dropdown extends React.PureComponent {
 
     if (typeof this.props.children === "undefined") {
       throw "You must pass at least one child component to Dropdown";
-    } 
+    }
 
     let initialValue;
     let initialDisplay;
@@ -445,10 +445,10 @@ Dropdown.propTypes = {
   /* Allows user to ask for user feedback before changing the selected value of the Dropdown. */
   onBeforeChange: PropTypes.func,
 
-  /* Allows user to set custom width of dropdown */
-  /* Pass inline styles here. */
-  style: PropTypes.node,
+  /* Pass inline styling here. */
+  style: PropTypes.object,
 
+  /* Allows user to set custom width of dropdown */
   width: PropTypes.string
 };
 

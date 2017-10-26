@@ -230,7 +230,10 @@ TextArea.propTypes = {
   hidden: PropTypes.bool,
 
   /* passes tooltip as prop if added to textArea */
-  tooltip: PropTypes.string
+  tooltip: PropTypes.string,
+
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 TextArea.defaultProps = {
