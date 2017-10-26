@@ -58,14 +58,14 @@ input.opacity[type="checkbox"], input.opacity[type="radio"] {
 
 .invalid {
 	composes: marg-b-half from '../styles.css';
-	border: solid 1px #ea0f43;
+	border: solid 1px #bd0a33;
   	outline: none;
   	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05), 0 0 3px 1px rgba(234, 15, 67, .4);
           	box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05), 0 0 3px 1px rgba(234, 15, 67, .4);
 }
 
 .invalid:focus {
-	border: solid 1px #ea0f43;
+	border: solid 1px #bd0a33;
   	outline: none;
   	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05), 0 0 3px 1px rgba(234, 15, 67, .4);
           	box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05), 0 0 3px 1px rgba(234, 15, 67, .4);	
