@@ -32,6 +32,14 @@ class TextArea extends React.PureComponent {
       "valid": isValid
     };
   }
+  componentWillReceiveProps(nextProps) {
+    if (
+      typeof nextProps.isValid !== "undefined" &&
+      nextProps.isValid !== this.state.valid
+    ) {
+      this.setState({ valid: nextProps.isValid });
+    }
+  }
 
   _handleChange = (value, event, isValid) => {
     event.persist();
