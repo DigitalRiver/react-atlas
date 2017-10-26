@@ -25,7 +25,7 @@ class Dropdown extends React.PureComponent {
     let childrenState = React.Children.map(
       this.props.children,
       (child, index) => {
-        let value = child.props.value || undefined;
+        let value = child.props.value || "";
         let display = child.props.children;
         if (value === dropdownValue) {
           initialValue = value;
@@ -117,13 +117,19 @@ class Dropdown extends React.PureComponent {
     const output = this.state.childrenState[i].display;
     const inputValue = this.state.childrenState[i].value;
 
+    let isValid = true;
+    if(inputValue == "") {
+      isValid = false;
+    }
+
     this.setState(
       {
         index: i,
         output: output,
         active: !this.state.active,
         value: inputValue,
-        zIndex: false
+        zIndex: false,
+        isValid: isValid
       },
       function() {
         this._validationHandler(this.props.errorCallback);
@@ -191,14 +197,17 @@ class Dropdown extends React.PureComponent {
         return;
       }
     }
-    /* No error Callback was passed so just check if required was set. */
-    validation = {
-      isValid: (this.props.required && typeof this.state.value !== 'undefined') || !this.props.required,
-      message: this.state.errorMessage
-    };
+
+    let isValid = true;
+    if(this.props.required === true) {
+      if(this.state.value === "undefined" || this.state.value === "") {
+          isValid = false;
+      }
+    }
+
     this.setState({
-      isValid: validation.isValid,
-      errorMessage: validation.message
+      isValid: isValid,
+      errorMessage: this.state.errorMessage
     });
   };
 
