@@ -29,8 +29,13 @@
     "postcss-cssnext": "^2.11.0",
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.5",
+<<<<<<< HEAD
     "react-atlas-core": "0.1.0-beta18",
     "react-atlas-default-theme": "0.1.0-beta18",
+=======
+    "react-atlas-core": "0.1.0-current",
+    "react-atlas-default-theme": "0.1.0-current",
+>>>>>>> master
     "react-css-modules": "^4.1.0",
     "react-modal": "^1.6.5",
     "style-loader": "^0.17.0",
