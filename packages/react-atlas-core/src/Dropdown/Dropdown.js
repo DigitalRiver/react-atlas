@@ -283,8 +283,7 @@ class Dropdown extends React.PureComponent {
       this.props.children,
       (child, i) => {
 
-        let emptyClass = child.props.value === "" ? true : false;
-        console.log(child.props.value)
+        let emptyClass = child.props.value === "" || child.props.value === null ? true : false;
         let childClasses = cx({
           ra_Dropdown__selected: i === this.state.index,
           ra_Dropdown__firstChild: i === 0,
