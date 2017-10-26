@@ -128,9 +128,8 @@
 .selected:hover {
   background-color: #E6E6E6;
 }
-
-.default-font {
-  composes: default-font from '../styles.css';
+.emptyChild {
+  height: .65rem;
 }
 
 .error {
