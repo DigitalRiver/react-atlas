@@ -244,9 +244,8 @@ class Slider extends Component {
         onTouchStart={this.handleTouchStart}
         style={knobStyles}
       >
-        <div
-          data-value={parseInt(this.state.value)}
-        />
+        <div data-value={parseInt(this.state.value)} >
+        </div>
       </div>
     );
   }
@@ -284,8 +283,6 @@ class Slider extends Component {
       this.props.className
     );
 
-    const styleover = this.props;
-    
     return (
       <div
         disabled={this.props.disabled}
@@ -305,6 +302,7 @@ class Slider extends Component {
               mode="determinate"
               value={{from: 0, to: this.state.value}}
             />
+
             {this.renderKnob()}
           </div>
         </div>
