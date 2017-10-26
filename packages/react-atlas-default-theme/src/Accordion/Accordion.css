@@ -24,8 +24,8 @@
     composes: cursor-pointer from '../styles.css';
     composes: bg-silver from '../styles.css';
     composes: default-border-bottom from '../styles.css';
+    composes: default-border-left from '../styles.css';
     composes: border-top-none from '../styles.css';
-    composes: border-left-none from '../styles.css';
     composes: border-right-none from '../styles.css';
     composes: header-font from '../styles.css';
     line-height: 1.5rem;
@@ -64,7 +64,7 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #ccc;
     max-height: 100%;
     opacity: 1;
     padding: 1rem 0rem 1rem 0rem;
