@@ -196,7 +196,7 @@ class Dropdown extends React.PureComponent {
     }
     /* No error Callback was passed so just check if required was set. */
     validation = {
-      isValid: (typeof this.props.required !== 'undefined' && !this.props.required) && typeof this.state.value !== 'undefined',
+      isValid: (this.props.required && this.state.value !== undefined) || !this.props.required,
       message: this.state.errorMessage
     };
     this.setState({
