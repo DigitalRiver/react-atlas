@@ -109,8 +109,8 @@ Avatar.propTypes = {
     */
   defaultImage: PropTypes.string,
 
-  /* Prop to pass inline styles. */
-  style: PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 export default Avatar;

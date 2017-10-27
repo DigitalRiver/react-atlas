@@ -52,8 +52,8 @@ FileUpload.propTypes = {
    /* The MIME type of files that are accepted. */
   "accept": PropTypes.string,
 
-  /* A string of styles to apply to FileUpload. */
-  "style": PropTypes.string
+  /* Pass inline styling here. */
+  "style": PropTypes.object
 
 }
 

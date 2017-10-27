@@ -29,8 +29,8 @@ Panel.propTypes = {
      */
   children: PropTypes.node,
 
-  /* Pass inline styles here. */
-  style: PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 export default Panel;

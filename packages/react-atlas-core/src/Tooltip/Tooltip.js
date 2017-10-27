@@ -118,8 +118,8 @@ Tooltip.propTypes = {
      * @examples <GithubIcon />, <i class="fa fa-github"></i>
      */
   icon: PropTypes.string,
-  /* Pass inline styles here. */
-  style: PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 Tooltip.defaultProps = {

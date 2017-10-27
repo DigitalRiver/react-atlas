@@ -249,8 +249,8 @@ TextField.propTypes = {
 	 */
   hidden: PropTypes.bool,
 
-  /* Pass inline styles here. */
-  style: PropTypes.node,
+  /* Pass inline styling here. */
+  style: PropTypes.object,
 
   /* Sets whether or not TextField will display as inline */
   inline: PropTypes.bool,
