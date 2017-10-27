@@ -72,19 +72,19 @@ class Portal extends Component {
 }
 
 Portal.propTypes = {
-  children: PropTypes.node,
+  "children": PropTypes.node,
   /** An Object, array, or string of CSS classes to apply to Portal.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /* Pass inline styles here. */
-  style: PropTypes.node
+  "style": PropTypes.node
 };
 
 Portal.defaultProps = {
-  className: ""
+  "className": ""
 };
 
 export default Portal;

@@ -18,25 +18,22 @@ class Modal extends React.PureComponent {
     } = this.props;
     const classes = cx("modal", { active });
     return (
-      active &&
-      <PortalCore>
-        {overlay &&
-          <OverlayCore
-            active={active}
-            onClick={onOverlayClick}
-            onEscKeyDown={onEscKeyDown}
-            lockScroll={lockScroll}
-          />}
-        <div style={style} styleName={classes} className={className}>
-          {title &&
-            <h3 styleName={"title"}>
-              {title}
-            </h3>}
-          <div styleName="content">
-            {this.props.children}
+      active && 
+        <PortalCore>
+          {overlay && 
+            <OverlayCore
+              active={active}
+              onClick={onOverlayClick}
+              onEscKeyDown={onEscKeyDown}
+              lockScroll={lockScroll}
+            />
+          }
+          <div style={style} styleName={classes} className={className}>
+            {title && <h3 styleName={"title"}>{title}</h3>}
+            <div styleName="content">{this.props.children}</div>
           </div>
-        </div>
-      </PortalCore>
+        </PortalCore>
+      
     );
   }
 }
@@ -45,9 +42,9 @@ Modal.propTypes = {
   /**
    * Modal's title
    */
-  title: PropTypes.string,
+  "title": PropTypes.string,
   /** An Object, array, or string of CSS classes to apply to Modal.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -55,36 +52,36 @@ Modal.propTypes = {
   /**
    * Anything that can be in a modal.
    */
-  children: PropTypes.node.isRequired,
+  "children": PropTypes.node.isRequired,
   /**
    * Determines show Modal or not
    */
-  active: PropTypes.bool,
+  "active": PropTypes.bool,
   /**
    * Event handler for esc key down, normally use to close modal if needed.
    */
-  onEscKeyDown: PropTypes.func,
+  "onEscKeyDown": PropTypes.func,
   /**
    * Determines show Modal with overlay or not
    */
-  overlay: PropTypes.bool,
+  "overlay": PropTypes.bool,
   /**
    * Event handler for clicking on overlay, normally use to close modal if needed.
    */
-  onOverlayClick: PropTypes.func,
+  "onOverlayClick": PropTypes.func,
   /**
    * Determines to hide page scroll
    */
-  lockScroll: PropTypes.bool,
+  "lockScroll": PropTypes.bool,
 
   /* Pass inline styles here. */
-  style: PropTypes.node
+  "style": PropTypes.node
 };
 
 Modal.defaultProps = {
-  active: false,
-  className: "",
-  overlay: false
+  "active": false,
+  "className": "",
+  "overlay": false
 };
 
 export default Modal;

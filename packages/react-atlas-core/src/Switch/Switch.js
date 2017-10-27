@@ -8,7 +8,7 @@ class Switch extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      checked: this.props.checked || false
+      "checked": this.props.checked || false
     };
 
     /* Classes and styles setup */
@@ -22,45 +22,45 @@ class Switch extends React.PureComponent {
       buttonColor = this.props.buttonColor;
 
     let offClassName = cx({
-      sliderSmall: small,
-      sliderMedium: medium,
-      sliderLarge: large,
+      "sliderSmall": small,
+      "sliderMedium": medium,
+      "sliderLarge": large,
       disabled,
       hidden
     });
 
     let inputClassName = cx({
-      inputSmall: small,
-      inputMedium: medium,
-      inputLarge: large,
+      "inputSmall": small,
+      "inputMedium": medium,
+      "inputLarge": large,
       disabled,
       hidden
     });
 
     let buttonClassName = cx({
-      handleSmall: small,
-      handleMedium: medium,
-      handleLarge: large,
+      "handleSmall": small,
+      "handleMedium": medium,
+      "handleLarge": large,
       disabled,
       hidden
     });
 
     let onClassName = cx({
-      onColorSmall: small,
-      onColorMedium: medium,
-      onColorLarge: large
+      "onColorSmall": small,
+      "onColorMedium": medium,
+      "onColorLarge": large
     });
 
     let offColorStyle = {
-      background: offColor
+      "background": offColor
     };
 
     let onColorStyle = {
-      background: onColor
+      "background": onColor
     };
 
     let buttonColorStyle = {
-      background: buttonColor
+      "background": buttonColor
     };
 
     this.classes = {
@@ -106,9 +106,9 @@ class Switch extends React.PureComponent {
 
   _handleChange = () => {
     if (this.state.checked === true) {
-      this.setState({ checked: false });
+      this.setState({ "checked": false });
     } else {
-      this.setState({ checked: true });
+      this.setState({ "checked": true });
     }
   };
 
@@ -153,7 +153,7 @@ class Switch extends React.PureComponent {
 
 Switch.propTypes = {
   /** An Object, array, or string of CSS classes to apply to Switch.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -162,76 +162,76 @@ Switch.propTypes = {
    * Determines if the switch input is disabled.
    * @examples '<Switch disabled={condition}/>'
    */
-  disabled: PropTypes.bool,
+  "disabled": PropTypes.bool,
   /**
    * Determines if the switch input is hidden.
    * @examples '<Switch hidden={condition}/>'
    */
-  hidden: PropTypes.bool,
+  "hidden": PropTypes.bool,
   /**
    * Determines if the switch input is checked.
    * @examples '<Switch checked={condition}/>'
    */
-  checked: PropTypes.bool,
+  "checked": PropTypes.bool,
   /**
    * Define a name for the switch input.
    * @examples '<Switch name="test"/>'
    */
-  name: PropTypes.string,
+  "name": PropTypes.string,
   /**
    * Sets color that will be displayed when the switch is checked.
    * @examples '<Switch onColor="#ababab"/>'
    */
-  onColor: PropTypes.string,
+  "onColor": PropTypes.string,
   /**
    * Sets color that will be displayed when the switch is unchecked.
    * @examples '<Switch offColor="#d3d3d3"/>'
    */
-  offColor: PropTypes.string,
+  "offColor": PropTypes.string,
   /**
    * Sets color that will be displayed for the inner button.
    * @examples '<Switch buttonColor="#ffffff"/>'
    */
-  buttonColor: PropTypes.string,
+  "buttonColor": PropTypes.string,
   /**
    * Defines a small sized switch element.
    * @examples '<Switch small/>'
    */
-  small: PropTypes.bool,
+  "small": PropTypes.bool,
   /**
    * Defines a medium sized switch element.
    * @examples '<Switch medium/>'
    */
-  medium: PropTypes.bool,
+  "medium": PropTypes.bool,
   /**
    * Defines a large sized switch element.
    * @examples '<Switch large/>'
    */
-  large: PropTypes.bool,
+  "large": PropTypes.bool,
   /**
    * Sets a handler function to be executed when onChange event occurs (at input element).
    * @examples <Switch onChange={this.customOnChangeFunc}/>
    */
-  onChange: PropTypes.func,
+  "onChange": PropTypes.func,
   /**
    * Sets a handler function to be executed before the onChange event occurs.
    * @examples <Switch onBeforeChange={this.customOnBeforeChangeFunc}/>
    */
-  onBeforeChange: PropTypes.func,
+  "onBeforeChange": PropTypes.func,
   /**
    * Sets the Switch as an inline-block element
    */
-  inline: PropTypes.bool,
+  "inline": PropTypes.bool,
 
   /* Pass inline styles here. */
-  style: PropTypes.node
+  "style": PropTypes.node
 };
 
 Switch.defaultProps = {
-  checked: false,
-  className: "",
-  disabled: false,
-  hidden: false
+  "checked": false,
+  "className": "",
+  "disabled": false,
+  "hidden": false
 };
 
 export default Switch;

@@ -4,21 +4,24 @@ import cx from "classnames";
 
 class Dialog extends React.PureComponent {
   _getButtonContent = () => {
-    const { info, warning, onOk, onCancel, style } = this.props;
-    const okButton = warning
-      ? <Button small warning onClick={onOk}>
-          OK
-        </Button>
-      : <Button small primary onClick={onOk}>
-          OK
-        </Button>;
+    const { info, warning, onOk, onCancel } = this.props;
+    const okButton = warning ?
+      <Button small warning onClick={onOk}>
+        OK
+      </Button>
+     :
+      <Button small primary onClick={onOk}>
+        OK
+      </Button>
+    ;
     return (
       <div>
         {okButton}
         {!info &&
           <Button small onClick={onCancel}>
             Cancel
-          </Button>}
+          </Button>
+        }
       </div>
     );
   };
@@ -31,18 +34,23 @@ class Dialog extends React.PureComponent {
       children,
       styles,
       style,
-      ...others,
+      ...others
     } = this.props;
     return (
       active &&
-      <Modal className={cx(className)} style={style} active={active} className={warning && styles.warning} {...others}>
-        <div styleName="dialog">
-          {children}
-          <div styleName="buttons">
-            {this._getButtonContent()}
+        <Modal
+          className={cx(className)}
+          style={style}
+          active={active}
+          className={warning && styles.warning}
+          {...others}
+        >
+          <div styleName="dialog">
+            {children}
+            <div styleName="buttons">{this._getButtonContent()}</div>
           </div>
-        </div>
-      </Modal>
+        </Modal>
+
     );
   }
 }
@@ -51,9 +59,9 @@ Dialog.propTypes = {
   /**
    * Dialog's title
    */
-  title: PropTypes.string,
+  "title": PropTypes.string,
   /** An Object, array, or string of CSS classes to apply to Dialog.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -61,46 +69,51 @@ Dialog.propTypes = {
   /**
    * Anything that can be in a Dialog.
    */
-  children: PropTypes.node.isRequired,
+  "children": PropTypes.node.isRequired,
   /**
    * Determines show Dialog or not
    */
-  active: PropTypes.bool,
+  "active": PropTypes.bool,
   /**
    * Info type
    */
-  info: PropTypes.bool,
+  "info": PropTypes.bool,
   /**
    * Confirm type with ok/cancel button
    */
-  confirm: PropTypes.bool,
+  "confirm": PropTypes.bool,
   /**
    * Warning type with ok/cancel button
    */
-  warning: PropTypes.bool,
+  "warning": PropTypes.bool,
   /**
    * Determines show Dialog with overlay or not
    */
-  overlay: PropTypes.bool,
+  "overlay": PropTypes.bool,
   /**
    * Determines to hide page scroll
    */
-  lockScroll: PropTypes.bool,
+  "lockScroll": PropTypes.bool,
   /**
    * Callback for OK Button
    */
-  onOk: PropTypes.func,
+  "onOk": PropTypes.func,
   /**
    * Callback for Cancel Button
    */
-  onCancel: PropTypes.func
+  "onCancel": PropTypes.func,
+
+  /**
+   * Pass inline styling here.
+   */
+  "style": PropTypes.object
 };
 
 Dialog.defaultProps = {
-  active: false,
-  className: "",
-  overlay: false,
-  info: false
+  "active": false,
+  "className": "",
+  "overlay": false,
+  "info": false
 };
 
 export default Dialog;

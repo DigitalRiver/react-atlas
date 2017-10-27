@@ -1,28 +1,40 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import cx from "classnames";
 import { LightTable } from "light-table/src";
 
 class Table extends React.PureComponent {
   render() {
-    const { className, children, data, options, maxHeight, search, pagination, style, sort, ...props } = this.props;
+    const {
+      className,
+      children,
+      data,
+      options,
+      maxHeight,
+      search,
+      pagination,
+      style,
+      sort,
+      ...props
+    } = this.props;
 
     return (
-        <LightTable
-          style={style}
-          {...props}
-          search={search}
-          data={data}
-          options={options}
-          pagination={pagination}
-          maxHeight={maxHeight}
-          className={cx(className)}
-          containerClass={"ra_Table__react-bs-table-container"}
-          tableContainerClass={"ra_Table__react-bs-table"}
-          headerContainerClass={"ra_Table__react-bs-container-header"}
-          bodyContainerClass={"ra_Table__react-bs-container-body"}>
-          {children}
-        </LightTable>
+      <LightTable
+        style={style}
+        {...props}
+        search={search}
+        data={data}
+        options={options}
+        pagination={pagination}
+        maxHeight={maxHeight}
+        className={cx(className)}
+        containerClass={"ra_Table__react-bs-table-container"}
+        tableContainerClass={"ra_Table__react-bs-table"}
+        headerContainerClass={"ra_Table__react-bs-container-header"}
+        bodyContainerClass={"ra_Table__react-bs-container-body"}
+      >
+        {children}
+      </LightTable>
     );
   }
 }
