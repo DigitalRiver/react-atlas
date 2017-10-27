@@ -307,7 +307,7 @@ class Dropdown extends React.PureComponent {
           "ra_Dropdown__lastChild": i === count - 1,
           "ra_Dropdown__emptyChild": emptyClass
         });
-        let kid = 
+        let kid =
           <li
             key={i}
             className={"ra_Dropdown__item " + childClasses}
@@ -336,7 +336,7 @@ class Dropdown extends React.PureComponent {
 
     let label = null;
     if (customLabel) {
-      label = 
+      label =
         <div styleName={"labelSpacing"}>
           {customLabel}{" "}
           {required && <span styleName={"requiredIndicator"}>*</span>}
@@ -346,12 +346,12 @@ class Dropdown extends React.PureComponent {
 
     let errorMessage = null;
     if (error) {
-      errorMessage = 
+      errorMessage =
         <span styleName={"error_message"}>{this.state.errorMessage}</span>
       ;
     }
 
-    let button = 
+    let button =
       <ButtonCore
         onClick={e => {
           this._toggle(e);
@@ -462,10 +462,10 @@ Dropdown.propTypes = {
   /* Allows user to ask for user feedback before changing the selected value of the Dropdown. */
   "onBeforeChange": PropTypes.func,
 
-  /* Allows user to set custom width of dropdown */
   /* Pass inline styles here. */
-  "style": PropTypes.node,
+  "style": PropTypes.object,
 
+  /* Allows user to set custom width of dropdown */
   "width": PropTypes.string
 };
 

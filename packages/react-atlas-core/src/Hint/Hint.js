@@ -10,11 +10,11 @@ class Hint extends React.PureComponent {
   render() {
     const { className, children, text, style } = this.props;
 
-    return text ? 
+    return text ?
       <span style={style} className={cx(className)} styleName={"hintLabel"}>
         {text}
       </span>
-     : 
+     :
       <span className={cx(className)} styleName={"hintLabel"}>
         {children}
       </span>
@@ -40,8 +40,8 @@ Hint.propTypes = {
    */
   "text": PropTypes.string,
 
-  /* Pass inline styles here. */
-  "style": PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 Hint.defaultProps = {

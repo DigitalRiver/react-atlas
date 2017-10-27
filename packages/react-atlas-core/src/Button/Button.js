@@ -165,7 +165,7 @@ Button.propTypes = {
   "icon": PropTypes.string,
 
   /* Pass inline styles here. */
-  "style": PropTypes.node
+  "style": PropTypes.object
 };
 
 Button.defaultProps = {

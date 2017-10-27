@@ -40,7 +40,7 @@ Card.propTypes = {
   "legend": PropTypes.string,
 
   /* Pass inline styles here. */
-  "style": PropTypes.node
+  "style": PropTypes.object
 };
 
 Card.defaultProps = { "children": <p>Some card text.</p> };

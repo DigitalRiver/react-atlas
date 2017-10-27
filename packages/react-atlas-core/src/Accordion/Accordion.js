@@ -170,9 +170,8 @@ Accordion.propTypes = {
   "width": PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /* A boolean to disable or not disable the accordion component. */
   "disabled": PropTypes.bool,
-
   /* Pass inline styles here. */
-  "style": PropTypes.node
+  "style": PropTypes.object
 };
 
 Accordion.defaultProps = {

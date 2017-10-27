@@ -304,7 +304,7 @@ class Input extends React.PureComponent {
       "onPaste": this._handlePaste
     };
 
-    let inputElement = multiline ? 
+    let inputElement = multiline ?
       <textarea
         name={name}
         value={this.state.value}
@@ -313,7 +313,7 @@ class Input extends React.PureComponent {
         className={cx(className)}
         onChange={this._handleChange}
       />
-     : 
+     :
       <input
         type={type}
         name={name}
@@ -328,11 +328,11 @@ class Input extends React.PureComponent {
       />
     ;
 
-    let errorTextElement = this.state.errorText && 
+    let errorTextElement = this.state.errorText &&
       <span className={"ra_Input__error"}>{this.state.errorText}</span>
     ;
 
-    return isCheckbox ? 
+    return isCheckbox ?
       <input
         style={style}
         type="checkbox"
@@ -342,7 +342,7 @@ class Input extends React.PureComponent {
         checked={checked}
         {...eventHandlers}
       />
-     : 
+     :
       <div className={"ra_Input__container"}>
         {inputElement}
         {this.state.isValid ? null : errorTextElement}
@@ -465,8 +465,8 @@ Input.propTypes = {
      */
   "onChange": PropTypes.func,
 
-  /* Pass inline styles here. */
-  "style": PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 Input.defaultProps = {

@@ -98,11 +98,11 @@ class TextField extends React.PureComponent {
       "tooltipRight": tooltipRight
     });
 
-    let textFieldHeader = header && 
+    let textFieldHeader = header &&
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
-        {tooltip && 
+        {tooltip &&
           <span styleName={tooltipClasses}>
             <Tooltip text={tooltip} position="top" />
           </span>
@@ -253,8 +253,8 @@ TextField.propTypes = {
 	 */
   "hidden": PropTypes.bool,
 
-  /* Pass inline styles here. */
-  "style": PropTypes.node,
+  /* Pass inline styling here. */
+  style: PropTypes.object,
 
   /* Sets whether or not TextField will display as inline */
   "inline": PropTypes.bool,

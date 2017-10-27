@@ -54,7 +54,7 @@ class RadioGroup extends React.PureComponent {
 
     return (
       <div style={style} className={cx(className)} styleName={radioGroupStyles}>
-        {title && 
+        {title &&
           <div styleName={cx({ "header": !inline })}>
             <span styleName={"headerFont"}>{title}</span>
           </div>
@@ -98,8 +98,8 @@ RadioGroup.propTypes = {
    */
   "inlineChildren": PropTypes.bool,
 
-  /* Pass inline styles here. */
-  "style": PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 export default RadioGroup;

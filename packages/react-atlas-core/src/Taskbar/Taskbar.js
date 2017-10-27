@@ -29,8 +29,8 @@ Taskbar.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  /* Pass inline styles here. */
-  "style": PropTypes.node,
+  /* Pass inline styling here. */
+  style: PropTypes.object,
   /**
    * Any HTML element or React Component.
    * @examples <p>Some Text.</p>

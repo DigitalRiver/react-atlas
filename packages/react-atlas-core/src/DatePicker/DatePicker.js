@@ -44,7 +44,7 @@ DatePicker.propTypes = {
   "value": PropTypes.string,
   "onChange": PropTypes.func,
   /* Pass inline styles here. */
-  "style": PropTypes.node,
+  "style": PropTypes.object,
   /** An Object, array, or string of CSS classes to apply to DatePicker.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,

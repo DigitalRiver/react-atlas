@@ -54,7 +54,8 @@ Table.propTypes = {
     PropTypes.array
   ]),
   "maxHeight": PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  "style": PropTypes.node
+  /* Pass inline styling here. */
+  "style": PropTypes.object
 };
 
 Table.defaultProps = {

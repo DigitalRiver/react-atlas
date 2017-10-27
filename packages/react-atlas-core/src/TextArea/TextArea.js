@@ -94,17 +94,17 @@ class TextArea extends React.PureComponent {
       "tooltipRight": tooltipRight
     });
 
-    let remainingCount = maxLength && 
+    let remainingCount = maxLength &&
       <div styleName={"remainingCount"}>
         {maxLength - this.state.remaining}/{maxLength}
       </div>
     ;
 
-    let textAreaHeader = header && 
+    let textAreaHeader = header &&
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
-        {tooltip && 
+        {tooltip &&
           <span styleName={tooltipClasses}>
             <Tooltip text={tooltip} position="top" />
           </span>
@@ -234,7 +234,10 @@ TextArea.propTypes = {
   "hidden": PropTypes.bool,
 
   /* passes tooltip as prop if added to textArea */
-  "tooltip": PropTypes.string
+  "tooltip": PropTypes.string,
+  /* Pass inline styling here. */
+  style: PropTypes.object
+
 };
 
 TextArea.defaultProps = {

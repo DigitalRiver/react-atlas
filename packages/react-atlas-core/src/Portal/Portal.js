@@ -79,8 +79,9 @@ Portal.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  /* Pass inline styles here. */
-  "style": PropTypes.node
+
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 Portal.defaultProps = {
