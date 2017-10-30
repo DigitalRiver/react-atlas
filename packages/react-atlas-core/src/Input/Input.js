@@ -28,7 +28,7 @@ class Input extends React.PureComponent {
     // Initial state
     this.state = {
       value: props.value || "",
-      errorText: this.props.errorText || errorText,
+      errorText: errorText,
       isValid: isValid,
       remaining: props.maxLength
     };
@@ -48,16 +48,6 @@ class Input extends React.PureComponent {
       console.warn(
         "You set a custom validator without error text message. Please use 'errorText' property to set it up."
       );
-    }
-  }
-
-  getErrorText() {
-    if(this.props.errorText){
-      return this.props.errorText;
-    } else if (this.props.requiredText) {
-      return this.props.requiredText;
-    } else {
-      return messages.requiredMessage;
     }
   }
 
