@@ -3,6 +3,7 @@
   position: relative;
   z-index: 0;
   margin: 0 .25rem .25rem 0;
+  top: 8px;
 }
 
 .inline {
@@ -142,6 +143,8 @@
 }
 .error_message {
   color: #bd0a33;
+  margin-bottom: 8px;
+  display: inline-block;
   composes: default-font from '../styles.css';
 }
 
