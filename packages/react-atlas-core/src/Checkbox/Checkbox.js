@@ -227,8 +227,8 @@ Checkbox.propTypes = {
    */
   groupError: PropTypes.bool,
 
-  /* Pass inline styles here. */
-  style: PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 Checkbox.defaultProps = {

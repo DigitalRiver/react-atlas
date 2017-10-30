@@ -56,13 +56,11 @@ class Input extends React.PureComponent {
     if (nextProps.isValid) {
       if (nextProps.isValid !== this.state.isValid) {
         this.setState({
-          errorText: this.props.requiredText || "This field is required.",
           isValid: nextProps.isValid
         });
       }
     } else if (nextProps.isValid === false) {
       this.setState({
-        errorText: this.props.requiredText || "This field is required.",
         isValid: nextProps.isValid
       });
     }
@@ -181,39 +179,36 @@ class Input extends React.PureComponent {
         return false;
       }
     }
+
     /* Execute custom validator and change state and error messages accordingly */
-    let customValidationPass = false;
-    if (this.props.validator) {
+    const customValidationPass = function(){
       let valid = this.props.validator(inputValue);
       if (!valid) {
-        this.setState({
-          errorText: this.props.errorText,
-          isValid: false
-        });
+        return false;
       } else {
-        customValidationPass = true;
+        return true;
       }
     }
 
     /* If the field is required, and it has no value, change state and display error message */
-    if (this.props.required) {
-      if (!inputValue.length) {
-        this.setState({
-          errorText: this.props.requiredText || "This field is required.",
-          isValid: false
-        });
-      } else {
-        /* Set state after both validation checks to display both when required */
-        if (this.props.validator) {
-          if (customValidationPass) {
-            this.setState({ isValid: true });
-          }
+    if (!inputValue.length && this.props.required) {
+      this.setState({
+        errorText: this.props.requiredText || "This field is required.",
+        isValid: false
+      });
+    } else if (this.props.validator) {
+        if (customValidationPass.call(this)) {
+          this.setState({ isValid: true });
         } else {
           this.setState({
-            isValid: true
+            errorText: this.props.errorText,
+            isValid: false
           });
         }
-      }
+    } else {
+      this.setState({
+        isValid: true
+      });
     }
 
     return true;
@@ -466,8 +461,8 @@ Input.propTypes = {
      */
   onChange: PropTypes.func,
 
-  /* Pass inline styles here. */
-  style: PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 Input.defaultProps = {

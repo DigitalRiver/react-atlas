@@ -7,3 +7,4 @@ CONTRIBUTING.md
 CODE_OF_CONDUCT.md
 src
 webpack
+src/**/README.md

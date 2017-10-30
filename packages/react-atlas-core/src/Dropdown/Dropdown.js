@@ -282,16 +282,18 @@ class Dropdown extends React.PureComponent {
     const bound_children = React.Children.map(
       this.props.children,
       (child, i) => {
+
+        let emptyClass = child.props.value === "" || child.props.value === null || child.props.value === undefined ? true : false;
         let childClasses = cx({
           ra_Dropdown__selected: i === this.state.index,
           ra_Dropdown__firstChild: i === 0,
-          ra_Dropdown__lastChild: i === count - 1
+          ra_Dropdown__lastChild: i === count - 1,
+          ra_Dropdown__emptyChild: emptyClass
         });
         let kid = (
           <li
             key={i}
             className={"ra_Dropdown__item " + childClasses}
-            styleName={"default-font"}
             onMouseDown={e => {
               // onMouseDown fires before onBlur. If changed to onClick it will fire after onBlur and not work.
               this._clickHandler(i, e);
@@ -340,7 +342,7 @@ class Dropdown extends React.PureComponent {
         styleName={buttonClasses}
         type={"button"}
       >
-        <span styleName={"default-font"}>{this.state.output}</span>
+        <span>{this.state.output}</span>
         <i styleName="arrow" />
       </ButtonCore>
     );
@@ -443,10 +445,10 @@ Dropdown.propTypes = {
   /* Allows user to ask for user feedback before changing the selected value of the Dropdown. */
   onBeforeChange: PropTypes.func,
 
-  /* Allows user to set custom width of dropdown */
-  /* Pass inline styles here. */
-  style: PropTypes.node,
+  /* Pass inline styling here. */
+  style: PropTypes.object,
 
+  /* Allows user to set custom width of dropdown */
   width: PropTypes.string
 };
 

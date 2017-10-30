@@ -171,8 +171,8 @@ Accordion.propTypes = {
   /* A boolean to disable or not disable the accordion component. */
   disabled: PropTypes.bool,
 
-  /* Pass inline styles here. */
-  style: PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 Accordion.defaultProps = {

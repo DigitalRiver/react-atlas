@@ -77,8 +77,8 @@ Modal.propTypes = {
    */
   lockScroll: PropTypes.bool,
 
-  /* Pass inline styles here. */
-  style: PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 Modal.defaultProps = {
