@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { InputCore } from "../Input";
+import { TooltipCore } from "./../Tooltip";
 import cx from "classnames";
 import messages from "../utils/messages";
 
