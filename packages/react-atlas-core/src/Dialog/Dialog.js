@@ -1,5 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { ModalCore } from "./../Modal";
+<<<<<<< HEAD
+import { ButtonCore } from "./../Button";
+=======
+import { ButtonCore } from "../Button";
+>>>>>>> 4b6436f8403531fb51562e1b4afc826f1d4950d5
 import cx from "classnames";
 
 class Dialog extends React.PureComponent {
