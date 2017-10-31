@@ -133,17 +133,17 @@ compIndexTemplate +=
 /* Dot template settings. Keep defaults except turn off stripping newlines feature
  * of dot.js. */
 dot.templateSettings = {
-  "evaluate": /\{\{([\s\S]+?)\}\}/g,
-  "interpolate": /\{\{=([\s\S]+?)\}\}/g,
-  "encode": /\{\{!([\s\S]+?)\}\}/g,
-  "use": /\{\{#([\s\S]+?)\}\}/g,
-  "define": /\{\{##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\}\}/g,
-  "conditional": /\{\{\?(\?)?\s*([\s\S]*?)\s*\}\}/g,
-  "iterate": /\{\{~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\}\})/g,
-  "varname": "it",
-  "strip": false,
-  "append": true,
-  "selfcontained": false
+  evaluate: /\{\{([\s\S]+?)\}\}/g,
+  interpolate: /\{\{=([\s\S]+?)\}\}/g,
+  encode: /\{\{!([\s\S]+?)\}\}/g,
+  use: /\{\{#([\s\S]+?)\}\}/g,
+  define: /\{\{##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\}\}/g,
+  conditional: /\{\{\?(\?)?\s*([\s\S]*?)\s*\}\}/g,
+  iterate: /\{\{~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\}\})/g,
+  varname: "it",
+  strip: false,
+  append: true,
+  selfcontained: false
 };
 
 /* TODO: Replace hardcoded array with a dynamic solution. */
@@ -177,10 +177,10 @@ let components = [
 ];
 
 module.exports = {
-  "warningMessage": warningMessage,
-  "template": template,
-  "components": components,
-  "indexTemplate": indexTemplate,
-  "compIndexTemplate": compIndexTemplate,
-  "devTemplate": devTemplate
+  warningMessage: warningMessage,
+  template: template,
+  components: components,
+  indexTemplate: indexTemplate,
+  compIndexTemplate: compIndexTemplate,
+  devTemplate: devTemplate
 };

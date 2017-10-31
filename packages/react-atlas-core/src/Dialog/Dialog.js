@@ -7,32 +7,63 @@ import cx from "classnames";
 class Dialog extends React.PureComponent {
   _getButtonContent = () => {
     const { info, warning, onOk, onCancel } = this.props;
-    let classes = {"ra_Button__small": true,
-                   "ra_Button__button": true,
-                   "ra_Button__base": true,
-                   "ra_styles__button-marg-1": true,
-                   "ra_styles__button-pad-1": true,
-                   "ra_styles__default-text": true,
-                   "ra_styles__cursor-pointer": true,
-                   "ra_styles__primary-button-border-width": true,
-                   "ra_styles__default-font": true,
-                   "ra_styles__rounded": true,
-                   "ra_Button__warning": true
-                  };
-    const okButton = warning ?
-      <ButtonCore className={cx(classes)} onClick={onOk}>
+    let warningClasses = {
+      "ra_Button__small": true,
+      "ra_Button__button": true,
+      "ra_Button__base": true,
+      "ra_styles__button-marg-1": true,
+      "ra_styles__button-pad-1": true,
+      "ra_styles__default-text": true,
+      "ra_styles__cursor-pointer": true,
+      "ra_styles__primary-button-border-width": true,
+      "ra_styles__default-font": true,
+      "ra_styles__rounded": true,
+      "ra_Button__warning": true
+    };
+    let primaryClasses = {
+      "ra_Button__small": true,
+      "ra_Button__button": true,
+      "ra_Button__base": true,
+      "ra_styles__button-marg-1": true,
+      "ra_styles__button-pad-1": true,
+      "ra_styles__default-text": true,
+      "ra_styles__cursor-pointer": true,
+      "ra_styles__primary-button-border-width": true,
+      "ra_styles__default-font": true,
+      "ra_styles__rounded": true,
+      "ra_Button__primary": true,
+      "ra_styles__bg-primary": true,
+      "ra_styles__hover-bg-primary": true,
+      "ra_styles__border-primary": true,
+      "ra_styles__hover-border-primary": true,
+      "ra_styles__white": true
+    };
+    const okButton = warning ? 
+      <ButtonCore className={cx(warningClasses)} onClick={onOk}>
         OK
       </ButtonCore>
-     :
-      <ButtonCore small primary onClick={onOk}>
+     : 
+      <ButtonCore className={cx(primaryClasses)} onClick={onOk}>
         OK
       </ButtonCore>
     ;
+    let okClasses = {
+      "ra_Button__small": true,
+      "ra_Button__button": true,
+      "ra_Button__base": true,
+      "ra_styles__button-marg-1": true,
+      "ra_styles__button-pad-1": true,
+      "ra_styles__default-text": true,
+      "ra_styles__cursor-pointer": true,
+      "ra_styles__primary-button-border-width": true,
+      "ra_styles__default-font": true,
+      "ra_styles__rounded": true
+    };
     return (
       <div>
         {okButton}
-        {!info &&
-          <ButtonCore small onClick={onCancel}>
+        {!info && 
+          <ButtonCore className={okClasses} onClick={onCancel}>
             Cancel
           </ButtonCore>
         }
@@ -47,23 +78,25 @@ class Dialog extends React.PureComponent {
       className,
       children,
       style,
+      /*eslint-disable */
       styles,
+      /*eslint-enable */
       ...others
     } = this.props;
     return (
-      active &&
+      active && 
         <ModalCore
-          className={cx(className, warning && styles.warning)}
+          className={cx(className, { "ra_Dialog__warning": warning })}
           style={style}
           active={active}
           {...others}
         >
-          <div className="ra_Dialog__dialog">
+          <div className={cx("ra_Dialog__dialog", "ra_styles__default-font")}>
             {children}
             <div className="ra_Dialog__buttons">{this._getButtonContent()}</div>
           </div>
         </ModalCore>
-
+      
     );
   }
 }
@@ -119,7 +152,12 @@ Dialog.propTypes = {
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object
+  "style": PropTypes.object,
+
+  /**
+   * Pass inline styling here.
+   */
+  "styles": PropTypes.object
 };
 
 Dialog.defaultProps = {

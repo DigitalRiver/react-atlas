@@ -46,7 +46,9 @@ class Overlay extends React.PureComponent {
       { "ra_Overlay__active": active },
       className
     );
-    return <div style={style} onClick={this.handleClick} className={classNames} />;
+    return (
+      <div style={style} onClick={this.handleClick} className={classNames} />
+    );
   }
 }
 
