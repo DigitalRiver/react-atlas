@@ -53,7 +53,7 @@ class Tooltip extends React.PureComponent {
       "tooltip-right": position === "right"
     });
 
-    let TooltipContainer = this.state.active ?
+    let TooltipContainer = this.state.active ? 
       <span styleName={"tooltipContent"}>{this.state.tooltip}</span>
      : null;
 

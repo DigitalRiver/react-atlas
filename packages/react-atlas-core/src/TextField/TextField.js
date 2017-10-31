@@ -95,19 +95,25 @@ class TextField extends React.PureComponent {
       "tooltipRight": tooltipRight
     });
 
-    let tooltipInternalClasses = cx({"ra_Tooltip__tooltip": true,
-                                     "ra_Tooltip__active": true,
-                                     "ra_Tooltip__tooltip-right": true,
-                                     "ra_Tooltip__tooltipContent": true,
-                                     "ra_Tooltip__block": true});
+    let tooltipInternalClasses = cx({
+      "ra_Tooltip__tooltip": true,
+      "ra_Tooltip__active": true,
+      "ra_Tooltip__tooltip-right": true,
+      "ra_Tooltip__tooltipContent": true,
+      "ra_Tooltip__block": true
+    });
 
-    let textFieldHeader = header &&
+    let textFieldHeader = header && 
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
-        {tooltip &&
+        {tooltip && 
           <span styleName={tooltipClasses}>
-            <TooltipCore className={tooltipInternalClasses} text={tooltip} position="top" />
+            <TooltipCore
+              className={tooltipInternalClasses}
+              text={tooltip}
+              position="top"
+            />
           </span>
         }
       </div>
