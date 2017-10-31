@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import messages from "../utils/messages";
-import utils from "../utils/utils";
 import cx from "classnames";
 
 const errorCodes = {
@@ -151,28 +150,18 @@ class Form extends React.PureComponent {
       className,
       children,
       action,
-      buttonText,
-      group,
       method,
       childClasses,
-      buttonClasses,
       style
     } = this.props;
     /* Loop through children components and set onChange handlers
      * and add CSS classes. */
     let kids = React.Children.map(children, (child, i) => {
-      /* Check if the user wants the form inputs grouped
-         * together, if yes set the form_component class. */
-      let classes;
-      if (group) {
-        classes = cx(child.props.className, childClasses, "ra_Form__component");
-      } else {
-        classes = cx(child.props.className, childClasses);
-      }
+      let classes = cx(child.props.className, childClasses);
 
       let props = {
         "className": classes,
-        "onChange": (value, event, isValid, state) =>
+        "onChange": (value, event, isValid) =>
           this.onChangeHandler(value, event, isValid, this.state.childState[i]),
         "value": this.state.childState[i].value,
         "errorText": messages.requiredMessage,
@@ -199,8 +188,6 @@ class Form extends React.PureComponent {
 }
 
 Form.propTypes = {
-  /** An Object, array, or string of CSS classes to apply to the form submit button.  */
-  "buttonClasses": PropTypes.node,
   /** Children components, Usually a Textfield, Dropdown, Input, etc */
   "children": PropTypes.node,
   /** An Object, array, or string of CSS classes to apply to Form.*/

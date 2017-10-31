@@ -14,7 +14,6 @@ class Table extends React.PureComponent {
       search,
       pagination,
       style,
-      sort,
       ...props
     } = this.props;
 
@@ -40,6 +39,7 @@ class Table extends React.PureComponent {
 }
 
 Table.propTypes = {
+  "search": PropTypes.bool,
   "children": PropTypes.any,
   "data": PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   "pagination": PropTypes.bool,

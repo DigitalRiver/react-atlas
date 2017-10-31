@@ -34,7 +34,7 @@ Task.propTypes = {
     PropTypes.array
   ]),
   /* Pass inline styling here. */
-  style: PropTypes.object,
+  "style": PropTypes.object,
   /**
    * Text for task
    * @examples 'Item One'

@@ -50,6 +50,6 @@ FileUpload.propTypes = {
 
   /* Pass inline styling here. */
   "style": PropTypes.object
-}
+};
 
 export default FileUpload;

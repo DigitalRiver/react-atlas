@@ -87,7 +87,7 @@ class Accordion extends React.PureComponent {
       headerClasses = cx("accordion_header", stateClasses, styleClasses);
       panelClasses = cx("accordion_panel", stateClasses);
 
-      let accordion_panel =
+      let accordion_panel = 
         <div>
           <div
             styleName={headerClasses}
@@ -107,7 +107,7 @@ class Accordion extends React.PureComponent {
 
     return (
       <div className={cx(className)} style={style}>
-        {this.state.expandAll && !this.props.disabled ?
+        {this.state.expandAll && !this.props.disabled ? 
           <div
             styleName={"expandAll"}
             onClick={() => {

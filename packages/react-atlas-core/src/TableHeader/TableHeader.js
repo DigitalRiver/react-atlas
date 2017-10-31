@@ -29,18 +29,19 @@ class TableHeader extends React.PureComponent {
 }
 
 TableHeader.propTypes = {
-  dataField: PropTypes.string,
-  isKey: PropTypes.bool,
-  dataSort: PropTypes.bool,
-  searchable: PropTypes.bool,
+  "dataField": PropTypes.string,
+  "isKey": PropTypes.bool,
+  "dataSort": PropTypes.bool,
+  "searchable": PropTypes.bool,
   /* Pass inline styling here. */
-  style: PropTypes.object,
+  "style": PropTypes.object,
   /** An Object, array, or string of CSS classes to apply to TableHeader.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
-  ])
+  ]),
+  "children": PropTypes.any
 };
 
 TableHeader.defaultProps = {

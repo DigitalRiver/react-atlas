@@ -163,7 +163,7 @@ ProgressBar.propTypes = {
   ]),
 
   /* Pass inline styling here. */
-  style: PropTypes.object
+  "style": PropTypes.object
 };
 
 ProgressBar.defaultProps = {

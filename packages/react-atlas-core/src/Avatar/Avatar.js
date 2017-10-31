@@ -52,7 +52,7 @@ class Avatar extends React.PureComponent {
     let image = this.state.image;
 
     if (typeof image === "string") {
-      avatar =
+      avatar = 
         <img
           src={image}
           title={title}

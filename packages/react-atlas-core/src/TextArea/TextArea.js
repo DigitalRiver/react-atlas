@@ -2,22 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import { InputCore } from "../Input";
 import cx from "classnames";
-import messages from "../utils/messages";
 import { TooltipCore } from "./../Tooltip";
 
 class TextArea extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    let isValid, errorText;
+    let isValid;
     if (typeof props.isValid === "undefined") {
       isValid = true;
     } else if (props.isValid === false) {
       isValid = props.isValid;
-      errorText = messages.requiredMessage;
     } else {
       isValid = props.isValid;
-      errorText = null;
     }
 
     if (this.props.tooltip && !this.props.header) {
@@ -85,8 +82,7 @@ class TextArea extends React.PureComponent {
       className,
       style,
       tooltip,
-      tooltipRight,
-      tooltipLeft
+      tooltipRight
     } = this.props;
 
     let tooltipClasses = cx({
@@ -106,7 +102,7 @@ class TextArea extends React.PureComponent {
         {required && <span styleName={"error_text"}> *</span>}
         {tooltip &&
           <span styleName={tooltipClasses}>
-            <Tooltip text={tooltip} position="top" />
+            <TooltipCore text={tooltip} position="top" />
           </span>
         }
       </div>
@@ -236,8 +232,9 @@ TextArea.propTypes = {
   /* passes tooltip as prop if added to textArea */
   "tooltip": PropTypes.string,
   /* Pass inline styling here. */
-  style: PropTypes.object
+  "style": PropTypes.object,
 
+  "tooltipRight": PropTypes.bool
 };
 
 TextArea.defaultProps = {

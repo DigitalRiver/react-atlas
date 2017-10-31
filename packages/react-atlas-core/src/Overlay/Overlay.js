@@ -46,7 +46,7 @@ class Overlay extends React.PureComponent {
       { "ra_Overlay__active": active },
       className
     );
-    return <div onClick={this.handleClick} className={classNames} />;
+    return <div style={style} onClick={this.handleClick} className={classNames} />;
   }
 }
 
@@ -75,7 +75,7 @@ Overlay.propTypes = {
   "onEscKeyDown": PropTypes.func,
 
   /* Pass inline styling here. */
-  style: PropTypes.object
+  "style": PropTypes.object
 };
 
 Overlay.defaultProps = {

@@ -92,10 +92,10 @@ class CheckboxGroup extends React.PureComponent {
         className={cx(className)}
         styleName={checkboxGroupStyles}
       >
-        {title &&
+        {title && 
           <div styleName={"header"}>
             <span styleName={"headerFont"}>{title}</span>
-            {this.state.groupError &&
+            {this.state.groupError && 
               <span styleName={"error_message"}>{this.maxMinMessage()}</span>
             }
           </div>

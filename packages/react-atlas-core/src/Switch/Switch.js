@@ -132,7 +132,9 @@ class Switch extends React.PureComponent {
         style={style}
         styleName={labelClasses}
         className={cx(className)}
+        /*eslint-disable */
         style={styles.offColorStyle}
+        /*eslint-enable */
       >
         <InputCore
           type="checkbox"
@@ -224,7 +226,7 @@ Switch.propTypes = {
   "inline": PropTypes.bool,
 
   /* Pass inline styling here. */
-  style: PropTypes.object
+  "style": PropTypes.object
 };
 
 Switch.defaultProps = {

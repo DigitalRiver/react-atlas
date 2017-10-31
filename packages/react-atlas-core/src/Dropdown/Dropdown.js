@@ -118,7 +118,7 @@ class Dropdown extends React.PureComponent {
     const inputValue = this.state.childrenState[i].value;
 
     let isValid = true;
-    if (inputValue == "") {
+    if (inputValue === "") {
       isValid = false;
     }
 
@@ -298,7 +298,7 @@ class Dropdown extends React.PureComponent {
         let emptyClass =
           child.props.value === "" ||
           child.props.value === null ||
-          child.props.value === undefined
+          typeof child.props.value === 'undefined'
             ? true
             : false;
         let childClasses = cx({
