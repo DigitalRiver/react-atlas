@@ -11,8 +11,8 @@ class Task extends React.PureComponent {
     const { className, style, title, selected, icon } = this.props;
 
     const taskLinkClasses = cx({
-      taskLink: true,
-      selected: selected
+      "taskLink": true,
+      "selected": selected
     });
 
     return (
@@ -28,30 +28,30 @@ class Task extends React.PureComponent {
 
 Task.propTypes = {
   /** An Object, array, or string of CSS classes to apply to CheckboxGroup.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /* Pass inline styling here. */
-  style: PropTypes.object,
+  "style": PropTypes.object,
   /**
    * Text for task
    * @examples 'Item One'
    */
-  title: PropTypes.string,
+  "title": PropTypes.string,
   /**
    * Adds selected class if true
    */
-  selected: PropTypes.bool,
+  "selected": PropTypes.bool,
   /**
    * Adds font-awesome icon to left of title
    */
-  icon: PropTypes.string
+  "icon": PropTypes.string
 };
 
 Task.defaultProps = {
-  title: "Item One"
+  "title": "Item One"
 };
 
 export default Task;

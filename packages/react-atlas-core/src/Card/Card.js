@@ -25,10 +25,10 @@ Card.propTypes = {
    * Any HTML element or React Component.
    * @examples <p>Some Text.</p>
    */
-  children: PropTypes.node.isRequired,
+  "children": PropTypes.node.isRequired,
 
   /** An Object, array, or string of CSS classes to apply to card.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -37,12 +37,12 @@ Card.propTypes = {
   /**
    * Title of the Card
    */
-  legend: PropTypes.string,
+  "legend": PropTypes.string,
 
-  /* Pass inline styling here. */
-  style: PropTypes.object
+  /* Pass inline styles here. */
+  "style": PropTypes.object
 };
 
-Card.defaultProps = { children: <p>Some card text.</p> };
+Card.defaultProps = { "children": <p>Some card text.</p> };
 
 export default Card;

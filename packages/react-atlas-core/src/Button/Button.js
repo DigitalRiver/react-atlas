@@ -57,10 +57,10 @@ class Button extends React.PureComponent {
      */
     const classes = cx(
       {
-        disabled: disabled,
-        large: large,
-        small: small,
-        button: true
+        "disabled": disabled,
+        "large": large,
+        "small": small,
+        "button": true
       },
       mainStyle
     );
@@ -95,20 +95,20 @@ class Button extends React.PureComponent {
 
 Button.propTypes = {
   /** HTML5 button type, eg submit, button, etc */
-  type: PropTypes.string,
+  "type": PropTypes.string,
   /** The URL to link to. */
-  href: PropTypes.string,
+  "href": PropTypes.string,
   /**
      * Define a mini button.
      *
      */
-  children: PropTypes.node,
+  "children": PropTypes.node,
   /**
    * Click event handler.
    */
-  onClick: PropTypes.func,
+  "onClick": PropTypes.func,
   /** An Object, array, or string of CSS classes to apply to button.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -117,69 +117,69 @@ Button.propTypes = {
      * define a custom css class name
      * @examples "btn", "btn-active"
      */
-  disabled: PropTypes.bool,
+  "disabled": PropTypes.bool,
   /**
      * use outline styled button
      * @examples <Button outline>
      */
-  outline: PropTypes.bool,
+  "outline": PropTypes.bool,
   /**
      * define button href if anchor
      * @examples '#', 'http://some-website.com/'
      */
-  primary: PropTypes.bool,
+  "primary": PropTypes.bool,
   /**
      * use secondary style button
      * @examples <Button secondary>
      */
-  secondary: PropTypes.bool,
+  "secondary": PropTypes.bool,
   /**
      * use warning style button
      * @examples <Button warning>
      */
-  warning: PropTypes.bool,
+  "warning": PropTypes.bool,
   /**
      * use error style button
      * @examples <Button error>
      */
-  error: PropTypes.bool,
+  "error": PropTypes.bool,
   /**
      * use link style button
      * @examples <Button link>
      */
-  link: PropTypes.bool,
+  "link": PropTypes.bool,
   /**
      * use large style button
      * @examples <Button large>
      */
-  large: PropTypes.bool,
+  "large": PropTypes.bool,
   /**
      * use small style button
      * @examples <Button small>
      */
-  small: PropTypes.bool,
+  "small": PropTypes.bool,
 
   /**
     * The class name of the icon you want to set.
     */
-  icon: PropTypes.string,
+  "icon": PropTypes.string,
 
-  /* Pass inline styling here. */
-  style: PropTypes.object
+  /* Pass inline styles here. */
+  "style": PropTypes.object
 };
 
 Button.defaultProps = {
-  children: "Default Button",
-  outline: false,
-  primary: false,
-  secondary: false,
-  warning: false,
-  error: false,
-  link: false,
-  large: false,
-  small: false,
-  disabled: false,
-  type: "button"
+  "children": "Default Button",
+  "outline": false,
+  "primary": false,
+  "secondary": false,
+  "warning": false,
+  "error": false,
+  "link": false,
+  "large": false,
+  "small": false,
+  "disabled": false,
+  "type": "button"
 };
 
 export default Button;

@@ -18,7 +18,7 @@ class Panel extends React.PureComponent {
 
 Panel.propTypes = {
   /** An Object, array, or string of CSS classes to apply to Panel.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -27,10 +27,10 @@ Panel.propTypes = {
      * Text to be displayed can be passed as a child.
      * @examples '<Panel>This is a text hint</Panel>'
      */
-  children: PropTypes.node,
+  "children": PropTypes.node,
 
   /* Pass inline styling here. */
-  style: PropTypes.object
+  "style": PropTypes.object
 };
 
 export default Panel;
