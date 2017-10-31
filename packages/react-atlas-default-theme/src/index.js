@@ -13,6 +13,7 @@ export { HintStyle } from "./Hint";
 export { InputStyle } from "./Input";
 export { ModalStyle } from "./Modal";
 export { OverlayStyle } from "./Overlay";
+export { PanelStyle } from "./Panel";
 export { PortalStyle } from "./Portal";
 export { ProgressBarStyle } from "./ProgressBar";
 export { RadioStyle } from "./Radio";

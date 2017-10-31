@@ -93,7 +93,10 @@ Dialog.propTypes = {
   /**
    * Callback for Cancel Button
    */
-  onCancel: PropTypes.func
+  onCancel: PropTypes.func,
+
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 Dialog.defaultProps = {

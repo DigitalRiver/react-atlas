@@ -22,7 +22,7 @@
 /* Base styles for the entire tooltip */
 
 .tooltip:before,
-.tooltip > span {
+.tooltip > .tooltipContent {
   position: absolute;
   visibility: hidden;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -48,9 +48,9 @@
 
 /* Show the entire tooltip on hover and focus */
 .tooltip.active:hover:before,
-.tooltip.active:hover > span,
+.tooltip.active:hover > .tooltipContent,
 .tooltip.active:focus:before,
-.tooltip.active:focus > span {
+.tooltip.active:focus > .tooltipContent {
   visibility: visible;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
@@ -66,7 +66,7 @@
 }
 
 /* Base styles for the tooltip's content area */
-.tooltip > span {
+.tooltip > .tooltipContent {
   z-index: 1000;
   padding: 8px;
   width: 160px;
@@ -81,9 +81,9 @@
 
 /* Top (default) */
 .tooltip:before,
-.tooltip > span,
+.tooltip > .tooltipContent,
 .tooltip-top:before,
-.tooltip-top > span {
+.tooltip-top > .tooltipContent {
   bottom: 100%;
   left: 50%;
 }
@@ -97,17 +97,17 @@
 }
 
 /* Horizontally align top/bottom tooltips */
-.tooltip-top > span,
-.tooltip-bottom > span {
+.tooltip-top > .tooltipContent,
+.tooltip-bottom > .tooltipContent {
   margin-left: -80px;
 }
 
 .tooltip:hover:before,
 .tooltip:focus:before,
-.tooltip-top:hover > span,
-.tooltip-top:focus > span,
-.tooltip:hover > span,
-.tooltip:focus > span {
+.tooltip-top:hover > .tooltipContent,
+.tooltip-top:focus > .tooltipContent,
+.tooltip:hover > .tooltipContent,
+.tooltip:focus > .tooltipContent {
   -webkit-transform: translateY(-12px);
   -moz-transform:    translateY(-12px);
   transform:         translateY(-12px);
@@ -115,7 +115,7 @@
 
 /* Left */
 .tooltip-left:before,
-.tooltip-left > span {
+.tooltip-left > .tooltipContent {
   right: 100%;
   bottom: 50%;
   left: auto;
@@ -124,16 +124,16 @@
 .tooltip-left:before {
   margin-left: 0;
   margin-right: -12px;
-  margin-bottom: 0;
+  margin-bottom: -5px;
   border-top-color: transparent;
   border-left-color: #000;
   border-left-color: hsla(0, 0%, 20%, 0.9);
 }
 
 .tooltip-left:hover:before,
-.tooltip-left:hover > span,
+.tooltip-left:hover > .tooltipContent,
 .tooltip-left:focus:before,
-.tooltip-left:focus > span {
+.tooltip-left:focus > .tooltipContent {
   -webkit-transform: translateX(-12px);
   -moz-transform:    translateX(-12px);
   transform:         translateX(-12px);
@@ -141,7 +141,7 @@
 
 /* Bottom */
 .tooltip-bottom:before,
-.tooltip-bottom > span {
+.tooltip-bottom > .tooltipContent {
   top: 100%;
   bottom: auto;
   left: 50%;
@@ -157,8 +157,8 @@
 
 .tooltip-bottom:hover:before,
 .tooltip-bottom:focus:before,
-.tooltip-bottom:hover > span,
-.tooltip-bottom:focus > span{
+.tooltip-bottom:hover > .tooltipContent,
+.tooltip-bottom:focus > .tooltipContent{
   -webkit-transform: translateY(12px);
   -moz-transform:    translateY(12px);
   transform:         translateY(12px);
@@ -166,13 +166,13 @@
 
 /* Right */
 .tooltip-right:before,
-.tooltip-right > span {
+.tooltip-right > .tooltipContent {
   bottom: 50%;
   left: 100%;
 }
 
 .tooltip-right:before {
-  margin-bottom: 0;
+  margin-bottom: -5px;
   margin-left: -12px;
   border-top-color: transparent;
   border-right-color: #000;
@@ -180,23 +180,17 @@
 }
 
 .tooltip-right:hover:before,
-.tooltip-right:hover > span,
+.tooltip-right:hover > .tooltipContent,
 .tooltip-right:focus:before,
-.tooltip-right:focus > span {
+.tooltip-right:focus > .tooltipContent {
   -webkit-transform: translateX(12px);
   -moz-transform:    translateX(12px);
   transform:         translateX(12px);
 }
 
-/* Move directional arrows down a bit for left/right tooltips */
-.tooltip-left:before,
-.tooltip-right:before {
-  top: 3px;
-}
-
 /* Vertically center tooltip content for left/right tooltips */
-.tooltip-left > span,
-.tooltip-right > span {
+.tooltip-left > .tooltipContent,
+.tooltip-right > .tooltipContent {
   margin-left: 0;
-  margin-bottom: -16px;
+  margin-bottom: -15px;
 }

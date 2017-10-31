@@ -170,8 +170,8 @@ CheckboxGroup.propTypes = {
    */
   limitMessage: PropTypes.string,
 
-  /* Pass inline styles here. */
-  style: PropTypes.node
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 CheckboxGroup.defaultProps = {

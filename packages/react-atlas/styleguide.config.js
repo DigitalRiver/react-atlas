@@ -91,6 +91,7 @@ module.exports = {
     '../react-atlas-core/src',
     '../react-atlas-theme/src'
   ],
+  showUsage: true,
   defaultExample: true,
   webpackConfig: {
     module: {

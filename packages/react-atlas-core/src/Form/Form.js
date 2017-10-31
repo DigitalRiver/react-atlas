@@ -89,6 +89,12 @@ class Form extends React.PureComponent {
   	/* Validate children components before submiting. */
   	let data = this.validate();
     if(!data) {
+      /* Prevent form submission when action is set and the
+       * form is not valid. */
+      if(this.props.action) {
+        e.preventDefault();
+      }
+
       if(typeof this.props.onError !== 'undefined') {
         this.props.onError(errorCodes.MISSING_REQUIRED, messages.missingRequired);
       }
@@ -196,8 +202,8 @@ Form.propTypes = {
     /** An Object, array, or string of CSS classes to
      * apply to form children components.*/
   "childClasses": PropTypes.node,
-  /* Pass inline styles here. */
-  "style": PropTypes.node
+  /* Pass inline styling here. */
+  "style": PropTypes.object
 };
 
 Form.defaultProps = {

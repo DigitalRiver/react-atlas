@@ -29,8 +29,16 @@ class TextArea extends React.PureComponent {
       "value": props.value || "",
       "remaining": props.maxLength,
       "active": false,
-      "valid": isValid
+      "isValid": isValid
     };
+  }
+  componentWillReceiveProps(nextProps) {
+    if (
+      typeof nextProps.isValid !== "undefined" &&
+      nextProps.isValid !== this.state.valid
+    ) {
+      this.setState({ valid: nextProps.isValid });
+    }
   }
 
   _handleChange = (value, event, isValid) => {
@@ -41,10 +49,10 @@ class TextArea extends React.PureComponent {
       this.setState({ remaining: this.props.maxLength - value.length });
     }
 
-    // Set value and valid state depending on InputCore state
+    // Set value and isValid state depending on InputCore state
     this.setState({
       "value": value,
-      "valid": isValid
+      "isValid": isValid
     });
 
     if (this.props.onChange) {
@@ -115,7 +123,7 @@ class TextArea extends React.PureComponent {
         resizable,
         disabled,
         active: this.state.active,
-        invalid: !this.state.valid
+        invalid: !this.state.isValid
       },
       "textarea"
     );
@@ -222,7 +230,10 @@ TextArea.propTypes = {
   hidden: PropTypes.bool,
 
   /* passes tooltip as prop if added to textArea */
-  tooltip: PropTypes.string
+  tooltip: PropTypes.string,
+
+  /* Pass inline styling here. */
+  style: PropTypes.object
 };
 
 TextArea.defaultProps = {
