@@ -34,6 +34,10 @@ class Radio extends React.PureComponent {
     };
   }
 
+  shouldComponentUpdate(nextProps) {
+    return this.props.checked !== nextProps.checked
+  }
+
   // Handles new radio clicks and sets value and checked status of hidden input
   _clickHandler = event => {
     if (!this.props.disabled) {

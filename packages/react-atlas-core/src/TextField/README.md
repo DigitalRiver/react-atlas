@@ -70,7 +70,7 @@
     	<TextField
 	    	placeholder="ABC 1234"
 	    	mask="AAA 1111"
-	    	header="Lincese Plate"/>
+	    	header="License Plate"/>
 	</div>
 
 ###### onChange handler:
