@@ -20,11 +20,11 @@ Switch component allows to define a particular-styled checkbox.
       <Switch name="customFeature"/>
     </div>
 
-###### Set other colors for on/off states (hex, rgb, css-valid color name):
+###### Set other colors (hex, rgb, css-valid color name) or css attributes :
 
     <div>
-      <Switch onColor="#00bbaa" offColor="#000000"/>
-      <Switch onColor="green" offColor="black"/>
+      <Switch onColor="#00bbaa" style={{display:"inline-block"}}/>
+      <Switch onColor="#f46542" style={{display:"inline-block"}}/>
     </div>
 
 ###### Disabled or hidden switch:
