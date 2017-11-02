@@ -148,6 +148,7 @@ class TextArea extends React.PureComponent {
           disabled={disabled}
           hidden={hidden}
           value={this.state.value}
+          isValid={this.state.isValid}
         />
         {remainingCount}
       </div>
