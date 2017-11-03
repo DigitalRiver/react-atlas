@@ -174,8 +174,6 @@ class Dropdown extends React.PureComponent {
       this.setState({ "focus": false, "active": false, "zIndex": false });
     }
 
-    this._validationHandler(this.props.errorCallback);
-
     if(this.state.clicked === true) {
       return;
     }
@@ -189,6 +187,7 @@ class Dropdown extends React.PureComponent {
     /* Checks that required has been set to true and determines if errorCallback message was passed in a custom error message.
       Also sets state of valid depending on user action
       */
+      console.log("Validating");
     let validation;
     if (callback) {
       validation = callback(event, this.state.value);
@@ -254,6 +253,13 @@ class Dropdown extends React.PureComponent {
     } else if (event.key === "Enter") {
       event.preventDefault();
       if (!this.props.disabled) {
+        /* If active is false run validation. Don't
+         * run validation when active is true because
+         * that means we are opening and we don't want
+         * to run validation on open. */
+         if(this.state.active === true) {
+           this._validationHandler(this.props.errorCallback);
+         }
         this.setState({
           "active": !this.state.active,
           "zIndex": !this.state.active
