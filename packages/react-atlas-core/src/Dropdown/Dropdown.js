@@ -187,7 +187,7 @@ class Dropdown extends React.PureComponent {
     /* Checks that required has been set to true and determines if errorCallback message was passed in a custom error message.
       Also sets state of valid depending on user action
       */
-      console.log("Validating");
+
     let validation;
     if (callback) {
       validation = callback(event, this.state.value);
