@@ -53,7 +53,7 @@ class Tooltip extends React.PureComponent {
       "tooltip-right": position === "right"
     });
 
-    let TooltipContainer = this.state.active ? 
+    let TooltipContainer = this.state.active ?
       <span styleName={"tooltipContent"}>{this.state.tooltip}</span>
      : null;
 
@@ -118,7 +118,7 @@ Tooltip.propTypes = {
      * @examples <GithubIcon />, <i class="fa fa-github"></i>
      */
   "icon": PropTypes.string,
-  /* Pass inline styling here. */
+  /** Pass inline styling here. */
   "style": PropTypes.object
 };
 
