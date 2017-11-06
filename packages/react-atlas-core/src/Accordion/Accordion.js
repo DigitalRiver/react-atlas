@@ -87,7 +87,7 @@ class Accordion extends React.PureComponent {
       headerClasses = cx("accordion_header", stateClasses, styleClasses);
       panelClasses = cx("accordion_panel", stateClasses);
 
-      let accordion_panel = 
+      let accordion_panel =
         <div>
           <div
             styleName={headerClasses}
@@ -107,7 +107,7 @@ class Accordion extends React.PureComponent {
 
     return (
       <div className={cx(className)} style={style}>
-        {this.state.expandAll && !this.props.disabled ? 
+        {this.state.expandAll && !this.props.disabled ?
           <div
             styleName={"expandAll"}
             onClick={() => {
@@ -166,11 +166,17 @@ Accordion.propTypes = {
      * @examples <Accordion titlePosition={left}>{children}</Accordion>
      */
   "titlePosition": PropTypes.string,
-  /* The width of the accordion as a string or number. */
+  /**
+   * The width of the accordion as a string or number.
+   */
   "width": PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /* A boolean to disable or not disable the accordion component. */
+  /**
+   * A boolean to disable or not disable the accordion component.
+   */
   "disabled": PropTypes.bool,
-  /* Pass inline styles here. */
+  /**
+   * Pass inline styles here.
+   */
   "style": PropTypes.object
 };
 

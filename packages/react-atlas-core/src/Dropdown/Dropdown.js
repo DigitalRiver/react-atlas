@@ -405,14 +405,20 @@ Dropdown.propTypes = {
    */
   "customLabel": PropTypes.string,
 
-  /* Boolean value taht tells the dropdown whether to
-    be open or not.*/
+  /**
+   * Boolean value taht tells the dropdown whether to
+   * be open or not.
+   */
   "active": PropTypes.bool,
 
-  /* Boolean value that tells the dropdown whether the value is valid and controls error message is returns false.*/
+  /**
+   * Boolean value that tells the dropdown whether the value is valid and controls error message is returns false.
+   */
   "isValid": PropTypes.bool,
 
-  /* Boolean value that determines if the dropdown component will display inline*/
+  /**
+   * Boolean value that determines if the dropdown component will display inline
+   */
   "inline": PropTypes.bool,
 
   /**
@@ -447,7 +453,9 @@ Dropdown.propTypes = {
   /* . */
   "clickEvent": PropTypes.func,
 
-  /* The children elements to be wrapped by the dropdown menu. */
+  /**
+   * The children elements to be wrapped by the dropdown menu.
+   */
   "children": PropTypes.node.isRequired,
 
   /** An Object, array, or string of CSS classes to apply to Dropdown.*/
@@ -456,22 +464,34 @@ Dropdown.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  /* The name of the key value used when submitting the dropdown value. */
+  /**
+   * The name of the key value used when submitting the dropdown value.
+   */
   "name": PropTypes.string,
 
-  /* The initial value that the dropdown will default to. */
+  /**
+   * The initial value that the dropdown will default to.
+   */
   "value": PropTypes.string,
 
-  /* Default text to show in collapsed dropdown on initial render */
+  /**
+   * Default text to show in collapsed dropdown on initial render
+   */
   "defaultText": PropTypes.string,
 
-  /* Allows user to ask for user feedback before changing the selected value of the Dropdown. */
+  /**
+   * Allows user to ask for user feedback before changing the selected value of the Dropdown.
+   */
   "onBeforeChange": PropTypes.func,
 
-  /* Pass inline styles here. */
+  /**
+   * Pass inline styles here.
+   */
   "style": PropTypes.object,
 
-  /* Allows user to set custom width of dropdown */
+  /**
+   * Allows user to set custom width of dropdown
+   */
   "width": PropTypes.string
 };
 

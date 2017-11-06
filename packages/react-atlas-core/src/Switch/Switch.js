@@ -225,7 +225,9 @@ Switch.propTypes = {
    */
   "inline": PropTypes.bool,
 
-  /* Pass inline styling here. */
+  /**
+   * Pass inline styling here.
+   */
   "style": PropTypes.object
 };
 

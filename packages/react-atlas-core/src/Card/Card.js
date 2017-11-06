@@ -39,7 +39,9 @@ Card.propTypes = {
    */
   "legend": PropTypes.string,
 
-  /* Pass inline styles here. */
+  /**
+   * Pass inline styles here.
+   */
   "style": PropTypes.object
 };
 
