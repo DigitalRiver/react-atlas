@@ -206,14 +206,11 @@ Switch.propTypes = {
    */
   "onColor": PropTypes.string,
   /**
-<<<<<<< HEAD
    * Sets color that will be displayed when the switch is unchecked.
    * @examples '<Switch offColor="#d3d3d3"/>'
    */
   "offColor": PropTypes.string,
   /**
-=======
->>>>>>> component handles prop changes that affect state, inline prop fixed and style prop works when set
    * Sets color that will be displayed for the inner button.
    * @examples '<Switch buttonColor="#ffffff"/>'
    */
