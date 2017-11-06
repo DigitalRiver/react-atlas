@@ -12,10 +12,6 @@ Switch component allows to define a particular-styled checkbox.
       <Switch large/>
     </div>
 
-###### Switch with custom onChange handler:
-
-    <Switch onChange={this.onChangeHandler}/>
-
 ###### Multiple switches tied to same behavior (name prop):
 
     <div>
@@ -24,11 +20,11 @@ Switch component allows to define a particular-styled checkbox.
       <Switch name="customFeature"/>
     </div>
 
-###### Set other colors for on/off states (hex, rgb, css-valid color name):
+###### Set other colors (hex, rgb, css-valid color name) or css attributes :
 
     <div>
-      <Switch onColor="#00bbaa" offColor="#000000"/>
-      <Switch onColor="green" offColor="black"/>
+      <Switch onColor="#00bbaa" style={{display:"inline-block"}}/>
+      <Switch onColor="#f46542" style={{display:"inline-block"}}/>
     </div>
 
 ###### Disabled or hidden switch:
@@ -38,13 +34,21 @@ Switch component allows to define a particular-styled checkbox.
       <Switch hidden/>
     </div>
 
+###### Custom onClick Method:
+
+    function customSwitchClick() {
+        console.info("onClick event!");
+    }
+
+    <Switch onChange={customSwitchClick}/>
+
 ###### Execute method when onChange event occurs:
 
     function customSwitchChange() {
         console.info("onChange event!");
     }
 
-    <Switch onChange={this.customSwitchChange}/>
+    <Switch onChange={customSwitchChange}/>
 
 ###### Make checks before changing component's state (onbeforechange). It receives a value with current checked state:
 
@@ -57,7 +61,7 @@ Switch component allows to define a particular-styled checkbox.
         return true;
     }
 
-    <Switch onBeforeChange={this.customSwitchBeforeChange}/>
+    <Switch onBeforeChange={customSwitchBeforeChange}/>
 
 This method should return true or false, allowing or not the onChange handler to be fired. If undefined, will prevent it.
 
