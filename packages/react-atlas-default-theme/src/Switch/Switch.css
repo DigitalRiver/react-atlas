@@ -1,10 +1,9 @@
 /*
-  The circle
+  background sizes
 */
 
 .slider {
   composes: cursor-pointer from '../styles.css';
-  composes: bg-med-gray from '../styles.css';
   composes: z1 from '../styles.css';
   overflow:hidden;
   display: block;
@@ -14,55 +13,85 @@
 
 .sliderSmall{
   composes: slider;
-  width: 42px;
-  height: 19px;
-  border-radius: 12px;
+  width: 50px;
+  height: 28px;
+  border-radius: 14px;
 }
 
 .sliderMedium{
   composes: slider;
-  width: 70px;
-  height:32px;
+  width: 75px;
+  height: 40px;
   border-radius: 20px;
 }
 
 .sliderLarge{
   composes: slider;
-  width: 105px;
-  height: 48px;
-  border-radius: 30px;
+  width: 100px;
+  height: 55px;
+  border-radius: 27.5px;
 }
 
 /*
-  the off color
+  background color states
+*/
+
+.sliderDisabledOffColor {
+  composes: bg-silver from '../styles.css';
+}
+
+.sliderDisabledOnColor {
+  composes: bg-silver from '../styles.css';
+}
+
+.sliderEnabledOffColor {
+  composes: bg-gray from '../styles.css';
+}
+
+/*
+  the handle
 */
 .handle {
   composes: circle from '../styles.css';
-  composes: bg-white from '../styles.css';
   display:block;
   position:absolute;
-  top: 2px;
-  left: 3px;
-  box-shadow: 0 0 8px 1px rgba(0,0,0,0.3);
   transition:left 0.2s;
 }
 
 .handleSmall{
   composes: handle;
-  width: 15px;
-  height: 15px;
+  top: 4px;
+  left: 4px;
+  width: 20px;
+  height: 20px;
 }
 
 .handleMedium{
   composes: handle;
-  width: 28px;
-  height: 28px;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
 }
 
 .handleLarge{
   composes: handle;
-  width: 44px;
-  height: 44px;
+  top: 5px;
+  left: 5px;
+  width: 45px;
+  height: 45px;
+}
+
+/*
+  handle color states
+*/
+
+.handleDisabledColor{
+  composes: bg-gray from '../styles.css';
+}
+
+.handleEnabledColor{
+  composes: bg-white from '../styles.css';
 }
 
 .input {
@@ -77,14 +106,14 @@
     left:25px;
 }
 .inputMedium:checked + .handle{
-    left:39px;
+    left:40px;
 }
 .inputLarge:checked + .handle{
-    left:58px;
+    left:50px;
 }
 
 /*
-  On color
+  On color sizes
 */
 
 .onColor{
@@ -97,19 +126,19 @@
 .onColorSmall{
   composes: onColor;
   width: 19px;
-  height: 19px;
+  height: 28px;
 }
 
 .onColorMedium{
   composes: onColor;
   width: 32px;
-  height: 32px;
+  height: 40px;
 }
 
 .onColorLarge{
   composes: onColor;
   width: 48px;
-  height: 48px;
+  height: 55px;
 }
 
 .input:checked ~ .onColorSmall{
@@ -130,7 +159,6 @@
 .disabled{
   text-decoration: none;
   composes: cursor-not-allowed from '../styles.css';
-  opacity: .65;
   pointer-events: none;
 }
 
@@ -156,3 +184,4 @@
   position: relative;
   top: 16px;
 }
+
