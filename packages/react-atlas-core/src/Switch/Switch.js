@@ -18,7 +18,6 @@ class Switch extends React.PureComponent {
       medium = !this.props.small && !this.props.large,
       large = this.props.large && !this.props.medium && !this.props.small,
       hidden = this.props.hidden,
-      offColor = this.props.offColor,
       onColor = this.props.onColor,
       buttonColor = this.props.buttonColor;
 
