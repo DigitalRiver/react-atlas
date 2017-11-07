@@ -57,10 +57,6 @@ class Switch extends React.PureComponent {
       sliderDisabledOnColor: this.state.disabled
     });
 
-    let offColorStyle = {
-      "background": offColor
-    };
-
     let onColorStyle = {
       "background": onColor
     };
@@ -88,11 +84,10 @@ class Switch extends React.PureComponent {
     } else {
       this.setState({ checked : false })
     }
-  }
+  };
 
   // Handles new checkbox clicks and sets value and checked status of hidden input
   _clickHandler = () => {
-
     if (!this.state.disabled) {
       if (typeof this.props.onBeforeChange !== "undefined") {
         let result = this.props.onBeforeChange(this.state.checked);
@@ -146,7 +141,6 @@ class Switch extends React.PureComponent {
     return (
       <div
         onClick={this._clickHandler}
-        style={style}
         styleName={labelClasses}
         className={cx(className)}
         style={style}
@@ -205,6 +199,10 @@ Switch.propTypes = {
    * @examples '<Switch onColor="#ababab"/>'
    */
   "onColor": PropTypes.string,
+  /**
+   * Allows user to pass a callback for click events.
+   */
+  "onClick": PropTypes.func,
   /**
    * Sets color that will be displayed when the switch is unchecked.
    * @examples '<Switch offColor="#d3d3d3"/>'
