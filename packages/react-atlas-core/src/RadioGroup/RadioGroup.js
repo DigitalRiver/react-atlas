@@ -7,8 +7,14 @@ class RadioGroup extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      "checkedRadio": null
+      "checkedRadio": this.props.selectedValue
     };
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.selectedValue) {
+      this.setState({ "checkedRadio": nextProps.selectedValue })
+    }
   }
 
   componentWillMount() {
@@ -65,6 +71,10 @@ class RadioGroup extends React.PureComponent {
   }
 }
 
+RadioGroup.defaultProps = {
+  "selectedValue": null
+}
+
 RadioGroup.propTypes = {
   /**
    * Anything that can be in a radio group. Almost always radio components alone.
@@ -101,7 +111,11 @@ RadioGroup.propTypes = {
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object
+  "style": PropTypes.object,
+  /**
+   * Programatically set the selected/checked Radio component in the RadioGroup.
+   */
+  "selectedValue:": PropTypes.string
 };
 
 export default RadioGroup;
