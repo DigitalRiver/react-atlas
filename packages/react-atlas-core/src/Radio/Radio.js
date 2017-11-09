@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 import { InputCore } from "../Input";
 
-class Radio extends React.Component {
+class Radio extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -34,13 +34,6 @@ class Radio extends React.Component {
     };
   }
 
-  componentWillReceiveProps (nextProps) {
-    // console.log('nextProps.checked: ', nextProps.checked)
-    // console.log('this.props.checked: ', this.props.checked)
-    // if (this.props.checked !== nextProps.checked && nextProps.checked){
-    //   this.props.groupSetChecked(nextProps.value)
-    // }
-  }
   // Handles new radio clicks and sets value and checked status of hidden input
   _clickHandler = event => {
     if (!this.props.disabled) {
