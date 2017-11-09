@@ -11,12 +11,6 @@ class RadioGroup extends React.PureComponent {
     };
   }
 
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.selectedValue) {
-      this.setState({ "checkedRadio": nextProps.selectedValue })
-    }
-  }
-
   componentWillMount() {
     React.Children.map(this.props.children, (child, index) => {
       if (
@@ -26,6 +20,12 @@ class RadioGroup extends React.PureComponent {
         this.setState({ "checkedRadio": child.props.value });
       }
     });
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.selectedValue) {
+      this.setState({ "checkedRadio": nextProps.selectedValue })
+    }
   }
 
   groupSetChecked = value => {
@@ -71,10 +71,6 @@ class RadioGroup extends React.PureComponent {
   }
 }
 
-RadioGroup.defaultProps = {
-  "selectedValue": null
-}
-
 RadioGroup.propTypes = {
   /**
    * Anything that can be in a radio group. Almost always radio components alone.
@@ -117,5 +113,9 @@ RadioGroup.propTypes = {
    */
   "selectedValue:": PropTypes.string
 };
+
+RadioGroup.defaultProps = {
+  "selectedValue": null
+}
 
 export default RadioGroup;
