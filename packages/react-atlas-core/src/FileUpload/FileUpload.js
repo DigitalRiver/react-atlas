@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Dropzone from 'react-dropzone';
+import Dropzone from "react-dropzone";
 import cx from "classnames";
 
 class FileUpload extends React.PureComponent {
@@ -8,26 +8,22 @@ class FileUpload extends React.PureComponent {
     super(props);
   }
 
-  onDropHandler = (files) => {
-    if(typeof this.props.onChange !== 'undefined') {
+  onDropHandler = files => {
+    if (typeof this.props.onChange !== "undefined") {
       this.props.onChange(files);
     }
-  }
+  };
 
   render() {
-    const {
-      className,
-      text,
-      accept,
-      style
-    } = this.props;
+    const { className, text, accept, style } = this.props;
 
     return (
       <Dropzone
         style={style}
         className={cx(className)}
         accept={accept}
-        onDrop={this.onDropHandler}>
+        onDrop={this.onDropHandler}
+      >
         {text}
       </Dropzone>
     );
@@ -42,20 +38,23 @@ FileUpload.propTypes = {
     PropTypes.array
   ]),
 
-  /* The text to be displayed on the fileupload component. */
+  /**
+   * The text to be displayed on the fileupload component.
+   */
   "text": PropTypes.string,
 
   /* Function that gets called when a file is uploaded.
    * Returns an array of uploaded files. */
   "onChange": PropTypes.func,
 
-   /* The MIME type of files that are accepted. */
+  /**
+   * The MIME type of files that are accepted. */
   "accept": PropTypes.string,
 
-  /* Pass inline styling here. */
+  /**
+   * Pass inline styling here.
+   */
   "style": PropTypes.object
-
-}
-
+};
 
 export default FileUpload;

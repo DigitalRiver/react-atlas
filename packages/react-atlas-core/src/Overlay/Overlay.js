@@ -43,16 +43,18 @@ class Overlay extends React.PureComponent {
     const { active, className, style } = this.props;
     const classNames = cx(
       "ra_Overlay__overlay",
-      { ra_Overlay__active: active },
+      { "ra_Overlay__active": active },
       className
     );
-    return <div onClick={this.handleClick} className={classNames} />;
+    return (
+      <div style={style} onClick={this.handleClick} className={classNames} />
+    );
   }
 }
 
 Overlay.propTypes = {
   /** An Object, array, or string of CSS classes to apply to Overlay.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -60,28 +62,30 @@ Overlay.propTypes = {
   /**
    * Determines show overlay or not
    */
-  active: PropTypes.bool,
+  "active": PropTypes.bool,
   /**
    * Click event handler.
    */
-  onClick: PropTypes.func,
+  "onClick": PropTypes.func,
   /**
    * Determines to hide page scroll
    */
-  lockScroll: PropTypes.bool,
+  "lockScroll": PropTypes.bool,
   /**
    * Event handler for esc key down
    */
-  onEscKeyDown: PropTypes.func,
+  "onEscKeyDown": PropTypes.func,
 
-  /* Pass inline styling here. */
-  style: PropTypes.object
+  /**
+   * Pass inline styling here.
+   */
+  "style": PropTypes.object
 };
 
 Overlay.defaultProps = {
-  active: false,
-  className: "",
-  lockScroll: false
+  "active": false,
+  "className": "",
+  "lockScroll": false
 };
 
 export default Overlay;

@@ -6,23 +6,21 @@ import { default as CheckboxGroup } from "../../../react-atlas-core/src/Checkbox
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
 describe("Test Card component", () => {
-	it("Card - Basic properties test", function() {
-		const result = mount(<CardCore className={"name"} legend={"lalala"} />);
-		const expected = new Map([
-			["className", "name"],
-			["legend", "lalala"]
-		]);
-		expect(verifyPropsDefaultValue(result, expected)).toEqual(true);
-	});
+  it("Card - Basic properties test", function() {
+    const result = mount(<CardCore className={"name"} legend={"lalala"} />);
+    const expected = new Map([["className", "name"], ["legend", "lalala"]]);
+    expect(verifyPropsDefaultValue(result, expected)).toEqual(true);
+  });
 
-	it("Card - Children test", function() {
-		const result = mount(<CardCore legend="Card Example">
-								<CheckboxGroup title="Checkbox Group" name="checkboxGroup">
-									<Checkbox label="Checkbox 1" checked />
-									<Checkbox label="Checkbox 2" />
-									<Checkbox label="Checkbox 3" />
-								</CheckboxGroup>
-							 </CardCore>);
-	});
-
+  it("Card - Children test", function() {
+    const result = mount(
+      <CardCore legend="Card Example">
+        <CheckboxGroup title="Checkbox Group" name="checkboxGroup">
+          <Checkbox label="Checkbox 1" checked />
+          <Checkbox label="Checkbox 2" />
+          <Checkbox label="Checkbox 3" />
+        </CheckboxGroup>
+      </CardCore>
+    );
+  });
 });

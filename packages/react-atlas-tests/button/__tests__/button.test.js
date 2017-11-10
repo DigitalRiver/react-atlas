@@ -36,77 +36,90 @@ describe("Test ButtonCore component", () => {
 });
 
 describe("Test Button component", () => {
+  it("Base case - Primary Button", function() {
+    const comp = mount(<ButtonCore primary />);
+  });
 
-	it("Base case - Primary Button", function() {
-		const comp = mount(<ButtonCore primary/>);
-	});
+  it("Base case - Secondary Button", function() {
+    const comp = mount(<ButtonCore secondary />);
+  });
 
-	it("Base case - Secondary Button", function() {
-		const comp = mount(<ButtonCore secondary/>);
-	});
+  it("Base case - Warning Button", function() {
+    const comp = mount(<ButtonCore warning />);
+  });
 
-	it("Base case - Warning Button", function() {
-		const comp = mount(<ButtonCore warning/>);
-	});
+  it("Base case - Error Button", function() {
+    const comp = mount(<ButtonCore error />);
+  });
 
-	it("Base case - Error Button", function() {
-		const comp = mount(<ButtonCore error/>);
-	});
+  it("Base case - Link Button", function() {
+    const comp = mount(<ButtonCore link />);
+  });
 
-	it("Base case - Link Button", function() {
-		const comp = mount(<ButtonCore link/>);
-	});
+  it("Base case - Button with icon", function() {
+    const comp = mount(<ButtonCore icon={"FakeIcon"} />);
+  });
 
-	it("Base case - Button with icon", function() {
-		const comp = mount(<ButtonCore icon={"FakeIcon"}/>);
-	});
+  it("Base case - Button with icon 2", function() {
+    const comp = mount(
+      <ButtonCore icon={"FakeIcon"} children={"FakeChildren"} />
+    );
+  });
 
-	it("Base case - Button with icon 2", function() {
-		const comp = mount(<ButtonCore icon={"FakeIcon"} children={"FakeChildren"}/>);
-	});
+  it("Base case - Button default properties", function() {
+    const comp = mount(<ButtonCore />);
+    const expected = new Map([
+      ["children", "Default Button"],
+      ["outline", false],
+      ["primary", false],
+      ["secondary", false],
+      ["warning", false],
+      ["error", false],
+      ["link", false],
+      ["large", false],
+      ["small", false],
+      ["disabled", false]
+    ]);
+    expect(verifyPropsDefaultValue(comp, expected)).toEqual(true);
+  });
 
-	it("Base case - Button default properties", function() {
-		const comp = mount(<ButtonCore />);
-		const expected = new Map([
-			["children", "Default Button"],
-			["outline", false],
-			["primary", false],
-			["secondary", false],
-			["warning", false],
-			["error", false],
-			["link", false],
-			["large", false],
-			["small", false],
-			["disabled", false]
-		]);
-		expect(verifyPropsDefaultValue(comp, expected)).toEqual(true);
-	});
+  it("Base case - Button custom properties", function() {
+    const comp = mount(
+      <ButtonCore
+        secondary={true}
+        warning={true}
+        large={true}
+        disabled={true}
+      />
+    );
+    const expected = new Map([
+      ["children", "Default Button"],
+      ["outline", false],
+      ["primary", false],
+      ["secondary", true],
+      ["warning", true],
+      ["error", false],
+      ["link", false],
+      ["large", true],
+      ["small", false],
+      ["disabled", true]
+    ]);
+    expect(verifyPropsDefaultValue(comp, expected)).toEqual(true);
+  });
 
-	it("Base case - Button custom properties", function() {
-		const comp = mount(<ButtonCore secondary={true} warning={true} large={true} disabled={true} />);
-		const expected = new Map([
-			["children", "Default Button"],
-			["outline", false],
-			["primary", false],
-			["secondary", true],
-			["warning", true],
-			["error", false],
-			["link", false],
-			["large", true],
-			["small", false],
-			["disabled", true]
-		]);
-		expect(verifyPropsDefaultValue(comp, expected)).toEqual(true);
-	});
+  it("Click Button test", function() {
+    const comp = mount(
+      <ButtonCore
+        onClick={function() {
+          buttonWasClicked = true;
+        }}
+      />
+    );
 
-	it("Click Button test", function() {
-		const comp = mount(<ButtonCore onClick={ function(){buttonWasClicked = true} } />);
+    let buttonWasClicked = false;
 
-		let buttonWasClicked = false;
+    comp.simulate("click");
 
-		comp.simulate("click");
-
-		expect(buttonWasClicked).toEqual(true);
-	});
-
+    expect(buttonWasClicked).toEqual(true);
+  });
 });

@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "lerna": "2.4.0",
+=======
+  "lerna": "2.5.1",
+>>>>>>> master
   "version": "0.0.10",
   "packages": [
     "packages/*"

@@ -1,15 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import ReactDOM from 'react-dom';
-import { default as DP } from 'react-datepicker';
-import moment from 'moment';
+import { default as Dp } from "react-datepicker";
+import moment from "moment";
 
 class DatePicker extends React.PureComponent {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      startDate: moment()
+      "startDate": moment()
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -17,23 +16,25 @@ class DatePicker extends React.PureComponent {
   handleChange(date, event) {
     event.persist();
     this.setState({
-      startDate: date
+      "startDate": date
     });
-    if(typeof this.props.onChange !== 'undefined') {
+    if (typeof this.props.onChange !== "undefined") {
       this.props.onChange(date, event, true);
     }
   }
 
   render() {
     let { format, name, className, style } = this.props;
-    return (<DP
+    return (
+      <Dp
         style={style}
         className={cx(className, "ra_DatePicker__datepicker")}
         name={name}
         dateFormat={format}
         selected={this.state.startDate}
         onChange={this.handleChange}
-    />);
+      />
+    );
   }
 }
 
@@ -42,10 +43,14 @@ DatePicker.propTypes = {
   "format": PropTypes.string,
   "value": PropTypes.string,
   "onChange": PropTypes.func,
-  /* Pass inline styling here. */
-  style: PropTypes.object,
-  /** An Object, array, or string of CSS classes to apply to DatePicker.*/
-  className: PropTypes.oneOfType([
+  /**
+   * Pass inline styles here.
+   */
+  "style": PropTypes.object,
+  /*
+   * An Object, array, or string of CSS classes to apply to DatePicker.
+   */
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array

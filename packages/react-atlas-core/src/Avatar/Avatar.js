@@ -23,7 +23,7 @@ class Avatar extends React.PureComponent {
       image = props.image;
     }
 
-    this.state = { image: image };
+    this.state = { "image": image };
     this.handleBadImage = this.handleBadImage.bind(this);
   }
 
@@ -34,11 +34,11 @@ class Avatar extends React.PureComponent {
       this.props.defaultImage === this.state.image ||
       typeof this.props.defaultImage === "undefined"
     ) {
-      this.setState({ image: null });
+      this.setState({ "image": null });
       return;
     }
 
-    this.setState({ image: this.props.defaultImage });
+    this.setState({ "image": this.props.defaultImage });
   }
 
   render() {
@@ -52,14 +52,14 @@ class Avatar extends React.PureComponent {
     let image = this.state.image;
 
     if (typeof image === "string") {
-      avatar = (
+      avatar =
         <img
           src={image}
           title={title}
           onError={this.handleBadImage}
           styleName={"image"}
         />
-      );
+      ;
     } else if (image) {
       avatar = image;
     } else if (icon) {
@@ -82,9 +82,9 @@ Avatar.propTypes = {
     * Children should be either a string, an icon/glyphicon, or an image tag.
     * @examples "SomeName", <SomeIcon />, <img src="/path/to/image.jpg"/>
     */
-  children: PropTypes.node,
+  "children": PropTypes.node,
   /** An Object, array, or string of CSS classes to apply to avatar.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -93,24 +93,26 @@ Avatar.propTypes = {
     * For displaying an icon/glphyicon. Normally these will be another component or an element with a class on it.
     * @examples <GithubIcon />, <i class="fa fa-github"></i>
     */
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  "icon": PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /**
     * Path to an image
     * @examples "http://path.to/an/image.jpg"
     */
-  image: PropTypes.string,
+  "image": PropTypes.string,
   /**
     * A string. Avatar will use First letter of the string.
     * @examples "Nathan" will output "N"
     */
-  title: PropTypes.string,
+  "title": PropTypes.string,
   /**
     * A URL to a image that is displayed when the main image fails to load.
     */
-  defaultImage: PropTypes.string,
+  "defaultImage": PropTypes.string,
 
-  /* Pass inline styling here. */
-  style: PropTypes.object
+  /**
+    * Prop to pass inline styles.
+    */
+  "style": PropTypes.object
 };
 
 export default Avatar;

@@ -6,8 +6,8 @@ class CheckboxGroup extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      totalChecked: this.initialChecked(),
-      groupError: false
+      "totalChecked": this.initialChecked(),
+      "groupError": false
     };
   }
 
@@ -29,17 +29,17 @@ class CheckboxGroup extends React.PureComponent {
       ? this.state.totalChecked + 1
       : this.state.totalChecked - 1;
     if (checked) {
-      this.setState({ totalChecked: newChecked });
+      this.setState({ "totalChecked": newChecked });
     } else {
-      this.setState({ totalChecked: newChecked });
+      this.setState({ "totalChecked": newChecked });
     }
     if (
-      (this.props.max && newChecked > this.props.max) ||
-      (this.props.min && newChecked < this.props.min)
+      this.props.max && newChecked > this.props.max ||
+      this.props.min && newChecked < this.props.min
     ) {
-      this.setState({ groupError: true });
+      this.setState({ "groupError": true });
     } else {
-      this.setState({ groupError: false });
+      this.setState({ "groupError": false });
     }
 
     if (typeof this.props.onChange !== "undefined") {
@@ -83,8 +83,8 @@ class CheckboxGroup extends React.PureComponent {
       style
     } = this.props;
     const checkboxGroupStyles = cx({
-      checkboxGroup: !inline,
-      inline: inline
+      "checkboxGroup": !inline,
+      "inline": inline
     });
     return (
       <div
@@ -92,22 +92,20 @@ class CheckboxGroup extends React.PureComponent {
         className={cx(className)}
         styleName={checkboxGroupStyles}
       >
-        {title && (
+        {title &&
           <div styleName={"header"}>
             <span styleName={"headerFont"}>{title}</span>
-            {this.state.groupError && (
-              <span styleName={"error_message"}>
-                {this.maxMinMessage()}
-              </span>
-            )}
+            {this.state.groupError &&
+              <span styleName={"error_message"}>{this.maxMinMessage()}</span>
+            }
           </div>
-        )}
+        }
         {React.Children.map(children, child => {
           child = cloneElement(child, {
-            inline: inlineChildren,
-            name: name,
-            onChange: this.handleChange,
-            groupError: this.state.groupError
+            "inline": inlineChildren,
+            "name": name,
+            "onChange": this.handleChange,
+            "groupError": this.state.groupError
           });
           return child;
         })}
@@ -122,14 +120,14 @@ CheckboxGroup.propTypes = {
    * CheckboxGroup changes value. The callback has four arguments.
    * function(value, event, isValid, checked).
    */
-  onChange: PropTypes.func,
+  "onChange": PropTypes.func,
   /**
    * Anything that can be in a checkbox group. Typically only includes Checkbox components and a header.
    * @examples '<CheckboxGroup><Checkbox/><Checkbox/></CheckboxGroup>'
    */
-  children: PropTypes.node.isRequired,
+  "children": PropTypes.node.isRequired,
   /** An Object, array, or string of CSS classes to apply to CheckboxGroup.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -138,44 +136,46 @@ CheckboxGroup.propTypes = {
    * Form name for the element, this will set all Checkbox children the same form name.
    * @examples '<CheckboxGroup name="test"></CheckboxGroup>'
    */
-  name: PropTypes.string,
+  "name": PropTypes.string,
   /**
    * Displayed header text for the CheckboxGroup.
    * @examples '<CheckboxGroup title="Options"></CheckboxGroup>'
    */
-  title: PropTypes.string,
+  "title": PropTypes.string,
   /**
    * Defines if the checkbox group should display as an inline element.
    * @examples '<CheckboxGroup inline></CheckboxGroup>'
    */
-  inline: PropTypes.bool,
+  "inline": PropTypes.bool,
   /**
    * Defines if the checkbox group should display child Checkbox components inline.
    * @examples '<CheckboxGroup inlineChildren></CheckboxGroup>'
    */
-  inlineChildren: PropTypes.bool,
+  "inlineChildren": PropTypes.bool,
   /**
    * Defines a minimum number of checkboxes the user must select in order to proceed.
    * @examples '<CheckboxGroup min="3"></CheckboxGroup>'
    */
-  min: PropTypes.number,
+  "min": PropTypes.number,
   /**
    * Defines a maximum number of checkboxes the user is allowed to select before proceeding.
    * @examples '<CheckboxGroup max="3"></CheckboxGroup>'
    */
-  max: PropTypes.number,
+  "max": PropTypes.number,
   /**
    * Defines a custom message to show if either min or max properties are not met. {0} can be used in the message to be replaced by the appropriate min or max property.
    * @examples '<CheckboxGroup min="3" limitMessage="Please select at least {0} of the checkboxes below."></CheckboxGroup>'
    */
-  limitMessage: PropTypes.string,
+  "limitMessage": PropTypes.string,
 
-  /* Pass inline styling here. */
-  style: PropTypes.object
+  /**
+   * Pass inline styles here.
+   */
+  "style": PropTypes.object
 };
 
 CheckboxGroup.defaultProps = {
-  inline: false
+  "inline": false
 };
 
 export default CheckboxGroup;
