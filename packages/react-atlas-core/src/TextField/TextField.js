@@ -23,8 +23,7 @@ class TextField extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "value": props.value || "",
-      "remaining": props.maxLength,
+      "value": props.defaultValue,
       "active": false,
       "isValid": isValid
     };
@@ -41,11 +40,6 @@ class TextField extends React.PureComponent {
 
   _handleChange = (value, event, isValid) => {
     event.persist();
-
-    if (this.props.maxLength) {
-      // Keep difference between maxlength and input value in state for count
-      this.setState({ "remaining": this.props.maxLength - value.length });
-    }
 
     // Set value and valid state depending on InputCore state
     this.setState({
@@ -87,9 +81,11 @@ class TextField extends React.PureComponent {
       inline,
       style,
       tooltip,
-      tooltipRight
+      tooltipRight,
+      value: propsValue
     } = this.props;
 
+    let value = propsValue != null ? propsValue : this.state.value;
     let tooltipClasses = cx({
       "tooltipAlignment": true,
       "tooltipRight": tooltipRight
@@ -152,7 +148,7 @@ class TextField extends React.PureComponent {
           type={type}
           name={name}
           placeholder={placeholder}
-          value={this.state.value}
+          value={value}
           maxLength={maxLength}
           styleName={textFieldClasses}
           onChange={(value, event, isValid) =>
@@ -192,7 +188,12 @@ TextField.propTypes = {
    */
   "type": PropTypes.string,
   /**
-   * Define a default value for the text input.
+   * Define a default value for the text input, controlled input.
+   * @examples '<TextField defaultValue="Textfield value here"/>'
+   */
+  "defaultValue": PropTypes.string,
+  /**
+   * Define a value for the text input. uncontrolled input.
    * @examples '<TextField value="Textfield value here"/>'
    */
   "value": PropTypes.string,
