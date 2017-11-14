@@ -27,16 +27,13 @@ class Switch extends React.PureComponent {
       sliderLarge: large,
       sliderEnabledOffColor: !this.state.disabled,
       sliderDisabledOffColor: this.state.disabled,
-      disabled: this.state.disabled,
-      hidden
     });
 
     let inputClassName = cx({
       inputSmall: small,
       inputMedium: medium,
       inputLarge: large,
-      disabled: this.state.disabled,
-      hidden
+
     });
 
     let buttonClassName = cx({
@@ -45,8 +42,6 @@ class Switch extends React.PureComponent {
       handleLarge: large,
       handleDisabledColor: this.state.disabled,
       handleEnabledColor: !this.state.disabled,
-      disabled: this.state.disabled,
-      hidden
     });
 
     let onClassName = cx({
@@ -78,11 +73,12 @@ class Switch extends React.PureComponent {
   }
 
   componentWillReceiveProps = (nextProps) =>  {
-    if(nextProps.checked === true) {
-      this.setState({ checked : true })
-    } else {
-      this.setState({ checked : false })
-    }
+      if(nextProps.checked !== this.props.checked) {
+        this.setState({ checked: !this.state.checked })
+      }
+      if(nextProps.disabled !== this.props.disabled) {
+        this.setState({ disabled: !this.state.disabled })
+      }
   };
 
   // Handles new checkbox clicks and sets value and checked status of hidden input
