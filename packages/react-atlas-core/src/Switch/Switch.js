@@ -17,7 +17,6 @@ class Switch extends React.PureComponent {
     let small = this.props.small && !this.props.medium && !this.props.large,
       medium = !this.props.small && !this.props.large,
       large = this.props.large && !this.props.medium && !this.props.small,
-      hidden = this.props.hidden,
       onColor = this.props.onColor,
       buttonColor = this.props.buttonColor;
 
@@ -33,7 +32,6 @@ class Switch extends React.PureComponent {
       inputSmall: small,
       inputMedium: medium,
       inputLarge: large,
-
     });
 
     let buttonClassName = cx({
@@ -70,7 +68,7 @@ class Switch extends React.PureComponent {
       onColorStyle,
       buttonColorStyle
     };
-  }
+  };
 
   componentWillReceiveProps = (nextProps) =>  {
       if(nextProps.checked !== this.props.checked) {
@@ -92,7 +90,6 @@ class Switch extends React.PureComponent {
       }
 
       this.setState({ checked: !this.state.checked }, function() {
-
         /* Check if onClick has been passed, if so call it. */
         if (typeof this.props.onClick !== "undefined") {
           this.props.onClick(
@@ -100,7 +97,6 @@ class Switch extends React.PureComponent {
             this.state.disabled
           );
         }
-
         /* Check if onChange has been passed, if so call it. */
         if (typeof this.props.onChange !== "undefined") {
           this.props.onChange(
