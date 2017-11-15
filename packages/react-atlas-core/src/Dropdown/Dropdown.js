@@ -17,66 +17,18 @@ class Dropdown extends React.PureComponent {
       throw "You must pass at least one child component to Dropdown";
     }
 
-    let initialValue;
-    let initialDisplay;
-    let initialIndex;
-    const dropdownValue = this.props.value;
-
-    let childrenState = React.Children.map(
-      this.props.children,
-      (child, index) => {
-        let value = child.props.value || "";
-        let display = child.props.children;
-        if (value === dropdownValue) {
-          initialValue = value;
-          initialDisplay = display;
-          initialIndex = index;
-        }
-        let childState = { "value": value, "display": display };
-        return childState;
-      }
-    );
-    this.getInitialValue = function() {
-      if (props.value) {
-        return initialValue;
-      } else if (props.defaultText) {
-        return "";
-      } else {
-        return childrenState[0].value;
-      }
-    };
-
-    this.getInitialDisplay = function() {
-      if (props.value) {
-        return initialDisplay;
-      } else if (props.defaultText) {
-        return props.defaultText;
-      } else {
-        return childrenState[0].display;
-      }
-    };
-
-    this.getInitialIndex = function() {
-      if (props.value) {
-        return initialIndex;
-      } else if (props.defaultText) {
-        return null;
-      } else {
-        return 0;
-      }
-    };
-
     this.state = {
-      "active": false,
-      "childrenState": childrenState,
-      "value": this.getInitialValue(),
-      "output": this.getInitialDisplay(),
-      "index": this.getInitialIndex(),
-      "isValid": props.isValid,
-      "errorMessage": messages.requiredMessage,
-      "focus": false,
-      "zIndex": false,
-      "clicked": false
+      active: false,
+      children: this.props.children,
+      childrenState: [],
+      value: "",
+      output: "",
+      index: 0,
+      isValid: props.isValid,
+      errorMessage: messages.requiredMessage,
+      focus: false,
+      zIndex: false,
+      clicked: false
     };
   }
 
@@ -91,8 +43,75 @@ class Dropdown extends React.PureComponent {
       typeof nextProps.isValid !== "undefined" &&
       nextProps.isValid !== this.state.isValid
     ) {
-      this.setState({ "isValid": nextProps.isValid });
+      this.setState({ isValid: nextProps.isValid });
     }
+    if (nextProps.children !== this.state.children) {
+      this.setState({ children: nextProps.children }, function() {
+        this.updateChildrenState();
+      });
+    }
+  }
+
+  updateChildrenState = () => {
+    let initialValue;
+    let initialDisplay;
+    let initialIndex;
+
+    let childrenState = React.Children.map(
+      this.state.children,
+      (child, index) => {
+        let value = child.props.value || "";
+        let display = child.props.children;
+        if (value === this.props.value) {
+          initialValue = value;
+          initialDisplay = display;
+          initialIndex = index;
+        }
+        let childState = { value: value, display: display };
+        return childState;
+      }
+    );
+
+    this.setState({
+      childrenState: childrenState,
+      value: this.getInitialValue(childrenState, initialValue),
+      output: this.getInitialDisplay(childrenState, initialDisplay),
+      index: this.getInitialIndex(initialIndex)
+    });
+  };
+
+  getInitialValue = (childrenState, initialValue) => {
+    if (this.props.value) {
+      return initialValue;
+    } else if (this.props.defaultText) {
+      return "";
+    } else {
+      return childrenState[0].value;
+    }
+  };
+
+  getInitialDisplay = (childrenState, initialDisplay) => {
+    if (this.props.value) {
+      return initialDisplay;
+    } else if (this.props.defaultText) {
+      return this.props.defaultText;
+    } else {
+      return childrenState[0].display;
+    }
+  };
+
+  getInitialIndex = initialIndex => {
+    if (this.props.value) {
+      return initialIndex;
+    } else if (this.props.defaultText) {
+      return null;
+    } else {
+      return 0;
+    }
+  };
+
+  componentDidMount() {
+    this.updateChildrenState();
   }
 
   /**
@@ -106,7 +125,7 @@ class Dropdown extends React.PureComponent {
 
     event.persist();
 
-    this.setState({ "clicked": !this.state.clicked });
+    this.setState({ clicked: !this.state.clicked });
 
     if (typeof this.props.onBeforeChange !== "undefined") {
       if (this.props.onBeforeChange(this.state.active) === false) {
@@ -124,12 +143,12 @@ class Dropdown extends React.PureComponent {
 
     this.setState(
       {
-        "index": i,
-        "output": output,
-        "active": !this.state.active,
-        "value": inputValue,
-        "zIndex": false,
-        "isValid": isValid
+        index: i,
+        output: output,
+        active: !this.state.active,
+        value: inputValue,
+        zIndex: false,
+        isValid: isValid
       },
       function() {
         this._validationHandler(this.props.errorCallback);
@@ -162,19 +181,20 @@ class Dropdown extends React.PureComponent {
       return;
     }
 
-    this.setState({ "clicked": !this.state.clicked });
+    this.setState({ clicked: !this.state.clicked });
 
     if (this.state.active === true && event.type === "click") {
-      this.setState({ "active": false, "zIndex": false });
+      this.setState({ active: false, zIndex: false });
     } else if (this.state.active === false && event.type === "click") {
-      this.setState({ "active": true, "zIndex": true });
+      this.setState({ active: true, zIndex: true });
     } else if (event.type === "focus") {
-      this.setState({ "focus": true });
+      this.setState({ focus: true });
     } else if (event.type === "blur") {
-      this.setState({ "focus": false, "active": false, "zIndex": false });
+      this.setState({ focus: false, active: false, zIndex: false });
+      this._validationHandler(this.props.errorCallback);
     }
 
-    if(this.state.clicked === true) {
+    if (this.state.clicked === true) {
       return;
     }
 
@@ -198,16 +218,16 @@ class Dropdown extends React.PureComponent {
 
       if (typeof validation === "object") {
         this.setState({
-          "isValid": validation.isValid,
-          "errorMessage": validation.message
+          isValid: validation.isValid,
+          errorMessage: validation.message
         });
         return;
       }
 
       if (typeof validation === "boolean") {
         this.setState({
-          "isValid": validation,
-          "errorMessage": this.state.errorMessage
+          isValid: validation,
+          errorMessage: this.state.errorMessage
         });
         return;
       }
@@ -221,8 +241,8 @@ class Dropdown extends React.PureComponent {
     }
 
     this.setState({
-      "isValid": isValid,
-      "errorMessage": this.state.errorMessage
+      isValid: isValid,
+      errorMessage: this.state.errorMessage
     });
   };
 
@@ -232,12 +252,12 @@ class Dropdown extends React.PureComponent {
     if (event.key === "ArrowDown") {
       event.preventDefault();
       newIndex = indexValid ? this.state.index + 1 : 0;
-      let count = React.Children.count(this.props.children);
+      let count = React.Children.count(this.state.children);
       if (newIndex < count) {
         this.setState({
-          "index": newIndex,
-          "value": this.props.children[newIndex].props.value,
-          "output": this.props.children[newIndex].props.children
+          index: newIndex,
+          value: this.state.children[newIndex].props.value,
+          output: this.state.children[newIndex].props.children
         });
       }
     } else if (event.key === "ArrowUp") {
@@ -245,9 +265,9 @@ class Dropdown extends React.PureComponent {
       newIndex = this.state.index - 1;
       if (newIndex >= 0) {
         this.setState({
-          "index": newIndex,
-          "value": this.props.children[newIndex].props.value,
-          "output": this.props.children[newIndex].props.children
+          index: newIndex,
+          value: this.state.children[newIndex].props.value,
+          output: this.state.children[newIndex].props.children
         });
       }
     } else if (event.key === "Enter") {
@@ -257,12 +277,12 @@ class Dropdown extends React.PureComponent {
          * run validation when active is true because
          * that means we are opening and we don't want
          * to run validation on open. */
-         if(this.state.active === true) {
-           this._validationHandler(this.props.errorCallback);
-         }
+        if (this.state.active === true) {
+          this._validationHandler(this.props.errorCallback);
+        }
         this.setState({
-          "active": !this.state.active,
-          "zIndex": !this.state.active
+          active: !this.state.active,
+          zIndex: !this.state.active
         });
       }
     }
@@ -283,29 +303,29 @@ class Dropdown extends React.PureComponent {
     const error = !this.state.isValid && !disabled ? true : false;
     let zIndex = this.state.zIndex ? true : false;
     const classes = cx({
-      "container": true,
-      "zIndex": zIndex,
-      "inline": inline
+      container: true,
+      zIndex: zIndex,
+      inline: inline
     });
 
     const buttonClasses = cx({
-      "buttonClass": true,
+      buttonClass: true,
       "dropdown-button": true,
-      "error": error,
-      "disabledClass": disabled
+      error: error,
+      disabledClass: disabled
     });
 
     const contentClasses = cx({
-      "content": true,
-      "focus": this.state.focus
+      content: true,
+      focus: this.state.focus
     });
 
-    let count = React.Children.count(this.props.children);
+    let count = React.Children.count(this.state.children);
 
     // Builds the option list from the children passed in
     // firstChild, lastChild and selected each have unique styling and those classes are added here
     const bound_children = React.Children.map(
-      this.props.children,
+      this.state.children,
       (child, i) => {
         let emptyClass =
           child.props.children === "" ||
@@ -314,12 +334,12 @@ class Dropdown extends React.PureComponent {
             ? true
             : false;
         let childClasses = cx({
-          "ra_Dropdown__selected": i === this.state.index,
-          "ra_Dropdown__firstChild": i === 0,
-          "ra_Dropdown__lastChild": i === count - 1,
-          "ra_Dropdown__emptyChild": emptyClass
+          ra_Dropdown__selected: i === this.state.index,
+          ra_Dropdown__firstChild: i === 0,
+          ra_Dropdown__lastChild: i === count - 1,
+          ra_Dropdown__emptyChild: emptyClass
         });
-        let kid =
+        let kid = (
           <li
             key={i}
             className={"ra_Dropdown__item " + childClasses}
@@ -330,15 +350,15 @@ class Dropdown extends React.PureComponent {
           >
             {child}
           </li>
-        ;
+        );
         return kid;
       }
     );
 
     const listClasses = cx({
-      "list": true,
-      "convertedWidth": true,
-      "zIndex": true
+      list: true,
+      convertedWidth: true,
+      zIndex: true
     });
 
     let list = null;
@@ -348,22 +368,22 @@ class Dropdown extends React.PureComponent {
 
     let label = null;
     if (customLabel) {
-      label =
+      label = (
         <div styleName={"labelSpacing"}>
           {customLabel}{" "}
           {required && <span styleName={"requiredIndicator"}>*</span>}
         </div>
-      ;
+      );
     }
 
     let errorMessage = null;
     if (error) {
-      errorMessage =
+      errorMessage = (
         <span styleName={"error_message"}>{this.state.errorMessage}</span>
-      ;
+      );
     }
 
-    let button =
+    let button = (
       <ButtonCore
         onClick={e => {
           this._toggle(e);
@@ -374,7 +394,7 @@ class Dropdown extends React.PureComponent {
         <span>{this.state.output}</span>
         <i styleName="arrow" />
       </ButtonCore>
-    ;
+    );
 
     return (
       <div
@@ -393,7 +413,7 @@ class Dropdown extends React.PureComponent {
         }}
       >
         {label}
-        <div styleName={contentClasses} style={{ "width": width }}>
+        <div styleName={contentClasses} style={{ width: width }}>
           <div styleName={"fullWidth"}>{button}</div>
           {list}
           <input type="hidden" value={this.state.value} />
@@ -409,44 +429,44 @@ Dropdown.propTypes = {
    * Text for dropdown label
    * @examples 'Some Label'
    */
-  "customLabel": PropTypes.string,
+  customLabel: PropTypes.string,
 
   /**
    * Boolean value taht tells the dropdown whether to
    * be open or not.
    */
-  "active": PropTypes.bool,
+  active: PropTypes.bool,
 
   /**
    * Boolean value that tells the dropdown whether the value is valid and controls error message is returns false.
    */
-  "isValid": PropTypes.bool,
+  isValid: PropTypes.bool,
 
   /**
    * Boolean value that determines if the dropdown component will display inline
    */
-  "inline": PropTypes.bool,
+  inline: PropTypes.bool,
 
   /**
    * If included, dropdown is disabled
    * @examples <Dropdown disabled />, <Dropdown disabled={true} />
    */
-  "disabled": PropTypes.bool,
+  disabled: PropTypes.bool,
 
   /**
    * Allows user to pass a callback for click events.
    */
-  "onClick": PropTypes.func,
+  onClick: PropTypes.func,
 
   /**
    * Allows user to pass a function to be executed when the dropdown state is changed.
    */
-  "onChange": PropTypes.func,
+  onChange: PropTypes.func,
 
   /**
    * If included, dropdown will return and error onBlur or onChange if not checked.
    */
-  "required": PropTypes.bool,
+  required: PropTypes.bool,
 
   /**
    * Allows the user to pass a function for custom validation. Should return either true or false, or
@@ -454,18 +474,18 @@ Dropdown.propTypes = {
    * is used. If an object is used and the valid property is false, the string in the property message
    * will be used for the error message.
    */
-  "errorCallback": PropTypes.func,
+  errorCallback: PropTypes.func,
 
   /* . */
-  "clickEvent": PropTypes.func,
+  clickEvent: PropTypes.func,
 
   /**
    * The children elements to be wrapped by the dropdown menu.
    */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 
   /** An Object, array, or string of CSS classes to apply to Dropdown.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -473,39 +493,39 @@ Dropdown.propTypes = {
   /**
    * The name of the key value used when submitting the dropdown value.
    */
-  "name": PropTypes.string,
+  name: PropTypes.string,
 
   /**
    * The initial value that the dropdown will default to.
    */
-  "value": PropTypes.string,
+  value: PropTypes.string,
 
   /**
    * Default text to show in collapsed dropdown on initial render
    */
-  "defaultText": PropTypes.string,
+  defaultText: PropTypes.string,
 
   /**
    * Allows user to ask for user feedback before changing the selected value of the Dropdown.
    */
-  "onBeforeChange": PropTypes.func,
+  onBeforeChange: PropTypes.func,
 
   /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Allows user to set custom width of dropdown
    */
-  "width": PropTypes.string
+  width: PropTypes.string
 };
 
 Dropdown.defaultProps = {
-  "className": "",
-  "required": false,
-  "disabled": false,
-  "isValid": true
+  className: "",
+  required: false,
+  disabled: false,
+  isValid: true
 };
 
 export default Dropdown;

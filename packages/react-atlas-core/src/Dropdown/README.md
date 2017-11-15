@@ -95,7 +95,7 @@ Inline Dropdowns:
 
 Dropdown with Required Property:
 
-    <Dropdown customLabel="Required Dropdown" required>
+    <Dropdown defaultText="Select One ..." customLabel="Required Dropdown" required>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
