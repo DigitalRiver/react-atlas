@@ -60,6 +60,7 @@
   overflow: auto;
 }
 .fullWidth{
+  min-width: 100px;
   width:100%;
 }
 .convertedWidth {
@@ -115,7 +116,7 @@
 .dropdown-button span {
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 90%;
+  max-width: 80%;
   float: left;
 }
 
