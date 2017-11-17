@@ -16,7 +16,6 @@ class Dropdown extends React.PureComponent {
 
     this.state = {
       active: false,
-      childrenState: [],
       index: 0,
       errorMessage: messages.requiredMessage,
       focus: false,
@@ -70,7 +69,6 @@ class Dropdown extends React.PureComponent {
         return;
       }
     }
-    //const output = this.state.childrenState[i].display;
     const inputValue = child.props.value;
     this.setState(
       {
