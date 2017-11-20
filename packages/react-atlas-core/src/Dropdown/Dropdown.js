@@ -60,9 +60,9 @@ class Dropdown extends React.PureComponent {
   }
 
   updateChildrenState = () => {
-    let initialValue;
-    let initialDisplay;
-    let initialIndex;
+    let initialValue = null;
+    let initialDisplay = null;
+    let initialIndex = null;
 
     let childrenState = React.Children.map(
       this.state.children,
@@ -79,19 +79,9 @@ class Dropdown extends React.PureComponent {
       }
     );
 
-    const valueState =
-      typeof this.getInitialValue(childrenState, initialValue) !== "undefined"
-        ? null
-        : this.getInitialValue(childrenState, initialValue);
-    const outputState =
-      typeof this.getInitialDisplay(childrenState, initialDisplay) ===
-      "undefined"
-        ? null
-        : this.getInitialDisplay(childrenState, initialDisplay);
-    const indexState =
-      typeof this.getInitialIndex(initialIndex) === "undefined"
-        ? null
-        : this.getInitialIndex(initialIndex);
+    const valueState = this.getInitialValue(childrenState, initialValue);
+    const outputState = this.getInitialDisplay(childrenState, initialDisplay);
+    const indexState = this.getInitialIndex(initialIndex);
     this.setState({
       childrenState: childrenState,
       value: valueState,
@@ -101,33 +91,37 @@ class Dropdown extends React.PureComponent {
   };
 
   getInitialValue = (childrenState, initialValue) => {
-    if (this.props.value !== null) {
-      return this.props.value;
-    } else if (this.props.value) {
+    if (this.state.value !== null) {
+      return this.state.value;
+    } else if (this.props.value && initialValue !== null) {
       return initialValue;
     } else if (this.props.defaultText) {
-      return "";
-    } else {
+      return null;
+    } else if (childrenState[0].value) {
       return childrenState[0].value;
+    } else {
+      return null;
     }
   };
 
   getInitialDisplay = (childrenState, initialDisplay) => {
     if (this.state.output !== null) {
       return this.state.output;
-    } else if (this.props.value) {
+    } else if (this.props.value && initialDisplay !== null) {
       return initialDisplay;
     } else if (this.props.defaultText) {
       return this.props.defaultText;
-    } else {
+    } else if (childrenState[0].display) {
       return childrenState[0].display;
+    } else {
+      return null;
     }
   };
 
   getInitialIndex = initialIndex => {
     if (this.state.index !== null) {
       return this.state.index;
-    } else if (this.props.value) {
+    } else if (this.props.value && initialIndex !== null) {
       return initialIndex;
     } else if (this.props.defaultText) {
       return null;
