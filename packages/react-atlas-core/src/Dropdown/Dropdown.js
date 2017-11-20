@@ -21,9 +21,10 @@ class Dropdown extends React.PureComponent {
       active: false,
       children: this.props.children,
       childrenState: [],
-      value: "",
-      output: "",
-      index: 0,
+      value: null,
+      output: null,
+      index: null,
+      tempIndex: null,
       isValid: props.isValid,
       errorMessage: messages.requiredMessage,
       focus: false,
@@ -78,16 +79,31 @@ class Dropdown extends React.PureComponent {
       }
     );
 
+    const valueState =
+      typeof this.getInitialValue(childrenState, initialValue) !== "undefined"
+        ? null
+        : this.getInitialValue(childrenState, initialValue);
+    const outputState =
+      typeof this.getInitialDisplay(childrenState, initialDisplay) ===
+      "undefined"
+        ? null
+        : this.getInitialDisplay(childrenState, initialDisplay);
+    const indexState =
+      typeof this.getInitialIndex(initialIndex) === "undefined"
+        ? null
+        : this.getInitialIndex(initialIndex);
     this.setState({
       childrenState: childrenState,
-      value: this.getInitialValue(childrenState, initialValue),
-      output: this.getInitialDisplay(childrenState, initialDisplay),
-      index: this.getInitialIndex(initialIndex)
+      value: valueState,
+      output: outputState,
+      index: indexState
     });
   };
 
   getInitialValue = (childrenState, initialValue) => {
-    if (this.props.value) {
+    if (this.props.value !== null) {
+      return this.props.value;
+    } else if (this.props.value) {
       return initialValue;
     } else if (this.props.defaultText) {
       return "";
@@ -97,7 +113,9 @@ class Dropdown extends React.PureComponent {
   };
 
   getInitialDisplay = (childrenState, initialDisplay) => {
-    if (this.props.value) {
+    if (this.state.output !== null) {
+      return this.state.output;
+    } else if (this.props.value) {
       return initialDisplay;
     } else if (this.props.defaultText) {
       return this.props.defaultText;
@@ -107,7 +125,9 @@ class Dropdown extends React.PureComponent {
   };
 
   getInitialIndex = initialIndex => {
-    if (this.props.value) {
+    if (this.state.index !== null) {
+      return this.state.index;
+    } else if (this.props.value) {
       return initialIndex;
     } else if (this.props.defaultText) {
       return null;
@@ -120,12 +140,14 @@ class Dropdown extends React.PureComponent {
    *  _clickHandler is used when the dropdown option is selected.
    *
    */
-  _clickHandler = (i, event) => {
+  _clickHandler = (i, event, keypress) => {
     if (this.props.disabled) {
       return;
     }
 
-    event.persist();
+    if (!keypress) {
+      event.persist();
+    }
 
     this.setState({ clicked: !this.state.clicked });
 
@@ -192,7 +214,12 @@ class Dropdown extends React.PureComponent {
     } else if (event.type === "focus") {
       this.setState({ focus: true });
     } else if (event.type === "blur") {
-      this.setState({ focus: false, active: false, zIndex: false });
+      this.setState({
+        focus: false,
+        active: false,
+        zIndex: false,
+        index: this.state.tempIndex
+      });
       this._validationHandler(this.props.errorCallback);
     }
 
@@ -237,7 +264,11 @@ class Dropdown extends React.PureComponent {
 
     let isValid = true;
     if (this.props.required === true) {
-      if (this.state.value === "undefined" || this.state.value === "") {
+      if (
+        this.state.value === null ||
+        typeof this.state.value === "undefined" ||
+        this.state.value === ""
+      ) {
         isValid = false;
       }
     }
@@ -251,26 +282,47 @@ class Dropdown extends React.PureComponent {
   _keyDown = event => {
     const indexValid = typeof this.state.index === "number";
     let newIndex;
-    if (event.key === "ArrowDown") {
-      event.preventDefault();
-      newIndex = indexValid ? this.state.index + 1 : 0;
-      let count = React.Children.count(this.state.children);
-      if (newIndex < count) {
-        this.setState({
-          index: newIndex,
-          value: this.state.children[newIndex].props.value,
-          output: this.state.children[newIndex].props.children
-        });
-      }
-    } else if (event.key === "ArrowUp") {
-      event.preventDefault();
-      newIndex = this.state.index - 1;
-      if (newIndex >= 0) {
-        this.setState({
-          index: newIndex,
-          value: this.state.children[newIndex].props.value,
-          output: this.state.children[newIndex].props.children
-        });
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      const tempIndex =
+        this.state.tempIndex === this.state.index ||
+        this.state.tempIndex === null
+          ? this.state.index
+          : this.state.tempIndex;
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        newIndex = indexValid ? this.state.index + 1 : 0;
+        let count = React.Children.count(this.state.children);
+        if (newIndex < count) {
+          if (this.state.active) {
+            this.setState({
+              tempIndex: tempIndex,
+              index: newIndex
+            });
+          } else {
+            this.setState({
+              index: newIndex,
+              value: this.state.children[newIndex].props.value,
+              output: this.state.children[newIndex].props.children
+            });
+          }
+        }
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        newIndex = this.state.index - 1;
+        if (newIndex >= 0) {
+          if (this.state.active) {
+            this.setState({
+              tempIndex: tempIndex,
+              index: newIndex
+            });
+          } else {
+            this.setState({
+              index: newIndex,
+              value: this.state.children[newIndex].props.value,
+              output: this.state.children[newIndex].props.children
+            });
+          }
+        }
       }
     } else if (event.key === "Enter") {
       event.preventDefault();
@@ -281,11 +333,22 @@ class Dropdown extends React.PureComponent {
          * to run validation on open. */
         if (this.state.active === true) {
           this._validationHandler(this.props.errorCallback);
+          if (this.state.index !== this.state.tempIndex) {
+            this.setState({ tempIndex: this.state.index }, function() {
+              this._clickHandler(this.state.index, null, true);
+            });
+          } else {
+            this.setState({
+              active: !this.state.active,
+              zIndex: !this.state.active
+            });
+          }
+        } else {
+          this.setState({
+            active: !this.state.active,
+            zIndex: !this.state.active
+          });
         }
-        this.setState({
-          active: !this.state.active,
-          zIndex: !this.state.active
-        });
       }
     }
   };
