@@ -13,6 +13,8 @@ class Avatar extends React.PureComponent {
 
     let image;
 
+    // checks if image prop was defined.
+    // if not defaultImage is checked and if this is undefined the image is set to null else image is set to defaultImage prop
     if (typeof props.image === "undefined") {
       if (typeof props.defaultImage === "undefined") {
         image = null;

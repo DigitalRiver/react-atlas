@@ -105,11 +105,11 @@
 }
 
 .link {
-  composes: base;
   composes: border-none from '../styles.css';
   composes: sky-blue from '../styles.css';
   composes: border-transparent from '../styles.css';
   composes: bg-transparent from '../styles.css';
+  text-decoration: none;
 }
 .link:hover{
   text-decoration: underline;
