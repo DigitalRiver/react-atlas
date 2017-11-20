@@ -79,14 +79,11 @@ class Dropdown extends React.PureComponent {
       }
     );
 
-    const valueState = this.getInitialValue(childrenState, initialValue);
-    const outputState = this.getInitialDisplay(childrenState, initialDisplay);
-    const indexState = this.getInitialIndex(initialIndex);
     this.setState({
       childrenState: childrenState,
-      value: valueState,
-      output: outputState,
-      index: indexState
+      value: this.getInitialValue(childrenState, initialValue),
+      output: this.getInitialDisplay(childrenState, initialDisplay),
+      index: this.getInitialIndex(initialIndex)
     });
   };
 
