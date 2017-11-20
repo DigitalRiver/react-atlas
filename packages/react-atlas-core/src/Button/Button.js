@@ -8,6 +8,12 @@ import cx from "classnames";
 class Button extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    if (this.props.href && !this.props.link) {
+      throw "HREF requires Link";
+    } else if (this.props.link && !this.props.href) {
+      throw "Link requires an HREF";
+    }
   }
 
   render() {
@@ -78,17 +84,30 @@ class Button extends React.PureComponent {
     }
 
     return (
-      <button
-        onClick={onClick}
-        className={cx(className)}
-        styleName={classes}
-        style={style}
-        type={type}
-        href={href}
-      >
-        {icon ? <i className={cx(icon, iconClass)} /> : null}
-        {text}
-      </button>
+      <span>
+        {this.props.href 
+          ? <a 
+              href={this.props.href} 
+              className={cx(className)}
+              styleName={"link"}
+              style={style}
+              type="link"
+            >
+              {icon ? <i className={cx(icon, iconClass)} /> : null}
+              {text}
+            </a>
+          : <button
+              onClick={onClick}
+              className={cx(className)}
+              styleName={classes}
+              style={style}
+              type={type}
+            >
+              {icon ? <i className={cx(icon, iconClass)} /> : null}
+              {text}
+            </button>
+        }
+      </span>
     );
   }
 }
