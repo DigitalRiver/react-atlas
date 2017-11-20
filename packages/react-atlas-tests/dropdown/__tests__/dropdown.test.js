@@ -25,7 +25,7 @@ describe("Test Dropdown component - Mouse tests", () => {
       </DropdownCore>
     );
 
-    expect(component.state().value).toEqual("");
+    expect(component.state().value).toEqual(null);
     expect(component.state().output).toEqual("May");
   });
 
@@ -41,7 +41,7 @@ describe("Test Dropdown component - Mouse tests", () => {
       </DropdownCore>
     );
 
-    expect(component.state().value).toEqual("");
+    expect(component.state().value).toEqual(null);
     expect(component.state().output).toEqual("May");
 
     component.find("Dropdown").simulate("focus");
