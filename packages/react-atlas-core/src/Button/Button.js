@@ -77,32 +77,23 @@ class Button extends React.PureComponent {
       iconClass = "ra_Button__icon-left";
     }
 
-    let renderButton =  href 
-      ? <a href={href}>
-          <button onClick={onClick}
-                className={cx(className)}
-                styleName={classes}
-                style={style}
-                type={type}
-                href={href}>
-                  {icon ? <i className={cx(icon, iconClass)} /> : null}
-                  {text}
-          </button>
-        </a> 
-      : <button onClick={onClick}
-              className={cx(className)}
-              styleName={classes}
-              style={style}
-              type={type}
-              href={href}>
-                {icon ? <i className={cx(icon, iconClass)} /> : null}
-                {text}
-        </button>;
+    let btn =  <button onClick={onClick}
+                          className={cx(className)}
+                          styleName={classes}
+                          style={style}
+                          type={type}
+                          href={href}>
+                            {icon ? <i className={cx(icon, iconClass)} /> : null}
+                            {text}
+                        </button>
+    
+    let renderButton = btn;
+    if(href) {
+      renderButton = <a href={href}>{btn}</a>
+    }                      
 
     return (
-      <span>
-        {renderButton}
-      </span>
+      renderButton
     );
   }
 }
