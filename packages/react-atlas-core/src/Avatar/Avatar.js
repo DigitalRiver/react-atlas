@@ -54,7 +54,7 @@ class Avatar extends React.PureComponent {
     let image = this.state.image;
 
     if (typeof image === "string") {
-      avatar = 
+      avatar =
         <img
           src={image}
           title={title}
@@ -111,7 +111,9 @@ Avatar.propTypes = {
     */
   "defaultImage": PropTypes.string,
 
-  /* Prop to pass inline styles. */
+  /**
+    * Prop to pass inline styles.
+    */
   "style": PropTypes.object
 };
 

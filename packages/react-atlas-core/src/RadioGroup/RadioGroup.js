@@ -7,7 +7,7 @@ class RadioGroup extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      "checkedRadio": null
+      "checkedRadio": this.props.selectedValue
     };
   }
 
@@ -20,6 +20,13 @@ class RadioGroup extends React.PureComponent {
         this.setState({ "checkedRadio": child.props.value });
       }
     });
+  }
+
+  componentWillReceiveProps (nextProps) {
+    console.log('nextProps.selectedValue: ', nextProps.selectedValue)
+    if (nextProps.selectedValue) {
+      this.setState({ "checkedRadio": nextProps.selectedValue })
+    }
   }
 
   groupSetChecked = value => {
@@ -54,7 +61,7 @@ class RadioGroup extends React.PureComponent {
 
     return (
       <div style={style} className={cx(className)} styleName={radioGroupStyles}>
-        {title && 
+        {title &&
           <div styleName={cx({ "header": !inline })}>
             <span styleName={"headerFont"}>{title}</span>
           </div>
@@ -98,8 +105,18 @@ RadioGroup.propTypes = {
    */
   "inlineChildren": PropTypes.bool,
 
-  /* Pass inline styling here. */
-  "style": PropTypes.object
+  /**
+   * Pass inline styling here.
+   */
+  "style": PropTypes.object,
+  /**
+   * Programatically set the selected/checked Radio component in the RadioGroup.
+   */
+  "selectedValue": PropTypes.string
 };
+
+RadioGroup.defaultProps = {
+  "selectedValue": null
+}
 
 export default RadioGroup;

@@ -29,14 +29,14 @@ Taskbar.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  /* Pass inline styling here. */
+  /** Pass inline styling here. */
   "style": PropTypes.object,
   /**
    * Any HTML element or React Component.
    * @examples <p>Some Text.</p>
    */
   "children": PropTypes.node.required,
-  /* Determines if the Taskbar children should be centered */
+  /** Determines if the Taskbar children should be centered */
   "center": PropTypes.bool
 };
 

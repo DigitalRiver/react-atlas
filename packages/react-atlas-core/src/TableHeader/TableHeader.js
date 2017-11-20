@@ -33,7 +33,7 @@ TableHeader.propTypes = {
   "isKey": PropTypes.bool,
   "dataSort": PropTypes.bool,
   "searchable": PropTypes.bool,
-  /* Pass inline styling here. */
+  /** Pass inline styling here. */
   "style": PropTypes.object,
   /** An Object, array, or string of CSS classes to apply to TableHeader.*/
   "className": PropTypes.oneOfType([

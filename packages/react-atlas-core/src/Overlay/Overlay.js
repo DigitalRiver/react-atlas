@@ -76,7 +76,9 @@ Overlay.propTypes = {
    */
   "onEscKeyDown": PropTypes.func,
 
-  /* Pass inline styling here. */
+  /**
+   * Pass inline styling here.
+   */
   "style": PropTypes.object
 };
 

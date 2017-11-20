@@ -34,10 +34,6 @@ class Radio extends React.PureComponent {
     };
   }
 
-  shouldComponentUpdate(nextProps) {
-    return this.props.checked !== nextProps.checked;
-  }
-
   // Handles new radio clicks and sets value and checked status of hidden input
   _clickHandler = event => {
     if (!this.props.disabled) {
@@ -104,7 +100,7 @@ class Radio extends React.PureComponent {
     return (
       <div style={style} onClick={this._clickHandler} styleName={inlineRadio}>
         <div styleName={disabledClass}>
-          {label && 
+          {label &&
             <label
               styleName={labelStyle}
               title={labelTitle}
@@ -208,7 +204,9 @@ Radio.propTypes = {
    * @examples '<Radio groupSetChecked={...}/>'
    */
   "groupSetChecked": PropTypes.func,
-  /* Pass inline styling here. */
+  /**
+   * Pass inline styling here.
+   */
   "style": PropTypes.object,
   /**
    * Define a value for the radio button.

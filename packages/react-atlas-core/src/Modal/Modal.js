@@ -18,9 +18,9 @@ class Modal extends React.PureComponent {
     } = this.props;
     const classes = cx("ra_Modal__modal", { "ra_Modal__active": active });
     return (
-      active && 
+      active &&
         <PortalCore>
-          {overlay && 
+          {overlay &&
             <OverlayCore
               active={active}
               onClick={onOverlayClick}
@@ -29,7 +29,7 @@ class Modal extends React.PureComponent {
             />
           }
           <div style={style} className={cx(className, classes)}>
-            {title && 
+            {title &&
               <h3 className={cx("ra_Modal__title", "ra_styles__bg-primary")}>
                 {title}
               </h3>
@@ -37,7 +37,7 @@ class Modal extends React.PureComponent {
             <div className="ra_Modal__content">{this.props.children}</div>
           </div>
         </PortalCore>
-      
+
     );
   }
 }
@@ -78,7 +78,9 @@ Modal.propTypes = {
    */
   "lockScroll": PropTypes.bool,
 
-  /* Pass inline styling here. */
+  /**
+   * Pass inline styling here.
+   */
   "style": PropTypes.object
 };
 

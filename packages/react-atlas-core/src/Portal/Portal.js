@@ -80,7 +80,9 @@ Portal.propTypes = {
     PropTypes.array
   ]),
 
-  /* Pass inline styling here. */
+  /**
+   * Pass inline styling here.
+   */
   "style": PropTypes.object
 };
 
