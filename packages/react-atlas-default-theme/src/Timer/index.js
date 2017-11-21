@@ -1,2 +1,2 @@
-import * as TextFieldStyle from "./TextField.css";
-export { TextFieldStyle };
+import * as TimerStyle from "./Timer.css";
+export { TimerStyle };
