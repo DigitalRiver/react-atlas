@@ -26,3 +26,4 @@ export { TaskbarStyle } from "./Taskbar";
 export { TooltipStyle } from "./Tooltip";
 export { TextAreaStyle } from "./TextArea";
 export { TextFieldStyle } from "./TextField";
+export { TimerStyle } from "./Timer";
