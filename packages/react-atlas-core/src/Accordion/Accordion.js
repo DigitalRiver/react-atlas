@@ -25,11 +25,7 @@ class Accordion extends React.PureComponent {
 
     // component state
     this.state = {
-      "title": props.title,
-      "activeChildArray": childArray,
-      "expandAll": this.props.expandAll || false,
-      "expand": false,
-      "multiOpen": this.props.multiOpen || false
+      "activeChildArray": childArray
     };
   }
 
@@ -39,7 +35,7 @@ class Accordion extends React.PureComponent {
     for (let i = 0; i < this.state.activeChildArray.length; i++) {
       if (i === idx) {
         newChildArray.push(!this.state.activeChildArray[i]);
-      } else if (!this.state.multiOpen) {
+      } else if (!this.props.multiOpen) {
         newChildArray.push(false);
       } else {
         newChildArray.push(this.state.activeChildArray[i]);
@@ -54,11 +50,10 @@ class Accordion extends React.PureComponent {
   _expandAll = () => {
     let newChildArray = [];
     for (let i = 0; i < this.state.activeChildArray.length; i++) {
-      newChildArray.push(!this.state.expand);
+      newChildArray.push(true);
     }
     this.setState({
-      "activeChildArray": newChildArray,
-      "expand": !this.state.expand
+      "activeChildArray": newChildArray
     });
   };
 
@@ -107,7 +102,7 @@ class Accordion extends React.PureComponent {
 
     return (
       <div className={cx(className)} style={style}>
-        {this.state.expandAll && !this.props.disabled ?
+        {this.props.expandAll && !this.props.disabled ?
           <div
             styleName={"expandAll"}
             onClick={() => {
@@ -182,7 +177,9 @@ Accordion.propTypes = {
 
 Accordion.defaultProps = {
   "width": "100%",
-  "disabled": false
+  "disabled": false,
+  "expandAll": false,
+  "multiOpen": false
 };
 
 export default Accordion;

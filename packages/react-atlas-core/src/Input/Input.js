@@ -27,17 +27,16 @@ class Input extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "value": props.value || "",
+      "value": props.defaultValue,
       "errorText": errorText,
-      "isValid": isValid,
-      "remaining": props.maxLength
+      "isValid": isValid
     };
 
     // Configure input mask if required
     if (this.props.mask) {
       let maskOptions = {
         "pattern": this.props.mask,
-        "value": this.props.value
+        "value": this.props.defaultValue
       };
 
       this.mask = new InputMask(maskOptions);
@@ -150,25 +149,20 @@ class Input extends React.PureComponent {
     }
   };
 
-  _handleBeforeChange = () => {
+  _handleBeforeChange = event => {
     if (this.props.onBeforeChange) {
-      this.props.onBeforeChange();
+      this.props.onBeforeChange(event);
     }
   };
 
   _validate = inputValue => {
     /* Validate max character length */
     if (this.props.maxLength) {
-      // Keep difference between maxlength and input value in state for count
-      this.setState({
-        "remaining": this.props.maxLength - inputValue.length
-      });
       // Make sure the user input is less than maxLength value
       if (inputValue.length > this.props.maxLength) {
         this.setState(
           {
-            "value": inputValue.substring(0, this.props.maxLength),
-            "remaining": 0
+            "value": inputValue.substring(0, this.props.maxLength)
           },
           function() {
             return;
@@ -247,7 +241,7 @@ class Input extends React.PureComponent {
         },
         () => {
           if (this.props.onChange) {
-            this.props.onChange(this.state.value, event, this.state.isValid);
+            this.props.onChange(inputValue, event, this.state.isValid);
           }
         }
       );
@@ -261,6 +255,7 @@ class Input extends React.PureComponent {
       medium,
       large,
       type,
+      id,
       name,
       multiline,
       placeholder,
@@ -268,9 +263,12 @@ class Input extends React.PureComponent {
       hidden,
       errorLocation,
       checked,
-      style
+      style,
+      value: propsValue
     } = this.props;
-
+  
+    let value = propsValue != null ? propsValue : this.state.value;
+    
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";
     let isRadio = type === "radio";
@@ -300,8 +298,9 @@ class Input extends React.PureComponent {
 
     let inputElement = multiline ?
       <textarea
+        id={id}
         name={name}
-        value={this.state.value}
+        value={value}
         placeholder={placeholder}
         styleName={inputClasses}
         className={cx(className)}
@@ -310,8 +309,9 @@ class Input extends React.PureComponent {
      :
       <input
         type={type}
+        id={id}
         name={name}
-        value={this.state.value}
+        value={value}
         placeholder={placeholder}
         styleName={inputClasses}
         className={cx(className)}
@@ -330,6 +330,7 @@ class Input extends React.PureComponent {
       <input
         style={style}
         type="checkbox"
+        id={id}
         name={name}
         styleName={inputClasses}
         className={cx(className)}
@@ -359,6 +360,11 @@ Input.propTypes = {
    */
   "type": PropTypes.string,
   /**
+   * Define a id for the switch input.
+   * @examples '<Input id="testId"/>'
+   */
+  "id": PropTypes.string,
+  /**
    * Defines a name for the input.
    * @examples '<Input type="text" name="test"/>'
    */
@@ -387,7 +393,12 @@ Input.propTypes = {
    */
   "errorLocation": PropTypes.string,
   /**
-   * Defines a determinate value for the input.
+   * Define a default value for the input, controlled input.
+   * @examples '<Input defaultValue="Textfield value here"/>'
+   */
+  "defaultValue": PropTypes.string,
+  /**
+   * Define a value for the input. uncontrolled input.
    * @examples '<Input type="text" value="test input"/>'
    */
   "value": PropTypes.string,
