@@ -164,9 +164,8 @@ class Form extends React.PureComponent {
         "onChange": (value, event, isValid) =>
           this.onChangeHandler(value, event, isValid, this.state.childState[i]),
         "value": this.state.childState[i].value,
-        "errorText": messages.requiredMessage,
         "isValid": this.state.childState[i].isValid,
-        "novalidate": true
+        "noValidate": true
       };
 
       return React.cloneElement(child, props);
