@@ -30,7 +30,7 @@ class Modal extends React.PureComponent {
           }
           <div style={style} className={cx(className, classes)}>
             {title &&
-              <h3 className={cx("ra_Modal__title", "ra_styles__bg-primary")}>
+              <h3 styleName={cx("title")}>
                 {title}
               </h3>
             }
