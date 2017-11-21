@@ -25,7 +25,7 @@ class Timer extends React.PureComponent {
   }
 
   render() {
-    let { className, time, style } = this.props;
+    let { className, style } = this.props;
 
     return (
       <div style={style} className={cx(className)}>
