@@ -145,7 +145,6 @@ class Input extends React.PureComponent {
   };
 
   _validate = inputValue => {
-    console.log("Validate");
     /* Validate max character length */
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
@@ -187,7 +186,6 @@ class Input extends React.PureComponent {
       if (customValidationPass.call(this)) {
         this.setState({ "isValid": true });
       } else {
-        console.log("HERE");
         this.setState({
           "errorText": this.props.errorText,
           "isValid": false
@@ -260,9 +258,6 @@ class Input extends React.PureComponent {
       checked,
       style
     } = this.props;
-
-    console.log("RenderInput: ", this.state.isValid);
-    console.log("RenderInputProps: ", this.props.isValid);
 
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";

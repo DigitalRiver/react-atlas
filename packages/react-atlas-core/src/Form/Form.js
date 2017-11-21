@@ -159,8 +159,6 @@ class Form extends React.PureComponent {
     let kids = React.Children.map(children, (child, i) => {
       let classes = cx(child.props.className, childClasses);
 
-      console.log("child %s: %s", i, this.state.childState[i].isValid);
-
       let props = {
         "className": classes,
         "onChange": (value, event, isValid) =>

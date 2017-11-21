@@ -81,9 +81,6 @@ class TextField extends React.PureComponent {
       tooltipRight
     } = this.props;
 
-    console.log("RenderTFProps: ", this.props.isValid);
-    console.log("RenderTFState: ", this.state.isValid);
-
     let tooltipClasses = cx({
       "tooltipAlignment": true,
       "tooltipRight": tooltipRight
