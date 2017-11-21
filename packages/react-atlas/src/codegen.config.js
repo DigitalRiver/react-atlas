@@ -173,6 +173,7 @@ let components = [
   "taskbar",
   "textArea",
   "textField",
+  "timer",
   "tooltip"
 ];
 
