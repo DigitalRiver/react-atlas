@@ -14,27 +14,11 @@ class Input extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    let isValid, errorText;
-    if (typeof props.isValid === "undefined") {
-      isValid = true;
-    } else if (props.isValid === false) {
-      isValid = props.isValid;
-      errorText = messages.requiredMessage;
-    } else {
-      isValid = props.isValid;
-      errorText = null;
-    }
-
     // Initial state
-    this.state = {
-      "value": props.value || "",
-      "errorText": errorText,
-      "isValid": isValid,
-      "remaining": props.maxLength
-    };
+    this.state = {"value": "", "errorText": "This field is required."};
 
     // Configure input mask if required
-    if (this.props.mask) {
+    if(this.props.mask) {
       let maskOptions = {
         "pattern": this.props.mask,
         "value": this.props.value
@@ -51,6 +35,10 @@ class Input extends React.PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.setState({"isValid": this.props.isValid});
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.isValid) {
       if (nextProps.isValid !== this.state.isValid) {
@@ -63,7 +51,7 @@ class Input extends React.PureComponent {
         "isValid": nextProps.isValid
       });
     }
-  }
+}
 
   _updateMaskSelection = () => {
     this.mask.selection = utils.getSelection(this.input);
@@ -157,6 +145,7 @@ class Input extends React.PureComponent {
   };
 
   _validate = inputValue => {
+    console.log("Validate");
     /* Validate max character length */
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
@@ -198,6 +187,7 @@ class Input extends React.PureComponent {
       if (customValidationPass.call(this)) {
         this.setState({ "isValid": true });
       } else {
+        console.log("HERE");
         this.setState({
           "errorText": this.props.errorText,
           "isValid": false
@@ -270,6 +260,9 @@ class Input extends React.PureComponent {
       checked,
       style
     } = this.props;
+
+    console.log("RenderInput: ", this.state.isValid);
+    console.log("RenderInputProps: ", this.props.isValid);
 
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";
@@ -469,7 +462,8 @@ Input.defaultProps = {
   "className": "",
   "disabled": false,
   "hidden": false,
-  "errorLocation": "right"
+  "errorLocation": "right",
+  "isValid": true
 };
 
 export default Input;

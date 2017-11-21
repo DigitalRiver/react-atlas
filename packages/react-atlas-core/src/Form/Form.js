@@ -159,14 +159,15 @@ class Form extends React.PureComponent {
     let kids = React.Children.map(children, (child, i) => {
       let classes = cx(child.props.className, childClasses);
 
+      console.log("child %s: %s", i, this.state.childState[i].isValid);
+
       let props = {
         "className": classes,
         "onChange": (value, event, isValid) =>
           this.onChangeHandler(value, event, isValid, this.state.childState[i]),
         "value": this.state.childState[i].value,
-        "errorText": messages.requiredMessage,
         "isValid": this.state.childState[i].isValid,
-        "novalidate": true
+        "noValidate": true
       };
 
       return React.cloneElement(child, props);
