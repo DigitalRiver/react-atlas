@@ -24,11 +24,11 @@ class Timer extends React.PureComponent {
     }
   }
 
-
   render() {
-   
+    let { className, time, style } = this.props;
+
     return (
-      <div>
+      <div style={style} className={cx(className)}>
         {this.state.secondsRemaining}
       </div>
     );
@@ -42,6 +42,12 @@ Timer.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
+  /**
+    * Time Property
+    * Number property.  Timer will allow input of a number which is converted to seconds // TODO convert to accept more than seconds
+    * @examples <Timer timer={60}/>
+    */
+  "time": PropTypes.number,
   /**
     * Prop to pass inline styles.
     */
