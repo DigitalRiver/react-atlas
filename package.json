@@ -24,7 +24,7 @@
     "docs:prd": "cross-env NODE_ENV=production node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
     "docs:dev": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
     "docs:build": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide:build",
-    "gh-pages:publish": "scripts/node gh-pages.js"
+    "gh-pages:publish": "node scripts/gh-pages.js"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -64,6 +64,7 @@
     "eslint": "^4.9.0",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-react": "^7.0.1",
+    "gh-pages": "^1.1.0",
     "glob": "^7.1.1",
     "jest": "^21.2.1",
     "lerna": "^2.5.1",
