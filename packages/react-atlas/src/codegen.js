@@ -302,7 +302,10 @@ function createComponentDirectories() {
         path.resolve(oldconfigPath + component + "/README.md"),
         readmePath
       );
-      fs.linkSync(path.resolve(oldconfigPath + component + "/README.md"), readmePath);
+      fs.linkSync(
+        path.resolve(oldconfigPath + component + "/README.md"),
+        readmePath
+      );
     }
   }
 }

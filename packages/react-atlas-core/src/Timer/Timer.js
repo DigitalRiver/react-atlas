@@ -8,7 +8,7 @@ class Timer extends React.PureComponent {
 
     this.state = {
       "secondsRemaining": this.props.time
-    }
+    };
   }
 
   componentDidMount() {
@@ -16,13 +16,13 @@ class Timer extends React.PureComponent {
   }
 
   _renderTimer = () => {
-    this.setState({secondsRemaining: this.state.secondsRemaining - 1});
+    this.setState({ "secondsRemaining": this.state.secondsRemaining - 1 });
     if (this.state.secondsRemaining <= 0) {
       this.setState({
-        secondsRemaining: this.props.time
+        "secondsRemaining": this.props.time
       });
     }
-  }
+  };
 
   render() {
     let { className, style } = this.props;
@@ -43,14 +43,14 @@ Timer.propTypes = {
     PropTypes.array
   ]),
   /**
-    * Time Property
-    * Number property.  Timer will allow input of a number which is converted to seconds // TODO convert to accept more than seconds
-    * @examples <Timer timer={60}/>
-    */
+   * Time Property
+   * Number property.  Timer will allow input of a number which is converted to seconds // TODO convert to accept more than seconds
+   * @examples <Timer timer={60}/>
+   */
   "time": PropTypes.number,
   /**
-    * Prop to pass inline styles.
-    */
+   * Prop to pass inline styles.
+   */
   "style": PropTypes.object
 };
 

@@ -90,17 +90,17 @@ class TextArea extends React.PureComponent {
       "tooltipRight": tooltipRight
     });
 
-    let remainingCount = maxLength &&
+    let remainingCount = maxLength && 
       <div styleName={"remainingCount"}>
         {maxLength - this.state.remaining}/{maxLength}
       </div>
     ;
 
-    let textAreaHeader = header &&
+    let textAreaHeader = header && 
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
-        {tooltip &&
+        {tooltip && 
           <span styleName={tooltipClasses}>
             <TooltipCore text={tooltip} position="top" />
           </span>
@@ -165,9 +165,9 @@ TextArea.propTypes = {
     PropTypes.array
   ]),
   /**
-	 * Define a name for the textarea input.
-	 * @examples '<TextArea name="test"/>'
-	 */
+   * Define a name for the textarea input.
+   * @examples '<TextArea name="test"/>'
+   */
   "name": PropTypes.string,
   /**
    * Define a value for the textarea input.
@@ -185,19 +185,19 @@ TextArea.propTypes = {
    */
   "resizable": PropTypes.bool,
   /**
-	 * Defines a small sized textarea.
-	 * @examples '<TextArea small/>'
-	 */
+   * Defines a small sized textarea.
+   * @examples '<TextArea small/>'
+   */
   "small": PropTypes.bool,
   /**
-	 * Defines a medium sized textarea.
-	 * @examples '<TextArea medium/>'
-	 */
+   * Defines a medium sized textarea.
+   * @examples '<TextArea medium/>'
+   */
   "medium": PropTypes.bool,
   /**
-	 * Defines a large sized textarea.
-	 * @examples '<TextArea large/>'
-	 */
+   * Defines a large sized textarea.
+   * @examples '<TextArea large/>'
+   */
   "large": PropTypes.bool,
   /**
    * Sets a maximum character length that will be validated onChange.
@@ -210,9 +210,9 @@ TextArea.propTypes = {
    */
   "placeholder": PropTypes.string,
   /**
-	 * Sets a handler function to be executed when onChange event occurs (at input element).
-	 * @examples <TextArea onChange={this.customOnChangeFunc}/>
-	 */
+   * Sets a handler function to be executed when onChange event occurs (at input element).
+   * @examples <TextArea onChange={this.customOnChangeFunc}/>
+   */
   "onChange": PropTypes.func,
   /**
    * Sets the field as required. Will be validated onChange.
@@ -220,14 +220,14 @@ TextArea.propTypes = {
    */
   "required": PropTypes.bool,
   /**
-	 * Determines if the textarea is disabled.
-	 * @examples '<TextArea disabled/>'
-	 */
+   * Determines if the textarea is disabled.
+   * @examples '<TextArea disabled/>'
+   */
   "disabled": PropTypes.bool,
   /**
-	 * Determines if the textarea is hidden.
-	 * @examples '<TextArea hidden/>'
-	 */
+   * Determines if the textarea is hidden.
+   * @examples '<TextArea hidden/>'
+   */
   "hidden": PropTypes.bool,
 
   /** passes tooltip as prop if added to textArea */

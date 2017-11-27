@@ -121,7 +121,7 @@ class Checkbox extends React.PureComponent {
         className={cx(className)}
       >
         <div styleName={disabledClass}>
-          {label &&
+          {label && 
             <label styleName={labelStyle} title={title_label}>
               {label}
             </label>
@@ -147,7 +147,7 @@ class Checkbox extends React.PureComponent {
           {this.props.required && <span styleName={"error_text"}>*</span>}
         </div>
         {error &&
-          !groupError &&
+          !groupError && 
             <div styleName={"error_message"}>{this.state.errorMessage}</div>
           }
       </div>

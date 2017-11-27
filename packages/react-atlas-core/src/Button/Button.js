@@ -77,24 +77,26 @@ class Button extends React.PureComponent {
       iconClass = "ra_Button__icon-left";
     }
 
-    let btn =  <button onClick={onClick}
-                          className={cx(className)}
-                          styleName={classes}
-                          style={style}
-                          type={type}
-                          href={href}>
-                            {icon ? <i className={cx(icon, iconClass)} /> : null}
-                            {text}
-                        </button>
-    
-    let renderButton = btn;
-    if(href) {
-      renderButton = <a href={href}>{btn}</a>
-    }                      
+    let btn = 
+      <button
+        onClick={onClick}
+        className={cx(className)}
+        styleName={classes}
+        style={style}
+        type={type}
+        href={href}
+      >
+        {icon ? <i className={cx(icon, iconClass)} /> : null}
+        {text}
+      </button>
+    ;
 
-    return (
-      renderButton
-    );
+    let renderButton = btn;
+    if (href) {
+      renderButton = <a href={href}>{btn}</a>;
+    }
+
+    return renderButton;
   }
 }
 
@@ -104,9 +106,9 @@ Button.propTypes = {
   /** The URL to link to. */
   "href": PropTypes.string,
   /**
-     * Define a mini button.
-     *
-     */
+   * Define a mini button.
+   *
+   */
   "children": PropTypes.node,
   /**
    * Click event handler.
@@ -119,59 +121,59 @@ Button.propTypes = {
     PropTypes.array
   ]),
   /**
-     * define a custom css class name
-     * @examples "btn", "btn-active"
-     */
+   * define a custom css class name
+   * @examples "btn", "btn-active"
+   */
   "disabled": PropTypes.bool,
   /**
-     * use outline styled button
-     * @examples <Button outline>
-     */
+   * use outline styled button
+   * @examples <Button outline>
+   */
   "outline": PropTypes.bool,
   /**
-     * define button href if anchor
-     * @examples '#', 'http://some-website.com/'
-     */
+   * define button href if anchor
+   * @examples '#', 'http://some-website.com/'
+   */
   "primary": PropTypes.bool,
   /**
-     * use secondary style button
-     * @examples <Button secondary>
-     */
+   * use secondary style button
+   * @examples <Button secondary>
+   */
   "secondary": PropTypes.bool,
   /**
-     * use warning style button
-     * @examples <Button warning>
-     */
+   * use warning style button
+   * @examples <Button warning>
+   */
   "warning": PropTypes.bool,
   /**
-     * use error style button
-     * @examples <Button error>
-     */
+   * use error style button
+   * @examples <Button error>
+   */
   "error": PropTypes.bool,
   /**
-     * use link style button
-     * @examples <Button link>
-     */
+   * use link style button
+   * @examples <Button link>
+   */
   "link": PropTypes.bool,
   /**
-     * use large style button
-     * @examples <Button large>
-     */
+   * use large style button
+   * @examples <Button large>
+   */
   "large": PropTypes.bool,
   /**
-     * use small style button
-     * @examples <Button small>
-     */
+   * use small style button
+   * @examples <Button small>
+   */
   "small": PropTypes.bool,
 
   /**
-    * The class name of the icon you want to set.
-    */
+   * The class name of the icon you want to set.
+   */
   "icon": PropTypes.string,
 
   /**
-    * Pass inline styles here.
-    */
+   * Pass inline styles here.
+   */
   "style": PropTypes.object
 };
 
