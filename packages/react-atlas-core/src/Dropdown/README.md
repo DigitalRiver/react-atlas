@@ -142,3 +142,23 @@ Dropdown with onChange function:
     <span value="monkey">Monkey</span>
     <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
     </Dropdown>
+
+Update Dropdown options via state after initial render:
+
+    initialState = {items: ["Dog", "Cat"]}
+    rows = state.items.map((item, index) => (
+      <li value={item} key="{index}">
+        {item}
+      </li>
+    ));
+    handleToggle = () => {
+        setState({ items: ["Cow", "Horse", "Pig"] })
+    };
+    <div> 
+      <Dropdown defaultText="Select One ..." customLabel="Update State Dropdown" onChange={(value, event) => {console.log("onChange: ", value, event)}} >
+        {rows}
+        </Dropdown><br />
+        <Button primary onClick={handleToggle}>Update State</Button>
+        <br /><br />
+        List: {state.items.toString()}
+    </div>
