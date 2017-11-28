@@ -388,13 +388,6 @@ class Dropdown extends React.PureComponent {
       inline: inline
     });
 
-    const buttonClasses = cx({
-      buttonClass: true,
-      'dropdown-button': true,
-      error: error,
-      disabledClass: disabled
-    });
-
     const contentClasses = cx({
       content: true
     });
@@ -406,6 +399,7 @@ class Dropdown extends React.PureComponent {
     const bound_children = this.state.children
       .filter(this._checkFilter)
       .map((child, i) => {
+        
         let emptyClass =
           child.props.children === '' ||
           child.props.children === null ||
@@ -461,7 +455,7 @@ class Dropdown extends React.PureComponent {
       );
     }
 
-    let button = (
+    let mainInput = (
       <div>
         <TextField
           onClick={e => {
@@ -494,7 +488,7 @@ class Dropdown extends React.PureComponent {
       >
         {label}
         <div styleName={contentClasses} style={{ width: width }}>
-          <div styleName={'fullWidth'}>{button}</div>
+          <div styleName={'fullWidth'}>{mainInput}</div>
           {list}
           <input type="hidden" value={this.state.value} />
         </div>

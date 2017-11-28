@@ -15,7 +15,7 @@ class Input extends React.PureComponent {
     super(props);
 
     // Initial state
-    this.state = {"value": "", "errorText": "This field is required."};
+    this.state = {"value": this.props.value, "errorText": "This field is required."};
 
     // Configure input mask if required
     if(this.props.mask) {
@@ -49,6 +49,11 @@ class Input extends React.PureComponent {
     } else if (nextProps.isValid === false) {
       this.setState({
         "isValid": nextProps.isValid
+      });
+    }
+    if(nextProps.value && nextProps.value !== this.props.value) {
+      this.setState({
+        "value": nextProps.value
       });
     }
 }
