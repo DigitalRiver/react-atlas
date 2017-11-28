@@ -19,6 +19,10 @@ class TextField extends React.PureComponent {
     };
   }
 
+  componentDidMount() {
+    this.setState({ "isValid": this.props.isValid });
+  }
+
   componentWillReceiveProps(nextProps) {
     if (
       typeof nextProps.isValid !== "undefined" &&
@@ -51,10 +55,6 @@ class TextField extends React.PureComponent {
       this.props.onChange(value, event, isValid);
     }
   };
-
-  componentDidMount() {
-    this.setState({"isValid": this.props.isValid});
-  }
 
   _handleFocus = () => {
     this.setState({ "active": true });
@@ -101,11 +101,11 @@ class TextField extends React.PureComponent {
       "ra_Tooltip__block": true
     });
 
-    let textFieldHeader = header &&
+    let textFieldHeader = header && 
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
-        {tooltip &&
+        {tooltip && 
           <span styleName={tooltipClasses}>
             <TooltipCore
               className={tooltipInternalClasses}
@@ -155,7 +155,8 @@ class TextField extends React.PureComponent {
           maxLength={maxLength}
           styleName={textFieldClasses}
           onChange={(value, event, isValid) =>
-            this._handleChange(value, event, isValid)}
+            this._handleChange(value, event, isValid)
+          }
           required={required}
           validator={validator}
           errorText={errorText}
@@ -181,9 +182,9 @@ TextField.propTypes = {
     PropTypes.array
   ]),
   /**
-	 * Define a name for the text input.
-	 * @examples '<TextField name="test"/>'
-	 */
+   * Define a name for the text input.
+   * @examples '<TextField name="test"/>'
+   */
   "name": PropTypes.string,
   /**
    * Define a type for the text input. Default is "text".
@@ -196,9 +197,9 @@ TextField.propTypes = {
    */
   "value": PropTypes.string,
   /**
-	 * Defines a small sized text input.
-	 * @examples '<TextField small/>'
-	 */
+   * Defines a small sized text input.
+   * @examples '<TextField small/>'
+   */
   "small": PropTypes.bool,
   /**
    * Define a title or header to be displayed above the textfield.
@@ -206,14 +207,14 @@ TextField.propTypes = {
    */
   "header": PropTypes.string,
   /**
-	 * Defines a medium sized text input.
-	 * @examples '<TextField medium/>'
-	 */
+   * Defines a medium sized text input.
+   * @examples '<TextField medium/>'
+   */
   "medium": PropTypes.bool,
   /**
-	 * Defines a large sized text input.
-	 * @examples '<TextField large/>'
-	 */
+   * Defines a large sized text input.
+   * @examples '<TextField large/>'
+   */
   "large": PropTypes.bool,
   /**
    * Sets a maximum character length that will be validated onChange.
@@ -241,9 +242,9 @@ TextField.propTypes = {
    */
   "placeholder": PropTypes.string,
   /**
-	 * Sets a handler function to be executed when onChange event occurs (at input element).
-	 * @examples <TextField onChange={this.customOnChangeFunc}/>
-	 */
+   * Sets a handler function to be executed when onChange event occurs (at input element).
+   * @examples <TextField onChange={this.customOnChangeFunc}/>
+   */
   "onChange": PropTypes.func,
   /**
    * Sets the field as required. Will be validated onChange.
@@ -251,14 +252,14 @@ TextField.propTypes = {
    */
   "required": PropTypes.bool,
   /**
-	 * Determines if the text input is disabled.
-	 * @examples '<TextField disabled/>'
-	 */
+   * Determines if the text input is disabled.
+   * @examples '<TextField disabled/>'
+   */
   "disabled": PropTypes.bool,
   /**
-	 * Determines if the text input is hidden.
-	 * @examples '<TextField hidden/>'
-	 */
+   * Determines if the text input is hidden.
+   * @examples '<TextField hidden/>'
+   */
   "hidden": PropTypes.bool,
 
   /** Pass inline styling here. */
