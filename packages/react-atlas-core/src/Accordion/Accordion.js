@@ -87,7 +87,7 @@ class Accordion extends React.PureComponent {
       headerClasses = cx("accordion_header", stateClasses, styleClasses);
       panelClasses = cx("accordion_panel", stateClasses);
 
-      let accordion_panel =
+      let accordion_panel = 
         <div>
           <div
             styleName={headerClasses}
@@ -107,7 +107,7 @@ class Accordion extends React.PureComponent {
 
     return (
       <div className={cx(className)} style={style}>
-        {this.state.expandAll && !this.props.disabled ?
+        {this.state.expandAll && !this.props.disabled ? 
           <div
             styleName={"expandAll"}
             onClick={() => {
@@ -127,9 +127,9 @@ class Accordion extends React.PureComponent {
 
 Accordion.propTypes = {
   /**
-     * Children should be either a string, an icon/glyphicon, or an image tag.
-     * @examples "SomeName", <Accordion>{child}{child}</Accordion>
-     */
+   * Children should be either a string, an icon/glyphicon, or an image tag.
+   * @examples "SomeName", <Accordion>{child}{child}</Accordion>
+   */
   "children": PropTypes.node,
   /** An Object, array, or string of CSS classes to apply to accordion.*/
   "className": PropTypes.oneOfType([
@@ -138,33 +138,33 @@ Accordion.propTypes = {
     PropTypes.array
   ]),
   /**
-     * A string. Accordion will use title prop from each child as the title for header of each accordion
-     * @examples <Accordion><div title={title 1}>value 1</div><div title={title 2}>value 2</div></Accordion>
-     */
+   * A string. Accordion will use title prop from each child as the title for header of each accordion
+   * @examples <Accordion><div title={title 1}>value 1</div><div title={title 2}>value 2</div></Accordion>
+   */
   "title": PropTypes.string,
   /**
-     * multiOpen
-     * boolean property.  Accordion will allow multiple open panels with this set to true
-     * @examples <Accordion multiOpen={true}>{children}</Accordion>
-     */
+   * multiOpen
+   * boolean property.  Accordion will allow multiple open panels with this set to true
+   * @examples <Accordion multiOpen={true}>{children}</Accordion>
+   */
   "multiOpen": PropTypes.bool,
   /**
-     * expandAll
-     * boolean property.  Accordion will add an "expand all" link which when clicked open all panels or collapse all panels
-     * @examples <Accordion expandAll={true}>{children}</Accordion>
-     */
+   * expandAll
+   * boolean property.  Accordion will add an "expand all" link which when clicked open all panels or collapse all panels
+   * @examples <Accordion expandAll={true}>{children}</Accordion>
+   */
   "expandAll": PropTypes.bool,
   /**
-     * expanded
-     * boolean property.  Accordion will expand this child on load
-     * @examples <Accordion><div>value 1</div><div expanded>value 2</div></Accordion>
-     */
+   * expanded
+   * boolean property.  Accordion will expand this child on load
+   * @examples <Accordion><div>value 1</div><div expanded>value 2</div></Accordion>
+   */
   "expanded": PropTypes.bool,
   /**
-     * titlePosition
-     * string property. Accordion will set the title text position based on this property
-     * @examples <Accordion titlePosition={left}>{children}</Accordion>
-     */
+   * titlePosition
+   * string property. Accordion will set the title text position based on this property
+   * @examples <Accordion titlePosition={left}>{children}</Accordion>
+   */
   "titlePosition": PropTypes.string,
   /**
    * The width of the accordion as a string or number.

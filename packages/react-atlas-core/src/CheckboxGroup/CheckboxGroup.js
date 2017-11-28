@@ -55,8 +55,9 @@ class CheckboxGroup extends React.PureComponent {
         fullMessage = this.props.limitMessage.replace("{0}", this.props.max);
         return fullMessage;
       } else {
-        return `Please select no more than ${this.props
-          .max} of the options below`;
+        return `Please select no more than ${
+          this.props.max
+        } of the options below`;
       }
     } else if (this.props.min && this.state.totalChecked < this.props.min) {
       if (this.props.limitMessage) {
@@ -92,10 +93,10 @@ class CheckboxGroup extends React.PureComponent {
         className={cx(className)}
         styleName={checkboxGroupStyles}
       >
-        {title &&
+        {title && 
           <div styleName={"header"}>
             <span styleName={"headerFont"}>{title}</span>
-            {this.state.groupError &&
+            {this.state.groupError && 
               <span styleName={"error_message"}>{this.maxMinMessage()}</span>
             }
           </div>

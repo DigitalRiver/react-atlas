@@ -100,7 +100,7 @@ class Radio extends React.PureComponent {
     return (
       <div style={style} onClick={this._clickHandler} styleName={inlineRadio}>
         <div styleName={disabledClass}>
-          {label &&
+          {label && 
             <label
               styleName={labelStyle}
               title={labelTitle}
