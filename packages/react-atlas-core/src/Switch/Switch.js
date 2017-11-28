@@ -6,20 +6,29 @@ import cx from "classnames";
 class Switch extends React.PureComponent {
   constructor(props) {
     super(props);
-    // Initial state
-    this.state = {
-      "checked": this.props.checked || false
-    };
+  }
 
+  _onChange = (value, event) => {
+    if (this.props.onChange) {
+      this.props.onChange(event);
+    }
+  };
+  _onBeforeChange = event => {
+    if (this.props.onBeforeChange) {
+      this.props.onBeforeChange(event);
+    }
+  };
+
+  buildClasses = props => {
     /* Classes and styles setup */
-    let small = this.props.small && !this.props.medium && !this.props.large,
-      medium = !this.props.small && !this.props.large,
-      large = this.props.large && !this.props.medium && !this.props.small,
-      disabled = this.props.disabled,
-      hidden = this.props.hidden,
-      offColor = this.props.offColor,
-      onColor = this.props.onColor,
-      buttonColor = this.props.buttonColor;
+    let small = props.small && !props.medium && !props.large,
+      medium = !props.small && !props.large,
+      large = props.large && !props.medium && !props.small,
+      disabled = props.disabled,
+      hidden = props.hidden,
+      offColor = props.offColor,
+      onColor = props.onColor,
+      buttonColor = props.buttonColor;
 
     let offClassName = cx({
       "sliderSmall": small,
@@ -75,46 +84,20 @@ class Switch extends React.PureComponent {
       onColorStyle,
       buttonColorStyle
     };
-  }
-
-  _onBeforeChange = callback => {
-    let triggerChange = true;
-    if (this.props.onBeforeChange) {
-      triggerChange = this.props.onBeforeChange(this.state.checked);
-    }
-    /**
-     * allow the user to prevent the execution of onChange event by passing a
-     * function that returns a falsy value. If onClick handler is not specified,
-     * onChange function will be called by default.
-    **/
-    if (triggerChange) {
-      callback();
-    }
   };
-
-  _handleBeforeChange = () => {
-    /**
-     * We need to execute onClick function, and when it's done, execute onChange function.
-     * If onClick is not passed, it will only execute onChange.
-     * Callback approach was taken instead of promises/generators as team decision to
-     * avoid adding a new dependency like bluebird (native es6 promises are slower)
-    **/
-    this._onBeforeChange(() => {
-      this._handleChange();
-    });
-  };
-
-  _handleChange = () => {
-    if (this.state.checked === true) {
-      this.setState({ "checked": false });
-    } else {
-      this.setState({ "checked": true });
-    }
-  };
-
   render() {
-    const { className, name, disabled, hidden, style, inline } = this.props;
+    const {
+      className,
+      id,
+      name,
+      disabled,
+      checked,
+      hidden,
+      style,
+      inline
+    } = this.props;
 
+    this.buildClasses(this.props);
     const classes = this.classes;
     const styles = this.styles;
 
@@ -138,10 +121,12 @@ class Switch extends React.PureComponent {
       >
         <InputCore
           type="checkbox"
+          id={id}
           name={name}
           styleName={classes.inputClassName}
-          onBeforeChange={this._handleBeforeChange}
-          checked={this.state.checked}
+          onBeforeChange={this._onBeforeChange}
+          onChange={this._onChange}
+          checked={checked}
         />
         <div
           styleName={classes.buttonClassName}
@@ -175,6 +160,11 @@ Switch.propTypes = {
    * @examples '<Switch checked={condition}/>'
    */
   "checked": PropTypes.bool,
+  /**
+   * Define a id for the switch input.
+   * @examples '<Switch id="testId"/>'
+   */
+  "id": PropTypes.string,
   /**
    * Define a name for the switch input.
    * @examples '<Switch name="test"/>'

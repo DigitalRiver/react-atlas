@@ -138,9 +138,9 @@ class Input extends React.PureComponent {
     }
   };
 
-  _handleBeforeChange = () => {
+  _handleBeforeChange = event => {
     if (this.props.onBeforeChange) {
-      this.props.onBeforeChange();
+      this.props.onBeforeChange(event);
     }
   };
 
@@ -249,6 +249,7 @@ class Input extends React.PureComponent {
       medium,
       large,
       type,
+      id,
       name,
       multiline,
       placeholder,
@@ -288,6 +289,7 @@ class Input extends React.PureComponent {
 
     let inputElement = multiline ?
       <textarea
+        id={id}
         name={name}
         value={this.state.value}
         placeholder={placeholder}
@@ -298,6 +300,7 @@ class Input extends React.PureComponent {
      :
       <input
         type={type}
+        id={id}
         name={name}
         value={this.state.value}
         placeholder={placeholder}
@@ -318,6 +321,7 @@ class Input extends React.PureComponent {
       <input
         style={style}
         type="checkbox"
+        id={id}
         name={name}
         styleName={inputClasses}
         className={cx(className)}
@@ -346,6 +350,11 @@ Input.propTypes = {
    * @examples 'text', 'checkbox', 'radio', 'password', 'email'
    */
   "type": PropTypes.string,
+  /**
+   * Define a id for the input.
+   * @examples '<Input id="testId"/>'
+   */
+  "id": PropTypes.string,
   /**
    * Defines a name for the input.
    * @examples '<Input type="text" name="test"/>'
