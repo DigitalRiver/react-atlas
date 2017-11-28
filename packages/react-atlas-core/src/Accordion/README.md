@@ -51,3 +51,21 @@ Accordion with disabled prop:
           <Panel title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</Panel>
           <Panel title="Third">this is the third panel</Panel>
      </Accordion>
+     
+Accordion: update props
+
+    initialState = {multiOpen: false}
+    
+    handleChangeProps = () => {
+        setState({ multiOpen: !state.multiOpen })
+    };
+    <div>
+        <Button primary onClick={handleChangeProps}>Change Props</Button>
+        <p>multiOpen:{state.multiOpen? "true": "false"}</p>
+         <Accordion multiOpen={state.multiOpen}>
+              <Panel title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu. An his nonumy tritani scripserit, essent nostro sadipscing mea te, indoctum referrentur mea eu. Te unum urbanitas usu, et sed partem postea neglegentur. Pri dicunt sensibus ex, est prodesset efficiendi id, senserit eloquentiam sit ex.
+                                 Ius ea patrioque pertinacia moderatius. Ius errem aliquam splendide te, ne qui exerci diceret mnesarchum. Erant ludus copiosae ad pri, an illum conclusionemque vim. Mel alia consequat in, velit mundi saperet te pro. Tractatos consequuntur id mea.</Panel>
+              <Panel title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</Panel>
+              <Panel title="Third"><Button/></Panel>
+         </Accordion>
+     </div>
