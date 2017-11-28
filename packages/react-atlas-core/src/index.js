@@ -23,4 +23,5 @@ export { TaskCore } from "./Task";
 export { TaskbarCore } from "./Taskbar";
 export { TextAreaCore } from "./TextArea";
 export { TextFieldCore } from "./TextField";
+export { TimerCore } from "./Timer";
 export { TooltipCore } from "./Tooltip";

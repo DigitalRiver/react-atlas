@@ -59,8 +59,9 @@
   max-height: 250px;
   overflow: auto;
 }
-.fullWidth {
-  width: 100%;
+.fullWidth{
+  min-width: 100px;
+  width:100%;
 }
 .convertedWidth {
   width: calc(100% - 2px);
@@ -118,7 +119,7 @@
 .dropdown-button span {
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 90%;
+  max-width: 80%;
   float: left;
 }
 

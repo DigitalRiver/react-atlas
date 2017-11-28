@@ -8,25 +8,13 @@ class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    let isValid;
-    if (typeof props.isValid === 'undefined') {
-      isValid = true;
-    } else if (props.isValid === false) {
-      isValid = props.isValid;
-    } else {
-      isValid = props.isValid;
-    }
-
     if (this.props.tooltip && !this.props.header) {
       throw 'Tooltip requires Header';
     }
 
     // Initial state
     this.state = {
-      value: props.value || '',
-      remaining: props.maxLength,
-      active: false,
-      isValid: isValid
+      "active": false
     };
   }
 
@@ -47,7 +35,6 @@ class TextField extends React.PureComponent {
       this.setState({ remaining: this.props.maxLength - value.length });
     }
 
-    // Set value and valid state depending on InputCore state
     this.setState({
       value: value,
       isValid: isValid
@@ -58,6 +45,10 @@ class TextField extends React.PureComponent {
       this.props.onChange(value, event, isValid);
     }
   };
+
+  componentDidMount() {
+    this.setState({"isValid": this.props.isValid});
+  }
 
   _handleFocus = () => {
     this.setState({ active: true });
@@ -281,7 +272,8 @@ TextField.propTypes = {
 };
 
 TextField.defaultProps = {
-  type: 'text'
+  "type": "text",
+  "isValid": true
 };
 
 export default TextField;
