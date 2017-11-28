@@ -22,7 +22,6 @@
     "classnames": "^2.2.5",
     "inputmask-core": "^2.2.0",
     "light-table": "0.1.0",
-    "lodash": "^4.17.4",
     "moment": "^2.19.1",
     "proptypes": "^1.0.0",
     "react": "^15.6.2",

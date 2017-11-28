@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 import { ButtonCore } from "../Button";
 import messages from "../utils/messages.js";
-import isEmpty from "lodash/isEmpty";
-import find from "lodash/find";
+import _utils from "../utils/utils";
 
 /**
  * Master Dropdown Component
@@ -148,7 +147,7 @@ class Dropdown extends React.PureComponent {
       }
     }
     if (this.props.required === true) {
-      if (isEmpty(value)) {
+      if (_utils.isEmpty(value)) {
         isValid = false;
       }
     }
@@ -251,12 +250,12 @@ class Dropdown extends React.PureComponent {
       "content": true,
       "focus": this.state.focus
     });
-    if (!isEmpty(value)) {
-      let selectedChild = find(children, child => {
+    if (!_utils.isEmpty(value)) {
+      let selectedChild = React.Children.toArray(children).find(child => {
         return child.props.value === value;
       });
       output = selectedChild.props.children;
-    } else if (!isEmpty(defaultText)) {
+    } else if (!_utils.isEmpty(defaultText)) {
       output = defaultText;
     } else {
       output = children[0].props.children;
