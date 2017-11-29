@@ -20,12 +20,12 @@
 .white          { color: var(--white) }
 
 .primary-blue   { color: var(--primary-blue) }
-.primary-blue-hover	{ color: var(--primary-blue-hover) }
+.primary-blue-hover	{ color: var(--primary-blue-darker) }
 .aqua           { color: var(--aqua) }
 .blue           { color: var(--blue) }
 .navy           { color: var(--navy) }
 .sky-blue       { color: var(--sky-blue) }
-.inverse-blue-text { color: var(--inverseBlueText) }
+.inverse-blue-text { color: var(--powder-blue) }
 .kelly          { color: var(--kelly-green) }
 .teal           { color: var(--teal) }
 .green          { color: var(--green) }
@@ -44,9 +44,9 @@
 
 /*Hover-Text Colors*/
 
-.hover-primary-text:hover   { color: var(--primary-hover) }
-.hover-secondary-text:hover   { color: var(--secondary-hover) }
-.hover-default-text:hover   { color: var(--default-hover) }
+.hover-primary-text:hover   { color: var(--primary-darker) }
+.hover-secondary-text:hover   { color: var(--secondary-darker) }
+.hover-default-text:hover   { color: var(--default-lighter) }
 
 .hover-black:hover          { color: var(--black) }
 .hover-gray:hover           { color: var(--gray) }
@@ -117,9 +117,9 @@
 /*Hover-Background Colors*/
 .hover-bg-transparent:hover { background-color: transparent }
 
-.hover-bg-primary:hover     { background-color: var(--primary-hover) }
-.hover-bg-secondary:hover   { background-color: var(--secondary-hover) }
-.hover-bg-default:hover     { background-color: var(--default-hover) }
+.hover-bg-primary:hover     { background-color: var(--primary-darker) }
+.hover-bg-secondary:hover   { background-color: var(--secondary-darker) }
+.hover-bg-default:hover     { background-color: var(--default-lighter) }
 
 .hover-bg-black:hover  { background-color: var(--black) }
 .hover-bg-gray:hover   { background-color: var(--gray) }
@@ -196,9 +196,9 @@
 /*Hover-Border Colors */
 .hover-border-transparent:hover  { border-color: transparent }
 
-.hover-border-primary:hover     { border-color: var(--primary-hover) }
-.hover-boder-secondary:hover    { border-color: var(--secondary-hover) }
-.hover-border-default:hover     { border-color: var(--default-hover) }
+.hover-border-primary:hover     { border-color: var(--primary-darker) }
+.hover-boder-secondary:hover    { border-color: var(--secondary-darker) }
+.hover-border-default:hover     { border-color: var(--default-lighter) }
 
 .hover-border-black:hover  { border-color: var(--black) }
 .hover-border-gray:hover   { border-color: var(--gray) }
