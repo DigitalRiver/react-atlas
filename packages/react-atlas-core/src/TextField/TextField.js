@@ -69,6 +69,7 @@ class TextField extends React.PureComponent {
       medium,
       large,
       required,
+      requiredText,
       validator,
       errorText,
       mask,
@@ -94,10 +95,14 @@ class TextField extends React.PureComponent {
       "ra_Tooltip__block": true
     });
 
+    const reqText = (typeof requiredText !== "undefined") ? requiredText : "*";
+
     let textFieldHeader = header && 
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
-        {required && <span styleName={"error_text"}> *</span>}
+        {required && 
+          <span styleName={"error_text"}> {reqText}</span>
+        }
         {tooltip && 
           <span styleName={tooltipClasses}>
             <TooltipCore
