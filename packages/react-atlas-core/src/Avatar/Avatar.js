@@ -54,7 +54,7 @@ class Avatar extends React.PureComponent {
     let image = this.state.image;
 
     if (typeof image === "string") {
-      avatar =
+      avatar = 
         <img
           src={image}
           title={title}
@@ -81,9 +81,9 @@ class Avatar extends React.PureComponent {
 
 Avatar.propTypes = {
   /**
-    * Children should be either a string, an icon/glyphicon, or an image tag.
-    * @examples "SomeName", <SomeIcon />, <img src="/path/to/image.jpg"/>
-    */
+   * Children should be either a string, an icon/glyphicon, or an image tag.
+   * @examples "SomeName", <SomeIcon />, <img src="/path/to/image.jpg"/>
+   */
   "children": PropTypes.node,
   /** An Object, array, or string of CSS classes to apply to avatar.*/
   "className": PropTypes.oneOfType([
@@ -92,28 +92,28 @@ Avatar.propTypes = {
     PropTypes.array
   ]),
   /**
-    * For displaying an icon/glphyicon. Normally these will be another component or an element with a class on it.
-    * @examples <GithubIcon />, <i class="fa fa-github"></i>
-    */
+   * For displaying an icon/glphyicon. Normally these will be another component or an element with a class on it.
+   * @examples <GithubIcon />, <i class="fa fa-github"></i>
+   */
   "icon": PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /**
-    * Path to an image
-    * @examples "http://path.to/an/image.jpg"
-    */
+   * Path to an image
+   * @examples "http://path.to/an/image.jpg"
+   */
   "image": PropTypes.string,
   /**
-    * A string. Avatar will use First letter of the string.
-    * @examples "Nathan" will output "N"
-    */
+   * A string. Avatar will use First letter of the string.
+   * @examples "Nathan" will output "N"
+   */
   "title": PropTypes.string,
   /**
-    * A URL to a image that is displayed when the main image fails to load.
-    */
+   * A URL to a image that is displayed when the main image fails to load.
+   */
   "defaultImage": PropTypes.string,
 
   /**
-    * Prop to pass inline styles.
-    */
+   * Prop to pass inline styles.
+   */
   "style": PropTypes.object
 };
 

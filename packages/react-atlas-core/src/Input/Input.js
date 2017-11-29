@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import InputMask from "inputmask-core";
 import { utils } from "../utils";
 import cx from "classnames";
-import messages from "../utils/messages";
 
 /**
  * Master Input component. To be used as core for different input types
@@ -14,24 +13,8 @@ class Input extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    let isValid, errorText;
-    if (typeof props.isValid === "undefined") {
-      isValid = true;
-    } else if (props.isValid === false) {
-      isValid = props.isValid;
-      errorText = messages.requiredMessage;
-    } else {
-      isValid = props.isValid;
-      errorText = null;
-    }
-
     // Initial state
-    this.state = {
-      "value": props.value || "",
-      "errorText": errorText,
-      "isValid": isValid,
-      "remaining": props.maxLength
-    };
+    this.state = { "value": "", "errorText": "This field is required." };
 
     // Configure input mask if required
     if (this.props.mask) {
@@ -49,6 +32,10 @@ class Input extends React.PureComponent {
         "You set a custom validator without error text message. Please use 'errorText' property to set it up."
       );
     }
+  }
+
+  componentDidMount() {
+    this.setState({ "isValid": this.props.isValid });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -298,7 +285,7 @@ class Input extends React.PureComponent {
       "onPaste": this._handlePaste
     };
 
-    let inputElement = multiline ?
+    let inputElement = multiline ? 
       <textarea
         name={name}
         value={this.state.value}
@@ -307,7 +294,7 @@ class Input extends React.PureComponent {
         className={cx(className)}
         onChange={this._handleChange}
       />
-     :
+     : 
       <input
         type={type}
         name={name}
@@ -322,11 +309,11 @@ class Input extends React.PureComponent {
       />
     ;
 
-    let errorTextElement = this.state.errorText &&
+    let errorTextElement = this.state.errorText && 
       <span className={"ra_Input__error"}>{this.state.errorText}</span>
     ;
 
-    return isCheckbox ?
+    return isCheckbox ? 
       <input
         style={style}
         type="checkbox"
@@ -336,7 +323,7 @@ class Input extends React.PureComponent {
         checked={checked}
         {...eventHandlers}
       />
-     :
+     : 
       <div className={"ra_Input__container"}>
         {inputElement}
         {this.state.isValid ? null : errorTextElement}
@@ -449,14 +436,14 @@ Input.propTypes = {
    */
   "validator": PropTypes.func,
   /**
-     * Sets a handler function to be executed before onChange event occurs (executed onClick).
-     * @examples <Input type="text" onBeforeChange={this.customOnClickFunc}/>
-     */
+   * Sets a handler function to be executed before onChange event occurs (executed onClick).
+   * @examples <Input type="text" onBeforeChange={this.customOnClickFunc}/>
+   */
   "onBeforeChange": PropTypes.func,
   /**
-     * Sets a handler function to be executed when onChange event occurs.
-     * @examples <Input type="text" onChange={this.customOnChangeFunc}/>
-     */
+   * Sets a handler function to be executed when onChange event occurs.
+   * @examples <Input type="text" onChange={this.customOnChangeFunc}/>
+   */
   "onChange": PropTypes.func,
 
   /**
@@ -469,7 +456,8 @@ Input.defaultProps = {
   "className": "",
   "disabled": false,
   "hidden": false,
-  "errorLocation": "right"
+  "errorLocation": "right",
+  "isValid": true
 };
 
 export default Input;

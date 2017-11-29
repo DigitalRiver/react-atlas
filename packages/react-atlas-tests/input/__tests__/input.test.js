@@ -25,12 +25,10 @@ function _validate(input, positiveCase) {
     />
   );
 
-  expect(component.state().errorText).toEqual(undefined);
   expect(component.state().isValid).toEqual(true);
   component.setState({ value: input });
   component.find("input").simulate("change");
   if (positiveCase) {
-    expect(component.state().errorText).toEqual(undefined);
     expect(component.state().isValid).toEqual(true);
   } else {
     expect(component.state().errorText).toEqual("That is NOT a number");
@@ -282,7 +280,6 @@ describe("Suite - Required field", () => {
       .find("input")
       .simulate("change", { target: { value: "Some text." } });
     expect(component.state().isValid).toEqual(true);
-    expect(component.state().errorText).toEqual(undefined);
   });
 
   it("Check behavior when field is set to not required", () => {
@@ -290,7 +287,6 @@ describe("Suite - Required field", () => {
 
     component.find("input").simulate("change", { target: { value: "" } });
     expect(component.state().isValid).toEqual(true);
-    expect(component.state().errorText).toEqual(undefined);
   });
 
   it("Check behavior when field is set to required and validated - Positive case", () => {
@@ -308,7 +304,6 @@ describe("Suite - Required field", () => {
       .find("input")
       .simulate("change", { target: { value: "Some text." } });
     expect(component.state().isValid).toEqual(true);
-    expect(component.state().errorText).toEqual(undefined);
   });
 
   it("Check behavior when field is set to required and validated - Negative case", () => {
