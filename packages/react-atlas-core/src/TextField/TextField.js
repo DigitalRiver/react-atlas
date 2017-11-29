@@ -14,7 +14,8 @@ class TextField extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "active": false
+      "active": false,
+      "value": this.props.value || ""
     };
   }
 
@@ -28,6 +29,11 @@ class TextField extends React.PureComponent {
       nextProps.isValid !== this.state.isValid
     ) {
       this.setState({ "isValid": nextProps.isValid });
+    }
+    if(nextProps.value && nextProps.value !== this.props.value) {
+      this.setState({
+        "value": nextProps.value
+      });
     }
   }
 
