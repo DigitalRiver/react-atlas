@@ -1,14 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test correct render Test correct render 1`] = `
-<button
-  className="aClass"
+<a
   href="http://www.google.com.are"
-  onClick={undefined}
-  style="Style"
-  styleName="button default_btn"
-  type="button"
 >
-  Default Button
-</button>
+  <button
+    className="aClass"
+    href="http://www.google.com.are"
+    onClick={undefined}
+    style="Style"
+    styleName="button default_btn"
+    type="button"
+  >
+    Default Button
+  </button>
+</a>
 `;
