@@ -24,13 +24,13 @@ Panel.propTypes = {
     PropTypes.array
   ]),
   /**
-     * Text to be displayed can be passed as a child.
-     * @examples '<Panel>This is a text hint</Panel>'
-     */
+   * Text to be displayed can be passed as a child.
+   * @examples '<Panel>This is a text hint</Panel>'
+   */
   "children": PropTypes.node,
 
   /**
-   * Pass inline styling here. 
+   * Pass inline styling here.
    */
   "style": PropTypes.object
 };
