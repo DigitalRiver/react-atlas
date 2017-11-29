@@ -14,13 +14,13 @@ class Input extends React.PureComponent {
     super(props);
 
     // Initial state
-    this.state = {"value": this.props.value, "errorText": "This field is required."};
+    this.state = {"value": this.props.value || "", "errorText": "This field is required."};
 
     // Configure input mask if required
     if (this.props.mask) {
       let maskOptions = {
-        "pattern": this.props.mask,
-        "value": this.props.value
+        "pattern": props.mask,
+        "value": props.value || ""
       };
 
       this.mask = new InputMask(maskOptions);
