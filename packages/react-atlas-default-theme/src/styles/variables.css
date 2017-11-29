@@ -112,7 +112,7 @@
   --lighten-3: rgba(255,255,255,.25);
   --lighten-4: rgba(255,255,255,.5);
 
-  --default-border-width: .05rem;
+  --default-border-width: 1px; /* using rem measurements for border sizes was causing issues with chrome v.62 */
   --default-border-color:   var(--light-gray);
   --border-width: 1px;
   --button-border-width: .1rem;
