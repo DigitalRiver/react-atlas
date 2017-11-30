@@ -100,11 +100,11 @@ class TextField extends React.PureComponent {
       "ra_Tooltip__block": true
     });
 
-    let textFieldHeader = header && 
+    let textFieldHeader = header &&
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> *</span>}
-        {tooltip && 
+        {tooltip &&
           <span styleName={tooltipClasses}>
             <TooltipCore
               className={tooltipInternalClasses}
