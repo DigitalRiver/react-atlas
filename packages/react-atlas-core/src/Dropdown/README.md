@@ -20,6 +20,16 @@ Dropdown with Label
         <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
       </Dropdown>
 
+Dropdown with Label on the Left: 
+
+      <Dropdown customLabel="Dropdown Example:" leftLabel >
+        <span value="bird">Bird</span>
+        <span value="cow">Cow</span>
+        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+        <span value="monkey">Monkey</span>
+        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+      </Dropdown>
+
 Dropdown with Default Select Value
 
       <Dropdown defaultText="Select One ...">

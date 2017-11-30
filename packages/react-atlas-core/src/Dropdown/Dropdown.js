@@ -353,6 +353,7 @@ class Dropdown extends React.PureComponent {
       disabled,
       name,
       inline,
+      leftLabel,
       style
     } = this.props;
     const active = this.state.active;
@@ -373,7 +374,8 @@ class Dropdown extends React.PureComponent {
 
     const contentClasses = cx({
       "content": true,
-      "focus": this.state.focus
+      "focus": this.state.focus,
+      "leftLabelContent": leftLabel
     });
 
     let count = React.Children.count(this.state.children);
@@ -417,6 +419,11 @@ class Dropdown extends React.PureComponent {
       "zIndex": true
     });
 
+    const labelClasses = cx({
+      "labelSpacing": true,
+      "leftLabel": leftLabel
+    })
+
     let list = null;
     if (active === true) {
       list = <ul styleName={listClasses}>{bound_children}</ul>;
@@ -425,7 +432,7 @@ class Dropdown extends React.PureComponent {
     let label = null;
     if (customLabel) {
       label = 
-        <div styleName={"labelSpacing"}>
+        <div styleName={labelClasses}>
           {customLabel}{" "}
           {required && <span styleName={"requiredIndicator"}>*</span>}
         </div>
@@ -452,6 +459,8 @@ class Dropdown extends React.PureComponent {
       </ButtonCore>
     ;
 
+    const dropdownWidth = width || "100%";
+
     return (
       <div
         style={style}
@@ -469,7 +478,7 @@ class Dropdown extends React.PureComponent {
         }}
       >
         {label}
-        <div styleName={contentClasses} style={{ "width": width }}>
+        <div styleName={contentClasses} style={{ "minWidth": "100px","width": dropdownWidth }}>
           <div styleName={"fullWidth"}>{button}</div>
           {list}
           <input type="hidden" value={this.state.value} />
@@ -574,7 +583,11 @@ Dropdown.propTypes = {
   /**
    * Allows user to set custom width of dropdown
    */
-  "width": PropTypes.string
+  "width": PropTypes.string,
+  /**
+   * Allows user to move the label to the left of the Dropdown instead of having it on top
+   */
+  "leftLabel": PropTypes.bool
 };
 
 Dropdown.defaultProps = {
