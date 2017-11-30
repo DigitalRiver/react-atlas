@@ -167,3 +167,13 @@
 .zIndex {
   z-index: 9998;
 }
+
+.leftLabel {
+  display: table-cell;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.leftLabelContent {
+  display: table-cell;
+}

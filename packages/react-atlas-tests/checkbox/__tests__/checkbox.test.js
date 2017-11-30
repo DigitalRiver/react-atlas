@@ -4,6 +4,9 @@ import { CheckboxCore } from "../../../react-atlas-core/src/Checkbox/index";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
+import renderer from 'react-test-renderer';
+
+
 describe("Test checkbox component", () => {
   it("Test default props", function() {
     const result = mount(<CheckboxCore />);
@@ -15,6 +18,11 @@ describe("Test checkbox component", () => {
   it("Make sure label is used as title when title is not set", function() {
     const result = mount(<CheckboxCore label={"labelText"} />);
     expect(result.text()).toContain("labelText");
+  });
+  
+  it('renders correctly', () => {
+    const tree = renderer.create(<CheckboxCore label={"labelText"} />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
 

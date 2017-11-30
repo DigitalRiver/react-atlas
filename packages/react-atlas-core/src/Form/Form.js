@@ -208,7 +208,7 @@ Form.propTypes = {
    * the form is submitting. */
   "method": PropTypes.string,
   /** An Object, array, or string of CSS classes to
-     * apply to form children components.*/
+   * apply to form children components.*/
   "childClasses": PropTypes.node,
   /** Pass inline styling here. **/
   "style": PropTypes.object
