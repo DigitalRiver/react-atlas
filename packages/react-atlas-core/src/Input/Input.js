@@ -232,6 +232,10 @@ class Input extends React.PureComponent {
 
     let valid = this._validate(inputValue);
 
+    if(this.props.uppercase){  
+        inputValue = inputValue.toUpperCase();
+    }
+
     if (valid !== false) {
       this.setState(
         {
@@ -260,7 +264,7 @@ class Input extends React.PureComponent {
       hidden,
       errorLocation,
       checked,
-      style
+      style      
     } = this.props;
 
     /* If checkbox, we need to render only input component (no wrappers) */
@@ -454,7 +458,11 @@ Input.propTypes = {
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object
+  "style": PropTypes.object,
+  /**
+   * Converts all entered text to uppercase.
+   */
+  "uppercase": PropTypes.bool
 };
 
 Input.defaultProps = {

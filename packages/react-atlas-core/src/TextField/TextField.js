@@ -85,7 +85,8 @@ class TextField extends React.PureComponent {
       inline,
       style,
       tooltip,
-      tooltipRight
+      tooltipRight,
+      uppercase
     } = this.props;
 
     let tooltipClasses = cx({
@@ -162,6 +163,7 @@ class TextField extends React.PureComponent {
           validator={validator}
           errorText={errorText}
           mask={mask}
+          uppercase={uppercase}
           disabled={disabled}
           isValid={this.state.isValid}
           hidden={hidden}
@@ -277,7 +279,11 @@ TextField.propTypes = {
   /** passes tooltip as prop if added to textField */
   "tooltip": PropTypes.string,
 
-  "tooltipRight": PropTypes.bool
+  "tooltipRight": PropTypes.bool,
+  /**
+   * Converts all entered text to uppercase.
+   */
+  "uppercase": PropTypes.bool
 };
 
 TextField.defaultProps = {
