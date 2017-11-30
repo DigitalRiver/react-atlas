@@ -53,6 +53,7 @@
     /* Gray scale */
   --primary-gray:              var(--silver);
   --primary-gray-lighter:      var(--gray);
+  --primary-gray-border:       var(--gray);
   --white:                     #FFF;
   --silver:                    #E9E9E9;
   --gray:                      #BEBEBE;

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test dropdown component Test render correctly 1`] = `
+<div
+  className=""
+  name={undefined}
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  style={undefined}
+  styleName="container"
+>
+  <div
+    style={
+      Object {
+        "width": undefined,
+      }
+    }
+    styleName="content"
+  >
+    <div
+      styleName="fullWidth"
+    >
+      <button
+        className=""
+        href={undefined}
+        onClick={[Function]}
+        style={undefined}
+        styleName="button default_btn"
+        type="button"
+      >
+        <span>
+          May
+        </span>
+        <i
+          styleName="arrow"
+        />
+      </button>
+    </div>
+    <input
+      type="hidden"
+      value={null}
+    />
+  </div>
+</div>
+`;

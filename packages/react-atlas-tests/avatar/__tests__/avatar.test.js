@@ -2,9 +2,18 @@ import React from "react";
 import { mount, shallow } from "enzyme";
 import { AvatarCore } from "../../../react-atlas-core/src/Avatar/index";
 
+import renderer from 'react-test-renderer';
+
 let title = "testTitle";
 let image = "picture.jpg";
 let icon = 'icon={<i className="fa fa-github"></i>}';
+
+describe("Test correct render", () => {
+  it("Test correct render", function() {
+	const tree = renderer.create(<AvatarCore title={title} image={image} icon={icon} />).toJSON();
+	expect(tree).toMatchSnapshot(); 
+  });
+});
 
 describe("Testing Avatar component", () => {
   it("Set props should match what was passed in", function() {
