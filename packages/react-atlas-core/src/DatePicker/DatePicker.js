@@ -13,6 +13,15 @@ class DatePicker extends React.PureComponent {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (
+      typeof nextProps.selected !== "undefined" &&
+      nextProps.selected !== this.state.selected
+    ) {
+      this.setState({ "startDate": moment(nextProps.selected) });
+    }
+  }
+
   handleChange(date, event) {
     event.persist();
     this.setState({
@@ -20,15 +29,6 @@ class DatePicker extends React.PureComponent {
     });
     if (typeof this.props.onChange !== "undefined") {
       this.props.onChange(date, event, true);
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (
-      typeof nextProps.selected !== "undefined" &&
-      nextProps.selected !== this.state.selected
-    ) {
-      this.setState({ "startDate": moment(nextProps.selected) });
     }
   }
 
