@@ -75,6 +75,7 @@ class TextField extends React.PureComponent {
       medium,
       large,
       required,
+      requiredText,
       validator,
       errorText,
       mask,
@@ -100,11 +101,13 @@ class TextField extends React.PureComponent {
       "ra_Tooltip__block": true
     });
 
-    let textFieldHeader = header &&
+    const reqText = typeof requiredText !== "undefined" ? requiredText : "*";
+
+    let textFieldHeader = header && 
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
-        {required && <span styleName={"error_text"}> *</span>}
-        {tooltip &&
+        {required && <span styleName={"error_text"}> {reqText}</span>}
+        {tooltip && 
           <span styleName={tooltipClasses}>
             <TooltipCore
               className={tooltipInternalClasses}
@@ -249,6 +252,11 @@ TextField.propTypes = {
    * @examples '<TextField required/>'
    */
   "required": PropTypes.bool,
+  /**
+   * Sets the text to show next to the header for a required TextField. If omitted will default to *.
+   * @examples '<TextField required requiredText="required"/>'
+   */
+  "requiredText": PropTypes.string,
   /**
    * Determines if the text input is disabled.
    * @examples '<TextField disabled/>'
