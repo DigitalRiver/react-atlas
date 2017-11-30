@@ -8,7 +8,7 @@ class DatePicker extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      "startDate": moment()
+      "startDate": moment(this.props.selected)|| moment()
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -20,6 +20,16 @@ class DatePicker extends React.PureComponent {
     });
     if (typeof this.props.onChange !== "undefined") {
       this.props.onChange(date, event, true);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("CWRP: ", nextProps)
+    if (
+      typeof nextProps.selected !== "undefined" &&
+      nextProps.selected !== this.state.selected
+    ) {
+      this.setState({ "startDate": moment(nextProps.selected) });
     }
   }
 
@@ -43,6 +53,10 @@ DatePicker.propTypes = {
   "format": PropTypes.string,
   "value": PropTypes.string,
   "onChange": PropTypes.func,
+  /**
+   * The currently selected Date.  You can use any format accepted by Moment.js
+   */
+  "selected": PropTypes.string,
   /**
    * Pass inline styles here.
    */
