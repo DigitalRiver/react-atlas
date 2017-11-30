@@ -13,7 +13,8 @@ exports[`Test dropdown component Test render correctly 1`] = `
   <div
     style={
       Object {
-        "width": undefined,
+        "minWidth": "100px",
+        "width": "100%",
       }
     }
     styleName="content"
