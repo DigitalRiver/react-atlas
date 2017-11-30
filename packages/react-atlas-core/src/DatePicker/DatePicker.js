@@ -24,7 +24,6 @@ class DatePicker extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("CWRP: ", nextProps)
     if (
       typeof nextProps.selected !== "undefined" &&
       nextProps.selected !== this.state.selected
