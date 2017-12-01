@@ -1,21 +1,12 @@
 .modal {
     composes: default-font from '../styles.css';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    border: 1px solid rgb(0, 126, 181);
-    background: black;
-    border-radius: 4px;
-    outline: none;
-    padding: 20px;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+    posistion: relative;
 }
 .active {
     background-color: rgb(255, 255, 255);
     box-shadow: 0 19px 60px rgba(0, 0, 0, .3), 0 15px 20px rgba(0, 0, 0, .22);
+    border-radius: 6px;
+    padding:20px
 }
 
 .title {
@@ -26,5 +17,30 @@
 }
 
 .content {
-	padding: 14px;
+    width: 90%;
+	padding: 26px;
+}
+
+.disabledBodyScroll{
+    overflow: hidden;
+}
+.dialogWrapper{
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    height: 100%;
+    width: 100%;
+}
+
+.dialog{
+    position:relative;
+    margin:5% auto;
+    margin-bottom:43px;
+    width:600px;
 }

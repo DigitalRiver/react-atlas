@@ -16,6 +16,11 @@ class Modal extends React.PureComponent {
       lockScroll,
       style
     } = this.props;
+    if(active){
+        document.body.classList.toggle('ra_Modal__disabledBodyScroll');
+    }else{
+        document.body.classList.remove('ra_Modal__disabledBodyScroll');
+    }
     const classes = cx("ra_Modal__modal", { "ra_Modal__active": active });
     return (
       active && 
@@ -28,9 +33,17 @@ class Modal extends React.PureComponent {
               lockScroll={lockScroll}
             />
           }
-          <div style={style} className={cx(className, classes)}>
-            {title && <h3 styleName={cx("title")}>{title}</h3>}
-            <div className="ra_Modal__content">{this.props.children}</div>
+          <div className={cx("ra_Modal__dialogWrapper")} style={style}>
+            <div className={cx("ra_Modal__dialog")}>
+              <div style={style} className={cx(className, classes)}>
+                {title &&
+                  <h3 className={cx("ra_Modal__title", "ra_styles__bg-primary", "ra_styles__white")}>
+                    {title}
+                  </h3>
+                }
+                <div className="ra_Modal__content">{this.props.children}</div>
+              </div>
+            </div>
           </div>
         </PortalCore>
       
