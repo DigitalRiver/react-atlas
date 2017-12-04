@@ -18,9 +18,9 @@ class Modal extends React.PureComponent {
     } = this.props;
     const classes = cx("ra_Modal__modal", { "ra_Modal__active": active });
     return (
-      active &&
+      active && 
         <PortalCore>
-          {overlay &&
+          {overlay && 
             <OverlayCore
               active={active}
               onClick={onOverlayClick}
@@ -29,15 +29,11 @@ class Modal extends React.PureComponent {
             />
           }
           <div style={style} className={cx(className, classes)}>
-            {title &&
-              <h3 styleName={cx("title")}>
-                {title}
-              </h3>
-            }
+            {title && <h3 styleName={cx("title")}>{title}</h3>}
             <div className="ra_Modal__content">{this.props.children}</div>
           </div>
         </PortalCore>
-
+      
     );
   }
 }

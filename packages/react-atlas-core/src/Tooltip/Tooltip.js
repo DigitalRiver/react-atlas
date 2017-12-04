@@ -54,7 +54,7 @@ class Tooltip extends React.PureComponent {
     });
 
     let TooltipContainer = this.state.active ?
-      <span styleName={"tooltipContent"}>{this.state.tooltip}</span>
+      <span className={"ra_Tooltip__tooltipContent"}>{this.state.tooltip}</span>
      : null;
 
     let Icon = icon && !children ? <i className={cx(icon)} /> : null;
@@ -83,9 +83,9 @@ class Tooltip extends React.PureComponent {
 
 Tooltip.propTypes = {
   /**
-     * For displaying all children which can include anything from Form to button to a custom icon like in the example.
-     * @examples <GithubIcon />, <i className="fa fa-github"></i>
-     */
+   * For displaying all children which can include anything from Form to button to a custom icon like in the example.
+   * @examples <GithubIcon />, <i className="fa fa-github"></i>
+   */
   "children": PropTypes.any,
   /** An Object, array, or string of CSS classes to apply to Tooltip.*/
   "className": PropTypes.oneOfType([
@@ -94,29 +94,29 @@ Tooltip.propTypes = {
     PropTypes.array
   ]),
   /**
-     * For the text displayed within the tooltip
-     * @examples <Tooltip text="default"/>
-     */
+   * For the text displayed within the tooltip
+   * @examples <Tooltip text="default"/>
+   */
   "text": PropTypes.string,
   /**
-     *  For delay of tooltip message
-     *  @example <Tooltip delay={10000}/>
-     */
+   *  For delay of tooltip message
+   *  @example <Tooltip delay={10000}/>
+   */
   "delay": PropTypes.number,
   /**
-     * For disabling tooltip
-     * @example <Tooltip disabled />
-     */
+   * For disabling tooltip
+   * @example <Tooltip disabled />
+   */
   "disabled": PropTypes.bool,
   /**
-     * For positioning the tooltip to top, left, right or bottom.  Default is to the bottom
-     * @example <Tooltip position="top"/>
-     */
+   * For positioning the tooltip to top, left, right or bottom.  Default is to the bottom
+   * @example <Tooltip position="top"/>
+   */
   "position": PropTypes.string,
   /**
-     * For displaying an icon/glphyicon. Normally these will be another component or an element with a class on it.
-     * @examples <GithubIcon />, <i class="fa fa-github"></i>
-     */
+   * For displaying an icon/glphyicon. Normally these will be another component or an element with a class on it.
+   * @examples <GithubIcon />, <i class="fa fa-github"></i>
+   */
   "icon": PropTypes.string,
   /** Pass inline styling here. */
   "style": PropTypes.object

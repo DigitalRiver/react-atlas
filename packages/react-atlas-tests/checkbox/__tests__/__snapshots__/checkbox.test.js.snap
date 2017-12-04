@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test checkbox component renders correctly 1`] = `
+<div
+  className=""
+  onClick={[Function]}
+  style={undefined}
+  styleName="checkbox_padding"
+>
+  <div
+    styleName="inline_block relative padding"
+  >
+    <label
+      styleName="label"
+      title="labelText"
+    >
+      labelText
+    </label>
+    <div
+      styleName="float_left"
+    >
+      <input
+        checked={false}
+        className="ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
+        name={undefined}
+        onChange={[Function]}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onPaste={[Function]}
+        style={undefined}
+        styleName="checkbox max opacity"
+        type="checkbox"
+      />
+      <div
+        styleName="not_checked"
+      />
+    </div>
+  </div>
+</div>
+`;

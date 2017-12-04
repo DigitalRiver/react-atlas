@@ -4,6 +4,8 @@ import { CheckboxGroupCore } from "../../../react-atlas-core/src/CheckboxGroup/i
 import { CheckboxCore } from "../../../react-atlas-core/src/Checkbox/index";
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
+import renderer from 'react-test-renderer';
+
 import { default as Button } from "../../../react-atlas-core/src/Button/Button";
 
 describe("Test CheckboxGroup component - the bascis", () => {
@@ -21,6 +23,18 @@ describe("Test CheckboxGroup component - the bascis", () => {
 
     expect(component.state().totalChecked).toBe(1);
   });
+  
+  it('Test renders correctly', () => {
+    const comp = <CheckboxGroupCore title={'CheckboxGroup test'}>
+	               <CheckboxCore name={'1'} />
+                   <CheckboxCore name={'2'} />
+                   <CheckboxCore name={'3'} />
+                   <CheckboxCore name={'4'} />
+                 </CheckboxGroupCore> ;
+    const tree = renderer.create(comp).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  
 });
 
 describe("Test CheckboxGroup component - the bascis", () => {
