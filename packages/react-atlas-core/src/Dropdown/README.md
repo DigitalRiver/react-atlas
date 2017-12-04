@@ -4,14 +4,11 @@ Update Dropdown props. just for example, need to remove afterwards:
     handleChangeProps = () => {
       setState({ value: 'cow', optionsValue: "raymans" });
     };
-    
-    _handleChange = (value, event) => {
-      setState({ value: value });
-    };
+
     <div>
         <Button primary onClick={handleChangeProps}>Change Props</Button>
           <p>state's value:{state.value}, optionsValue: {state.optionsValue}</p>
-      <Dropdown onChange={_handleChange} value={state.value}>
+      <Dropdown value={state.value}>
         <span value={state.optionsValue}>{state.optionsValue}</span>
         <span value="cow">Cow</span>
         <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -22,14 +19,8 @@ Update Dropdown props. just for example, need to remove afterwards:
 
 Basic Dropdown:
 
-    initialState = {value: 'bird'}
-    _handleChange = (value, event) => {
-      setState({ value: value });
-    };
     <div>
-      <Dropdown
-        value={state.value} 
-        onChange={_handleChange}>
+      <Dropdown>
             <span value="bird">Bird</span>
             <span value="cow">Cow</span>
             <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -40,14 +31,8 @@ Basic Dropdown:
 
 Dropdown with Label
 
-    initialState = {value: 'bird'}
-    _handleChange = (value, event) => {
-      setState({ value: value });
-    };
-    <Dropdown 
-      customLabel="Dropdown Example" 
-      value={state.value} 
-      onChange={_handleChange}>
+    <Dropdown
+      customLabel="Dropdown Example">
         <span value="bird">Bird</span>
         <span value="cow">Cow</span>
         <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -55,7 +40,7 @@ Dropdown with Label
         <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
     </Dropdown>
 
-Dropdown with Label on the Left: 
+Dropdown with Label on the Left:
 
       <Dropdown customLabel="Dropdown Example:" leftLabel >
         <span value="bird">Bird</span>
@@ -66,14 +51,8 @@ Dropdown with Label on the Left:
       </Dropdown>
 
 Dropdown with Default Select Value
-    
-    initialState = {value: ''}
-    _handleChange = (value, event) => {
-      setState({ value: value });
-    };
-    <Dropdown defaultText="Select One ..."
-      value={state.value} 
-      onChange={_handleChange}>
+
+    <Dropdown defaultText="Select One ...">
         <span value="bird">Bird</span>
         <span value="cow">Cow</span>
         <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -83,13 +62,7 @@ Dropdown with Default Select Value
 
 Dropdown with Pre-Set Value
 
-    initialState = {value: 'cow'}
-    _handleChange = (value, event) => {
-      setState({ value: value });
-    };
-    <Dropdown
-      value={state.value} 
-      onChange={_handleChange}>
+    <Dropdown value="cow">
         <span value="bird">Bird</span>
         <span value="cow">Cow</span>
         <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -99,15 +72,9 @@ Dropdown with Pre-Set Value
 
 Dropdowns with Custom Widths:
 
-    initialState = {value: 'bird'}
-    _handleChange = (value, event) => {
-      setState({ value: value });
-    };
     <div>
       <div>
-        <Dropdown customLabel="Choose" width="300px"
-          value={state.value} 
-          onChange={_handleChange}>
+        <Dropdown customLabel="Choose" width="300px">
           <span value="bird">Bird</span>
           <span value="cow" selected>Cow</span>
           <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -139,14 +106,8 @@ Disabled Dropdown:
 
 Inline Dropdowns:
 
-    initialState = {value: 'bird'}
-    _handleChange = (value, event) => {
-      setState({ value: value });
-    };
     <div>
-      <Dropdown customLabel="Dropdown One" name="dropdown1" inline
-        value={state.value} 
-        onChange={_handleChange}>
+      <Dropdown customLabel="Dropdown One" name="dropdown1" inline>
          <span value="bird">Bird</span>
          <span value="cow">Cow</span>
          <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -163,17 +124,8 @@ Inline Dropdowns:
     </div>
 
 Dropdown with Required Property:
-    
-    initialState = {isValid: true}
-    _validationCallback = (isValid) => {
-      setState({ isValid });
-    }
-    
-    _handleChange = (value, event) => {
-      setState({ value: value });
-    };
-    
-    <Dropdown defaultText="Select One ..." customLabel="Required Dropdown" onChange={_handleChange} value={state.value} required validationCallback={_validationCallback} isValid={state.isValid} >
+
+    <Dropdown defaultText="Select One ..." customLabel="Required Dropdown" required>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -183,24 +135,15 @@ Dropdown with Required Property:
 
 Dropdown with custom validation and error message:
 
-    initialState = {isValid: true}
-    _validationCallback = (isValid) => {
-      setState({ isValid }); 
-    };
-    
     _errorCallback = (event, value) => {
     	return {isValid: false , message: "Custom error message!"}
     }
     _handleChange = (value, event) => {
       setState({ value: value });
     };
-    <Dropdown 
-      customLabel="Error Message Dropdown" 
-      onChange={_handleChange} 
-      value={state.value}
-      errorCallback={_errorCallback} 
-      validationCallback={_validationCallback} 
-      isValid={state.isValid}>
+    <Dropdown
+      customLabel="Error Message Dropdown"
+      errorCallback={_errorCallback}>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -210,11 +153,7 @@ Dropdown with custom validation and error message:
 
 Dropdown with Custom Function Before Change:
 
-    initialState = {value: ""}
-    _handleChange = (value, event) => {
-      setState({ value: value });
-    };
-    <Dropdown customLabel="onBeforeChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } value={state.value} onChange={_handleChange}  >
+    <Dropdown customLabel="onBeforeChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } >
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -224,13 +163,7 @@ Dropdown with Custom Function Before Change:
 
 Dropdown with onClick function:
 
-    initialState = {value: 'bird'}
-    _handleChange = (value, event) => {
-      setState({ value: value });
-    };
-    <Dropdown onClick={ function(value, event){ console.log("Click: ", event, value) }}
-      value={state.value} 
-      onChange={_handleChange}>
+    <Dropdown onClick={ function(value, event){ console.log("Click: ", event, value) }}>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -240,13 +173,10 @@ Dropdown with onClick function:
 
 Dropdown with onChange function:
 
-    initialState = {value: 'bird'}
     _handleChange = (value, event) => {
       console.log("onChange: ", value, event)
-      setState({ value: value });
     };
     <Dropdown customLabel="onChange Dropdown"
-      value={state.value} 
       onChange={_handleChange}>
         <span value="bird">Bird</span>
         <span value="cow">Cow</span>

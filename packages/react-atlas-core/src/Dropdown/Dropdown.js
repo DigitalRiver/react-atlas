@@ -15,6 +15,8 @@ class Dropdown extends React.PureComponent {
     super(props);
 
     this.state = {
+      "value": props.value,
+      "isValid": props.isValid,
       "active": false,
       "index": 0,
       "errorMessage": messages.requiredMessage,
@@ -30,9 +32,12 @@ class Dropdown extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value) {
+    if (nextProps.isValid !== this.state.isValid) {
+      this.setState({ isValid: nextProps.isValid });
+    }
+    if (nextProps.value !== this.state.value) {
+      this.setState({"value": nextProps.value});
       this.updateSelectedIndex(nextProps.value);
-      this._validationHandler(nextProps.value);
     }
   }
 
@@ -73,9 +78,11 @@ class Dropdown extends React.PureComponent {
       {
         "index": i,
         "active": !this.state.active,
-        "zIndex": false
+        "zIndex": false,
+        "value": inputValue
       },
       function() {
+        this._validationHandler(this.props.errorCallback);
         if (this.props.onChange) {
           this.props.onChange(inputValue, event, this.props.name);
         }
@@ -104,13 +111,13 @@ class Dropdown extends React.PureComponent {
     } else if (event.type === "focus") {
       this.setState({ "focus": true });
     } else if (event.type === "blur") {
-      this.updateSelectedIndex(this.props.value);
+      this.updateSelectedIndex(this.state.value);
       this.setState({
         "focus": false,
         "active": false,
         "zIndex": false
       });
-      this._validationHandler(this.props.value);
+      this._validationHandler(this.props.errorCallback);
     }
 
     if (this.state.clicked === true) {
@@ -118,44 +125,51 @@ class Dropdown extends React.PureComponent {
     }
 
     if (typeof this.props.onClick !== "undefined") {
-      this.props.onClick(this.props.value, event, this.props.isValid);
+      this.props.onClick(this.state.value, event, this.state.isValid);
     }
   };
-
-  _validationHandler = value => {
+  
+  _validationHandler = callback => {
     /* Checks that required has been set to true and determines if errorCallback message was passed in a custom error message.
       Also sets state of valid depending on user action
       */
-    let isValid = true;
     let validation;
-    if (this.props.errorCallback) {
-      validation = this.props.errorCallback(event, value);
-
+    if (callback) {
+      validation = callback(event, this.state.value);
+      
       if (typeof validation === "undefined") {
         throw "undefined returned from the error callback";
       }
-
+      
       if (typeof validation === "object") {
-        isValid = validation.isValid;
         this.setState({
-          "errorMessage": validation.message
+          isValid: validation.isValid,
+          errorMessage: validation.message
         });
-        if (this.props.validationCallback) {
-          this.props.validationCallback(isValid, this.state.errorMessage);
-        }
+        return;
+      }
+      
+      if (typeof validation === "boolean") {
+        this.setState({
+          isValid: validation,
+          errorMessage: this.state.errorMessage
+        });
         return;
       }
     }
+    
+    let isValid = true;
     if (this.props.required === true) {
       if (_utils.isEmpty(value)) {
         isValid = false;
       }
     }
-    if (this.props.validationCallback) {
-      this.props.validationCallback(isValid, this.state.errorMessage);
-    }
+    this.setState({
+      isValid: isValid,
+      errorMessage: this.state.errorMessage
+    });
   };
-
+  
   _keyDown = event => {
     const indexValid = typeof this.state.index === "number";
     let newIndex;
@@ -165,14 +179,17 @@ class Dropdown extends React.PureComponent {
         newIndex = indexValid ? this.state.index + 1 : 0;
         let count = React.Children.count(this.props.children);
         if (newIndex < count) {
-          if (this.state.active) {
+          this.setState({
+            "index": newIndex
+          });
+          if (!this.state.active) {
+            let selectedValue = this.props.children[newIndex].props.value;
             this.setState({
-              "index": newIndex
+              "value": selectedValue
             });
-          } else {
             if (this.props.onChange) {
               this.props.onChange(
-                this.props.children[newIndex].props.value,
+                selectedValue,
                 event,
                 this.props.name
               );
@@ -183,14 +200,17 @@ class Dropdown extends React.PureComponent {
         event.preventDefault();
         newIndex = this.state.index - 1;
         if (newIndex >= 0) {
-          if (this.state.active) {
+          this.setState({
+            "index": newIndex
+          });
+          if (!this.state.active) {
+            let selectedValue = this.props.children[newIndex].props.value;
             this.setState({
-              "index": newIndex
+              "value": selectedValue
             });
-          } else {
             if (this.props.onChange) {
               this.props.onChange(
-                this.props.children[newIndex].props.value,
+                selectedValue,
                 event,
                 this.props.name
               );
@@ -219,11 +239,9 @@ class Dropdown extends React.PureComponent {
       disabled,
       name,
       defaultText,
-      value,
       inline,
       leftLabel,
       style,
-      isValid,
       children
     } = this.props;
     if (typeof children === "undefined") {
@@ -231,7 +249,7 @@ class Dropdown extends React.PureComponent {
     }
 
     const active = this.state.active;
-    const error = !isValid && !disabled;
+    const error = !this.state.isValid && !disabled;
     let zIndex = this.state.zIndex;
     let output = "";
     const classes = cx({
@@ -252,9 +270,9 @@ class Dropdown extends React.PureComponent {
       "focus": this.state.focus,
       "leftLabelContent": leftLabel
     });
-    if (!_utils.isEmpty(value)) {
+    if (!_utils.isEmpty(this.state.value)) {
       let selectedChild = React.Children.toArray(children).find(child => {
-        return child.props.value === value;
+        return child.props.value === this.state.value;
       });
       output = selectedChild.props.children;
     } else if (!_utils.isEmpty(defaultText)) {
@@ -360,7 +378,7 @@ class Dropdown extends React.PureComponent {
         <div styleName={contentClasses} style={{ "minWidth": "100px","width": dropdownWidth }}>
           <div styleName={"fullWidth"}>{button}</div>
           {list}
-          <input type="hidden" value={value} />
+          <input type="hidden" value={this.state.value} />
         </div>
         {errorMessage}
       </div>
@@ -380,12 +398,12 @@ Dropdown.propTypes = {
    * be open or not.
    */
   "active": PropTypes.bool,
-
+  
   /**
    * Boolean value that tells the dropdown whether the value is valid and controls error message is returns false.
    */
   "isValid": PropTypes.bool,
-
+  
   /**
    * Boolean value that determines if the dropdown component will display inline
    */
@@ -419,11 +437,6 @@ Dropdown.propTypes = {
    * will be used for the error message.
    */
   "errorCallback": PropTypes.func,
-
-  /**
-   * function callback after selected item validation
-   */
-  "validationCallback": PropTypes.func,
 
   /* . */
   "clickEvent": PropTypes.func,
