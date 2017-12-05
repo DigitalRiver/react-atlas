@@ -14,6 +14,9 @@ class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    if (typeof props.children === "undefined") {
+      throw "You must pass at least one child component to Dropdown";
+    }
     this.state = {
       "value": props.value,
       "isValid": props.isValid,
@@ -33,26 +36,29 @@ class Dropdown extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.isValid !== this.state.isValid) {
-      this.setState({ isValid: nextProps.isValid });
+      this.setState({ "isValid": nextProps.isValid });
     }
     if (nextProps.value !== this.state.value) {
-      this.setState({"value": nextProps.value});
+      this.setState({ "value": nextProps.value });
       this.updateSelectedIndex(nextProps.value);
     }
   }
 
   updateSelectedIndex = value => {
     let initialIndex = 0;
+    let initialValue = this.props.children[0].props.value;
     if (value) {
       React.Children.forEach(this.props.children, (child, index) => {
         if (child.props.value === value) {
           initialIndex = index;
+          initialValue = child.props.value;
         }
       });
     } else if (this.props.defaultText) {
       initialIndex = null;
+      initialValue = "";
     }
-    this.setState({ "index": initialIndex });
+    this.setState({ "index": initialIndex, "value": initialValue });
   };
 
   /**
@@ -82,7 +88,7 @@ class Dropdown extends React.PureComponent {
         "value": inputValue
       },
       function() {
-        this._validationHandler(this.props.errorCallback);
+        this._validationHandler(event, this.props.errorCallback);
         if (this.props.onChange) {
           this.props.onChange(inputValue, event, this.props.name);
         }
@@ -117,7 +123,7 @@ class Dropdown extends React.PureComponent {
         "active": false,
         "zIndex": false
       });
-      this._validationHandler(this.props.errorCallback);
+      this._validationHandler(event, this.props.errorCallback);
     }
 
     if (this.state.clicked === true) {
@@ -128,48 +134,48 @@ class Dropdown extends React.PureComponent {
       this.props.onClick(this.state.value, event, this.state.isValid);
     }
   };
-  
-  _validationHandler = callback => {
+
+  _validationHandler = (event, callback) => {
     /* Checks that required has been set to true and determines if errorCallback message was passed in a custom error message.
       Also sets state of valid depending on user action
       */
     let validation;
     if (callback) {
       validation = callback(event, this.state.value);
-      
+
       if (typeof validation === "undefined") {
         throw "undefined returned from the error callback";
       }
-      
+
       if (typeof validation === "object") {
         this.setState({
-          isValid: validation.isValid,
-          errorMessage: validation.message
+          "isValid": validation.isValid,
+          "errorMessage": validation.message
         });
         return;
       }
-      
+
       if (typeof validation === "boolean") {
         this.setState({
-          isValid: validation,
-          errorMessage: this.state.errorMessage
+          "isValid": validation,
+          "errorMessage": this.state.errorMessage
         });
         return;
       }
     }
-    
+
     let isValid = true;
     if (this.props.required === true) {
-      if (_utils.isEmpty(value)) {
+      if (_utils.isEmpty(this.state.value)) {
         isValid = false;
       }
     }
     this.setState({
-      isValid: isValid,
-      errorMessage: this.state.errorMessage
+      "isValid": isValid,
+      "errorMessage": this.state.errorMessage
     });
   };
-  
+
   _keyDown = event => {
     const indexValid = typeof this.state.index === "number";
     let newIndex;
@@ -188,11 +194,7 @@ class Dropdown extends React.PureComponent {
               "value": selectedValue
             });
             if (this.props.onChange) {
-              this.props.onChange(
-                selectedValue,
-                event,
-                this.props.name
-              );
+              this.props.onChange(selectedValue, event, this.props.name);
             }
           }
         }
@@ -209,11 +211,7 @@ class Dropdown extends React.PureComponent {
               "value": selectedValue
             });
             if (this.props.onChange) {
-              this.props.onChange(
-                selectedValue,
-                event,
-                this.props.name
-              );
+              this.props.onChange(selectedValue, event, this.props.name);
             }
           }
         }
@@ -244,9 +242,6 @@ class Dropdown extends React.PureComponent {
       style,
       children
     } = this.props;
-    if (typeof children === "undefined") {
-      throw "You must pass at least one child component to Dropdown";
-    }
 
     const active = this.state.active;
     const error = !this.state.isValid && !disabled;
@@ -319,7 +314,7 @@ class Dropdown extends React.PureComponent {
     const labelClasses = cx({
       "labelSpacing": true,
       "leftLabel": leftLabel
-    })
+    });
 
     let list = null;
     if (active === true) {
@@ -375,7 +370,10 @@ class Dropdown extends React.PureComponent {
         }}
       >
         {label}
-        <div styleName={contentClasses} style={{ "minWidth": "100px","width": dropdownWidth }}>
+        <div
+          styleName={contentClasses}
+          style={{ "minWidth": "100px", "width": dropdownWidth }}
+        >
           <div styleName={"fullWidth"}>{button}</div>
           {list}
           <input type="hidden" value={this.state.value} />
@@ -398,12 +396,12 @@ Dropdown.propTypes = {
    * be open or not.
    */
   "active": PropTypes.bool,
-  
+
   /**
    * Boolean value that tells the dropdown whether the value is valid and controls error message is returns false.
    */
   "isValid": PropTypes.bool,
-  
+
   /**
    * Boolean value that determines if the dropdown component will display inline
    */
@@ -491,7 +489,8 @@ Dropdown.defaultProps = {
   "className": "",
   "required": false,
   "disabled": false,
-  "isValid": true
+  "isValid": true,
+  "value": ""
 };
 
 export default Dropdown;

@@ -137,10 +137,8 @@ Dropdown with custom validation and error message:
 
     _errorCallback = (event, value) => {
     	return {isValid: false , message: "Custom error message!"}
-    }
-    _handleChange = (value, event) => {
-      setState({ value: value });
     };
+
     <Dropdown
       customLabel="Error Message Dropdown"
       errorCallback={_errorCallback}>
