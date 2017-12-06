@@ -5,6 +5,38 @@ import { PortalCore } from "./../Portal";
 import { OverlayCore } from "./../Overlay";
 
 class Modal extends React.PureComponent {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          'left': '0',
+          'position':'absolute',
+          'zIndex': '1040'
+        };
+        this.updateOverlayStyle = this.updateOverlayStyle.bind(this);
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize",this.updateOverlayStyle);
+    }
+
+    componentDidUpdate() {
+        this.updateOverlayStyle();
+
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateOverlayStyle);
+    }
+
+    updateOverlayStyle() {
+        if (this.props.active && (this.wrapDiv.scrollHeight > this.wrapDiv.clientHeight)) {
+            this.setState({
+                'left': '-16px'
+            });
+        }
+    }
+
   render() {
     const {
       active,
@@ -16,11 +48,6 @@ class Modal extends React.PureComponent {
       lockScroll,
       style
     } = this.props;
-    if(active){
-        document.body.classList.toggle('ra_Modal__disabledBodyScroll');
-    }else{
-        document.body.classList.remove('ra_Modal__disabledBodyScroll');
-    }
     const classes = cx("ra_Modal__modal", { "ra_Modal__active": active });
     return (
       active && 
@@ -31,9 +58,10 @@ class Modal extends React.PureComponent {
               onClick={onOverlayClick}
               onEscKeyDown={onEscKeyDown}
               lockScroll={lockScroll}
+              style={this.state}
             />
           }
-          <div className={cx("ra_Modal__dialogWrapper")} style={style}>
+          <div ref={wrapDiv => {this.wrapDiv= wrapDiv}} className={cx("ra_Modal__dialogWrapper")}    style={style}>
             <div className={cx("ra_Modal__dialog")}>
               <div style={style} className={cx(className, classes)}>
                 {title &&
@@ -96,7 +124,8 @@ Modal.propTypes = {
 Modal.defaultProps = {
   "active": false,
   "className": "",
-  "overlay": false
+  "overlay": false,
+  "lockScroll": true
 };
 
 export default Modal;
