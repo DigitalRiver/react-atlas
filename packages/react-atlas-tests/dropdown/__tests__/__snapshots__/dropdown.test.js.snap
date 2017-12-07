@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test dropdown component Test render correctly 1`] = `
+exports[`Test dropdown component - Basic Test render correctly 1`] = `
 <div
   className=""
   name={undefined}
@@ -40,7 +40,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
     </div>
     <input
       type="hidden"
-      value={null}
+      value="may"
     />
   </div>
 </div>
