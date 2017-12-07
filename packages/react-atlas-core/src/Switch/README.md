@@ -41,7 +41,7 @@ Switch component allows to define a particular-styled checkbox.
 ###### Execute method when onChange event occurs:
 
     function customSwitchChange() {
-        console.info("onChange event!");
+    	console.info("onChange event!");
     }
 
     <Switch onChange={this.customSwitchChange}/>
@@ -52,13 +52,21 @@ Switch component allows to define a particular-styled checkbox.
         if(!value) {
           let accept = confirm("Do you want to check this?");
           return accept;
-        }
+    }
 
         return true;
-    }
+        }
 
     <Switch onBeforeChange={this.customSwitchBeforeChange}/>
 
 This method should return true or false, allowing or not the onChange handler to be fired. If undefined, will prevent it.
 
+###### Update switch checked prop
 
+    _handleChangeProps = () => {
+      setState({ checked: true });
+    };
+    <div>
+        <Button primary onClick={_handleChangeProps}>Change Props to checked</Button>
+        <Switch checked={state.checked} />
+    </div>
