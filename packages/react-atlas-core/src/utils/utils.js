@@ -114,5 +114,19 @@ export default {
       return comp.type.displayName || comp.type.name || comp.type || null;
     }
     return null;
+  },
+  isEmpty(value) {
+    if (value === null || typeof value === 'undefined'){
+      return true;
+    }
+    if (typeof value === 'string' || typeof value.splice === 'function') {
+      return !value.length;
+    }
+    for (let key in value) {
+      if (Object.prototype.hasOwnProperty.call(value, key)) {
+        return false;
+      }
+    }
+    return true;
   }
 };
