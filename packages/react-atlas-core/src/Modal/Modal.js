@@ -9,9 +9,7 @@ class Modal extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-          'left': '0',
-          'position':'absolute',
-          'zIndex': '1040'
+            'isHaveScrollbar': false
         };
         this.updateOverlayStyle = this.updateOverlayStyle.bind(this);
     }
@@ -32,7 +30,7 @@ class Modal extends React.PureComponent {
     updateOverlayStyle() {
         if (this.props.active && (this.wrapDiv.scrollHeight > this.wrapDiv.clientHeight)) {
             this.setState({
-                'left': '-16px'
+                'isHaveScrollbar': true
             });
         }
     }
@@ -49,6 +47,10 @@ class Modal extends React.PureComponent {
       style
     } = this.props;
     const classes = cx("ra_Modal__modal", { "ra_Modal__active": active });
+    const overlayClasses = cx({
+        "overlayClass" : true,
+        "overlayLeftStyle": this.state.isHaveScrollbar
+    });
     return (
       active && 
         <PortalCore>
@@ -58,7 +60,7 @@ class Modal extends React.PureComponent {
               onClick={onOverlayClick}
               onEscKeyDown={onEscKeyDown}
               lockScroll={lockScroll}
-              style={this.state}
+              styleName={overlayClasses}
             />
           }
           <div ref={wrapDiv => {this.wrapDiv= wrapDiv}} className={cx("ra_Modal__dialogWrapper")}    style={style}>

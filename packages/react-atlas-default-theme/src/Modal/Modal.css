@@ -41,3 +41,12 @@
     width:600px;
     z-index:1050;
 }
+
+.overlayClass {
+    z-index: 1040;
+   
+}
+
+.overlayLeftStyle{
+    left:-16px !important;
+}
