@@ -63,15 +63,15 @@ class Modal extends React.PureComponent {
               styleName={overlayClasses}
             />
           }
-          <div ref={wrapDiv => {this.wrapDiv= wrapDiv}} className={cx("ra_Modal__dialogWrapper")}    style={style}>
-            <div className={cx("ra_Modal__dialog")}>
+          <div ref={wrapDiv => {this.wrapDiv = wrapDiv}} styleName={cx("dialogWrapper")} style={style}>
+            <div styleName={cx("dialog")}>
               <div style={style} className={cx(className, classes)}>
                 {title &&
-                  <h3 className={cx("ra_Modal__title", "ra_styles__bg-primary", "ra_styles__white")}>
+                  <h3 styleName={cx("title")}>
                     {title}
                   </h3>
                 }
-                <div className="ra_Modal__content">{this.props.children}</div>
+                <div styleName="content">{this.props.children}</div>
               </div>
             </div>
           </div>
