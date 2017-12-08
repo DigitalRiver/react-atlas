@@ -71,7 +71,7 @@ class Modal extends React.PureComponent {
                     {title}
                   </h3>
                 }
-                <div styleName="content">{this.props.children}</div>
+                <div styleName={cx("content")}>{this.props.children}</div>
               </div>
             </div>
           </div>
