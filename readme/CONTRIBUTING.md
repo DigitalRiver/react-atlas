@@ -20,7 +20,7 @@ npm run test
 11. Commit your changes
 12. Push your changes to your personal fork
 13. Create a PR back into DigitalRiver/react-atlas
-⋅⋅* If this is your first PR into React-Atlas you will be asked to sign a Contributor's License Agreement online
+* If this is your first PR into React-Atlas you will be asked to sign a Contributor's License Agreement online
 14. wait patiently :-)
 
 ## Questions?
