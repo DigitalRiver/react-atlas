@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { InputCore } from "../Input";
 import { TooltipCore } from "./../Tooltip";
+import { ButtonCore } from "./../Button";
 import cx from "classnames";
 
 class TextField extends React.PureComponent {
@@ -86,7 +87,12 @@ class TextField extends React.PureComponent {
       style,
       tooltip,
       tooltipRight,
-      uppercase
+      link,
+      linkRight,
+      linkText,
+      linkOnClick,
+      uppercase,
+      href
     } = this.props;
 
     let tooltipClasses = cx({
@@ -102,19 +108,51 @@ class TextField extends React.PureComponent {
       "ra_Tooltip__block": true
     });
 
+    let buttonClasses = cx({
+      "buttonAlignment": true,
+      "buttonAlignmentRight": linkRight
+    });
+
+    let buttonInternalClasses = cx({
+      "ra_Button__button": true,
+      "ra_Button__base": true,
+      "ra_styles__button-marg-1": true,
+      "ra_styles__default-text": true,
+      "ra_styles__cursor-pointer": true,
+      "ra_styles__primary-button-border-width": true,
+      "ra_styles__default-font": true,
+      "ra_styles__rounded": true,
+      "ra_Button__link": true,
+      "ra_styles__border-none": true,
+      "ra_styles__sky-blue": true,
+      "ra_styles__border-transparent": true,
+      "ra_styles__bg-transparent": true
+    });
+
     const reqText = typeof requiredText !== "undefined" ? requiredText : "*";
 
-    let textFieldHeader = header && 
+    let textFieldHeader = header &&
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> {reqText}</span>}
-        {tooltip && 
+        {tooltip &&
           <span styleName={tooltipClasses}>
             <TooltipCore
               className={tooltipInternalClasses}
               text={tooltip}
               position="top"
             />
+          </span>
+        }
+        {link &&
+          <span styleName={buttonClasses}>
+            <ButtonCore
+              className={buttonInternalClasses}
+              href={href}
+              onClick={linkOnClick}
+            >
+              {linkText}
+            </ButtonCore>
           </span>
         }
       </div>
