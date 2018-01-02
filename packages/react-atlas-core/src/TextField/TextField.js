@@ -318,6 +318,17 @@ TextField.propTypes = {
   "tooltip": PropTypes.string,
 
   "tooltipRight": PropTypes.bool,
+
+  /** Set if you want a link button next to the textfield header. **/
+  "link": PropTypes.bool,
+  /** Set if you want the link button to the right of the textfield header. **/
+  "linkRight": PropTypes.bool
+    /** The text of the link button. **/
+  "linkText": PropTypes.string,
+    /** Callback to call when link buttonis clicked. **/
+  "linkOnClick": PropTypes.func,
+    /** HREF to set on the link button. **/
+  "href": PropTypes.string,
   /**
    * Converts all entered text to uppercase.
    */
