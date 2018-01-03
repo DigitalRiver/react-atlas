@@ -113,21 +113,21 @@ class TextField extends React.PureComponent {
       "buttonAlignmentRight": linkRight
     });
 
-    let buttonInternalClasses = cx({
-      "ra_Button__button": true,
-      "ra_Button__base": true,
-      "ra_styles__button-marg-1": true,
-      "ra_styles__default-text": true,
-      "ra_styles__cursor-pointer": true,
-      "ra_styles__primary-button-border-width": true,
-      "ra_styles__default-font": true,
-      "ra_styles__rounded": true,
-      "ra_Button__link": true,
-      "ra_styles__border-none": true,
-      "ra_styles__sky-blue": true,
-      "ra_styles__border-transparent": true,
-      "ra_styles__bg-transparent": true
-    });
+    let buttonInternalClasses = cx(
+      "ra_Button__button",
+      "ra_Button__base",
+      "ra_styles__button-marg-1",
+      "ra_styles__default-text",
+      "ra_styles__cursor-pointer",
+      "ra_styles__primary-button-border-width",
+      "ra_styles__default-font",
+      "ra_styles__rounded",
+      "ra_Button__link",
+      "ra_styles__border-none",
+      "ra_styles__sky-blue",
+      "ra_styles__border-transparent",
+      "ra_styles__bg-transparent"
+    );
 
     const reqText = typeof requiredText !== "undefined" ? requiredText : "*";
 
