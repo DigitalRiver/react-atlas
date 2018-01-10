@@ -14,7 +14,10 @@ class Input extends React.PureComponent {
     super(props);
 
     // Initial state
-    this.state = {"value": this.props.value || "", "errorText": "This field is required."};
+    this.state = {
+      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value, 
+      "errorText": "This field is required."
+    };
 
     // Configure input mask if required
     if (this.props.mask) {
