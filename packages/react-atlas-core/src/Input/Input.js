@@ -183,7 +183,7 @@ class Input extends React.PureComponent {
     /* If the field is required, and it has no value, change state and display error message */
     if (!inputValue.length && this.props.required) {
       this.setState({
-        "errorText": this.props.requiredText || "This field is required.",
+        "errorText": this.props.errorText || "This field is required.",
         "isValid": false
       });
     } else if (this.props.validator) {
