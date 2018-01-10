@@ -23,7 +23,7 @@ class TextArea extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "value": props.value || "",
+      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value,
       "remaining": props.maxLength,
       "active": false,
       "isValid": isValid
