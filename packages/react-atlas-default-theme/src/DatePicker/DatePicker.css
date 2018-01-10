@@ -28,6 +28,7 @@ SOFTWARE.
   border-style: solid;
   border-width: .05rem;
   border-color: #bebebe;
+  padding-left: 5px;
 }
 
 :global .react-datepicker-popper[data-placement^="bottom"] :global .react-datepicker__triangle, :global .react-datepicker-popper[data-placement^="top"] :global .react-datepicker__triangle, :global .react-datepicker__year-read-view--down-arrow,

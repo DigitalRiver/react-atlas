@@ -8,26 +8,19 @@ class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    let isValid;
-    if (typeof props.isValid === "undefined") {
-      isValid = true;
-    } else if (props.isValid === false) {
-      isValid = props.isValid;
-    } else {
-      isValid = props.isValid;
-    }
-
     if (this.props.tooltip && !this.props.header) {
       throw "Tooltip requires Header";
     }
 
     // Initial state
     this.state = {
-      "value": props.value || "",
-      "remaining": props.maxLength,
       "active": false,
-      "isValid": isValid
+      "value": this.props.value || ""
     };
+  }
+
+  componentDidMount() {
+    this.setState({ "isValid": this.props.isValid });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,6 +29,11 @@ class TextField extends React.PureComponent {
       nextProps.isValid !== this.state.isValid
     ) {
       this.setState({ "isValid": nextProps.isValid });
+    }
+    if(nextProps.value && nextProps.value !== this.props.value) {
+      this.setState({
+        "value": nextProps.value
+      });
     }
   }
 
@@ -47,7 +45,6 @@ class TextField extends React.PureComponent {
       this.setState({ "remaining": this.props.maxLength - value.length });
     }
 
-    // Set value and valid state depending on InputCore state
     this.setState({
       "value": value,
       "isValid": isValid
@@ -78,6 +75,7 @@ class TextField extends React.PureComponent {
       medium,
       large,
       required,
+      requiredText,
       validator,
       errorText,
       mask,
@@ -87,7 +85,8 @@ class TextField extends React.PureComponent {
       inline,
       style,
       tooltip,
-      tooltipRight
+      tooltipRight,
+      uppercase
     } = this.props;
 
     let tooltipClasses = cx({
@@ -103,11 +102,13 @@ class TextField extends React.PureComponent {
       "ra_Tooltip__block": true
     });
 
-    let textFieldHeader = header &&
+    const reqText = typeof requiredText !== "undefined" ? requiredText : "*";
+
+    let textFieldHeader = header && 
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
-        {required && <span styleName={"error_text"}> *</span>}
-        {tooltip &&
+        {required && <span styleName={"error_text"}> {reqText}</span>}
+        {tooltip && 
           <span styleName={tooltipClasses}>
             <TooltipCore
               className={tooltipInternalClasses}
@@ -156,11 +157,13 @@ class TextField extends React.PureComponent {
           maxLength={maxLength}
           styleName={textFieldClasses}
           onChange={(value, event, isValid) =>
-            this._handleChange(value, event, isValid)}
+            this._handleChange(value, event, isValid)
+          }
           required={required}
           validator={validator}
           errorText={errorText}
           mask={mask}
+          uppercase={uppercase}
           disabled={disabled}
           isValid={this.state.isValid}
           hidden={hidden}
@@ -182,9 +185,9 @@ TextField.propTypes = {
     PropTypes.array
   ]),
   /**
-	 * Define a name for the text input.
-	 * @examples '<TextField name="test"/>'
-	 */
+   * Define a name for the text input.
+   * @examples '<TextField name="test"/>'
+   */
   "name": PropTypes.string,
   /**
    * Define a type for the text input. Default is "text".
@@ -197,9 +200,9 @@ TextField.propTypes = {
    */
   "value": PropTypes.string,
   /**
-	 * Defines a small sized text input.
-	 * @examples '<TextField small/>'
-	 */
+   * Defines a small sized text input.
+   * @examples '<TextField small/>'
+   */
   "small": PropTypes.bool,
   /**
    * Define a title or header to be displayed above the textfield.
@@ -207,14 +210,14 @@ TextField.propTypes = {
    */
   "header": PropTypes.string,
   /**
-	 * Defines a medium sized text input.
-	 * @examples '<TextField medium/>'
-	 */
+   * Defines a medium sized text input.
+   * @examples '<TextField medium/>'
+   */
   "medium": PropTypes.bool,
   /**
-	 * Defines a large sized text input.
-	 * @examples '<TextField large/>'
-	 */
+   * Defines a large sized text input.
+   * @examples '<TextField large/>'
+   */
   "large": PropTypes.bool,
   /**
    * Sets a maximum character length that will be validated onChange.
@@ -242,9 +245,9 @@ TextField.propTypes = {
    */
   "placeholder": PropTypes.string,
   /**
-	 * Sets a handler function to be executed when onChange event occurs (at input element).
-	 * @examples <TextField onChange={this.customOnChangeFunc}/>
-	 */
+   * Sets a handler function to be executed when onChange event occurs (at input element).
+   * @examples <TextField onChange={this.customOnChangeFunc}/>
+   */
   "onChange": PropTypes.func,
   /**
    * Sets the field as required. Will be validated onChange.
@@ -252,14 +255,19 @@ TextField.propTypes = {
    */
   "required": PropTypes.bool,
   /**
-	 * Determines if the text input is disabled.
-	 * @examples '<TextField disabled/>'
-	 */
+   * Sets the text to show next to the header for a required TextField. If omitted will default to *.
+   * @examples '<TextField required requiredText="required"/>'
+   */
+  "requiredText": PropTypes.string,
+  /**
+   * Determines if the text input is disabled.
+   * @examples '<TextField disabled/>'
+   */
   "disabled": PropTypes.bool,
   /**
-	 * Determines if the text input is hidden.
-	 * @examples '<TextField hidden/>'
-	 */
+   * Determines if the text input is hidden.
+   * @examples '<TextField hidden/>'
+   */
   "hidden": PropTypes.bool,
 
   /** Pass inline styling here. */
@@ -271,11 +279,16 @@ TextField.propTypes = {
   /** passes tooltip as prop if added to textField */
   "tooltip": PropTypes.string,
 
-  "tooltipRight": PropTypes.bool
+  "tooltipRight": PropTypes.bool,
+  /**
+   * Converts all entered text to uppercase.
+   */
+  "uppercase": PropTypes.bool
 };
 
 TextField.defaultProps = {
-  "type": "text"
+  "type": "text",
+  "isValid": true
 };
 
 export default TextField;

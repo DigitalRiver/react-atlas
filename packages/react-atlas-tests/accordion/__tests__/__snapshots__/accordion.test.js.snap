@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test correct render Test correct render 1`] = `
+<div
+  className=""
+  style={undefined}
+>
+  <div
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+    styleName="accordion"
+  >
+    <div>
+      <div
+        onClick={[Function]}
+        styleName="accordion_header inactive leftAlign"
+      >
+        First
+      </div>
+      <div
+        styleName="accordion_panel inactive"
+      >
+        <div
+          styleName="panel"
+        >
+          <div
+            className=""
+            style={undefined}
+          >
+            Text for first accordion item
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        onClick={[Function]}
+        styleName="accordion_header inactive leftAlign"
+      >
+        Second
+      </div>
+      <div
+        styleName="accordion_panel inactive"
+      >
+        <div
+          styleName="panel"
+        >
+          <div
+            className=""
+            style={undefined}
+          >
+            Text for second accordion item
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

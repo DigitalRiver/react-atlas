@@ -19,7 +19,7 @@ describe("Test form component", () => {
         /** Children components, Usually a Textfield, Dropdown, Input, etc */
         className={String} // PropTypes.string, PropTypes.object, PropTypes.array
         /** A callback that is fired when the form has passed validation
-							   * and is ready to submit. Returns the form data and the event object.  */
+         * and is ready to submit. Returns the form data and the event object.  */
         onSubmit={() => {}}
         /** A Callback that is called when there is a form error. */
         onError={() => {}}
@@ -27,10 +27,10 @@ describe("Test form component", () => {
         action="http://happy-dude.evergreen-terrace.?n=742"
         buttonText={" Submit "}
         /** The HTTP method to use when action is set and
-							   * the form is submitting. */
+         * the form is submitting. */
         method={"POST"}
         /** An Object, array, or string of CSS classes to
-								 * apply to form children components.*/
+         * apply to form children components.*/
         childClasses={["classA", "classB"]}
         /* Pass inline styles here. */
         //style = {"lalala"}

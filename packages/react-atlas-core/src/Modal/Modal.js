@@ -5,6 +5,36 @@ import { PortalCore } from "./../Portal";
 import { OverlayCore } from "./../Overlay";
 
 class Modal extends React.PureComponent {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            'isHaveScrollbar': false
+        };
+        this.updateOverlayStyle = this.updateOverlayStyle.bind(this);
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize",this.updateOverlayStyle);
+    }
+
+    componentDidUpdate() {
+        this.updateOverlayStyle();
+
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateOverlayStyle);
+    }
+
+    updateOverlayStyle() {
+        if (this.props.active && (this.wrapDiv.scrollHeight > this.wrapDiv.clientHeight)) {
+            this.setState({
+                'isHaveScrollbar': true
+            });
+        }
+    }
+
   render() {
     const {
       active,
@@ -17,27 +47,36 @@ class Modal extends React.PureComponent {
       style
     } = this.props;
     const classes = cx("ra_Modal__modal", { "ra_Modal__active": active });
+    const overlayClasses = cx({
+        "overlayClass" : true,
+        "overlayLeftStyle": this.state.isHaveScrollbar
+    });
     return (
-      active &&
+      active && 
         <PortalCore>
-          {overlay &&
+          {overlay && 
             <OverlayCore
               active={active}
               onClick={onOverlayClick}
               onEscKeyDown={onEscKeyDown}
               lockScroll={lockScroll}
+              styleName={overlayClasses}
             />
           }
-          <div style={style} className={cx(className, classes)}>
-            {title &&
-              <h3 className={cx("ra_Modal__title", "ra_styles__bg-primary")}>
-                {title}
-              </h3>
-            }
-            <div className="ra_Modal__content">{this.props.children}</div>
+          <div ref={wrapDiv => {this.wrapDiv = wrapDiv}} styleName={cx("dialogWrapper")} style={style}>
+            <div styleName={cx("dialog")}>
+              <div style={style} className={cx(className, classes)}>
+                {title &&
+                  <h3 styleName={cx("title")}>
+                    {title}
+                  </h3>
+                }
+                <div styleName={cx("content")}>{this.props.children}</div>
+              </div>
+            </div>
           </div>
         </PortalCore>
-
+      
     );
   }
 }
@@ -87,7 +126,8 @@ Modal.propTypes = {
 Modal.defaultProps = {
   "active": false,
   "className": "",
-  "overlay": false
+  "overlay": false,
+  "lockScroll": true
 };
 
 export default Modal;

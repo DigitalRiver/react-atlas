@@ -27,9 +27,9 @@ Disabled Button:
       <Button disabled error>Error</Button>
 	</div>
 
-Link Button:
+Link with href:
 
-    <Button link>Link</Button>
+    <Button link href="http://www.github.com">Link</Button>
 
 Outlined Buttons:
     <div>

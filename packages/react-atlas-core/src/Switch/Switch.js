@@ -77,6 +77,33 @@ class Switch extends React.PureComponent {
       if(nextProps.disabled !== this.props.disabled) {
         this.setState({ disabled: !this.state.disabled })
       }
+  }
+
+  _onBeforeChange = callback => {
+    let triggerChange = true;
+    if (this.props.onBeforeChange) {
+      triggerChange = this.props.onBeforeChange(this.state.checked);
+    }
+    /**
+     * allow the user to prevent the execution of onChange event by passing a
+     * function that returns a falsy value. If onClick handler is not specified,
+     * onChange function will be called by default.
+     **/
+    if (triggerChange) {
+      callback();
+    }
+  };
+
+  _handleBeforeChange = () => {
+    /**
+     * We need to execute onClick function, and when it's done, execute onChange function.
+     * If onClick is not passed, it will only execute onChange.
+     * Callback approach was taken instead of promises/generators as team decision to
+     * avoid adding a new dependency like bluebird (native es6 promises are slower)
+     **/
+    this._onBeforeChange(() => {
+      this._handleChange();
+    });
   };
 
   // Handles new checkbox clicks and sets value and checked status of hidden input

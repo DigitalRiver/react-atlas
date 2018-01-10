@@ -20,6 +20,16 @@ Dropdown with Label
         <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
       </Dropdown>
 
+Dropdown with Label on the Left: 
+
+      <Dropdown customLabel="Dropdown Example:" leftLabel >
+        <span value="bird">Bird</span>
+        <span value="cow">Cow</span>
+        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+        <span value="monkey">Monkey</span>
+        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+      </Dropdown>
+
 Dropdown with Default Select Value
 
       <Dropdown defaultText="Select One ...">
@@ -95,7 +105,7 @@ Inline Dropdowns:
 
 Dropdown with Required Property:
 
-    <Dropdown customLabel="Required Dropdown" required>
+    <Dropdown defaultText="Select One ..." customLabel="Required Dropdown" required>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -142,3 +152,23 @@ Dropdown with onChange function:
     <span value="monkey">Monkey</span>
     <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
     </Dropdown>
+
+Update Dropdown options via state after initial render:
+
+    initialState = {items: ["Dog", "Cat"]}
+    rows = state.items.map((item, index) => (
+      <li value={item} key="{index}">
+        {item}
+      </li>
+    ));
+    handleToggle = () => {
+        setState({ items: ["Cow", "Horse", "Pig"] })
+    };
+    <div> 
+      <Dropdown defaultText="Select One ..." customLabel="Update State Dropdown" onChange={(value, event) => {console.log("onChange: ", value, event)}} >
+        {rows}
+        </Dropdown><br />
+        <Button primary onClick={handleToggle}>Update State</Button>
+        <br /><br />
+        List: {state.items.toString()}
+    </div>

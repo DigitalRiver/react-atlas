@@ -1,5 +1,8 @@
 import React from "react";
 import { mount, shallow, render } from "enzyme";
+
+import renderer from 'react-test-renderer';
+
 import { DropdownCore } from "../../../react-atlas-core/src/Dropdown/index";
 
 function _findItem(n, text) {
@@ -11,6 +14,21 @@ function _findItem(n, text) {
   }
   return false;
 }
+
+describe("Test dropdown component", () => {
+  it('Test render correctly', () => {
+    const comp = <DropdownCore onChange={function() {}}>
+					<span>May</span>
+					<span value="the">the</span>
+					<span value="force">force</span>
+					<span value="be">be</span>
+					<span value="with">with</span>
+					<span value="you">you</span>
+				 </DropdownCore>
+    const tree = renderer.create(comp).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
 
 describe("Test Dropdown component - Mouse tests", () => {
   it("Test Dropdown component - Basic test", function() {
@@ -25,7 +43,7 @@ describe("Test Dropdown component - Mouse tests", () => {
       </DropdownCore>
     );
 
-    expect(component.state().value).toEqual("");
+    expect(component.state().value).toEqual(null);
     expect(component.state().output).toEqual("May");
   });
 
@@ -41,7 +59,7 @@ describe("Test Dropdown component - Mouse tests", () => {
       </DropdownCore>
     );
 
-    expect(component.state().value).toEqual("");
+    expect(component.state().value).toEqual(null);
     expect(component.state().output).toEqual("May");
 
     component.find("Dropdown").simulate("focus");

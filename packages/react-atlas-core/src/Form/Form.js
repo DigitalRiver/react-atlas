@@ -164,9 +164,8 @@ class Form extends React.PureComponent {
         "onChange": (value, event, isValid) =>
           this.onChangeHandler(value, event, isValid, this.state.childState[i]),
         "value": this.state.childState[i].value,
-        "errorText": messages.requiredMessage,
         "isValid": this.state.childState[i].isValid,
-        "novalidate": true
+        "noValidate": true
       };
 
       return React.cloneElement(child, props);
@@ -209,7 +208,7 @@ Form.propTypes = {
    * the form is submitting. */
   "method": PropTypes.string,
   /** An Object, array, or string of CSS classes to
-     * apply to form children components.*/
+   * apply to form children components.*/
   "childClasses": PropTypes.node,
   /** Pass inline styling here. **/
   "style": PropTypes.object
