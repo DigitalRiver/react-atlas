@@ -14,7 +14,7 @@ class Input extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      value: props.value || "",
+      value: (typeof props.value === "undefined" || props.value === null) ? "" : props.value,
       errorText: null,
       isValid: props.isValid || true,
       remaining: props.maxLength
