@@ -61,4 +61,12 @@ Switch component allows to define a particular-styled checkbox.
 
 This method should return true or false, allowing or not the onChange handler to be fired. If undefined, will prevent it.
 
+###### Update switch checked prop
 
+    _handleChangeProps = () => {
+      setState({ checked: true });
+    };
+    <div>
+        <Button primary onClick={_handleChangeProps}>Change Props to checked</Button>
+        <Switch checked={state.checked} />
+    </div>
