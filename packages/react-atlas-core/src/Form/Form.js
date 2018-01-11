@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import messages from "../utils/messages";
 import cx from "classnames";
 
-const errorCodes = {
-  "MISSING_REQUIRED": 0
-};
-
 class Form extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -93,7 +89,6 @@ class Form extends React.PureComponent {
 
       if (typeof this.props.onError !== "undefined") {
         this.props.onError(
-          errorCodes.MISSING_REQUIRED,
           messages.missingRequired
         );
       }
@@ -152,7 +147,12 @@ class Form extends React.PureComponent {
       action,
       method,
       childClasses,
-      style
+      style,
+      target,
+      name,
+      enctype,
+      autocomplete,
+      novalidate
     } = this.props;
     /* Loop through children components and set onChange handlers
      * and add CSS classes. */
@@ -161,11 +161,12 @@ class Form extends React.PureComponent {
 
       let props = {
         "className": classes,
+        "autocomplete": autocomplete,
         "onChange": (value, event, isValid) =>
           this.onChangeHandler(value, event, isValid, this.state.childState[i]),
         "value": this.state.childState[i].value,
         "isValid": this.state.childState[i].isValid,
-        "noValidate": true
+        "novalidate": novalidate
       };
 
       return React.cloneElement(child, props);
@@ -178,7 +179,10 @@ class Form extends React.PureComponent {
         method={method}
         className={cx(className)}
         onSubmit={this.submitHandler}
-        noValidate
+        target={target}
+        name={name}
+        encType={enctype}
+        noValidate={novalidate}
       >
         {kids}
       </form>
@@ -211,12 +215,26 @@ Form.propTypes = {
    * apply to form children components.*/
   "childClasses": PropTypes.node,
   /** Pass inline styling here. **/
-  "style": PropTypes.object
+  "style": PropTypes.object,
+  /** Indicates whether input elements can by default have their values automatically completed by the browser. This setting can be overridden by an autocomplete attribute on an element belonging to the form. **/
+  "autocomplete": PropTypes.bool,
+  /** The name of the form.  **/
+  "name": PropTypes.string,
+  /** A name or keyword indicating where to display the response that is received after submitting the form. _self: Load the response into the same HTML 4 frame (or HTML5 browsing context) as the current one. This value is the default if the attribute is not specified.
+_blank: Load the response into a new unnamed HTML 4 window or HTML5 browsing context.
+_parent: Load the response into the HTML 4 frameset parent of the current frame, or HTML5 parent browsing context of the current one. If there is no parent, this option behaves the same way as _self.
+_top: HTML 4: Load the response into the full original window, and cancel all other frames. HTML5: Load the response into the top-level browsing context (i.e., the browsing context that is an ancestor of the current one, and has no parent). If there is no parent, this option behaves the same way as _self.  **/
+  "target": PropTypes.string,
+  /** This Boolean indicates wether to use HTML5 validations or not. **/
+  "novalidate": PropTypes.bool,
+  /** When the value of the method attribute is post, enctype is the MIME type of content that is used to submit the form to the server **/
+  "enctype": PropTypes.string
 };
 
 Form.defaultProps = {
   "buttonText": "Submit",
-  "method": "POST"
+  "method": "POST",
+  "novalidate": true
 };
 
 export default Form;
