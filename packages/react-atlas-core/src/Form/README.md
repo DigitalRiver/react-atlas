@@ -19,11 +19,11 @@ onSubmit Form:
 			<Button type="submit">Submit</Button>
 		</Form>
 
-But what about errors? good question. To get Form errors use the onError prop. This callback will fire whenever an error has occured. The callback looks like this `function(errorCode, errorMsg)`. The errorCode can be used to lookup the type of error and errorMsg provides a generic error message for this specific error. Below is an example of using onError with onSubmit.
+But what about errors? good question. To get Form errors use the onError prop. This callback will fire whenever an error has occured. The callback looks like this `function(errorMsg)`. The errorMsg provides a generic error message for this specific error. Below is an example of using onError with onSubmit.
 
 Error Form:
 
-	<Form onError={function(errorCode, errorMsg){console.log(errorCode, errorMsg)}} onSubmit={function(event, data) {console.log("event: ", event); console.log("data: ", data);}}>
+	<Form onError={function(errorMsg){console.log(errorMsg)}} onSubmit={function(event, data) {console.log("event: ", event); console.log("data: ", data);}}>
 	  <TextField small placeholder="Email" required type="email" name="email"></TextField>
 	  <TextField small placeholder="Password" required type="password" name="password"></TextField>
 	  <TextField small placeholder="Confirm Password" required type="password" name="confirm"></TextField>
