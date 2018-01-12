@@ -84,7 +84,8 @@ class TextArea extends React.PureComponent {
       style,
       tooltip,
       tooltipRight,
-      leftLabel
+      leftLabel,
+      rows
     } = this.props;
 
     let tooltipClasses = cx({
@@ -155,6 +156,7 @@ class TextArea extends React.PureComponent {
             <InputCore
               id={id}
               multiline
+              rows={rows}
               name={name}
               placeholder={placeholder}
               maxLength={maxLength}
@@ -261,7 +263,11 @@ TextArea.propTypes = {
   /**
    * Allows user to move the label to the left of the TextArea instead of having it on top
    */
-  "leftLabel": PropTypes.bool
+  "leftLabel": PropTypes.bool,
+  /**
+    * Specifies the amount of rows
+    */
+  "rows": PropTypes.number
 };
 
 TextArea.defaultProps = {

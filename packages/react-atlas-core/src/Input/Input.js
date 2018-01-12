@@ -263,7 +263,8 @@ class Input extends React.PureComponent {
       hidden,
       errorLocation,
       checked,
-      style      
+      style,
+      rows
     } = this.props;
 
     /* If checkbox, we need to render only input component (no wrappers) */
@@ -297,6 +298,7 @@ class Input extends React.PureComponent {
       <textarea
         id={id}
         name={name}
+        rows={rows}
         value={this.state.value}
         placeholder={placeholder}
         styleName={inputClasses}
