@@ -261,6 +261,7 @@ class Input extends React.PureComponent {
       large,
       type,
       name,
+      id,
       multiline,
       placeholder,
       disabled,
@@ -310,6 +311,7 @@ class Input extends React.PureComponent {
       <input
         type={type}
         name={name}
+        id={id}
         value={this.state.value}
         placeholder={placeholder}
         styleName={inputClasses}
@@ -357,6 +359,11 @@ Input.propTypes = {
    * @examples 'text', 'checkbox', 'radio', 'password', 'email'
    */
   "type": PropTypes.string,
+  /**
+   * Defines an id for the input.
+   * @examples '<Input type="text" name="test"/>'
+   */
+  "id": PropTypes.string,
   /**
    * Defines a name for the input.
    * @examples '<Input type="text" name="test"/>'
