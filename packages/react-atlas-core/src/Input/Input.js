@@ -15,7 +15,10 @@ class Input extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value, 
+      "value":
+        typeof props.value === "undefined" || props.value === null
+          ? ""
+          : props.value,
       "errorText": "This field is required."
     };
 
@@ -53,12 +56,12 @@ class Input extends React.PureComponent {
         "isValid": nextProps.isValid
       });
     }
-    if(nextProps.value && nextProps.value !== this.props.value) {
+    if (nextProps.value && nextProps.value !== this.props.value) {
       this.setState({
         "value": nextProps.value
       });
     }
-}
+  }
 
   _updateMaskSelection = () => {
     this.mask.selection = utils.getSelection(this.input);
@@ -235,8 +238,8 @@ class Input extends React.PureComponent {
 
     let valid = this._validate(inputValue);
 
-    if(this.props.uppercase){  
-        inputValue = inputValue.toUpperCase();
+    if (this.props.uppercase) {
+      inputValue = inputValue.toUpperCase();
     }
 
     if (valid !== false) {
@@ -267,7 +270,7 @@ class Input extends React.PureComponent {
       hidden,
       errorLocation,
       checked,
-      style      
+      style
     } = this.props;
 
     /* If checkbox, we need to render only input component (no wrappers) */

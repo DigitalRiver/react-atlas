@@ -16,7 +16,10 @@ class TextField extends React.PureComponent {
     // Initial state
     this.state = {
       "active": false,
-      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value
+      "value":
+        typeof props.value === "undefined" || props.value === null
+          ? ""
+          : props.value
     };
   }
 
@@ -31,7 +34,7 @@ class TextField extends React.PureComponent {
     ) {
       this.setState({ "isValid": nextProps.isValid });
     }
-    if(nextProps.value && nextProps.value !== this.props.value) {
+    if (nextProps.value && nextProps.value !== this.props.value) {
       this.setState({
         "value": nextProps.value
       });
@@ -132,11 +135,11 @@ class TextField extends React.PureComponent {
 
     const reqText = typeof requiredText !== "undefined" ? requiredText : "*";
 
-    let textFieldHeader = header &&
+    let textFieldHeader = header && 
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
         {required && <span styleName={"error_text"}> {reqText}</span>}
-        {tooltip &&
+        {tooltip && 
           <span styleName={tooltipClasses}>
             <TooltipCore
               className={tooltipInternalClasses}
@@ -145,7 +148,7 @@ class TextField extends React.PureComponent {
             />
           </span>
         }
-        {link &&
+        {link && 
           <span styleName={buttonClasses}>
             <ButtonCore
               className={buttonInternalClasses}
@@ -285,6 +288,10 @@ TextField.propTypes = {
    */
   "placeholder": PropTypes.string,
   /**
+   * Allows user to pass a callback for click events.
+   */
+  "onClick": PropTypes.func,
+  /**
    * Sets a handler function to be executed when onChange event occurs (at input element).
    * @examples <TextField onChange={this.customOnChangeFunc}/>
    */
@@ -325,11 +332,11 @@ TextField.propTypes = {
   "link": PropTypes.bool,
   /** Set if you want the link button to the right of the textfield header. **/
   "linkRight": PropTypes.bool,
-    /** The text of the link button. **/
+  /** The text of the link button. **/
   "linkText": PropTypes.string,
-    /** Callback to call when link buttonis clicked. **/
+  /** Callback to call when link buttonis clicked. **/
   "linkOnClick": PropTypes.func,
-    /** HREF to set on the link button. **/
+  /** HREF to set on the link button. **/
   "href": PropTypes.string,
   /**
    * Converts all entered text to uppercase.
