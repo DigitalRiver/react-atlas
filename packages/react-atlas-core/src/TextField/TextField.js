@@ -68,6 +68,7 @@ class TextField extends React.PureComponent {
   render() {
     const {
       name,
+      id,
       type,
       header,
       placeholder,
@@ -190,6 +191,7 @@ class TextField extends React.PureComponent {
         <InputCore
           type={type}
           name={name}
+          id={id}
           placeholder={placeholder}
           value={this.state.value}
           maxLength={maxLength}
@@ -216,6 +218,8 @@ TextField.propTypes = {
    * Sets if the TextField is valid.
    */
   "isValid": PropTypes.bool,
+    /** Define an id for the text input.*/
+  "id": PropTypes.string,
   /** An Object, array, or string of CSS classes to apply to TextField.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
