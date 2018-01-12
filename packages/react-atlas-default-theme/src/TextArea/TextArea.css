@@ -78,3 +78,31 @@
 .tooltipAlignment.tooltipRight div{
 	float: right;
 }
+
+.leftLabel {
+	display: table-cell;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+.leftLabelContent {
+	display: table-cell;
+}
+
+.content {
+	composes: clearfix from '../styles.css';
+	composes: bg-white from '../styles.css';
+	composes: z4 from '../styles.css';
+	composes: cursor-pointer from '../styles.css';
+	composes: default-font from '../styles.css';
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: left;
+	left: 0;
+	position: relative;
+}
+
+.fullWidth{
+	min-width: 100px;
+	width:100%;
+}

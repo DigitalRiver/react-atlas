@@ -17,8 +17,8 @@ class TextArea extends React.PureComponent {
       isValid = props.isValid;
     }
 
-    if (this.props.tooltip && !this.props.header) {
-      throw "Tooltip requires Header";
+    if (this.props.tooltip && !this.props.label) {
+      throw "Tooltip requires Label";
     }
 
     // Initial state
@@ -68,8 +68,9 @@ class TextArea extends React.PureComponent {
 
   render() {
     const {
+      id,
       name,
-      header,
+      label,
       placeholder,
       maxLength,
       resizable,
@@ -82,7 +83,8 @@ class TextArea extends React.PureComponent {
       className,
       style,
       tooltip,
-      tooltipRight
+      tooltipRight,
+      leftLabel
     } = this.props;
 
     let tooltipClasses = cx({
@@ -95,18 +97,24 @@ class TextArea extends React.PureComponent {
         {maxLength - this.state.remaining}/{maxLength}
       </div>
     ;
+    const forId = id !== "" && name !== "" ? id : "";
+    const labelClasses = cx({
+      "leftLabel": leftLabel
+    });
 
-    let textAreaHeader = header && 
-      <div styleName={"header"}>
-        <span styleName={"headerFont"}>{header}</span>
-        {required && <span styleName={"error_text"}> *</span>}
-        {tooltip && 
-          <span styleName={tooltipClasses}>
-            <TooltipCore text={tooltip} position="top" />
-          </span>
-        }
-      </div>
-    ;
+    let textAreaLabel = label &&
+        <div styleName={labelClasses}>
+          <label styleName={"header"} title={label} htmlFor={forId}>
+            <span styleName={"headerFont"}>{label}</span>
+              {required && <span styleName={"error_text"}> *</span>}
+              {tooltip &&
+              <span styleName={tooltipClasses}>
+                <TooltipCore text={tooltip} position="top" />
+              </span>
+              }
+          </label>
+        </div>
+      ;
 
     let wrapperClasses = cx(
       {
@@ -128,6 +136,12 @@ class TextArea extends React.PureComponent {
       "textarea"
     );
 
+      const contentClasses = cx({
+          "content": true,
+          "leftLabelContent": leftLabel,
+          "fullWidth": true
+      });
+
     return (
       <div
         style={style}
@@ -136,20 +150,23 @@ class TextArea extends React.PureComponent {
         onBlur={this._handleBlur}
         className={cx(className)}
       >
-        {textAreaHeader}
-        <InputCore
-          multiline
-          name={name}
-          placeholder={placeholder}
-          maxLength={maxLength}
-          styleName={textAreaClasses}
-          onChange={this._handleChange}
-          required={required}
-          disabled={disabled}
-          hidden={hidden}
-          value={this.state.value}
-          isValid={this.state.isValid}
-        />
+        {textAreaLabel}
+        <div styleName={contentClasses}>
+            <InputCore
+              id={id}
+              multiline
+              name={name}
+              placeholder={placeholder}
+              maxLength={maxLength}
+              styleName={textAreaClasses}
+              onChange={this._handleChange}
+              required={required}
+              disabled={disabled}
+              hidden={hidden}
+              value={this.state.value}
+              isValid={this.state.isValid}
+            />
+        </div>
         {remainingCount}
       </div>
     );
@@ -165,6 +182,11 @@ TextArea.propTypes = {
     PropTypes.array
   ]),
   /**
+    * Define a name for the textarea input.
+    * @examples '<TextArea id="test"/>'
+    */
+  "id": PropTypes.string,
+  /**
    * Define a name for the textarea input.
    * @examples '<TextArea name="test"/>'
    */
@@ -175,10 +197,10 @@ TextArea.propTypes = {
    */
   "value": PropTypes.string,
   /**
-   * Define a title or header to be displayed above the textarea.
-   * @examples '<TextArea header="test"/>'
+   * Define a title or label to be displayed above the textarea.
+   * @examples '<TextArea label="test"/>'
    */
-  "header": PropTypes.string,
+  "label": PropTypes.string,
   /**
    * Defines a resizable textarea. Default: true.
    * @examples '<TextArea resizable={false}/>'
@@ -235,7 +257,11 @@ TextArea.propTypes = {
   /** Pass inline styling here. */
   "style": PropTypes.object,
 
-  "tooltipRight": PropTypes.bool
+  "tooltipRight": PropTypes.bool,
+  /**
+   * Allows user to move the label to the left of the TextArea instead of having it on top
+   */
+  "leftLabel": PropTypes.bool
 };
 
 TextArea.defaultProps = {

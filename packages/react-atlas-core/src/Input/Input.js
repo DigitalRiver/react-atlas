@@ -175,12 +175,7 @@ class Input extends React.PureComponent {
 
     /* Execute custom validator and change state and error messages accordingly */
     const customValidationPass = function() {
-      let valid = this.props.validator(inputValue);
-      if (!valid) {
-        return false;
-      } else {
-        return true;
-      }
+      return this.props.validator(inputValue);
     };
 
     /* If the field is required, and it has no value, change state and display error message */
@@ -298,8 +293,9 @@ class Input extends React.PureComponent {
       "onPaste": this._handlePaste
     };
 
-    let inputElement = multiline ? 
+    let inputElement = multiline ?
       <textarea
+        id={id}
         name={name}
         value={this.state.value}
         placeholder={placeholder}
