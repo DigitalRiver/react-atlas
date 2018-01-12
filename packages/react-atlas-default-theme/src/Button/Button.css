@@ -184,7 +184,6 @@
 .disabled {
   composes: cursor-not-allowed from '../styles.css';
   text-decoration: none;
-  pointer-events: none;
   opacity: .65;
 }
 
