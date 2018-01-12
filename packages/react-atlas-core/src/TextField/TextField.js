@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { InputCore } from "../Input";
 import { TooltipCore } from "./../Tooltip";
+import { ButtonCore } from "./../Button";
 import cx from "classnames";
 
 class TextField extends React.PureComponent {
@@ -15,7 +16,7 @@ class TextField extends React.PureComponent {
     // Initial state
     this.state = {
       "active": false,
-      "value": this.props.value
+      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value
     };
   }
 
@@ -75,6 +76,7 @@ class TextField extends React.PureComponent {
       medium,
       large,
       required,
+      requiredText,
       validator,
       errorText,
       mask,
@@ -85,7 +87,13 @@ class TextField extends React.PureComponent {
       style,
       tooltip,
       tooltipRight,
-      onClick
+      link,
+      linkRight,
+      linkText,
+      linkOnClick,
+      onClick,
+      uppercase,
+      href
     } = this.props;
 
     let tooltipClasses = cx({
@@ -101,17 +109,51 @@ class TextField extends React.PureComponent {
       "ra_Tooltip__block": true
     });
 
-    let textFieldHeader = header && 
+    let buttonClasses = cx({
+      "buttonAlignment": true,
+      "buttonAlignmentRight": linkRight
+    });
+
+    let buttonInternalClasses = cx(
+      "ra_Button__button",
+      "ra_Button__base",
+      "ra_styles__button-marg-1",
+      "ra_styles__default-text",
+      "ra_styles__cursor-pointer",
+      "ra_styles__primary-button-border-width",
+      "ra_styles__default-font",
+      "ra_styles__rounded",
+      "ra_Button__link",
+      "ra_styles__border-none",
+      "ra_styles__sky-blue",
+      "ra_styles__border-transparent",
+      "ra_styles__bg-transparent"
+    );
+
+    const reqText = typeof requiredText !== "undefined" ? requiredText : "*";
+
+    let textFieldHeader = header &&
       <div styleName={"header"}>
         <span styleName={"headerFont"}>{header}</span>
-        {required && <span styleName={"error_text"}> *</span>}
-        {tooltip && 
+        {required && <span styleName={"error_text"}> {reqText}</span>}
+        {tooltip &&
           <span styleName={tooltipClasses}>
             <TooltipCore
               className={tooltipInternalClasses}
               text={tooltip}
               position="top"
             />
+          </span>
+        }
+        {link &&
+          <span styleName={buttonClasses}>
+            <ButtonCore
+              className={buttonInternalClasses}
+              href={href}
+              onClick={linkOnClick}
+            >
+              {linkText}
+            </ButtonCore>
           </span>
         }
       </div>
@@ -161,6 +203,7 @@ class TextField extends React.PureComponent {
           validator={validator}
           errorText={errorText}
           mask={mask}
+          uppercase={uppercase}
           disabled={disabled}
           isValid={this.state.isValid}
           hidden={hidden}
@@ -252,6 +295,11 @@ TextField.propTypes = {
    */
   "required": PropTypes.bool,
   /**
+   * Sets the text to show next to the header for a required TextField. If omitted will default to *.
+   * @examples '<TextField required requiredText="required"/>'
+   */
+  "requiredText": PropTypes.string,
+  /**
    * Determines if the text input is disabled.
    * @examples '<TextField disabled/>'
    */
@@ -273,8 +321,20 @@ TextField.propTypes = {
 
   "tooltipRight": PropTypes.bool,
 
-  /** Passes custom onClick function to TextField */
-  onClick: PropTypes.func
+  /** Set if you want a link button next to the textfield header. **/
+  "link": PropTypes.bool,
+  /** Set if you want the link button to the right of the textfield header. **/
+  "linkRight": PropTypes.bool,
+    /** The text of the link button. **/
+  "linkText": PropTypes.string,
+    /** Callback to call when link buttonis clicked. **/
+  "linkOnClick": PropTypes.func,
+    /** HREF to set on the link button. **/
+  "href": PropTypes.string,
+  /**
+   * Converts all entered text to uppercase.
+   */
+  "uppercase": PropTypes.bool
 };
 
 TextField.defaultProps = {

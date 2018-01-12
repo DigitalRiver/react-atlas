@@ -80,3 +80,7 @@
 ###### Tooltip Textfield with Header:
 
     <TextField required small tooltip="some test" header="key"/>
+
+###### Textfield with uppercase prop:
+
+    <TextField uppercase />
