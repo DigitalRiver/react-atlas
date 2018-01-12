@@ -9,10 +9,6 @@ class Card extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    // Initial state
-    this.state = {
-      "active": false
-    };
   }
   render() {
     const { children, className, legend, style, standardFieldset, image, title, width } = this.props;
