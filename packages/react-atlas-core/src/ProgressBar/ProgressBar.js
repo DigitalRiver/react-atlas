@@ -47,7 +47,7 @@ class ProgressBar extends React.PureComponent {
 
   renderCircular() {
     return (
-      <svg styleName={"circle"}>
+      <svg styleName={"circle"} viewBox="0 0 60 60">
         <circle
           styleName={"path"}
           style={this.circularStyle()}
