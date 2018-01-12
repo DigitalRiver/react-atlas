@@ -14,13 +14,16 @@ class Input extends React.PureComponent {
     super(props);
 
     // Initial state
-    this.state = { "value": "", "errorText": "This field is required." };
+    this.state = {
+      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value, 
+      "errorText": "This field is required."
+    };
 
     // Configure input mask if required
     if (this.props.mask) {
       let maskOptions = {
-        "pattern": this.props.mask,
-        "value": this.props.value
+        "pattern": props.mask,
+        "value": props.value || ""
       };
 
       this.mask = new InputMask(maskOptions);
@@ -50,7 +53,12 @@ class Input extends React.PureComponent {
         "isValid": nextProps.isValid
       });
     }
-  }
+    if(nextProps.value && nextProps.value !== this.props.value) {
+      this.setState({
+        "value": nextProps.value
+      });
+    }
+}
 
   _updateMaskSelection = () => {
     this.mask.selection = utils.getSelection(this.input);
@@ -178,7 +186,7 @@ class Input extends React.PureComponent {
     /* If the field is required, and it has no value, change state and display error message */
     if (!inputValue.length && this.props.required) {
       this.setState({
-        "errorText": this.props.requiredText || "This field is required.",
+        "errorText": this.props.errorText || "This field is required.",
         "isValid": false
       });
     } else if (this.props.validator) {
@@ -227,6 +235,10 @@ class Input extends React.PureComponent {
 
     let valid = this._validate(inputValue);
 
+    if(this.props.uppercase){  
+        inputValue = inputValue.toUpperCase();
+    }
+
     if (valid !== false) {
       this.setState(
         {
@@ -249,13 +261,14 @@ class Input extends React.PureComponent {
       large,
       type,
       name,
+      id,
       multiline,
       placeholder,
       disabled,
       hidden,
       errorLocation,
       checked,
-      style
+      style      
     } = this.props;
 
     /* If checkbox, we need to render only input component (no wrappers) */
@@ -298,6 +311,7 @@ class Input extends React.PureComponent {
       <input
         type={type}
         name={name}
+        id={id}
         value={this.state.value}
         placeholder={placeholder}
         styleName={inputClasses}
@@ -345,6 +359,11 @@ Input.propTypes = {
    * @examples 'text', 'checkbox', 'radio', 'password', 'email'
    */
   "type": PropTypes.string,
+  /**
+   * Defines an id for the input.
+   * @examples '<Input type="text" name="test"/>'
+   */
+  "id": PropTypes.string,
   /**
    * Defines a name for the input.
    * @examples '<Input type="text" name="test"/>'
@@ -449,7 +468,11 @@ Input.propTypes = {
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object
+  "style": PropTypes.object,
+  /**
+   * Converts all entered text to uppercase.
+   */
+  "uppercase": PropTypes.bool
 };
 
 Input.defaultProps = {

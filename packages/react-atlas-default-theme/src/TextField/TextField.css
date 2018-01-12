@@ -64,6 +64,14 @@
   display: inline-block;
 }
 
+.buttonAlignment {
+	margin-left: 5px;
+}
+
+.buttonAlignmentRight {
+	float: right;
+}
+
 .tooltipAlignment {
 	margin-left: 5px;
 }
