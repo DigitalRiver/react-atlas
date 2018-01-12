@@ -12,12 +12,28 @@
 	width: 100%;
 }
 
-.header {
+.label {
 	padding: 10px 0 5px 0;
 }
 
-.headerFont {
+.labelFont {
 	composes: header-font from '../styles.css';
+}
+
+.labelSpacing {
+	margin-bottom: 0.35rem;
+	padding-right: 1rem;
+}
+
+.leftLabel {
+	display: table-cell;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+.leftLabelContent {
+	display: table-cell;
+	width:100%;
 }
 
 .small {
