@@ -1,0 +1,57 @@
+@import '../styles/variables.css';
+
+.tab {
+  composes: bg-silver from '../styles.css';
+  composes: sky-blue from '../styles.css';
+  composes: border-colorless from '../styles.css';
+  composes: border-transparent from '../styles.css';
+  composes: border-bottom-none from '../styles.css';
+  composes: marg-r-half from '../styles.css';
+  composes: pad-v-1 from '../styles.css';
+  composes: pad-h-2 from '../styles.css';
+  composes: cursor-pointer from '../styles.css';
+  border-top: 1px solid #fff;
+  display: inline-block;
+  position: relative;
+  list-style: none;
+}
+
+.vTab {
+  composes: bg-silver from '../styles.css';
+  composes: sky-blue from '../styles.css';
+  composes: border-colorless from '../styles.css';
+  composes: border-transparent from '../styles.css';
+  composes: border-right-none from '../styles.css';
+  composes: marg-b-half from '../styles.css';
+  composes: pad-v-2 from '../styles.css';
+  composes: pad-h-1 from '../styles.css';
+  composes: cursor-pointer from '../styles.css';
+  border-left: 1px solid #fff;
+  display: block;
+  position: relative;
+  list-style: none;
+}
+
+.selected {
+  composes: bg-white from '../styles.css';
+  color: #666;
+  border-color: #BEBEBE;
+  bottom: -1px;
+}
+
+.vSelected {
+  composes: bg-white from '../styles.css';
+  color: #666;
+  border-color: #BEBEBE;
+  right: -1px;
+}
+
+.disabled {
+  composes: bg-white from '../styles.css';
+  composes: cursor-default from '../styles.css';
+  color: #666;
+}
+
+.icon-left {
+  margin-right: 0.25rem;
+}
