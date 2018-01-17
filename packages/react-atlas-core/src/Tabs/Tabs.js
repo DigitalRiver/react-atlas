@@ -12,12 +12,12 @@ class Tabs extends React.PureComponent {
 
         // Initial state
         this.state = {
-            selectedIndex: this.props.selectedIndex
+            "selectedIndex": this.props.selectedIndex
         };
     }
 
     _setSelectedIndex = (index, event) => {
-        this.setState({ selectedIndex: index });
+        this.setState({ "selectedIndex": index });
 
         if (this.props.onSelect) {
             this.props.onSelect(index, event);
@@ -98,7 +98,7 @@ Tabs.propTypes = {
      */
     "onSelect": PropTypes.func,
     /**
-     * Adds a border around the tab panels
+     * Adds a border around the tab panels.
      */
     "bordered": PropTypes.bool,
     /**

@@ -11,13 +11,13 @@ class TabPanel extends React.PureComponent {
 
         // Initial state
         this.state = {
-            selected: this.props.selected || false
+            "selected": this.props.selected || false
         };
     }
 
     componentWillReceiveProps = (nextProps) => {
         if (nextProps.selected !== this.props.selected) {
-            this.setState({ selected: nextProps.selected })
+            this.setState({ "selected": nextProps.selected })
         }
     }
 
@@ -27,12 +27,11 @@ class TabPanel extends React.PureComponent {
             children,
             bordered,
             vertical,
-            style,
-            ...props
+            style
         } = this.props;
 
         let tabPanelClasses = cx({
-            selected: this.state.selected,
+            "selected": this.state.selected,
             bordered,
             vertical
         },
@@ -42,6 +41,7 @@ class TabPanel extends React.PureComponent {
             <div
                 className={cx(className)} 
                 styleName={tabPanelClasses}
+                style={style}
             >
                 {children}
             </div>  
@@ -58,6 +58,22 @@ TabPanel.propTypes = {
         PropTypes.object,
         PropTypes.array
     ]),
+    /**
+     * Text or other elements (or components) to display as Tab content.
+     */
+    "children": PropTypes.node,
+    /**
+     * Indicates whether tab panel is selected or not.
+     */
+    "selected": PropTypes.bool,
+    /**
+     * Will be automatically set when bordered prop is passed to Tabs component.
+     */
+    "bordered": PropTypes.bool,
+    /**
+     * Will be automatically set when vertical prop is passed to Tabs component.
+     */
+    "vertical": PropTypes.bool,
     /** 
      * Pass inline styling here.
      */

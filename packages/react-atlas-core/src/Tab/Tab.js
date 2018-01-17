@@ -11,14 +11,14 @@ class Tab extends React.PureComponent {
 
         // Initial state
         this.state = {
-            selected: this.props.selected,
-            disabled: this.props.disabled
+            "selected": this.props.selected,
+            "disabled": this.props.disabled
         };
     }
 
     componentWillReceiveProps = (nextProps) => {
         if (nextProps.selected !== this.props.selected) {
-            this.setState({ selected: nextProps.selected })
+            this.setState({ "selected": nextProps.selected })
         }
     }
 
@@ -36,16 +36,15 @@ class Tab extends React.PureComponent {
             children,
             vertical,
             icon,
-            style,
-            ...props
+            style
         } = this.props;
 
         let tabClasses = cx({
-            tab: !vertical,
-            vTab: vertical,
-            selected: this.state.selected && !vertical,
-            vSelected: this.state.selected && vertical,
-            disabled: this.state.disabled
+            "tab": !vertical,
+            "vTab": vertical,
+            "selected": this.state.selected && !vertical,
+            "vSelected": this.state.selected && vertical,
+            "disabled": this.state.disabled
         });
 
         return (
@@ -54,7 +53,6 @@ class Tab extends React.PureComponent {
                 styleName={tabClasses}
                 style={style}
                 onClick={this._handleClick}
-                ref={ node => this.node = node }
             >
                 {icon ? <i className={cx(icon, "ra_Tab__icon-left")} /> : null}
                 {children}
@@ -73,6 +71,10 @@ Tab.propTypes = {
         PropTypes.array
     ]),
     /**
+     * Text or other elements to display as Tab title.
+     */
+    "children": PropTypes.node,
+    /**
      * Indicates whether tab is selected or not.
      */
     "selected": PropTypes.bool,
@@ -80,6 +82,10 @@ Tab.propTypes = {
      * Disable this tab which will make it not do anything when clicked.
      */
     "disabled": PropTypes.bool,
+    /**
+     * Will be automatically set when vertical prop is passed to Tabs component.
+     */
+    "vertical": PropTypes.bool,
     /** 
      * Pass inline styling here.
      */
@@ -87,11 +93,15 @@ Tab.propTypes = {
     /**
      * Tab index.
      */
-    "tabIndex": PropTypes.number,
+    "tabIndex": PropTypes.number.isRequired,
     /**
      * Adds font-awesome icon to left of title
      */
-    "icon": PropTypes.string
+    "icon": PropTypes.string,
+    /**
+     * Handler to be executed when a tab is selected (takes into account other tabs)
+     */
+    "setSelectedTab": PropTypes.func.isRequired
 };
 
 Tab.defaultProps = {

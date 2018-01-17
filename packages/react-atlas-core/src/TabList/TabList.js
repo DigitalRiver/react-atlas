@@ -11,7 +11,7 @@ class TabList extends React.PureComponent {
 
         // Initial state
         this.state = {
-            selectedTab: this.props.selectedTab || 0
+            "selectedTab": this.props.selectedTab || 0
         };
     }
 
@@ -25,8 +25,7 @@ class TabList extends React.PureComponent {
             className,
             children,
             vertical,
-            style,
-            ...props
+            style
         } = this.props;
 
         const tabs = React.Children.map(children, (child, index) => {
@@ -69,7 +68,23 @@ TabList.propTypes = {
     /**
      * All the tabs.
      */
-    "children": PropTypes.node.isRequired
+    "children": PropTypes.node.isRequired,
+    /** 
+     * Pass inline styling here.
+     */
+    "style": PropTypes.object,
+    /**
+     * Will be automatically set when vertical prop is passed to Tabs component.
+     */
+    "vertical": PropTypes.bool,
+    /**
+     * Selected tab index (default 0 - first tab).
+     */
+    "selectedTab": PropTypes.number,
+    /**
+     * Handler to execute when a tab is selected, in Tabs component.
+     */
+    "setSelectedIndex": PropTypes.func
 };
 
 export default TabList;
