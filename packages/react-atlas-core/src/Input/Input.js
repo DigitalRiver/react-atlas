@@ -330,6 +330,7 @@ class Input extends React.PureComponent {
         name={name}
         styleName={inputClasses}
         className={cx(className)}
+        id={id}
         checked={checked}
         {...eventHandlers}
       />
