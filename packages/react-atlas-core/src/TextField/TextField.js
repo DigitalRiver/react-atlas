@@ -344,7 +344,7 @@ TextField.propTypes = {
   "linkRight": PropTypes.bool,
     /** The text of the link button. **/
   "linkText": PropTypes.string,
-    /** Callback to call when link buttonis clicked. **/
+    /** Callback to call when link button is clicked. **/
   "linkOnClick": PropTypes.func,
     /** HREF to set on the link button. **/
   "href": PropTypes.string,
