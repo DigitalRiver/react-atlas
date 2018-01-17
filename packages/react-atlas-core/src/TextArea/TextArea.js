@@ -23,7 +23,7 @@ class TextArea extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value,
+      "value": typeof props.value === "undefined" || props.value === null ? "" : props.value,
       "remaining": props.maxLength,
       "active": false,
       "isValid": isValid
@@ -101,7 +101,7 @@ class TextArea extends React.PureComponent {
     const labelClasses = cx({
 
       "leftLabel": leftLabel,
-      "header": label,
+      "header": label
     });
 
     let textAreaLabel = label &&

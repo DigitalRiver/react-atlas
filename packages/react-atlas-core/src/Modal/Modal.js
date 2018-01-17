@@ -28,7 +28,7 @@ class Modal extends React.PureComponent {
     }
 
     updateOverlayStyle() {
-        if (this.props.active && (this.wrapDiv.scrollHeight > this.wrapDiv.clientHeight)) {
+        if (this.props.active && this.wrapDiv.scrollHeight > this.wrapDiv.clientHeight) {
             this.setState({
                 'isHaveScrollbar': true
             });

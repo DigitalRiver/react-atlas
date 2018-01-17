@@ -15,7 +15,7 @@ class Input extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value, 
+      "value": typeof props.value === "undefined" || props.value === null ? "" : props.value, 
       "errorText": "This field is required."
     };
 

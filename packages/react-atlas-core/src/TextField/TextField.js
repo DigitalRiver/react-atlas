@@ -16,7 +16,7 @@ class TextField extends React.PureComponent {
     // Initial state
     this.state = {
       "active": false,
-      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value
+      "value": typeof props.value === "undefined" || props.value === null ? "" : props.value
     };
   }
 
