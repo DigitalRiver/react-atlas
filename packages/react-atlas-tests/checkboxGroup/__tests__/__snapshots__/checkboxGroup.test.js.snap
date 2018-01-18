@@ -30,6 +30,7 @@ exports[`Test CheckboxGroup component - the bascis Test renders correctly 1`] = 
         <input
           checked={false}
           className="ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
+          id={undefined}
           name={undefined}
           onChange={[Function]}
           onClick={[Function]}
@@ -61,6 +62,7 @@ exports[`Test CheckboxGroup component - the bascis Test renders correctly 1`] = 
         <input
           checked={false}
           className="ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
+          id={undefined}
           name={undefined}
           onChange={[Function]}
           onClick={[Function]}
@@ -92,6 +94,7 @@ exports[`Test CheckboxGroup component - the bascis Test renders correctly 1`] = 
         <input
           checked={false}
           className="ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
+          id={undefined}
           name={undefined}
           onChange={[Function]}
           onClick={[Function]}
@@ -123,6 +126,7 @@ exports[`Test CheckboxGroup component - the bascis Test renders correctly 1`] = 
         <input
           checked={false}
           className="ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
+          id={undefined}
           name={undefined}
           onChange={[Function]}
           onClick={[Function]}

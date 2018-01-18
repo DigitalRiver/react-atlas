@@ -10,6 +10,18 @@ Basic Dropdown:
       </Dropdown>
     </div>
 
+Dropdown with Autcomplete:
+
+    <div>
+      <Dropdown autocomplete>
+        <span value="bird">Bird</span>
+        <span value="cow">Cow</span>
+        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
+        <span value="monkey">Monkey</span>
+        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+      </Dropdown>
+    </div>
+
 Dropdown with Label
 
       <Dropdown customLabel="Dropdown Example" >

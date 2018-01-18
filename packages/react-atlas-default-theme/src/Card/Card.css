@@ -10,3 +10,27 @@
 	composes: header-font from '../styles.css';
 }
 
+.image {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.title {
+	composes: header-font from '../styles.css';
+	composes: secondary-text from '../styles.css';
+	composes: marg-t-2 from '../styles.css';
+	composes: pad-h-2 from '../styles.css';
+	word-wrap: break-word;
+}
+
+.cardBody {
+	composes: default-font from '../styles.css';
+	composes: default-text from '../styles.css';
+	composes: pad-h-2 from '../styles.css';
+	composes: marg-b-2 from '../styles.css';
+	word-wrap: break-word;
+}
+

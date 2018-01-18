@@ -9,8 +9,8 @@ class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    if (this.props.tooltip && !this.props.header) {
-      throw "Tooltip requires Header";
+    if (this.props.tooltip && !this.props.label) {
+      throw "Tooltip requires Label";
     }
 
     // Initial state
@@ -71,8 +71,10 @@ class TextField extends React.PureComponent {
   render() {
     const {
       name,
+      id,
       type,
-      header,
+      label,
+      leftLabel,
       placeholder,
       maxLength,
       small,
@@ -98,6 +100,13 @@ class TextField extends React.PureComponent {
       uppercase,
       href
     } = this.props;
+
+    let labelClasses = cx({
+      "leftLabel": leftLabel,
+      "label": true,
+      "labelFont": true,
+      "labelSpacing": true
+    });
 
     let tooltipClasses = cx({
       "tooltipAlignment": true,
@@ -135,9 +144,9 @@ class TextField extends React.PureComponent {
 
     const reqText = typeof requiredText !== "undefined" ? requiredText : "*";
 
-    let textFieldHeader = header && 
-      <div styleName={"header"}>
-        <span styleName={"headerFont"}>{header}</span>
+    let textFieldLabel = label && 
+      <div styleName={labelClasses}>
+        <label htmlFor={id}>{label}</label>
         {required && <span styleName={"error_text"}> {reqText}</span>}
         {tooltip && 
           <span styleName={tooltipClasses}>
@@ -182,6 +191,10 @@ class TextField extends React.PureComponent {
       "textfield"
     );
 
+    let fieldDisplayClasses = cx({
+      "leftLabelContent": leftLabel
+    });
+
     return (
       <div
         style={style}
@@ -191,26 +204,29 @@ class TextField extends React.PureComponent {
         onClick={onClick}
         className={cx(className)}
       >
-        {textFieldHeader}
-        <InputCore
-          type={type}
-          name={name}
-          placeholder={placeholder}
-          value={this.state.value}
-          maxLength={maxLength}
-          styleName={textFieldClasses}
-          onChange={(value, event, isValid) =>
-            this._handleChange(value, event, isValid)
-          }
-          required={required}
-          validator={validator}
-          errorText={errorText}
-          mask={mask}
-          uppercase={uppercase}
-          disabled={disabled}
-          isValid={this.state.isValid}
-          hidden={hidden}
-        />
+        {textFieldLabel}
+        <div styleName={fieldDisplayClasses}>
+          <InputCore
+            type={type}
+            name={name}
+            id={id}
+            placeholder={placeholder}
+            value={this.state.value}
+            maxLength={maxLength}
+            styleName={textFieldClasses}
+            onChange={(value, event, isValid) =>
+              this._handleChange(value, event, isValid)
+            }
+            required={required}
+            validator={validator}
+            errorText={errorText}
+            mask={mask}
+            uppercase={uppercase}
+            disabled={disabled}
+            isValid={this.state.isValid}
+            hidden={hidden}
+          />
+        </div>
       </div>
     );
   }
@@ -221,6 +237,8 @@ TextField.propTypes = {
    * Sets if the TextField is valid.
    */
   "isValid": PropTypes.bool,
+  /** Define an id for the text input.*/
+  "id": PropTypes.string,
   /** An Object, array, or string of CSS classes to apply to TextField.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
@@ -248,10 +266,10 @@ TextField.propTypes = {
    */
   "small": PropTypes.bool,
   /**
-   * Define a title or header to be displayed above the textfield.
-   * @examples '<TextField header="test"/>'
+   * Define a label to be displayed above the textfield.
+   * @examples '<TextField label="test"/>'
    */
-  "header": PropTypes.string,
+  "label": PropTypes.string,
   /**
    * Defines a medium sized text input.
    * @examples '<TextField medium/>'
@@ -302,7 +320,7 @@ TextField.propTypes = {
    */
   "required": PropTypes.bool,
   /**
-   * Sets the text to show next to the header for a required TextField. If omitted will default to *.
+   * Sets the text to show next to the label for a required TextField. If omitted will default to *.
    * @examples '<TextField required requiredText="required"/>'
    */
   "requiredText": PropTypes.string,
@@ -328,20 +346,24 @@ TextField.propTypes = {
 
   "tooltipRight": PropTypes.bool,
 
-  /** Set if you want a link button next to the textfield header. **/
+  /** Set if you want a link button next to the textfield label. **/
   "link": PropTypes.bool,
-  /** Set if you want the link button to the right of the textfield header. **/
+  /** Set if you want the link button to the right of the textfield label. **/
   "linkRight": PropTypes.bool,
   /** The text of the link button. **/
   "linkText": PropTypes.string,
-  /** Callback to call when link buttonis clicked. **/
+  /** Callback to call when link button is clicked. **/
   "linkOnClick": PropTypes.func,
   /** HREF to set on the link button. **/
   "href": PropTypes.string,
   /**
    * Converts all entered text to uppercase.
    */
-  "uppercase": PropTypes.bool
+  "uppercase": PropTypes.bool,
+  /**
+   * Allows user to move the label to the left of the Dropdown instead of having it on top
+   */
+  "leftLabel": PropTypes.bool
 };
 
 TextField.defaultProps = {

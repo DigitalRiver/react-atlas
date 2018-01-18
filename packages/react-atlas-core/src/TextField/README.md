@@ -2,9 +2,13 @@
 
     <TextField/>
 
-###### TextField with header above:
+###### TextField with label above:
 
-    <TextField header="This is a TextField"/>
+    <TextField label="This is a TextField"/>
+
+###### TextField with label to left:
+
+    <TextField label="This is a TextField" leftLabel/>
 
 ###### Small textfield:
 
@@ -21,8 +25,8 @@
 ###### Inline textfields:
 
     <div>
-        <TextField small inline header="TextField One"/>
-        <TextField small inline header="TextField Two"/>
+        <TextField small inline label="TextField One"/>
+        <TextField small inline label="TextField Two"/>
     </div>
 
 ###### Placeholder text:
@@ -32,8 +36,8 @@
 ###### HTML5 types texfields (default: "text"):
 
 	<div>
-		<TextField type="email" header="Email"/>
-    	<TextField type="password" header="Password"/>
+		<TextField type="email" label="Email"/>
+    	<TextField type="password" label="Password"/>
     </div>
 
 ###### Default or app controlled value:
@@ -46,7 +50,7 @@
 
 ###### Required validation:
 
-    <TextField required header="Email Address"/>
+    <TextField required label="Email Address"/>
 
 ###### Maximum length validation:
 
@@ -58,7 +62,7 @@
         required
     	errorText="Only numbers are allowed."
     	validator={ (value) => { return /^\d+$/.test(value) } }
-    	header="Only numbers allowed"/>
+    	label="Only numbers allowed"/>
 
 ###### Input Mask:
 
@@ -66,20 +70,20 @@
 	    <TextField
 	    	placeholder="(54) 111-1111"
 	    	mask="(54) 111-1111"
-	    	header="Phone"/>
+	    	label="Phone"/>
     	<TextField
 	    	placeholder="ABC 1234"
 	    	mask="AAA 1111"
-	    	header="License Plate"/>
+	    	label="License Plate"/>
 	</div>
 
 ###### onChange handler:
 
     <TextField onChange={ (value) => { console.log('onChange executed: ', value); } }/>
 
-###### Tooltip Textfield with Header:
+###### Tooltip Textfield with Label:
 
-    <TextField required small tooltip="some test" header="key"/>
+    <TextField required small tooltip="some test" label="key"/>
 
 ###### Textfield with uppercase prop:
 

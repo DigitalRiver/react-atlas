@@ -23,9 +23,9 @@ class ProgressBar extends React.PureComponent {
           25 *
           this.calculateRatio(this.props.value)}, 400`
       };
+    } else {
+      return {}
     }
-
-    return null;
   }
 
   linearStyle() {
@@ -37,7 +37,7 @@ class ProgressBar extends React.PureComponent {
         }),
         "value": prefixer({
           "transform": `scaleX(${this.calculateRatio(this.props.value)})`,
-          "transitionDuration": this.props.transitionDuration
+          "transitionDuration": this.props.transitionDuration,
         })
       };
     } else {
@@ -46,11 +46,21 @@ class ProgressBar extends React.PureComponent {
   }
 
   renderCircular() {
+    const strokeDasharray = this.circularStyle();
+
+    let color = this.props.color;
+
+    const styles = {
+      "stroke": color
+    };
+
+    const style = Object.assign(strokeDasharray, styles);
+
     return (
-      <svg styleName={"circle"}>
+      <svg styleName={"circle"} viewBox="0 0 60 60">
         <circle
           styleName={"path"}
-          style={this.circularStyle()}
+          style={style}
           cx="30"
           cy="30"
           r="25"
@@ -61,13 +71,20 @@ class ProgressBar extends React.PureComponent {
 
   renderLinear() {
     const { buffer, value } = this.linearStyle();
+    let color = this.props.color;
+
+    const styles = prefixer({
+      "backgroundColor": color
+    }, value);
+
     return (
       <div>
         <span data-ref="buffer" styleName={"buffer"} style={buffer} />
-        <span data-ref="value" styleName={"value"} style={value} />
+        <span data-ref="value" styleName={"value"} style={styles} />
       </div>
     );
   }
+
   renderRange() {
     let rangeStyle = prefixer({
       "transform": `translateX(${this.calculateRatio(this.props.value.from) *
@@ -120,6 +137,11 @@ ProgressBar.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
+  /**
+   * Sets color for the upfront color.
+   * @examples '<ProgressBar color="red"/>'
+   */
+  "color": PropTypes.string,
   /**
    * Length of time in seconds for the transition (can use decimals)
    * @examples '35'

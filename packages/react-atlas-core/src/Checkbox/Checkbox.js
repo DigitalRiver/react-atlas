@@ -78,6 +78,7 @@ class Checkbox extends React.PureComponent {
       label,
       title,
       className,
+      id,
       name,
       groupError,
       inline,
@@ -133,6 +134,7 @@ class Checkbox extends React.PureComponent {
               disabled={this.state.disabled}
               checked={this.state.checked}
               hidden={this.state.disabled}
+              id={id}
               name={name}
               /* Hardcode classes for InputCore because classes on styleName will not
                * be evaluated because were using InputCore not Input.  */
@@ -161,6 +163,8 @@ Checkbox.propTypes = {
    * @examples 'Some Label'
    */
   "label": PropTypes.string,
+  /** Sets the html "id" property on the checkbox.*/
+  "id": PropTypes.string,
   /** An Object, array, or string of CSS classes to apply to checkbox.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,

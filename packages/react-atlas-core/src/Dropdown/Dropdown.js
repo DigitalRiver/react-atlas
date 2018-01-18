@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import { ButtonCore } from "../Button";
 import { TextFieldCore } from "../TextField";
 import messages from "../utils/messages.js";
 
@@ -35,7 +36,7 @@ class Dropdown extends React.PureComponent {
 
   /* Set initial state values for value, output, and index */
   componentWillMount() {
-    this.updateChildrenState();
+    this.updateChildrenState(true);
   }
 
   /* Check if isValid has been passed and if it has a different
@@ -54,7 +55,7 @@ class Dropdown extends React.PureComponent {
     }
     if (nextProps.children !== this.state.children) {
       this.setState({ "children": nextProps.children }, function() {
-        this.updateChildrenState();
+        this.updateChildrenState(true);
       });
     }
   }
@@ -75,7 +76,7 @@ class Dropdown extends React.PureComponent {
     });
   };
 
-  updateChildrenState = () => {
+  updateChildrenState = (initialRender) => {
     let initialValue = null;
     let initialDisplay = null;
     let initialIndex = null;
@@ -91,7 +92,7 @@ class Dropdown extends React.PureComponent {
     });
 
     const output = this.getInitialDisplay(initialDisplay);
-    let filteredChildren = this._checkFilter(this.state.children, output);
+    let filteredChildren = (this.props.autocomplete && !initialRender) ? this._checkFilter(this.state.children, output) : this.state.children;
 
     this.setState({
       "filteredChildren": filteredChildren,
@@ -390,6 +391,7 @@ class Dropdown extends React.PureComponent {
 
   render() {
     const {
+      autocomplete,
       className,
       required,
       customLabel,
@@ -409,9 +411,15 @@ class Dropdown extends React.PureComponent {
       "inline": inline
     });
 
+    const buttonClasses = cx({
+      "buttonClass": true,
+      "dropdown-button": true,
+      "error": error,
+      "disabledClass": disabled
+    });
+
     const contentClasses = cx({
       "content": true,
-      "focus": this.state.focus,
       "leftLabelContent": leftLabel
     });
 
@@ -480,6 +488,17 @@ class Dropdown extends React.PureComponent {
       ;
     }
 
+    let button = 
+      <ButtonCore
+        onClick={e => {
+          this._toggle(e);
+        }}
+        styleName={buttonClasses}
+        type={"button"}
+      >
+        <span>{this.state.output}</span>
+      </ButtonCore>
+
     let mainInput = 
       <div>
         <TextFieldCore
@@ -518,7 +537,14 @@ class Dropdown extends React.PureComponent {
           styleName={contentClasses}
           style={{ "minWidth": "100px", "width": dropdownWidth }}
         >
-          <div styleName={"fullWidth"}>{mainInput}</div>
+          <div styleName={"fullWidth"}>
+            {autocomplete &&
+              mainInput
+            }
+            {!autocomplete &&
+              button
+            }
+          </div>
           {list}
           <input type="hidden" value={this.state.value} />
         </div>
