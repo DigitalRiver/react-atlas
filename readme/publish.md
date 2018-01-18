@@ -8,7 +8,7 @@ To publish an atlas package first set `NODE_ENV` to production. Note you may hav
 
  Add and commit the version updates with git.
 
- Now build react-atlas with `npm run bootstrap`.
+ Now build react-atlas with `npm run build`.
 
  Copy the generated CSS file from `packages/react-atlas-default-theme/lib/` to `packages/react-atlas/lib/`.
 

@@ -1,6 +1,5 @@
 .hintLabel {
   	composes: default-font from '../styles.css';
 	composes: dark-gray from '../styles.css';
-	composes: italic from '../styles.css';
 	composes: font-size-6 from '../styles.css';
 }

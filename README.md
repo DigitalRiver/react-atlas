@@ -67,7 +67,7 @@ To start documentation site locally you'd need to install dependencies from the 
 ```bash
 $ git clone https://github.com/DigitalRiver/react-atlas.git
 $ npm install
-$ npm run bootstrap
+$ npm run build
 $ npm run docs:prd
 ```
 ## Development and Contributing
@@ -76,7 +76,7 @@ To setup atlas for development, run the following commands:
 ```bash
 $ git clone https://github.com/DigitalRiver/react-atlas.git
 $ npm install
-$ npm run bootstrap
+$ npm run build
 $ npm run docs:dev
 ```
 
