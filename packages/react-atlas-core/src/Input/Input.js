@@ -15,7 +15,8 @@ class Input extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value, 
+      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value,
+
       "errorText": "This field is required."
     };
 
@@ -175,12 +176,7 @@ class Input extends React.PureComponent {
 
     /* Execute custom validator and change state and error messages accordingly */
     const customValidationPass = function() {
-      let valid = this.props.validator(inputValue);
-      if (!valid) {
-        return false;
-      } else {
-        return true;
-      }
+      return this.props.validator(inputValue);
     };
 
     /* If the field is required, and it has no value, change state and display error message */
@@ -235,7 +231,7 @@ class Input extends React.PureComponent {
 
     let valid = this._validate(inputValue);
 
-    if(this.props.uppercase){  
+    if(this.props.uppercase){
         inputValue = inputValue.toUpperCase();
     }
 
@@ -261,13 +257,15 @@ class Input extends React.PureComponent {
       large,
       type,
       name,
+      id,
       multiline,
       placeholder,
       disabled,
       hidden,
       errorLocation,
       checked,
-      style      
+      style,
+      rows
     } = this.props;
 
     /* If checkbox, we need to render only input component (no wrappers) */
@@ -297,19 +295,22 @@ class Input extends React.PureComponent {
       "onPaste": this._handlePaste
     };
 
-    let inputElement = multiline ? 
+    let inputElement = multiline ?
       <textarea
+        id={id}
         name={name}
+        rows={rows}
         value={this.state.value}
         placeholder={placeholder}
         styleName={inputClasses}
         className={cx(className)}
         onChange={this._handleChange}
       />
-     : 
+     :
       <input
         type={type}
         name={name}
+        id={id}
         value={this.state.value}
         placeholder={placeholder}
         styleName={inputClasses}
@@ -321,21 +322,22 @@ class Input extends React.PureComponent {
       />
     ;
 
-    let errorTextElement = this.state.errorText && 
+    let errorTextElement = this.state.errorText &&
       <span className={"ra_Input__error"}>{this.state.errorText}</span>
     ;
 
-    return isCheckbox ? 
+    return isCheckbox ?
       <input
         style={style}
         type="checkbox"
         name={name}
         styleName={inputClasses}
         className={cx(className)}
+        id={id}
         checked={checked}
         {...eventHandlers}
       />
-     : 
+     :
       <div className={"ra_Input__container"}>
         {inputElement}
         {this.state.isValid ? null : errorTextElement}
@@ -357,6 +359,11 @@ Input.propTypes = {
    * @examples 'text', 'checkbox', 'radio', 'password', 'email'
    */
   "type": PropTypes.string,
+  /**
+   * Defines an id for the input.
+   * @examples '<Input type="text" name="test"/>'
+   */
+  "id": PropTypes.string,
   /**
    * Defines a name for the input.
    * @examples '<Input type="text" name="test"/>'
@@ -465,7 +472,11 @@ Input.propTypes = {
   /**
    * Converts all entered text to uppercase.
    */
-  "uppercase": PropTypes.bool
+  "uppercase": PropTypes.bool,
+   /**
+    * Specifies the amount of rows
+    */
+  "rows": PropTypes.number
 };
 
 Input.defaultProps = {

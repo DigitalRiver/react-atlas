@@ -121,8 +121,8 @@ Button.propTypes = {
     PropTypes.array
   ]),
   /**
-   * define a custom css class name
-   * @examples "btn", "btn-active"
+   *Determines if the button is disabled.
+   * @examples <Button disabled/>
    */
   "disabled": PropTypes.bool,
   /**
@@ -131,8 +131,8 @@ Button.propTypes = {
    */
   "outline": PropTypes.bool,
   /**
-   * define button href if anchor
-   * @examples '#', 'http://some-website.com/'
+   * use primary style button
+   * @examples <Button primary>
    */
   "primary": PropTypes.bool,
   /**

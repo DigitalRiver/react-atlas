@@ -37,7 +37,7 @@ describe("Testing TooltipCore component", () => {
 
   it("Tooltip component - Mouse in with delays", function() {
     const comp = mount(
-      <TooltipCore tooltip={"Hey I'm a tooltip"} tooltipDelay={1000} />
+      <TooltipCore tooltip={"Hey I'm a tooltip"} delay={1000} />
     );
     jest.useFakeTimers();
     expect(comp.state().active).toEqual(false);
@@ -46,6 +46,17 @@ describe("Testing TooltipCore component", () => {
     expect(comp.state().active).toEqual(true);
   });
 
+	it("Tooltip component - Mouse in without delays", function() {
+    const comp = mount(
+      <TooltipCore tooltip={"Hey I'm a tooltip"} />
+    );
+    jest.useFakeTimers();
+    expect(comp.state().active).toEqual(false);
+    comp.simulate("mouseEnter");
+    jest.runAllTimers();
+    expect(comp.state().active).toEqual(true);
+  });
+	
   it("Tooltip component - Mouse in/out", function() {
     const comp = mount(<TooltipCore tooltip={"Hey I'm a tooltip"} />);
 
@@ -55,4 +66,5 @@ describe("Testing TooltipCore component", () => {
     comp.simulate("mouseLeave");
     expect(comp.state().active).toEqual(false);
   });
+	
 });
