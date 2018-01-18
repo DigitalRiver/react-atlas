@@ -12,3 +12,4 @@ coverage
 packages/react-atlas/src/components/
 atlas.config.js
 *reports/
+package-lock.json
