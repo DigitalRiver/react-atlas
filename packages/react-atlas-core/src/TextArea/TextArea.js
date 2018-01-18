@@ -23,7 +23,7 @@ class TextArea extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value,
+      "value": typeof props.value === "undefined" || props.value === null ? "" : props.value,
       "remaining": props.maxLength,
       "active": false,
       "isValid": isValid
@@ -100,12 +100,13 @@ class TextArea extends React.PureComponent {
     ;
     const forId = id !== "" && name !== "" ? id : "";
     const labelClasses = cx({
-      "leftLabel": leftLabel
+
+      "leftLabel": leftLabel,
+      "header": label
     });
 
     let textAreaLabel = label &&
-        <div styleName={labelClasses}>
-          <label styleName={"header"} title={label} htmlFor={forId}>
+          <label styleName={labelClasses} title={label} htmlFor={forId}>
             <span styleName={"headerFont"}>{label}</span>
               {required && <span styleName={"error_text"}> *</span>}
               {tooltip &&
@@ -114,7 +115,6 @@ class TextArea extends React.PureComponent {
               </span>
               }
           </label>
-        </div>
       ;
 
     let wrapperClasses = cx(

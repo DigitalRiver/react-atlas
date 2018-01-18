@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<div>
+  <button
+    className=""
+    href={undefined}
+    onClick={[Function]}
+    style={undefined}
+    styleName="button primary"
+    type="button"
+  >
+    Open Info Dialog
+  </button>
+</div>
+`;

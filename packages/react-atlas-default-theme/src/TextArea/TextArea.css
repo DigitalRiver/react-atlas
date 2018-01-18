@@ -40,7 +40,9 @@
 }
 
 .header {
+    display: inline-block;
 	padding-bottom: 5px;
+	margin-bottom: 0.35rem;
 }
 
 .headerFont {

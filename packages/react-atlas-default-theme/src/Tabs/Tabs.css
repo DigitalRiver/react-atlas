@@ -1,0 +1,11 @@
+@import '../styles/variables.css';
+
+.tabs {
+    composes: default-font from '../styles.css';
+    font-size: 1rem;
+}
+
+.vertical {
+    display: flex;
+    flex: 0 0 100%;
+}

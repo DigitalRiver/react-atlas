@@ -1,18 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test Card component renders correctly 1`] = `
-<fieldset
+<div
   className="name"
   style={undefined}
-  styleName="card"
 >
-  <legend
-    styleName="legend"
-  >
-    lalala
-  </legend>
-  <p>
-    Some card text.
-  </p>
-</fieldset>
+  <div
+    style={
+      Object {
+        "width": null,
+      }
+    }
+    styleName="card"
+  />
+</div>
 `;

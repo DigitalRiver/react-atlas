@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePicker Test suite DatePicker - Correct render test 1`] = `
+<div>
+  <div
+    className="react-datepicker-wrapper"
+  >
+    <div
+      className="react-datepicker__input-container"
+    >
+      <input
+        autoComplete={undefined}
+        autoFocus={undefined}
+        className="ra_DatePicker__datepicker"
+        disabled={false}
+        id={undefined}
+        name={undefined}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        placeholder={undefined}
+        readOnly={undefined}
+        required={undefined}
+        tabIndex={undefined}
+        title={undefined}
+        type="text"
+        value="11/29/2017"
+      />
+    </div>
+  </div>
+</div>
+`;

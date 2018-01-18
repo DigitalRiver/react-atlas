@@ -1,0 +1,13 @@
+@import '../styles/variables.css';
+
+.tabList {
+  composes: marg-0 from '../styles.css';
+  composes: pad-0 from '../styles.css';
+  border-bottom: 1px solid #BEBEBE;
+}
+
+.vertical {
+  flex-grow: 1;
+  border-bottom: none;
+  border-right: 1px solid #BEBEBE;
+}
