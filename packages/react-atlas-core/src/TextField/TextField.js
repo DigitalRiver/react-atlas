@@ -86,6 +86,8 @@ class TextField extends React.PureComponent {
       errorText,
       mask,
       disabled,
+      readOnly,
+      dropdown,
       hidden,
       className,
       inline,
@@ -185,6 +187,7 @@ class TextField extends React.PureComponent {
     let textFieldClasses = cx(
       {
         disabled,
+        dropdown,
         "active": this.state.active,
         "invalid": !this.state.isValid
       },
@@ -223,6 +226,7 @@ class TextField extends React.PureComponent {
             mask={mask}
             uppercase={uppercase}
             disabled={disabled}
+            readOnly={readOnly}
             isValid={this.state.isValid}
             hidden={hidden}
           />
@@ -329,6 +333,15 @@ TextField.propTypes = {
    * @examples '<TextField disabled/>'
    */
   "disabled": PropTypes.bool,
+  /**
+   * Determines if the text input is readOnly.
+   * @examples '<TextField readOnly/>'
+   */
+  "readOnly": PropTypes.bool,
+  /**
+   * Determines if the TextField is being used in a Dropdown and should have cursor: pointer.
+   */
+  "dropdown": PropTypes.bool,
   /**
    * Determines if the text input is hidden.
    * @examples '<TextField hidden/>'

@@ -263,6 +263,7 @@ class Input extends React.PureComponent {
       multiline,
       placeholder,
       disabled,
+      readOnly,
       hidden,
       errorLocation,
       checked,
@@ -302,6 +303,7 @@ class Input extends React.PureComponent {
         id={id}
         name={name}
         rows={rows}
+        readOnly={readOnly}
         value={this.state.value}
         placeholder={placeholder}
         styleName={inputClasses}
@@ -313,6 +315,7 @@ class Input extends React.PureComponent {
         type={type}
         name={name}
         id={id}
+        readOnly={readOnly}
         value={this.state.value}
         placeholder={placeholder}
         styleName={inputClasses}
@@ -405,6 +408,11 @@ Input.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
+   * Determines if the input is readOnly.
+   * @examples '<Input type="text" readOnly/>'
+   */
+  readOnly: PropTypes.bool,
+  /**
    * Determines if the input is hidden.
    * @examples '<Input type="text" hidden/>'
    */
@@ -484,6 +492,7 @@ Input.propTypes = {
 Input.defaultProps = {
   className: "",
   disabled: false,
+  readOnly: false,
   hidden: false,
   errorLocation: "right",
   isValid: true

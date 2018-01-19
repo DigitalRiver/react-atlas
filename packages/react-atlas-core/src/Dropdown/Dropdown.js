@@ -1,9 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
 import { ButtonCore } from "../Button";
 import { TextFieldCore } from "../TextField";
+import { TextFieldStyle } from "../../../react-atlas-default-theme/src/TextField";
 import messages from "../utils/messages.js";
+
+const TextFieldComp = CSSModules(TextFieldCore, TextFieldStyle, {
+  allowMultiple: true
+});
 
 /**
  * Master Dropdown Component
@@ -277,6 +283,10 @@ class Dropdown extends React.PureComponent {
       }
     }
 
+    if(this.props.autocomplete){
+      console.log(this.state.output);
+    }
+
     this.setState({
       "isValid": isValid,
       "errorMessage": this.state.errorMessage
@@ -411,13 +421,6 @@ class Dropdown extends React.PureComponent {
       "inline": inline
     });
 
-    const buttonClasses = cx({
-      "buttonClass": true,
-      "dropdown-button": true,
-      "error": error,
-      "disabledClass": disabled
-    });
-
     const contentClasses = cx({
       "content": true,
       "leftLabelContent": leftLabel
@@ -435,15 +438,16 @@ class Dropdown extends React.PureComponent {
           ? true
           : false;
       let childClasses = cx({
-        "ra_Dropdown__selected": i === this.state.index,
-        "ra_Dropdown__firstChild": i === 0,
-        "ra_Dropdown__lastChild": i === count - 1,
-        "ra_Dropdown__emptyChild": emptyClass
+        "item": true,
+        "selected": i === this.state.index,
+        "firstChild": i === 0,
+        "lastChild": i === count - 1,
+        "emptyChild": emptyClass
       });
       let kid = 
         <li
           key={i}
-          className={"ra_Dropdown__item " + childClasses}
+          styleName={childClasses}
           onMouseDown={e => {
             // onMouseDown fires before onBlur. If changed to onClick it will fire after onBlur and not work.
             this._clickHandler(i, e);
@@ -488,20 +492,13 @@ class Dropdown extends React.PureComponent {
       ;
     }
 
-    let button = 
-      <ButtonCore
-        onClick={e => {
-          this._toggle(e);
-        }}
-        styleName={buttonClasses}
-        type={"button"}
-      >
-        <span>{this.state.output}</span>
-      </ButtonCore>
-
     let mainInput = 
       <div>
-        <TextFieldCore
+        <TextFieldComp
+          readOnly={!autocomplete}
+          dropdown={!autocomplete}
+          name={name}
+          value={this.state.value}
           onClick={e => {
             this._toggle(e);
           }}
@@ -538,12 +535,7 @@ class Dropdown extends React.PureComponent {
           style={{ "minWidth": "100px", "width": dropdownWidth }}
         >
           <div styleName={"fullWidth"}>
-            {autocomplete &&
-              mainInput
-            }
-            {!autocomplete &&
-              button
-            }
+              {mainInput}
           </div>
           {list}
           <input type="hidden" value={this.state.value} />

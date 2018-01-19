@@ -102,6 +102,7 @@
 .dropdown-button {
   color: #666;
   border: 1px solid #bebebe;
+  border-radius: 2px;
   background-color: white !important;
   text-transform: none !important;
   width: 100%;
