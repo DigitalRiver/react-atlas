@@ -35,7 +35,7 @@ Taskbar.propTypes = {
    * Any HTML element or React Component.
    * @examples <p>Some Text.</p>
    */
-  "children": PropTypes.node.required,
+  "children": PropTypes.node.isRequired,
   /** Determines if the Taskbar children should be centered */
   "center": PropTypes.bool
 };

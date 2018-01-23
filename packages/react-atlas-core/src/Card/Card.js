@@ -107,7 +107,7 @@ Card.propTypes = {
    * Used for non fieldset cards
    * @example <Card standardFieldset>{children}</Card>
    */
-  "standardFieldset": PropTypes.boolean
+  "standardFieldset": PropTypes.bool
 };
 
 export default Card;
