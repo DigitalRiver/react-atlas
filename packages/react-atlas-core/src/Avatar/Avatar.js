@@ -71,7 +71,7 @@ class Avatar extends React.PureComponent {
     }
 
     return (
-      <div className={cx(className)} style={style} styleName={"avatar"}>
+      <div title={title} className={cx(className)} style={style} styleName={"avatar"}>
         {kids}
         {avatar}
       </div>
@@ -102,7 +102,7 @@ Avatar.propTypes = {
    */
   "image": PropTypes.string,
   /**
-   * A string. Avatar will use First letter of the string.
+   * A string. Avatar will use the first letter of the string.
    * @examples "Nathan" will output "N"
    */
   "title": PropTypes.string,

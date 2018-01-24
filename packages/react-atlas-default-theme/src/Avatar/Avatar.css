@@ -40,4 +40,5 @@
   display: block;
   width: 100%;
   line-height: 3rem;
+  cursor: default;
 }
