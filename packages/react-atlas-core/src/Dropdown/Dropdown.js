@@ -283,10 +283,6 @@ class Dropdown extends React.PureComponent {
       }
     }
 
-    if(this.props.autocomplete){
-      console.log(this.state.output);
-    }
-
     this.setState({
       "isValid": isValid,
       "errorMessage": this.state.errorMessage
@@ -373,6 +369,24 @@ class Dropdown extends React.PureComponent {
           });
         }
       }
+    } else if (event.key === "Tab" && this.props.autocomplete) {
+      if (!this.props.disabled) {
+        /* If active is false run validation. Don't
+         * run validation when active is true because
+         * that means we are opening and we don't want
+         * to run validation on open. */
+        if (this.state.active === true) {
+          this._validationHandler(this.props.errorCallback);
+          this.setState({ "tempIndex": this.state.index }, function() {
+            this._clickHandler(this.state.index, null, true);
+          });
+        } else {
+          this.setState({
+            "active": !this.state.active,
+            "zIndex": !this.state.active
+          });
+        }
+      }
     }
   };
 
@@ -383,6 +397,8 @@ class Dropdown extends React.PureComponent {
     );
     const newLength = filteredChildren.length;
     this.setState({
+      "active": true,
+      "zIndex": true,
       "index": 0,
       "tempIndex": 0,
       "filteredChildren": filteredChildren,
@@ -497,15 +513,13 @@ class Dropdown extends React.PureComponent {
         <TextFieldComp
           readOnly={!autocomplete}
           dropdown={!autocomplete}
-          name={name}
-          value={this.state.value}
+          value={this.state.output}
           onClick={e => {
             this._toggle(e);
           }}
           onChange={value => {
             this._inputChange(value);
           }}
-          value={this.state.output}
         />
         <i styleName="arrow" />
       </div>
