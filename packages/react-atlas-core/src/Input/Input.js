@@ -15,18 +15,18 @@ class Input extends React.PureComponent {
 
     // Initial state
     this.state = {
-      value:
+      "value":
         typeof props.value === "undefined" || props.value === null
           ? ""
           : props.value,
-      errorText: "This field is required."
+      "errorText": "This field is required."
     };
 
     // Configure input mask if required
     if (this.props.mask) {
       let maskOptions = {
-        pattern: props.mask,
-        value: props.value || ""
+        "pattern": props.mask,
+        "value": props.value || ""
       };
 
       this.mask = new InputMask(maskOptions);
@@ -41,24 +41,24 @@ class Input extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.setState({ isValid: this.props.isValid });
+    this.setState({ "isValid": this.props.isValid });
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.isValid) {
       if (nextProps.isValid !== this.state.isValid) {
         this.setState({
-          isValid: nextProps.isValid
+          "isValid": nextProps.isValid
         });
       }
     } else if (nextProps.isValid === false) {
       this.setState({
-        isValid: nextProps.isValid
+        "isValid": nextProps.isValid
       });
     }
     if (nextProps.value && nextProps.value !== this.props.value) {
       this.setState({
-        value: nextProps.value
+        "value": nextProps.value
       });
     }
   }
@@ -159,14 +159,14 @@ class Input extends React.PureComponent {
     if (this.props.maxLength) {
       // Keep difference between maxlength and input value in state for count
       this.setState({
-        remaining: this.props.maxLength - inputValue.length
+        "remaining": this.props.maxLength - inputValue.length
       });
       // Make sure the user input is less than maxLength value
       if (inputValue.length > this.props.maxLength) {
         this.setState(
           {
-            value: inputValue.substring(0, this.props.maxLength),
-            remaining: 0
+            "value": inputValue.substring(0, this.props.maxLength),
+            "remaining": 0
           },
           function() {
             return;
@@ -184,21 +184,21 @@ class Input extends React.PureComponent {
     /* If the field is required, and it has no value, change state and display error message */
     if (!inputValue.length && this.props.required) {
       this.setState({
-        errorText: this.props.errorText || "This field is required.",
-        isValid: false
+        "errorText": this.props.errorText || "This field is required.",
+        "isValid": false
       });
     } else if (this.props.validator) {
       if (customValidationPass.call(this)) {
-        this.setState({ isValid: true });
+        this.setState({ "isValid": true });
       } else {
         this.setState({
-          errorText: this.props.errorText,
-          isValid: false
+          "errorText": this.props.errorText,
+          "isValid": false
         });
       }
     } else {
       this.setState({
-        isValid: true
+        "isValid": true
       });
     }
 
@@ -240,7 +240,7 @@ class Input extends React.PureComponent {
     if (valid !== false) {
       this.setState(
         {
-          value: inputValue
+          "value": inputValue
         },
         () => {
           if (this.props.onChange) {
@@ -277,28 +277,28 @@ class Input extends React.PureComponent {
     const isInput = isCheckbox || isRadio ? false : true;
 
     let inputClasses = cx({
-      input: isInput,
-      checkbox: isCheckbox,
-      invalid: !this.state.isValid,
-      blockInput: errorLocation === "bottom",
-      small: small,
-      medium: medium,
-      large: large,
-      max: !small && !medium && !large,
+      "input": isInput,
+      "checkbox": isCheckbox,
+      "invalid": !this.state.isValid,
+      "blockInput": errorLocation === "bottom",
+      "small": small,
+      "medium": medium,
+      "large": large,
+      "max": !small && !medium && !large,
       disabled,
       hidden,
-      opacity: true
+      "opacity": true
     });
 
     let eventHandlers = {
-      onClick: this._handleBeforeChange,
-      onChange: this._handleChange,
-      onKeyDown: this._handleKeyDown,
-      onKeyPress: this._handleKeyPress,
-      onPaste: this._handlePaste
+      "onClick": this._handleBeforeChange,
+      "onChange": this._handleChange,
+      "onKeyDown": this._handleKeyDown,
+      "onKeyPress": this._handleKeyPress,
+      "onPaste": this._handlePaste
     };
 
-    let inputElement = multiline ? (
+    let inputElement = multiline ? 
       <textarea
         id={id}
         name={name}
@@ -310,7 +310,7 @@ class Input extends React.PureComponent {
         className={cx(className)}
         onChange={this._handleChange}
       />
-    ) : (
+     : 
       <input
         type={type}
         name={name}
@@ -325,13 +325,13 @@ class Input extends React.PureComponent {
         }}
         {...eventHandlers}
       />
-    );
+    ;
 
-    let errorTextElement = this.state.errorText && (
+    let errorTextElement = this.state.errorText && 
       <span className={"ra_Input__error"}>{this.state.errorText}</span>
-    );
+    ;
 
-    return isCheckbox ? (
+    return isCheckbox ? 
       <input
         style={style}
         type="checkbox"
@@ -342,19 +342,19 @@ class Input extends React.PureComponent {
         checked={checked}
         {...eventHandlers}
       />
-    ) : (
+     : 
       <div className={"ra_Input__container"}>
         {inputElement}
         {this.state.isValid ? null : errorTextElement}
       </div>
-    );
+    ;
   }
 }
 
 Input.propTypes = {
-  isValid: PropTypes.bool,
+  "isValid": PropTypes.bool,
   /** An Object, array, or string of CSS classes to apply to Input.*/
-  className: PropTypes.oneOfType([
+  "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -363,139 +363,139 @@ Input.propTypes = {
    * Defines the input type. Accepts HTML5 input types.
    * @examples 'text', 'checkbox', 'radio', 'password', 'email'
    */
-  type: PropTypes.string,
+  "type": PropTypes.string,
   /**
    * Defines an id for the input.
    * @examples '<Input type="text" name="test"/>'
    */
-  id: PropTypes.string,
+  "id": PropTypes.string,
   /**
    * Defines a name for the input.
    * @examples '<Input type="text" name="test"/>'
    */
-  name: PropTypes.string,
+  "name": PropTypes.string,
   /**
    * Sets the field as required. Will be validated onChange.
    * @examples '<Input type="text" required/>'
    */
-  required: PropTypes.bool,
+  "required": PropTypes.bool,
   /**
    * Defines error message to be displayed when input is empty and required.
    * Otherwise, it will display pre-defined required field message.
    * @examples '<Input type="text" required requiredText="Custom required msg"/>'
    */
-  requiredText: PropTypes.string,
+  "requiredText": PropTypes.string,
   /**
    * Defines error message to be displayed on custom validation.
    * @examples '<Input type="text" validator={this.validateTest} errorText="Custom validation msg"/>'
    */
-  errorText: PropTypes.string,
+  "errorText": PropTypes.string,
   /**
    * Defines error messages location (on validation).
    * > Valid values are 'right' and 'bottom'.
    * > Default value is 'right'.
    * @examples '<Input type="text" required requiredText="Custom required msg" errorLocation="buttom"/>'
    */
-  errorLocation: PropTypes.string,
+  "errorLocation": PropTypes.string,
   /**
    * Defines a determinate value for the input.
    * @examples '<Input type="text" value="test input"/>'
    */
-  value: PropTypes.string,
+  "value": PropTypes.string,
   /**
    * Determines if the input is disabled.
    * @examples '<Input type="text" disabled/>'
    */
-  disabled: PropTypes.bool,
+  "disabled": PropTypes.bool,
   /**
    * Determines if the input is readOnly.
    * @examples '<Input type="text" readOnly/>'
    */
-  readOnly: PropTypes.bool,
+  "readOnly": PropTypes.bool,
   /**
    * Determines if the input is hidden.
    * @examples '<Input type="text" hidden/>'
    */
-  hidden: PropTypes.bool,
+  "hidden": PropTypes.bool,
   /**
    * Only for input type checkbox. Determines if the input is checked.
    * @examples '<Input type="checkbox" checked/>'
    */
-  checked: PropTypes.bool,
+  "checked": PropTypes.bool,
   /**
    * Sets a maximum character lenght that will be validated onChange.
    * @examples '<Input type="text" maxLenght={25}/>'
    */
-  maxLength: PropTypes.number,
+  "maxLength": PropTypes.number,
   /**
    * Defines placeholder text.
    * @examples '<Input type="text" placeholder="test input"/>'
    */
-  placeholder: PropTypes.string,
+  "placeholder": PropTypes.string,
   /**
    * Renders a textarea element instead. To be used in TextArea component.
    * @examples '<Input multiline/>'
    */
-  multiline: PropTypes.bool,
+  "multiline": PropTypes.bool,
   /**
    * Defines a small sized input element.
    * @examples '<Input type="text" small/>'
    */
-  small: PropTypes.bool,
+  "small": PropTypes.bool,
   /**
    * Defines a medium sized input element.
    * @examples '<Input type="text" small/>'
    */
-  medium: PropTypes.bool,
+  "medium": PropTypes.bool,
   /**
    * Defines a large sized input element.
    * @examples '<Input type="text" small/>'
    */
-  large: PropTypes.bool,
+  "large": PropTypes.bool,
   /**
    * Defines a pattern for masked input.
    * @examples '<Input type="text" mask="1111-1111-1111"/>'
    */
-  mask: PropTypes.string,
+  "mask": PropTypes.string,
   /**
    * Sets a custom validator function that will be executed onChange.
    * > Should return a boolean value, otherwise will evaluate to false.
    * > Error message to be displayed will come from errorText prop.
    * @examples '<Input type="text" validator={this.validateTest} errorText="Custom validation msg"/>'
    */
-  validator: PropTypes.func,
+  "validator": PropTypes.func,
   /**
    * Sets a handler function to be executed before onChange event occurs (executed onClick).
    * @examples <Input type="text" onBeforeChange={this.customOnClickFunc}/>
    */
-  onBeforeChange: PropTypes.func,
+  "onBeforeChange": PropTypes.func,
   /**
    * Sets a handler function to be executed when onChange event occurs.
    * @examples <Input type="text" onChange={this.customOnChangeFunc}/>
    */
-  onChange: PropTypes.func,
+  "onChange": PropTypes.func,
 
   /**
    * Pass inline styling here.
    */
-  style: PropTypes.object,
+  "style": PropTypes.object,
   /**
    * Converts all entered text to uppercase.
    */
-  uppercase: PropTypes.bool,
-   /**
-    * Specifies the amount of rows
-    */
-  rows: PropTypes.number
+  "uppercase": PropTypes.bool,
+  /**
+   * Specifies the amount of rows
+   */
+  "rows": PropTypes.number
 };
 
 Input.defaultProps = {
-  className: "",
-  disabled: false,
-  readOnly: false,
-  hidden: false,
-  errorLocation: "right",
-  isValid: true
+  "className": "",
+  "disabled": false,
+  "readOnly": false,
+  "hidden": false,
+  "errorLocation": "right",
+  "isValid": true
 };
 
 export default Input;

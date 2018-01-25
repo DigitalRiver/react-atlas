@@ -2,13 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import CSSModules from "react-css-modules";
-import { ButtonCore } from "../Button";
 import { TextFieldCore } from "../TextField";
 import { TextFieldStyle } from "../../../react-atlas-default-theme/src/TextField";
 import messages from "../utils/messages.js";
 
 const TextFieldComp = CSSModules(TextFieldCore, TextFieldStyle, {
-  allowMultiple: true
+  "allowMultiple": true
 });
 
 /**
@@ -82,7 +81,7 @@ class Dropdown extends React.PureComponent {
     });
   };
 
-  updateChildrenState = (initialRender) => {
+  updateChildrenState = initialRender => {
     let initialValue = null;
     let initialDisplay = null;
     let initialIndex = null;
@@ -98,7 +97,10 @@ class Dropdown extends React.PureComponent {
     });
 
     const output = this.getInitialDisplay(initialDisplay);
-    let filteredChildren = (this.props.autocomplete && !initialRender) ? this._checkFilter(this.state.children, output) : this.state.children;
+    let filteredChildren =
+      this.props.autocomplete && !initialRender
+        ? this._checkFilter(this.state.children, output)
+        : this.state.children;
 
     this.setState({
       "filteredChildren": filteredChildren,
@@ -420,12 +422,13 @@ class Dropdown extends React.PureComponent {
       autocomplete,
       className,
       required,
-      customLabel,
+      label,
       width,
       disabled,
       name,
       inline,
       leftLabel,
+      id,
       style
     } = this.props;
     const active = this.state.active;
@@ -491,11 +494,11 @@ class Dropdown extends React.PureComponent {
       list = <ul styleName={listClasses}>{bound_children}</ul>;
     }
 
-    let label = null;
-    if (customLabel) {
-      label = 
+    let labelElement = null;
+    if (label) {
+      labelElement = 
         <div styleName={labelClasses}>
-          {customLabel}{" "}
+          <label htmlFor={id}>{label}</label>{" "}
           {required && <span styleName={"requiredIndicator"}>*</span>}
         </div>
       ;
@@ -512,6 +515,7 @@ class Dropdown extends React.PureComponent {
       <div>
         <TextFieldComp
           readOnly={!autocomplete}
+          id={id}
           dropdown={!autocomplete}
           value={this.state.output}
           onClick={e => {
@@ -530,7 +534,6 @@ class Dropdown extends React.PureComponent {
     return (
       <div
         style={style}
-        name={name}
         className={cx(className)}
         styleName={classes}
         onFocus={e => {
@@ -543,16 +546,14 @@ class Dropdown extends React.PureComponent {
           this._keyDown(e);
         }}
       >
-        {label}
+        {labelElement}
         <div
           styleName={contentClasses}
           style={{ "minWidth": "100px", "width": dropdownWidth }}
         >
-          <div styleName={"fullWidth"}>
-              {mainInput}
-          </div>
+          <div styleName={"fullWidth"}>{mainInput}</div>
           {list}
-          <input type="hidden" value={this.state.value} />
+          <input name={name} type="hidden" value={this.state.value} />
         </div>
         {errorMessage}
       </div>
@@ -565,7 +566,7 @@ Dropdown.propTypes = {
    * Text for dropdown label
    * @examples 'Some Label'
    */
-  "customLabel": PropTypes.string,
+  "label": PropTypes.string,
 
   /**
    * Boolean value taht tells the dropdown whether to
@@ -658,7 +659,15 @@ Dropdown.propTypes = {
   /**
    * Allows user to move the label to the left of the Dropdown instead of having it on top
    */
-  "leftLabel": PropTypes.bool
+  "leftLabel": PropTypes.bool,
+  /**
+   * Turns the Dropdown into an editable TextField with autocomplete functionality
+   */
+  "autocomplete": PropTypes.bool,
+  /**
+   * Adds an ID to the text input and adds a 'for' attribute to the associated label
+   */
+  "id": PropTypes.string
 };
 
 Dropdown.defaultProps = {

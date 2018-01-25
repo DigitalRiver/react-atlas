@@ -15,7 +15,7 @@ Basic Dropdown:
 
 Dropdown with Autocomplete:
 
-    <Dropdown customLabel="Dinosaurs" autocomplete>
+    <Dropdown label="Dinosaurs" autocomplete>
       <span value="velociraptor">Velociraptor</span>
       <span value="tyrannosaurus">Tyrannosaurus</span>
       <span value="diplodocus">Diplodocus</span>
@@ -48,7 +48,7 @@ Dropdown with Autocomplete:
 
 Dropdown with Label
 
-    <Dropdown customLabel="Dropdown Example" >
+    <Dropdown label="Dropdown Example" >
       <span value="velociraptor">Velociraptor</span>
       <span value="tyrannosaurus">Tyrannosaurus</span>
       <span value="diplodocus">Diplodocus</span>
@@ -63,7 +63,7 @@ Dropdown with Label
 
 Dropdown with Label on the Left: 
 
-    <Dropdown customLabel="Dropdown Example:" leftLabel >
+    <Dropdown label="Dropdown Example:" leftLabel >
       <span value="velociraptor">Velociraptor</span>
       <span value="tyrannosaurus">Tyrannosaurus</span>
       <span value="diplodocus">Diplodocus</span>
@@ -110,7 +110,7 @@ Dropdowns with Custom Widths:
 
     <div>
       <div>
-        <Dropdown customLabel="Choose" width="300px">
+        <Dropdown label="Choose" width="300px">
           <span value="velociraptor">Velociraptor</span>
           <span value="tyrannosaurus">Tyrannosaurus</span>
           <span value="diplodocus">Diplodocus</span>
@@ -125,7 +125,7 @@ Dropdowns with Custom Widths:
       </div>
       <br  />
       <div>
-        <Dropdown customLabel="Choose" width="7rem">
+        <Dropdown label="Choose" width="7rem">
           <span value="velociraptor">Velociraptor</span>
           <span value="tyrannosaurus">Tyrannosaurus</span>
           <span value="diplodocus">Diplodocus</span>
@@ -142,7 +142,7 @@ Dropdowns with Custom Widths:
 
 Disabled Dropdown:
 
-    <Dropdown customLabel="Disabled Dropdown" disabled>
+    <Dropdown label="Disabled Dropdown" disabled>
       <span value="velociraptor">Velociraptor</span>
       <span value="tyrannosaurus">Tyrannosaurus</span>
       <span value="diplodocus">Diplodocus</span>
@@ -158,7 +158,7 @@ Disabled Dropdown:
 Inline Dropdowns:
 
     <div>
-      <Dropdown customLabel="Dropdown One" name="dropdown1" inline>
+      <Dropdown label="Dropdown One" name="dropdown1" inline>
         <span value="velociraptor">Velociraptor</span>
         <span value="tyrannosaurus">Tyrannosaurus</span>
         <span value="diplodocus">Diplodocus</span>
@@ -170,7 +170,7 @@ Inline Dropdowns:
         <span value="archaeopteryx">Archaeopteryx</span>
         <span value="gallimimus">Gallimimus</span>
       </Dropdown>
-      <Dropdown customLabel="Dropdown Two" name="dropdown2" inline>
+      <Dropdown label="Dropdown Two" name="dropdown2" inline>
         <span value="velociraptor">Velociraptor</span>
         <span value="tyrannosaurus">Tyrannosaurus</span>
         <span value="diplodocus">Diplodocus</span>
@@ -186,7 +186,7 @@ Inline Dropdowns:
 
 Dropdown with Required Property:
 
-    <Dropdown defaultText="Select One ..." customLabel="Required Dropdown" required>
+    <Dropdown defaultText="Select One ..." label="Required Dropdown" required>
       <span value="velociraptor">Velociraptor</span>
       <span value="tyrannosaurus">Tyrannosaurus</span>
       <span value="diplodocus">Diplodocus</span>
@@ -201,7 +201,7 @@ Dropdown with Required Property:
 
 Dropdown with custom validation and error message:
 
-    <Dropdown customLabel="Error Message Dropdown" errorCallback={ function(event, value){ return {isValid: false , message: "Custom error message!"} } }>
+    <Dropdown label="Error Message Dropdown" errorCallback={ function(event, value){ return {isValid: false , message: "Custom error message!"} } }>
       <span value="velociraptor">Velociraptor</span>
       <span value="tyrannosaurus">Tyrannosaurus</span>
       <span value="diplodocus">Diplodocus</span>
@@ -216,7 +216,7 @@ Dropdown with custom validation and error message:
 
 Dropdown with Custom Function Before Change:
 
-    <Dropdown customLabel="onBeforeChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } >
+    <Dropdown label="onBeforeChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } >
       <span value="velociraptor">Velociraptor</span>
       <span value="tyrannosaurus">Tyrannosaurus</span>
       <span value="diplodocus">Diplodocus</span>
@@ -246,7 +246,7 @@ Dropdown with onClick function:
 
 Dropdown with onChange function:
 
-    <Dropdown customLabel="onChange Dropdown" onChange={(value, event) => {console.log("onChange: ", value, event)}} >
+    <Dropdown label="onChange Dropdown" onChange={(value, event) => {console.log("onChange: ", value, event)}} >
       <span value="velociraptor">Velociraptor</span>
       <span value="tyrannosaurus">Tyrannosaurus</span>
       <span value="diplodocus">Diplodocus</span>
@@ -271,7 +271,7 @@ Update Dropdown options via state after initial render:
         setState({ items: ["Diplodocus", "Triceratops", "Brontosaurus"] })
     };
     <div> 
-      <Dropdown defaultText="Select One ..." customLabel="Update State Dropdown" onChange={(value, event) => {console.log("onChange: ", value, event)}} >
+      <Dropdown defaultText="Select One ..." label="Update State Dropdown" onChange={(value, event) => {console.log("onChange: ", value, event)}} >
         {rows}
         </Dropdown><br />
         <Button primary onClick={handleToggle}>Update State</Button>
