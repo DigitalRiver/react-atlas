@@ -21,7 +21,7 @@ Image beats title:
 Child beats parameters:
 
     <div>
-      <Avatar title="Nathan" image="cat.jpg">
+      <Avatar title="Nathan" image="https://octodex.github.com/images/codercat.jpg">
         <i className="fa fa-github"></i>
       </Avatar>
 
@@ -32,7 +32,7 @@ Child beats parameters:
 
 Image beats defaultImage:
 
-    <Avatar image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGNZh4ycC0G2UbBGDVgJ56hYbZ0j1mU9J05xLg9O5ZazV1GJTT" defaultImage="cat.jpg" />
+    <Avatar image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGNZh4ycC0G2UbBGDVgJ56hYbZ0j1mU9J05xLg9O5ZazV1GJTT" defaultImage="https://octodex.github.com/images/codercat.jpg" />
 
 DefaultImage beats title:
 
