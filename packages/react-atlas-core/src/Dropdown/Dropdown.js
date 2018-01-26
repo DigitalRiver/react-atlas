@@ -65,6 +65,7 @@ class Dropdown extends React.PureComponent {
     }
   }
 
+  // Filtering function to see which Dropdown options contain the user's entered value. Only used for autocomplete.
   _checkFilter = (array, output) => {
     const oThis = this;
     return array.filter(function(child) {
@@ -81,6 +82,7 @@ class Dropdown extends React.PureComponent {
     });
   };
 
+  /* Sets state values for value, output, and index, as well as filtering out children if autocomplete is set to true */
   updateChildrenState = initialRender => {
     let initialValue = null;
     let initialDisplay = null;
@@ -111,6 +113,7 @@ class Dropdown extends React.PureComponent {
     });
   };
 
+  // Used to update this.state.value according to prop values
   getInitialValue = initialValue => {
     if (this.state.value !== null) {
       return this.state.value;
@@ -125,6 +128,7 @@ class Dropdown extends React.PureComponent {
     }
   };
 
+  // Used to update this.state.output according to prop values
   getInitialDisplay = initialDisplay => {
     if (this.state.output !== null) {
       return this.state.output;
@@ -139,6 +143,7 @@ class Dropdown extends React.PureComponent {
     }
   };
 
+  // Used to update this.state.index according to prop values
   getInitialIndex = initialIndex => {
     if (this.state.index !== null) {
       return this.state.index;
@@ -291,6 +296,28 @@ class Dropdown extends React.PureComponent {
     });
   };
 
+  // Used below to update select value when Enter or Tab are pressed
+  _selectNewValue = () => {
+    if (!this.props.disabled) {
+      /* If active is false run validation. Don't
+       * run validation when active is true because
+       * that means we are opening and we don't want
+       * to run validation on open. */
+      if (this.state.active === true) {
+        this._validationHandler(this.props.errorCallback);
+        this.setState({ "tempIndex": this.state.index }, function() {
+          this._clickHandler(this.state.index, null, true);
+        });
+      } else {
+        this.setState({
+          "active": !this.state.active,
+          "zIndex": !this.state.active
+        });
+      }
+    }
+  };
+
+  // For keyboard navigation
   _keyDown = event => {
     const indexValid = typeof this.state.index === "number";
     let newIndex;
@@ -354,44 +381,13 @@ class Dropdown extends React.PureComponent {
       }
     } else if (event.key === "Enter") {
       event.preventDefault();
-      if (!this.props.disabled) {
-        /* If active is false run validation. Don't
-         * run validation when active is true because
-         * that means we are opening and we don't want
-         * to run validation on open. */
-        if (this.state.active === true) {
-          this._validationHandler(this.props.errorCallback);
-          this.setState({ "tempIndex": this.state.index }, function() {
-            this._clickHandler(this.state.index, null, true);
-          });
-        } else {
-          this.setState({
-            "active": !this.state.active,
-            "zIndex": !this.state.active
-          });
-        }
-      }
+      this._selectNewValue();
     } else if (event.key === "Tab" && this.props.autocomplete) {
-      if (!this.props.disabled) {
-        /* If active is false run validation. Don't
-         * run validation when active is true because
-         * that means we are opening and we don't want
-         * to run validation on open. */
-        if (this.state.active === true) {
-          this._validationHandler(this.props.errorCallback);
-          this.setState({ "tempIndex": this.state.index }, function() {
-            this._clickHandler(this.state.index, null, true);
-          });
-        } else {
-          this.setState({
-            "active": !this.state.active,
-            "zIndex": !this.state.active
-          });
-        }
-      }
+      this._selectNewValue();
     }
   };
 
+  // Used to update necessary state properties for autocomplete when user changes input value
   _updateLength = () => {
     let filteredChildren = this._checkFilter(
       this.state.children,
@@ -408,6 +404,7 @@ class Dropdown extends React.PureComponent {
     });
   };
 
+  // Catches user updates in autocomplete Dropdown
   _inputChange = value => {
     this.setState(
       {
