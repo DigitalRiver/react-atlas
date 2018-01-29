@@ -3,7 +3,7 @@
   background-color: red;
 }
 
-:global .column:hover {
+:global .react-bs-table .column:hover {
   background-color: #E6E6E6;
 }
 
@@ -20,11 +20,11 @@
   background: red;
 }
 
-:global .pagination > li {
+:global .react-bs-table-pagination .pagination > li {
     display: inline;
 }
 
-:global .pagination > li > a {
+:global .react-bs-table-pagination .pagination > li > a {
     position: relative;
     float: left;
     padding: 1px 13px;
@@ -36,21 +36,21 @@
     margin-left: -1px;
 }
 
-:global .pagination > li:first-child > a {
+:global .react-bs-table-pagination .pagination > li:first-child > a {
     margin-left: 0;
 }
 
-:global .pagination > li > a:hover,
-:global .pagination > li > a:focus {
+:global .react-bs-table-pagination .pagination > li > a:hover,
+:global .react-bs-table-pagination .pagination > li > a:focus {
     z-index: 3;
     color: #23527c;
     background-color: #eeeeee;
     border-color: #ccc;
 }
 
-:global .pagination > .active > a,
-:global .pagination > .active > a:hover,
-:global .pagination > .active > a:focus {
+:global .react-bs-table-pagination .pagination > .active > a,
+:global .react-bs-table-pagination .pagination > .active > a:hover,
+:global .react-bs-table-pagination .pagination > .active > a:focus {
     z-index: 2;
     color: #fff;
     background-color: #337ab7;
@@ -229,9 +229,6 @@
     width: 50%;
     float: left;
 }
-:global .page-link {
-
-}
 
 :global .react-bs-table-pagination {
     margin: 10px;
@@ -357,7 +354,7 @@
   border-bottom-width: 0;
 }
 
-/*Esquerda*/
+/*Left*/
 :global .react-bs-table .table-bordered > thead > tr > th:first-child,
 :global .react-bs-table .table-bordered > tbody > tr > th:first-child,
 :global .react-bs-table .table-bordered > tfoot > tr > th:first-child,
@@ -367,7 +364,7 @@
   border-left-width: 0;
 }
 
-/*Direita*/
+/*Right*/
 :global .react-bs-table .table-bordered > thead > tr > th:last-child,
 :global .react-bs-table .table-bordered > tbody > tr > th:last-child,
 :global .react-bs-table .table-bordered > tfoot > tr > th:last-child,
@@ -377,13 +374,13 @@
   border-right-width: 0;
 }
 
-/*Topo*/
+/*Top*/
 :global .react-bs-table .table-bordered > thead > tr:first-child > th,
 :global .react-bs-table .table-bordered > thead > tr:first-child > td {
   border-top-width: 0;
 }
 
-/*Baixo*/
+/*Bottom*/
 :global .react-bs-table .table-bordered > tfoot > tr:last-child > th,
 :global .react-bs-table .table-bordered > tfoot > tr:last-child > td {
   border-bottom-width: 0;
@@ -432,8 +429,6 @@
 :global .react-bs-table .react-bs-container-header .sort-column {
   cursor: pointer;
 }
-
-height:20px; margin:0; padding-left: 30px;
 
 /*inline editor default style*/
 :global .react-bs-container .form-control.editor{
