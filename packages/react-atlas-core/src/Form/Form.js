@@ -7,69 +7,147 @@ class Form extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    let childState = [];
-
-    React.Children.map(props.children, (child, i) => {
-      let state = {
-        "index": i,
-        "value": child.props.value || "",
-        "isValid": true,
-        "onChange": child.props.onChange || null
-      };
-
-      childState.push(state);
-
-      return child;
-    });
-
     this.state = {
-      "childState": childState
+      "childState": {}
     };
+  }
+
+  componentWillMount() {
+    this.updateChildState();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    /* Update the childState to account for any children changes */
+    if (this.props.children !== nextProps.children) {
+      this.updateChildState();
+    }
+  }
+
+  /* Initialize Child state for all children with a name */
+  updateChildState() {
+    const recursiveChildState = children => {
+      let childState = {};
+
+      React.Children.forEach(children, child => {
+        if (!React.isValidElement(child)) {
+          return;
+        }
+
+        const childId = child.props.name;
+        if (childId) {
+          childState[childId] = {
+            "value": child.props.value,
+            "isValid": true,
+            "onChange": child.props.onChange || null
+          };
+        }
+        Object.assign(childState, recursiveChildState(child.props.children));
+      });
+
+      return childState;
+    };
+
+    const childState = recursiveChildState(this.props.children);
+
+    this.setState({
+      childState
+    });
+  }
+
+  /* Recursively render children with additional props */
+  renderChildren() {
+    const { childClasses, autocomplete, novalidate } = this.props;
+
+    const recursiveRenderChildren = children =>
+      React.Children.map(children, child => {
+        const { childState } = this.state;
+        let props = {};
+
+        const childId = child.props.name;
+
+        if (childId) {
+          const classes = cx(child.props.className, childClasses);
+          props = {
+            "className": classes,
+            "autocomplete": autocomplete,
+            "onChange": (value, event, isValid) =>
+              this.onChangeHandler(value, event, isValid),
+            "value": childState[childId].value,
+            "isValid": childState[childId].isValid,
+            "novalidate": novalidate
+          };
+        }
+
+        if(!React.isValidElement(child.props.children)) {
+          if(typeof child.props.children === 'string') {
+            props.children = child.props.children;
+          } else {
+            props.children = recursiveRenderChildren(child.props.children);
+          }
+        } else {
+          props.children = recursiveRenderChildren(child.props.children);
+        }
+
+        return React.cloneElement(child, props);
+      });
+
+    return recursiveRenderChildren(this.props.children);
   }
 
   validate = () => {
     let isValid = true;
-    const data = React.Children.map(this.props.children, (child, i) => {
-      if (typeof child.props.required !== "undefined") {
-        if (this.state.childState[i].value === "") {
-          const state = this.state.childState;
-          state[i].isValid = false;
-          this.setState({ state });
-          isValid = false;
+
+    /* Validation needs to be refactored to use a Field level validation check or callback */
+
+    /* Recursively step through children and check if a field is required and empty */
+    const recursiveRequiredValidation = children => {
+      let invalidChildren = {};
+
+      React.Children.forEach(children, child => {
+        if (!React.isValidElement(child)) {
           return;
         }
-      }
 
-      /* Skip children with no name prop. */
-      if (!child.props.name) {
-        return;
-      }
+        const childId = child.props.name;
+        if (childId) {
+          if (child.props.required) {
+            if (typeof this.state.childState[childId].value === 'undefined' || this.state.childState[childId].value === "") {
+              isValid = false;
+              invalidChildren[childId] = Object.assign(
+                {},
+                this.state.childState[childId],
+                { "isValid": false }
+              );
+            }
+          }
+        }
+        Object.assign(
+          invalidChildren,
+          recursiveRequiredValidation(child.props.children)
+        );
+      });
 
-      let childData = {
-        "name": child.props.name,
-        "value": this.state.childState[i].value
-      };
+      return invalidChildren;
+    };
 
-      return childData;
-    });
+    const newState = recursiveRequiredValidation(this.props.children);
+    if (Object.keys(newState).length !== 0) {
+      /* Copy state and set to avoid mutating existing state */
+      const childState = Object.assign({}, this.state.childState, newState);
+      this.setState({
+        childState
+      });
+    }
 
-    if (isValid) {
-      return data;
-    } else {
+    if (!isValid) {
       return null;
     }
-  };
 
-  transformData = data => {
-    let sumbitData = {};
-    for (let i = 0; i < data.length; i++) {
-      let key = data[i].name;
-      let value = data[i].value;
-
-      sumbitData[key] = value;
-    }
-
-    return sumbitData;
+    const { childState } = this.state;
+    return Object.keys(childState).reduce((data, key) => {
+      data[key] = childState[key].value;
+      return data;
+    }, {});
   };
 
   submitHandler = e => {
@@ -78,7 +156,7 @@ class Form extends React.PureComponent {
       e.preventDefault();
     }
 
-    /* Validate children components before submiting. */
+    /* Validate children components before submitting. */
     let data = this.validate();
     if (!data) {
       /* Prevent form submission when action is set and the
@@ -88,54 +166,41 @@ class Form extends React.PureComponent {
       }
 
       if (typeof this.props.onError !== "undefined") {
-        this.props.onError(
-          messages.missingRequired
-        );
+        this.props.onError(messages.missingRequired);
       }
       return;
     }
 
-    /* Tranform data array from validate() to an object using name
-     * as the key and the child's value as the object value. */
-    let sumbitData = this.transformData(data);
-
     /* Check if onSubmit was set. Call onSubmit if
   	 * it was passed throw a error if not set. */
     if (this.props.onSubmit) {
-      this.props.onSubmit(e, sumbitData);
+      this.props.onSubmit(e, data);
     } else {
       throw messages.onSubmitAction;
     }
   };
 
   /* Fires whenever a child input is changed. */
-  onChangeHandler = (value, event, isValid, state) => {
+  onChangeHandler = (value, event, isValid) => {
     if (isValid === false && typeof this.props.onError !== "undefined") {
-      this.props.onError(errorCodes.MISSING_REQUIRED, messages.missingRequired);
+      this.props.onError(messages.missingRequired);
     }
-    let index = state.index;
-    let childState = [];
-    let count = React.Children.count(this.props.children);
 
-    for (let i = 0; i < count; i++) {
-      if (i === index) {
-        if (this.state.childState[i].onChange) {
-          this.state.childState[i].onChange(value, event, isValid);
-        }
-        let onChange = this.state.childState[i].onChange;
-        let child = {
-          "index": i,
-          "value": value,
-          "isValid": isValid,
-          "onChange": onChange
-        };
-        childState.push(child);
-        continue;
-      }
+    const childId = event.target.name;
 
-      let child = this.state.childState[i];
-      childState.push(child);
+    if (this.state.childState[childId].onChange) {
+      this.state.childState[childId].onChange(value, event, isValid);
     }
+
+    let child = {
+      "value": value,
+      "isValid": isValid,
+      "onChange": this.state.childState[childId].onChange || null
+    };
+
+    const childState = Object.assign({}, this.state.childState, {
+      [childId]: child
+    });
 
     this.setState({ "childState": childState });
   };
@@ -143,34 +208,14 @@ class Form extends React.PureComponent {
   render() {
     const {
       className,
-      children,
       action,
       method,
-      childClasses,
       style,
       target,
       name,
       enctype,
-      autocomplete,
       novalidate
     } = this.props;
-    /* Loop through children components and set onChange handlers
-     * and add CSS classes. */
-    let kids = React.Children.map(children, (child, i) => {
-      let classes = cx(child.props.className, childClasses);
-
-      let props = {
-        "className": classes,
-        "autocomplete": autocomplete,
-        "onChange": (value, event, isValid) =>
-          this.onChangeHandler(value, event, isValid, this.state.childState[i]),
-        "value": this.state.childState[i].value,
-        "isValid": this.state.childState[i].isValid,
-        "novalidate": novalidate
-      };
-
-      return React.cloneElement(child, props);
-    });
 
     return (
       <form
@@ -184,7 +229,7 @@ class Form extends React.PureComponent {
         encType={enctype}
         noValidate={novalidate}
       >
-        {kids}
+        {this.renderChildren()}
       </form>
     );
   }
