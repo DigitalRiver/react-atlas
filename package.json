@@ -27,6 +27,7 @@
     "gh-pages:publish": "cd scripts && node gh-pages.js"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/scripts/enzymeConfig.js",
     "collectCoverageFrom": [
       "packages/react-atlas-core/src/**/*.js"
     ],
@@ -49,8 +50,8 @@
     "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "babel-plugin-transform-react-inline-elements": "^6.22.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.2",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "auditjs": "^2.2.2",
@@ -60,16 +61,17 @@
     "babel-preset-stage-1": "^6.24.1",
     "cross-env": "^5.0.3",
     "cross-spawn": "^5.1.0",
-    "enzyme": "^2.8.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.9.0",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-react": "^7.0.1",
     "gh-pages": "^1.1.0",
     "glob": "^7.1.1",
-    "jest": "^21.2.1",
-    "lerna": "^2.5.1",
+    "jest": "^22.1.4",
+    "lerna": "^2.8.0",
     "prettier": "^1.6.1",
-    "react-test-renderer": "^15.6.2",
+    "react-test-renderer": "^16.2.0",
     "rimraf": "^2.6.1",
     "sinon": "^4.0.1",
     "xml-parser": "^1.2.1"
