@@ -63,15 +63,10 @@ class Form extends React.PureComponent {
         const { childState } = this.state;
         let props = {};
 
-        if (!React.isValidElement(child)) {
-          return;
-        }
-
         const childId = child.props.name;
 
         if (childId) {
           const classes = cx(child.props.className, childClasses);
-
           props = {
             "className": classes,
             "autocomplete": autocomplete,
@@ -83,7 +78,16 @@ class Form extends React.PureComponent {
           };
         }
 
-        props.children = recursiveRenderChildren(child.props.children);
+        if(!React.isValidElement(child.props.children)) {
+          if(typeof child.props.children === 'string') {
+            props.children = child.props.children;
+          } else {
+            props.children = recursiveRenderChildren(child.props.children);
+          }
+        } else {
+          props.children = recursiveRenderChildren(child.props.children);
+        }
+
         return React.cloneElement(child, props);
       });
 
@@ -107,7 +111,7 @@ class Form extends React.PureComponent {
         const childId = child.props.name;
         if (childId) {
           if (child.props.required) {
-            if (this.state.childState[childId].value === "") {
+            if (typeof this.state.childState[childId].value === 'undefined' || this.state.childState[childId].value === "") {
               isValid = false;
               invalidChildren[childId] = Object.assign(
                 {},
@@ -179,7 +183,7 @@ class Form extends React.PureComponent {
   /* Fires whenever a child input is changed. */
   onChangeHandler = (value, event, isValid) => {
     if (isValid === false && typeof this.props.onError !== "undefined") {
-      this.props.onError(errorCodes.MISSING_REQUIRED, messages.missingRequired);
+      this.props.onError(messages.missingRequired);
     }
 
     const childId = event.target.name;
