@@ -3,6 +3,7 @@ import { mount } from "enzyme";
 import { FormCore } from "../../../react-atlas-core/src/Form/index";
 import { ButtonCore } from "../../../react-atlas-core/src/Button/index";
 import { TextFieldCore } from "../../../react-atlas-core/src/TextField";
+import messages from "../../../react-atlas-core/src/utils/messages";
 
 describe("Test form component", () => {
   it("Test default props", function() {
@@ -98,7 +99,7 @@ describe("Test data", () => {
     expect(onSubmit).toBeCalled();
 
     expect(onSubmit.mock.calls[0][1]).toEqual({
-      "UserField": "Userdata"
+      UserField: "Userdata"
     });
   });
 
@@ -115,8 +116,8 @@ describe("Test data", () => {
     expect(onSubmit).toBeCalled();
 
     expect(onSubmit.mock.calls[0][1]).toEqual({
-      "UserField": "Userdata",
-      "UserField2": "Userdata2"
+      UserField: "Userdata",
+      UserField2: "Userdata2"
     });
   });
 
@@ -136,8 +137,8 @@ describe("Test data", () => {
 
     expect(onSubmit.mock.calls[0][1]).toEqual(
       expect.objectContaining({
-        "UserField": "Userdata",
-        "NestedField": "Userdata"
+        UserField: "Userdata",
+        NestedField: "Userdata"
       })
     );
   });
@@ -156,7 +157,7 @@ describe("Test data", () => {
     expect(onSubmit).toBeCalled();
 
     expect(onSubmit.mock.calls[0][1]).toEqual({
-      "NestedField": "Userdata"
+      NestedField: "Userdata"
     });
   });
 
@@ -173,10 +174,10 @@ describe("Test data", () => {
         </div>
       </FormCore>
     );
-    form.find({ "name": "NestedField" }).simulate("change", {
-      "target": {
-        "name": "NestedField",
-        "value": "testdata"
+    form.find({ name: "NestedField" }).simulate("change", {
+      target: {
+        name: "NestedField",
+        value: "testdata"
       }
     });
 
@@ -192,10 +193,10 @@ describe("Test data", () => {
         </div>
       </FormCore>
     );
-    form.find({ "name": "NestedField" }).simulate("change", {
-      "target": {
-        "name": "NestedField",
-        "value": "testdata"
+    form.find({ name: "NestedField" }).simulate("change", {
+      target: {
+        name: "NestedField",
+        value: "testdata"
       }
     });
     form.simulate("submit");
@@ -203,7 +204,7 @@ describe("Test data", () => {
     expect(onSubmit).toBeCalled();
 
     expect(onSubmit.mock.calls[0][1]).toEqual({
-      "NestedField": "testdata"
+      NestedField: "testdata"
     });
   });
 
@@ -220,5 +221,21 @@ describe("Test data", () => {
     form.simulate("submit");
 
     expect(onError).toBeCalled();
+  });
+
+  it("Test that required validation updates state properly", function() {
+    const onError = jest.fn();
+    const form = mount(
+      <FormCore onSubmit={() => {}} onError={onError}>
+        <TextFieldCore name="UserField" value="Userdata" />
+        <div>
+          <TextFieldCore name="InvalidField" required value="" />
+        </div>
+      </FormCore>
+    );
+    expect(form.state().childState.InvalidField.isValid).toBeTruthy();
+    form.simulate("submit");
+
+    expect(form.state().childState.InvalidField.isValid).toEqual(false);
   });
 });

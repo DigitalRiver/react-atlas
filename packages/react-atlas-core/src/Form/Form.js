@@ -37,7 +37,7 @@ class Form extends React.PureComponent {
         if (childId) {
           childState[childId] = {
             "value": child.props.value,
-            "isValid": true,
+            "isValid": child.props.isValid || true,
             "onChange": child.props.onChange || null
           };
         }
@@ -63,17 +63,15 @@ class Form extends React.PureComponent {
         const { childState } = this.state;
         let props = {};
 
+        /* Text strings are an invalid React component but should be returned or the DOM will render empty nodes */
         if (!React.isValidElement(child)) {
-          return;
+          return child;
         }
 
         const childId = child.props.name;
 
         if (childId) {
-          const classes = cx(child.props.className, childClasses);
-
           props = {
-            "className": classes,
             "autocomplete": autocomplete,
             "onChange": (value, event, isValid) =>
               this.onChangeHandler(value, event, isValid),
@@ -83,7 +81,9 @@ class Form extends React.PureComponent {
           };
         }
 
+        props.className = cx(child.props.className, childClasses);
         props.children = recursiveRenderChildren(child.props.children);
+
         return React.cloneElement(child, props);
       });
 
@@ -107,7 +107,10 @@ class Form extends React.PureComponent {
         const childId = child.props.name;
         if (childId) {
           if (child.props.required) {
-            if (this.state.childState[childId].value === "") {
+            if (
+              typeof this.state.childState[childId].value === "undefined" ||
+              this.state.childState[childId].value === ""
+            ) {
               isValid = false;
               invalidChildren[childId] = Object.assign(
                 {},
@@ -179,7 +182,7 @@ class Form extends React.PureComponent {
   /* Fires whenever a child input is changed. */
   onChangeHandler = (value, event, isValid) => {
     if (isValid === false && typeof this.props.onError !== "undefined") {
-      this.props.onError(errorCodes.MISSING_REQUIRED, messages.missingRequired);
+      this.props.onError(messages.missingRequired);
     }
 
     const childId = event.target.name;
