@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {IconCore} from './../Icon';
 import cx from "classnames";
 
 /**
@@ -77,18 +78,17 @@ class Button extends React.PureComponent {
       iconClass = "ra_Button__icon-left";
     }
 
-    let btn = 
-      <button
-        onClick={onClick}
-        className={cx(className)}
-        styleName={classes}
-        style={style}
-        type={type}
-        href={href}
-      >
-        {icon ? <i className={cx(icon, iconClass)} /> : null}
-        {text}
-      </button>
+    let btn = <button
+          onClick={onClick}
+          className={cx(className)}
+          styleName={classes}
+          style={style}
+          type={type}
+          href={href}
+        >
+          {icon ? <IconCore icon={icon} /> : null}
+          {text}
+        </button>
     ;
 
     let renderButton = btn;

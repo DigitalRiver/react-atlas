@@ -160,6 +160,7 @@ let components = [
   "fileUpload",
   "form",
   "hint",
+  "icon",
   "input",
   "modal",
   "panel",
