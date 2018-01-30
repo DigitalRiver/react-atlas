@@ -21,7 +21,7 @@ class Dropdown extends React.PureComponent {
       "active": false,
       "children": this.props.children,
       "childrenState": [],
-      "value": null,
+      "value": " ", /* Use an empty string so the component is controlled. */
       "output": null,
       "index": null,
       "tempIndex": null,
@@ -397,7 +397,7 @@ class Dropdown extends React.PureComponent {
           "ra_Dropdown__lastChild": i === count - 1,
           "ra_Dropdown__emptyChild": emptyClass
         });
-        let kid = 
+        let kid =
           <li
             key={i}
             className={"ra_Dropdown__item " + childClasses}
@@ -431,7 +431,7 @@ class Dropdown extends React.PureComponent {
 
     let label = null;
     if (customLabel) {
-      label = 
+      label =
         <div styleName={labelClasses}>
           {customLabel}{" "}
           {required && <span styleName={"requiredIndicator"}>*</span>}
@@ -441,12 +441,12 @@ class Dropdown extends React.PureComponent {
 
     let errorMessage = null;
     if (error) {
-      errorMessage = 
+      errorMessage =
         <span styleName={"error_message"}>{this.state.errorMessage}</span>
       ;
     }
 
-    let button = 
+    let button =
       <ButtonCore
         onClick={e => {
           this._toggle(e);
