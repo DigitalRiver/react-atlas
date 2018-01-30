@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Hint component render Render correctly 1`] = `
+<span
+  className=""
+  style={undefined}
+  styleName="hintLabel"
+>
+  Some text
+</span>
+`;

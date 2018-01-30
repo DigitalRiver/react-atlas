@@ -24,6 +24,23 @@ describe("Test CheckboxGroup component - the bascis", () => {
     expect(component.state().totalChecked).toBe(1);
   });
   
+	it("Checkbox group - 4 checkboxes, 1 checked (with onChange)", function() {
+    const component = mount(
+      <CheckboxGroupCore 
+				title={"CheckboxGroup test"} 
+				onChange={(value, event, isValid, checked)=>{console.log("onChange triggered!!")}}>
+					<CheckboxCore name={"1"} />
+					<CheckboxCore name={"2"} />
+					<CheckboxCore name={"3"} />
+					<CheckboxCore name={"4"} />
+      </CheckboxGroupCore>
+    );
+
+    component.childAt(1).simulate("click");
+
+    expect(component.state().totalChecked).toBe(1);
+  });
+	
   it('Test renders correctly', () => {
     const comp = <CheckboxGroupCore title={'CheckboxGroup test'}>
 	               <CheckboxCore name={'1'} />
@@ -146,13 +163,13 @@ describe("Test CheckboxGroup component - Min/Max tests", () => {
   it("Checkbox group - 5 checkboxes, max=4, min=2, 1 checked", function() {
     _verifyMinMax(2, 4, 1, "Limit exceed!!", true);
   });
-  it("Checkbox group - 5 checkboxes, max=4, min=2, 1 checked", function() {
+  it("Checkbox group - 5 checkboxes, max=4, min=2, 2 checked", function() {
     _verifyMinMax(2, 4, 2, "Limit exceed!!", false);
   });
   it("Checkbox group - 5 checkboxes, max=4, min=2, 3 checked", function() {
     _verifyMinMax(2, 4, 3, "Limit exceed!!", false);
   });
-  it("Checkbox group - 5 checkboxes, max=4, min=2, 1 checked", function() {
+  it("Checkbox group - 5 checkboxes, max=4, min=2, 4 checked", function() {
     _verifyMinMax(2, 4, 4, "Limit exceed!!", false);
   });
   it("Checkbox group - 5 checkboxes, max=4, min=2, 5 checked", function() {
