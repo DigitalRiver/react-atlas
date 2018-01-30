@@ -11,6 +11,7 @@ export { DropdownCore } from "./Dropdown";
 export { FormCore } from "./Form";
 export { FileUploadCore } from "./FileUpload";
 export { HintCore } from "./Hint";
+export { IconCore } from "./Icon";
 export { InputCore } from "./Input";
 export { ModalCore } from "./Modal";
 export { PanelCore } from "./Panel";
