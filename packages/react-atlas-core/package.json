@@ -25,6 +25,7 @@
     "moment": "^2.19.1",
     "proptypes": "^1.0.0",
     "react": "^15.6.2",
+    "react-bootstrap-table": "4.3.1",
     "react-datepicker": "^0.60.2",
     "react-dom": "^15.6.2",
     "react-dropzone": "^4.2.1"
