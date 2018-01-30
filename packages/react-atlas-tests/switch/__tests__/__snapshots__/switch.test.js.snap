@@ -18,7 +18,7 @@ exports[`Test switch component render Render correctly 1`] = `
     onKeyPress={[Function]}
     onPaste={[Function]}
     style={undefined}
-    styleName="checkbox max opacity"
+    styleName="checkbox max"
     type="checkbox"
   />
   <div

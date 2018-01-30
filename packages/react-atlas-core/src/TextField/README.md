@@ -33,7 +33,7 @@
 
     <TextField placeholder="Enter product details here..."/>
 
-###### HTML5 types texfields (default: "text"):
+###### HTML5 types textfields (default: "text"):
 
 	<div>
 		<TextField type="email" label="Email"/>

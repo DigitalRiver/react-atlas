@@ -37,7 +37,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max opacity"
+            styleName="max"
             type="radio"
             value="first"
           />
@@ -83,7 +83,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max opacity"
+            styleName="max"
             type="radio"
             value="second"
           />
@@ -125,7 +125,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max opacity"
+            styleName="max"
             type="radio"
             value="third"
           />
@@ -167,7 +167,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max opacity"
+            styleName="max"
             type="radio"
             value="fourth"
           />
@@ -209,7 +209,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max opacity"
+            styleName="max"
             type="radio"
             value="fifth"
           />
@@ -251,7 +251,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max opacity"
+            styleName="max"
             type="radio"
             value="sixth"
           />
