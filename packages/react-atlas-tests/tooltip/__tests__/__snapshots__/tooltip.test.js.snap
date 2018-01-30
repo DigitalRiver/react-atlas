@@ -6,6 +6,7 @@ exports[`Test Tooltip component render Render correctly 1`] = `
   data-tooltip=""
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  role="tooltip"
   style={undefined}
   styleName="block tooltip tooltip-top"
 >

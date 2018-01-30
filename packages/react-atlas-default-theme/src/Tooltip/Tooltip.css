@@ -1,7 +1,7 @@
-
+@import '../styles/variables.css';
 /* Base styles for the element that has a tooltip */
 .tooltip {
-  composes: charcoal from '../styles.css';
+  composes: gray from '../styles.css';
   composes: default-font from '../styles.css';
   position: relative;
   display: inline-block;
@@ -9,7 +9,6 @@
 }
 
 .tooltip > i , .block > i {
-  opacity: 0.2;
   font-size: 1rem !important;
   cursor: pointer;
 }
@@ -70,11 +69,11 @@
   z-index: 1000;
   padding: 8px;
   width: 160px;
-  background-color: #000;
-  background-color: hsla(0, 0%, 20%, 0.9);
-  color: #fff;
+  background-color: var(--blue);
+  color: var(--white);
   font-size: 14px;
   line-height: 1.2;
+  text-align:center;
 }
 
 /* Directions */
@@ -91,9 +90,8 @@
 .tooltip:before,
 .tooltip-top:before {
   margin-left: -6px;
-  margin-bottom: -12px;
-  border-top-color: #000;
-  border-top-color: hsla(0, 0%, 20%, 0.9);
+  margin-bottom: -11.5px;
+  border-top-color: var(--blue);
 }
 
 /* Horizontally align top/bottom tooltips */
@@ -123,11 +121,10 @@
 
 .tooltip-left:before {
   margin-left: 0;
-  margin-right: -12px;
+  margin-right: -10.5px;
   margin-bottom: -5px;
   border-top-color: transparent;
-  border-left-color: #000;
-  border-left-color: hsla(0, 0%, 20%, 0.9);
+  border-left-color: var(--blue);
 }
 
 .tooltip-left:hover:before,
@@ -148,11 +145,10 @@
 }
 
 .tooltip-bottom:before {
-  margin-top: -12px;
+  margin-top: -11px;
   margin-bottom: 0;
   border-top-color: transparent;
-  border-bottom-color: #000;
-  border-bottom-color: hsla(0, 0%, 20%, 0.9);
+  border-bottom-color: var(--blue);
 }
 
 .tooltip-bottom:hover:before,
@@ -173,10 +169,9 @@
 
 .tooltip-right:before {
   margin-bottom: -5px;
-  margin-left: -12px;
+  margin-left: -11.5px;
   border-top-color: transparent;
-  border-right-color: #000;
-  border-right-color: hsla(0, 0%, 20%, 0.9);
+  border-right-color: var(--blue);
 }
 
 .tooltip-right:hover:before,
