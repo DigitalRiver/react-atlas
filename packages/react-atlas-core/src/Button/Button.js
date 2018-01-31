@@ -86,7 +86,7 @@ class Button extends React.PureComponent {
           type={type}
           href={href}
         >
-          {icon ? <IconCore icon={icon} /> : null}
+          {icon ? <IconCore icon={icon} styleName={iconClass} /> : null}
           {text}
         </button>
     ;

@@ -50,6 +50,11 @@ Icon.propTypes = {
     PropTypes.array
   ]),
   /**
+   * Defines an onclick for the icon.
+   * @examples '<Icon onClick={ () => this._handleClick } icon={"fa fa-id-card"}/>'
+   */
+  "onClick": PropTypes.func,
+  /**
    * Defines an icon for the icon.
    * @examples '<Icon icon={"fa fa-id-card"}/>'
    */
