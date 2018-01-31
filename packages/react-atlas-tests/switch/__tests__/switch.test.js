@@ -13,6 +13,7 @@ describe("Test switch component render", () => {
 				hidden={false}
 				checked={false}
 				name={"Name"}
+                id={"ID"}
 				onColor={"black"}
 				onClick={()=>{}}
 				offColor={"white"}
@@ -34,7 +35,7 @@ describe("Testing switch component", () => {
     const comp = mount(<SwitchCore onColor="black" />);
   });
 	
-	it('Cange Props', () => {
+	it('Change Props', () => {
     const swich = mount(
 			<SwitchCore
 				className={"Class"}
@@ -42,6 +43,7 @@ describe("Testing switch component", () => {
 				hidden={false}
 				checked={false}
 				name={"Name"}
+                id={"ID"}
 				onColor={"black"}
 				onClick={()=>{}}
 				offColor={"white"}

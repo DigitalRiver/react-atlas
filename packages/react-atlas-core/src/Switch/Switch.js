@@ -114,7 +114,8 @@ class Switch extends React.PureComponent {
       name, 
       hidden, 
       style,
-      inline
+      inline,
+      id
     } = this.props;
 
     const classes = this.classes;
@@ -139,6 +140,7 @@ class Switch extends React.PureComponent {
         <InputCore
           type="checkbox"
           name={name}
+          id={id}
           styleName={classes.inputClassName}
           checked={this.state.checked}
           disabled={this.state.disabled}
@@ -185,6 +187,11 @@ Switch.propTypes = {
    * @examples '<Switch name="test"/>'
    */
   "name": PropTypes.string,
+  /**
+   * Defines an id for the switch input.
+   * @examples '<Input type="text" name="test"/>'
+   */
+  "id": PropTypes.string,
   /**
    * Sets color that will be displayed when the switch is checked.
    * @examples '<Switch onColor="#ababab"/>'
