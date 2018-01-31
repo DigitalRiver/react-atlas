@@ -1,6 +1,6 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
-import { IconCore } from "../../../react-atlas-core/src/Icon/index";
+import { IconCore } from "../../../../react-atlas-core/src/Icon/index";
 
 import renderer from 'react-test-renderer';
 

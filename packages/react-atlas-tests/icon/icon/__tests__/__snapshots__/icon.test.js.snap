@@ -1,17 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test correct render Test correct render 1`] = `
-<div
+<span
   className=""
+  onClick={undefined}
   style={undefined}
-  styleName="avatar"
-  title="testTitle"
+  styleName="icon"
 >
-  <img
-    onError={[Function]}
-    src="picture.jpg"
-    styleName="image"
-    title="testTitle"
+  <i
+    className="icon={<i className=\\"fa fa-github\\"></i>}"
+    style={undefined}
   />
-</div>
+</span>
 `;

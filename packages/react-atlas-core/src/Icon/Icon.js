@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { utils } from "../utils";
 import cx from "classnames";
 
 /**
@@ -22,7 +21,6 @@ class Icon extends React.PureComponent {
       className,
       small,
       large,
-      id,
       style,
       onClick,
       icon
