@@ -109,7 +109,9 @@ class Switch extends React.PureComponent {
   };
 
   render() {
-    const { 
+    const {
+      label,
+      leftLabel,
       className, 
       name, 
       hidden, 
@@ -120,47 +122,85 @@ class Switch extends React.PureComponent {
 
     const classes = this.classes;
     const styles = this.styles;
+    const forId = id !== "" && name !== "" ? id : "";
 
-    let labelClasses = cx(
+    let switchWrapperClasses = cx(
+        {
+          "switch": true
+        }
+    );
+
+    let switchClasses = cx(
       {
         "disabled": this.state.disabled,
         hidden,
-        inline
+        inline,
+        "leftLabelContent": leftLabel
       },
       classes.offClassName
     );
 
+    let labelClasses = cx(
+        {
+            "leftLabel": leftLabel,
+            "label":true,
+            "labelFont":true,
+            "labelSpacing":true
+        }
+    );
+
+    let switchLabel = label &&
+      <div styleName={labelClasses}>
+        <label htmlFor={forId}>
+          <span>{label}</span>
+        </label>
+      </div>
+    ;
     return (
       <div
-        onClick={this._clickHandler}
-        styleName={labelClasses}
         className={cx(className)}
-        style={style}
+        styleName={switchWrapperClasses}
       >
-        <InputCore
-          type="checkbox"
-          name={name}
-          id={id}
-          styleName={classes.inputClassName}
-          checked={this.state.checked}
-          disabled={this.state.disabled}
-          hidden={this.state.disabled}
-        />
-        {/* handle */}
+        {switchLabel}
         <div
-          styleName={classes.buttonClassName}
-          style={styles.buttonColorStyle}
-        />
-        {/* background */}
-        <div 
-          styleName={classes.onClassName} 
-          style={styles.onColorStyle} />
+          onClick={this._clickHandler}
+          styleName={switchClasses}
+          style={style}
+        >
+          <InputCore
+            type="checkbox"
+            name={name}
+            id={id}
+            styleName={classes.inputClassName}
+            checked={this.state.checked}
+            disabled={this.state.disabled}
+            hidden={this.state.disabled}
+          />
+          {/* handle */}
+          <div
+            styleName={classes.buttonClassName}
+            style={styles.buttonColorStyle}
+          />
+          {/* background */}
+          <div
+            styleName={classes.onClassName}
+            style={styles.onColorStyle} />
+        </div>
       </div>
     );
   }
 }
 
 Switch.propTypes = {
+  /**
+   * Text for checkbox label
+   * @examples 'Some Label'
+   */
+  "label": PropTypes.string,
+  /**
+   * Allows user to move the label to the left of the Switch instead of above it
+   */
+  "leftLabel": PropTypes.bool,
   /** An Object, array, or string of CSS classes to apply to Switch.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
