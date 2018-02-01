@@ -34,7 +34,7 @@ Input component should be used as core part of other components such as TextFiel
 
     <Input type="text"
          large
-         validator={this.validateTest}
+         validator={validateTest}
          errorText="Custom validation message"/>
 
 ###### Masked text input:
