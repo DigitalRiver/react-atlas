@@ -10,7 +10,7 @@ exports[`Test switch component render Render correctly 1`] = `
   <input
     checked={false}
     className=""
-    id={undefined}
+    id="ID"
     name="Name"
     onChange={[Function]}
     onClick={[Function]}
