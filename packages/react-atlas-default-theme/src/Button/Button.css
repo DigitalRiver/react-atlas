@@ -204,6 +204,20 @@
   width: 100%;
 }
 
+.icon {}
+.iconLink {
+  composes: border-none from '../styles.css';
+  composes: sky-blue from '../styles.css';
+  composes: primary-blue-hover from '../styles.css';
+  composes: border-transparent from '../styles.css';
+  composes: bg-transparent from '../styles.css';
+}
+.largeIcon {
+  font-size: 1.25rem;
+}
+.smallIcon {
+  font-size: .85rem;
+}
 .icon-left {
   margin-right: 1rem;
 }

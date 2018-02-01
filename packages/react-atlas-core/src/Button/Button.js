@@ -27,7 +27,8 @@ class Button extends React.PureComponent {
       icon,
       type,
       href,
-      style
+      style,
+      iconOnly
     } = this.props;
 
     let mainStyle = "button";
@@ -40,7 +41,13 @@ class Button extends React.PureComponent {
     } else if (error) {
       mainStyle = "error";
     } else if (link) {
-      mainStyle = "link";
+      if(iconOnly) {
+        mainStyle = "iconLink";
+      } else {
+        mainStyle = "link";
+      }
+    } else if (iconOnly) {
+      mainStyle = "icon"
     } else {
       mainStyle = "default_btn";
     }
@@ -65,6 +72,14 @@ class Button extends React.PureComponent {
       mainStyle
     );
 
+    const iconClasses = cx(
+      {
+        "largeIcon": large,
+        "smallIcon": small
+      },
+      mainStyle
+    );
+
     let text = children;
     let iconClass = false;
 
@@ -77,18 +92,28 @@ class Button extends React.PureComponent {
       iconClass = "ra_Button__icon-left";
     }
 
-    let btn = 
-      <button
-        onClick={onClick}
-        className={cx(className)}
-        styleName={classes}
-        style={style}
-        type={type}
-        href={href}
-      >
-        {icon ? <i className={cx(icon, iconClass)} /> : null}
-        {text}
-      </button>
+    let btn = iconOnly 
+      ? <span
+          onClick={onClick}
+          className={cx(className)}
+          styleName={iconClasses}
+          style={style}
+          type={type}
+          href={href}
+        >
+          {icon ? <i className={cx(icon, iconClass)} /> : null}
+        </span>
+      : <button
+          onClick={onClick}
+          className={cx(className)}
+          styleName={classes}
+          style={style}
+          type={type}
+          href={href}
+        >
+          {icon ? <i className={cx(icon, iconClass)} /> : null}
+          {text}
+        </button>
     ;
 
     let renderButton = btn;
@@ -170,6 +195,11 @@ Button.propTypes = {
    * The class name of the icon you want to set.
    */
   "icon": PropTypes.string,
+
+  /**
+   * used to create an icon with no button characteristics.
+   */
+  "iconOnly": PropTypes.string,
 
   /**
    * Pass inline styles here.
