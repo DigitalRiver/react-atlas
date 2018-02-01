@@ -42,10 +42,6 @@ if(process.env.NODE_ENV === "production") {
                      'postcss-loader'
                      ]
                 })
-    },
-    { 
-      test: /\.(ttf|eot|woff|woff2|otf|svg)$/, 
-      loader: 'url-loader' // TO-DO: Optimize for production build
     });
   config.plugins.push(new webpack.optimize.UglifyJsPlugin({
       mangle: true,

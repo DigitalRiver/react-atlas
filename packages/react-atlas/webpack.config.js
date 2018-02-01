@@ -47,10 +47,6 @@ let config =  {
 
           }
         }
-      },
-      { 
-        test: /\.(ttf|eot|woff|woff2|otf|svg)$/, 
-        loader: 'url-loader'
       }
     ],
   },

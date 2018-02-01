@@ -1,9 +1,14 @@
 .textfield {
 	composes: primary-gray-border from '../styles.css';
 	composes: default-font from '../styles.css';
+	border-radius: 2px;
 	width: calc(100% - 10px);
 	height: 1.05rem;
 	padding: 5px !important; /* !important designation added for conflict with legacy DR UI library styles */
+}
+
+.dropdown {
+	cursor: pointer;
 }
 
 .textfieldWrapper {

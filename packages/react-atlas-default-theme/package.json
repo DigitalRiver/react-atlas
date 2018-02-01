@@ -29,8 +29,7 @@
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
     "style-loader": "^0.19.0",
-    "webpack": "^3.8.1",
-    "url-loader": "^0.6.2"
+    "webpack": "^3.8.1"
   },
   "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas-default-theme"
 }

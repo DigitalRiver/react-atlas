@@ -46,11 +46,11 @@ let eol = require("os").EOL;
  * This warning informs developers not to make changes to machine generated files
  * and to instead change the code generator. */
 const warningMessage =
-  "/* WARNING, THIS FILE WAS MACHINE GENERATED. DO NOT MODIFY THIS FILE DIRECTLY " +
+  "/* WARNING: THIS FILE WAS MACHINE GENERATED. DO NOT MODIFY THIS FILE DIRECTLY " +
   eol +
   "BECAUSE YOUR CHANGES WILL BE OVERWRITTEN WHEN THIS FILE IS GENERATED AGAIN. " +
   eol +
-  "IF YOU WAN'T TO MODIFY THIS FILE YOU SHOULD BE MODIFYING THE GENERATOR IT'S SELF " +
+  "IF YOU WANT TO MODIFY THIS FILE YOU SHOULD MODIFY THE GENERATOR ITSELF " +
   eol +
   "AND REGENERATE THIS FILE. */" +
   eol;

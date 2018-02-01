@@ -1,8 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { ButtonCore } from "../Button";
+import CSSModules from "react-css-modules";
+import { TextFieldCore } from "../TextField";
+import { TextFieldStyle } from "../../../react-atlas-default-theme/src/TextField";
 import messages from "../utils/messages.js";
+
+const TextFieldComp = CSSModules(TextFieldCore, TextFieldStyle, {
+  "allowMultiple": true
+});
 
 /**
  * Master Dropdown Component
@@ -20,22 +26,22 @@ class Dropdown extends React.PureComponent {
     this.state = {
       "active": false,
       "children": this.props.children,
-      "childrenState": [],
       "value": null,
       "output": null,
       "index": null,
       "tempIndex": null,
       "isValid": props.isValid,
       "errorMessage": messages.requiredMessage,
-      "focus": false,
       "zIndex": false,
-      "clicked": false
+      "clicked": false,
+      "filteredLength": 0,
+      "filteredChildren": null
     };
   }
 
-  /* Set initial state values for childrenState, value, output, and index */
-  componentDidMount() {
-    this.updateChildrenState();
+  /* Set initial state values for value, output, and index */
+  componentWillMount() {
+    this.updateChildrenState(true);
   }
 
   /* Check if isValid has been passed and if it has a different
@@ -54,67 +60,90 @@ class Dropdown extends React.PureComponent {
     }
     if (nextProps.children !== this.state.children) {
       this.setState({ "children": nextProps.children }, function() {
-        this.updateChildrenState();
+        this.updateChildrenState(true);
       });
     }
   }
 
-  updateChildrenState = () => {
+  // Filtering function to see which Dropdown options contain the user's entered value. Only used for autocomplete.
+  _checkFilter = (array, output) => {
+    const oThis = this;
+    return array.filter(function(child) {
+      const inputValue = child.props.children.toLowerCase();
+      if (
+        output === null ||
+        output === oThis.props.defaultText ||
+        inputValue.includes(output.toLowerCase())
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  };
+
+  /* Sets state values for value, output, and index, as well as filtering out children if autocomplete is set to true */
+  updateChildrenState = initialRender => {
     let initialValue = null;
     let initialDisplay = null;
     let initialIndex = null;
 
-    let childrenState = React.Children.map(
-      this.state.children,
-      (child, index) => {
-        let value = child.props.value || "";
-        let display = child.props.children;
-        if (value === this.props.value) {
-          initialValue = value;
-          initialDisplay = display;
-          initialIndex = index;
-        }
-        let childState = { "value": value, "display": display };
-        return childState;
+    this.state.children.map((child, index) => {
+      let value = child.props.value || "";
+      let display = child.props.children;
+      if (value === this.props.value) {
+        initialValue = value;
+        initialDisplay = display;
+        initialIndex = index;
       }
-    );
+    });
+
+    const output = this.getInitialDisplay(initialDisplay);
+    let filteredChildren =
+      this.props.autocomplete && !initialRender
+        ? this._checkFilter(this.state.children, output)
+        : this.state.children;
 
     this.setState({
-      "childrenState": childrenState,
-      "value": this.getInitialValue(childrenState, initialValue),
-      "output": this.getInitialDisplay(childrenState, initialDisplay),
-      "index": this.getInitialIndex(initialIndex)
+      "filteredChildren": filteredChildren,
+      "value": this.getInitialValue(initialValue),
+      "output": output,
+      "index": this.getInitialIndex(initialIndex),
+      "filteredLength": React.Children.count(this.state.children)
     });
   };
 
-  getInitialValue = (childrenState, initialValue) => {
+  // Used to update this.state.value according to prop values
+  getInitialValue = initialValue => {
     if (this.state.value !== null) {
       return this.state.value;
     } else if (this.props.value && initialValue !== null) {
       return initialValue;
     } else if (this.props.defaultText) {
       return null;
-    } else if (childrenState[0].value) {
-      return childrenState[0].value;
+    } else if (this.state.children[0].props.value) {
+      return this.state.children[0].props.value;
     } else {
       return null;
     }
   };
 
-  getInitialDisplay = (childrenState, initialDisplay) => {
+  // Used to update this.state.output according to prop values
+  getInitialDisplay = initialDisplay => {
     if (this.state.output !== null) {
       return this.state.output;
     } else if (this.props.value && initialDisplay !== null) {
       return initialDisplay;
     } else if (this.props.defaultText) {
       return this.props.defaultText;
-    } else if (childrenState[0].display) {
-      return childrenState[0].display;
+    } else if (this.state.children[0].props.children) {
+      return this.state.children[0].props.children;
     } else {
       return null;
     }
   };
 
+  // Used to update this.state.index according to prop values
   getInitialIndex = initialIndex => {
     if (this.state.index !== null) {
       return this.state.index;
@@ -148,8 +177,8 @@ class Dropdown extends React.PureComponent {
       }
     }
 
-    const output = this.state.childrenState[i].display;
-    const inputValue = this.state.childrenState[i].value;
+    const output = this.state.filteredChildren[i].props.children;
+    const inputValue = this.state.filteredChildren[i].props.value;
 
     let isValid = true;
     if (inputValue === "") {
@@ -202,11 +231,8 @@ class Dropdown extends React.PureComponent {
       this.setState({ "active": false, "zIndex": false });
     } else if (this.state.active === false && event.type === "click") {
       this.setState({ "active": true, "zIndex": true });
-    } else if (event.type === "focus") {
-      this.setState({ "focus": true });
     } else if (event.type === "blur") {
       this.setState({
-        "focus": false,
         "active": false,
         "zIndex": false,
         "index": this.state.tempIndex
@@ -270,6 +296,28 @@ class Dropdown extends React.PureComponent {
     });
   };
 
+  // Used below to update select value when Enter or Tab are pressed
+  _selectNewValue = () => {
+    if (!this.props.disabled) {
+      /* If active is false run validation. Don't
+       * run validation when active is true because
+       * that means we are opening and we don't want
+       * to run validation on open. */
+      if (this.state.active === true) {
+        this._validationHandler(this.props.errorCallback);
+        this.setState({ "tempIndex": this.state.index }, function() {
+          this._clickHandler(this.state.index, null, true);
+        });
+      } else {
+        this.setState({
+          "active": !this.state.active,
+          "zIndex": !this.state.active
+        });
+      }
+    }
+  };
+
+  // For keyboard navigation
   _keyDown = event => {
     const indexValid = typeof this.state.index === "number";
     let newIndex;
@@ -282,7 +330,7 @@ class Dropdown extends React.PureComponent {
       if (event.key === "ArrowDown") {
         event.preventDefault();
         newIndex = indexValid ? this.state.index + 1 : 0;
-        let count = React.Children.count(this.state.children);
+        let count = this.state.filteredLength;
         if (newIndex < count) {
           if (this.state.active) {
             this.setState({
@@ -290,10 +338,18 @@ class Dropdown extends React.PureComponent {
               "index": newIndex
             });
           } else {
+            if (this.props.onChange) {
+              this.props.onChange(
+                this.state.filteredChildren[newIndex].props.value,
+                null,
+                this.state.isValid,
+                this.props.name
+              );
+            }
             this.setState({
               "index": newIndex,
-              "value": this.state.children[newIndex].props.value,
-              "output": this.state.children[newIndex].props.children
+              "value": this.state.filteredChildren[newIndex].props.value,
+              "output": this.state.filteredChildren[newIndex].props.children
             });
           }
         }
@@ -307,53 +363,69 @@ class Dropdown extends React.PureComponent {
               "index": newIndex
             });
           } else {
+            if (this.props.onChange) {
+              this.props.onChange(
+                this.state.filteredChildren[newIndex].props.value,
+                null,
+                this.state.isValid,
+                this.props.name
+              );
+            }
             this.setState({
               "index": newIndex,
-              "value": this.state.children[newIndex].props.value,
-              "output": this.state.children[newIndex].props.children
+              "value": this.state.filteredChildren[newIndex].props.value,
+              "output": this.state.filteredChildren[newIndex].props.children
             });
           }
         }
       }
     } else if (event.key === "Enter") {
       event.preventDefault();
-      if (!this.props.disabled) {
-        /* If active is false run validation. Don't
-         * run validation when active is true because
-         * that means we are opening and we don't want
-         * to run validation on open. */
-        if (this.state.active === true) {
-          this._validationHandler(this.props.errorCallback);
-          if (this.state.index !== this.state.tempIndex) {
-            this.setState({ "tempIndex": this.state.index }, function() {
-              this._clickHandler(this.state.index, null, true);
-            });
-          } else {
-            this.setState({
-              "active": !this.state.active,
-              "zIndex": !this.state.active
-            });
-          }
-        } else {
-          this.setState({
-            "active": !this.state.active,
-            "zIndex": !this.state.active
-          });
-        }
-      }
+      this._selectNewValue();
+    } else if (event.key === "Tab" && this.props.autocomplete) {
+      this._selectNewValue();
     }
+  };
+
+  // Used to update necessary state properties for autocomplete when user changes input value
+  _updateLength = () => {
+    let filteredChildren = this._checkFilter(
+      this.state.children,
+      this.state.output
+    );
+    const newLength = filteredChildren.length;
+    this.setState({
+      "active": true,
+      "zIndex": true,
+      "index": 0,
+      "tempIndex": 0,
+      "filteredChildren": filteredChildren,
+      "filteredLength": newLength
+    });
+  };
+
+  // Catches user updates in autocomplete Dropdown
+  _inputChange = value => {
+    this.setState(
+      {
+        "output": value
+      },
+      this._updateLength
+    );
   };
 
   render() {
     const {
+      autocomplete,
       className,
       required,
-      customLabel,
+      label,
       width,
       disabled,
       name,
       inline,
       leftLabel,
+      id,
       style
     } = this.props;
     const active = this.state.active;
@@ -365,53 +437,43 @@ class Dropdown extends React.PureComponent {
       "inline": inline
     });
 
-    const buttonClasses = cx({
-      "buttonClass": true,
-      "dropdown-button": true,
-      "error": error,
-      "disabledClass": disabled
-    });
-
     const contentClasses = cx({
       "content": true,
-      "focus": this.state.focus,
       "leftLabelContent": leftLabel
     });
 
-    let count = React.Children.count(this.state.children);
+    let count = React.Children.count(this.state.filteredChildren);
 
     // Builds the option list from the children passed in
     // firstChild, lastChild and selected each have unique styling and those classes are added here
-    const bound_children = React.Children.map(
-      this.state.children,
-      (child, i) => {
-        let emptyClass =
-          child.props.children === "" ||
-          child.props.children === null ||
-          typeof child.props.children === "undefined"
-            ? true
-            : false;
-        let childClasses = cx({
-          "ra_Dropdown__selected": i === this.state.index,
-          "ra_Dropdown__firstChild": i === 0,
-          "ra_Dropdown__lastChild": i === count - 1,
-          "ra_Dropdown__emptyChild": emptyClass
-        });
-        let kid = 
-          <li
-            key={i}
-            className={"ra_Dropdown__item " + childClasses}
-            onMouseDown={e => {
-              // onMouseDown fires before onBlur. If changed to onClick it will fire after onBlur and not work.
-              this._clickHandler(i, e);
-            }}
-          >
-            {child}
-          </li>
-        ;
-        return kid;
-      }
-    );
+    const bound_children = this.state.filteredChildren.map((child, i) => {
+      let emptyClass =
+        child.props.children === "" ||
+        child.props.children === null ||
+        typeof child.props.children === "undefined"
+          ? true
+          : false;
+      let childClasses = cx({
+        "item": true,
+        "selected": i === this.state.index,
+        "firstChild": i === 0,
+        "lastChild": i === count - 1,
+        "emptyChild": emptyClass
+      });
+      let kid = 
+        <li
+          key={i}
+          styleName={childClasses}
+          onMouseDown={e => {
+            // onMouseDown fires before onBlur. If changed to onClick it will fire after onBlur and not work.
+            this._clickHandler(i, e);
+          }}
+        >
+          {child}
+        </li>
+      ;
+      return kid;
+    });
 
     const listClasses = cx({
       "list": true,
@@ -422,18 +484,18 @@ class Dropdown extends React.PureComponent {
     const labelClasses = cx({
       "labelSpacing": true,
       "leftLabel": leftLabel
-    })
+    });
 
     let list = null;
     if (active === true) {
       list = <ul styleName={listClasses}>{bound_children}</ul>;
     }
 
-    let label = null;
-    if (customLabel) {
-      label = 
+    let labelElement = null;
+    if (label) {
+      labelElement = 
         <div styleName={labelClasses}>
-          {customLabel}{" "}
+          <label htmlFor={id}>{label}</label>{" "}
           {required && <span styleName={"requiredIndicator"}>*</span>}
         </div>
       ;
@@ -446,17 +508,22 @@ class Dropdown extends React.PureComponent {
       ;
     }
 
-    let button = 
-      <ButtonCore
-        onClick={e => {
-          this._toggle(e);
-        }}
-        styleName={buttonClasses}
-        type={"button"}
-      >
-        <span>{this.state.output}</span>
+    let mainInput = 
+      <div>
+        <TextFieldComp
+          readOnly={!autocomplete}
+          id={id}
+          dropdown={!autocomplete}
+          value={this.state.output}
+          onClick={e => {
+            this._toggle(e);
+          }}
+          onChange={value => {
+            this._inputChange(value);
+          }}
+        />
         <i styleName="arrow" />
-      </ButtonCore>
+      </div>
     ;
 
     const dropdownWidth = width || "100%";
@@ -464,7 +531,6 @@ class Dropdown extends React.PureComponent {
     return (
       <div
         style={style}
-        name={name}
         className={cx(className)}
         styleName={classes}
         onFocus={e => {
@@ -477,11 +543,14 @@ class Dropdown extends React.PureComponent {
           this._keyDown(e);
         }}
       >
-        {label}
-        <div styleName={contentClasses} style={{ "minWidth": "100px","width": dropdownWidth }}>
-          <div styleName={"fullWidth"}>{button}</div>
+        {labelElement}
+        <div
+          styleName={contentClasses}
+          style={{ "minWidth": "100px", "width": dropdownWidth }}
+        >
+          <div styleName={"fullWidth"}>{mainInput}</div>
           {list}
-          <input type="hidden" value={this.state.value} />
+          <input name={name} type="hidden" value={this.state.value} />
         </div>
         {errorMessage}
       </div>
@@ -494,7 +563,7 @@ Dropdown.propTypes = {
    * Text for dropdown label
    * @examples 'Some Label'
    */
-  "customLabel": PropTypes.string,
+  "label": PropTypes.string,
 
   /**
    * Boolean value taht tells the dropdown whether to
@@ -587,7 +656,15 @@ Dropdown.propTypes = {
   /**
    * Allows user to move the label to the left of the Dropdown instead of having it on top
    */
-  "leftLabel": PropTypes.bool
+  "leftLabel": PropTypes.bool,
+  /**
+   * Turns the Dropdown into an editable TextField with autocomplete functionality
+   */
+  "autocomplete": PropTypes.bool,
+  /**
+   * Adds an ID to the text input and adds a 'for' attribute to the associated label
+   */
+  "id": PropTypes.string
 };
 
 Dropdown.defaultProps = {

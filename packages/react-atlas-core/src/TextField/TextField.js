@@ -16,7 +16,10 @@ class TextField extends React.PureComponent {
     // Initial state
     this.state = {
       "active": false,
-      "value": typeof props.value === "undefined" || props.value === null ? "" : props.value
+      "value":
+        typeof props.value === "undefined" || props.value === null
+          ? ""
+          : props.value
     };
   }
 
@@ -31,7 +34,7 @@ class TextField extends React.PureComponent {
     ) {
       this.setState({ "isValid": nextProps.isValid });
     }
-    if(nextProps.value && nextProps.value !== this.props.value) {
+    if (nextProps.value && nextProps.value !== this.props.value) {
       this.setState({
         "value": nextProps.value
       });
@@ -83,6 +86,8 @@ class TextField extends React.PureComponent {
       errorText,
       mask,
       disabled,
+      readOnly,
+      dropdown,
       hidden,
       className,
       inline,
@@ -93,15 +98,16 @@ class TextField extends React.PureComponent {
       linkRight,
       linkText,
       linkOnClick,
+      onClick,
       uppercase,
       href
     } = this.props;
 
     let labelClasses = cx({
-        "leftLabel": leftLabel,
-        "label":true,
-        "labelFont":true,
-        "labelSpacing":true
+      "leftLabel": leftLabel,
+      "label": true,
+      "labelFont": true,
+      "labelSpacing": true
     });
 
     let tooltipClasses = cx({
@@ -138,14 +144,13 @@ class TextField extends React.PureComponent {
       "ra_styles__bg-transparent"
     );
 
-
     const reqText = typeof requiredText !== "undefined" ? requiredText : "*";
 
-    let textFieldLabel = label &&
+    let textFieldLabel = label && 
       <div styleName={labelClasses}>
         <label htmlFor={id}>{label}</label>
         {required && <span styleName={"error_text"}> {reqText}</span>}
-        {tooltip &&
+        {tooltip && 
           <span styleName={tooltipClasses}>
             <TooltipCore
               className={tooltipInternalClasses}
@@ -154,7 +159,7 @@ class TextField extends React.PureComponent {
             />
           </span>
         }
-        {link &&
+        {link && 
           <span styleName={buttonClasses}>
             <ButtonCore
               className={buttonInternalClasses}
@@ -182,6 +187,7 @@ class TextField extends React.PureComponent {
     let textFieldClasses = cx(
       {
         disabled,
+        dropdown,
         "active": this.state.active,
         "invalid": !this.state.isValid
       },
@@ -189,7 +195,7 @@ class TextField extends React.PureComponent {
     );
 
     let fieldDisplayClasses = cx({
-        "leftLabelContent": leftLabel
+      "leftLabelContent": leftLabel
     });
 
     return (
@@ -198,6 +204,7 @@ class TextField extends React.PureComponent {
         styleName={wrapperClasses}
         onFocus={this._handleFocus}
         onBlur={this._handleBlur}
+        onClick={onClick}
         className={cx(className)}
       >
         {textFieldLabel}
@@ -219,6 +226,7 @@ class TextField extends React.PureComponent {
             mask={mask}
             uppercase={uppercase}
             disabled={disabled}
+            readOnly={readOnly}
             isValid={this.state.isValid}
             hidden={hidden}
           />
@@ -233,7 +241,7 @@ TextField.propTypes = {
    * Sets if the TextField is valid.
    */
   "isValid": PropTypes.bool,
-    /** Define an id for the text input.*/
+  /** Define an id for the text input.*/
   "id": PropTypes.string,
   /** An Object, array, or string of CSS classes to apply to TextField.*/
   "className": PropTypes.oneOfType([
@@ -302,6 +310,10 @@ TextField.propTypes = {
    */
   "placeholder": PropTypes.string,
   /**
+   * Allows user to pass a callback for click events.
+   */
+  "onClick": PropTypes.func,
+  /**
    * Sets a handler function to be executed when onChange event occurs (at input element).
    * @examples <TextField onChange={this.customOnChangeFunc}/>
    */
@@ -321,6 +333,15 @@ TextField.propTypes = {
    * @examples '<TextField disabled/>'
    */
   "disabled": PropTypes.bool,
+  /**
+   * Determines if the text input is readOnly.
+   * @examples '<TextField readOnly/>'
+   */
+  "readOnly": PropTypes.bool,
+  /**
+   * Determines if the TextField is being used in a Dropdown and should have cursor: pointer.
+   */
+  "dropdown": PropTypes.bool,
   /**
    * Determines if the text input is hidden.
    * @examples '<TextField hidden/>'
@@ -342,11 +363,11 @@ TextField.propTypes = {
   "link": PropTypes.bool,
   /** Set if you want the link button to the right of the textfield label. **/
   "linkRight": PropTypes.bool,
-    /** The text of the link button. **/
+  /** The text of the link button. **/
   "linkText": PropTypes.string,
-    /** Callback to call when link button is clicked. **/
+  /** Callback to call when link button is clicked. **/
   "linkOnClick": PropTypes.func,
-    /** HREF to set on the link button. **/
+  /** HREF to set on the link button. **/
   "href": PropTypes.string,
   /**
    * Converts all entered text to uppercase.

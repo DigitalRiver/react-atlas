@@ -68,7 +68,7 @@
   min-width:98px;
 }
 .item {
-  padding: .5rem;
+  padding: 0.5rem;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -77,7 +77,7 @@
 }
 .item:hover {
   text-decoration: none;
-  background-color: #E6E6E6;
+  background-color: #e6e6e6;
 }
 .firstChild {
   margin-top: 5px;
@@ -94,11 +94,15 @@
   float: right;
   margin-top: 0.25rem;
   margin-left: 0.25rem;
+  position: absolute;
+  top: 0.45rem;
+  left: calc(100% - 1.1rem);
 }
 
 .dropdown-button {
   color: #666;
   border: 1px solid #bebebe;
+  border-radius: 2px;
   background-color: white !important;
   text-transform: none !important;
   width: 100%;
@@ -122,26 +126,26 @@
 }
 
 .selected {
-  padding: .5rem;
+  padding: 0.5rem;
   background-color: #ccc;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .selected:hover {
-  background-color: #E6E6E6;
+  background-color: #e6e6e6;
 }
 .emptyChild {
-  height: .65rem;
+  height: 0.65rem;
 }
 
 .error {
   box-shadow: 0 0 4px #bd0a33;
-  border-color: rgba(189, 10, 51, 0.6); 
+  border-color: rgba(189, 10, 51, 0.6);
 }
 .error:hover {
   box-shadow: 0 0 4px #bd0a33;
-  border-color: rgba(189, 10, 51, 0.6); 
+  border-color: rgba(189, 10, 51, 0.6);
 }
 .error_message {
   color: #bd0a33;
@@ -151,7 +155,7 @@
 }
 
 .disabledClass {
-  opacity: .5 !important;
+  opacity: 0.5 !important;
   cursor: default;
 }
 .disabledClass:hover {
