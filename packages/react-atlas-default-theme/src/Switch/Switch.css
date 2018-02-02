@@ -1,3 +1,7 @@
+.switch {
+  composes: default-font from '../styles.css';
+}
+
 /*
   background sizes
 */
@@ -182,4 +186,30 @@
 .inline {
   display: inline-block;
   position: relative;
+}
+/*
+  Label
+*/
+.label {
+  padding: 10px 0 5px 0;
+}
+
+.labelFont {
+  composes: header-font from '../styles.css';
+}
+
+.labelSpacing {
+  margin-bottom: 0.35rem;
+  padding-right: 1rem;
+}
+
+.leftLabel {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: text-bottom;
+  padding:0 1rem 5px 0;
+}
+
+.leftLabelContent {
+  display: inline-block;
 }
