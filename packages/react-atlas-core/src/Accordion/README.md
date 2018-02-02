@@ -37,7 +37,7 @@ Accordion with width set in props as a string:
           <Panel title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</Panel>
      </Accordion>
 
-Accordion with defined panel:
+Accordion with expanded panel:
 
      <Accordion>
           <Panel title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</Panel>
