@@ -92,7 +92,7 @@ Avatar.propTypes = {
     PropTypes.array
   ]),
   /**
-   * An URL for an image that is displayed when the main image fails to load.
+   * A URL for an image that is displayed when the main image fails to load.
    */
   "defaultImage": PropTypes.string,
   /**
