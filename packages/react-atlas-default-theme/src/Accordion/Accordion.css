@@ -17,7 +17,7 @@
     composes: pad-h-2 from '../styles.css';
 }
 .centerAlign {
-    text-align: right;
+    text-align: center;
 }
 .accordion_header {
     composes: marg-0  from '../styles.css';

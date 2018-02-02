@@ -131,53 +131,49 @@ Accordion.propTypes = {
    * @examples "SomeName", <Accordion>{child}{child}</Accordion>
    */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to accordion.*/
+  /** CSS classes to apply to Accordion.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /**
-   * A string. Accordion will use title prop from each child as the title for header of each accordion
-   * @examples <Accordion><div title={title 1}>value 1</div><div title={title 2}>value 2</div></Accordion>
+   * When true, Accordion component is disabled.
    */
-  "title": PropTypes.string,
+  "disabled": PropTypes.bool,
   /**
-   * multiOpen
-   * boolean property.  Accordion will allow multiple open panels with this set to true
-   * @examples <Accordion multiOpen={true}>{children}</Accordion>
-   */
-  "multiOpen": PropTypes.bool,
-  /**
-   * expandAll
-   * boolean property.  Accordion will add an "expand all" link which when clicked open all panels or collapse all panels
+   * When true, Accordion will display "expand all" link that will open all panels.
    * @examples <Accordion expandAll={true}>{children}</Accordion>
    */
   "expandAll": PropTypes.bool,
   /**
-   * expanded
-   * boolean property.  Accordion will expand this child on load
+   * Accordion will use the expanded prop from each child to determine if the child will be expanded on load.
    * @examples <Accordion><div>value 1</div><div expanded>value 2</div></Accordion>
    */
   "expanded": PropTypes.bool,
   /**
-   * titlePosition
-   * string property. Accordion will set the title text position based on this property
+   * When true, Accordion will allow multiple open panels.
+   * @examples <Accordion multiOpen={true}>{children}</Accordion>
+   */
+  "multiOpen": PropTypes.bool,
+  /**
+   * Pass inline styles here.
+   */
+  "style": PropTypes.object,
+  /**
+   * Accordion will use title prop from each child as the title for that child's header.
+   * @examples <Accordion><div title={title 1}>value 1</div><div title={title 2}>value 2</div></Accordion>
+   */
+  "title": PropTypes.string,
+  /**
+   * Sets the Accordion's title text position left, right, or center.
    * @examples <Accordion titlePosition={left}>{children}</Accordion>
    */
   "titlePosition": PropTypes.string,
   /**
-   * The width of the accordion as a string or number.
+   * Sets the width of the Accordion.
    */
-  "width": PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /**
-   * A boolean to disable or not disable the accordion component.
-   */
-  "disabled": PropTypes.bool,
-  /**
-   * Pass inline styles here.
-   */
-  "style": PropTypes.object
+  "width": PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Accordion.defaultProps = {
