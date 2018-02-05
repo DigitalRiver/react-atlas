@@ -18,7 +18,7 @@ Default Button:
 
     <Button>Default</Button>
 
-Disabled Button:
+Disabled Buttons:
 	<div>
 	  <Button disabled>Disabled</Button>
 	  <Button disabled primary>Primary</Button>
@@ -27,7 +27,7 @@ Disabled Button:
       <Button disabled error>Error</Button>
 	</div>
 
-Link with href:
+Link style Button with href:
 
     <Button link href="http://www.github.com">Link</Button>
 
@@ -48,7 +48,7 @@ Small Buttons:
       <Button small error>Error</Button>
     </div>
 
-Large Button:
+Large Buttons:
 	<div>
 	  <Button large>Large</Button>
 	  <Button large primary>Primary</Button>
@@ -57,7 +57,7 @@ Large Button:
       <Button large error>Error</Button>
     </div>
 
-Button text with icon:
+Button with icon and text:
 
 	<Button icon={"fa fa-id-card"}>Text</Button>
 
