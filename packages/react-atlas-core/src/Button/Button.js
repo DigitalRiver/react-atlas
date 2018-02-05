@@ -101,24 +101,16 @@ class Button extends React.PureComponent {
 }
 
 Button.propTypes = {
-  /** HTML5 button type, eg submit, button, etc */
-  "type": PropTypes.string,
-  /** The URL to link to. */
-  "href": PropTypes.string,
   /**
-   * Define a mini button.
+   * Children should be either a string, an icon/glyphicon, or an image tag.
    *
    */
   "children": PropTypes.node,
-  /**
-   * Click event handler.
-   */
-  "onClick": PropTypes.func,
-  /** An Object, array, or string of CSS classes to apply to button.*/
+  /** An Object, array, or string of CSS classes to apply to Button.*/
   "className": PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array
+      PropTypes.string,
+      PropTypes.object,
+      PropTypes.array
   ]),
   /**
    *Determines if the button is disabled.
@@ -126,55 +118,61 @@ Button.propTypes = {
    */
   "disabled": PropTypes.bool,
   /**
-   * use outline styled button
-   * @examples <Button outline>
-   */
-  "outline": PropTypes.bool,
-  /**
-   * use primary style button
-   * @examples <Button primary>
-   */
-  "primary": PropTypes.bool,
-  /**
-   * use secondary style button
-   * @examples <Button secondary>
-   */
-  "secondary": PropTypes.bool,
-  /**
-   * use warning style button
-   * @examples <Button warning>
-   */
-  "warning": PropTypes.bool,
-  /**
-   * use error style button
+   * Use error style button.
    * @examples <Button error>
    */
   "error": PropTypes.bool,
+  /** The URL to link to. */
+  "href": PropTypes.string,
   /**
-   * use link style button
-   * @examples <Button link>
+   * The className of the icon you want to set.
    */
-  "link": PropTypes.bool,
+  "icon": PropTypes.string,
   /**
-   * use large style button
+   * Use large style button.
    * @examples <Button large>
    */
   "large": PropTypes.bool,
   /**
-   * use small style button
+   * Use link style button.
+   * @examples <Button link>
+   */
+  "link": PropTypes.bool,
+  /**
+   * Click event handler.
+   */
+  "onClick": PropTypes.func,
+  /**
+   * Use outline styled button.
+   * @examples <Button outline>
+   */
+  "outline": PropTypes.bool,
+  /**
+   * Use primary style button.
+   * @examples <Button primary>
+   */
+  "primary": PropTypes.bool,
+  /**
+   * Use secondary style button.
+   * @examples <Button secondary>
+   */
+  "secondary": PropTypes.bool,
+  /**
+   * Use small style button.
    * @examples <Button small>
    */
   "small": PropTypes.bool,
-
-  /**
-   * The class name of the icon you want to set.
-   */
-  "icon": PropTypes.string,
-
   /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object
+  "style": PropTypes.object,
+  /** HTML5 button type, eg submit, button, etc. */
+  "type": PropTypes.string,
+  /**
+   * Use warning style button.
+   * @examples <Button warning>
+   */
+  "warning": PropTypes.bool
 };
 
 Button.defaultProps = {

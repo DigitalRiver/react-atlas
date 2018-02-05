@@ -131,7 +131,7 @@ Accordion.propTypes = {
    * @examples "SomeName", <Accordion>{child}{child}</Accordion>
    */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to accordion.*/
+  /** An Object, array, or string of CSS classes to apply to Accordion.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,

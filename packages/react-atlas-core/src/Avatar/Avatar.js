@@ -85,7 +85,7 @@ Avatar.propTypes = {
    * @examples "SomeName", <SomeIcon />, <img src="/path/to/image.jpg"/>
    */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to avatar.*/
+  /** An Object, array, or string of CSS classes to apply to Avatar.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
