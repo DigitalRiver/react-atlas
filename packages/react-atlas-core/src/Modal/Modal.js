@@ -46,7 +46,7 @@ class Modal extends React.PureComponent {
       lockScroll,
       style
     } = this.props;
-    const classes = cx("ra_Modal__modal", { "ra_Modal__active": active });
+    const classes = cx("ra_Modal__modal", { "ra_Modal__active": active }, "ra_styles__default-font");
     const overlayClasses = cx({
         "overlayClass" : true,
         "overlayLeftStyle": this.state.isHaveScrollbar
