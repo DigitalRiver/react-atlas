@@ -35,8 +35,8 @@ describe("Test CheckboxGroup component - the basics", () => {
       </CheckboxGroupCore>
     );
 
-    component.childAt(1).simulate("click");
-
+    component.childAt(0).childAt(1).simulate("click");
+    component.update();
     expect(component.state().totalChecked).toBe(1);
   });
 	

@@ -1,5 +1,5 @@
 import React from "react";
-import { mount } from "enzyme";
+import { mount, shallow } from "enzyme";
 import { FormCore } from "../../../react-atlas-core/src/Form/index";
 import { ButtonCore } from "../../../react-atlas-core/src/Button/index";
 import { TextFieldCore } from "../../../react-atlas-core/src/TextField";
@@ -174,13 +174,14 @@ describe("Test data", () => {
         </div>
       </FormCore>
     );
-    form.find({ name: "NestedField" }).simulate("change", {
+    
+    form.find('input').at(0).simulate("change", {
       target: {
         name: "NestedField",
         value: "testdata"
       }
     });
-
+    
     expect(onChange).toBeCalled();
   });
 
@@ -193,14 +194,14 @@ describe("Test data", () => {
         </div>
       </FormCore>
     );
-    form.find({ name: "NestedField" }).simulate("change", {
+    form.find('input').at(0).simulate("change", {
       target: {
         name: "NestedField",
         value: "testdata"
       }
     });
     form.simulate("submit");
-
+    form.update();
     expect(onSubmit).toBeCalled();
 
     expect(onSubmit.mock.calls[0][1]).toEqual({
