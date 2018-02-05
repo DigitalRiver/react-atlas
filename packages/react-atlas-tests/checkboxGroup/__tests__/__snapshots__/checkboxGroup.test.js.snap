@@ -184,7 +184,7 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           onKeyPress={[Function]}
           onPaste={[Function]}
           style={undefined}
-          styleName="checkbox max opacity"
+          styleName="checkbox max"
           type="checkbox"
         />
         <div
@@ -216,7 +216,7 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           onKeyPress={[Function]}
           onPaste={[Function]}
           style={undefined}
-          styleName="checkbox max opacity"
+          styleName="checkbox max"
           type="checkbox"
         />
         <div
@@ -248,7 +248,7 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           onKeyPress={[Function]}
           onPaste={[Function]}
           style={undefined}
-          styleName="checkbox max opacity"
+          styleName="checkbox max"
           type="checkbox"
         />
         <div
@@ -280,7 +280,7 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           onKeyPress={[Function]}
           onPaste={[Function]}
           style={undefined}
-          styleName="checkbox max opacity"
+          styleName="checkbox max"
           type="checkbox"
         />
         <div
