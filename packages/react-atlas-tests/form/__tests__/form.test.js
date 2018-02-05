@@ -1,5 +1,5 @@
 import React from "react";
-import { mount, shallow } from "enzyme";
+import { mount } from "enzyme";
 import { FormCore } from "../../../react-atlas-core/src/Form/index";
 import { ButtonCore } from "../../../react-atlas-core/src/Button/index";
 import { TextFieldCore } from "../../../react-atlas-core/src/TextField";
