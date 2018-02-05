@@ -46,10 +46,10 @@ class Tooltip extends React.PureComponent {
     tooltipClasses = cx({
       "tooltip": true,
       "active": this.state.active,
-      "tooltip-bottom":
-        position !== "left" && position !== "top" && position !== "right",
+      "tooltip-top":
+        position !== "left" && position !== "bottom" && position !== "right",
       "tooltip-left": position === "left",
-      "tooltip-top": position === "top",
+      "tooltip-bottom": position === "bottom",
       "tooltip-right": position === "right"
     });
 
@@ -64,6 +64,7 @@ class Tooltip extends React.PureComponent {
       <div
         style={style}
         data-tooltip={this.state.tooltip}
+        role="tooltip"
         styleName={componentClasses}
         className={cx(className)}
         onMouseEnter={e => {
@@ -109,8 +110,8 @@ Tooltip.propTypes = {
    */
   "disabled": PropTypes.bool,
   /**
-   * For positioning the tooltip to top, left, right or bottom.  Default is to the bottom
-   * @example <Tooltip position="top"/>
+   * For positioning the tooltip to top, left, right or bottom.  Default is top.
+   * @example <Tooltip position="left"/>
    */
   "position": PropTypes.string,
   /**
@@ -125,7 +126,7 @@ Tooltip.propTypes = {
 Tooltip.defaultProps = {
   "className": "",
   "children": "",
-  "icon": "fa fa-info-circle",
+  "icon": "fa fa-question-circle",
   "disabled": false,
   "text": "",
   "delay": null

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Input component render Render correctly 1`] = `
+<div
+  className="ra_Input__container"
+>
+  <input
+    className="class"
+    id="ID"
+    name="InputName"
+    onChange={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onPaste={[Function]}
+    placeholder="Text here"
+    styleName="input small"
+    type="text"
+    value="Value"
+  />
+</div>
+`;
