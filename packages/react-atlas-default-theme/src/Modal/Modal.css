@@ -2,11 +2,12 @@
     composes: default-font from '../styles.css';
     posistion: relative;
 }
+
 .active {
     background-color: rgb(255, 255, 255);
     box-shadow: 0 19px 60px rgba(0, 0, 0, .3), 0 15px 20px rgba(0, 0, 0, .22);
     border-radius: 5px;
-    padding: 50px 55px 50px 55px;
+    padding: 26px 55px 50px 55px;
     border-top: solid 5px rgb(6, 181, 234);
 }
 
@@ -15,6 +16,7 @@
     color: rgb(75, 96, 126);
     font-size: 25px;
     padding-bottom: 20px;
+    font-weight: rgb(6, 181, 234);
 }
 
 .content {
