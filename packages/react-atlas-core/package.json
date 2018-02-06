@@ -21,7 +21,6 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "inputmask-core": "^2.2.0",
-    "light-table": "0.1.0",
     "moment": "^2.19.1",
     "proptypes": "^1.0.0",
     "react": "^15.6.2",
