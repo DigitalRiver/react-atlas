@@ -159,81 +159,97 @@ class Checkbox extends React.PureComponent {
 
 Checkbox.propTypes = {
   /**
-   * Text for checkbox label
-   * @examples 'Some Label'
+   * When true, Checkbox will be checked on load.
    */
-  "label": PropTypes.string,
-  /** Sets the html "id" property on the checkbox.*/
-  "id": PropTypes.string,
-  /** An Object, array, or string of CSS classes to apply to checkbox.*/
+  "checked": PropTypes.bool,
+
+  /** An object, array, or string of CSS classes to apply to Checkbox.*/
   "className": PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array
+      PropTypes.string,
+      PropTypes.object,
+      PropTypes.array
   ]),
+
   /**
-   * If included, checkbox is disabled
+   * When true, Checkbox will be disabled.
    * @examples <Checkbox disabled />, <Checkbox disabled={true} />
    */
   "disabled": PropTypes.bool,
+
   /**
-   * If included, renders the checkbox and it's label inline, so it can be side-by-side to other content.
-   */
-  "inline": PropTypes.bool,
-  /**
-   * Text for checkbox label title. (i.e. "alt-text" for checkboxes, useful for accessibility). If not provided, will be label text.
-   * @examples 'Some Title'
-   */
-  "title": PropTypes.string,
-  /**
-   * Defines if checkbox should be checked on load.
-   */
-  "checked": PropTypes.bool,
-  /**
-   * Allows user to pass a callback for click events.
-   */
-  "onClick": PropTypes.func,
-  /**
-   * Allows user to pass a function to be executed when the checkbox state is changed.
-   */
-  "onChange": PropTypes.func,
-  /**
-   * Allows user to ask for user feedback before changing the "checked" state of the checkbox.
-   */
-  "onBeforeChange": PropTypes.func,
-  /**
-   * If included, checkbox will return and error onBlur or onChange if not checked.
-   */
-  "required": PropTypes.bool,
-  /**
-   * A custom message to be displayed if required property is set to true..
-   */
-  "requiredMessage": PropTypes.string,
-  /**
-   * Allows the user to pass a function for custom validation. Should return either true or false.
+   * Used to pass a function for custom validation. Should return either true or false.
    */
   "errorCallback": PropTypes.func,
+
   /**
-   * Determines if the checkbox label is to the left or the right of the checkbox.
-   */
-  "labelPosition": PropTypes.string,
-  /**
-   * Sets the html "name" property on the input element.
-   */
-  "name": PropTypes.string,
-  /**
-   * The value of the checkbox. This value is used by forms.
-   */
-  "value": PropTypes.string,
-  /**
-   * States whether or not an error state has been passed down from the parent CheckboxGroup.
+   * For use when an error state has been passed down from the parent CheckboxGroup.
    */
   "groupError": PropTypes.bool,
+
+  /** Will set the html "id" property on the Checkbox.*/
+  "id": PropTypes.string,
+
+  /**
+   * When true, will render the Checkbox and its label inline.
+   */
+  "inline": PropTypes.bool,
+
+  /**
+   * Text for Checkbox label.
+   * @examples 'Some Label'
+   */
+  "label": PropTypes.string,
+
+  /**
+   * Will position the Checkbox label to the left or the right of the checkbox.
+   */
+  "labelPosition": PropTypes.string,
+
+  /**
+   * Will set the html "name" property on the input element.
+   */
+  "name": PropTypes.string,
+
+  /**
+   * Function that will be executed before changing the "checked" state of the Checkbox.
+   */
+  "onBeforeChange": PropTypes.func,
+
+  /**
+   * Function that will be executed when the Checkbox state is changed.
+   */
+  "onChange": PropTypes.func,
+
+  /**
+   * Function that will be executed on click.
+   */
+  "onClick": PropTypes.func,
+
+  /**
+   * When true, Checkbox will return an error onBlur or onChange if not checked.
+   */
+  "required": PropTypes.bool,
+
+  /**
+   * A custom message that will be displayed if required property is set to true and user does not check Checkbox.
+   */
+  "requiredMessage": PropTypes.string,
 
   /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object
+  "style": PropTypes.object,
+
+  /**
+   * Text for Checkbox label title. (i.e. "alt-text" for checkboxes, useful for accessibility). If not provided, label text will be used.
+   * @examples 'Some Title'
+   */
+  "title": PropTypes.string,
+
+  /**
+   * The value of the Checkbox.
+   */
+  "value": PropTypes.string
 };
 
 Checkbox.defaultProps = {

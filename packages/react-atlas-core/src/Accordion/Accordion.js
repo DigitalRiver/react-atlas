@@ -131,18 +131,18 @@ Accordion.propTypes = {
    * @examples "SomeName", <Accordion>{child}{child}</Accordion>
    */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to Accordion.*/
+  /** An object, array, or string of CSS classes to apply to Accordion.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /**
-   * When true, Accordion component is disabled.
+   * When true, Accordion component will be disabled.
    */
   "disabled": PropTypes.bool,
   /**
-   * When true, Accordion will display "expand all" link that will open all panels.
+   * When true, Accordion will display an "expand all" link that will open all panels.
    * @examples <Accordion expandAll={true}>{children}</Accordion>
    */
   "expandAll": PropTypes.bool,
@@ -166,12 +166,12 @@ Accordion.propTypes = {
    */
   "title": PropTypes.string,
   /**
-   * Sets the Accordion's title text position left, right, or center.
+   * Will set the Accordion's title text position left, right, or center.
    * @examples <Accordion titlePosition={left}>{children}</Accordion>
    */
   "titlePosition": PropTypes.string,
   /**
-   * Sets the width of the Accordion.
+   * Will set the width of the Accordion.
    */
   "width": PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
