@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { TableColumn } from "light-table/src";
+import { TableHeaderColumn } from "react-bootstrap-table";
 
 class TableHeader extends React.PureComponent {
   render() {
@@ -14,7 +14,7 @@ class TableHeader extends React.PureComponent {
       style
     } = this.props;
     return (
-      <TableColumn
+      <TableHeaderColumn
         style={style}
         dataSort={dataSort}
         isKey={isKey}
@@ -23,7 +23,7 @@ class TableHeader extends React.PureComponent {
         tableHeaderClass={"row-hover"}
       >
         {children}
-      </TableColumn>
+      </TableHeaderColumn>
     );
   }
 }
