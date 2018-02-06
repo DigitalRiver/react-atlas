@@ -63,7 +63,7 @@ describe("Testing TextArea component", () => {
 	it("TextArea component - Simple text inserted", function() {
 		const textArea = mount(< TextAreaCore maxLength={10} />);
 		textArea.state().value = 'iou';
-		let input = textArea.findWhere((n) => {return n.props().styleName == 'input max opacity'});
+		let input = textArea.findWhere((n) => {return n.props().styleName == 'input max'});
 		input.simulate('focus');
 		input.simulate('change');
 		expect(textArea.state().remaining).toEqual(7);
@@ -73,7 +73,7 @@ describe("Testing TextArea component", () => {
 	it("TextArea component - Simple text inserted(no maxLenght)", function() {
 		const textArea = mount(< TextAreaCore />);
 		textArea.state().value = 'iou';
-		let input = textArea.findWhere((n) => {return n.props().styleName == 'input max opacity'});
+		let input = textArea.findWhere((n) => {return n.props().styleName == 'input max'});
 		input.simulate('focus');
 		input.simulate('change');
 		expect(textArea.state().value).toEqual('iou');
@@ -82,7 +82,7 @@ describe("Testing TextArea component", () => {
 	it("TextArea component - Simple text inserted(with onChange prop) " , function() {
 		const textArea = mount(< TextAreaCore maxLength={10} onChange={() => {console.log('[INFO]: Inside onChange'); return true} }/>);
 		textArea.state().value = 'iou';
-		let input = textArea.findWhere((n) => {return n.props().styleName == 'input max opacity'});
+		let input = textArea.findWhere((n) => {return n.props().styleName == 'input max'});
 		input.simulate('focus');
 		input.simulate('change');
 		expect(textArea.state().remaining).toEqual(7);

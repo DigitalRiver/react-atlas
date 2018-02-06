@@ -4,6 +4,14 @@ Switch component allows to define a particular-styled checkbox.
 
     <Switch/>
 
+###### Default switch with label above:
+
+    <Switch label="This is a Switch"/>
+
+###### Default switch with label to left:
+
+    <Switch label="This is a Switch" leftLabel/>
+
 ###### Different sized switches:
 
     <div>

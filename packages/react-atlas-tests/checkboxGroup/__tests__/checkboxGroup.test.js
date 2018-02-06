@@ -8,7 +8,7 @@ import renderer from 'react-test-renderer';
 
 import { default as Button } from "../../../react-atlas-core/src/Button/Button";
 
-describe("Test CheckboxGroup component - the bascis", () => {
+describe("Test CheckboxGroup component - the basics", () => {
   it("Checkbox group - 4 checkboxes, 1 checked", function() {
     const component = mount(
       <CheckboxGroupCore title={"CheckboxGroup test"}>
@@ -18,9 +18,8 @@ describe("Test CheckboxGroup component - the bascis", () => {
         <CheckboxCore name={"4"} />
       </CheckboxGroupCore>
     );
-
-    component.childAt(1).simulate("click");
-
+    component.childAt(0).childAt(1).simulate("click");
+    component.update();
     expect(component.state().totalChecked).toBe(1);
   });
   
@@ -36,8 +35,8 @@ describe("Test CheckboxGroup component - the bascis", () => {
       </CheckboxGroupCore>
     );
 
-    component.childAt(1).simulate("click");
-
+    component.childAt(0).childAt(1).simulate("click");
+    component.update();
     expect(component.state().totalChecked).toBe(1);
   });
 	
@@ -54,7 +53,7 @@ describe("Test CheckboxGroup component - the bascis", () => {
   
 });
 
-describe("Test CheckboxGroup component - the bascis", () => {
+describe("Test CheckboxGroup component - the basics", () => {
   it("Checkbox group - 4 checkboxes, 1 checked", function() {
     const component = mount(
       <CheckboxGroupCore title={"CheckboxGroup test"}>
@@ -65,8 +64,8 @@ describe("Test CheckboxGroup component - the bascis", () => {
       </CheckboxGroupCore>
     );
 
-    component.childAt(1).simulate("click");
-
+    component.childAt(0).childAt(1).simulate("click");
+    component.update();
     expect(component.state().totalChecked).toBe(1);
   });
 
@@ -80,8 +79,8 @@ describe("Test CheckboxGroup component - the bascis", () => {
       </CheckboxGroupCore>
     );
 
-    component.childAt(2).simulate("click");
-
+    component.childAt(0).childAt(2).simulate("click");
+    component.update();
     expect(component.state().totalChecked).toBe(2);
   });
 
@@ -95,7 +94,7 @@ describe("Test CheckboxGroup component - the bascis", () => {
       </CheckboxGroupCore>
     );
 
-    component.childAt(0).simulate("click");
+    component.childAt(0).childAt(0).simulate("click");
 
     expect(component.state().totalChecked).toBe(0);
   });
@@ -110,10 +109,10 @@ describe("Test CheckboxGroup component - the bascis", () => {
       </CheckboxGroupCore>
     );
 
-    component.childAt(1).simulate("click");
-    component.childAt(2).simulate("click");
-    component.childAt(3).simulate("click");
-
+    component.childAt(0).childAt(1).simulate("click");
+    component.childAt(0).childAt(2).simulate("click");
+    component.childAt(0).childAt(3).simulate("click");
+    component.update();
     expect(component.state().totalChecked).toBe(3);
   });
 
@@ -127,14 +126,14 @@ describe("Test CheckboxGroup component - the bascis", () => {
       </CheckboxGroupCore>
     );
 
-    component.childAt(1).simulate("click");
-    component.childAt(2).simulate("click");
-    component.childAt(3).simulate("click");
-
+    component.childAt(0).childAt(1).simulate("click");
+    component.childAt(0).childAt(2).simulate("click");
+    component.childAt(0).childAt(3).simulate("click");
+    component.update();
     expect(component.state().totalChecked).toBe(3);
 
-    component.childAt(1).simulate("click");
-
+    component.childAt(0).childAt(1).simulate("click");
+    component.update();
     expect(component.state().totalChecked).toBe(2);
   });
 });
@@ -153,9 +152,9 @@ function _verifyMinMax(mi, ma, numberOfClicks, message, expectedResult) {
     component.limitMessage = message;
   }
   for (let i = 1; i <= numberOfClicks; i++) {
-    component.childAt(i).simulate("click");
+    component.childAt(0).childAt(i).simulate("click");
   }
-
+  component.update();
   expect(component.state().groupError).toBe(expectedResult);
 }
 
@@ -199,14 +198,14 @@ describe("Test CheckboxGroup component - Min/Max tests", () => {
     );
 
     for (let i = 1; i <= 5; i++) {
-      component.childAt(i).simulate("click");
+      component.childAt(0).childAt(i).simulate("click");
     }
-
+    component.update();
     expect(component.state().groupError).toBe(true);
 
-    component.childAt(2).simulate("click");
-    component.childAt(0).simulate("click");
-
+    component.childAt(0).childAt(2).simulate("click");
+    component.childAt(0).childAt(0).simulate("click");
+    component.update();
     expect(component.state().groupError).toBe(false);
   });
 });

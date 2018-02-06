@@ -137,7 +137,7 @@ class Checkbox extends React.PureComponent {
               id={id}
               name={name}
               /* Hardcode classes for InputCore because classes on styleName will not
-               * be evaluated because were using InputCore not Input.  */
+               * be evaluated because we are using InputCore rather than Input.  */
               className={
                 "ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
               }

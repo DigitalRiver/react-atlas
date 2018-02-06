@@ -5,20 +5,21 @@
 .active {
     background-color: rgb(255, 255, 255);
     box-shadow: 0 19px 60px rgba(0, 0, 0, .3), 0 15px 20px rgba(0, 0, 0, .22);
-    border-radius: 6px;
-    padding:20px
+    border-radius: 5px;
+    padding: 26px 55px 50px 55px;
+    border-top: solid 5px rgb(6, 181, 234);
 }
 
 .title {
-	composes: bg-primary from '../styles.css';
-    composes: white from '../styles.css';
 	margin: 0;
-	padding: 6px 2px 5px 10px;
+    color: rgb(75, 96, 126);
+    font-size: 25px;
+    padding-bottom: 20px;
+	font-weight: rgb(6, 181, 234);
 }
 
 .content {
-    width: 90%;
-	padding: 26px;
+    font-size: 18px;
 }
 
 .dialogWrapper{

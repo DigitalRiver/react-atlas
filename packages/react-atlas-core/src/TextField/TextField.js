@@ -353,7 +353,7 @@ TextField.propTypes = {
    */
   "uppercase": PropTypes.bool,
   /**
-   * Allows user to move the label to the left of the Dropdown instead of having it on top
+   * Allows user to move the label to the left of the TextField instead of above it
    */
   "leftLabel": PropTypes.bool
 };
