@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test CheckboxGroup component - the bascis Test renders correctly 1`] = `
+exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = `
 <div
   className=""
   style={undefined}
