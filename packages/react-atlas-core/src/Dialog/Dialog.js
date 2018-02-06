@@ -103,51 +103,51 @@ class Dialog extends React.PureComponent {
 
 Dialog.propTypes = {
   /**
-   * Dialog's title
-   */
-  "title": PropTypes.string,
-  /** An Object, array, or string of CSS classes to apply to Dialog.*/
-  "className": PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array
-  ]),
-  /**
-   * Anything that can be in a Dialog.
-   */
-  "children": PropTypes.node.isRequired,
-  /**
-   * Determines show Dialog or not
+   * When true, Dialog will display.
    */
   "active": PropTypes.bool,
+
   /**
-   * Info type
+   * Child elements that will be displayed as Dialog content.
    */
-  "info": PropTypes.bool,
+  "children": PropTypes.node.isRequired,
+
+  /** An object, array, or string of CSS classes to apply to Dialog.*/
+  "className": PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+      PropTypes.array
+  ]),
+
   /**
-   * Confirm type with ok/cancel button
+   * When true, Dialog will be a confirm type and display both an Ok button and a Cancel button.
    */
   "confirm": PropTypes.bool,
+
   /**
-   * Warning type with ok/cancel button
+   * When true, Dialog will be an info type and display an Ok button.
    */
-  "warning": PropTypes.bool,
+  "info": PropTypes.bool,
+
   /**
-   * Determines show Dialog with overlay or not
-   */
-  "overlay": PropTypes.bool,
-  /**
-   * Determines to hide page scroll
+   * When true, scrolling will be disabled.
    */
   "lockScroll": PropTypes.bool,
+
   /**
-   * Callback for OK Button
-   */
-  "onOk": PropTypes.func,
-  /**
-   * Callback for Cancel Button
+   * Function that will be executed when user clicks the Cancel button.
    */
   "onCancel": PropTypes.func,
+
+  /**
+   * Function that will be executed when user clicks the Ok button.
+   */
+  "onOk": PropTypes.func,
+
+  /**
+   * When true, Dialog will display as a modal overlay.
+   */
+  "overlay": PropTypes.bool,
 
   /**
    * Pass inline styling here.
@@ -157,7 +157,17 @@ Dialog.propTypes = {
   /**
    * Pass inline styling here.
    */
-  "styles": PropTypes.object
+    "styles": PropTypes.object,
+
+  /**
+   * Text that will be displayed as title content in the Dialog.
+   */
+  "title": PropTypes.string,
+
+  /**
+   * When true, Dialog will be a warning type and display both an Ok button and a Cancel button.
+   */
+  "warning": PropTypes.bool
 };
 
 Dialog.defaultProps = {

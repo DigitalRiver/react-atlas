@@ -10,7 +10,7 @@ Basic Dropdown:
       </Dropdown>
     </div>
 
-Dropdown with Label
+Dropdown with label:
 
       <Dropdown customLabel="Dropdown Example" >
         <span value="bird">Bird</span>
@@ -20,7 +20,7 @@ Dropdown with Label
         <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
       </Dropdown>
 
-Dropdown with Label on the Left: 
+Dropdown with label on the left:
 
       <Dropdown customLabel="Dropdown Example:" leftLabel >
         <span value="bird">Bird</span>
@@ -30,7 +30,7 @@ Dropdown with Label on the Left:
         <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
       </Dropdown>
 
-Dropdown with Default Select Value
+Dropdown with default select value:
 
       <Dropdown defaultText="Select One ...">
         <span value="bird">Bird</span>
@@ -40,7 +40,7 @@ Dropdown with Default Select Value
         <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
       </Dropdown>
 
-Dropdown with Pre-Set Value
+Dropdown with pre-set value:
 
       <Dropdown value="cow">
         <span value="bird">Bird</span>
@@ -50,7 +50,7 @@ Dropdown with Pre-Set Value
         <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
       </Dropdown>
 
-Dropdowns with Custom Widths:
+Dropdowns with custom widths:
 
     <div>
       <div>
@@ -103,7 +103,7 @@ Inline Dropdowns:
       </Dropdown>
     </div>
 
-Dropdown with Required Property:
+Dropdown with required property:
 
     <Dropdown defaultText="Select One ..." customLabel="Required Dropdown" required>
        <span value="bird">Bird</span>
@@ -123,7 +123,7 @@ Dropdown with custom validation and error message:
        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
     </Dropdown>
 
-Dropdown with Custom Function Before Change:
+Dropdown with custom function before change:
 
     <Dropdown customLabel="onBeforeChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } >
        <span value="bird">Bird</span>
