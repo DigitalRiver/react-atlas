@@ -85,14 +85,14 @@ Avatar.propTypes = {
    * @examples "SomeName", <SomeIcon />, <img src="/path/to/image.jpg"/>
    */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to Avatar.*/
+  /** An object, array, or string of CSS classes to apply to Avatar.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /**
-   * A URL for an image that is displayed when the main image fails to load.
+   * A URL for an image that will be displayed when the main image fails to load.
    */
   "defaultImage": PropTypes.string,
   /**
@@ -101,7 +101,7 @@ Avatar.propTypes = {
    */
   "icon": PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /**
-   * Path to an image
+   * Path to an image.
    * @examples "http://path.to/an/image.jpg"
    */
   "image": PropTypes.string,

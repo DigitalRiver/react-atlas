@@ -106,59 +106,59 @@ Button.propTypes = {
    *
    */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to Button.*/
+  /** An object, array, or string of CSS classes to apply to Button.*/
   "className": PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.object,
       PropTypes.array
   ]),
   /**
-   *Determines if the button is disabled.
+   *When true, Button component will be disabled.
    * @examples <Button disabled/>
    */
   "disabled": PropTypes.bool,
   /**
-   * Use error style button.
+   * Will display error style button.
    * @examples <Button error>
    */
   "error": PropTypes.bool,
-  /** The URL to link to. */
+  /** The URL that the Button will link to. */
   "href": PropTypes.string,
   /**
    * The className of the icon you want to set.
    */
   "icon": PropTypes.string,
   /**
-   * Use large style button.
+   * Will display large style Button.
    * @examples <Button large>
    */
   "large": PropTypes.bool,
   /**
-   * Use link style button.
+   * Will display large style Button.
    * @examples <Button link>
    */
   "link": PropTypes.bool,
   /**
-   * Click event handler.
+   * Click event handler for the Button.
    */
   "onClick": PropTypes.func,
   /**
-   * Use outline styled button.
+   * Will display outline styled Button.
    * @examples <Button outline>
    */
   "outline": PropTypes.bool,
   /**
-   * Use primary style button.
+   * Will display primary style Button.
    * @examples <Button primary>
    */
   "primary": PropTypes.bool,
   /**
-   * Use secondary style button.
+   * Will display secondary style Button.
    * @examples <Button secondary>
    */
   "secondary": PropTypes.bool,
   /**
-   * Use small style button.
+   * Will display small style Button.
    * @examples <Button small>
    */
   "small": PropTypes.bool,
@@ -169,7 +169,7 @@ Button.propTypes = {
   /** HTML5 button type, eg submit, button, etc. */
   "type": PropTypes.string,
   /**
-   * Use warning style button.
+   * Will display warning style Button.
    * @examples <Button warning>
    */
   "warning": PropTypes.bool
