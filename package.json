@@ -17,13 +17,13 @@
     "clean": "node scripts/cleanPackages.js",
     "packages:build": "node scripts/buildPackages.js",
     "setup": "npm run lerna:bootstrap && npm run packages:build",
-    "codegen": "node packages/react-atlas/src/codegen.js",
+    "codegen": "babel-node packages/react-atlas/src/codegen.js",
     "build": "npm run lerna:init && npm run lerna:bootstrap && npm run codegen && npm run packages:build",
     "build:prd": "cross-env NODE_ENV=production npm run build",
     "build:dev": "cross-env NODE_ENV=development npm run build",
-    "docs:prd": "cross-env NODE_ENV=production node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
-    "docs:dev": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
-    "docs:build": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide:build",
+    "docs:prd": "cross-env NODE_ENV=production babel-node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
+    "docs:dev": "cross-env NODE_ENV=development babel-node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
+    "docs:build": "cross-env NODE_ENV=development babel-node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide:build",
     "gh-pages:publish": "cd scripts && node gh-pages.js"
   },
   "jest": {
