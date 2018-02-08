@@ -23,19 +23,19 @@ class Hint extends React.PureComponent {
 }
 
 Hint.propTypes = {
-  /** An Object, array, or string of CSS classes to apply to Hint.*/
+  /**
+   * Text to be displayed can be passed as a child.
+   * @examples '<Hint>This is a text hint</Hint>'
+   */
+  "children": PropTypes.node,
+  /** An object, array, or string of CSS classes to apply to Hint.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /**
-   * Text to be displayed can be passed as a child.
-   * @examples '<Hint>This is a text hint</Hint>'
-   */
-  "children": PropTypes.node,
-  /**
-   * Text to be displayed (will override children if passed).
+   * Text that will be displayed (will override children if passed).
    * @examples '<Hint text="This is a text hint"/>'
    */
   "text": PropTypes.string,
