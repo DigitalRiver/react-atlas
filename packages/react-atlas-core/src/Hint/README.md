@@ -1,15 +1,13 @@
-Hint component allows to display a little label, mostly rendered alongside imputs.
+###### Default Hint:
+    <div>
+        <TextField small label="Phone Number:"/>
+        <Hint>10 digit number including area code</Hint>
+    </div>
 
-###### Default hint:
-
-    <Hint>This is a hint text</Hint>
-
-###### Passing text as prop (this will override children):
-
-	<Hint text="This is a hint text" />
-
-###### Hint with custom css classes:
-
-	<Hint className="custom hint-new">This is a hint text</Hint>
+###### Passing text as prop:
+    <div>
+        <TextField small label="CVV Code:"/>
+	    <Hint text="The 3 or 4 digit number on the back of your card" />
+    </div>
 
 
