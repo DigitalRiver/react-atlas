@@ -1,6 +1,7 @@
 let dot = require("dot");
 let fs = require("fs"); // eslint-disable-line no-unused-vars
 let eol = require("os").EOL;
+import * as allComponents from "../../react-atlas-core/src/index.js"
 
 /* Below are the templates used by react-atlas to generate files for themeing.
  * The templating library used by react-atlas is dot.js. More info about dot.js
@@ -146,45 +147,21 @@ dot.templateSettings = {
   selfcontained: false
 };
 
-/* TODO: Replace hardcoded array with a dynamic solution. */
-let components = [
-  "accordion",
-  "avatar",
-  "button",
-  "card",
-  "checkbox",
-  "checkboxGroup",
-  "datePicker",
-  "dialog",
-  "dropdown",
-  "fileUpload",
-  "form",
-  "hint",
-  "input",
-  "modal",
-  "panel",
-  "progressBar",
-  "radio",
-  "radioGroup",
-  "switch",
-  "tab",
-  "table",
-  "tableHeader",
-  "tabList",
-  "tabPanel",
-  "tabs",
-  "task",
-  "taskbar",
-  "textArea",
-  "textField",
-  "timer",
-  "tooltip"
-];
+
+function getComponents () {
+  let components = []
+
+  Object.keys(allComponents).map((component) => {
+    components.push(allComponents[component]['name'])
+  })
+
+  return components
+}
 
 module.exports = {
   warningMessage: warningMessage,
   template: template,
-  components: components,
+  getComponents: getComponents,
   indexTemplate: indexTemplate,
   compIndexTemplate: compIndexTemplate,
   devTemplate: devTemplate
