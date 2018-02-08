@@ -152,7 +152,6 @@ function getComponents () {
   let components = []
 
   Object.keys(allComponents).map((component) => {
-    console.log(allComponents[component]['name'])
     components.push(allComponents[component]['name'])
   })
 
