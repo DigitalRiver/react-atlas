@@ -2,7 +2,7 @@
 
 exports[`Test Input component render Render correctly 1`] = `
 <div
-  className="ra_Input__container"
+  styleName="container"
 >
   <input
     className="class"

@@ -30,7 +30,7 @@ exports[`Test checkbox component renders correctly 1`] = `
         onKeyPress={[Function]}
         onPaste={[Function]}
         style={undefined}
-        styleName="checkbox max"
+        styleName="checkbox"
         type="checkbox"
       />
       <div
