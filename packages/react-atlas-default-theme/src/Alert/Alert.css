@@ -1,0 +1,53 @@
+@import '../styles/variables.css';
+
+.alert {
+	composes: default-text from '../styles.css';
+  	composes: default-font from '../styles.css';
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-left: 5px solid #ddd;
+    border-radius: 2px;
+    background-color: #fff;
+}
+
+.success {
+    border-left-color: var(--success);
+}
+
+.info {
+    border-left-color: var(--info);
+}
+
+.warning {
+    border-left-color: var(--warning);
+}
+
+.danger {
+    border-left-color: var(--error);
+}
+
+.close {
+	float: right;
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 0.80;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+    filter: alpha(opacity=20);
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    position: relative;
+    top: -6px;
+    right: -2px;
+    color: inherit;
+    font-family:inherit;
+}
+
+.close:hover {
+	opacity: 1;
+    filter: alpha(opacity=100);
+}
