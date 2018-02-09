@@ -8,6 +8,7 @@
 	font-family: var(--heading-font-family);
 	font-size: var(--header-font-size);
 	font-weight: var(--heading-font-weight);
+	color: var(--secondary);
 }
 .bold    { font-weight: var(--bold-font-weight, bold) }
 .regular { font-weight: normal }
