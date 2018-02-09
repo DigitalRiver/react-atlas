@@ -1,6 +1,6 @@
 .container {
-	composes: bg-white from '../styles.css';
 	clear: both;
+	display: table;
 }
 input.opacity[type="checkbox"], input.opacity[type="radio"] {
 	/*used by Radio and Checkbox modules, even though not used in Input itself */
@@ -74,7 +74,6 @@ input.opacity[type="checkbox"], input.opacity[type="radio"] {
 }
 
 .disabled {
-	composes: cursor-not-allowed from '../styles.css';
 	opacity: .65;
 	pointer-events: none;
 }
@@ -82,4 +81,8 @@ input.opacity[type="checkbox"], input.opacity[type="radio"] {
 .hidden {
 	display: none;
 	visibility: hidden;
+}
+
+.container-disabled {
+	composes: cursor-not-allowed from '../styles.css';
 }

@@ -25,7 +25,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         styleName="float_left"
       >
         <div
-          className="ra_Input__container"
+          styleName="container"
         >
           <input
             className="ra_Input__max ra_Input__opacity"
@@ -37,7 +37,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max"
+            styleName=""
             type="radio"
             value="first"
           />
@@ -71,7 +71,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         styleName="float_left"
       >
         <div
-          className="ra_Input__container"
+          styleName="container"
         >
           <input
             className="ra_Input__max ra_Input__opacity"
@@ -83,7 +83,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max"
+            styleName=""
             type="radio"
             value="second"
           />
@@ -113,7 +113,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         styleName="float_left"
       >
         <div
-          className="ra_Input__container"
+          styleName="container"
         >
           <input
             className="ra_Input__max ra_Input__opacity"
@@ -125,7 +125,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max"
+            styleName=""
             type="radio"
             value="third"
           />
@@ -155,7 +155,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         styleName="float_left"
       >
         <div
-          className="ra_Input__container"
+          styleName="container"
         >
           <input
             className="ra_Input__max ra_Input__opacity"
@@ -167,7 +167,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max"
+            styleName=""
             type="radio"
             value="fourth"
           />
@@ -197,7 +197,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         styleName="float_left"
       >
         <div
-          className="ra_Input__container"
+          styleName="container"
         >
           <input
             className="ra_Input__max ra_Input__opacity"
@@ -209,7 +209,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max"
+            styleName=""
             type="radio"
             value="fifth"
           />
@@ -239,7 +239,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         styleName="float_left"
       >
         <div
-          className="ra_Input__container"
+          styleName="container"
         >
           <input
             className="ra_Input__max ra_Input__opacity"
@@ -251,7 +251,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
             onKeyPress={[Function]}
             onPaste={[Function]}
             placeholder={undefined}
-            styleName="max"
+            styleName=""
             type="radio"
             value="sixth"
           />

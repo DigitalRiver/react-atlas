@@ -20,7 +20,7 @@ exports[`Test Radio component render Render correctly 1`] = `
       styleName="float_left"
     >
       <div
-        className="ra_Input__container"
+        styleName="container"
       >
         <input
           className="ra_Input__max ra_Input__opacity"
@@ -32,7 +32,7 @@ exports[`Test Radio component render Render correctly 1`] = `
           onKeyPress={[Function]}
           onPaste={[Function]}
           placeholder={undefined}
-          styleName="max"
+          styleName=""
           type="radio"
           value="checkedRadio"
         />

@@ -5,6 +5,7 @@
   "main": "./lib",
   "scripts": {
     "test": "jest",
+    "updateSnapshot": "jest --updateSnapshot",
     "coverage": "jest --coverage",
     "format": "prettier packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas/src/**/*.js packages/react-atlas-default-theme/src/**/*.js packages/react-atlas-tests/**/*.js --write",
     "lint": "eslint packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas-default-theme/src/**/*.js --fix",
