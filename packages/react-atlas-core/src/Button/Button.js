@@ -60,7 +60,8 @@ class Button extends React.PureComponent {
         "disabled": disabled,
         "large": large,
         "small": small,
-        "button": true
+        "button": true,
+        "uppercase": !link
       },
       mainStyle
     );

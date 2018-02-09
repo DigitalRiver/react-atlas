@@ -7,7 +7,7 @@ exports[` 1`] = `
     href={undefined}
     onClick={[Function]}
     style={undefined}
-    styleName="button primary"
+    styleName="button uppercase primary"
     type="button"
   >
     Open Info Dialog

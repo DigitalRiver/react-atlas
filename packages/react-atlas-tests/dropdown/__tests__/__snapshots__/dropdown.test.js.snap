@@ -27,7 +27,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
         href={undefined}
         onClick={[Function]}
         style={undefined}
-        styleName="button default_btn"
+        styleName="button uppercase default_btn"
         type="button"
       >
         <span>
