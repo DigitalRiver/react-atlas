@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Alert component renders correctly 1`] = `
+<div>
+  <div
+    styleName="alert success"
+  >
+    <strong>
+      Success!
+    </strong>
+     This alert box indicates a successful or positive action.
+  </div>
+</div>
+`;
