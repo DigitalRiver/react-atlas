@@ -9,7 +9,7 @@ exports[`Test correct render Test correct render 1`] = `
     href="http://www.google.com.are"
     onClick={undefined}
     style="Style"
-    styleName="button default_btn"
+    styleName="button uppercase default_btn"
     type="button"
   >
     Default Button

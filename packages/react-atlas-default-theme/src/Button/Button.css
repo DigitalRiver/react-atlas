@@ -14,9 +14,12 @@
   vertical-align: middle;
   line-height: 1.125rem;
   -webkit-appearance: none;
-  text-transform: uppercase;
   font-size: 1.0625rem;
   border-style: solid;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .base:hover {
