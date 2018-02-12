@@ -27,6 +27,8 @@ class Button extends React.PureComponent {
       icon,
       type,
       href,
+      id,
+      name,
       style
     } = this.props;
 
@@ -86,6 +88,8 @@ class Button extends React.PureComponent {
         style={style}
         type={type}
         href={href}
+        id={id}
+        name={name}
       >
         {icon ? <i className={cx(icon, iconClass)} /> : null}
         {text}
@@ -130,6 +134,10 @@ Button.propTypes = {
    */
   "icon": PropTypes.string,
   /**
+   * Will set the html "id" property on the Button.
+   */
+  "id": PropTypes.string,
+  /**
    * Will display large style Button.
    * @examples <Button large>
    */
@@ -139,6 +147,10 @@ Button.propTypes = {
    * @examples <Button link>
    */
   "link": PropTypes.bool,
+  /**
+   * Will set the html "name" property on the Button.
+   */
+  "name": PropTypes.string,
   /**
    * Click event handler for the Button.
    */
