@@ -27,6 +27,7 @@ class Button extends React.PureComponent {
       icon,
       type,
       href,
+      ignoreTab,
       id,
       name,
       style
@@ -88,6 +89,7 @@ class Button extends React.PureComponent {
         style={style}
         type={type}
         href={href}
+        tabIndex={ignoreTab ? -1 : 0}
         id={id}
         name={name}
       >
@@ -113,9 +115,9 @@ Button.propTypes = {
   "children": PropTypes.node,
   /** An object, array, or string of CSS classes to apply to Button.*/
   "className": PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-      PropTypes.array
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
   ]),
   /**
    *When true, Button component will be disabled.
@@ -137,6 +139,10 @@ Button.propTypes = {
    * Will set the html "id" property on the Button.
    */
   "id": PropTypes.string,
+  /**
+   * Button will be ignored by keyboard navigation when set to true.
+   */
+  "ignoreTab": PropTypes.bool,
   /**
    * Will display large style Button.
    * @examples <Button large>
@@ -199,7 +205,8 @@ Button.defaultProps = {
   "large": false,
   "small": false,
   "disabled": false,
-  "type": "button"
+  "type": "button",
+  "ignoreTab": false
 };
 
 export default Button;

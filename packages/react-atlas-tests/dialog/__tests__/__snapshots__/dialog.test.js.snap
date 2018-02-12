@@ -10,6 +10,7 @@ exports[` 1`] = `
     onClick={[Function]}
     style={undefined}
     styleName="button uppercase primary"
+    tabIndex={0}
     type="button"
   >
     Open Info Dialog

@@ -30,6 +30,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
         onClick={[Function]}
         style={undefined}
         styleName="button uppercase default_btn"
+        tabIndex={0}
         type="button"
       >
         <span>
