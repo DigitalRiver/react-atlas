@@ -5,6 +5,8 @@ exports[` 1`] = `
   <button
     className=""
     href={undefined}
+    id={undefined}
+    name={undefined}
     onClick={[Function]}
     style={undefined}
     styleName="button uppercase primary"
