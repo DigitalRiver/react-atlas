@@ -28,6 +28,8 @@ class Button extends React.PureComponent {
       type,
       href,
       ignoreTab,
+      id,
+      name,
       style
     } = this.props;
 
@@ -88,6 +90,8 @@ class Button extends React.PureComponent {
         type={type}
         href={href}
         tabIndex={ignoreTab ? -1 : 0}
+        id={id}
+        name={name}
       >
         {icon ? <i className={cx(icon, iconClass)} /> : null}
         {text}
@@ -132,6 +136,10 @@ Button.propTypes = {
    */
   "icon": PropTypes.string,
   /**
+   * Will set the html "id" property on the Button.
+   */
+  "id": PropTypes.string,
+  /**
    * Button will be ignored by keyboard navigation when set to true.
    */
   "ignoreTab": PropTypes.bool,
@@ -145,6 +153,10 @@ Button.propTypes = {
    * @examples <Button link>
    */
   "link": PropTypes.bool,
+  /**
+   * Will set the html "name" property on the Button.
+   */
+  "name": PropTypes.string,
   /**
    * Click event handler for the Button.
    */
