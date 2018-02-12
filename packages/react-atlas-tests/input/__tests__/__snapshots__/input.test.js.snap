@@ -8,6 +8,7 @@ exports[`Test Input component render Render correctly 1`] = `
     className="class"
     id="ID"
     name="InputName"
+    onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
     onKeyDown={[Function]}
