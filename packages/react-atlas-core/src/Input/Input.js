@@ -300,7 +300,8 @@ class Input extends React.PureComponent {
       "onChange": this._handleChange,
       "onKeyDown": this._handleKeyDown,
       "onKeyPress": this._handleKeyPress,
-      "onPaste": this._handlePaste
+      "onPaste": this._handlePaste,
+      "onBlur": this._handleChange
     };
 
     let inputElement = multiline ? 
@@ -313,6 +314,7 @@ class Input extends React.PureComponent {
         styleName={inputClasses}
         className={cx(className)}
         onChange={this._handleChange}
+        onBlur={this._handleChange}
       />
      : 
       <input

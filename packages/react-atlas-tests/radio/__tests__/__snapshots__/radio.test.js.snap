@@ -26,6 +26,7 @@ exports[`Test Radio component render Render correctly 1`] = `
           className="ra_Input__max ra_Input__opacity"
           id={undefined}
           name="Mr radio"
+          onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
           onKeyDown={[Function]}

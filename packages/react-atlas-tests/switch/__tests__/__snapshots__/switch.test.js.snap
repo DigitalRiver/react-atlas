@@ -15,6 +15,7 @@ exports[`Test switch component render Render correctly 1`] = `
       className=""
       id="ID"
       name="Name"
+      onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
