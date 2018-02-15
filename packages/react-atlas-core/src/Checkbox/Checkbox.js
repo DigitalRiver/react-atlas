@@ -114,6 +114,8 @@ class Checkbox extends React.PureComponent {
       "focus": this.state.focus
     });
 
+    const forId = id !== "" && name !== "" ? id : "";
+
     return (
       <div
         onClick={this._clickHandler}
@@ -123,7 +125,7 @@ class Checkbox extends React.PureComponent {
       >
         <div styleName={disabledClass}>
           {label && 
-            <label styleName={labelStyle} title={title_label}>
+            <label styleName={labelStyle} title={title_label} htmlFor={forId}>
               {label}
             </label>
           }
@@ -171,7 +173,7 @@ Checkbox.propTypes = {
   ]),
 
   /**
-   * When true, Checkbox will be disabled.
+   * If included, checkbox is disabled
    * @examples <Checkbox disabled />, <Checkbox disabled={true} />
    */
   "disabled": PropTypes.bool,

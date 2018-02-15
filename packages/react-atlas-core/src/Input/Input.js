@@ -371,7 +371,7 @@ Input.propTypes = {
   "type": PropTypes.string,
   /**
    * Defines an id for the input.
-   * @examples '<Input type="text" name="test"/>'
+   * @examples '<Input type="text" id="test"/>'
    */
   "id": PropTypes.string,
   /**

@@ -75,3 +75,10 @@ Custom function before change:
       	label="Checkbox onBeforeChange"
       	onBeforeChange={ function(value){ if (!value) { let accept = confirm("Do you want to check this?"); return accept; } return true; } }
       />
+      
+Label and ID:	  
+
+    <Checkbox
+      label="Checkbox"
+      id="my-checkbox"
+    />
