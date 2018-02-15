@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test Alert component renders correctly 1`] = `
-<div>
+<div
+  className=""
+  hidden={undefined}
+  style={undefined}
+>
   <div
     styleName="alert success"
   >

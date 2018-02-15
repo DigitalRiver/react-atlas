@@ -22,19 +22,23 @@ class Alert extends React.PureComponent {
   };
 
   render() {
+    let { hidden, children, dismissible, type, className, style } = this.props;
     const alertClasses = cx({
       "alert": true,
-      "info": this.props.type === "info",
-      "success": this.props.type === "success",
-      "warning": this.props.type === "warning",
-      "danger": this.props.type === "danger"
+      "info": type === "info",
+      "success": type === "success",
+      "warning": type === "warning",
+      "danger": type === "danger"
     });
     return (
-      <div>
-        {this.state.visible && 
+      <div
+        hidden={hidden}
+        className={cx(className)}
+        style={style}>
+        {this.state.visible &&
           <div styleName={alertClasses}>
-            {this.props.children}
-            {this.props.dismissible && 
+            {children}
+            {dismissible &&
               <div
                 onClick={() => {
                   this._closeAlert();
@@ -70,7 +74,24 @@ Alert.propTypes = {
   /**
    * Will set the Alert's style.
    */
-  "type": PropTypes.string
+  "type": PropTypes.string,
+
+  /**
+   * A boolean to hide or show the alert component.
+   */
+  "hidden": PropTypes.bool,
+  /*
+   * An object, array, or string of CSS classes to apply to Button.
+   */
+  "className": PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
+  /**
+   * Pass inline styles here.
+   */
+  "style": PropTypes.object
 };
 
 Alert.defaultProps = {
