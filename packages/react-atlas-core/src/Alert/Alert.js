@@ -79,7 +79,19 @@ Alert.propTypes = {
   /**
    * A boolean to hide or show the alert component.
    */
-  "hidden": PropTypes.bool
+  "hidden": PropTypes.bool,
+  /*
+   * An object, array, or string of CSS classes to apply to Button.
+   */
+  "className": PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
+  /**
+   * Pass inline styles here.
+   */
+  "style": PropTypes.object
 };
 
 Alert.defaultProps = {
