@@ -4,6 +4,10 @@
 	font-family: var(--font-family);
 	font-size: var(--font-size);
  }
+.body-font {
+	font-family: var(--body-font-family);
+	font-size: var(--font-size);
+}
 .header-font { 
 	font-family: var(--heading-font-family);
 	font-size: var(--header-font-size);

@@ -176,6 +176,7 @@ let components = [
   "tabs",
   "task",
   "taskbar",
+  "text",
   "textArea",
   "textField",
   "timer",

@@ -1,0 +1,59 @@
+.label {
+	composes: header-font from '../styles.css';
+}
+
+.defaultFont {
+	composes: default-font from '../styles.css';
+}
+
+.bodyFont {
+	composes: body-font from '../styles.css';
+}
+
+.header {
+	font-weight: 500;
+	color: #003058;
+	line-height: 1;
+	display: block;
+}
+
+.h1 {
+	composes: header;
+	font-size: 52px;
+	margin: 0 0 13.5px;
+}
+
+.h2 {
+	composes: header;
+	font-size: 42px;
+	margin: 0 0 13.5px;
+}
+
+.h3 {
+	composes: header;
+	font-size: 35px;
+	margin: 0 0 13.5px;
+}
+
+.h4 {
+	composes: header;
+	font-size: 26px;
+	margin: 0 0 6.75px;
+}
+
+.h5 {
+	composes: header;
+	font-size: 21px;
+	margin: 0 0 6.75px;
+}
+
+.h6 {
+	composes: header;
+	font-size: 19px;
+	margin: 0 0 6.75px;
+}
+
+.small {
+	font-size:65%;
+	color: #666;
+}

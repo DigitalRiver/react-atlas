@@ -26,6 +26,7 @@ export { TabPanelCore } from "./TabPanel";
 export { TabsCore } from "./Tabs";
 export { TaskCore } from "./Task";
 export { TaskbarCore } from "./Taskbar";
+export { TextCore } from "./Text";
 export { TextAreaCore } from "./TextArea";
 export { TextFieldCore } from "./TextField";
 export { TimerCore } from "./Timer";
