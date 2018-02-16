@@ -54,3 +54,7 @@
 ###### TextArea Tooltip requires Label:
 
     <TextArea label="tooltip header" tooltip="tip of the tool"/>
+    
+###### TextArea tooltip right false:
+
+    <TextArea label="tooltip header" tooltip="tip of the tool" tooltipRight={false} />
