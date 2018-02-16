@@ -5,7 +5,7 @@
 ###### Non-resizable textarea:
 
 	<div>
-		<TextArea placeholder="Enter text here..." small resizable={false}/>
+	    <TextArea placeholder="Enter text here..." small resizable={false}/>
 	    <TextArea placeholder="Enter text here..." medium resizable={false}/>
 	    <TextArea placeholder="Enter text here..." large resizable={false}/>
 	    <TextArea placeholder="Enter text here..." resizable={false}/>
@@ -53,4 +53,8 @@
 
 ###### TextArea Tooltip requires Label:
 
-    <TextArea label="tooltip header" tooltip="tip of the tool"/>
+    <TextArea label="tooltip header" tooltip="Example tooltip message"/>
+    
+###### TextArea tooltip right false:
+
+    <TextArea label="tooltip header" tooltip="Example tooltip message" tooltipRight={false} />
