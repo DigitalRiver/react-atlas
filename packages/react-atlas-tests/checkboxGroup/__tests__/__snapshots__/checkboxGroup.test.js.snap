@@ -39,7 +39,6 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           onKeyPress={[Function]}
           onPaste={[Function]}
           style={undefined}
-          styleName="checkbox"
           type="checkbox"
         />
         <div
@@ -72,7 +71,6 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           onKeyPress={[Function]}
           onPaste={[Function]}
           style={undefined}
-          styleName="checkbox"
           type="checkbox"
         />
         <div
@@ -105,7 +103,6 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           onKeyPress={[Function]}
           onPaste={[Function]}
           style={undefined}
-          styleName="checkbox"
           type="checkbox"
         />
         <div
@@ -138,7 +135,6 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           onKeyPress={[Function]}
           onPaste={[Function]}
           style={undefined}
-          styleName="checkbox"
           type="checkbox"
         />
         <div

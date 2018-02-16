@@ -38,6 +38,11 @@
   background-color: #00a7e1;
 }
 
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
 .focus {
   box-shadow: 0 0 6px rgba(35, 173, 255, 1)
 }

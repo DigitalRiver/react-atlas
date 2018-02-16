@@ -44,12 +44,6 @@ input.opacity[type="checkbox"], input.opacity[type="radio"] {
 	display: block;
 }
 
-.checkbox {
-	composes: marg-b-1 from '../styles.css';
-	position: relative;
-    top: 1px;
-}
-
 .input::placeholder {
   	color: #aaa;
 }

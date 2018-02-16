@@ -12,7 +12,6 @@ class Checkbox extends React.PureComponent {
     super(props);
     this.state = {
       "checked": this.props.checked || false,
-      "disabled": this.props.disabled || false,
       "valid": true,
       "errorMessage": "",
       "focus": false
@@ -21,7 +20,7 @@ class Checkbox extends React.PureComponent {
 
   // Handles new checkbox clicks and sets value and checked status of hidden input
   _clickHandler = event => {
-    if (!this.state.disabled) {
+    if (!this.props.disabled) {
       event.persist();
       if (typeof this.props.onBeforeChange !== "undefined") {
         let result = this.props.onBeforeChange(this.state.checked);
@@ -40,7 +39,7 @@ class Checkbox extends React.PureComponent {
             event,
             this.state.valid,
             this.state.checked,
-            this.state.disabled
+            this.props.disabled
           );
         }
 
@@ -51,7 +50,7 @@ class Checkbox extends React.PureComponent {
             event,
             this.state.valid,
             this.state.checked,
-            this.state.disabled
+            this.props.disabled
           );
         }
       });
@@ -83,13 +82,16 @@ class Checkbox extends React.PureComponent {
       groupError,
       inline,
       labelPosition,
+      disabled,
+      hidden,
       style
     } = this.props;
     // TODO: Figure out why, if moved to constructor, the following variables cause issues on click
     const inlineCheckbox = cx({
       "inline_block": inline,
       "checkbox_padding": !inline,
-      "inline_padding": inline
+      "inline_padding": inline,
+      hidden
     });
     const labelStyle = cx({
       "label": labelPosition !== "left",
@@ -98,14 +100,12 @@ class Checkbox extends React.PureComponent {
     const checkboxDisplay =
       labelPosition === "left" ? "float_right" : "float_left";
     const title_label = title ? title : label;
-    let disabledClass = this.state.disabled
-      ? cx({
-          "disabled": true,
-          "inline_block": true,
-          "relative": true,
-          "padding": !inline
-        })
-      : cx({ "inline_block": true, "relative": true, "padding": !inline });
+    let disabledClass = cx({
+      disabled,
+      "inline_block": true,
+      "relative": true,
+      "padding": !inline
+    });
     const error = groupError || !this.state.valid;
     let checkboxClass = cx({
       "checked": this.state.checked,
@@ -133,9 +133,9 @@ class Checkbox extends React.PureComponent {
             <InputCore
               label={label}
               type="checkbox"
-              disabled={this.state.disabled}
+              disabled={disabled}
               checked={this.state.checked}
-              hidden={this.state.disabled}
+              hidden={hidden}
               id={id}
               name={name}
               /* Hardcode classes for InputCore because classes on styleName will not
@@ -167,9 +167,9 @@ Checkbox.propTypes = {
 
   /** An object, array, or string of CSS classes to apply to Checkbox.*/
   "className": PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-      PropTypes.array
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
   ]),
 
   /**
@@ -187,6 +187,11 @@ Checkbox.propTypes = {
    * For use when an error state has been passed down from the parent CheckboxGroup.
    */
   "groupError": PropTypes.bool,
+  /**
+   * Determines if the Checkbox is hidden.
+   * @examples '<Checkbox hidden/>'
+   */
+  "hidden": PropTypes.bool,
 
   /** Will set the html "id" property on the Checkbox.*/
   "id": PropTypes.string,

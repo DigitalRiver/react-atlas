@@ -284,7 +284,6 @@ class Input extends React.PureComponent {
 
     let inputClasses = cx({
       "input": isInput,
-      "checkbox": isCheckbox,
       "invalid": !this.state.isValid,
       "blockInput": errorLocation === "bottom",
       "small": small,
@@ -341,12 +340,11 @@ class Input extends React.PureComponent {
         style={style}
         type="checkbox"
         name={name}
-        styleName={inputClasses}
         className={cx(className)}
         id={id}
         checked={checked}
         {...eventHandlers}
-      />
+      /> // No styleName prop is needed on checkbox because opacity is set to 0.
      : 
       <div styleName={containerClasses}>
         {inputElement}

@@ -22,7 +22,6 @@ exports[`Test switch component render Render correctly 1`] = `
       onKeyPress={[Function]}
       onPaste={[Function]}
       style={undefined}
-      styleName="checkbox"
       type="checkbox"
     />
     <div
