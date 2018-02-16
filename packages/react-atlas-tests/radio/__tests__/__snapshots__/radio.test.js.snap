@@ -33,6 +33,7 @@ exports[`Test Radio component render Render correctly 1`] = `
           onKeyPress={[Function]}
           onPaste={[Function]}
           placeholder={undefined}
+          required={undefined}
           styleName=""
           type="radio"
           value="checkedRadio"

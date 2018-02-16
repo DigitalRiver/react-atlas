@@ -15,6 +15,7 @@ exports[`Test Input component render Render correctly 1`] = `
     onKeyPress={[Function]}
     onPaste={[Function]}
     placeholder="Text here"
+    required={false}
     styleName="input small"
     type="text"
     value="Value"
