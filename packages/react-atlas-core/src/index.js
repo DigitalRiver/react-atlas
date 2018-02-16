@@ -1,4 +1,5 @@
 export { AccordionCore } from "./Accordion";
+export { AlertCore } from "./Alert";
 export { AvatarCore } from "./Avatar";
 export { ButtonCore } from "./Button";
 export { CardCore } from "./Card";

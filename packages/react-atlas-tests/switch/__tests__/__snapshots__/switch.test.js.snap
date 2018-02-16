@@ -3,39 +3,43 @@
 exports[`Test switch component render Render correctly 1`] = `
 <div
   className="Class"
-  onClick={[Function]}
-  style={undefined}
-  styleName="sliderMedium sliderEnabledOffColor"
+  styleName="switch"
 >
-  <input
-    checked={false}
-    className=""
-    id={undefined}
-    name="Name"
-    onChange={[Function]}
+  <div
     onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onPaste={[Function]}
     style={undefined}
-    styleName="checkbox max"
-    type="checkbox"
-  />
-  <div
-    style={
-      Object {
-        "background": "grey",
+    styleName="sliderMedium sliderEnabledOffColor"
+  >
+    <input
+      checked={false}
+      className=""
+      id="ID"
+      name="Name"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onPaste={[Function]}
+      style={undefined}
+      type="checkbox"
+    />
+    <div
+      style={
+        Object {
+          "background": "grey",
+        }
       }
-    }
-    styleName="handleMedium handleEnabledColor"
-  />
-  <div
-    style={
-      Object {
-        "background": "black",
+      styleName="handleMedium handleEnabledColor"
+    />
+    <div
+      style={
+        Object {
+          "background": "black",
+        }
       }
-    }
-    styleName="onColorMedium"
-  />
+      styleName="onColorMedium"
+    />
+  </div>
 </div>
 `;

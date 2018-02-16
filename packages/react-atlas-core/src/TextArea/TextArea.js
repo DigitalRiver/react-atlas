@@ -89,8 +89,16 @@ class TextArea extends React.PureComponent {
     } = this.props;
 
     let tooltipClasses = cx({
-      "tooltipAlignment": true,
-      "tooltipRight": tooltipRight
+        "tooltipAlignment": true,
+        "tooltipRight": tooltipRight
+    });
+
+    let tooltipInternalClasses = cx({
+        "ra_Tooltip__tooltip": true,
+        "ra_Tooltip__active": true,
+        "ra_Tooltip__tooltip-right": true,
+        "ra_Tooltip__tooltipContent": true,
+        "ra_Tooltip__block": true
     });
 
     let remainingCount = maxLength && 
@@ -99,23 +107,29 @@ class TextArea extends React.PureComponent {
       </div>
     ;
     const forId = id !== "" && name !== "" ? id : "";
-    const labelClasses = cx({
 
-      "leftLabel": leftLabel,
-      "header": label
+    let labelClasses = cx({
+        "leftLabel": leftLabel,
+        "label": true,
+        "labelFont": true,
+        "labelSpacing": true
     });
 
     let textAreaLabel = label &&
-          <label styleName={labelClasses} title={label} htmlFor={forId}>
-            <span styleName={"headerFont"}>{label}</span>
-              {required && <span styleName={"error_text"}> *</span>}
-              {tooltip &&
-              <span styleName={tooltipClasses}>
-                <TooltipCore text={tooltip} position="top" />
-              </span>
-              }
-          </label>
-      ;
+        <label styleName={labelClasses} title={label} htmlFor={forId}>
+          <span styleName={"headerFont"}>{label}</span>
+            {required && <span styleName={"error_text"}> *</span>}
+            {tooltip &&
+            <span styleName={tooltipClasses}>
+              <TooltipCore
+                  className={tooltipInternalClasses}
+                  text={tooltip}
+                  position="top"
+              />
+            </span>
+            }
+        </label>
+    ;
 
     let wrapperClasses = cx(
       {
@@ -225,7 +239,7 @@ TextArea.propTypes = {
   "large": PropTypes.bool,
   /**
    * Sets a maximum character length that will be validated onChange.
-   * @examples '<TextArea maxLenght={25}/>'
+   * @examples '<TextArea maxLength={25}/>'
    */
   "maxLength": PropTypes.number,
   /**
@@ -253,12 +267,15 @@ TextArea.propTypes = {
    * @examples '<TextArea hidden/>'
    */
   "hidden": PropTypes.bool,
-
-  /** passes tooltip as prop if added to textArea */
+  /**
+   * Set the tooltip value *
+   */
   "tooltip": PropTypes.string,
   /** Pass inline styling here. */
   "style": PropTypes.object,
-
+  /**
+   * Positions the tooltip to the right. Default true.
+   */
   "tooltipRight": PropTypes.bool,
   /**
    * Allows user to move the label to the left of the TextArea instead of having it on top
@@ -274,7 +291,8 @@ TextArea.defaultProps = {
   "className": "",
   "resizable": true,
   "disabled": false,
-  "hidden": false
+  "hidden": false,
+  "tooltipRight": true
 };
 
 export default TextArea;

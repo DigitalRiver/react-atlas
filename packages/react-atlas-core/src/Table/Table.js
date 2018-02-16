@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { LightTable } from "light-table/src";
+import { BootstrapTable } from 'react-bootstrap-table';
 
 class Table extends React.PureComponent {
   render() {
@@ -18,7 +18,7 @@ class Table extends React.PureComponent {
     } = this.props;
 
     return (
-      <LightTable
+      <BootstrapTable
         style={style}
         {...props}
         search={search}
@@ -33,7 +33,7 @@ class Table extends React.PureComponent {
         bodyContainerClass={"ra_Table__react-bs-container-body"}
       >
         {children}
-      </LightTable>
+      </BootstrapTable>
     );
   }
 }

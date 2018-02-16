@@ -1,0 +1,10 @@
+.text {
+    composes: default-text from '../styles.css';
+    composes: default-font from '../styles.css';
+    composes: marg-1 from '../styles.css';
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    height:100%;
+    text-align:center;
+}

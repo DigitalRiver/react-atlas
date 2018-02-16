@@ -18,7 +18,7 @@ Disabled:
         label="Checkbox Disabled"
       />
 
-Left Label:
+Left label:
 
       <Checkbox
         label="Checkbox Left Label"
@@ -26,7 +26,7 @@ Left Label:
         checked
       />
 
-Custom onClick Method:
+Custom onClick method:
 
       {}
 
@@ -44,12 +44,12 @@ onChange callback:
       onChange={function(value, event, isValid, checked) { console.log(value, event, isValid, checked); }}
       />
 
-No Label:
+No label:
 
       <Checkbox
       />
 
-No Label and Checked:
+No label and checked:
 
       <Checkbox
         checked
@@ -62,16 +62,23 @@ Required:
 	  	required
 	  />
 
-Custom Validation:
+Custom validation:
 
 	  <Checkbox
 	  	label="Required Example"
 	  	errorCallback={ function(event, checked){ return {valid: checked, message: "Checkbox is required"} } }
 	  />
 
-Custom Function Before Change:
+Custom function before change:
 
       <Checkbox
       	label="Checkbox onBeforeChange"
       	onBeforeChange={ function(value){ if (!value) { let accept = confirm("Do you want to check this?"); return accept; } return true; } }
       />
+      
+Label and ID:	  
+
+    <Checkbox
+      label="Checkbox"
+      id="my-checkbox"
+    />

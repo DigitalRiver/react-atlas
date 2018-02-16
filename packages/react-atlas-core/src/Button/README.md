@@ -27,7 +27,7 @@ Disabled Button:
     <Button disabled error>Error</Button> 
     </div>
 
-Link with href:
+Link style Button with href:
 
     <Button link href="http://www.github.com">Link</Button>
 
@@ -58,7 +58,7 @@ Large Button:
     <Button large error>Error</Button>
     </div> 
 
-Button text with icon:
+Button with icon and text:
 
     <Button icon={"fa fa-id-card"}>Text</Button>
 

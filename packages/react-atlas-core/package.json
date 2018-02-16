@@ -21,12 +21,12 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "inputmask-core": "^2.2.0",
-    "light-table": "0.1.0",
     "moment": "^2.19.1",
     "proptypes": "^1.0.0",
-    "react": "^15.6.2",
+    "react-bootstrap-table": "4.3.1",
+    "react": "^16.2.0",
     "react-datepicker": "^0.60.2",
-    "react-dom": "^15.6.2",
+    "react-dom": "^16.2.0",
     "react-dropzone": "^4.2.1"
   },
   "devDependencies": {
