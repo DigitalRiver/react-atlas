@@ -31,6 +31,7 @@ exports[`Test checkbox component renders correctly 1`] = `
         onKeyDown={[Function]}
         onKeyPress={[Function]}
         onPaste={[Function]}
+        required={undefined}
         style={undefined}
         type="checkbox"
       />

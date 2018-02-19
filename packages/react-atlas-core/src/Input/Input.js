@@ -268,7 +268,8 @@ class Input extends React.PureComponent {
       errorLocation,
       checked,
       style,
-      rows
+      rows,
+      required
     } = this.props;
 
     /* If checkbox, we need to render only input component (no wrappers) */
@@ -314,6 +315,7 @@ class Input extends React.PureComponent {
         className={cx(className)}
         onChange={this._handleChange}
         onBlur={this._handleChange}
+        required={required}
       />
      : 
       <input
@@ -324,6 +326,7 @@ class Input extends React.PureComponent {
         placeholder={placeholder}
         styleName={inputClasses}
         className={cx(className)}
+        required={required}
         ref={input => {
           this.input = input;
         }}
@@ -343,6 +346,7 @@ class Input extends React.PureComponent {
         className={cx(className)}
         id={id}
         checked={checked}
+        required={required}
         {...eventHandlers}
       /> // No styleName prop is needed on checkbox because opacity is set to 0.
      : 
