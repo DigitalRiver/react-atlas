@@ -83,44 +83,51 @@ class Modal extends React.PureComponent {
 
 Modal.propTypes = {
   /**
-   * Modal's title
+   * When true, Modal will be visible.
    */
-  "title": PropTypes.string,
-  /** An Object, array, or string of CSS classes to apply to Modal.*/
+  "active": PropTypes.bool,
+
+  /**
+   * Any HTML element or React Component.
+   */
+  "children": PropTypes.node.isRequired,
+
+  /** An object, array, or string of CSS classes to apply to Modal.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
+
   /**
-   * Anything that can be in a modal.
-   */
-  "children": PropTypes.node.isRequired,
-  /**
-   * Determines show Modal or not
-   */
-  "active": PropTypes.bool,
-  /**
-   * Event handler for esc key down, normally use to close modal if needed.
-   */
-  "onEscKeyDown": PropTypes.func,
-  /**
-   * Determines show Modal with overlay or not
-   */
-  "overlay": PropTypes.bool,
-  /**
-   * Event handler for clicking on overlay, normally use to close modal if needed.
-   */
-  "onOverlayClick": PropTypes.func,
-  /**
-   * Determines to hide page scroll
+   * When true, Modal will hide page scroll.
    */
   "lockScroll": PropTypes.bool,
 
   /**
+   * Event handler for esc key down, can be used to close Modal if needed.
+   */
+  "onEscKeyDown": PropTypes.func,
+
+  /**
+   * Event handler for clicking on overlay, can be used to close Modal if needed.
+   */
+  "onOverlayClick": PropTypes.func,
+
+  /**
+   * When true, Modal will display with overlay.
+   */
+  "overlay": PropTypes.bool,
+
+  /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object
+  "style": PropTypes.object,
+
+  /**
+   * Title that will be displayed in Modal.
+   */
+  "title": PropTypes.string
 };
 
 Modal.defaultProps = {

@@ -13,10 +13,9 @@
 
 .title {
 	margin: 0;
-    color: rgb(75, 96, 126);
+    color: var(--blue);
     font-size: 25px;
     padding-bottom: 20px;
-	font-weight: rgb(6, 181, 234);
 }
 
 .content {
@@ -29,13 +28,11 @@
     right: 0;
     bottom: 0;
     left: 0;
-    height: 100%;
 }
 
 .dialog{
     position:relative;
-    margin:15% auto;
-    margin-bottom:43px;
+    margin:auto;
     z-index:1050;
 }
 
