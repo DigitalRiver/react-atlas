@@ -13,8 +13,7 @@ Basic Modal:
             onEscKeyDown={handleToggle}
             title="Modal Example Title"
         >
-            <div>This is Modal example<br/>Any child components could be put here.</div>
-            <Switch small/>
-            <Button raised primary onClick={handleToggle} >Close!</Button>
+            <p>This is a basic Modal example. Any child components could be put here.</p>
+            <Button primary onClick={handleToggle} >Close!</Button>
         </Modal>
 	</div>
