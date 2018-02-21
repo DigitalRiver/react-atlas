@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Text component renders correctly 1`] = `
+<span
+  className={undefined}
+  htmlFor={undefined}
+  id={undefined}
+  style={undefined}
+  styleName="defaultFont"
+>
+  Hello World!
+</span>
+`;

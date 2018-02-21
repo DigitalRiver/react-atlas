@@ -29,6 +29,7 @@ export { TabsStyle } from "./Tabs";
 export { TaskStyle } from "./Task";
 export { TaskbarStyle } from "./Taskbar";
 export { TooltipStyle } from "./Tooltip";
+export { TextStyle } from "./Text";
 export { TextAreaStyle } from "./TextArea";
 export { TextFieldStyle } from "./TextField";
 export { TimerStyle } from "./Timer";
