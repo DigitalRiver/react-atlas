@@ -13,6 +13,7 @@
   display: block;
   position:relative;
   margin: 0 .25rem .25rem 0;
+  border: solid 1px #eee;
 }
 
 .sliderSmall{
@@ -24,8 +25,8 @@
 
 .sliderMedium{
   composes: slider;
-  width: 75px;
-  height: 40px;
+  width: 60px;
+  height: 34px;
   border-radius: 20px;
 }
 
@@ -45,11 +46,11 @@
 }
 
 .sliderDisabledOnColor {
-  composes: bg-silver from '../styles.css';
+  background-color: #ccc;
 }
 
 .sliderEnabledOffColor {
-  composes: bg-gray from '../styles.css';
+  composes: bg-white from '../styles.css';
 }
 
 /*
@@ -59,12 +60,13 @@
   composes: circle from '../styles.css';
   display:block;
   position:absolute;
-  transition:left 0.2s;
+  transition:left 0.4s;
+  border:solid 1px #ccc;
 }
 
 .handleSmall{
   composes: handle;
-  top: 4px;
+  top: 3px;
   left: 4px;
   width: 20px;
   height: 20px;
@@ -72,15 +74,16 @@
 
 .handleMedium{
   composes: handle;
-  top: 5px;
-  left: 5px;
-  width: 30px;
-  height: 30px;
+  top: 3px;
+  left: 4px;
+  width: 26px;
+  height: 26px;
+
 }
 
 .handleLarge{
   composes: handle;
-  top: 5px;
+  top: 4px;
   left: 5px;
   width: 45px;
   height: 45px;
@@ -91,11 +94,11 @@
 */
 
 .handleDisabledColor{
-  composes: bg-gray from '../styles.css';
+  background-color: #ccc;
 }
 
 .handleEnabledColor{
-  composes: bg-white from '../styles.css';
+  composes: bg-silver from '../styles.css';
 }
 
 .input {
@@ -106,11 +109,19 @@
   Distance the button translates left to right
 */
 
+input:checked + .handle{
+  background-color: white;
+}
+
+input:checked + .handleDisabledCheckedColor{
+  background-color: #eee;
+}
+
 .inputSmall:checked + .handle{
     left:25px;
 }
 .inputMedium:checked + .handle{
-    left:40px;
+    left:30px;
 }
 .inputLarge:checked + .handle{
     left:50px;
@@ -147,17 +158,17 @@
 
 .input:checked ~ .onColorSmall{
     width: 100px;
-    transition: 0.2s;
+  transition: 0.4s;
 }
 
 .input:checked ~ .onColorMedium{
     width: 132px;
-    transition: 0.2s;
+  transition: 0.4s;
 }
 
 .input:checked ~ .onColorLarge{
     width: 158px;
-    transition: 0.2s;
+  transition: 0.4s;
 }
 
 .disabled{
