@@ -16,7 +16,9 @@ class FileUpload extends React.PureComponent {
 
   render() {
     const { className, text, accept, style } = this.props;
-
+    let textClass = cx({
+        "text": true
+    });
     return (
       <Dropzone
         style={style}
@@ -24,32 +26,32 @@ class FileUpload extends React.PureComponent {
         accept={accept}
         onDrop={this.onDropHandler}
       >
-        {text}
+        <div styleName={textClass}>{text}</div>
       </Dropzone>
     );
   }
 }
 
 FileUpload.propTypes = {
-  /** An Object, array, or string of CSS classes to apply to fileupload.*/
+  /**
+   * The MIME type of files that are accepted. */
+  "accept": PropTypes.string,
+
+  /** An object, array, or string of CSS classes to apply to FileUpload.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
 
-  /**
-   * The text to be displayed on the fileupload component.
-   */
-  "text": PropTypes.string,
-
-  /* Function that gets called when a file is uploaded.
+  /** Function that will be called when a file is uploaded.
    * Returns an array of uploaded files. */
   "onChange": PropTypes.func,
 
   /**
-   * The MIME type of files that are accepted. */
-  "accept": PropTypes.string,
+   * Text that will be displayed on the FileUpload component.
+   */
+  "text": PropTypes.string,
 
   /**
    * Pass inline styling here.

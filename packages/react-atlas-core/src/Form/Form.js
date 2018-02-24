@@ -235,44 +235,59 @@ class Form extends React.PureComponent {
 }
 
 Form.propTypes = {
-  /** Children components, Usually a Textfield, Dropdown, Input, etc */
+  /** The URL of the server that Form will send data to. Data will be passed as a querystring.*/
+  "action": PropTypes.string,
+
+  /** When true, input elements will have their values
+   * automatically completed by the browser. This setting can be overridden
+   * by an autocomplete attribute on an element belonging to the form. */
+  "autocomplete": PropTypes.bool,
+
+  /** The text that will be displayed inside the submit button. */
+  "buttonText": PropTypes.string,
+
+  /** An object, array, or string of CSS classes to
+   * apply to Form's children components.*/
+  "childClasses": PropTypes.node,
+
+  /** Children components, usually a TextField, Dropdown, Checkbox, etc. */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to Form.*/
+
+  /** An object, array, or string of CSS classes to apply to Form.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
-  /** A callback that is fired when the form has passed validation
-   * and is ready to submit. Returns the form data and the event object.  */
-  "onSubmit": PropTypes.func,
-  /** A Callback that is called when there is a form error. */
-  "onError": PropTypes.func,
-  /** The URL of the server to send data to. */
-  "action": PropTypes.string,
-  /** The text displayed inside the submit button. */
-  "buttonText": PropTypes.string,
-  /** The HTTP method to use when action is set and
-   * the form is submitting. */
+
+  /** When the value of the method attribute is post, enctype is the
+   *  MIME type of content that will be used to submit Form to the server. */
+  "enctype": PropTypes.string,
+
+  /** The HTTP method that will be used when action is set and
+   * the form is submitting. Default is POST.*/
   "method": PropTypes.string,
-  /** An Object, array, or string of CSS classes to
-   * apply to form children components.*/
-  "childClasses": PropTypes.node,
-  /** Pass inline styling here. **/
-  "style": PropTypes.object,
-  /** Indicates whether input elements can by default have their values automatically completed by the browser. This setting can be overridden by an autocomplete attribute on an element belonging to the form. **/
-  "autocomplete": PropTypes.bool,
-  /** The name of the form.  **/
+
+  /** The name of the Form.  */
   "name": PropTypes.string,
-  /** A name or keyword indicating where to display the response that is received after submitting the form. _self: Load the response into the same HTML 4 frame (or HTML5 browsing context) as the current one. This value is the default if the attribute is not specified.
-_blank: Load the response into a new unnamed HTML 4 window or HTML5 browsing context.
-_parent: Load the response into the HTML 4 frameset parent of the current frame, or HTML5 parent browsing context of the current one. If there is no parent, this option behaves the same way as _self.
-_top: HTML 4: Load the response into the full original window, and cancel all other frames. HTML5: Load the response into the top-level browsing context (i.e., the browsing context that is an ancestor of the current one, and has no parent). If there is no parent, this option behaves the same way as _self.  **/
-  "target": PropTypes.string,
-  /** This Boolean indicates wether to use HTML5 validations or not. **/
+
+  /** When true, Form will not use HTML5 validation. */
   "novalidate": PropTypes.bool,
-  /** When the value of the method attribute is post, enctype is the MIME type of content that is used to submit the form to the server **/
-  "enctype": PropTypes.string
+
+  /** A Callback that will be executed when there is a form error.
+   * _Example: function(errorMsg)_*/
+  "onError": PropTypes.func,
+
+  /** A callback that will be executed when the form has passed validation
+   * and is ready to submit. Returns the form data and the event object.
+   * _Example: function(event, data) {}_*/
+  "onSubmit": PropTypes.func,
+
+  /** Pass inline styling here. */
+  "style": PropTypes.object,
+
+  /** A name or keyword indicating where to display the response that will be received after submitting the form.*/
+  "target": PropTypes.string
 };
 
 Form.defaultProps = {

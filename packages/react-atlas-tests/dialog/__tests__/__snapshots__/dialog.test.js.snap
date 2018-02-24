@@ -5,9 +5,12 @@ exports[` 1`] = `
   <button
     className=""
     href={undefined}
+    id={undefined}
+    name={undefined}
     onClick={[Function]}
     style={undefined}
-    styleName="button primary"
+    styleName="button uppercase primary"
+    tabIndex={0}
     type="button"
   >
     Open Info Dialog

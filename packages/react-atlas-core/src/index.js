@@ -1,4 +1,5 @@
 export { AccordionCore } from "./Accordion";
+export { AlertCore } from "./Alert";
 export { AvatarCore } from "./Avatar";
 export { ButtonCore } from "./Button";
 export { CardCore } from "./Card";
@@ -25,6 +26,7 @@ export { TabPanelCore } from "./TabPanel";
 export { TabsCore } from "./Tabs";
 export { TaskCore } from "./Task";
 export { TaskbarCore } from "./Taskbar";
+export { TextCore } from "./Text";
 export { TextAreaCore } from "./TextArea";
 export { TextFieldCore } from "./TextField";
 export { TimerCore } from "./Timer";

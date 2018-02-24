@@ -44,10 +44,10 @@
   /* Warm */
   --yellow:       #FFDC00;
   --orange:       #FF5B00;
-  --red:          #BD0A33;
+  --red:          #DE2525;
   --fuchsia:      #F012BE;
   --purple:       #B10DC9;
-  --gold:         #BE9500;
+  --gold:         #E1C900;
   --maroon:       #85144B;
 
     /* Gray scale */
@@ -65,6 +65,7 @@
 
   /*standard variables*/
   --font-family: 'MrEavesXLModOT', Arial, Helvetica, sans-serif;
+  --body-font-family: Arial, Helvetica, sans-serif;;
   --font-size: 14px;
   --header-font-size: 16px;
   --line-height: 1.5;

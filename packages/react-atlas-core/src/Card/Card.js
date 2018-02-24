@@ -69,7 +69,7 @@ Card.propTypes = {
    */
   "children": PropTypes.node.isRequired,
 
-  /** An Object, array, or string of CSS classes to apply to card.*/
+  /** An object, array, or string of CSS classes to apply to card.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
@@ -77,9 +77,21 @@ Card.propTypes = {
   ]),
 
   /**
-   * Title of the Card
+   * Path to an image that will be displayed in Card.
+   * @examples "http://path.to/an/image.jpg"
+   */
+  "image": PropTypes.string,
+
+  /**
+   * Legend that will be displayed on Card when standardFieldset prop is true.
    */
   "legend": PropTypes.string,
+
+  /**
+   * When true, will generate a fieldset Card.
+   * @example <Card standardFieldset>{children}</Card>
+   */
+  "standardFieldset": PropTypes.bool,
 
   /**
    * Pass inline styles here.
@@ -87,27 +99,15 @@ Card.propTypes = {
   "style": PropTypes.object,
 
   /**
-   * Path to an image
-   * @examples "http://path.to/an/image.jpg"
-   */
-   "image": PropTypes.string,
-
-  /**
-   * A string. 
+   * Title that will be displayed inside Cards that do not have the standardFieldset prop.
    * @examples "Title Words" will output "Title Words"
    */
   "title": PropTypes.string,
 
   /**
-   * A width. 
+   * Will determine the width of the Card.
    */
-  "width": PropTypes.number,
-
-  /**
-   * Used for non fieldset cards
-   * @example <Card standardFieldset>{children}</Card>
-   */
-  "standardFieldset": PropTypes.bool
+  "width": PropTypes.number
 };
 
 export default Card;

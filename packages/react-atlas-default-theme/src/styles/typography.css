@@ -4,10 +4,15 @@
 	font-family: var(--font-family);
 	font-size: var(--font-size);
  }
+.body-font {
+	font-family: var(--body-font-family);
+	font-size: var(--font-size);
+}
 .header-font { 
 	font-family: var(--heading-font-family);
 	font-size: var(--header-font-size);
 	font-weight: var(--heading-font-weight);
+	color: var(--secondary);
 }
 .bold    { font-weight: var(--bold-font-weight, bold) }
 .regular { font-weight: normal }

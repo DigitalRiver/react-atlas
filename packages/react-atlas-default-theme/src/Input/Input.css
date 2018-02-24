@@ -1,8 +1,10 @@
 .container {
-	composes: bg-white from '../styles.css';
 	clear: both;
+	display: table;
 }
 input.opacity[type="checkbox"], input.opacity[type="radio"] {
+	/*used by Radio and Checkbox modules, even though not used in Input itself */
+	/*this needs to stay here to avoid display issues with those modules in IE*/
 	opacity: 0;
 }
 .input {
@@ -42,12 +44,6 @@ input.opacity[type="checkbox"], input.opacity[type="radio"] {
 	display: block;
 }
 
-.checkbox {
-	composes: marg-b-1 from '../styles.css';
-	position: relative;
-    top: 1px;
-}
-
 .input::placeholder {
   	color: #aaa;
 }
@@ -72,7 +68,6 @@ input.opacity[type="checkbox"], input.opacity[type="radio"] {
 }
 
 .disabled {
-	composes: cursor-not-allowed from '../styles.css';
 	opacity: .65;
 	pointer-events: none;
 }
@@ -80,4 +75,8 @@ input.opacity[type="checkbox"], input.opacity[type="radio"] {
 .hidden {
 	display: none;
 	visibility: hidden;
+}
+
+.container-disabled {
+	composes: cursor-not-allowed from '../styles.css';
 }

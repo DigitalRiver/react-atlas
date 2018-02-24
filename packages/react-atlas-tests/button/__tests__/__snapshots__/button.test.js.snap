@@ -7,9 +7,12 @@ exports[`Test correct render Test correct render 1`] = `
   <button
     className="aClass"
     href="http://www.google.com.are"
+    id={undefined}
+    name={undefined}
     onClick={undefined}
     style="Style"
-    styleName="button default_btn"
+    styleName="button uppercase default_btn"
+    tabIndex={0}
     type="button"
   >
     Default Button

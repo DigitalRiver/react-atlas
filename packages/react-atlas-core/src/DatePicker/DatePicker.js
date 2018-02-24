@@ -48,26 +48,39 @@ class DatePicker extends React.PureComponent {
 }
 
 DatePicker.propTypes = {
-  "name": PropTypes.string,
-  "format": PropTypes.string,
-  "value": PropTypes.string,
-  "onChange": PropTypes.func,
   /**
-   * The currently selected Date.  You can use any format accepted by Moment.js
+   * An object, array, or string of CSS classes to apply to DatePicker.
+   */
+  "className": PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+      PropTypes.array
+  ]),
+
+  /**
+   * A date format that will be applied to the displayed date.  Default is MM/DD/YYYY.
+   */
+  "format": PropTypes.string,
+
+  /**
+   * The name that will be applied to the input element.
+   */
+  "name": PropTypes.string,
+
+  /**
+   *  The function that will be executed on change.
+   */
+  "onChange": PropTypes.func,
+
+  /**
+   * The currently selected Date.
    */
   "selected": PropTypes.string,
+
   /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object,
-  /*
-   * An Object, array, or string of CSS classes to apply to DatePicker.
-   */
-  "className": PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array
-  ])
+  "style": PropTypes.object
 };
 
 export default DatePicker;

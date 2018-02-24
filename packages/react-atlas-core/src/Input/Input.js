@@ -15,7 +15,10 @@ class Input extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "value": (typeof props.value === "undefined" || props.value === null) ? "" : props.value,
+      "value":
+        typeof props.value === "undefined" || props.value === null
+          ? ""
+          : props.value,
 
       "errorText": "This field is required."
     };
@@ -54,12 +57,12 @@ class Input extends React.PureComponent {
         "isValid": nextProps.isValid
       });
     }
-    if(nextProps.value && nextProps.value !== this.props.value) {
+    if (nextProps.value && nextProps.value !== this.props.value) {
       this.setState({
         "value": nextProps.value
       });
     }
-}
+  }
 
   _updateMaskSelection = () => {
     this.mask.selection = utils.getSelection(this.input);
@@ -231,8 +234,8 @@ class Input extends React.PureComponent {
 
     let valid = this._validate(inputValue);
 
-    if(this.props.uppercase){
-        inputValue = inputValue.toUpperCase();
+    if (this.props.uppercase) {
+      inputValue = inputValue.toUpperCase();
     }
 
     if (valid !== false) {
@@ -265,7 +268,8 @@ class Input extends React.PureComponent {
       errorLocation,
       checked,
       style,
-      rows
+      rows,
+      required
     } = this.props;
 
     /* If checkbox, we need to render only input component (no wrappers) */
@@ -273,18 +277,22 @@ class Input extends React.PureComponent {
     let isRadio = type === "radio";
     const isInput = isCheckbox || isRadio ? false : true;
 
+    let containerClasses = cx({
+      "max": !small && !medium && !large && !isRadio && !isCheckbox,
+      "container": true,
+      "container-disabled": disabled
+    });
+
     let inputClasses = cx({
       "input": isInput,
-      "checkbox": isCheckbox,
       "invalid": !this.state.isValid,
       "blockInput": errorLocation === "bottom",
       "small": small,
       "medium": medium,
       "large": large,
-      "max": !small && !medium && !large,
+      "max": !small && !medium && !large && !isRadio && !isCheckbox,
       disabled,
-      hidden,
-      "opacity": true
+      hidden
     });
 
     let eventHandlers = {
@@ -292,10 +300,11 @@ class Input extends React.PureComponent {
       "onChange": this._handleChange,
       "onKeyDown": this._handleKeyDown,
       "onKeyPress": this._handleKeyPress,
-      "onPaste": this._handlePaste
+      "onPaste": this._handlePaste,
+      "onBlur": this._handleChange
     };
 
-    let inputElement = multiline ?
+    let inputElement = multiline ? 
       <textarea
         id={id}
         name={name}
@@ -305,8 +314,10 @@ class Input extends React.PureComponent {
         styleName={inputClasses}
         className={cx(className)}
         onChange={this._handleChange}
+        onBlur={this._handleChange}
+        required={required}
       />
-     :
+     : 
       <input
         type={type}
         name={name}
@@ -315,6 +326,7 @@ class Input extends React.PureComponent {
         placeholder={placeholder}
         styleName={inputClasses}
         className={cx(className)}
+        required={required}
         ref={input => {
           this.input = input;
         }}
@@ -322,23 +334,23 @@ class Input extends React.PureComponent {
       />
     ;
 
-    let errorTextElement = this.state.errorText &&
-      <span className={"ra_Input__error"}>{this.state.errorText}</span>
+    let errorTextElement = this.state.errorText && 
+      <span styleName={cx("error")}>{this.state.errorText}</span>
     ;
 
-    return isCheckbox ?
+    return isCheckbox ? 
       <input
         style={style}
         type="checkbox"
         name={name}
-        styleName={inputClasses}
         className={cx(className)}
         id={id}
         checked={checked}
+        required={required}
         {...eventHandlers}
-      />
-     :
-      <div className={"ra_Input__container"}>
+      /> // No styleName prop is needed on checkbox because opacity is set to 0.
+     : 
+      <div styleName={containerClasses}>
         {inputElement}
         {this.state.isValid ? null : errorTextElement}
       </div>
@@ -361,7 +373,7 @@ Input.propTypes = {
   "type": PropTypes.string,
   /**
    * Defines an id for the input.
-   * @examples '<Input type="text" name="test"/>'
+   * @examples '<Input type="text" id="test"/>'
    */
   "id": PropTypes.string,
   /**
@@ -473,9 +485,9 @@ Input.propTypes = {
    * Converts all entered text to uppercase.
    */
   "uppercase": PropTypes.bool,
-   /**
-    * Specifies the amount of rows
-    */
+  /**
+   * Specifies the amount of rows
+   */
   "rows": PropTypes.number
 };
 

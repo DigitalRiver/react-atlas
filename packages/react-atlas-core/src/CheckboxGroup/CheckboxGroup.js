@@ -117,62 +117,71 @@ class CheckboxGroup extends React.PureComponent {
 
 CheckboxGroup.propTypes = {
   /**
-   * An optional callback that is fired when any checkbox in the
-   * CheckboxGroup changes value. The callback has four arguments.
-   * function(value, event, isValid, checked).
-   */
-  "onChange": PropTypes.func,
-  /**
-   * Anything that can be in a checkbox group. Typically only includes Checkbox components and a header.
+   * Anything that can be in a CheckboxGroup. Typically only includes Checkbox components and a header.
    * @examples '<CheckboxGroup><Checkbox/><Checkbox/></CheckboxGroup>'
    */
   "children": PropTypes.node.isRequired,
-  /** An Object, array, or string of CSS classes to apply to CheckboxGroup.*/
+
+  /** An object, array, or string of CSS classes to apply to CheckboxGroup.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
+
   /**
-   * Form name for the element, this will set all Checkbox children the same form name.
-   * @examples '<CheckboxGroup name="test"></CheckboxGroup>'
-   */
-  "name": PropTypes.string,
-  /**
-   * Displayed header text for the CheckboxGroup.
-   * @examples '<CheckboxGroup title="Options"></CheckboxGroup>'
-   */
-  "title": PropTypes.string,
-  /**
-   * Defines if the checkbox group should display as an inline element.
+   * When true, will display the CheckboxGroup inline.
    * @examples '<CheckboxGroup inline></CheckboxGroup>'
    */
   "inline": PropTypes.bool,
+
   /**
-   * Defines if the checkbox group should display child Checkbox components inline.
+   * When true, will display child Checkbox components inline.
    * @examples '<CheckboxGroup inlineChildren></CheckboxGroup>'
    */
   "inlineChildren": PropTypes.bool,
+
   /**
-   * Defines a minimum number of checkboxes the user must select in order to proceed.
-   * @examples '<CheckboxGroup min="3"></CheckboxGroup>'
-   */
-  "min": PropTypes.number,
-  /**
-   * Defines a maximum number of checkboxes the user is allowed to select before proceeding.
-   * @examples '<CheckboxGroup max="3"></CheckboxGroup>'
-   */
-  "max": PropTypes.number,
-  /**
-   * Defines a custom message to show if either min or max properties are not met. {0} can be used in the message to be replaced by the appropriate min or max property.
+   * Will define a custom message to display if either min or max properties are not met. {0} can be used in the message to be replaced by the appropriate min or max property.
    * @examples '<CheckboxGroup min="3" limitMessage="Please select at least {0} of the checkboxes below."></CheckboxGroup>'
    */
   "limitMessage": PropTypes.string,
 
   /**
+   * Will define the maximum number of checkboxes the user is allowed to select before proceeding.
+   * @examples '<CheckboxGroup max="3"></CheckboxGroup>'
+   */
+  "max": PropTypes.number,
+
+  /**
+   * Will define the minimum number of checkboxes the user must select in order to proceed.
+   * @examples '<CheckboxGroup min="3"></CheckboxGroup>'
+   */
+  "min": PropTypes.number,
+
+  /**
+   * Form name for the element. This will set all Checkbox children the same form name.
+   * @examples '<CheckboxGroup name="test"></CheckboxGroup>'
+   */
+  "name": PropTypes.string,
+
+  /**
+   * An optional callback that will be fired when any checkbox in the
+   * CheckboxGroup changes value. The callback has four arguments.
+   * function(value, event, isValid, checked).
+   */
+  "onChange": PropTypes.func,
+
+  /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object
+  "style": PropTypes.object,
+
+  /**
+   * Text that will be displayed above the checkboxes in the CheckboxGroup.
+   * @examples '<CheckboxGroup title="Options"></CheckboxGroup>'
+   */
+  "title": PropTypes.string
 };
 
 CheckboxGroup.defaultProps = {

@@ -11,6 +11,7 @@ exports[`Test checkbox component renders correctly 1`] = `
     styleName="inline_block relative padding"
   >
     <label
+      htmlFor={undefined}
       styleName="label"
       title="labelText"
     >
@@ -24,13 +25,14 @@ exports[`Test checkbox component renders correctly 1`] = `
         className="ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
         id={undefined}
         name={undefined}
+        onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
         onPaste={[Function]}
+        required={undefined}
         style={undefined}
-        styleName="checkbox max opacity"
         type="checkbox"
       />
       <div

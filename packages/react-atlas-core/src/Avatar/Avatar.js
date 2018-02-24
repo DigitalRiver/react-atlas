@@ -85,36 +85,35 @@ Avatar.propTypes = {
    * @examples "SomeName", <SomeIcon />, <img src="/path/to/image.jpg"/>
    */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to avatar.*/
+  /** An object, array, or string of CSS classes to apply to Avatar.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /**
-   * For displaying an icon/glphyicon. Normally these will be another component or an element with a class on it.
+   * A URL for an image that will be displayed when the main image fails to load.
+   */
+  "defaultImage": PropTypes.string,
+  /**
+   * For displaying an icon/glphyicon. Usually another component or an element with a class on it.
    * @examples <GithubIcon />, <i class="fa fa-github"></i>
    */
   "icon": PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /**
-   * Path to an image
+   * Path to an image.
    * @examples "http://path.to/an/image.jpg"
    */
   "image": PropTypes.string,
   /**
-   * A string. Avatar will use the first letter of the string.
+   * Pass inline styles here.
+   */
+  "style": PropTypes.object,
+  /**
+   * Avatar will use the first letter of the title string when children, image, and icon are not supplied.
    * @examples "Nathan" will output "N"
    */
-  "title": PropTypes.string,
-  /**
-   * A URL to a image that is displayed when the main image fails to load.
-   */
-  "defaultImage": PropTypes.string,
-
-  /**
-   * Prop to pass inline styles.
-   */
-  "style": PropTypes.object
+  "title": PropTypes.string
 };
 
 export default Avatar;

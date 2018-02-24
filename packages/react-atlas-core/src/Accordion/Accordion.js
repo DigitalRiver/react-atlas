@@ -1,91 +1,123 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import messages from "../utils/messages";
 
 /**
- * Accordion component creates a tab structure featuring a header and panel.  The MVP implementation requires the use of a div as the accordion child with a title prop
- * @examples <Accordion><div title="accordion title">Some text</div><div title="accordion title 2">Some more text</div></Accordion>
+ * The Accordion component creates an expandable tab structure for displaying content. The traditional child element used within Accordion is the Panel component, but a regular div will work as well.
+ * @examples <Accordion><Panel title="Accordion Title">Some text</Panel><Panel title="Accordion Title 2">Some more text</Panel></Accordion>
  *
  */
 class Accordion extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    // array used to set the activeChildArray value for each child for expanding purposes
-    let childArray = [];
+    this.state = {
+      "activeChildArray": this._getExpandedPanels(this.props.children),
+      "hover": null
+    };
+  }
 
-    // loop through children and set childArray depending on if expanded prop was set on child.  If not set this defaults to false
-    React.Children.map(this.props.children, child => {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.children !== this.state.children) {
+      this.setState({
+        "activeChildArray": this._getExpandedPanels(nextProps.children)
+      });
+    }
+  }
+
+  _getExpandedPanels = children => {
+    let childArray = [];
+    children.map(child => {
       if (child.props.expanded) {
         childArray.push(true);
       } else {
         childArray.push(false);
       }
     });
-
-    // component state
-    this.state = {
-      "title": props.title,
-      "activeChildArray": childArray,
-      "expandAll": this.props.expandAll || false,
-      "expand": false,
-      "multiOpen": this.props.multiOpen || false
-    };
-  }
+    return childArray;
+  };
 
   // click handler for header.  Sets activeChildArray value accordingly to expand and collapse the panels
-  _click = idx => {
-    let newChildArray = [];
-    for (let i = 0; i < this.state.activeChildArray.length; i++) {
-      if (i === idx) {
-        newChildArray.push(!this.state.activeChildArray[i]);
-      } else if (!this.state.multiOpen) {
-        newChildArray.push(false);
-      } else {
-        newChildArray.push(this.state.activeChildArray[i]);
+  _click = index => {
+    if (!this.props.disabled) {
+      let newChildArray = [];
+      for (let i = 0; i < this.state.activeChildArray.length; i++) {
+        if (i === index) {
+          newChildArray.push(!this.state.activeChildArray[i]);
+        } else if (
+          !this.props.multiOpen &&
+          !this.state.activeChildArray[index]
+        ) {
+          newChildArray.push(false);
+        } else {
+          newChildArray.push(this.state.activeChildArray[i]);
+        }
       }
+      this.setState({
+        "activeChildArray": newChildArray
+      });
     }
+  };
+
+  _mouseEnter = index => {
     this.setState({
-      "activeChildArray": newChildArray
+      "hover": index
+    });
+  };
+
+  _mouseLeave = () => {
+    this.setState({
+      "hover": null
     });
   };
 
   // expandAll function to expand all panels.  Sets value of all to true in activeChildArray
   _expandAll = () => {
     let newChildArray = [];
+    const isFalse = function(element) {
+      return element === false;
+    };
+    const anyCollapsed = this.state.activeChildArray.some(isFalse);
     for (let i = 0; i < this.state.activeChildArray.length; i++) {
-      newChildArray.push(!this.state.expand);
+      newChildArray.push(anyCollapsed);
     }
     this.setState({
-      "activeChildArray": newChildArray,
-      "expand": !this.state.expand
+      "activeChildArray": newChildArray
     });
   };
 
   render() {
-    let { className, children, width, titlePosition, style } = this.props;
-
-    // activeClass is added to activ
-    let stateClasses, styleClasses, headerClasses, panelClasses;
-
-    styleClasses = cx({
-      "leftAlign": titlePosition !== "right" && titlePosition !== "center",
-      "rightAlign": titlePosition === "right",
-      "centerAlign": titlePosition === "center"
-    });
+    let {
+      className,
+      children,
+      disabled,
+      width,
+      titlePosition,
+      style
+    } = this.props;
 
     // A list of children of the Accordion component
     const accordion_panels = React.Children.map(children, (child, i) => {
-      if (this.state.activeChildArray[i] === true && !this.props.disabled) {
-        stateClasses = "active";
-      } else if (this.props.disabled) {
-        stateClasses = "disabled";
-      } else {
-        stateClasses = "inactive";
-      }
+      const headerStateClasses = cx({
+        "accordion_header": true,
+        "rightAlign": titlePosition === "right",
+        "centerAlign": titlePosition === "center",
+        "header-active": this.state.activeChildArray[i] === true,
+        "header-inactive":
+          this.state.activeChildArray[i] === false &&
+          (this.state.hover !== i || disabled),
+        "hover": this.state.hover === i && !disabled,
+        disabled
+      });
 
-      headerClasses = cx("accordion_header", stateClasses, styleClasses);
-      panelClasses = cx("accordion_panel", stateClasses);
+      const stateClasses = cx({
+        "active": this.state.activeChildArray[i],
+        "inactive": !this.state.activeChildArray[i]
+      });
+
+      const headerClasses = cx(headerStateClasses);
+      const panelClasses = cx(stateClasses);
 
       let accordion_panel = 
         <div>
@@ -93,6 +125,12 @@ class Accordion extends React.PureComponent {
             styleName={headerClasses}
             onClick={() => {
               this._click(i);
+            }}
+            onMouseEnter={() => {
+              this._mouseEnter(i);
+            }}
+            onMouseLeave={() => {
+              this._mouseLeave(i);
             }}
           >
             {child.props.title}
@@ -107,14 +145,14 @@ class Accordion extends React.PureComponent {
 
     return (
       <div className={cx(className)} style={style}>
-        {this.state.expandAll && !this.props.disabled ? 
+        {this.props.expandAll && !this.props.disabled ? 
           <div
             styleName={"expandAll"}
             onClick={() => {
               this._expandAll();
             }}
           >
-            Expand All
+            {messages.expandAll}
           </div>
          : null}
         <div styleName={"accordion"} style={{ "width": width }}>
@@ -131,58 +169,56 @@ Accordion.propTypes = {
    * @examples "SomeName", <Accordion>{child}{child}</Accordion>
    */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to accordion.*/
+  /** An object, array, or string of CSS classes to apply to Accordion.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /**
-   * A string. Accordion will use title prop from each child as the title for header of each accordion
-   * @examples <Accordion><div title={title 1}>value 1</div><div title={title 2}>value 2</div></Accordion>
+   * When true, Accordion component will be disabled.
    */
-  "title": PropTypes.string,
+  "disabled": PropTypes.bool,
   /**
-   * multiOpen
-   * boolean property.  Accordion will allow multiple open panels with this set to true
-   * @examples <Accordion multiOpen={true}>{children}</Accordion>
-   */
-  "multiOpen": PropTypes.bool,
-  /**
-   * expandAll
-   * boolean property.  Accordion will add an "expand all" link which when clicked open all panels or collapse all panels
+   * When true, Accordion will display an "expand all" link that will open all panels.
    * @examples <Accordion expandAll={true}>{children}</Accordion>
    */
   "expandAll": PropTypes.bool,
   /**
-   * expanded
-   * boolean property.  Accordion will expand this child on load
+   * Accordion will use the expanded prop from each child to determine if the child will be expanded on load.
    * @examples <Accordion><div>value 1</div><div expanded>value 2</div></Accordion>
    */
   "expanded": PropTypes.bool,
   /**
-   * titlePosition
-   * string property. Accordion will set the title text position based on this property
+   * When true, Accordion will allow multiple open panels.
+   * @examples <Accordion multiOpen={true}>{children}</Accordion>
+   */
+  "multiOpen": PropTypes.bool,
+  /**
+   * Pass inline styles here.
+   */
+  "style": PropTypes.object,
+  /**
+   * Accordion will use title prop from each child as the title for that child's header.
+   * @examples <Accordion><div title={title 1}>value 1</div><div title={title 2}>value 2</div></Accordion>
+   */
+  "title": PropTypes.string,
+  /**
+   * Will set the Accordion's title text position left, right, or center.
    * @examples <Accordion titlePosition={left}>{children}</Accordion>
    */
   "titlePosition": PropTypes.string,
   /**
-   * The width of the accordion as a string or number.
+   * Will set the width of the Accordion.
    */
-  "width": PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /**
-   * A boolean to disable or not disable the accordion component.
-   */
-  "disabled": PropTypes.bool,
-  /**
-   * Pass inline styles here.
-   */
-  "style": PropTypes.object
+  "width": PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Accordion.defaultProps = {
   "width": "100%",
-  "disabled": false
+  "disabled": false,
+  "expandAll": false,
+  "multiOpen": false
 };
 
 export default Accordion;

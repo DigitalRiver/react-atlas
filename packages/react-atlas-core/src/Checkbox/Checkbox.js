@@ -12,7 +12,6 @@ class Checkbox extends React.PureComponent {
     super(props);
     this.state = {
       "checked": this.props.checked || false,
-      "disabled": this.props.disabled || false,
       "valid": true,
       "errorMessage": "",
       "focus": false
@@ -21,7 +20,7 @@ class Checkbox extends React.PureComponent {
 
   // Handles new checkbox clicks and sets value and checked status of hidden input
   _clickHandler = event => {
-    if (!this.state.disabled) {
+    if (!this.props.disabled) {
       event.persist();
       if (typeof this.props.onBeforeChange !== "undefined") {
         let result = this.props.onBeforeChange(this.state.checked);
@@ -40,7 +39,7 @@ class Checkbox extends React.PureComponent {
             event,
             this.state.valid,
             this.state.checked,
-            this.state.disabled
+            this.props.disabled
           );
         }
 
@@ -51,7 +50,7 @@ class Checkbox extends React.PureComponent {
             event,
             this.state.valid,
             this.state.checked,
-            this.state.disabled
+            this.props.disabled
           );
         }
       });
@@ -83,13 +82,16 @@ class Checkbox extends React.PureComponent {
       groupError,
       inline,
       labelPosition,
+      disabled,
+      hidden,
       style
     } = this.props;
     // TODO: Figure out why, if moved to constructor, the following variables cause issues on click
     const inlineCheckbox = cx({
       "inline_block": inline,
       "checkbox_padding": !inline,
-      "inline_padding": inline
+      "inline_padding": inline,
+      hidden
     });
     const labelStyle = cx({
       "label": labelPosition !== "left",
@@ -98,14 +100,12 @@ class Checkbox extends React.PureComponent {
     const checkboxDisplay =
       labelPosition === "left" ? "float_right" : "float_left";
     const title_label = title ? title : label;
-    let disabledClass = this.state.disabled
-      ? cx({
-          "disabled": true,
-          "inline_block": true,
-          "relative": true,
-          "padding": !inline
-        })
-      : cx({ "inline_block": true, "relative": true, "padding": !inline });
+    let disabledClass = cx({
+      disabled,
+      "inline_block": true,
+      "relative": true,
+      "padding": !inline
+    });
     const error = groupError || !this.state.valid;
     let checkboxClass = cx({
       "checked": this.state.checked,
@@ -113,6 +113,8 @@ class Checkbox extends React.PureComponent {
       "not_checked": !this.state.checked,
       "focus": this.state.focus
     });
+
+    const forId = id !== "" && name !== "" ? id : "";
 
     return (
       <div
@@ -123,7 +125,7 @@ class Checkbox extends React.PureComponent {
       >
         <div styleName={disabledClass}>
           {label && 
-            <label styleName={labelStyle} title={title_label}>
+            <label styleName={labelStyle} title={title_label} htmlFor={forId}>
               {label}
             </label>
           }
@@ -131,13 +133,13 @@ class Checkbox extends React.PureComponent {
             <InputCore
               label={label}
               type="checkbox"
-              disabled={this.state.disabled}
+              disabled={disabled}
               checked={this.state.checked}
-              hidden={this.state.disabled}
+              hidden={hidden}
               id={id}
               name={name}
               /* Hardcode classes for InputCore because classes on styleName will not
-               * be evaluated because were using InputCore not Input.  */
+               * be evaluated because we are using InputCore rather than Input.  */
               className={
                 "ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
               }
@@ -159,81 +161,102 @@ class Checkbox extends React.PureComponent {
 
 Checkbox.propTypes = {
   /**
-   * Text for checkbox label
-   * @examples 'Some Label'
+   * When true, Checkbox will be checked on load.
    */
-  "label": PropTypes.string,
-  /** Sets the html "id" property on the checkbox.*/
-  "id": PropTypes.string,
-  /** An Object, array, or string of CSS classes to apply to checkbox.*/
+  "checked": PropTypes.bool,
+
+  /** An object, array, or string of CSS classes to apply to Checkbox.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
+
   /**
    * If included, checkbox is disabled
    * @examples <Checkbox disabled />, <Checkbox disabled={true} />
    */
   "disabled": PropTypes.bool,
+
   /**
-   * If included, renders the checkbox and it's label inline, so it can be side-by-side to other content.
-   */
-  "inline": PropTypes.bool,
-  /**
-   * Text for checkbox label title. (i.e. "alt-text" for checkboxes, useful for accessibility). If not provided, will be label text.
-   * @examples 'Some Title'
-   */
-  "title": PropTypes.string,
-  /**
-   * Defines if checkbox should be checked on load.
-   */
-  "checked": PropTypes.bool,
-  /**
-   * Allows user to pass a callback for click events.
-   */
-  "onClick": PropTypes.func,
-  /**
-   * Allows user to pass a function to be executed when the checkbox state is changed.
-   */
-  "onChange": PropTypes.func,
-  /**
-   * Allows user to ask for user feedback before changing the "checked" state of the checkbox.
-   */
-  "onBeforeChange": PropTypes.func,
-  /**
-   * If included, checkbox will return and error onBlur or onChange if not checked.
-   */
-  "required": PropTypes.bool,
-  /**
-   * A custom message to be displayed if required property is set to true..
-   */
-  "requiredMessage": PropTypes.string,
-  /**
-   * Allows the user to pass a function for custom validation. Should return either true or false.
+   * Used to pass a function for custom validation. Should return either true or false.
    */
   "errorCallback": PropTypes.func,
+
   /**
-   * Determines if the checkbox label is to the left or the right of the checkbox.
-   */
-  "labelPosition": PropTypes.string,
-  /**
-   * Sets the html "name" property on the input element.
-   */
-  "name": PropTypes.string,
-  /**
-   * The value of the checkbox. This value is used by forms.
-   */
-  "value": PropTypes.string,
-  /**
-   * States whether or not an error state has been passed down from the parent CheckboxGroup.
+   * For use when an error state has been passed down from the parent CheckboxGroup.
    */
   "groupError": PropTypes.bool,
+  /**
+   * Determines if the Checkbox is hidden.
+   * @examples '<Checkbox hidden/>'
+   */
+  "hidden": PropTypes.bool,
+
+  /** Will set the html "id" property on the Checkbox.*/
+  "id": PropTypes.string,
+
+  /**
+   * When true, will render the Checkbox and its label inline.
+   */
+  "inline": PropTypes.bool,
+
+  /**
+   * Text for Checkbox label.
+   * @examples 'Some Label'
+   */
+  "label": PropTypes.string,
+
+  /**
+   * Will position the Checkbox label to the left or the right of the checkbox.
+   */
+  "labelPosition": PropTypes.string,
+
+  /**
+   * Will set the html "name" property on the input element.
+   */
+  "name": PropTypes.string,
+
+  /**
+   * Function that will be executed before changing the "checked" state of the Checkbox.
+   */
+  "onBeforeChange": PropTypes.func,
+
+  /**
+   * Function that will be executed when the Checkbox state is changed.
+   */
+  "onChange": PropTypes.func,
+
+  /**
+   * Function that will be executed on click.
+   */
+  "onClick": PropTypes.func,
+
+  /**
+   * When true, Checkbox will return an error onBlur or onChange if not checked.
+   */
+  "required": PropTypes.bool,
+
+  /**
+   * A custom message that will be displayed if required property is set to true and user does not check Checkbox.
+   */
+  "requiredMessage": PropTypes.string,
 
   /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object
+  "style": PropTypes.object,
+
+  /**
+   * Text for Checkbox label title. (i.e. "alt-text" for checkboxes, useful for accessibility). If not provided, label text will be used.
+   * @examples 'Some Title'
+   */
+  "title": PropTypes.string,
+
+  /**
+   * The value of the Checkbox.
+   */
+  "value": PropTypes.string
 };
 
 Checkbox.defaultProps = {

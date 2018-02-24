@@ -490,90 +490,91 @@ class Dropdown extends React.PureComponent {
 }
 
 Dropdown.propTypes = {
+
   /**
-   * Text for dropdown label
+   * When true, Dropdown will display as open.
+   */
+  "active": PropTypes.bool,
+
+  /**
+   * The children elements to be wrapped by the Dropdown menu.
+   */
+  "children": PropTypes.node.isRequired,
+
+  /** An object, array, or string of CSS classes to apply to Dropdown.*/
+  "className": PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+      PropTypes.array
+  ]),
+
+  /* . */
+  "clickEvent": PropTypes.func,
+
+  /**
+   * Text that will be displayed for Dropdown label.
    * @examples 'Some Label'
    */
   "customLabel": PropTypes.string,
 
   /**
-   * Boolean value taht tells the dropdown whether to
-   * be open or not.
+   * Default text that will be displayed in collapsed Dropdown on initial render.
    */
-  "active": PropTypes.bool,
+  "defaultText": PropTypes.string,
 
   /**
-   * Boolean value that tells the dropdown whether the value is valid and controls error message is returns false.
-   */
-  "isValid": PropTypes.bool,
-
-  /**
-   * Boolean value that determines if the dropdown component will display inline
-   */
-  "inline": PropTypes.bool,
-
-  /**
-   * If included, dropdown is disabled
+   * When true, Dropdown will be disabled.
    * @examples <Dropdown disabled />, <Dropdown disabled={true} />
    */
   "disabled": PropTypes.bool,
 
   /**
-   * Allows user to pass a callback for click events.
-   */
-  "onClick": PropTypes.func,
-
-  /**
-   * Allows user to pass a function to be executed when the dropdown state is changed.
-   */
-  "onChange": PropTypes.func,
-
-  /**
-   * If included, dropdown will return and error onBlur or onChange if not checked.
-   */
-  "required": PropTypes.bool,
-
-  /**
-   * Allows the user to pass a function for custom validation. Should return either true or false, or
+   * Used to pass a function for custom validation. Should return either true or false, or
    * an object with the properties valid and message. If false is returned the default error message
    * is used. If an object is used and the valid property is false, the string in the property message
    * will be used for the error message.
    */
   "errorCallback": PropTypes.func,
 
-  /* . */
-  "clickEvent": PropTypes.func,
-
   /**
-   * The children elements to be wrapped by the dropdown menu.
+   * When true, Dropdown will display inline.
    */
-  "children": PropTypes.node.isRequired,
+  "inline": PropTypes.bool,
 
-  /** An Object, array, or string of CSS classes to apply to Dropdown.*/
-  "className": PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array
-  ]),
   /**
-   * The name of the key value used when submitting the dropdown value.
+   * When true, tells Dropdown whether the value is valid. When false, controls error message.
+   */
+  "isValid": PropTypes.bool,
+
+  /**
+   * When true, label will be displayed to the left of Dropdown.
+   */
+  "leftLabel": PropTypes.bool,
+
+  /**
+   * The name of the key value used when submitting the Dropdown value.
    */
   "name": PropTypes.string,
 
   /**
-   * The initial value that the dropdown will default to.
-   */
-  "value": PropTypes.string,
-
-  /**
-   * Default text to show in collapsed dropdown on initial render
-   */
-  "defaultText": PropTypes.string,
-
-  /**
-   * Allows user to ask for user feedback before changing the selected value of the Dropdown.
+   * Function that will be executed before onChange event.
    */
   "onBeforeChange": PropTypes.func,
+
+  /**
+   * Function that will be executed when the Dropdown state is changed.
+   */
+  "onChange": PropTypes.func,
+
+  /**
+   * Function that will be executed on click.
+   */
+  "onClick": PropTypes.func,
+
+  /**
+   * When true, Dropdown will return an error onBlur or onChange if a value is not selected.
+   */
+  "required": PropTypes.bool,
 
   /**
    * Pass inline styles here.
@@ -581,13 +582,14 @@ Dropdown.propTypes = {
   "style": PropTypes.object,
 
   /**
-   * Allows user to set custom width of dropdown
+   * The initial value that Dropdown will default to.
    */
-  "width": PropTypes.string,
+  "value": PropTypes.string,
+
   /**
-   * Allows user to move the label to the left of the Dropdown instead of having it on top
+   * Will set width of Dropdown.
    */
-  "leftLabel": PropTypes.bool
+  "width": PropTypes.string
 };
 
 Dropdown.defaultProps = {

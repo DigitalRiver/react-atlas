@@ -22,7 +22,8 @@
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
   },
-  "dependencies": {
+  "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas",
+  "devDependencies": {
     "babel-loader": "^7.0.0",
     "react-docgen": "^2.19.0",
     "dot": "^1.1.1",
@@ -37,11 +38,7 @@
     "webpack": "^3.8.1",
     "css-loader": "^0.28.1",
     "loaders": "^1.1.3",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2"
-  },
-  "repository": "https://github.com/DigitalRiver/react-atlas/tree/master/packages/react-atlas",
-  "devDependencies": {
-    "react-styleguidist": "^6.0.31"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }
