@@ -160,7 +160,7 @@ class Form extends React.PureComponent {
     if (!data) {
       /* Prevent form submission when action is set and the
        * form is not valid. */
-      if (this.props.action) {
+      if (typeof this.props.action === 'undefined') {
         e.preventDefault();
       }
 
@@ -213,8 +213,6 @@ class Form extends React.PureComponent {
       enctype,
       novalidate
     } = this.props;
-
-    console.log("")
 
     return (
       <form
