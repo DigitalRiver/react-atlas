@@ -16,12 +16,14 @@ exports[`Test correct render Test correct render 1`] = `
     <div>
       <div
         onClick={[Function]}
-        styleName="accordion_header inactive leftAlign"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        styleName="accordion_header header-inactive"
       >
         First
       </div>
       <div
-        styleName="accordion_panel inactive"
+        styleName="inactive"
       >
         <div
           styleName="panel"
@@ -38,12 +40,14 @@ exports[`Test correct render Test correct render 1`] = `
     <div>
       <div
         onClick={[Function]}
-        styleName="accordion_header inactive leftAlign"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        styleName="accordion_header header-inactive"
       >
         Second
       </div>
       <div
-        styleName="accordion_panel inactive"
+        styleName="inactive"
       >
         <div
           styleName="panel"

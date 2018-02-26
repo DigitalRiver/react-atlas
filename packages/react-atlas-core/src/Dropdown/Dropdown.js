@@ -67,8 +67,11 @@ class Dropdown extends React.PureComponent {
     let childrenState = React.Children.map(
       this.state.children,
       (child, index) => {
-        let value = child.props.value || "";
+        let value = (child.props.value !== null && typeof child.props.value !== "undefined") ? child.props.value : "";
         let display = child.props.children;
+        if(typeof this.props.value === "number"){
+          console.log(this.props.value + ", " + value);
+        }
         if (value === this.props.value) {
           initialValue = value;
           initialDisplay = display;
@@ -90,7 +93,7 @@ class Dropdown extends React.PureComponent {
   getInitialValue = (childrenState, initialValue) => {
     if (this.state.value !== null) {
       return this.state.value;
-    } else if (this.props.value && initialValue !== null) {
+    } else if (this.props.value !== null && typeof this.props.value !== "undefined" && initialValue !== null) {
       return initialValue;
     } else if (this.props.defaultText) {
       return null;
@@ -104,7 +107,7 @@ class Dropdown extends React.PureComponent {
   getInitialDisplay = (childrenState, initialDisplay) => {
     if (this.state.output !== null) {
       return this.state.output;
-    } else if (this.props.value && initialDisplay !== null) {
+    } else if (this.props.value !== null && typeof this.props.value !== "undefined" && initialDisplay !== null) {
       return initialDisplay;
     } else if (this.props.defaultText) {
       return this.props.defaultText;
@@ -118,7 +121,7 @@ class Dropdown extends React.PureComponent {
   getInitialIndex = initialIndex => {
     if (this.state.index !== null) {
       return this.state.index;
-    } else if (this.props.value && initialIndex !== null) {
+    } else if (this.props.value !== null && typeof this.props.value !== "undefined" && initialIndex !== null) {
       return initialIndex;
     } else if (this.props.defaultText) {
       return null;
@@ -584,7 +587,10 @@ Dropdown.propTypes = {
   /**
    * The initial value that Dropdown will default to.
    */
-  "value": PropTypes.string,
+  "value": PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+  ]),
 
   /**
    * Will set width of Dropdown.
