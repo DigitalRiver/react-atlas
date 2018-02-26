@@ -115,7 +115,7 @@
   composes: bg-transparent from '../styles.css';
 }
 .link:hover{
-  text-decoration: underline;
+  color: var(--secondary);
   border-color: transparent;
   background-color: transparent;
   box-shadow: none;
