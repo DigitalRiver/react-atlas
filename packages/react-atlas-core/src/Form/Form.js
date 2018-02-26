@@ -151,7 +151,7 @@ class Form extends React.PureComponent {
 
   submitHandler = e => {
     /* Prevent form submission if action prop is not set. */
-    if (!this.props.action) {
+    if (typeof this.props.action === "undefined") {
       e.preventDefault();
     }
 
@@ -174,8 +174,6 @@ class Form extends React.PureComponent {
   	 * it was passed throw a error if not set. */
     if (this.props.onSubmit) {
       this.props.onSubmit(e, data);
-    } else {
-      throw messages.onSubmitAction;
     }
   };
 
@@ -215,6 +213,8 @@ class Form extends React.PureComponent {
       enctype,
       novalidate
     } = this.props;
+
+    console.log("")
 
     return (
       <form
