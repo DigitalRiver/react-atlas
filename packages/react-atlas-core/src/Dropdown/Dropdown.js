@@ -69,9 +69,6 @@ class Dropdown extends React.PureComponent {
       (child, index) => {
         let value = (child.props.value !== null && typeof child.props.value !== "undefined") ? child.props.value : "";
         let display = child.props.children;
-        if(typeof this.props.value === "number"){
-          console.log(this.props.value + ", " + value);
-        }
         if (value === this.props.value) {
           initialValue = value;
           initialDisplay = display;
