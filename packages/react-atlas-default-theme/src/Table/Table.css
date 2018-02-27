@@ -1,3 +1,4 @@
+@import '../styles/variables.css';
 /* :global is needed for some classes to bypass */
 :global .dropdown-menu{
   background-color: red;
@@ -69,6 +70,7 @@
     border-right: none;
     border-radius: 5px;
     outline: none !important;
+    font-family: var(--font-family);
 }
 
 :global .react-bs-table table {
@@ -119,13 +121,6 @@
   float: right;
 }
 
-:global .react-bs-table-bordered .react-bs-container-header{
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-radius: 5px;
-}
-
 :global .react-bs-table table {
   margin-bottom: 0;
   table-layout: fixed;
@@ -139,17 +134,9 @@
   padding: 10px;
 }
 
-:global .react-bs-table-pagination {
-  margin-top: 10px;
-}
-
 :global .react-bs-table-tool-bar {
+  font-family: var(--font-family);
   margin-bottom: 5px;
-}
-
-:global .react-bs-container-header {
-  overflow: hidden;
-  width: 100%;
 }
 
 :global .react-bs-container-body {
@@ -181,177 +168,6 @@
 :global .react-bs-table .table-bordered > tbody > tr > td.default-focus-cell {
   outline: 3px solid cornflowerblue !important;
   outline-offset: -1px;
-}
-
-:global .react-bs-table .table-bordered > tfoot > tr > th,
-:global .react-bs-table .table-bordered > tfoot > tr > td {
-  border-top-width: 2px;
-}
-
-:global .react-bs-table .table-bordered > tfoot > tr > th,
-:global .react-bs-table .table-bordered > tfoot > tr > td {
-  border-bottom-width: 0;
-}
-
-/*Esquerda*/
-:global .react-bs-table .table-bordered > thead > tr > th:first-child,
-:global .react-bs-table .table-bordered > tbody > tr > th:first-child,
-:global .react-bs-table .table-bordered > tfoot > tr > th:first-child,
-:global .react-bs-table .table-bordered > thead > tr > td:first-child,
-:global .react-bs-table .table-bordered > tbody > tr > td:first-child,
-:global .react-bs-table .table-bordered > tfoot > tr > td:first-child {
-  border-left-width: 0;
-}
-
-/*Direita*/
-:global .react-bs-table .table-bordered > thead > tr > th:last-child,
-:global .react-bs-table .table-bordered > tbody > tr > th:last-child,
-:global .react-bs-table .table-bordered > tfoot > tr > th:last-child,
-:global .react-bs-table .table-bordered > thead > tr > td:last-child,
-:global .react-bs-table .table-bordered > tbody > tr > td:last-child,
-:global .react-bs-table .table-bordered > tfoot > tr > td:last-child {
-  border-right-width: 0;
-}
-
-:global .react-bs-container-body {
-    overflow: auto;
-    width: 100%;
-}
-
-:global .react-bs-container-body table td {
-    border: 0;
-    border-top: 1px solid #ccc;
-    outline: none !important;
-    padding-left: .8em;
-}
-
-:global .col-lg-6 {
-    width: 50%;
-    float: left;
-}
-
-:global .react-bs-table-pagination {
-    margin: 10px;
-    height: 20px;
-}
-
-:global .react-bootstrap-table-page-btns-ul {
-    float: right;
-    margin-top: 0;
-}
-
-:global .react-bs-container-header .sort-column {
-    cursor: pointer;
-}
-
-:global .caret {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left: 2px;
-    vertical-align: middle;
-    border-top: 4px dashed;
-    border-right: 4px solid transparent;
-    border-left: 4px solid transparent;
-}
-
-:global .react-bs-container-header .sort-column .dropup .caret {
-    border-top: 0;
-    border-bottom: 4px dashed;
-    content: "";
-}
-
-:global .react-bs-table-container .react-bs-table-search-form {
-  margin-bottom: 0;
-}
-
-:global .react-bs-table-search-form {
-  margin-bottom: .5em;
-  margin-right: .75em;
-  float: right;
-}
-
-:global .react-bs-table-bordered .react-bs-container-header {
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-bottom: none;
-  border-radius: 0px 0px 0px 0px;
-}
-:global .react-bs-table-bordered .react-bs-container-body {
-  border-bottom: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-top: none;
-  border-radius: 0px 0px 0px 0px;
-
-}
-
-:global .react-bs-table table {
-  margin-bottom: 0;
-  table-layout: fixed;
-}
-
-:global .react-bs-table table td,
-:global .react-bs-table table th {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  padding: 10px;
-}
-
-:global .react-bs-table-pagination {
-  margin-top: 10px;
-}
-
-:global .react-bs-table-tool-bar {
-  margin-bottom: 5px;
-}
-
-:global .react-bs-container-header {
-  overflow: hidden;
-  width: 100%;
-}
-
-:global .react-bs-container-body {
-  /*height: 154px;*/
-  overflow: auto;
-  width: 100%;
-}
-
-:global .react-bootstrap-table-page-btns-ul {
-  float: right;
-  /* override the margin-top defined in .pagination class in bootstrap. */
-  margin-top: 0;
-}
-
-:global .react-bs-table .table-bordered {
-    border: 0;
-    outline: none !important;
-}
-
-:global .react-bs-table .table-bordered > thead > tr > th,
-:global .react-bs-table .table-bordered > thead > tr > td {
-  border-bottom-width: 2px;
-}
-
-:global .react-bs-table .table-bordered > tbody > tr > td {
-  outline: none !important;
-}
-
-:global .react-bs-table .table-bordered > tbody > tr > td.default-focus-cell {
-  outline: 3px solid cornflowerblue !important;
-  outline-offset: -1px;
-}
-
-:global .react-bs-table .table-bordered > tfoot > tr > th,
-:global .react-bs-table .table-bordered > tfoot > tr > td {
-  border-top-width: 2px;
-}
-
-:global .react-bs-table .table-bordered > tfoot > tr > th,
-:global .react-bs-table .table-bordered > tfoot > tr > td {
-  border-bottom-width: 0;
 }
 
 /*Left*/
@@ -372,6 +188,65 @@
 :global .react-bs-table .table-bordered > tbody > tr > td:last-child,
 :global .react-bs-table .table-bordered > tfoot > tr > td:last-child {
   border-right-width: 0;
+}
+
+:global .react-bs-container-body table td {
+    border: 0;
+    border-top: 1px solid #ccc;
+    outline: none !important;
+    padding-left: .8em;
+}
+
+:global .col-lg-6 {
+    width: 50%;
+    float: left;
+}
+
+:global .react-bs-table-pagination {
+    font-family: var(--font-family);
+    margin: 10px;
+    height: 20px;
+}
+
+:global .react-bs-container-header .sort-column {
+    cursor: pointer;
+}
+
+:global .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+:global .react-bs-table-search-form input {
+  font-family: var(--font-family);
+}
+
+:global .react-bs-table-bordered .react-bs-container-header {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 0px 0px 0px 0px;
+}
+:global .react-bs-table-bordered .react-bs-container-body {
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0px 0px 0px 0px;
+
+}
+
+:global .react-bs-table .table-bordered > tfoot > tr > th,
+:global .react-bs-table .table-bordered > tfoot > tr > td {
+  border-top-width: 2px;
+  border-bottom-width: 0;
 }
 
 /*Top*/
