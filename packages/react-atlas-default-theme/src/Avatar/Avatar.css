@@ -12,14 +12,20 @@
   font-size: 1.9rem;
 }
 
-.avatar > :global(svg),
-.avatar > :global(i) {
+.avatar > :global(svg) {
   width: 2rem;
   height: 3rem;
   line-height: 3rem;
   fill: currentColor;
 }
-
+.avatar > span > :global(i),
+.avatar > :global(i) {
+  width: 2rem;
+  height: 3rem;
+  line-height: 3rem;
+  vertical-align: middle;
+  fill: currentColor;
+}
 .avatar > :global(img) {
   width: 100%;
   height: 100%;

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {IconCore} from './../Icon';
 import cx from "classnames";
 
 /**
@@ -93,7 +94,7 @@ class Button extends React.PureComponent {
         id={id}
         name={name}
       >
-        {icon ? <i className={cx(icon, iconClass)} /> : null}
+        {icon ?  <IconCore icon={icon} styleName={iconClass} /> : null}
         {text}
       </button>
     ;

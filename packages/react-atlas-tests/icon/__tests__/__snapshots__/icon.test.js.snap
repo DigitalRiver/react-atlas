@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test correct render Test correct render 1`] = `
+<span
+  className=""
+  onClick={undefined}
+  style={undefined}
+  styleName="icon"
+>
+  <i
+    className="icon={<i className=\\"fa fa-github\\"></i>}"
+    style={undefined}
+  />
+</span>
+`;
