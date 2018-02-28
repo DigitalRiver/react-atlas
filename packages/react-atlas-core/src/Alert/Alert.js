@@ -37,7 +37,6 @@ class Alert extends React.PureComponent {
         style={style}>
         {this.state.visible &&
           <div styleName={alertClasses}>
-            {children}
             {dismissible &&
               <div
                 onClick={() => {
@@ -51,6 +50,7 @@ class Alert extends React.PureComponent {
                 <span aria-hidden="true">×</span>
               </div>
             }
+            {children}
           </div>
         }
       </div>
