@@ -29,6 +29,12 @@ class Avatar extends React.PureComponent {
     this.handleBadImage = this.handleBadImage.bind(this);
   }
 
+  componentWillReceiveProps = (nextProps) =>  {
+    if(nextProps.image !== this.props.image) {
+      this.setState({"image": nextProps.image});
+    }
+  };
+
   handleBadImage() {
     /* If the default Image is equal to the bad image URL or the default image is undefined
         set this.state.image as null so avatar will fallback on a different prop. */
