@@ -5,14 +5,11 @@ exports[`Test Alert component renders correctly 1`] = `
   className=""
   hidden={undefined}
   style={undefined}
+  styleName="alert success"
 >
-  <div
-    styleName="alert success"
-  >
-    <strong>
-      Success!
-    </strong>
-     This alert box indicates a successful or positive action.
-  </div>
+  <strong>
+    Success!
+  </strong>
+   This alert box indicates a successful or positive action.
 </div>
 `;
