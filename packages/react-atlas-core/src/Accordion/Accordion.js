@@ -139,7 +139,9 @@ class Accordion extends React.PureComponent {
             {child.props.title}
           </div>
           <div styleName={panelClasses}>
-            <div styleName={"panel"}>{child}</div>
+            { this.state.activeChildArray[i] === true && 
+              <div styleName={"panel"}>{child}</div>
+            }
           </div>
         </div>
       ;
