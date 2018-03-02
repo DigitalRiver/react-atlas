@@ -65,4 +65,24 @@ describe("Testing Avatar component", () => {
     let child = result.children().at(0);
     expect(child.text()).toBe(title[0]);
   });
+
+  it("The avatar image should update if new props are received", function() {
+    let img = image;
+    const result = mount(<AvatarCore image={img}/>);
+    img = 'newPicture.jpg';
+    result.setProps({'image':img});
+    expect(result.state().image).toBe('newPicture.jpg');
+  });
+
+  it("The avatar image should update if new props are received and should handle bad image", function() {
+    let img = image;
+    const result = mount(<AvatarCore image={img} title={title} />);
+    img = 'newPicture.jpg';
+    result.setProps({'image':img});
+    let imgEl = result.find("img");
+    imgEl.simulate("error");
+    expect(result.state().image).toBe(null);
+    let child = result.children().at(0);
+    expect(child.text()).toBe(title[0]);
+  });
 });
