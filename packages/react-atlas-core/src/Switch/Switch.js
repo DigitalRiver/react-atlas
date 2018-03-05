@@ -118,15 +118,17 @@ class Switch extends React.PureComponent {
     const styles = this.styles;
     const forId = id !== "" && name !== "" ? id : "";
 
-    let switchWrapperClasses = cx({
-      "switch": true
-    });
+    let switchWrapperClasses = cx(
+        {
+          "switch": true,
+        inline
+        }
+    );
 
     let switchClasses = cx(
       {
         "disabled": this.state.disabled,
         hidden,
-        inline,
         "leftLabelContent": leftLabel
       },
       classes.offClassName

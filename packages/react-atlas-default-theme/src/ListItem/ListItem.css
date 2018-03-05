@@ -1,0 +1,12 @@
+.listItem {
+	display: flex;
+    flex-direction: row;
+    align-items: center; 
+}
+.inlineBlock {
+	display: inline-block;
+}
+.rightItem {
+	composes: inlineBlock;
+	margin-left: auto;
+}
