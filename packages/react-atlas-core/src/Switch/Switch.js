@@ -126,7 +126,8 @@ class Switch extends React.PureComponent {
 
     let switchWrapperClasses = cx(
         {
-          "switch": true
+          "switch": true,
+        inline
         }
     );
 
@@ -134,7 +135,6 @@ class Switch extends React.PureComponent {
       {
         "disabled": this.state.disabled,
         hidden,
-        inline,
         "leftLabelContent": leftLabel
       },
       classes.offClassName
