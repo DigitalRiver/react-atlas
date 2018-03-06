@@ -78,3 +78,16 @@
 ###### Superscript text:
 
     <Text>Hello <Text as="sup">World</Text></Text>
+
+###### Code text:
+
+    <Text>Sample Code: <Text as="code">Hello World</Text></Text>
+
+###### Blockquote text:
+
+    <Text as="blockquote">Hello World</Text>
+
+###### Link text:
+
+    <Text as="a" href="#">Hello World</Text>
+
