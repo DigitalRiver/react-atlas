@@ -11,8 +11,7 @@ class Card extends React.PureComponent {
 
   }
   render() {
-    const { children, className, legend, style, standardFieldset, image, title, width } = this.props;
-    let Width = width ? width + "px" : null;
+    const { children, className, legend, style, standardFieldset, image, title } = this.props;
     let cardBody = children ?
       <div
         styleName={"cardBody"}
@@ -22,7 +21,7 @@ class Card extends React.PureComponent {
       : null;
 
     let isFieldset = standardFieldset ? 
-      <fieldset style={{ "width": Width}} styleName={"card"} className={cx(className)}>
+      <fieldset style={style} styleName={"card"} className={cx(className)}>
         {legend && <legend styleName={"legend"}>{legend}</legend>}
         {children}
       </fieldset>
@@ -41,8 +40,9 @@ class Card extends React.PureComponent {
 
     let card = !standardFieldset ? 
       <div        
-        style={{ "width": Width}}
+        style={style}
         styleName={"card"} 
+        className={cx(className)}
       >
         {useImage}
         {Title}
@@ -51,13 +51,10 @@ class Card extends React.PureComponent {
       : null;
 
     return (
-      <div 
-        style={style}
-        className={cx(className)}
-      >
+      <React.Fragment>
         {isFieldset}
         {card}
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -102,12 +99,7 @@ Card.propTypes = {
    * Title that will be displayed inside Cards that do not have the standardFieldset prop.
    * @examples "Title Words" will output "Title Words"
    */
-  "title": PropTypes.string,
-
-  /**
-   * Will determine the width of the Card.
-   */
-  "width": PropTypes.number
+  "title": PropTypes.string
 };
 
 export default Card;

@@ -4,14 +4,6 @@ exports[`Test Card component renders correctly 1`] = `
 <div
   className="name"
   style={undefined}
->
-  <div
-    style={
-      Object {
-        "width": null,
-      }
-    }
-    styleName="card"
-  />
-</div>
+  styleName="card"
+/>
 `;
