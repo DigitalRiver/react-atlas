@@ -34,7 +34,15 @@ class Form extends React.PureComponent {
         }
 
         const childId = child.props.name;
-        if (childId) {
+
+        /* Check if we have data, if so, we're the source of truth */
+        const currentState = this.state.childState[childId];
+        if (currentState) {
+          /* Allow them to modify onChange handler on the fly, but this is controlled. Form owns value/isValid */
+          childState[childId] = Object.assign(currentState, {
+            "onChange": child.props.onChange || null
+          });
+        } else if (childId) {
           childState[childId] = {
             "value": child.props.value,
             "isValid": child.props.isValid || true,
