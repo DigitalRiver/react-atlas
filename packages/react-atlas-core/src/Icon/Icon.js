@@ -28,8 +28,7 @@ class Icon extends React.PureComponent {
 
     let iconClasses = cx({
       "large": large,
-      "small": small,
-      "icon": true
+      "small": small
     });
 
     const iconContainer = icon ? <i style={style} className={icon}/> : null;
@@ -50,25 +49,25 @@ Icon.propTypes = {
     PropTypes.array
   ]),
   /**
-   * Defines an onclick for the icon.
-   * @examples '<Icon onClick={ () => this._handleClick } icon={"fa fa-id-card"}/>'
-   */
-  "onClick": PropTypes.func,
-  /**
    * Defines an icon for the icon.
    * @examples '<Icon icon={"fa fa-id-card"}/>'
    */
   "icon": PropTypes.string,
   /**
-   * Defines a small sized icon element.
-   * @examples '<Icon small icon={"fa fa-id-card"}/>'
-   */
-  "small": PropTypes.bool,
-  /**
    * Defines a large sized icon element.
    * @examples '<Icon large icon={"fa fa-id-card"}/>'
    */
   "large": PropTypes.bool,
+  /**
+   * Defines an onclick for the icon.
+   * @examples '<Icon onClick={ () => this._handleClick } icon={"fa fa-id-card"}/>'
+   */
+  "onClick": PropTypes.func,
+  /**
+   * Defines a small sized icon element.
+   * @examples '<Icon small icon={"fa fa-id-card"}/>'
+   */
+  "small": PropTypes.bool,
   /**
    * Pass inline styling here.
    */
