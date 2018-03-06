@@ -31,12 +31,10 @@ class Icon extends React.PureComponent {
       "small": small
     });
 
-    const iconContainer = icon ? <i style={style} className={icon}/> : null;
+    const iconContainer = icon ? <i className={cx(className, icon)} onClick={onClick} styleName={iconClasses}  style={style}/> : null;
 
     return (
-      <span className={cx(className)} onClick={onClick} styleName={iconClasses} style={style} >
-        {iconContainer}
-      </span>
+      iconContainer
     );
   }
 }
