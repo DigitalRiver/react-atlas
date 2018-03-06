@@ -33,9 +33,7 @@ class Icon extends React.PureComponent {
 
     const iconContainer = icon ? <i className={cx(className, icon)} onClick={onClick} styleName={iconClasses}  style={style}/> : null;
 
-    return (
-      iconContainer
-    );
+    return iconContainer;
   }
 }
 
