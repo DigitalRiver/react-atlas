@@ -1,5 +1,4 @@
 import React from "react";
-import { mount } from "enzyme";
 import { AlertCore } from "../../../react-atlas-core/src/Alert/index";
 import renderer from 'react-test-renderer';
 
