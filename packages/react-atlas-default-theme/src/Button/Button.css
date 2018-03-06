@@ -69,42 +69,26 @@
   composes: bg-secondary from '../styles.css';
   composes: hover-bg-secondary from '../styles.css';
   composes: border-secondary from '../styles.css';
-  composes: hover-boder-secondary from '../styles.css';
+  composes: hover-border-secondary from '../styles.css';
   composes: inverse-blue-text from '../styles.css';
 }
 
-/* TODO: Remove hardcoded color values and
- * compose from styles.css */
 .warning {
-  composes: base;
-  color: #FFFFFF;
-  border-color: #F07822;
-  background-color: #F07822;
-}
-
-/* TODO: Remove hardcoded color values and
- * compose from styles.css */
-.warning:hover {
-  color: #FFFFFF;
-  border-color: #E24024;
-  background-color: #E24024;
+  composes: white from '../styles.css';
+  composes: bg-warning from '../styles.css';
+  composes: hover-bg-warning from '../styles.css';
+  composes: border-warning from '../styles.css';
+  composes: hover-border-warning from '../styles.css';
 }
 
 /* TODO: Remove hardcoded color values and
  * compose from styles.css */
 .error {
-  composes: base;
-  color: #FFFFFF;
-  border-color: #EA0F43;
-  background-color: #EA0F43;
-}
-
-/* TODO: Remove hardcoded color values and
- * compose from styles.css */
-.error:hover {
-  color: #FFFFFF;
-  border-color: #BD0A33;
-  background-color: #BD0A33;
+  composes: white from '../styles.css';
+  composes: bg-error from '../styles.css';
+  composes: hover-bg-error from '../styles.css';
+  composes: border-error from '../styles.css';
+  composes: hover-border-error from '../styles.css';
 }
 
 .link {
@@ -162,17 +146,19 @@
 .warning_outline {
   composes: outline;
   composes: orange from '../styles.css';
-  composes: hover-bg-orange from '../styles.css';
+  composes: hover-bg-warning from '../styles.css';
   composes: hover-white from '../styles.css';
-  composes: border-orange from '../styles.css';
+  composes: border-warning from '../styles.css';
+  composes: hover-border-warning from '../styles.css';
 }
 
 .error_outline {
   composes: outline;
   composes: red from '../styles.css';
-  composes: hover-bg-red from '../styles.css';
+  composes: hover-bg-error from '../styles.css';
   composes: hover-white from '../styles.css';
-  composes: border-red from '../styles.css';
+  composes: border-error from '../styles.css';
+  composes: hover-border-error from '../styles.css';
 }
 
 .link_outline {

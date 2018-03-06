@@ -80,6 +80,8 @@
 .bg-primary     { background-color: var(--primary) }
 .bg-secondary   { background-color: var(--secondary) }
 .bg-default     { background-color: var(--default) }
+.bg-warning     { background-color: var(--warning) }
+.bg-error       { background-color: var(--error) }
 
 .bg-black    { background-color: var(--black) }
 .bg-gray     { background-color: var(--gray) }
@@ -120,6 +122,8 @@
 .hover-bg-primary:hover     { background-color: var(--primary-darker) }
 .hover-bg-secondary:hover   { background-color: var(--secondary-darker) }
 .hover-bg-default:hover     { background-color: var(--default-lighter) }
+.hover-bg-warning:hover     { background-color: var(--warning-darker) }
+.hover-bg-error:hover       { background-color: var(--error-darker) }
 
 .hover-bg-black:hover  { background-color: var(--black) }
 .hover-bg-gray:hover   { background-color: var(--gray) }
@@ -158,6 +162,8 @@
 .border-primary         { border-color: var(--primary) }
 .border-secondary       { border-color: var(--secondary) }
 .border-default         { border-color: var(--default) }
+.border-warning         { border-color: var(--warning) }
+.border-error         { border-color: var(--error) }
 
 .border-black       { border-color: var(--black) }
 .border-gray        { border-color: var(--gray) }
@@ -196,9 +202,11 @@
 /*Hover-Border Colors */
 .hover-border-transparent:hover  { border-color: transparent }
 
-.hover-border-primary:hover     { border-color: var(--primary-darker) }
-.hover-boder-secondary:hover    { border-color: var(--secondary-darker) }
-.hover-border-default:hover     { border-color: var(--default-lighter) }
+.hover-border-primary:hover         { border-color: var(--primary-darker) }
+.hover-border-secondary:hover       { border-color: var(--secondary-darker) }
+.hover-border-default:hover         { border-color: var(--default-lighter) }
+.hover-border-warning:hover         { border-color: var(--warning-darker) }
+.hover-border-error:hover           { border-color: var(--error-darker) }
 
 .hover-border-black:hover  { border-color: var(--black) }
 .hover-border-gray:hover   { border-color: var(--gray) }

@@ -12,11 +12,13 @@
   --default:                    var(--dark-gray);
   --default-lighter:            var(--primary-gray-lighter);
 
-  --error:      var(--red);
-  --warning:    var(--gold);
-  --success:    var(--primary-green);
-  --info:       var(--primary-blue);
-  --alert:      var(--red);
+  --error:              var(--red);
+  --error-darker:       var(--red-darker);
+  --warning:            var(--orange);
+  --warning-darker:     var(--orange-darker);
+  --success:            var(--primary-green);
+  --info:               var(--primary-blue);
+  --alert:              var(--red);
 
   /* Blue */
   --primary-blue:          var(--sky-blue);
@@ -44,7 +46,9 @@
   /* Warm */
   --yellow:       #FFDC00;
   --orange:       #FF5B00;
+  --orange-darker: #E24024;
   --red:          #DE2525;
+  --red-darker:   #BF2222;
   --fuchsia:      #F012BE;
   --purple:       #B10DC9;
   --gold:         #E1C900;
