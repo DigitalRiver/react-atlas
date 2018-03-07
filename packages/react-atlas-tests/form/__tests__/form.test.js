@@ -3,7 +3,6 @@ import { mount } from "enzyme";
 import { FormCore } from "../../../react-atlas-core/src/Form/index";
 import { ButtonCore } from "../../../react-atlas-core/src/Button/index";
 import { TextFieldCore } from "../../../react-atlas-core/src/TextField";
-import messages from "../../../react-atlas-core/src/utils/messages";
 
 describe("Test form component", () => {
   it("Test default props", function() {
@@ -19,7 +18,7 @@ describe("Test form component", () => {
       <FormCore
         buttonClasses={["classA", "classB"]}
         /** Children components, Usually a Textfield, Dropdown, Input, etc */
-        className={String} // PropTypes.string, PropTypes.object, PropTypes.array
+        className={'String'} // PropTypes.string, PropTypes.object, PropTypes.array
         /** A callback that is fired when the form has passed validation
          * and is ready to submit. Returns the form data and the event object.  */
         onSubmit={() => {}}
@@ -35,7 +34,7 @@ describe("Test form component", () => {
          * apply to form children components.*/
         childClasses={["classA", "classB"]}
         /* Pass inline styles here. */
-        //style = {"lalala"}
+        style={{"backgroundColor": "#efefef" }}
       />
     );
   });
@@ -238,5 +237,44 @@ describe("Test data", () => {
     form.simulate("submit");
 
     expect(form.state().childState.InvalidField.isValid).toEqual(false);
+  });
+
+  // regression for https://github.com/DigitalRiver/react-atlas/issues/671
+  it("Verify state is not lost on submission", function() {
+    const form = mount(
+      <FormCore>
+        <TextFieldCore name="FieldOne"/>
+        <TextFieldCore name="FieldTwo"/>
+      </FormCore>
+    );
+
+    expect(form.state().childState.FieldOne.value).toBeUndefined();
+    expect(form.state().childState.FieldTwo.value).toBeUndefined();
+
+    form.find("input").at(0).simulate("change", {
+      target: {
+        name: "FieldOne",
+        value: "data one"
+      }
+    });
+
+    form.find("input").at(0).simulate("change", {
+      target: {
+        name: "FieldTwo",
+        value: "data two"
+      }
+    });
+
+    expect(form.state('childState').FieldOne.value).toEqual("data one");
+    expect(form.state('childState').FieldTwo.value).toEqual("data two");
+    expect(form.find('TextField').at(0).prop("name")).toEqual("FieldOne");
+    expect(form.find('TextField').at(0).prop("value")).toEqual("data one");
+
+    form.simulate('submit');
+    const children = form.prop('children').concat(<TextFieldCore/>);
+    form.setProps({ children });
+
+    expect(form.state().childState.FieldOne.value).toEqual("data one");
+    expect(form.state().childState.FieldTwo.value).toEqual("data two");
   });
 });
