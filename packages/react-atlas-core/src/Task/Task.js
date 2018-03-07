@@ -8,7 +8,16 @@ class Task extends React.PureComponent {
   }
 
   render() {
-    const { className, style, title, selected, icon } = this.props;
+    const {
+      className,
+      icon,
+      id,
+      index,
+      onClick,
+      selected,
+      style,
+      title
+    } = this.props;
 
     const taskLinkClasses = cx({
       "taskLink": true,
@@ -16,12 +25,20 @@ class Task extends React.PureComponent {
     });
 
     return (
-      <li styleName={"task"} style={style} className={cx(className)}>
-        <span styleName={taskLinkClasses}>
-          {icon ? <i className={cx(icon, "ra_Task__icon-left")} /> : null}
-          {title}
-        </span>
-      </li>
+      <span
+        id={id}
+        style={style}
+        className={cx(className)}
+        styleName={taskLinkClasses}
+        onClick={e => {
+          if (onClick) {
+            onClick(e, id, index);
+          }
+        }}
+      >
+        {icon ? <i styleName="icon-left" className={icon} /> : null}
+        {title}
+      </span>
     );
   }
 }
@@ -33,21 +50,33 @@ Task.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
+  /**
+   * Adds font-awesome icon to left of title
+   */
+  "icon": PropTypes.string,
+  /**
+   * Will set the html "id" property on the Button.
+   */
+  "id": PropTypes.string,
+  /**
+   * The index of the Task within the parent Taskbar.
+   */
+  "index": PropTypes.number,
+  /**
+   * Function that will be executed on click.
+   */
+  "onClick": PropTypes.func,
+  /**
+   * Adds selected class if true
+   */
+  "selected": PropTypes.bool,
   /** Pass inline styling here. */
   "style": PropTypes.object,
   /**
    * Text for task
    * @examples 'Item One'
    */
-  "title": PropTypes.string,
-  /**
-   * Adds selected class if true
-   */
-  "selected": PropTypes.bool,
-  /**
-   * Adds font-awesome icon to left of title
-   */
-  "icon": PropTypes.string
+  "title": PropTypes.string
 };
 
 Task.defaultProps = {
