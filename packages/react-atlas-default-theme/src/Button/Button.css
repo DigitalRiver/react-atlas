@@ -28,6 +28,8 @@
 
 .default_btn {
   composes: base;
+}
+.default_btn_hover {
   composes: hover-bg-gray from '../styles.css';
   composes: hover-white from '../styles.css';
   composes: hover-border-default from '../styles.css';
@@ -57,27 +59,33 @@
 /*default button variant*/
 .primary {
   composes: bg-primary from '../styles.css';
-  composes: hover-bg-primary from '../styles.css';
   composes: border-primary from '../styles.css';
-  composes: hover-border-primary from '../styles.css';
   composes: white from '../styles.css';
+}
+.primary_hover {
+  composes: hover-bg-primary from '../styles.css';
+  composes: hover-border-primary from '../styles.css';
 }
 .button {
   composes: base;
 }
 .secondary {
   composes: bg-secondary from '../styles.css';
-  composes: hover-bg-secondary from '../styles.css';
   composes: border-secondary from '../styles.css';
-  composes: hover-border-secondary from '../styles.css';
   composes: inverse-blue-text from '../styles.css';
+}
+.secondary_hover {
+  composes: hover-bg-secondary from '../styles.css';
+  composes: hover-border-secondary from '../styles.css';
 }
 
 .warning {
   composes: white from '../styles.css';
   composes: bg-warning from '../styles.css';
-  composes: hover-bg-warning from '../styles.css';
   composes: border-warning from '../styles.css';
+}
+.warning_hover {
+  composes: hover-bg-warning from '../styles.css';
   composes: hover-border-warning from '../styles.css';
 }
 
@@ -86,8 +94,10 @@
 .error {
   composes: white from '../styles.css';
   composes: bg-error from '../styles.css';
-  composes: hover-bg-error from '../styles.css';
   composes: border-error from '../styles.css';
+}
+.error_hover {
+  composes: hover-bg-error from '../styles.css';
   composes: hover-border-error from '../styles.css';
 }
 
@@ -98,11 +108,9 @@
   composes: border-transparent from '../styles.css';
   composes: bg-transparent from '../styles.css';
 }
-.link:hover{
-  color: var(--secondary);
-  border-color: transparent;
-  background-color: transparent;
-  box-shadow: none;
+.link_hover {
+  composes: hover-bg-link from '../styles.css';
+  composes: hover-secondary-text from '../styles.css';
 }
 
 /*Outline styles*/

@@ -11,7 +11,7 @@ exports[`Test correct render Test correct render 1`] = `
     name={undefined}
     onClick={undefined}
     style="Style"
-    styleName="button uppercase default_btn"
+    styleName="button uppercase default_btn default_btn_hover"
     tabIndex={0}
     type="button"
   >

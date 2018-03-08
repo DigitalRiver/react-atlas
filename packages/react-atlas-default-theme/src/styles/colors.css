@@ -124,6 +124,7 @@
 .hover-bg-default:hover     { background-color: var(--default-lighter) }
 .hover-bg-warning:hover     { background-color: var(--warning-darker) }
 .hover-bg-error:hover       { background-color: var(--error-darker) }
+.hover-bg-link:hover       { background-color: transparent }
 
 .hover-bg-black:hover  { background-color: var(--black) }
 .hover-bg-gray:hover   { background-color: var(--gray) }
