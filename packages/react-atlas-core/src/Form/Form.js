@@ -158,30 +158,25 @@ class Form extends React.PureComponent {
   };
 
   submitHandler = e => {
-    /* Prevent form submission if action prop is not set. */
-    if (typeof this.props.action === "undefined") {
+    if(typeof this.props.action === 'undefined') {
       e.preventDefault();
     }
-
     /* Validate children components before submitting. */
     let data = this.validate();
     if (!data) {
-      /* Prevent form submission when action is set and the
-       * form is not valid. */
-      if (typeof this.props.action === 'undefined') {
-        e.preventDefault();
-      }
-
+      e.preventDefault();
       if (typeof this.props.onError !== "undefined") {
         this.props.onError(messages.missingRequired);
       }
       return;
     }
 
-    /* Check if onSubmit was set. Call onSubmit if
-  	 * it was passed throw a error if not set. */
+    /* Check if onSubmit was set. Call onSubmit.*/
     if (this.props.onSubmit) {
-      this.props.onSubmit(e, data);
+      let result = this.props.onSubmit(e, data);
+      if(result === false) {
+        e.preventDefault();
+       }
     }
   };
 
