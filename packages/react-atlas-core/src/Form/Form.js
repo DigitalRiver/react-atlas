@@ -158,7 +158,7 @@ class Form extends React.PureComponent {
   };
 
   submitHandler = e => {
-    if(typeof this.props.action === 'undefined') {
+    if (typeof this.props.action === "undefined") {
       e.preventDefault();
     }
     /* Validate children components before submitting. */
@@ -174,9 +174,9 @@ class Form extends React.PureComponent {
     /* Check if onSubmit was set. Call onSubmit.*/
     if (this.props.onSubmit) {
       let result = this.props.onSubmit(e, data);
-      if(result === false) {
+      if (result === false) {
         e.preventDefault();
-       }
+      }
     }
   };
 
