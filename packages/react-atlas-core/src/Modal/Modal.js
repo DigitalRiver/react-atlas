@@ -6,34 +6,12 @@ import { OverlayCore } from "./../Overlay";
 
 class Modal extends React.PureComponent {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            'isHaveScrollbar': false
-        };
-        this.updateOverlayStyle = this.updateOverlayStyle.bind(this);
-    }
-
-    componentDidMount() {
-        window.addEventListener("resize",this.updateOverlayStyle);
-    }
-
-    componentDidUpdate() {
-        this.updateOverlayStyle();
-
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateOverlayStyle);
-    }
-
-    updateOverlayStyle() {
-        if (this.props.active && this.wrapDiv.scrollHeight > this.wrapDiv.clientHeight) {
-            this.setState({
-                'isHaveScrollbar': true
-            });
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+        'isHaveScrollbar': false
+    };
+  }
 
   render() {
     const {
@@ -63,7 +41,7 @@ class Modal extends React.PureComponent {
               styleName={overlayClasses}
             />
           }
-          <div ref={wrapDiv => {this.wrapDiv = wrapDiv}} styleName={cx("dialogWrapper")} style={style}>
+          <div styleName={cx("dialogWrapper")} style={style}>
             <div styleName={cx("dialog")}>
               <div style={style} className={cx(className, classes)}>
                 {title &&
