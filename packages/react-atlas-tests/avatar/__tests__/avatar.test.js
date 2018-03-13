@@ -2,7 +2,7 @@ import React from "react";
 import { mount, shallow } from "enzyme";
 import { AvatarCore } from "../../../react-atlas-core/src/Avatar/index";
 
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 
 let title = "testTitle";
 let image = "picture.jpg";
@@ -10,8 +10,10 @@ let icon = 'icon={<i className="fa fa-github"></i>}';
 
 describe("Test correct render", () => {
   it("Test correct render", function() {
-	const tree = renderer.create(<AvatarCore title={title} image={image} icon={icon} />).toJSON();
-	expect(tree).toMatchSnapshot(); 
+    const tree = renderer
+      .create(<AvatarCore title={title} image={image} icon={icon} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
 
@@ -68,17 +70,17 @@ describe("Testing Avatar component", () => {
 
   it("The avatar image should update if new props are received", function() {
     let img = image;
-    const result = mount(<AvatarCore image={img}/>);
-    img = 'newPicture.jpg';
-    result.setProps({'image':img});
-    expect(result.state().image).toBe('newPicture.jpg');
+    const result = mount(<AvatarCore image={img} />);
+    img = "newPicture.jpg";
+    result.setProps({ image: img });
+    expect(result.state().image).toBe("newPicture.jpg");
   });
 
   it("The avatar image should update if new props are received and should handle bad image", function() {
     let img = image;
     const result = mount(<AvatarCore image={img} title={title} />);
-    img = 'newPicture.jpg';
-    result.setProps({'image':img});
+    img = "newPicture.jpg";
+    result.setProps({ image: img });
     let imgEl = result.find("img");
     imgEl.simulate("error");
     expect(result.state().image).toBe(null);

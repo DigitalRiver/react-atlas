@@ -8,47 +8,39 @@ import cx from "classnames";
 class Card extends React.PureComponent {
   constructor(props) {
     super(props);
-
   }
   render() {
-    const { children, className, legend, style, standardFieldset, image, title } = this.props;
-    let cardBody = children ?
-      <div
-        styleName={"cardBody"}
-      >
-        {children}
-      </div>
-      : null;
+    const {
+      children,
+      className,
+      legend,
+      style,
+      standardFieldset,
+      image,
+      title
+    } = this.props;
+    let cardBody = children ? 
+      <div styleName={"cardBody"}>{children}</div>
+     : null;
 
     let isFieldset = standardFieldset ? 
       <fieldset style={style} styleName={"card"} className={cx(className)}>
         {legend && <legend styleName={"legend"}>{legend}</legend>}
         {children}
       </fieldset>
-      : null;
+     : null;
 
-    let useImage = image ? 
-      <img
-        src={image}
-        styleName={"image"}
-      />
-      : null;
+    let useImage = image ? <img src={image} styleName={"image"} /> : null;
 
-    let Title = title ?
-      <div styleName={"title"}>{title}</div>
-      : null;
+    let Title = title ? <div styleName={"title"}>{title}</div> : null;
 
     let card = !standardFieldset ? 
-      <div        
-        style={style}
-        styleName={"card"} 
-        className={cx(className)}
-      >
+      <div style={style} styleName={"card"} className={cx(className)}>
         {useImage}
         {Title}
         {cardBody}
       </div>
-      : null;
+     : null;
 
     return (
       <React.Fragment>

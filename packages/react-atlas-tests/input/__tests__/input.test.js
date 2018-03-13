@@ -4,37 +4,46 @@ import { InputCore } from "../../../react-atlas-core/src/Input/index";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 
 describe("Test Input component render", () => {
-	it('Render correctly', () => {
-    const tree = renderer.create(
-		<InputCore
-		  isValid={true}
-			className={"class"}
-			type={"text"}
-			id={"ID"}
-			name={"InputName"}
-			required={false}
-			requiredText={false}
-			errorText={"Error occured"}
-			errorLocation={"location"}
-			value={"Value"}
-			disabled={false}
-			hidden={false}
-			checked={false}
-			maxLength={15}
-			placeholder={"Text here"}
-			multiline={false}
-			small={true}
-			medium={false}
-			large={false}
-			mask={""}
-			validator={()=>{return true}}
-			onBeforeChange={()=>{return true}}
-			onChange={()=>{return true}}
-			uppercase={false}
-		/>).toJSON();
+  it("Render correctly", () => {
+    const tree = renderer
+      .create(
+        <InputCore
+          isValid={true}
+          className={"class"}
+          type={"text"}
+          id={"ID"}
+          name={"InputName"}
+          required={false}
+          requiredText={false}
+          errorText={"Error occured"}
+          errorLocation={"location"}
+          value={"Value"}
+          disabled={false}
+          hidden={false}
+          checked={false}
+          maxLength={15}
+          placeholder={"Text here"}
+          multiline={false}
+          small={true}
+          medium={false}
+          large={false}
+          mask={""}
+          validator={() => {
+            return true;
+          }}
+          onBeforeChange={() => {
+            return true;
+          }}
+          onChange={() => {
+            return true;
+          }}
+          uppercase={false}
+        />
+      )
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

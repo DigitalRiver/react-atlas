@@ -114,9 +114,9 @@ Dialog.propTypes = {
 
   /** An object, array, or string of CSS classes to apply to Dialog.*/
   "className": PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-      PropTypes.array
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
   ]),
 
   /**
@@ -157,7 +157,7 @@ Dialog.propTypes = {
   /**
    * Pass inline styling here.
    */
-    "styles": PropTypes.object,
+  "styles": PropTypes.object,
 
   /**
    * Text that will be displayed as title content in the Dialog.

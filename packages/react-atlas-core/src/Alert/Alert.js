@@ -31,13 +31,14 @@ class Alert extends React.PureComponent {
     });
     return (
       <React.Fragment>
-        {this.state.visible &&
+        {this.state.visible && 
           <div
             hidden={hidden}
             className={cx(className)}
             style={style}
-            styleName={alertClasses}>
-            {dismissible &&
+            styleName={alertClasses}
+          >
+            {dismissible && 
               <div
                 onClick={this._closeAlert}
                 type="button"

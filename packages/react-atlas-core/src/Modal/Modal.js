@@ -5,11 +5,10 @@ import { PortalCore } from "./../Portal";
 import { OverlayCore } from "./../Overlay";
 
 class Modal extends React.PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {
-        'isHaveScrollbar': false
+      "isHaveScrollbar": false
     };
   }
 
@@ -24,10 +23,14 @@ class Modal extends React.PureComponent {
       lockScroll,
       style
     } = this.props;
-    const classes = cx("ra_Modal__modal", { "ra_Modal__active": active }, "ra_styles__default-font");
+    const classes = cx(
+      "ra_Modal__modal",
+      { "ra_Modal__active": active },
+      "ra_styles__default-font"
+    );
     const overlayClasses = cx({
-        "overlayClass" : true,
-        "overlayLeftStyle": this.state.isHaveScrollbar
+      "overlayClass": true,
+      "overlayLeftStyle": this.state.isHaveScrollbar
     });
     return (
       active && 
@@ -44,11 +47,7 @@ class Modal extends React.PureComponent {
           <div styleName={cx("dialogWrapper")} style={style}>
             <div styleName={cx("dialog")}>
               <div style={style} className={cx(className, classes)}>
-                {title &&
-                  <h3 styleName={cx("title")}>
-                    {title}
-                  </h3>
-                }
+                {title && <h3 styleName={cx("title")}>{title}</h3>}
                 <div styleName={cx("content")}>{this.props.children}</div>
               </div>
             </div>
