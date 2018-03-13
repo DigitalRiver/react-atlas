@@ -27,6 +27,9 @@
     "docs:build": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide:build",
     "gh-pages:publish": "cd scripts && node gh-pages.js"
   },
+  "pre-commit": [
+    "format-lint"
+  ],
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/scripts/enzymeConfig.js",
     "collectCoverageFrom": [
@@ -73,6 +76,7 @@
     "glob": "^7.1.1",
     "jest": "^22.1.4",
     "lerna": "^2.8.0",
+    "pre-commit": "^1.2.2",
     "prettier": "^1.6.1",
     "react-styleguidist": "^6.0.31",
     "react-test-renderer": "^16.2.0",
