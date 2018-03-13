@@ -19,7 +19,6 @@ describe("Testing TextArea component", () => {
         className={""}
         name={"TextAreaName"}
         value={""}
-        header={"Header"}
         resizable={true}
         small={true}
         medium={false}
@@ -56,7 +55,15 @@ describe("Testing TextArea component", () => {
       />
     );
   });
+	
+	it("TextArea component - Tooltip without label", function() {
+		expect(() => {mount(< TextAreaCore maxLength={10} tooltip={"Tooltiptext"}/>)} ).toThrow();
+	});
 
+	it("TextArea component - Tooltip with label", function() {
+		const textArea = mount(< TextAreaCore maxLength={10} label="Label" tooltip={"Tooltiptext"}/>);
+	});
+	
   it("TextArea component - Focus event", function() {
     const textArea = mount(<TextAreaCore />);
     expect(textArea.state().active).toEqual(false);
