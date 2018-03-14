@@ -17,7 +17,7 @@ class FileUpload extends React.PureComponent {
   render() {
     const { className, text, accept, style } = this.props;
     let textClass = cx({
-        "text": true
+      "text": true
     });
     return (
       <Dropzone

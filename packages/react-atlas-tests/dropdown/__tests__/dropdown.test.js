@@ -1,7 +1,7 @@
 import React from "react";
 import { mount, shallow, render } from "enzyme";
 
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 
 import { DropdownCore } from "../../../react-atlas-core/src/Dropdown/index";
 
@@ -16,15 +16,17 @@ function _findItem(n, text) {
 }
 
 describe("Test dropdown component", () => {
-  it('Test render correctly', () => {
-    const comp = <DropdownCore onChange={function() {}}>
-					<span>May</span>
-					<span value="the">the</span>
-					<span value="force">force</span>
-					<span value="be">be</span>
-					<span value="with">with</span>
-					<span value="you">you</span>
-				 </DropdownCore>
+  it("Test render correctly", () => {
+    const comp = (
+      <DropdownCore onChange={function() {}}>
+        <span>May</span>
+        <span value="the">the</span>
+        <span value="force">force</span>
+        <span value="be">be</span>
+        <span value="with">with</span>
+        <span value="you">you</span>
+      </DropdownCore>
+    );
     const tree = renderer.create(comp).toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -33,7 +35,11 @@ describe("Test dropdown component", () => {
 describe("Test Dropdown component - Basic tests", () => {
   it("Test Dropdown component - Basic test", function() {
     const component = mount(
-      <DropdownCore defaultText={"text"} customLabel={"MyLable"} onChange={function() {}}>
+      <DropdownCore
+        defaultText={"text"}
+        customLabel={"MyLable"}
+        onChange={function() {}}
+      >
         <span value="May">May</span>
         <span value="the">the</span>
         <span value="force">force</span>
@@ -45,10 +51,14 @@ describe("Test Dropdown component - Basic tests", () => {
     expect(component.state().value).toEqual(null);
     expect(component.state().output).toEqual("text");
   });
-	
-	it("Test Dropdown component - Basic test(with default value)", function() {
+
+  it("Test Dropdown component - Basic test(with default value)", function() {
     const component = mount(
-      <DropdownCore customLabel={"MyLable"} onChange={function() {}} value={"be"}>
+      <DropdownCore
+        customLabel={"MyLable"}
+        onChange={function() {}}
+        value={"be"}
+      >
         <span>May</span>
         <span value="the">the</span>
         <span value="force">force</span>
@@ -58,8 +68,8 @@ describe("Test Dropdown component - Basic tests", () => {
       </DropdownCore>
     );
     component.find("Dropdown").simulate("focus");
- 
-		expect(component.state().output).toEqual("be");
+
+    expect(component.state().output).toEqual("be");
     expect(component.state().focus).toEqual(true);
   });
 
@@ -98,13 +108,12 @@ describe("Test Dropdown component - Basic tests", () => {
         <span value="you">you</span>
       </DropdownCore>
     );
-		
-		component.find("Button").simulate("click");
-    component.find("Dropdown").simulate("keyDown", { key: "Enter" });
 
+    component.find("Button").simulate("click");
+    component.find("Dropdown").simulate("keyDown", { key: "Enter" });
   });
-	
-	it("Test Dropdown component - Basic test (required) II", function() {
+
+  it("Test Dropdown component - Basic test (required) II", function() {
     const component = mount(
       <DropdownCore onChange={function() {}} required={true}>
         <span>May</span>
@@ -112,13 +121,12 @@ describe("Test Dropdown component - Basic tests", () => {
         <span value="force">force</span>
       </DropdownCore>
     );
-		
-		component.find("Button").simulate("click");
-    component.find("Dropdown").simulate("keyDown", { key: "Enter" });
 
+    component.find("Button").simulate("click");
+    component.find("Dropdown").simulate("keyDown", { key: "Enter" });
   });
-	
-		it("Test Dropdown component - Basic test (required) II", function() {
+
+  it("Test Dropdown component - Basic test (required) II", function() {
     const component = mount(
       <DropdownCore onChange={function() {}} required={true}>
         <span value="May">May</span>
@@ -126,13 +134,12 @@ describe("Test Dropdown component - Basic tests", () => {
         <span value="force">force</span>
       </DropdownCore>
     );
-		
-		component.find("Button").simulate("click");
-    component.find("Dropdown").simulate("keyDown", { key: "Enter" });
 
+    component.find("Button").simulate("click");
+    component.find("Dropdown").simulate("keyDown", { key: "Enter" });
   });
-	
-	it("Test Dropdown component - Basic test(Refresh)", function() {
+
+  it("Test Dropdown component - Basic test(Refresh)", function() {
     const component = mount(
       <DropdownCore customLabel={"MyLable"} onChange={function() {}}>
         <span>May</span>
@@ -144,14 +151,14 @@ describe("Test Dropdown component - Basic tests", () => {
       </DropdownCore>
     );
 
-		component.find("Dropdown").simulate("focus");
+    component.find("Dropdown").simulate("focus");
     component.find("Button").simulate("click");
     component.findWhere(n => _findItem(n, "you")).simulate("mouseDown");
-		component.update();
-		expect(component.state().output).toEqual("you");
+    component.update();
+    expect(component.state().output).toEqual("you");
   });
 
-	it("Test Dropdown component - Basic test(Refresh) II", function() {
+  it("Test Dropdown component - Basic test(Refresh) II", function() {
     const component = mount(
       <DropdownCore customLabel={"MyLable"} onChange={function() {}}>
         <span>May</span>
@@ -162,40 +169,39 @@ describe("Test Dropdown component - Basic tests", () => {
         <span value="you">you</span>
       </DropdownCore>
     );
-		
-		component.find("Dropdown").simulate("focus");
+
+    component.find("Dropdown").simulate("focus");
     component.find("Button").simulate("click");
     component.findWhere(n => _findItem(n, "be")).simulate("mouseDown");
-		component.setState({"isValid": false});
-		component.update();
-		expect(component.state().output).toEqual("be");
+    component.setState({ isValid: false });
+    component.update();
+    expect(component.state().output).toEqual("be");
   });
-	
-	it("Test Dropdown component - Basic test(Refresh) III", function() {
+
+  it("Test Dropdown component - Basic test(Refresh) III", function() {
     let drop1 = mount(
       <DropdownCore>
         <span value="One">1</span>
-				<span value="Two">2</span>
-				<span value="Three">3</span>
+        <span value="Two">2</span>
+        <span value="Three">3</span>
       </DropdownCore>
     );
-		let drop2 = mount(
+    let drop2 = mount(
       <DropdownCore>
         <span value="One">1</span>
-				<span value="Two">2</span>
+        <span value="Two">2</span>
       </DropdownCore>
     );
-		
-		drop1.state().children = drop2.state().children;
-		drop1.state().childrenState = drop2.state().childrenState;
 
-		drop1.update();
+    drop1.state().children = drop2.state().children;
+    drop1.state().childrenState = drop2.state().childrenState;
+
+    drop1.update();
   });
 });
 
 describe("Test Dropdown component - Mouse tests", () => {
-
-	it("Test Dropdown component - Click on drop down twice", function() {
+  it("Test Dropdown component - Click on drop down twice", function() {
     const component = mount(
       <DropdownCore onChange={function() {}} onClick={function() {}}>
         <span value="May">May</span>
@@ -208,10 +214,10 @@ describe("Test Dropdown component - Mouse tests", () => {
     );
     component.find("Dropdown").simulate("focus");
     component.find("Button").simulate("click");
-		component.find("Button").simulate("click");
+    component.find("Button").simulate("click");
   });
 
-	it("Test Dropdown component - Select one empty item", function() {
+  it("Test Dropdown component - Select one empty item", function() {
     const component = mount(
       <DropdownCore onChange={function() {}} onClick={function() {}}>
         <span value="May">May</span>
@@ -397,8 +403,7 @@ describe("Test Dropdown component - Mouse tests", () => {
 });
 
 describe("Test Dropdown component - Keyboard tests", () => {
-	
-	/*	These three tests are commented out until the "event not defined" issue is solved.
+  /*	These three tests are commented out until the "event not defined" issue is solved.
 	it("Test Dropdown component - Select one item (only ArrowDown used - with errorCallback I)", function() {
     const component = mount(
       <DropdownCore onChange={function() {}} onClick={function() {}} errorCallback={function(ev, val){return true}}>
@@ -464,8 +469,8 @@ describe("Test Dropdown component - Keyboard tests", () => {
     expect(component.state().index).toEqual(1);
   });
 	*/
-		
-	it("Test Dropdown component - Open the dropdown by hiting enter", function() {
+
+  it("Test Dropdown component - Open the dropdown by hiting enter", function() {
     const component = mount(
       <DropdownCore onChange={function() {}} onClick={function() {}}>
         <span value="May">May</span>
@@ -476,19 +481,23 @@ describe("Test Dropdown component - Keyboard tests", () => {
         <span value="you">you</span>
       </DropdownCore>
     );
-		
-		expect(component.state().active).toEqual(false);
-		
-		component.find("Dropdown").simulate("keyDown", { key: "Enter" });
-		
+
+    expect(component.state().active).toEqual(false);
+
+    component.find("Dropdown").simulate("keyDown", { key: "Enter" });
+
     expect(component.state().output).toEqual("May");
-		expect(component.state().active).toEqual(true);
-		expect(component.state().index).toEqual(0);
+    expect(component.state().active).toEqual(true);
+    expect(component.state().index).toEqual(0);
   });
-	
-	it("Test Dropdown component - Hit ENTER (disabled)", function() {
+
+  it("Test Dropdown component - Hit ENTER (disabled)", function() {
     const component = mount(
-      <DropdownCore onChange={function() {}} onClick={function() {}} disabled={true}>
+      <DropdownCore
+        onChange={function() {}}
+        onClick={function() {}}
+        disabled={true}
+      >
         <span value="May">May</span>
         <span value="the">the</span>
         <span value="force">force</span>
@@ -497,17 +506,16 @@ describe("Test Dropdown component - Keyboard tests", () => {
         <span value="you">you</span>
       </DropdownCore>
     );
-		
-		expect(component.state().active).toEqual(false);
-		
-		component.find("Dropdown").simulate("keyDown", { key: "Enter" });
+
+    expect(component.state().active).toEqual(false);
+
+    component.find("Dropdown").simulate("keyDown", { key: "Enter" });
 
     expect(component.state().output).toEqual("May");
-		expect(component.state().index).toEqual(0);
+    expect(component.state().index).toEqual(0);
   });
 
-	
-	it("Test Dropdown component - Hit ArrowDown twice", function() {
+  it("Test Dropdown component - Hit ArrowDown twice", function() {
     const component = mount(
       <DropdownCore onChange={function() {}} onClick={function() {}}>
         <span value="May">May</span>
@@ -518,14 +526,14 @@ describe("Test Dropdown component - Keyboard tests", () => {
         <span value="you">you</span>
       </DropdownCore>
     );
-		component.find("Button").simulate("click");
+    component.find("Button").simulate("click");
 
     expect(component.state().output).toEqual("May");
 
     component.find("Dropdown").simulate("keyDown", { key: "ArrowDown" });
     component.find("Dropdown").simulate("keyDown", { key: "ArrowDown" });
   });
-		
+
   it("Test Dropdown component - Select one item (only ArrowDown used)", function() {
     const component = mount(
       <DropdownCore onChange={function() {}} onClick={function() {}}>
@@ -551,9 +559,15 @@ describe("Test Dropdown component - Keyboard tests", () => {
     expect(component.state().index).toEqual(3);
   });
 
-	it("Test Dropdown component - Select one item (only ArrowDown used - with errorCallback)", function() {
+  it("Test Dropdown component - Select one item (only ArrowDown used - with errorCallback)", function() {
     const component = mount(
-      <DropdownCore onChange={function() {}} onClick={function() {}} errorCallback={function(ev, val){return true}}>
+      <DropdownCore
+        onChange={function() {}}
+        onClick={function() {}}
+        errorCallback={function(ev, val) {
+          return true;
+        }}
+      >
         <span value="May">May</span>
         <span value="the">the</span>
         <span value="force">force</span>
@@ -570,7 +584,7 @@ describe("Test Dropdown component - Keyboard tests", () => {
     expect(component.state().output).toEqual("the");
     expect(component.state().index).toEqual(1);
   });
-	
+
   it("Test Dropdown component - Select one item (ArrowDown & ArrowUp used)", function() {
     const component = mount(
       <DropdownCore onChange={function() {}} onClick={function() {}}>
