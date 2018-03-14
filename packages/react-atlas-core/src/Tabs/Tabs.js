@@ -41,9 +41,10 @@ class Tabs extends React.PureComponent {
           // there was once logic here to do these separately based on component name via utils.getComponentName,
           // but webpack was changing the names so they were all named "t" in prod builds.
           // This is a workaround for now so that Tabs won't break, but we should come back and
-          // find a better solution later, and probably remove state from some of these at the same time.  stuller 3/13/18
+          // find a better solution later so we don't have to send unnecessary props to components,
+          // and probably remove state from some of these at the same time.  stuller 3/13/18
 
-          // needed for TabList so we don't have to send unnecessary props to components
+          // needed for TabList
           "selectedTab": this.state.selectedIndex,
           "setSelectedIndex": this._setSelectedIndex,
           // needed for Tabs
