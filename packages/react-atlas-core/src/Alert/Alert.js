@@ -25,23 +25,22 @@ class Alert extends React.PureComponent {
     let { hidden, children, dismissible, type, className, style } = this.props;
     const alertClasses = cx({
       "alert": true,
-      "info": type === "info",
       "success": type === "success",
       "warning": type === "warning",
       "danger": type === "danger"
     });
     return (
-      <div
-        hidden={hidden}
-        className={cx(className)}
-        style={style}>
-        {this.state.visible &&
-          <div styleName={alertClasses}>
-            {dismissible &&
+      <React.Fragment>
+        {this.state.visible && 
+          <div
+            hidden={hidden}
+            className={cx(className)}
+            style={style}
+            styleName={alertClasses}
+          >
+            {dismissible && 
               <div
-                onClick={() => {
-                  this._closeAlert();
-                }}
+                onClick={this._closeAlert}
                 type="button"
                 styleName="close"
                 data-dismiss="alert"
@@ -53,7 +52,7 @@ class Alert extends React.PureComponent {
             {children}
           </div>
         }
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -63,24 +62,8 @@ Alert.propTypes = {
    * Any HTML element or React Component.
    */
   "children": PropTypes.node.isRequired,
-  /**
-   * When true, the Alert can be dismissed.
-   */
-  "dismissible": PropTypes.bool,
-  /**
-   * Function that will be executed on dismiss.
-   */
-  "onDismiss": PropTypes.func,
-  /**
-   * Will set the Alert's style.
-   */
-  "type": PropTypes.string,
 
   /**
-   * A boolean to hide or show the alert component.
-   */
-  "hidden": PropTypes.bool,
-  /*
    * An object, array, or string of CSS classes to apply to Button.
    */
   "className": PropTypes.oneOfType([
@@ -88,10 +71,31 @@ Alert.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
+
+  /**
+   * When true, the Alert can be dismissed.
+   */
+  "dismissible": PropTypes.bool,
+
+  /**
+   * A boolean to hide or show the alert component.
+   */
+  "hidden": PropTypes.bool,
+
+  /**
+   * Function that will be executed on dismiss.
+   */
+  "onDismiss": PropTypes.func,
+
   /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object
+  "style": PropTypes.object,
+
+  /**
+   * Will set the Alert's style.  One of: 'info', 'success', 'warning', 'danger'
+   */
+  "type": PropTypes.string
 };
 
 Alert.defaultProps = {

@@ -8,11 +8,22 @@ class Text extends React.PureComponent {
   }
 
   render() {
-    const { as, body, children, className, htmlFor, id, style } = this.props;
+    const {
+      as,
+      body,
+      children,
+      className,
+      htmlFor,
+      id,
+      style,
+      ...other
+    } = this.props;
 
     const textStyles = cx({
-      "defaultFont": !body && as !== "label",
+      "blockquote": as === "blockquote",
       "bodyFont": body,
+      "code": as === "code",
+      "defaultFont": !body && as !== "label",
       "h1": as === "h1",
       "h2": as === "h2",
       "h3": as === "h3",
@@ -20,6 +31,7 @@ class Text extends React.PureComponent {
       "h5": as === "h5",
       "h6": as === "h6",
       "label": as === "label",
+      "link": as === "a",
       "small": as === "small"
     });
 
@@ -32,6 +44,7 @@ class Text extends React.PureComponent {
         style={style}
         className={className}
         styleName={textStyles}
+        {...other}
       >
         {children}
       </TextElement>

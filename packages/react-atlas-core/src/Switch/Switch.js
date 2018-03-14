@@ -70,13 +70,13 @@ class Switch extends React.PureComponent {
     };
   }
 
-  componentWillReceiveProps = (nextProps) =>  {
-      if(nextProps.checked !== this.props.checked) {
-        this.setState({ "checked": !this.state.checked })
-      }
-      if(nextProps.disabled !== this.props.disabled) {
-        this.setState({ "disabled": !this.state.disabled })
-      }
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.checked !== this.props.checked) {
+      this.setState({ "checked": !this.state.checked });
+    }
+    if (nextProps.disabled !== this.props.disabled) {
+      this.setState({ "disabled": !this.state.disabled });
+    }
   };
 
   // Handles new checkbox clicks and sets value and checked status of hidden input
@@ -84,7 +84,7 @@ class Switch extends React.PureComponent {
     if (!this.state.disabled) {
       if (typeof this.props.onBeforeChange !== "undefined") {
         let result = this.props.onBeforeChange(this.state.checked);
-        if(result === false) {
+        if (result === false) {
           return;
         }
       }
@@ -92,17 +92,11 @@ class Switch extends React.PureComponent {
       this.setState({ "checked": !this.state.checked }, function() {
         /* Check if onClick has been passed, if so call it. */
         if (typeof this.props.onClick !== "undefined") {
-          this.props.onClick(
-            this.state.checked,
-            this.state.disabled
-          );
+          this.props.onClick(this.state.checked, this.state.disabled);
         }
         /* Check if onChange has been passed, if so call it. */
         if (typeof this.props.onChange !== "undefined") {
-          this.props.onChange(
-            this.state.checked,
-            this.state.disabled
-          );
+          this.props.onChange(this.state.checked, this.state.disabled);
         }
       });
     }
@@ -112,9 +106,9 @@ class Switch extends React.PureComponent {
     const {
       label,
       leftLabel,
-      className, 
-      name, 
-      hidden, 
+      className,
+      name,
+      hidden,
       style,
       inline,
       id
@@ -140,16 +134,14 @@ class Switch extends React.PureComponent {
       classes.offClassName
     );
 
-    let labelClasses = cx(
-        {
-            "leftLabel": leftLabel,
-            "label":true,
-            "labelFont":true,
-            "labelSpacing":true
-        }
-    );
+    let labelClasses = cx({
+      "leftLabel": leftLabel,
+      "label": true,
+      "labelFont": true,
+      "labelSpacing": true
+    });
 
-    let switchLabel = label &&
+    let switchLabel = label && 
       <div styleName={labelClasses}>
         <label htmlFor={forId}>
           <span>{label}</span>
@@ -157,10 +149,7 @@ class Switch extends React.PureComponent {
       </div>
     ;
     return (
-      <div
-        className={cx(className)}
-        styleName={switchWrapperClasses}
-      >
+      <div className={cx(className)} styleName={switchWrapperClasses}>
         {switchLabel}
         <div
           onClick={this._clickHandler}
@@ -182,9 +171,7 @@ class Switch extends React.PureComponent {
             style={styles.buttonColorStyle}
           />
           {/* background */}
-          <div
-            styleName={classes.onClassName}
-            style={styles.onColorStyle} />
+          <div styleName={classes.onClassName} style={styles.onColorStyle} />
         </div>
       </div>
     );

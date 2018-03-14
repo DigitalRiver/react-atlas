@@ -4,12 +4,20 @@ import { ButtonCore } from "../../../react-atlas-core/src/Button/index";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 
 describe("Test correct render", () => {
   it("Test correct render", function() {
-	const tree = renderer.create(<ButtonCore href={'http://www.google.com.are'} className={'aClass'} style={'Style'} />).toJSON();
-	expect(tree).toMatchSnapshot();
+    const tree = renderer
+      .create(
+        <ButtonCore
+          href={"http://www.google.com.are"}
+          className={"aClass"}
+          style={"Style"}
+        />
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
 
@@ -74,11 +82,9 @@ describe("Test Button component", () => {
       <ButtonCore icon={"FakeIcon"} children={"FakeChildren"} />
     );
   });
-  
-    it("Base case - Button outline", function() {
-    const comp = mount(
-      <ButtonCore outline />
-    );
+
+  it("Base case - Button outline", function() {
+    const comp = mount(<ButtonCore outline />);
   });
 
   it("Base case - Button default properties", function() {

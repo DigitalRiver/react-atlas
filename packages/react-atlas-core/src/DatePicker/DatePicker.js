@@ -8,7 +8,7 @@ class DatePicker extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      "startDate": moment(this.props.selected)|| moment()
+      "startDate": moment(this.props.selected) || moment()
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -52,9 +52,9 @@ DatePicker.propTypes = {
    * An object, array, or string of CSS classes to apply to DatePicker.
    */
   "className": PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-      PropTypes.array
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
   ]),
 
   /**

@@ -24,7 +24,7 @@ class ProgressBar extends React.PureComponent {
           this.calculateRatio(this.props.value)}, 400`
       };
     } else {
-      return {}
+      return {};
     }
   }
 
@@ -37,7 +37,7 @@ class ProgressBar extends React.PureComponent {
         }),
         "value": prefixer({
           "transform": `scaleX(${this.calculateRatio(this.props.value)})`,
-          "transitionDuration": this.props.transitionDuration,
+          "transitionDuration": this.props.transitionDuration
         })
       };
     } else {
@@ -58,13 +58,7 @@ class ProgressBar extends React.PureComponent {
 
     return (
       <svg styleName={"circle"} viewBox="0 0 60 60">
-        <circle
-          styleName={"path"}
-          style={style}
-          cx="30"
-          cy="30"
-          r="25"
-        />
+        <circle styleName={"path"} style={style} cx="30" cy="30" r="25" />
       </svg>
     );
   }
@@ -73,9 +67,12 @@ class ProgressBar extends React.PureComponent {
     const { buffer, value } = this.linearStyle();
     let color = this.props.color;
 
-    const styles = prefixer({
-      "backgroundColor": color
-    }, value);
+    const styles = prefixer(
+      {
+        "backgroundColor": color
+      },
+      value
+    );
 
     return (
       <div>

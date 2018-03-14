@@ -3,14 +3,13 @@ import { mount, shallow } from "enzyme";
 import { TextAreaCore } from "../../../react-atlas-core/src/TextArea/index";
 
 describe("Testing TextArea component", () => {
-	
   it("TextArea component - Basic test", function() {
     const textArea = mount(<TextAreaCore />);
   });
 
   it("TextArea component - Basic test (invalid)", function() {
     const textArea = mount(<TextAreaCore isValid={false} />);
-		textArea.update();
+    textArea.update();
   });
 
   it("TextArea component - Custom properties", function() {
@@ -20,7 +19,6 @@ describe("Testing TextArea component", () => {
         className={""}
         name={"TextAreaName"}
         value={""}
-        header={"Header"}
         resizable={true}
         small={true}
         medium={false}
@@ -33,22 +31,37 @@ describe("Testing TextArea component", () => {
         required={false}
         disabled={false}
         hidden={false}
-				style={{marginRight: 'em'}}
-				label = "Label"
-				tooltip={"Tooltip text."}
-				tooltipRight={false}
-				
+        style={{ marginRight: "em" }}
+        label="Label"
+        tooltip={"Tooltip text."}
+        tooltipRight={false}
+      />
+    );
+  });
+
+  it("TextArea component - Tooltip without header", function() {
+    expect(() => {
+      mount(<TextAreaCore maxLength={10} tooltip={"Tooltiptext"} />);
+    }).toThrow();
+  });
+
+  it("TextArea component - Tooltip with header", function() {
+    const textArea = mount(
+      <TextAreaCore
+        maxLength={10}
+        label="Label"
+        tooltip={"Tooltiptext"}
+        header={"Header text."}
       />
     );
   });
 	
-	it("TextArea component - Tooltip without header", function() {
-		
+	it("TextArea component - Tooltip without label", function() {
 		expect(() => {mount(< TextAreaCore maxLength={10} tooltip={"Tooltiptext"}/>)} ).toThrow();
 	});
 
-	it("TextArea component - Tooltip with header", function() {
-		const textArea = mount(< TextAreaCore maxLength={10} label="Label" tooltip={"Tooltiptext"} header={"Header text."}/>);
+	it("TextArea component - Tooltip with label", function() {
+		const textArea = mount(< TextAreaCore maxLength={10} label="Label" tooltip={"Tooltiptext"}/>);
 	});
 	
   it("TextArea component - Focus event", function() {
@@ -60,33 +73,46 @@ describe("Testing TextArea component", () => {
     expect(textArea.state().active).toEqual(false);
   });
 
-	it("TextArea component - Simple text inserted", function() {
-		const textArea = mount(< TextAreaCore maxLength={10} />);
-		textArea.state().value = 'iou';
-		let input = textArea.findWhere((n) => {return n.props().styleName == 'input max'});
-		input.simulate('focus');
-		input.simulate('change');
-		expect(textArea.state().remaining).toEqual(7);
-		expect(textArea.state().value).toEqual('iou');
-	});
+  it("TextArea component - Simple text inserted", function() {
+    const textArea = mount(<TextAreaCore maxLength={10} />);
+    textArea.state().value = "iou";
+    let input = textArea.findWhere(n => {
+      return n.props().styleName == "input max";
+    });
+    input.simulate("focus");
+    input.simulate("change");
+    expect(textArea.state().remaining).toEqual(7);
+    expect(textArea.state().value).toEqual("iou");
+  });
 
-	it("TextArea component - Simple text inserted(no maxLenght)", function() {
-		const textArea = mount(< TextAreaCore />);
-		textArea.state().value = 'iou';
-		let input = textArea.findWhere((n) => {return n.props().styleName == 'input max'});
-		input.simulate('focus');
-		input.simulate('change');
-		expect(textArea.state().value).toEqual('iou');
-	});
-	
-	it("TextArea component - Simple text inserted(with onChange prop) " , function() {
-		const textArea = mount(< TextAreaCore maxLength={10} onChange={() => {console.log('[INFO]: Inside onChange'); return true} }/>);
-		textArea.state().value = 'iou';
-		let input = textArea.findWhere((n) => {return n.props().styleName == 'input max'});
-		input.simulate('focus');
-		input.simulate('change');
-		expect(textArea.state().remaining).toEqual(7);
-		expect(textArea.state().value).toEqual('iou');
-	});
+  it("TextArea component - Simple text inserted(no maxLenght)", function() {
+    const textArea = mount(<TextAreaCore />);
+    textArea.state().value = "iou";
+    let input = textArea.findWhere(n => {
+      return n.props().styleName == "input max";
+    });
+    input.simulate("focus");
+    input.simulate("change");
+    expect(textArea.state().value).toEqual("iou");
+  });
 
+  it("TextArea component - Simple text inserted(with onChange prop) ", function() {
+    const textArea = mount(
+      <TextAreaCore
+        maxLength={10}
+        onChange={() => {
+          console.log("[INFO]: Inside onChange");
+          return true;
+        }}
+      />
+    );
+    textArea.state().value = "iou";
+    let input = textArea.findWhere(n => {
+      return n.props().styleName == "input max";
+    });
+    input.simulate("focus");
+    input.simulate("change");
+    expect(textArea.state().remaining).toEqual(7);
+    expect(textArea.state().value).toEqual("iou");
+  });
 });

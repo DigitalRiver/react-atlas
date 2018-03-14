@@ -29,9 +29,9 @@ class Avatar extends React.PureComponent {
     this.handleBadImage = this.handleBadImage.bind(this);
   }
 
-  componentWillReceiveProps = (nextProps) =>  {
-    if(nextProps.image !== this.props.image) {
-      this.setState({"image": nextProps.image});
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.image !== this.props.image) {
+      this.setState({ "image": nextProps.image });
     }
   };
 
@@ -77,7 +77,12 @@ class Avatar extends React.PureComponent {
     }
 
     return (
-      <div title={title} className={cx(className)} style={style} styleName={"avatar"}>
+      <div
+        title={title}
+        className={cx(className)}
+        style={style}
+        styleName={"avatar"}
+      >
         {kids}
         {avatar}
       </div>

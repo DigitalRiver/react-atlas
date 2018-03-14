@@ -3,19 +3,15 @@
 .alert {
 	composes: default-text from '../styles.css';
   	composes: default-font from '../styles.css';
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-left: 5px solid #ddd;
-    border-radius: 2px;
-    background-color: #fff;
+    composes: primary-gray-border from '../styles.css';
+    composes: rounded from '../styles.css';
+    composes: pad-2 from '../styles.css';
+    composes: bg-body from '../styles.css';
+    border-left: 5px solid var(--info);
 }
 
 .success {
     border-left-color: var(--success);
-}
-
-.info {
-    border-left-color: var(--info);
 }
 
 .warning {
@@ -27,24 +23,19 @@
 }
 
 .close {
+    composes: bold from '../styles.css';
+    composes: bg-transparent from '../styles.css';
+    composes: pad-0 from '../styles.css';
+    composes: cursor-pointer from '../styles.css';
+    composes: border-none from '../styles.css';
 	float: right;
-    font-size: 35px;
-    font-weight: bold;
-    line-height: 0.80;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
+    font-size: 2.2rem;
     opacity: .2;
     filter: alpha(opacity=20);
-    padding: 0;
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    -webkit-appearance: none;
     position: relative;
-    top: -6px;
+    top: -10px;
     right: -2px;
-    color: inherit;
-    font-family:inherit;
+    -webkit-appearance:none;
 }
 
 .close:hover {

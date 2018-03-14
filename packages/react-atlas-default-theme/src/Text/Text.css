@@ -1,3 +1,5 @@
+@import '../styles/variables.css';
+
 .label {
 	composes: header-font from '../styles.css';
 }
@@ -11,8 +13,8 @@
 }
 
 .header {
+	composes: header-font from '../styles.css';
 	font-weight: 500;
-	color: #003058;
 	line-height: 1;
 	display: block;
 }
@@ -54,6 +56,30 @@
 }
 
 .small {
+	composes: dark-gray from '../styles.css';
 	font-size:65%;
-	color: #666;
+}
+
+.link {
+	composes: sky-blue from '../styles.css';
+	text-decoration: none;
+}
+
+.link:hover {
+  color: var(--secondary);
+}
+
+.code {
+	composes: red from '../styles.css';
+    composes: bg-silver from '../styles.css';
+    composes: pad-h-0-25 from '../styles.css';
+}
+
+.blockquote {
+	padding: var(--space-1-1) var(--space-2);
+	composes: pad-v-1 from '../styles.css';
+	composes: pad-h-2 from '../styles.css';
+    margin: 0 0 var(--space-2);
+    font-size: var(--header-font-size);
+    border-left: 5px solid var(--silver);
 }
