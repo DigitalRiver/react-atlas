@@ -24,27 +24,34 @@ class Tabs extends React.PureComponent {
     }
   };
 
-  render() {
-    const { className, children, vertical, bordered, style } = this.props;
 
-    const tabsChildren = React.Children.map(children, (child, index) => {
-      let childName = utils.getComponentName(child);
+    render() {
+      const {
+          className,
+          children,
+          vertical,
+          bordered,
+          style
+      } = this.props;
 
-      if (childName === "TabList") {
+      const tabsChildren = React.Children.map(children, (child, index) => {
+
         child = cloneElement(child, {
+          // todo
+          // there was once logic here to do these separately based on component name via utils.getComponentName,
+          // but webpack was changing the names so they were all named "t" in prod builds.
+          // This is a workaround for now so that Tabs won't break, but we should come back and
+          // find a better solution later, and probably remove state from some of these at the same time.  stuller 3/13/18
+
+          // needed for TabList so we don't have to send unnecessary props to components
           "selectedTab": this.state.selectedIndex,
           "setSelectedIndex": this._setSelectedIndex,
-          "vertical": vertical
-        });
-      }
-
-      if (childName === "TabPanel") {
-        child = cloneElement(child, {
+          // needed for Tabs
           "selected": this.state.selectedIndex === index - 1,
           "bordered": bordered,
+          // needed for both
           "vertical": vertical
         });
-      }
 
       return child;
     });

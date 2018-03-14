@@ -50,34 +50,46 @@ class TabList extends React.PureComponent {
 }
 
 TabList.propTypes = {
-  /**
-   * An Object, array, or string of CSS classes to apply to Tabs.
-   */
-  "className": PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array
-  ]),
-  /**
-   * All the tabs.
-   */
-  "children": PropTypes.node.isRequired,
-  /**
-   * Pass inline styling here.
-   */
-  "style": PropTypes.object,
-  /**
-   * Will be automatically set when vertical prop is passed to Tabs component.
-   */
-  "vertical": PropTypes.bool,
-  /**
-   * Selected tab index (default 0 - first tab).
-   */
-  "selectedTab": PropTypes.number,
-  /**
-   * Handler to execute when a tab is selected, in Tabs component.
-   */
-  "setSelectedIndex": PropTypes.func
+    /**
+     * Will be automatically set when bordered prop is passed to Tabs component.
+     *
+     * @ignore
+     */
+    "bordered": PropTypes.bool,
+    /**
+     * An Object, array, or string of CSS classes to apply to Tabs.
+     */
+    "className": PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object,
+        PropTypes.array
+    ]),
+    /**
+     * All the tabs.
+     */
+    "children": PropTypes.node.isRequired,
+    /** 
+     * Pass inline styling here.
+     */
+    "style": PropTypes.object,
+    /**
+     * Will be automatically set when vertical prop is passed to Tabs component.
+     */
+    "vertical": PropTypes.bool,
+    /**
+     * Selected tab index (default 0 - first tab).
+     */
+    "selectedTab": PropTypes.number,
+    /**
+     * Handler to execute when a tab is selected, in Tabs component.
+     */
+    "setSelectedIndex": PropTypes.func,
+    /**
+     * Indicates whether tab panel is selected or not.
+     *
+     * @ignore
+     */
+    "selected": PropTypes.bool
 };
 
 export default TabList;
