@@ -1,7 +1,6 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import utils from "../utils/utils";
 
 /**
  * Tabs component
