@@ -29,7 +29,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
         name={undefined}
         onClick={[Function]}
         style={undefined}
-        styleName="button uppercase default_btn"
+        styleName="button uppercase default_btn default_btn_hover"
         tabIndex={0}
         type="button"
       >
