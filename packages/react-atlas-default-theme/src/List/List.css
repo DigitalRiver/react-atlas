@@ -1,0 +1,10 @@
+.list {
+	composes: marg-b-2 from '../styles.css';
+	composes: pad-1 from '../styles.css';
+	composes: rounded from '../styles.css';
+	display: table;
+}
+
+.border {
+	composes: default-border from '../styles.css';
+}
