@@ -1,7 +1,6 @@
 @import '../styles/variables.css';
 /* Base styles for the element that has a tooltip */
 .tooltip {
-  composes: gray from '../styles.css';
   composes: default-font from '../styles.css';
   position: relative;
   display: inline-block;
@@ -9,6 +8,7 @@
 }
 
 .tooltip > i , .block > i {
+  color: var(--gray);
   font-size: 1rem !important;
   cursor: pointer;
 }
