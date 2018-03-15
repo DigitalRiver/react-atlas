@@ -103,11 +103,11 @@ class Button extends React.PureComponent {
 
     let btn = 
       <button
-        onClick={onClick}
+        onClick={disabled ? null : onClick}
         className={cx(className)}
         styleName={classes}
         style={style}
-        type={type}
+        type={disabled ? Button.defaultProps.type : type}
         href={href}
         tabIndex={ignoreTab ? -1 : 0}
         id={id}
