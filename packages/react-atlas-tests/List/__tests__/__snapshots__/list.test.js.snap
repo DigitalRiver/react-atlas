@@ -51,7 +51,7 @@ exports[`Test List component renders correctly 1`] = `
           name={undefined}
           onClick={undefined}
           style={undefined}
-          styleName="button link"
+          styleName="button link link_hover"
           tabIndex={0}
           type="button"
         >
@@ -138,7 +138,7 @@ exports[`Test List component renders correctly 1`] = `
           name={undefined}
           onClick={undefined}
           style={undefined}
-          styleName="button link"
+          styleName="button link link_hover"
           tabIndex={0}
           type="button"
         >
