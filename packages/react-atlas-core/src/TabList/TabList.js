@@ -6,57 +6,56 @@ import cx from "classnames";
  * TabList component
  */
 class TabList extends React.PureComponent {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        // Initial state
-        this.state = {
-            "selectedTab": this.props.selectedTab || 0
-        };
-    }
+    // Initial state
+    this.state = {
+      "selectedTab": this.props.selectedTab || 0
+    };
+  }
 
-    _setSelectedTab = (index, event) => {
-        this.setState({ "selectedTab": index });
-        this.props.setSelectedIndex(index, event);
-    }
+  _setSelectedTab = (index, event) => {
+    this.setState({ "selectedTab": index });
+    this.props.setSelectedIndex(index, event);
+  };
 
-    render() {
-        const {
-            className,
-            children,
-            vertical,
-            style
-        } = this.props;
+  render() {
+    const { className, children, vertical, style } = this.props;
 
-        const tabs = React.Children.map(children, (child, index) => {
-            child = cloneElement(child, {
-                "tabIndex": index,
-                "selected": this.state.selectedTab === index,
-                "setSelectedTab": this._setSelectedTab,
-                "vertical": vertical
-            });
+    const tabs = React.Children.map(children, (child, index) => {
+      child = cloneElement(child, {
+        "tabIndex": index,
+        "selected": this.state.selectedTab === index,
+        "setSelectedTab": this._setSelectedTab,
+        "vertical": vertical
+      });
 
-            return child;
-        });
+      return child;
+    });
 
-        let tabListClasses = cx({
-            vertical
-        },
-        "tabList");
-        
-        return (
-            <ul 
-                className={cx(className)}
-                styleName={tabListClasses}
-                style={style}
-            >
-                {tabs}
-            </ul>
-        )
-    }
+    let tabListClasses = cx(
+      {
+        vertical
+      },
+      "tabList"
+    );
+
+    return (
+      <ul className={cx(className)} styleName={tabListClasses} style={style}>
+        {tabs}
+      </ul>
+    );
+  }
 }
 
 TabList.propTypes = {
+    /**
+     * Will be automatically set when bordered prop is passed to Tabs component.
+     *
+     * @ignore
+     */
+    "bordered": PropTypes.bool,
     /**
      * An Object, array, or string of CSS classes to apply to Tabs.
      */
@@ -84,7 +83,13 @@ TabList.propTypes = {
     /**
      * Handler to execute when a tab is selected, in Tabs component.
      */
-    "setSelectedIndex": PropTypes.func
+    "setSelectedIndex": PropTypes.func,
+    /**
+     * Indicates whether tab panel is selected or not.
+     *
+     * @ignore
+     */
+    "selected": PropTypes.bool
 };
 
 export default TabList;

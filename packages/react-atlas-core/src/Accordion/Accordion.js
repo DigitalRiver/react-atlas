@@ -28,7 +28,7 @@ class Accordion extends React.PureComponent {
 
   _getExpandedPanels = children => {
     let childArray = [];
-    children.map(child => {
+    React.Children.map(children, child => {
       if (child.props.expanded) {
         childArray.push(true);
       } else {
@@ -39,7 +39,7 @@ class Accordion extends React.PureComponent {
   };
 
   // click handler for header.  Sets activeChildArray value accordingly to expand and collapse the panels
-  _click = index => {
+  _click = (index, event) => {
     if (!this.props.disabled) {
       let newChildArray = [];
       for (let i = 0; i < this.state.activeChildArray.length; i++) {
@@ -53,6 +53,9 @@ class Accordion extends React.PureComponent {
         } else {
           newChildArray.push(this.state.activeChildArray[i]);
         }
+      }
+      if (this.props.onClick) {
+        this.props.onClick(index, event, this.props.children[index].props);
       }
       this.setState({
         "activeChildArray": newChildArray
@@ -123,8 +126,8 @@ class Accordion extends React.PureComponent {
         <div>
           <div
             styleName={headerClasses}
-            onClick={() => {
-              this._click(i);
+            onClick={e => {
+              this._click(i, e);
             }}
             onMouseEnter={() => {
               this._mouseEnter(i);
@@ -136,7 +139,9 @@ class Accordion extends React.PureComponent {
             {child.props.title}
           </div>
           <div styleName={panelClasses}>
-            <div styleName={"panel"}>{child}</div>
+            {this.state.activeChildArray[i] === true && 
+              <div styleName={"panel"}>{child}</div>
+            }
           </div>
         </div>
       ;
@@ -194,6 +199,10 @@ Accordion.propTypes = {
    * @examples <Accordion multiOpen={true}>{children}</Accordion>
    */
   "multiOpen": PropTypes.bool,
+  /**
+   * Function that will be executed on click.
+   */
+  "onClick": PropTypes.func,
   /**
    * Pass inline styles here.
    */

@@ -5,15 +5,16 @@ import { default as Checkbox } from "../../../react-atlas-core/src/Checkbox/Chec
 import { default as CheckboxGroup } from "../../../react-atlas-core/src/CheckboxGroup/CheckboxGroup";
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 
 describe("Test Card component", () => {
-	
-  it('renders correctly', () => {
-    const tree = renderer.create(<CardCore className={"name"} legend={"lalala"} />).toJSON();
+  it("renders correctly", () => {
+    const tree = renderer
+      .create(<CardCore className={"name"} legend={"lalala"} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
-	
+
   it("Card - Basic properties test", function() {
     const result = mount(<CardCore className={"name"} legend={"lalala"} />);
     const expected = new Map([["className", "name"], ["legend", "lalala"]]);

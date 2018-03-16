@@ -15,9 +15,9 @@ class FileUpload extends React.PureComponent {
   };
 
   render() {
-    const { className, text, accept, style } = this.props;
+    const { className, text, accept, style, inputRef } = this.props;
     let textClass = cx({
-        "text": true
+      "text": true
     });
     return (
       <Dropzone
@@ -25,6 +25,7 @@ class FileUpload extends React.PureComponent {
         className={cx(className)}
         accept={accept}
         onDrop={this.onDropHandler}
+        ref={inputRef}
       >
         <div styleName={textClass}>{text}</div>
       </Dropzone>
@@ -56,7 +57,12 @@ FileUpload.propTypes = {
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object
+  "style": PropTypes.object,
+  
+  /**
+   * Ref for Dropzone element
+   */
+  "inputRef": PropTypes.func
 };
 
 export default FileUpload;

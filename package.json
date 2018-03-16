@@ -25,7 +25,8 @@
     "docs:prd": "cross-env NODE_ENV=production node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
     "docs:dev": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
     "docs:build": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide:build",
-    "gh-pages:publish": "cd scripts && node gh-pages.js"
+    "gh-pages:publish": "cd scripts && node gh-pages.js",
+    "precommit": "lint-staged"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/scripts/enzymeConfig.js",
@@ -36,6 +37,9 @@
       "\\.(css|less)$": "identity-obj-proxy"
     }
   },
+  "lint-staged": {
+       "*.js": ["prettier --write", "eslint --fix", "git add"]
+   },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
   },
@@ -71,8 +75,10 @@
     "eslint-plugin-react": "^7.0.1",
     "gh-pages": "^1.1.0",
     "glob": "^7.1.1",
+    "husky": "^0.14.3",
     "jest": "^22.1.4",
     "lerna": "^2.8.0",
+    "lint-staged": "^7.0.0",
     "prettier": "^1.6.1",
     "react-styleguidist": "^6.0.31",
     "react-test-renderer": "^16.2.0",

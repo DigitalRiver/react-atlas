@@ -11,9 +11,9 @@
 	    <TextArea placeholder="Enter text here..." resizable={false}/>
     </div>
 
-###### Textarea with header above:
+###### Textarea with label above:
 
-    <TextArea header="This is a TextArea"/>
+    <TextArea label="This is a TextArea"/>
 
 ###### Small textarea:
 
@@ -37,7 +37,7 @@
 
 ###### Required validation:
 
-    <TextArea required header="Description"/>
+    <TextArea required label="Description"/>
 
 ###### Maximum length validation:
 
@@ -53,8 +53,8 @@
 
 ###### TextArea Tooltip requires Label:
 
-    <TextArea label="tooltip header" tooltip="Example tooltip message"/>
+    <TextArea label="tooltip label" tooltip="Example tooltip message"/>
     
 ###### TextArea tooltip right false:
 
-    <TextArea label="tooltip header" tooltip="Example tooltip message" tooltipRight={false} />
+    <TextArea label="tooltip label" tooltip="Example tooltip message" tooltipRight={false} />

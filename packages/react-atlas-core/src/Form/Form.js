@@ -34,7 +34,15 @@ class Form extends React.PureComponent {
         }
 
         const childId = child.props.name;
-        if (childId) {
+
+        /* Check if we have data, if so, we're the source of truth */
+        const currentState = this.state.childState[childId];
+        if (currentState) {
+          /* Allow them to modify onChange handler on the fly, but this is controlled. Form owns value/isValid */
+          childState[childId] = Object.assign(currentState, {
+            "onChange": child.props.onChange || null
+          });
+        } else if (childId) {
           childState[childId] = {
             "value": child.props.value,
             "isValid": child.props.isValid || true,
@@ -150,32 +158,25 @@ class Form extends React.PureComponent {
   };
 
   submitHandler = e => {
-    /* Prevent form submission if action prop is not set. */
-    if (!this.props.action) {
+    if (typeof this.props.action === "undefined") {
       e.preventDefault();
     }
-
     /* Validate children components before submitting. */
     let data = this.validate();
     if (!data) {
-      /* Prevent form submission when action is set and the
-       * form is not valid. */
-      if (this.props.action) {
-        e.preventDefault();
-      }
-
+      e.preventDefault();
       if (typeof this.props.onError !== "undefined") {
         this.props.onError(messages.missingRequired);
       }
       return;
     }
 
-    /* Check if onSubmit was set. Call onSubmit if
-  	 * it was passed throw a error if not set. */
+    /* Check if onSubmit was set. Call onSubmit.*/
     if (this.props.onSubmit) {
-      this.props.onSubmit(e, data);
-    } else {
-      throw messages.onSubmitAction;
+      let result = this.props.onSubmit(e, data);
+      if (result === false) {
+        e.preventDefault();
+      }
     }
   };
 

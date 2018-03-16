@@ -2,21 +2,24 @@ import React from "react";
 import { mount } from "enzyme";
 import { RadioCore } from "../../../react-atlas-core/src/Radio/index";
 
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 
 describe("Test Radio component render", () => {
-	it('Render correctly', () => {
-    const tree = renderer.create(
-			<RadioCore
-        label={"Checked Radio"}
-        value={"checkedRadio"}
-        defaultChecked={true}
-        className={"class"}
-        title={"TITLE"}
-        hidden={false}
-        inline={true}
-        name={"Mr radio"}
-			/>).toJSON();
+  it("Render correctly", () => {
+    const tree = renderer
+      .create(
+        <RadioCore
+          label={"Checked Radio"}
+          value={"checkedRadio"}
+          defaultChecked={true}
+          className={"class"}
+          title={"TITLE"}
+          hidden={false}
+          inline={true}
+          name={"Mr radio"}
+        />
+      )
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

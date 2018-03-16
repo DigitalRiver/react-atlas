@@ -16,6 +16,8 @@
 	padding-bottom: 11.5px;
 	display: inline-block;
 	cursor: pointer;
+	text-align: center;
+	position: relative;
 }
 
 .taskLink:hover {
@@ -32,6 +34,6 @@
 }
 
 .icon-left {
-  margin-right: 0.25rem;
-  vertical-align: middle;
+  	margin-right: 0.25rem;
+  	vertical-align: middle;
 }

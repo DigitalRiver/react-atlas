@@ -8,56 +8,45 @@ import cx from "classnames";
 class Card extends React.PureComponent {
   constructor(props) {
     super(props);
-
   }
   render() {
-    const { children, className, legend, style, standardFieldset, image, title, width } = this.props;
-    let Width = width ? width + "px" : null;
-    let cardBody = children ?
-      <div
-        styleName={"cardBody"}
-      >
-        {children}
-      </div>
-      : null;
+    const {
+      children,
+      className,
+      legend,
+      style,
+      standardFieldset,
+      image,
+      title
+    } = this.props;
+    let cardBody = children ? 
+      <div styleName={"cardBody"}>{children}</div>
+     : null;
 
     let isFieldset = standardFieldset ? 
-      <fieldset style={{ "width": Width}} styleName={"card"} className={cx(className)}>
+      <fieldset style={style} styleName={"card"} className={cx(className)}>
         {legend && <legend styleName={"legend"}>{legend}</legend>}
         {children}
       </fieldset>
-      : null;
+     : null;
 
-    let useImage = image ? 
-      <img
-        src={image}
-        styleName={"image"}
-      />
-      : null;
+    let useImage = image ? <img src={image} styleName={"image"} /> : null;
 
-    let Title = title ?
-      <div styleName={"title"}>{title}</div>
-      : null;
+    let Title = title ? <div styleName={"title"}>{title}</div> : null;
 
     let card = !standardFieldset ? 
-      <div        
-        style={{ "width": Width}}
-        styleName={"card"} 
-      >
+      <div style={style} styleName={"card"} className={cx(className)}>
         {useImage}
         {Title}
         {cardBody}
       </div>
-      : null;
+     : null;
 
     return (
-      <div 
-        style={style}
-        className={cx(className)}
-      >
+      <React.Fragment>
         {isFieldset}
         {card}
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -102,12 +91,7 @@ Card.propTypes = {
    * Title that will be displayed inside Cards that do not have the standardFieldset prop.
    * @examples "Title Words" will output "Title Words"
    */
-  "title": PropTypes.string,
-
-  /**
-   * Will determine the width of the Card.
-   */
-  "width": PropTypes.number
+  "title": PropTypes.string
 };
 
 export default Card;

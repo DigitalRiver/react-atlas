@@ -1,0 +1,8 @@
+.divider {
+	composes: border-bottom from '../styles.css';
+}
+
+.groupTitle {
+	composes: pad-v-1 from '../styles.css';
+	composes: header-font from '../styles.css';
+}

@@ -34,18 +34,37 @@ class Button extends React.PureComponent {
     } = this.props;
 
     let mainStyle = "button";
+    let hoverStyle = "";
     if (primary) {
       mainStyle = "primary";
+      if (!disabled) {
+        hoverStyle = "primary_hover";
+      }
     } else if (secondary) {
       mainStyle = "secondary";
+      if (!disabled) {
+        hoverStyle = "secondary_hover";
+      }
     } else if (warning) {
       mainStyle = "warning";
+      if (!disabled) {
+        hoverStyle = "warning_hover";
+      }
     } else if (error) {
       mainStyle = "error";
+      if (!disabled) {
+        hoverStyle = "error_hover";
+      }
     } else if (link) {
       mainStyle = "link";
+      if (!disabled) {
+        hoverStyle = "link_hover";
+      }
     } else {
       mainStyle = "default_btn";
+      if (!disabled) {
+        hoverStyle = "default_btn_hover";
+      }
     }
 
     if (outline) {
@@ -66,7 +85,8 @@ class Button extends React.PureComponent {
         "button": true,
         "uppercase": !link
       },
-      mainStyle
+      mainStyle,
+      hoverStyle
     );
 
     let text = children;
@@ -83,11 +103,11 @@ class Button extends React.PureComponent {
 
     let btn = 
       <button
-        onClick={onClick}
+        onClick={disabled ? null : onClick}
         className={cx(className)}
         styleName={classes}
         style={style}
-        type={type}
+        type={disabled ? Button.defaultProps.type : type}
         href={href}
         tabIndex={ignoreTab ? -1 : 0}
         id={id}

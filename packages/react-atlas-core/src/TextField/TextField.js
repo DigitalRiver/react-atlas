@@ -145,7 +145,9 @@ class TextField extends React.PureComponent {
 
     let textFieldLabel = label && 
       <div styleName={labelClasses}>
-        <label htmlFor={id}>{label}</label>
+        <label styleName="labelPadding" htmlFor={id}>
+          {label}
+        </label>
         {required && <span styleName={"error_text"}> {reqText}</span>}
         {tooltip && 
           <span styleName={tooltipClasses}>

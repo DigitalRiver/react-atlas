@@ -1,6 +1,12 @@
+Alert:
+    <Alert>
+        This is a default Alert!
+    </Alert>
+
 Alert types:
 
-	<div>	
+	<div>
+
 		<Alert type="success">
 	        <strong>Success!</strong> This alert box indicates a successful or positive action.
 	    </Alert>

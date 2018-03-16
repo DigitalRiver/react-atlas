@@ -1,4 +1,4 @@
-import React from "react";
+import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 
@@ -8,7 +8,7 @@ class Taskbar extends React.PureComponent {
   }
 
   render() {
-    const { className, style, children, center } = this.props;
+    const { center, children, className, onClick, style } = this.props;
     const taskbarContainerClasses = cx({
       "taskbarContainer": true,
       "center": center
@@ -16,28 +16,40 @@ class Taskbar extends React.PureComponent {
 
     return (
       <div styleName={"taskbar"} style={style} className={cx(className)}>
-        <div styleName={taskbarContainerClasses}>{children}</div>
+        <div styleName={taskbarContainerClasses}>
+          {React.Children.map(children, (child, index) => {
+            child = cloneElement(child, {
+              "index": index,
+              "onClick": child.props.onClick || onClick // Child Task onClick overwrites Taskbar onClick
+            });
+            return child;
+          })}
+        </div>
       </div>
     );
   }
 }
 
 Taskbar.propTypes = {
+  /** Determines if the Taskbar children should be centered */
+  "center": PropTypes.bool,
+  /**
+   * Any HTML element or React Component.
+   * @examples <p>Some Text.</p>
+   */
+  "children": PropTypes.node.isRequired,
   /** An Object, array, or string of CSS classes to apply to CheckboxGroup.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
-  /** Pass inline styling here. */
-  "style": PropTypes.object,
   /**
-   * Any HTML element or React Component.
-   * @examples <p>Some Text.</p>
+   * Function that will be executed on click.
    */
-  "children": PropTypes.node.isRequired,
-  /** Determines if the Taskbar children should be centered */
-  "center": PropTypes.bool
+  "onClick": PropTypes.func,
+  /** Pass inline styling here. */
+  "style": PropTypes.object
 };
 
 Taskbar.defaultProps = {

@@ -24,18 +24,7 @@ exports[`Test correct render Test correct render 1`] = `
       </div>
       <div
         styleName="inactive"
-      >
-        <div
-          styleName="panel"
-        >
-          <div
-            className=""
-            style={undefined}
-          >
-            Text for first accordion item
-          </div>
-        </div>
-      </div>
+      />
     </div>
     <div>
       <div
@@ -48,18 +37,7 @@ exports[`Test correct render Test correct render 1`] = `
       </div>
       <div
         styleName="inactive"
-      >
-        <div
-          styleName="panel"
-        >
-          <div
-            className=""
-            style={undefined}
-          >
-            Text for second accordion item
-          </div>
-        </div>
-      </div>
+      />
     </div>
   </div>
 </div>

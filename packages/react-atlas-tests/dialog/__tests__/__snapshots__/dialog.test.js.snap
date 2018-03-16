@@ -9,7 +9,7 @@ exports[` 1`] = `
     name={undefined}
     onClick={[Function]}
     style={undefined}
-    styleName="button uppercase primary"
+    styleName="button uppercase primary primary_hover"
     tabIndex={0}
     type="button"
   >
