@@ -54,7 +54,7 @@ Dropdowns with custom widths:
 
     <div>
       <div>
-        <Dropdown customLabel="Choose" width="300px">
+        <Dropdown customLabel="Choose" style={{width: "300px"}}>
           <span value="bird">Bird</span>
           <span value="cow" selected>Cow</span>
           <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -64,7 +64,7 @@ Dropdowns with custom widths:
       </div>
       <br  />
       <div>
-        <Dropdown customLabel="Choose" width="7rem">
+        <Dropdown customLabel="Choose" style={{width: "7rem"}}>
           <span value="bird">Bird</span>
           <span value="cow" selected>Cow</span>
           <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>

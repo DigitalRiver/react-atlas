@@ -364,7 +364,6 @@ class Dropdown extends React.PureComponent {
       className,
       required,
       customLabel,
-      width,
       disabled,
       name,
       inline,
@@ -468,13 +467,12 @@ class Dropdown extends React.PureComponent {
         }}
         styleName={buttonClasses}
         type={"button"}
+        style={style}
       >
         <span>{this.state.output}</span>
         <i styleName="arrow" />
       </ButtonCore>
     ;
-
-    const dropdownWidth = width || "100%";
 
     return (
       <div
@@ -493,11 +491,8 @@ class Dropdown extends React.PureComponent {
         }}
       >
         {label}
-        <div
-          styleName={contentClasses}
-          style={{ "minWidth": "100px", "width": dropdownWidth }}
-        >
-          <div styleName={"fullWidth"}>{button}</div>
+        <div style={style} styleName={contentClasses}>
+          <div style={style} styleName={"fullWidth"}>{button}</div>
           {list}
           <input type="hidden" value={this.state.value} />
         </div>
