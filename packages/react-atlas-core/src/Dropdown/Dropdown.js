@@ -495,7 +495,7 @@ class Dropdown extends React.PureComponent {
         {label}
         <div
           styleName={contentClasses}
-          style={{ "minWidth": "100px", "width": dropdownWidth }}
+          style={{ "width": dropdownWidth }}
         >
           <div styleName={"fullWidth"}>{button}</div>
           {list}
