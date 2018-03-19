@@ -60,7 +60,7 @@
   overflow: auto;
 }
 .fullWidth{
-  min-width: 100px;
+  min-width: 45px;
   width:100%;
 }
 .convertedWidth {
