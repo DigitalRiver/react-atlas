@@ -1,0 +1,15 @@
+.breadcrumbItem {
+    display: inline-flex;
+    align-items: center;
+}
+
+.breadcrumbItem + .breadcrumbItem:before {
+    content: "/ ";
+    padding: 0 5px;
+    color: #ccc;
+
+}
+
+.breadcrumbItem button {
+    padding: 0;
+}

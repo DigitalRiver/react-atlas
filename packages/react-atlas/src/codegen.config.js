@@ -152,6 +152,8 @@ let components = [
   "alert",
   "avatar",
   "button",
+  "breadcrumb",
+  "breadcrumbItem",
   "card",
   "checkbox",
   "checkboxGroup",

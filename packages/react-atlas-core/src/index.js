@@ -2,6 +2,8 @@ export { AccordionCore } from "./Accordion";
 export { AlertCore } from "./Alert";
 export { AvatarCore } from "./Avatar";
 export { ButtonCore } from "./Button";
+export { BreadcrumbCore } from "./Breadcrumb";
+export { BreadcrumbItemCore } from "./BreadcrumbItem";
 export { CardCore } from "./Card";
 export { CheckboxCore } from "./Checkbox";
 export { CheckboxGroupCore } from "./CheckboxGroup";

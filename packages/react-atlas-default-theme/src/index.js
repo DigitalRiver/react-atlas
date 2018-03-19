@@ -2,6 +2,8 @@ export { AccordionStyle } from "./Accordion";
 export { AlertStyle } from "./Alert";
 export { AvatarStyle } from "./Avatar";
 export { ButtonStyle } from "./Button";
+export { BreadcrumbStyle } from "./Breadcrumb";
+export { BreadcrumbItemStyle } from "./BreadcrumbItem";
 export { CardStyle } from "./Card";
 export { CheckboxStyle } from "./Checkbox";
 export { CheckboxGroupStyle } from "./CheckboxGroup";
