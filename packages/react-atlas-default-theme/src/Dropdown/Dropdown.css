@@ -4,6 +4,7 @@
   z-index: 0;
   margin: 0 .25rem calc(.25rem + 8px) 0;
   top: 8px;
+  width: 100%;
 }
 
 .inline {
@@ -21,6 +22,7 @@
   text-align: left;
   left: 0;
   position: relative;
+  width: 100%;
 }
 
 .content:hover {
@@ -36,6 +38,7 @@
 
 .buttonClass {
   composes: cursor-pointer from '../styles.css';
+  min-width: 45px;
 }
 
 .focus {
@@ -60,12 +63,12 @@
   overflow: auto;
 }
 .fullWidth{
-  min-width: 100px;
+  min-width: 45px;
   width:100%;
 }
 .convertedWidth {
   width:calc(100% - 2px);
-  min-width:98px;
+  min-width:43px;
 }
 .item {
   padding: .5rem;
