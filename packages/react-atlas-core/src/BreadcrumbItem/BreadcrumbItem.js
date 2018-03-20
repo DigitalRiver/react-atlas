@@ -8,10 +8,10 @@ class BreadcrumbItem extends React.PureComponent {
   }
 
   render() {
-    const { className, style, children } = this.props;
-
+    const { className, style, active, children } = this.props;
+    const styleName = cx("breadcrumbItem", { active });
     return (
-      <li styleName="breadcrumbItem" className={cx(className)} style={style}>
+      <li styleName={styleName} className={cx(className)} style={style}>
         {children}
       </li>
     );
@@ -33,11 +33,16 @@ BreadcrumbItem.propTypes = {
   /**
    * Text, any HTML element, or React Component.
    */
-  "children": PropTypes.node
+  "children": PropTypes.node,
+  /**
+   * Render active item style
+   */
+  "active": PropTypes.bool
 };
 
 BreadcrumbItem.defaultProps = {
-  "className": ""
+  "className": "",
+  "active": false
 };
 
 export default BreadcrumbItem;

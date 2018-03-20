@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test correct render Test correct render 1`] = `
+<ol
+  aria-label="breadcrumbs"
+  className=""
+  role="navigation"
+  style={undefined}
+  styleName="breadcrumb"
+>
+  <li
+    className=""
+    style={undefined}
+    styleName="breadcrumbItem"
+  >
+    <a
+      className={undefined}
+      href="#"
+      htmlFor={undefined}
+      id={undefined}
+      style={undefined}
+      styleName="defaultFont link"
+    >
+      Atlas
+    </a>
+  </li>
+  <li
+    className=""
+    style={undefined}
+    styleName="breadcrumbItem"
+  >
+    <a
+      className={undefined}
+      href="#breadcrumb"
+      htmlFor={undefined}
+      id={undefined}
+      style={undefined}
+      styleName="defaultFont link"
+    >
+      Breadcrumb
+    </a>
+  </li>
+  <li
+    className=""
+    style={undefined}
+    styleName="breadcrumbItem active"
+  >
+    <span
+      className={undefined}
+      htmlFor={undefined}
+      id={undefined}
+      style={undefined}
+      styleName="defaultFont"
+    >
+      Breadcrumb Example
+    </span>
+  </li>
+</ol>
+`;

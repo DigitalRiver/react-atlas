@@ -7,9 +7,8 @@
     content: "/ ";
     padding: 0 5px;
     color: #ccc;
-
 }
 
-.breadcrumbItem button {
-    padding: 0;
+.breadcrumbItem.active {
+    color: #777;
 }

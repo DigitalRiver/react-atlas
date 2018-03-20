@@ -2,12 +2,12 @@ Breadcrumb:
 
     <Breadcrumb>
         <BreadcrumbItem>
-            <Button link href="#">Atlas</Button>
+            <Text as="a" href="#">Atlas</Text>
         </BreadcrumbItem>
         <BreadcrumbItem>
-            <Button link href="#breadcrumb">Breadcrumb</Button>
+            <Text as="a" href="#breadcrumb">Breadcrumb</Text>
         </BreadcrumbItem>
-        <BreadcrumbItem>
+        <BreadcrumbItem active>
             <Text>Breadcrumb Example</Text>
         </BreadcrumbItem>
     </Breadcrumb>
@@ -18,13 +18,13 @@ Breadcrumb with icon:
     <Breadcrumb>
         <BreadcrumbItem>
             <Avatar title="Cat" image="https://i.ytimg.com/vi/cNycdfFEgBc/maxresdefault.jpg" />
-            <Button link href="#">Cat</Button>
+            <Text as="a" href="#">Cat</Text>
         </BreadcrumbItem>
         <BreadcrumbItem>
             <i className="fa fa-github"></i>
-            <Button link href="http://www.github.com">GitHub</Button>
+            <Text as="a" href="http://www.github.com">GitHub</Text>
         </BreadcrumbItem>
-        <BreadcrumbItem>
+        <BreadcrumbItem active>
             <Text>I am Here</Text>
         </BreadcrumbItem>
     </Breadcrumb>
