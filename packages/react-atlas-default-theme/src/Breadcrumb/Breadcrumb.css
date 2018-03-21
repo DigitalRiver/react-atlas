@@ -1,0 +1,6 @@
+.breadcrumb {
+    composes: default-font from '../styles.css';
+    padding: 8px 15px;
+    display: inline-flex;
+    align-items: center;
+}
