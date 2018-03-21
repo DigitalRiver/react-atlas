@@ -24,7 +24,11 @@ exports[`Test Radio component render Render correctly 1`] = `
       >
         <input
           className="ra_Input__max ra_Input__opacity"
+          defaultChecked={true}
           id={undefined}
+          inline={true}
+          isValid={true}
+          label="Checked Radio"
           name="Mr radio"
           onBlur={[Function]}
           onChange={[Function]}
@@ -35,6 +39,7 @@ exports[`Test Radio component render Render correctly 1`] = `
           placeholder={undefined}
           required={undefined}
           styleName=""
+          title="TITLE"
           type="radio"
           value="checkedRadio"
         />

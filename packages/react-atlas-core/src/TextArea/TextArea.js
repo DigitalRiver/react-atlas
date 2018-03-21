@@ -88,7 +88,8 @@ class TextArea extends React.PureComponent {
       tooltip,
       tooltipRight,
       leftLabel,
-      rows
+      rows,
+      ...others
     } = this.props;
 
     let tooltipClasses = cx({
@@ -171,6 +172,7 @@ class TextArea extends React.PureComponent {
         {textAreaLabel}
         <div styleName={contentClasses}>
           <InputCore
+            {...others}
             id={id}
             multiline
             rows={rows}

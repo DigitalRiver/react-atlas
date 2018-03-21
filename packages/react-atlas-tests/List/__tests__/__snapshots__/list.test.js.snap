@@ -74,6 +74,7 @@ exports[`Test List component renders correctly 1`] = `
               checked={false}
               className=""
               id={undefined}
+              isValid={true}
               name={undefined}
               onBlur={[Function]}
               onChange={[Function]}
@@ -83,6 +84,7 @@ exports[`Test List component renders correctly 1`] = `
               onPaste={[Function]}
               required={undefined}
               style={undefined}
+              styleName="inputMedium"
               type="checkbox"
             />
             <div
@@ -161,6 +163,7 @@ exports[`Test List component renders correctly 1`] = `
               checked={false}
               className=""
               id={undefined}
+              isValid={true}
               name={undefined}
               onBlur={[Function]}
               onChange={[Function]}
@@ -170,6 +173,7 @@ exports[`Test List component renders correctly 1`] = `
               onPaste={[Function]}
               required={undefined}
               style={undefined}
+              styleName="inputMedium"
               type="checkbox"
             />
             <div

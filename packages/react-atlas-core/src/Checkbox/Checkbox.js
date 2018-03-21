@@ -85,7 +85,8 @@ class Checkbox extends React.PureComponent {
       disabled,
       hidden,
       style,
-      required
+      required,
+      ...others
     } = this.props;
     // TODO: Figure out why, if moved to constructor, the following variables cause issues on click
     const inlineCheckbox = cx({
@@ -132,6 +133,7 @@ class Checkbox extends React.PureComponent {
           }
           <div styleName={checkboxDisplay}>
             <InputCore
+              {...others}
               label={label}
               type="checkbox"
               disabled={disabled}

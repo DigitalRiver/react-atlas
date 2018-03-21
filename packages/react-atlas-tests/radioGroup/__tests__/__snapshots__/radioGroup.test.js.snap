@@ -29,7 +29,11 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         >
           <input
             className="ra_Input__max ra_Input__opacity"
+            groupSetChecked={[Function]}
             id={undefined}
+            inline={false}
+            isValid={true}
+            label="Option 1"
             name="test"
             onBlur={[Function]}
             onChange={[Function]}
@@ -77,7 +81,11 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         >
           <input
             className="ra_Input__max ra_Input__opacity"
+            groupSetChecked={[Function]}
             id={undefined}
+            inline={false}
+            isValid={true}
+            label="Option 2"
             name="test"
             onBlur={[Function]}
             onChange={[Function]}
@@ -121,7 +129,11 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         >
           <input
             className="ra_Input__max ra_Input__opacity"
+            groupSetChecked={[Function]}
             id={undefined}
+            inline={false}
+            isValid={true}
+            label="Option 3"
             name="test"
             onBlur={[Function]}
             onChange={[Function]}
@@ -165,7 +177,11 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         >
           <input
             className="ra_Input__max ra_Input__opacity"
+            groupSetChecked={[Function]}
             id={undefined}
+            inline={false}
+            isValid={true}
+            label="Option 4"
             name="test"
             onBlur={[Function]}
             onChange={[Function]}
@@ -209,7 +225,11 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         >
           <input
             className="ra_Input__max ra_Input__opacity"
+            groupSetChecked={[Function]}
             id={undefined}
+            inline={false}
+            isValid={true}
+            label="Option 5"
             name="test"
             onBlur={[Function]}
             onChange={[Function]}
@@ -253,7 +273,11 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
         >
           <input
             className="ra_Input__max ra_Input__opacity"
+            groupSetChecked={[Function]}
             id={undefined}
+            inline={false}
+            isValid={true}
+            label="Option 6"
             name="test"
             onBlur={[Function]}
             onChange={[Function]}
