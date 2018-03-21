@@ -163,6 +163,7 @@ let components = [
   "fileUpload",
   "form",
   "hint",
+  "icon",
   "input",
   "list",
   "listGroup",

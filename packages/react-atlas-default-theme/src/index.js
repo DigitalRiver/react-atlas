@@ -13,6 +13,7 @@ export { DropdownStyle } from "./Dropdown";
 export { FormStyle } from "./Form";
 export { FileUploadStyle } from "./FileUpload";
 export { HintStyle } from "./Hint";
+export { IconStyle } from "./Icon";
 export { InputStyle } from "./Input";
 export { ListStyle } from "./List";
 export { ListGroupStyle } from "./ListGroup";
