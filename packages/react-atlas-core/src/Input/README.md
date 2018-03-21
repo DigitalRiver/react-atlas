@@ -19,7 +19,7 @@ Input component should be used as core part of other components such as TextFiel
 ###### Text input with required validation:
     <div>
       <Input type="text" required/>
-      <Input type="text" required requiredText="Custom required message"/>
+      <Input type="text" required errorText="Custom required message"/>
     </div>
 
 ###### Text input with maximum length validation:

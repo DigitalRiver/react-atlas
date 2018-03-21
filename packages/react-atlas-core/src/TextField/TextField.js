@@ -97,7 +97,8 @@ class TextField extends React.PureComponent {
       linkText,
       linkOnClick,
       uppercase,
-      href
+      href,
+      ...others
     } = this.props;
 
     let labelClasses = cx({
@@ -208,6 +209,7 @@ class TextField extends React.PureComponent {
         {textFieldLabel}
         <div styleName={fieldDisplayClasses}>
           <InputCore
+            {...others}
             type={type}
             name={name}
             id={id}

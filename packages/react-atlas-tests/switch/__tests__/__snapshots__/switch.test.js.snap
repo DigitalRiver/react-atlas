@@ -11,18 +11,24 @@ exports[`Test switch component render Render correctly 1`] = `
     styleName="sliderMedium sliderEnabledOffColor"
   >
     <input
+      buttonColor="grey"
       checked={false}
       className=""
       id="ID"
+      isValid={true}
       name="Name"
+      offColor="white"
+      onBeforeChange={[Function]}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
+      onColor="black"
       onKeyDown={[Function]}
       onKeyPress={[Function]}
       onPaste={[Function]}
       required={undefined}
       style={undefined}
+      styleName="inputMedium"
       type="checkbox"
     />
     <div

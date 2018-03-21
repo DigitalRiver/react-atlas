@@ -111,19 +111,18 @@ class Switch extends React.PureComponent {
       hidden,
       style,
       inline,
-      id
+      id,
+      ...others
     } = this.props;
 
     const classes = this.classes;
     const styles = this.styles;
     const forId = id !== "" && name !== "" ? id : "";
 
-    let switchWrapperClasses = cx(
-        {
-          "switch": true,
-        inline
-        }
-    );
+    let switchWrapperClasses = cx({
+      "switch": true,
+      inline
+    });
 
     let switchClasses = cx(
       {
@@ -157,6 +156,7 @@ class Switch extends React.PureComponent {
           style={style}
         >
           <InputCore
+            {...others}
             type="checkbox"
             name={name}
             id={id}

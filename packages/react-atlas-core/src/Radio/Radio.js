@@ -83,7 +83,8 @@ class Radio extends React.PureComponent {
       checked,
       disabled,
       hidden,
-      style
+      style,
+      ...others
     } = this.props;
 
     const { inlineRadio, labelStyle, labelTitle, radioDisplay } = this.classes;
@@ -111,6 +112,7 @@ class Radio extends React.PureComponent {
           }
           <div styleName={radioDisplay}>
             <InputCore
+              {...others}
               label={label}
               type="radio"
               checked={checked}
