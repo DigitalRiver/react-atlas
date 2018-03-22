@@ -6,19 +6,25 @@ import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
 import renderer from "react-test-renderer";
 
+function _findErrorOutput(component) {
+  const error = component.findWhere(
+    n => n.type() === "span" && n.prop("styleName") === "error"
+  );
+  return error.length === 0 ? null : error.text();
+}
+
 describe("Test Input component render", () => {
   it("Render correctly", () => {
     const tree = renderer
       .create(
         <InputCore
-          isValid={true}
+          isValid
           className={"class"}
           type={"text"}
           id={"ID"}
           name={"InputName"}
           required={false}
           requiredText={false}
-          errorText={"Error occured"}
           errorLocation={"location"}
           value={"Value"}
           disabled={false}
@@ -27,7 +33,7 @@ describe("Test Input component render", () => {
           maxLength={15}
           placeholder={"Text here"}
           multiline={false}
-          small={true}
+          small
           medium={false}
           large={false}
           mask={""}
@@ -48,12 +54,6 @@ describe("Test Input component render", () => {
   });
 });
 
-describe("Blank test", () => {
-  it("blank test", () => {
-    const component = mount(<InputCore type="email" />);
-  });
-});
-
 function _validate(input, positiveCase) {
   const component = mount(
     <InputCore
@@ -70,19 +70,20 @@ function _validate(input, positiveCase) {
   );
 
   expect(component.state().isValid).toEqual(true);
-  component.setState({ value: input });
+  component.setState({ "value": input });
   component.find("input").simulate("change");
   if (positiveCase) {
+    expect(_findErrorOutput(component)).toBeNull();
     expect(component.state().isValid).toEqual(true);
   } else {
-    expect(component.state().errorText).toEqual("That is NOT a number");
+    expect(_findErrorOutput(component)).toEqual("That is NOT a number");
     expect(component.state().isValid).toEqual(false);
   }
 }
 
 function _pressOneByOne(comp, str) {
-  for (var i in str) {
-    comp.find("input").simulate("keyPress", { key: str[i] });
+  for (let i in str) {
+    comp.find("input").simulate("keyPress", { "key": str[i] });
   }
 }
 
@@ -91,7 +92,7 @@ function _validateMask(msk, inputText, expText) {
 
   expect(component.state().value).toEqual("");
   _pressOneByOne(component, inputText);
-  component.find("input").simulate("keyPress", { key: "enter" });
+  component.find("input").simulate("keyPress", { "key": "enter" });
   expect(component.state().value).toEqual(expText);
 }
 
@@ -113,26 +114,6 @@ describe("Suite - Validator checking", () => {
   });
   it("Check validator use - Only number greater than zero allowed - Negative case ", function() {
     _validate("", false);
-  });
-
-  it("Check validator use - unproper validator", function() {
-    let myTrackedMessage;
-    let originalConsole = console.warn;
-    console.warn = function(msg) {
-      myTrackedMessage = msg;
-      originalConsole("<<" + msg + ">>");
-    };
-    const component = mount(
-      <InputCore
-        validator={function() {
-          return false;
-        }}
-      />
-    );
-    expect(myTrackedMessage).toEqual(
-      "You set a custom validator without error text message. Please use 'errorText' property to set it up."
-    );
-    console.warn = originalConsole;
   });
 });
 
@@ -201,9 +182,9 @@ describe("Check mask behavior ", () => {
     expect(comp.state().value).toEqual("");
 
     _pressOneByOne(comp, "Adrii");
-    comp.find("input").simulate("keyDown", { key: "Backspace" });
-    comp.find("input").simulate("keyPress", { key: "i" });
-    comp.find("input").simulate("keyDown", { key: "Backspace" });
+    comp.find("input").simulate("keyDown", { "key": "Backspace" });
+    comp.find("input").simulate("keyPress", { "key": "i" });
+    comp.find("input").simulate("keyDown", { "key": "Backspace" });
     _pressOneByOne(comp, "an");
 
     expect(comp.state().value).toEqual("Adrian");
@@ -215,9 +196,9 @@ describe("Check mask behavior ", () => {
     expect(comp.state().value).toEqual("");
 
     _pressOneByOne(comp, "a");
-    comp.find("input").simulate("keyDown", { key: "Backspace" });
+    comp.find("input").simulate("keyDown", { "key": "Backspace" });
     _pressOneByOne(comp, "Adriaaa");
-    comp.find("input").simulate("keyDown", { key: "Backspace" });
+    comp.find("input").simulate("keyDown", { "key": "Backspace" });
     _pressOneByOne(comp, "n");
 
     expect(comp.state().value).toEqual("Adrian");
@@ -226,9 +207,9 @@ describe("Check mask behavior ", () => {
   it("Control & Enter keys test", function() {
     let comp = mount(<InputCore mask={"Aaaaaa"} />);
 
-    comp.find("input").simulate("keyPress", { key: "Ctrl" });
+    comp.find("input").simulate("keyPress", { "key": "Ctrl" });
 
-    comp.find("input").simulate("keyPress", { key: "Enter" });
+    comp.find("input").simulate("keyPress", { "key": "Enter" });
   });
 });
 
@@ -258,7 +239,7 @@ describe("Suite - Basic functionality", () => {
 
     component
       .find("input")
-      .simulate("change", { target: { value: "1234567890!!!" } });
+      .simulate("change", { "target": { "value": "1234567890!!!" } });
 
     expect(component.state().isValid).toEqual(false);
 
@@ -275,8 +256,8 @@ describe("Suite - Basic functionality", () => {
     let comp = mount(<InputCore />);
 
     _pressOneByOne(comp, "Adrii");
-    comp.find("input").simulate("keyDown", { key: "Backspace" });
-    comp.find("input").simulate("keyDown", { key: "Backspace" });
+    comp.find("input").simulate("keyDown", { "key": "Backspace" });
+    comp.find("input").simulate("keyDown", { "key": "Backspace" });
   });
 });
 
@@ -284,7 +265,7 @@ describe("Suite - Max length limit", () => {
   it("Check text max-size - Text entered lower than maxsize", function() {
     const component = mount(<InputCore maxLength={5} />);
 
-    component.find("input").simulate("change", { target: { value: "1234" } });
+    component.find("input").simulate("change", { "target": { "value": "1234" } });
     expect(component.state().value).toEqual("1234");
     expect(component.state().remaining).toEqual(1);
   });
@@ -292,7 +273,7 @@ describe("Suite - Max length limit", () => {
   it("Check text max-size - Text entered equal to maxsize", function() {
     const component = mount(<InputCore maxLength={5} />);
 
-    component.find("input").simulate("change", { target: { value: "12345" } });
+    component.find("input").simulate("change", { "target": { "value": "12345" } });
     expect(component.state().value).toEqual("12345");
     expect(component.state().remaining).toEqual(0);
   });
@@ -302,7 +283,7 @@ describe("Suite - Max length limit", () => {
 
     component
       .find("input")
-      .simulate("change", { target: { value: "123456789!" } });
+      .simulate("change", { "target": { "value": "123456789!" } });
     expect(component.state().value).toEqual("12345");
     expect(component.state().remaining).toEqual(0);
   });
@@ -310,33 +291,33 @@ describe("Suite - Max length limit", () => {
 
 describe("Suite - Required field", () => {
   it("Check behavior when field is set to required - Negative case", () => {
-    const component = mount(<InputCore required={true} />);
+    const component = mount(<InputCore required />);
 
-    component.find("input").simulate("change", { target: { value: "" } });
+    component.find("input").simulate("change", { "target": { "value": "" } });
     expect(component.state().isValid).toEqual(false);
-    expect(component.state().errorText).toEqual("This field is required.");
+    expect(_findErrorOutput(component)).toEqual("This field is required.");
   });
 
   it("Check behavior when field is set to required - Positive case", () => {
-    const component = mount(<InputCore required={true} />);
+    const component = mount(<InputCore required />);
 
     component
       .find("input")
-      .simulate("change", { target: { value: "Some text." } });
+      .simulate("change", { "target": { "value": "Some text." } });
     expect(component.state().isValid).toEqual(true);
   });
 
   it("Check behavior when field is set to not required", () => {
     const component = mount(<InputCore required={false} />);
 
-    component.find("input").simulate("change", { target: { value: "" } });
+    component.find("input").simulate("change", { "target": { "value": "" } });
     expect(component.state().isValid).toEqual(true);
   });
 
   it("Check behavior when field is set to required and validated - Positive case", () => {
     const component = mount(
       <InputCore
-        required={true}
+        required
         validator={function() {
           return true;
         }}
@@ -346,14 +327,14 @@ describe("Suite - Required field", () => {
 
     component
       .find("input")
-      .simulate("change", { target: { value: "Some text." } });
+      .simulate("change", { "target": { "value": "Some text." } });
     expect(component.state().isValid).toEqual(true);
   });
 
   it("Check behavior when field is set to required and validated - Negative case", () => {
     const component = mount(
       <InputCore
-        required={true}
+        required
         validator={function() {
           return false;
         }}
@@ -363,12 +344,13 @@ describe("Suite - Required field", () => {
 
     component
       .find("input")
-      .simulate("change", { target: { value: "Some text." } });
-    expect(component.state().errorText).toEqual("That is NOT a number");
+      .simulate("change", { "target": { "value": "Some text." } });
+    expect(_findErrorOutput(component)).toEqual("That is NOT a number");
     expect(component.state().isValid).toEqual(false);
   });
 });
 
+/*
 describe("Suite - checkbox", () => {
   it("Check box - base case ", () => {
     const expectedProps = new Map([
@@ -400,3 +382,4 @@ describe("Suite - email", () => {
     const component = mount(<InputCore type="email" />);
   });
 });
+*/

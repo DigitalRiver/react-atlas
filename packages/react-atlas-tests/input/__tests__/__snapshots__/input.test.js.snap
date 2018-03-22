@@ -6,7 +6,6 @@ exports[`Test Input component render Render correctly 1`] = `
 >
   <input
     className="class"
-    errorText="Error occured"
     id="ID"
     isValid={true}
     mask=""
