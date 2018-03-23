@@ -263,6 +263,7 @@ class Input extends React.PureComponent {
       disabled,
       hidden,
       errorLocation,
+      checked,
       style,
       rows,
       /* The following props are added to this definition so that they are not included in the ...others spread operator. They are not used in the render function. */
@@ -348,6 +349,7 @@ class Input extends React.PureComponent {
         style={style}
         type="checkbox"
         className={cx(className)}
+        checked={checked}
         {...eventHandlers}
       /> // No styleName prop is needed on checkbox because opacity is set to 0.
      : 
