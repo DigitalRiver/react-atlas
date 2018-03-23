@@ -259,17 +259,27 @@ class Input extends React.PureComponent {
       medium,
       large,
       type,
-      name,
-      id,
       multiline,
-      placeholder,
       disabled,
       hidden,
       errorLocation,
       checked,
       style,
       rows,
-      required,
+      /* The following props are added to this definition so that they are not included in the ...others spread operator. They are not used in the render function. */
+      /* eslint-disable */
+      mask,
+      validator,
+      errorText,
+      isValid,
+      uppercase,
+      onChange,
+      onBeforeChange,
+      maxLength,
+      value,
+      autocomplete,
+      novalidate,
+      /* eslint-enable */
       ...others
     } = this.props;
 
@@ -308,28 +318,20 @@ class Input extends React.PureComponent {
     let inputElement = multiline ? 
       <textarea
         {...others}
-        id={id}
-        name={name}
         rows={rows}
         value={this.state.value}
-        placeholder={placeholder}
         styleName={inputClasses}
         className={cx(className)}
         onChange={this._handleChange}
         onBlur={this._handleChange}
-        required={required}
       />
      : 
       <input
         {...others}
         type={type}
-        name={name}
-        id={id}
         value={this.state.value}
-        placeholder={placeholder}
         styleName={inputClasses}
         className={cx(className)}
-        required={required}
         ref={input => {
           this.input = input;
         }}
@@ -346,11 +348,8 @@ class Input extends React.PureComponent {
         {...others}
         style={style}
         type="checkbox"
-        name={name}
         className={cx(className)}
-        id={id}
         checked={checked}
-        required={required}
         {...eventHandlers}
       /> // No styleName prop is needed on checkbox because opacity is set to 0.
      : 
