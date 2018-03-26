@@ -1,4 +1,4 @@
-Basic Modal:
+Modal with title, overlay, onOverlayClick, and onEscKeyDown:
 
     initialState = {active: false}
     handleToggle = () => {
@@ -13,8 +13,10 @@ Basic Modal:
             onEscKeyDown={handleToggle}
             title="Modal Example Title"
         >
-            <div>This is Modal example<br/>Any child components could be put here.</div>
-            <Switch small/>
-            <Button raised primary onClick={handleToggle} >Close!</Button>
+            <div style={{'marginBottom':'20px'}}>
+                <Text>This is Modal example<br/>Any child components could be put here.</Text>
+            </div>
+
+            <Button raised primary onClick={handleToggle}>Close!</Button>
         </Modal>
 	</div>

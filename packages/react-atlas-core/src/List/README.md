@@ -92,7 +92,7 @@
         </ListGroup>
     </List>
 
-###### ListItem using leftItem and rightItem properties instead of children:
+###### ListItems using leftItem and rightItem properties instead of children:
 
     <List border style={{width: "300px"}}>
         <ListItem leftItem={<Avatar image="http://www.figures.com/wordpress/wp-content/gallery-bank/gallery-uploads/o_1b3qg9es31eed1d0i1ips5lh14kuv.jpg" />} rightItem={<Switch />}>

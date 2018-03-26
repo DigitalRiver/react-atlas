@@ -28,22 +28,21 @@ ListGroup.propTypes = {
    * Text, any HTML element, or React Component.
    */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to Input. */
+  /** An object, array, or string of CSS classes to apply to Input. */
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
-  /** Adds a horizontal rule between the ListGroup and subsequent children. */
+  /** When true, will add a horizontal rule between the ListGroup and subsequent children. */
   "divider": PropTypes.bool,
   /**
-   * Defines an id for the input.
-   * @examples '<Text as="text" name="test"/>'
+   * Will set the html "id" property for ListGroup.
    */
   "id": PropTypes.string,
   /** Pass inline styling here. */
   "style": PropTypes.object,
-  /** Adds a title to the ListGroup. */
+  /** Will add a title to the ListGroup. */
   "title": PropTypes.string
 };
 
