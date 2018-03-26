@@ -1,8 +1,10 @@
+@import '../styles/variables.css';
+
 .linear {
   position: relative;
   overflow: hidden;
   width: 100%;
-  background: #eee none repeat scroll 0% 0%;
+  background: var(--silver) none repeat scroll 0% 0%;
   height: .4rem;
 }
 .linear.indeterminate .value {
@@ -26,14 +28,11 @@
 }
 
 .value {
-  background-color: rgb(0, 126, 181);
-}
-.disabled {
-    background-color: rgb(179, 179, 179);
+  composes: bg-primary from "../styles.css"
 }
 .buffer {
   background-image: linear-gradient(to right, rgba(255,255,255, 0.7), rgba(255,255,255, 0.7)),
-    linear-gradient(to right, rgb(0, 126, 181), rgb(0, 126, 181));
+    linear-gradient(to right, var(--primary), var(--primary));
 
 }
 
@@ -70,7 +69,7 @@
   stroke-linecap: round;
   stroke-miterlimit: 20;
   stroke-width: 4;
-  stroke: rgb(0, 126, 181);
+  stroke: var(--primary);
 }
 
 .indeterminate {
