@@ -3,6 +3,7 @@
   composes: white from '../styles.css';
   composes: bg-silver from '../styles.css';
   composes: default-border from '../styles.css';
+  composes: default-font from '../styles.css';
   position: relative;
   display: inline-block;
   overflow: hidden;
