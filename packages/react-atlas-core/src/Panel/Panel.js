@@ -7,9 +7,12 @@ class Panel extends React.PureComponent {
     super(props);
   }
   render() {
+    const panelStyles = cx({
+      "panel": true
+    });
     const { className, children, style } = this.props;
     return (
-      <div style={style} className={cx(className)}>
+      <div style={style} className={cx(className)} styleName={panelStyles}>
         {children}
       </div>
     );
@@ -17,17 +20,17 @@ class Panel extends React.PureComponent {
 }
 
 Panel.propTypes = {
-  /** An Object, array, or string of CSS classes to apply to Panel.*/
+  /**
+   * Text, any HTML element, or React Component.
+   */
+  "children": PropTypes.node,
+
+  /** An object, array, or string of CSS classes to apply to Panel.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
-  /**
-   * Text to be displayed can be passed as a child.
-   * @examples '<Panel>This is a text hint</Panel>'
-   */
-  "children": PropTypes.node,
 
   /**
    * Pass inline styling here.

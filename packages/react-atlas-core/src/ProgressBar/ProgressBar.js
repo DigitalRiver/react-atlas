@@ -128,49 +128,61 @@ ProgressBar.propTypes = {
    * @examples ''
    */
   "buffer": PropTypes.number,
-  /** An Object, array, or string of CSS classes to apply to ProgressBar.*/
+
+  /** An object, array, or string of CSS classes to apply to ProgressBar.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
+
   /**
-   * Sets color for the upfront color.
+   * Determines what color the ProgressBar will be.
    * @examples '<ProgressBar color="red"/>'
    */
   "color": PropTypes.string,
+
+  /**
+   * The max value of the ProgressBar
+   */
+  "max": PropTypes.number,
+
+  /**
+   * The min value of the ProgressBar
+   */
+  "min": PropTypes.number,
+
+  /**
+   * Mode can be one of: 'determinate', 'indeterminate'
+   * indeterminate will show a cycling ProgressBar; determinate will show progress based on value.
+   */
+  "mode": PropTypes.string,
+
+  /**
+   * If true, ProgressBar will change colors during transition
+   *
+   * @ignore
+   */
+  "multicolor": PropTypes.bool,
+
+  /**
+   * Pass inline styling here.
+   */
+  "style": PropTypes.object,
+
   /**
    * Length of time in seconds for the transition (can use decimals)
    * @examples '35'
    */
   "transitionDuration": PropTypes.string,
+
   /**
-   * The max value of the progress bar
-   * @examples ''
-   */
-  "max": PropTypes.number,
-  /**
-   * The min value of the progress bar
-   * @examples ''
-   */
-  "min": PropTypes.number,
-  /**
-   * Defines the type of Progress bar: 'determinate', 'indeterminate'
-   * @examples 'circular'
-   */
-  "mode": PropTypes.string,
-  /**
-   * If true, progressbar will change colors during transition
-   * @examples ''
-   */
-  "multicolor": PropTypes.bool,
-  /**
-   * Type of progress bar; 'circular' or 'linear'
-   * @examples ''
+   * Type of ProgressBar; 'circular' or 'linear'
    */
   "type": PropTypes.oneOf(["linear", "circular"]),
+
   /**
-   * The default value(s) of the progress bar.  Can be a number, or an object containing keys of "from" and "to"
+   * The default value(s) of the progress bar.  Can be a number or an object containing keys of "from" and "to"
    * @examples '{"from": 10, "to": 80" }'
    */
   "value": PropTypes.oneOfType([
@@ -179,12 +191,7 @@ ProgressBar.propTypes = {
       "from": PropTypes.number,
       "to": PropTypes.number
     })
-  ]),
-
-  /**
-   * Pass inline styling here.
-   */
-  "style": PropTypes.object
+  ])
 };
 
 ProgressBar.defaultProps = {

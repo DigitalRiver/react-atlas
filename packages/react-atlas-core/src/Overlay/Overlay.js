@@ -53,28 +53,32 @@ class Overlay extends React.PureComponent {
 }
 
 Overlay.propTypes = {
-  /** An Object, array, or string of CSS classes to apply to Overlay.*/
+  /**
+   * When true, Overlay will display
+   */
+  "active": PropTypes.bool,
+
+  /** An object, array, or string of CSS classes to apply to Overlay.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
-  /**
-   * Determines show overlay or not
-   */
-  "active": PropTypes.bool,
-  /**
-   * Click event handler.
-   */
-  "onClick": PropTypes.func,
+
   /**
    * Determines to hide page scroll
    */
   "lockScroll": PropTypes.bool,
+
   /**
    * Event handler for esc key down
    */
   "onEscKeyDown": PropTypes.func,
+
+  /**
+   * Click event handler.
+   */
+  "onClick": PropTypes.func,
 
   /**
    * Pass inline styling here.

@@ -1,19 +1,24 @@
-Basic Progress Bar:
+Basic ProgressBar:
 
 	<ProgressBar/>
 
-Basic Progress Bar with custom color:
+Basic ProgressBar with custom color:
 
     <ProgressBar color="red"/>
 
-Determinate Progress Bar:
+Determinate ProgressBar:
 
-    <ProgressBar mode="determinate" value="60"/>
+    <ProgressBar mode="determinate" value={60}/>
 
-Circular Progress Bar:
+ProgressBar with buffer:
+
+    <ProgressBar mode="determinate" value={60} buffer={80}/>
+
+Circular ProgressBar:
 
     <ProgressBar type="circular"/>
 
-Circular determinate Progress Bar with custom color:
+Circular determinate ProgressBar with custom color:
 
-    <ProgressBar type="circular" mode="determinate" value="60" color="#4da547"/>
+    <ProgressBar type="circular" mode="determinate" value={60} color="#4da547"/>
+

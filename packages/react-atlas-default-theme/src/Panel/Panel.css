@@ -1,0 +1,3 @@
+.panel {
+    composes: default-font from '../styles.css';
+}

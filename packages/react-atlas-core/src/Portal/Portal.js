@@ -72,8 +72,12 @@ class Portal extends Component {
 }
 
 Portal.propTypes = {
+  /**
+   * Text, any HTML element, or React Component.
+   */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to Portal.*/
+
+  /** An object, array, or string of CSS classes to apply to Portal.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
