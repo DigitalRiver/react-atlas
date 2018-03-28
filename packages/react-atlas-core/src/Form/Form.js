@@ -64,7 +64,7 @@ class Form extends React.PureComponent {
 
   /* Recursively render children with additional props */
   renderChildren() {
-    const { childClasses, autocomplete, novalidate } = this.props;
+    const { childClasses } = this.props;
 
     const recursiveRenderChildren = children =>
       React.Children.map(children, child => {
@@ -80,12 +80,10 @@ class Form extends React.PureComponent {
 
         if (childId) {
           props = {
-            "autocomplete": autocomplete,
             "onChange": (value, event, isValid) =>
               this.onChangeHandler(value, event, isValid),
             "value": childState[childId].value,
-            "isValid": childState[childId].isValid,
-            "novalidate": novalidate
+            "isValid": childState[childId].isValid
           };
         }
 
@@ -214,11 +212,12 @@ class Form extends React.PureComponent {
       target,
       name,
       enctype,
-      novalidate
+      ...others
     } = this.props;
 
     return (
       <form
+        {...others}
         style={style}
         action={action}
         method={method}
@@ -227,7 +226,6 @@ class Form extends React.PureComponent {
         target={target}
         name={name}
         encType={enctype}
-        noValidate={novalidate}
       >
         {this.renderChildren()}
       </form>
@@ -241,11 +239,8 @@ Form.propTypes = {
 
   /** When true, input elements will have their values
    * automatically completed by the browser. This setting can be overridden
-   * by an autocomplete attribute on an element belonging to the form. */
-  "autocomplete": PropTypes.bool,
-
-  /** The text that will be displayed inside the submit button. */
-  "buttonText": PropTypes.string,
+   * by an autoComplete attribute on an element belonging to the form. */
+  "autoComplete": PropTypes.bool,
 
   /** An object, array, or string of CSS classes to
    * apply to Form's children components.*/
@@ -273,7 +268,7 @@ Form.propTypes = {
   "name": PropTypes.string,
 
   /** When true, Form will not use HTML5 validation. */
-  "novalidate": PropTypes.bool,
+  "noValidate": PropTypes.bool,
 
   /** A Callback that will be executed when there is a form error.
    * _Example: function(errorMsg)_*/
@@ -292,9 +287,8 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-  "buttonText": "Submit",
   "method": "POST",
-  "novalidate": true
+  "noValidate": true
 };
 
 export default Form;

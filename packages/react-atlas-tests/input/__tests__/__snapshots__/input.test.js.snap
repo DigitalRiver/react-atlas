@@ -5,14 +5,11 @@ exports[`Test Input component render Render correctly 1`] = `
   styleName="container"
 >
   <input
+    checked={false}
     className="class"
-    errorText="Error occured"
     id="ID"
-    isValid={true}
-    mask=""
     maxLength={15}
     name="InputName"
-    onBeforeChange={[Function]}
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -24,8 +21,6 @@ exports[`Test Input component render Render correctly 1`] = `
     requiredText={false}
     styleName="input small"
     type="text"
-    uppercase={false}
-    validator={[Function]}
     value="Value"
   />
 </div>
