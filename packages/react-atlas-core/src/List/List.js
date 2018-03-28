@@ -24,21 +24,20 @@ class List extends React.PureComponent {
 }
 
 List.propTypes = {
-  /** Determines whether or not the List has an outer border. */
+  /** When true, List will display an outer border. */
   "border": PropTypes.bool,
   /**
    * Text, any HTML element, or React Component.
    */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to Input. */
+  /** An object, array, or string of CSS classes to apply to Input. */
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /**
-   * Defines an id for the input.
-   * @examples '<Text as="text" name="test"/>'
+   * Will set the html "id" property for List.
    */
   "id": PropTypes.string,
   /** Pass inline styling here. */

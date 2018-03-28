@@ -4,23 +4,18 @@
     composes: default-font from '../styles.css';
 }
 .active {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--white);
     box-shadow: 0 19px 60px rgba(0, 0, 0, .3), 0 15px 20px rgba(0, 0, 0, .22);
     border-radius: 5px;
-    padding: 40px 70px;
+    padding: var(--space-3) var(--space-4);
     border-top: solid 5px var(--secondary);
 }
 
 .title {
-	margin: 0;
-    color: rgb(75, 96, 126);
-    font-size: 25px;
-    padding-bottom: 20px;
-	font-weight: rgb(6, 181, 234);
-}
-
-.content {
-    font-size: 18px;
+    composes: header-font from '../styles.css';
+    composes: marg-0 from '../styles.css';
+    composes: font-size-2 from '../styles.css';
+    padding-bottom: var(--space-2);
 }
 
 .dialogWrapper{

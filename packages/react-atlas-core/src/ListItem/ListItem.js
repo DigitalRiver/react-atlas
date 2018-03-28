@@ -38,15 +38,14 @@ ListItem.propTypes = {
    * Text, any HTML element, or React Component.
    */
   "children": PropTypes.node,
-  /** An Object, array, or string of CSS classes to apply to Input. */
+  /** An object, array, or string of CSS classes to apply to Input. */
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /**
-   * Defines an id for the input.
-   * @examples '<Text as="text" name="test"/>'
+   * Will set the html "id" property for ListItem.
    */
   "id": PropTypes.string,
   /** Text, any HTML element, or React Component. */
