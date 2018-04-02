@@ -26,7 +26,7 @@ Child beats parameters:
         <i className="fa fa-github"></i>
       </Avatar>
 
-      <Avatar title="Nathan" icon="fa fa-github">}>
+      <Avatar title="Nathan" icon="fa fa-github">
         <img title="Nathan" src="http://www.lettherebelightfineart.com/wp-content/uploads/2014/03/01_Minneapolis_Skyline_Photography_Stone_Arch_Bridge.jpg"/>
       </Avatar>
     </div>
