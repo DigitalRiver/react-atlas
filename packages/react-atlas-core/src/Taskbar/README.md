@@ -2,7 +2,7 @@ Basic Taskbar:
 	
 	<Taskbar>
 		<Task icon={"fa fa-id-card"} title="Item One" selected />
-		<Task title="Item Two" id="Item2" />
+		<Task title="Item Two"/>
 		<Task title="Item Three" />
 	</Taskbar>
 
@@ -10,7 +10,7 @@ Taskbar with an onClick function which gets passed down to each child Task:
 	
 	<Taskbar onClick={ function(e, id, index){ console.log("Click: ", index) }}>
 		<Task icon={"fa fa-id-card"} title="Item One" selected />
-		<Task title="Item Two" id="Item2" />
+		<Task title="Item Two"/>
 		<Task title="Item Three" />
 	</Taskbar>
 

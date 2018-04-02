@@ -12,6 +12,7 @@ Image beats icon:
     <Avatar
         icon={"fa fa-github"}
         image="https://upload.wikimedia.org/wikipedia/commons/c/cf/3818_-_Riffelberg_-_Matterhorn_viewed_from_Gornergratbahn.JPG"
+        title="Matterhorn"
     />
 
 Image beats title:
@@ -25,14 +26,14 @@ Child beats parameters:
         <i className="fa fa-github"></i>
       </Avatar>
 
-      <Avatar title="Nathan" icon="fa fa-github">
-        <img src="http://www.lettherebelightfineart.com/wp-content/uploads/2014/03/01_Minneapolis_Skyline_Photography_Stone_Arch_Bridge.jpg"/>
+      <Avatar title="Nathan" icon="fa fa-github"></i>}>
+        <img title="Nathan" src="http://www.lettherebelightfineart.com/wp-content/uploads/2014/03/01_Minneapolis_Skyline_Photography_Stone_Arch_Bridge.jpg"/>
       </Avatar>
     </div>
 
 Image beats defaultImage:
 
-    <Avatar image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGNZh4ycC0G2UbBGDVgJ56hYbZ0j1mU9J05xLg9O5ZazV1GJTT" defaultImage="https://octodex.github.com/images/codercat.jpg" />
+    <Avatar title="Nathan" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGNZh4ycC0G2UbBGDVgJ56hYbZ0j1mU9J05xLg9O5ZazV1GJTT" defaultImage="https://octodex.github.com/images/codercat.jpg" />
 
 DefaultImage beats title:
 
@@ -40,4 +41,4 @@ DefaultImage beats title:
 
 DefaultImage will replace a image that fails to load:
 
-    <Avatar image="badImage.jpg" defaultImage="http://wikitravel.org/upload/shared//thumb/e/ea/Lake_Fryxell.jpg/510px-Lake_Fryxell.jpg" />
+    <Avatar title="Fryxell" image="badImage.jpg" defaultImage="http://wikitravel.org/upload/shared//thumb/e/ea/Lake_Fryxell.jpg/510px-Lake_Fryxell.jpg" />
