@@ -5,12 +5,12 @@ Title prop gets truncated to 1st letter:
 
 Icon beats title:
 
-    <Avatar title="Nathan" icon={<i className="fa fa-github"></i>} />
+    <Avatar title="Nathan" icon="fa fa-github" />
 
 Image beats icon:
 
     <Avatar
-        icon={<i className="fa fa-github"></i>}
+        icon={"fa fa-github"}
         image="https://upload.wikimedia.org/wikipedia/commons/c/cf/3818_-_Riffelberg_-_Matterhorn_viewed_from_Gornergratbahn.JPG"
     />
 
@@ -25,7 +25,7 @@ Child beats parameters:
         <i className="fa fa-github"></i>
       </Avatar>
 
-      <Avatar title="Nathan" icon={<i className="fa fa-github"></i>}>
+      <Avatar title="Nathan" icon="fa fa-github">
         <img src="http://www.lettherebelightfineart.com/wp-content/uploads/2014/03/01_Minneapolis_Skyline_Photography_Stone_Arch_Bridge.jpg"/>
       </Avatar>
     </div>
@@ -41,7 +41,3 @@ DefaultImage beats title:
 DefaultImage will replace a image that fails to load:
 
     <Avatar image="badImage.jpg" defaultImage="http://wikitravel.org/upload/shared//thumb/e/ea/Lake_Fryxell.jpg/510px-Lake_Fryxell.jpg" />
-
-Child string gets truncated to 1st letter:
-
-    <Avatar>Nathan</Avatar>

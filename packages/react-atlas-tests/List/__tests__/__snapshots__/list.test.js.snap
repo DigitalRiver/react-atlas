@@ -30,7 +30,6 @@ exports[`Test List component renders correctly 1`] = `
       >
         <div
           className=""
-          style={undefined}
           styleName="avatar"
           title="Blue"
         >
@@ -119,7 +118,6 @@ exports[`Test List component renders correctly 1`] = `
       >
         <div
           className=""
-          style={undefined}
           styleName="avatar"
           title="Earl"
         >
