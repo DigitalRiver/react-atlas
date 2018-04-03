@@ -18,6 +18,13 @@ class Checkbox extends React.PureComponent {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.checked !== this.props.checked) {
+      this.setState({
+        "checked": nextProps.checked || false
+      });
+    }
+  }
   // Handles new checkbox clicks and sets value and checked status of hidden input
   _clickHandler = event => {
     if (!this.props.disabled) {
