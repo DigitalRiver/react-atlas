@@ -29,7 +29,7 @@ describe("Test checkbox component - Default values", () => {
   it("Test checkbox component - Custom values", function() {
     const component = mount(
       <CheckboxCore
-        defaultChecked={true}
+        defaultChecked
         title="Adrian rules!!"
         label="Disabled checkbox"
       />
@@ -64,7 +64,7 @@ describe("Test checkbox component - Default values", () => {
   });
 
   it("Test checkbox component (disabled) - Click event", function() {
-    const comp = mount(<CheckboxCore disabled={true} />);
+    const comp = mount(<CheckboxCore disabled />);
     expect(comp.state().checked).toEqual(false);
     comp.simulate("click");
     expect(comp.state().checked).toEqual(false);
@@ -131,5 +131,15 @@ describe("Test checkbox component - Default values", () => {
     expect(comp.state().checked).toEqual(false);
     comp.simulate("click");
     expect(comp.state().checked).toEqual(false);
+  });
+});
+describe("Test checkbox component - update from props", () => {
+  it("update checked prop", function() {
+    const component = mount(<CheckboxCore label="Checkbox" />);
+    expect(component.state().checked).toEqual(false);
+    component.setProps({ "checked": true });
+    expect(component.state().checked).toEqual(true);
+    component.setProps({ "checked": false });
+    expect(component.state().checked).toEqual(false);
   });
 });
