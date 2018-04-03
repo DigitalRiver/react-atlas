@@ -105,4 +105,13 @@ module.exports = {
         ]
     },
   },
+  theme: {
+    color: {
+      link: '#006e95',
+      linkHover: '#003058',
+      light: '#006e95',
+      name: '#558000',
+      type: '#b03478',
+    },
+  },
 };
