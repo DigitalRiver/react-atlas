@@ -114,5 +114,13 @@ export default {
       return comp.type.displayName || comp.type.name || comp.type || null;
     }
     return null;
+  },
+  filter(object, excludes) {
+    return Object.keys(object)
+      .filter(obj => !excludes[obj])
+      .reduce((obj, key) => {
+        obj[key] = object[key];
+        return obj;
+      }, {});
   }
 };

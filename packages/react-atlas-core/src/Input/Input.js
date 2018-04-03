@@ -259,20 +259,16 @@ class Input extends React.PureComponent {
       medium,
       large,
       type,
-      name,
-      id,
       multiline,
-      placeholder,
       disabled,
       hidden,
       errorLocation,
-      checked,
       style,
       rows,
-      required,
       ...others
     } = this.props;
 
+    const elementsProps = utils.filter(others, Input.customPropTypes);
     /* If checkbox, we need to render only input component (no wrappers) */
     let isCheckbox = type === "checkbox";
     let isRadio = type === "radio";
@@ -307,29 +303,21 @@ class Input extends React.PureComponent {
 
     let inputElement = multiline ? 
       <textarea
-        {...others}
-        id={id}
-        name={name}
+        {...elementsProps}
         rows={rows}
         value={this.state.value}
-        placeholder={placeholder}
         styleName={inputClasses}
         className={cx(className)}
         onChange={this._handleChange}
         onBlur={this._handleChange}
-        required={required}
       />
      : 
       <input
-        {...others}
+        {...elementsProps}
         type={type}
-        name={name}
-        id={id}
         value={this.state.value}
-        placeholder={placeholder}
         styleName={inputClasses}
         className={cx(className)}
-        required={required}
         ref={input => {
           this.input = input;
         }}
@@ -343,14 +331,10 @@ class Input extends React.PureComponent {
 
     return isCheckbox ? 
       <input
-        {...others}
+        {...elementsProps}
         style={style}
         type="checkbox"
-        name={name}
         className={cx(className)}
-        id={id}
-        checked={checked}
-        required={required}
         {...eventHandlers}
       /> // No styleName prop is needed on checkbox because opacity is set to 0.
      : 
@@ -361,6 +345,15 @@ class Input extends React.PureComponent {
     ;
   }
 }
+
+Input.customPropTypes = {
+  "errorText": PropTypes.string,
+  "isValid": PropTypes.bool,
+  "validator": PropTypes.func,
+  "onBeforeChange": PropTypes.func,
+  "uppercase": PropTypes.bool,
+  "mask": PropTypes.string
+};
 
 Input.propTypes = {
   "isValid": PropTypes.bool,
