@@ -8,6 +8,9 @@
     composes: pad-2 from '../styles.css';
     composes: bg-body from '../styles.css';
     border-left: 5px solid var(--info);
+    display: flex;
+    white-space: pre-wrap;
+    align-items: center;
 }
 
 .success {
@@ -28,13 +31,11 @@
     composes: pad-0 from '../styles.css';
     composes: cursor-pointer from '../styles.css';
     composes: border-none from '../styles.css';
-	float: right;
+    display: inline-block;
     font-size: 2.2rem;
     opacity: .2;
     filter: alpha(opacity=20);
-    position: relative;
-    top: -10px;
-    right: -2px;
+    margin-left: auto;
     -webkit-appearance:none;
 }
 
