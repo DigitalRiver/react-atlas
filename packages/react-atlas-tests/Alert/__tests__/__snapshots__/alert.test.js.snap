@@ -3,7 +3,6 @@
 exports[`Test Alert component renders correctly 1`] = `
 <div
   className=""
-  hidden={undefined}
   style={undefined}
   styleName="alert success"
 >
