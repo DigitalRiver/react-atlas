@@ -43,3 +43,7 @@
 	opacity: 1;
     filter: alpha(opacity=100);
 }
+
+.hidden {
+    display: none;
+}
