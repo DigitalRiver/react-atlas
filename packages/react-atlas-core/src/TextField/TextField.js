@@ -365,7 +365,12 @@ TextField.propTypes = {
   /**
    * Allows user to move the label to the left of the TextField instead of above it
    */
-  "leftLabel": PropTypes.bool
+  "leftLabel": PropTypes.bool,
+
+  /**
+   * A callback that fires onBlur.
+   */
+   "onBlur": PropTypes.func
 };
 
 TextField.defaultProps = {
