@@ -65,6 +65,9 @@ class TextField extends React.PureComponent {
   };
 
   _handleBlur = () => {
+    if(typeof this.props.onBlur !== 'undefined') {
+      this.props.onBlur();
+    }
     this.setState({ "active": false });
   };
 
@@ -144,13 +147,13 @@ class TextField extends React.PureComponent {
 
     const reqText = typeof requiredText !== "undefined" ? requiredText : "*";
 
-    let textFieldLabel = label && 
+    let textFieldLabel = label &&
       <div styleName={labelClasses}>
         <label styleName="labelPadding" htmlFor={id}>
           {label}
         </label>
         {required && <span styleName={"error_text"}> {reqText}</span>}
-        {tooltip && 
+        {tooltip &&
           <span styleName={tooltipClasses}>
             <TooltipCore
               className={tooltipInternalClasses}
@@ -159,7 +162,7 @@ class TextField extends React.PureComponent {
             />
           </span>
         }
-        {link && 
+        {link &&
           <span styleName={buttonClasses}>
             <ButtonCore
               ignoreTab
