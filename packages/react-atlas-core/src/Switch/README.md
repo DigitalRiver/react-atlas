@@ -1,18 +1,15 @@
-Switch component allows to define a particular-styled checkbox.
-
-###### Default switch:
-
+###### Default Switch:
     <Switch/>
 
-###### Default switch with label above:
+###### Default Switch with label:
 
     <Switch label="This is a Switch"/>
 
-###### Default switch with label to left:
+###### Default Switch with label to left:
 
     <Switch label="This is a Switch" leftLabel/>
 
-###### Different sized switches:
+###### Different sized Switches:
 
     <div>
       <Switch small/>
@@ -20,7 +17,7 @@ Switch component allows to define a particular-styled checkbox.
       <Switch large/>
     </div>
 
-###### Multiple switches tied to same behavior (name prop):
+###### Multiple Switches tied to same behavior (name prop):
 
     <div>
       <Switch name="customFeature"/>
@@ -28,29 +25,29 @@ Switch component allows to define a particular-styled checkbox.
       <Switch name="customFeature"/>
     </div>
 
-###### Set other colors (hex, rgb, css-valid color name) or css attributes :
+###### Switch with custom colors and styles:
 
     <div>
       <Switch onColor="#00bbaa" style={{display:"inline-block"}}/>
       <Switch onColor="#f46542" style={{display:"inline-block"}}/>
     </div>
 
-###### Disabled or hidden switch:
+###### Disabled and hidden Switches:
 
     <div>
       <Switch disabled/>
       <Switch hidden/>
     </div>
 
-###### Custom onClick Method:
+###### Switch with onClick:
 
     function customSwitchClick() {
         console.info("onClick event!");
     }
 
-    <Switch onChange={customSwitchClick}/>
+    <Switch onClick={customSwitchClick}/>
 
-###### Execute method when onChange event occurs:
+###### Switch with onChange:
 
     function customSwitchChange() {
         console.info("onChange event!");

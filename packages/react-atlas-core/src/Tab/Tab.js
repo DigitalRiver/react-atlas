@@ -57,45 +57,53 @@ class Tab extends React.PureComponent {
 
 Tab.propTypes = {
   /**
-   * An Object, array, or string of CSS classes to apply to Tabs.
+   * Child components or elements to be displayed as the title on Tab.
+   */
+  "children": PropTypes.node,
+
+  /**
+   * An object, array, or string of CSS classes to apply to Tab.
    */
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
+
   /**
-   * Text or other elements to display as Tab title.
-   */
-  "children": PropTypes.node,
-  /**
-   * Indicates whether tab is selected or not.
-   */
-  "selected": PropTypes.bool,
-  /**
-   * Disable this tab which will make it not do anything when clicked.
+   * When true, Tab sill be disabled.
    */
   "disabled": PropTypes.bool,
+
   /**
-   * Will be automatically set when vertical prop is passed to Tabs component.
+   * The CSS class name for the icon that will be displayed on Tab.
    */
-  "vertical": PropTypes.bool,
+  "icon": PropTypes.string,
+
+  /**
+   * When true, Tab will be selected.
+   */
+  "selected": PropTypes.bool,
+
+  /**
+   * Function to be executed when a Tab is selected.
+   */
+  "setSelectedTab": PropTypes.func.isRequired,
+
   /**
    * Pass inline styling here.
    */
   "style": PropTypes.object,
+
   /**
    * Tab index.
    */
   "tabIndex": PropTypes.number.isRequired,
+
   /**
-   * Adds font-awesome icon to left of title
+   * When true, Tabs will display vertically.
    */
-  "icon": PropTypes.string,
-  /**
-   * Handler to be executed when a tab is selected (takes into account other tabs)
-   */
-  "setSelectedTab": PropTypes.func.isRequired
+  "vertical": PropTypes.bool
 };
 
 Tab.defaultProps = {

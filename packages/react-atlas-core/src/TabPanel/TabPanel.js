@@ -43,45 +43,38 @@ class TabPanel extends React.PureComponent {
 
 TabPanel.propTypes = {
     /**
-     * An Object, array, or string of CSS classes to apply to Tabs.
+     * Will be automatically set when bordered prop is passed to Tabs component.
+     */
+    "bordered": PropTypes.bool,
+
+    /**
+     * Text, components or elements that will be displayed as TabPanel content.
+     */
+    "children": PropTypes.node,
+
+    /**
+     * An object, array, or string of CSS classes to apply to TabPanel.
      */
     "className": PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object,
         PropTypes.array
     ]),
+
     /**
-     * Text or other elements (or components) to display as Tab content.
-     */
-    "children": PropTypes.node,
-    /**
-     * Indicates whether tab panel is selected or not.
+     * When true, TabPanel is selected.
      */
     "selected": PropTypes.bool,
+
     /**
-     * Will be automatically set when bordered prop is passed to Tabs component.
-     */
-    "bordered": PropTypes.bool,
-    /**
-     * Will be automatically set when vertical prop is passed to Tabs component.
-     */
-    "vertical": PropTypes.bool,
-    /** 
      * Pass inline styling here.
      */
     "style": PropTypes.object,
+
     /**
-     * Selected tab index (default 0 - first tab).
-     *
-     * @ignore
+     * Will be automatically set when vertical prop is passed to Tabs component.
      */
-    "selectedTab": PropTypes.number,
-    /**
-     * Handler to execute when a tab is selected, in Tabs component.
-     *
-     * @ignore
-     */
-    "setSelectedIndex": PropTypes.func
+    "vertical": PropTypes.bool
 };
 
 export default TabPanel;

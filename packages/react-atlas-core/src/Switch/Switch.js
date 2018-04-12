@@ -180,93 +180,108 @@ class Switch extends React.PureComponent {
 
 Switch.propTypes = {
   /**
-   * Text for checkbox label
-   * @examples 'Some Label'
+   * Defines the color that will be displayed for the inner button.
+   * @examples '<Switch buttonColor="#ffffff"/>'
    */
-  "label": PropTypes.string,
+  "buttonColor": PropTypes.string,
+
   /**
-   * Allows user to move the label to the left of the Switch instead of above it
+   * When true, Switch will be checked.
+   * @examples '<Switch checked={condition}/>'
    */
-  "leftLabel": PropTypes.bool,
-  /** An Object, array, or string of CSS classes to apply to Switch.*/
+  "checked": PropTypes.bool,
+
+  /** An object, array, or string of CSS classes to apply to Switch.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
+
   /**
-   * Determines if the switch input is disabled.
+   * When true, Switch will be disabled.
    * @examples '<Switch disabled={condition}/>'
    */
   "disabled": PropTypes.bool,
+
   /**
-   * Determines if the switch input is hidden.
+   * When true, Switch will be hidden.
    * @examples '<Switch hidden={condition}/>'
    */
   "hidden": PropTypes.bool,
+
   /**
-   * Determines if the switch input is checked.
-   * @examples '<Switch checked={condition}/>'
-   */
-  "checked": PropTypes.bool,
-  /**
-   * Define a name for the switch input.
-   * @examples '<Switch name="test"/>'
-   */
-  "name": PropTypes.string,
-  /**
-   * Defines an id for the switch input.
-   * @examples '<Input type="text" name="test"/>'
+   * Defines an id to be used by the Switch input.
    */
   "id": PropTypes.string,
+
   /**
-   * Sets color that will be displayed when the switch is checked.
-   * @examples '<Switch onColor="#ababab"/>'
+   * When true, Swtich will display inline.
    */
-  "onColor": PropTypes.string,
+  "inline": PropTypes.bool,
+
   /**
-   * Allows user to pass a callback for click events.
+   * When true, label will be displayed to the left of Switch.
    */
-  "onClick": PropTypes.func,
+  "leftLabel": PropTypes.bool,
+
   /**
-   * Sets color that will be displayed when the switch is unchecked.
-   * @examples '<Switch offColor="#d3d3d3"/>'
+   * Text that will be used for Switch label.
    */
-  "offColor": PropTypes.string,
+  "label": PropTypes.string,
+
   /**
-   * Sets color that will be displayed for the inner button.
-   * @examples '<Switch buttonColor="#ffffff"/>'
-   */
-  "buttonColor": PropTypes.string,
-  /**
-   * Defines a small sized switch element.
-   * @examples '<Switch small/>'
-   */
-  "small": PropTypes.bool,
-  /**
-   * Defines a medium sized switch element.
-   * @examples '<Switch medium/>'
-   */
-  "medium": PropTypes.bool,
-  /**
-   * Defines a large sized switch element.
+   * When true, Switch will be large size.
    * @examples '<Switch large/>'
    */
   "large": PropTypes.bool,
+
   /**
-   * Sets a handler function to be executed when onChange event occurs (at input element).
-   * @examples <Switch onChange={this.customOnChangeFunc}/>
+   * When true, Switch will be medium size.
+   * @examples '<Switch medium/>'
    */
-  "onChange": PropTypes.func,
+  "medium": PropTypes.bool,
+
   /**
-   * Sets a handler function to be executed before the onChange event occurs.
+   * Defines a name for the Switch input.
+   * @examples '<Switch name="test"/>'
+   */
+  "name": PropTypes.string,
+
+  /**
+   * Function that will be executed when onClick event occurs.
+   */
+  "onClick": PropTypes.func,
+
+  /**
+   * Defines color that will be displayed when the Switch is unchecked.
+   * @examples '<Switch offColor="#d3d3d3"/>'
+   */
+  "offColor": PropTypes.string,
+
+  /**
+   * Function that will be executed before the onClick event occurs.
    * @examples <Switch onBeforeChange={this.customOnBeforeChangeFunc}/>
    */
   "onBeforeChange": PropTypes.func,
+
   /**
-   * Sets the Switch as an inline-block element
+   * Function that will be executed when onClick event occurs.
+   * @examples <Switch onChange={this.customOnChangeFunc}/>
    */
-  "inline": PropTypes.bool,
+  "onChange": PropTypes.func,
+
+  /**
+   * Defines the color that will be displayed when the Switch is checked.
+   * @examples '<Switch onColor="#ababab"/>'
+   */
+  "onColor": PropTypes.string,
+
+  /**
+   * When true, Switch will be small size.
+   * @examples '<Switch small/>'
+   */
+  "small": PropTypes.bool,
 
   /**
    * Pass inline styling here.

@@ -1,4 +1,4 @@
-###### Basic tabs:
+###### Basic Tabs:
 
     <Tabs>
         <TabList>
@@ -31,7 +31,7 @@
         </TabPanel>
     </Tabs>
 
-###### Tabs with borders around content:
+###### Tabs with borders around TabPanels:
 
     <Tabs bordered>
         <TabList>
@@ -48,7 +48,7 @@
         </TabPanel>
     </Tabs>
 
-###### Manually set selected tab:
+###### Manually set selected Tab:
 
     <Tabs selectedIndex={1}>
         <TabList>
@@ -65,7 +65,7 @@
         </TabPanel>
     </Tabs>
 
-###### Disabled tabs:
+###### Disabled Tabs:
 
     <Tabs>
         <TabList>
@@ -131,7 +131,7 @@
         </TabPanel>
     </Tabs>
 
-###### onSelect - execute function on tab select:
+###### onSelect - execute function on Tab select:
     <Tabs onSelect={(i, evt) => console.log("React-Atlas Tabs: onSelect - index", i, "- event:", evt)}>
         <TabList>
             <Tab>Title 1</Tab>

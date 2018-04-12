@@ -1,11 +1,11 @@
-Radio Group
+RadioGroup
 
     <RadioGroup inline name="test" title="Radio Group">
 		<Radio label="Option 1" value="first"/>
 		<Radio label="Option 2" value="second"/>
 	</RadioGroup>
 
-Inline Radio Group
+Inline RadioGroup
 
 	<div>    
 	    <RadioGroup title="Radio Group One" inline name="test">
@@ -18,7 +18,7 @@ Inline Radio Group
 		</RadioGroup>
 	</div>
 
-Radio Group with Inline Children
+RadioGroup with inline Children
 
     <RadioGroup title="Radio Group" inlineChildren name="test">
 		<Radio label="Option 1" value="first"/>

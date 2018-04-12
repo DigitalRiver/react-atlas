@@ -56,40 +56,40 @@ TabList.propTypes = {
      * @ignore
      */
     "bordered": PropTypes.bool,
+
     /**
-     * An Object, array, or string of CSS classes to apply to Tabs.
+     * An object, array, or string of CSS classes to apply to TabPanel.
      */
     "className": PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object,
         PropTypes.array
     ]),
+
     /**
-     * All the tabs.
+     * Tab components that will be displayed in TabList.
      */
     "children": PropTypes.node.isRequired,
-    /** 
-     * Pass inline styling here.
-     */
-    "style": PropTypes.object,
-    /**
-     * Will be automatically set when vertical prop is passed to Tabs component.
-     */
-    "vertical": PropTypes.bool,
+
     /**
      * Selected tab index (default 0 - first tab).
      */
     "selectedTab": PropTypes.number,
+
     /**
      * Handler to execute when a tab is selected, in Tabs component.
      */
     "setSelectedIndex": PropTypes.func,
-    /**
-     * Indicates whether tab panel is selected or not.
-     *
-     * @ignore
+
+    /** 
+     * Pass inline styling here.
      */
-    "selected": PropTypes.bool
+    "style": PropTypes.object,
+
+    /**
+     * Will be automatically set when vertical prop is passed to Tabs component.
+     */
+    "vertical": PropTypes.bool
 };
 
 export default TabList;

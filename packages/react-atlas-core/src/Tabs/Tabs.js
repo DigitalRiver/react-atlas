@@ -73,35 +73,41 @@ class Tabs extends React.PureComponent {
 
 Tabs.propTypes = {
   /**
-   * An Object, array, or string of CSS classes to apply to Tabs.
+   * When true, a border will display around TabPanels.
+   */
+  "bordered": PropTypes.bool,
+
+  /**
+   * TabList and TabPanel components.
+   */
+  "children": PropTypes.node.isRequired,
+
+  /**
+   * An object, array, or string of CSS classes to apply to Tabs.
    */
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
+
   /**
-   * TabList and TabPanel components.
+   * Function that will be executed when a Tab is selected.
    */
-  "children": PropTypes.node.isRequired,
+  "onSelect": PropTypes.func,
+
+  /**
+   * The index of the Tab that will be selected. This is a zero-based index.
+   */
+  "selectedIndex": PropTypes.number,
+
   /**
    * Pass inline styling here.
    */
   "style": PropTypes.object,
+
   /**
-   * Set the currently selected tab. This is a zero-based index.
-   */
-  "selectedIndex": PropTypes.number,
-  /**
-   * This event handler is called every time a tab is about to change.
-   */
-  "onSelect": PropTypes.func,
-  /**
-   * Adds a border around the tab panels.
-   */
-  "bordered": PropTypes.bool,
-  /**
-   * Display the tabs vertically (always bordered)
+   * When true, Tabs will display vertically.
    */
   "vertical": PropTypes.bool
 };
