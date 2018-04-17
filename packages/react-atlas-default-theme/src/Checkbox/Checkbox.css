@@ -76,7 +76,6 @@
   cursor: pointer;
   white-space: nowrap;
   padding-right:5px;
-  margin-left: 12px;
 }
 
 /* label text */
@@ -117,4 +116,9 @@
   float:right;
   padding-left: 3px;
   position: relative;
+}
+
+.opacity {
+  /*this needs to stay here to avoid display issues with those modules in IE*/
+  opacity: 0;
 }

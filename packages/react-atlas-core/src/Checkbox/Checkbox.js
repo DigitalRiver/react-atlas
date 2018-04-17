@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { InputCore } from "../Input";
+import { utils } from "../utils";
 import messages from "../utils/messages.js";
 
 /**
@@ -27,72 +27,68 @@ class Checkbox extends React.PureComponent {
   }
   // Handles new checkbox clicks and sets value and checked status of hidden input
   _clickHandler = event => {
-    if (!this.props.disabled) {
-      event.persist();
-      if (typeof this.props.onBeforeChange !== "undefined") {
-        let result = this.props.onBeforeChange(this.state.checked);
-        if (result === false) {
-          return;
-        }
+    if (this.props.disabled) {
+      return false;
+    }
+    event.persist();
+    if (typeof this.props.onBeforeChange !== "undefined") {
+      let result = this.props.onBeforeChange(this.state.checked);
+      if (result === false) {
+        return;
       }
-
-      this.setState({ "checked": !this.state.checked }, function() {
-        this._validationHandler(this.props.errorCallback);
-
+    }
+    const validationObject = this._validationHandler(this.props.validator);
+    this.setState(
+      {
+        "checked": !this.state.checked,
+        "valid": validationObject.valid,
+        "errorMessage": validationObject.message
+      },
+      function() {
+        const data = {
+          "value": this.props.value,
+          "valid": this.state.valid,
+          "checked": this.state.checked
+        };
         /* Check if onClick has been passed, if so call it. */
         if (typeof this.props.onClick !== "undefined") {
-          this.props.onClick(
-            this.props.value,
-            event,
-            this.state.valid,
-            this.state.checked,
-            this.props.disabled
-          );
+          this.props.onClick(event, data);
         }
-
         /* Check if onChange has been passed, if so call it. */
         if (typeof this.props.onChange !== "undefined") {
-          this.props.onChange(
-            this.props.value,
-            event,
-            this.state.valid,
-            this.state.checked,
-            this.props.disabled
-          );
+          this.props.onChange(event, data);
         }
-      });
-    }
+      }
+    );
   };
 
   _validationHandler = callback => {
     // If custom validation callback is provided set validationObject with response, otherwise check if required
     const validationObject = callback
-      ? callback(event, this.state.checked)
+      ? callback(event, !this.state.checked)
       : {
           "valid":
-            this.props.required && this.state.checked || !this.props.required,
+            this.props.required && !this.state.checked ||
+            !this.props.required,
           "message": this.props.requiredMessage || messages.requiredMessage
         };
-    this.setState({
-      "valid": validationObject.valid,
-      "errorMessage": validationObject.message
-    });
+    return validationObject;
   };
 
   render() {
     const {
-      label,
-      title,
       className,
-      id,
-      name,
-      groupError,
-      inline,
-      labelPosition,
       disabled,
+      groupError,
       hidden,
-      style,
+      id,
+      inline,
+      label,
+      labelPosition,
       required,
+      requiredText,
+      style,
+      title,
       ...others
     } = this.props;
     // TODO: Figure out why, if moved to constructor, the following variables cause issues on click
@@ -123,7 +119,20 @@ class Checkbox extends React.PureComponent {
       "focus": this.state.focus
     });
 
-    const forId = id !== "" && name !== "" ? id : "";
+    // Gets the appropriate jsx to render a "required" identifier next to the Checkbox.
+    let reqText = null;
+    if (required) {
+      reqText =
+        typeof requiredText !== "undefined"
+          ? utils.getRequiredText(requiredText)
+          : utils.getRequiredText("*");
+    }
+
+    // Gets the appropriate jsx to render an error message below the Checkbox.
+    const errorMessage =
+      error && !groupError
+        ? utils.getErrorMessage(this.state.errorMessage)
+        : null;
 
     return (
       <div
@@ -134,12 +143,12 @@ class Checkbox extends React.PureComponent {
       >
         <div styleName={disabledClass}>
           {label && 
-            <label styleName={labelStyle} title={title_label} htmlFor={forId}>
+            <label styleName={labelStyle} title={title_label} htmlFor={id}>
               {label}
             </label>
           }
           <div styleName={checkboxDisplay}>
-            <InputCore
+            <input
               {...others}
               label={label}
               type="checkbox"
@@ -148,23 +157,15 @@ class Checkbox extends React.PureComponent {
               required={required}
               hidden={hidden}
               id={id}
-              name={name}
-              /* Hardcode classes for InputCore because classes on styleName will not
-               * be evaluated because we are using InputCore rather than Input.  */
-              className={
-                "ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
-              }
+              styleName={cx("opacity")}
             />
             <div styleName={checkboxClass}>
               {this.state.checked && <div styleName={"checkmark"} />}
             </div>
           </div>
-          {required && <span styleName={"error_text"}>*</span>}
+          {reqText}
         </div>
-        {error &&
-          !groupError && 
-            <div styleName={"error_message"}>{this.state.errorMessage}</div>
-          }
+        {errorMessage}
       </div>
     );
   }
@@ -188,11 +189,6 @@ Checkbox.propTypes = {
    * @examples <Checkbox disabled />, <Checkbox disabled={true} />
    */
   "disabled": PropTypes.bool,
-
-  /**
-   * Used to pass a function for custom validation. Should return either true or false.
-   */
-  "errorCallback": PropTypes.func,
 
   /**
    * For use when an error state has been passed down from the parent CheckboxGroup.
@@ -224,11 +220,6 @@ Checkbox.propTypes = {
   "labelPosition": PropTypes.string,
 
   /**
-   * Will set the html "name" property on the input element.
-   */
-  "name": PropTypes.string,
-
-  /**
    * Function that will be executed before changing the "checked" state of the Checkbox.
    */
   "onBeforeChange": PropTypes.func,
@@ -252,6 +243,11 @@ Checkbox.propTypes = {
    * A custom message that will be displayed if required property is set to true and user does not check Checkbox.
    */
   "requiredMessage": PropTypes.string,
+  /**
+   * Sets the text to show next to the label for a required TextField. If omitted will default to *.
+   * @examples '<TextField required requiredText="required"/>'
+   */
+  "requiredText": PropTypes.string,
 
   /**
    * Pass inline styles here.
@@ -263,6 +259,11 @@ Checkbox.propTypes = {
    * @examples 'Some Title'
    */
   "title": PropTypes.string,
+
+  /**
+   * Used to pass a function for custom validation. Should return either true or false.
+   */
+  "validator": PropTypes.func,
 
   /**
    * The value of the Checkbox.
