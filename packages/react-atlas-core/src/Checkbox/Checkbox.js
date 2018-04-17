@@ -91,7 +91,6 @@ class Checkbox extends React.PureComponent {
       title,
       ...others
     } = this.props;
-    // TODO: Figure out why, if moved to constructor, the following variables cause issues on click
     const inlineCheckbox = cx({
       "inline_block": inline,
       "checkbox_padding": !inline,
