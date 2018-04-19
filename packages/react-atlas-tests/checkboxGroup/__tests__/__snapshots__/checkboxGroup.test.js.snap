@@ -29,18 +29,14 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
       >
         <input
           checked={false}
-          className="ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
+          disabled={false}
+          hidden={undefined}
           id={undefined}
           label={undefined}
           name={undefined}
-          onBlur={[Function]}
           onChange={[Function]}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onPaste={[Function]}
           required={false}
-          style={undefined}
+          styleName="opacity"
           type="checkbox"
         />
         <div
@@ -63,18 +59,14 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
       >
         <input
           checked={false}
-          className="ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
+          disabled={false}
+          hidden={undefined}
           id={undefined}
           label={undefined}
           name={undefined}
-          onBlur={[Function]}
           onChange={[Function]}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onPaste={[Function]}
           required={false}
-          style={undefined}
+          styleName="opacity"
           type="checkbox"
         />
         <div
@@ -97,18 +89,14 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
       >
         <input
           checked={false}
-          className="ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
+          disabled={false}
+          hidden={undefined}
           id={undefined}
           label={undefined}
           name={undefined}
-          onBlur={[Function]}
           onChange={[Function]}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onPaste={[Function]}
           required={false}
-          style={undefined}
+          styleName="opacity"
           type="checkbox"
         />
         <div
@@ -131,18 +119,14 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
       >
         <input
           checked={false}
-          className="ra_Input__checkbox ra_styles__marg-b-1 ra_Input__max ra_Input__opacity"
+          disabled={false}
+          hidden={undefined}
           id={undefined}
           label={undefined}
           name={undefined}
-          onBlur={[Function]}
           onChange={[Function]}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onPaste={[Function]}
           required={false}
-          style={undefined}
+          styleName="opacity"
           type="checkbox"
         />
         <div
