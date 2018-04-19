@@ -52,11 +52,11 @@ class Checkbox extends React.PureComponent {
         };
         /* Check if onClick has been passed, if so call it. */
         if (typeof this.props.onClick !== "undefined") {
-          this.props.onClick(event, data);
+          this.props.onClick(data);
         }
         /* Check if onChange has been passed, if so call it. */
         if (typeof this.props.onChange !== "undefined") {
-          this.props.onChange(event, data);
+          this.props.onChange(data);
         }
       }
     );
@@ -119,13 +119,10 @@ class Checkbox extends React.PureComponent {
     });
 
     // Gets the appropriate jsx to render a "required" identifier next to the Checkbox.
-    let reqText = null;
-    if (required) {
-      reqText =
+    const reqText =
         typeof requiredText !== "undefined"
           ? utils.getRequiredText(requiredText)
           : utils.getRequiredText("*");
-    }
 
     // Gets the appropriate jsx to render an error message below the Checkbox.
     const errorMessage =
@@ -162,7 +159,9 @@ class Checkbox extends React.PureComponent {
               {this.state.checked && <div styleName={"checkmark"} />}
             </div>
           </div>
-          {reqText}
+          {required &&
+            reqText
+          }
         </div>
         {errorMessage}
       </div>

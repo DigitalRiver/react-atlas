@@ -23,8 +23,7 @@ class CheckboxGroup extends React.PureComponent {
   }
 
   // When child <Checkbox /> component changes state, update "totalChecked" value and verify against min or max props value
-  handleChange = (event, data) => {
-    event.persist();
+  handleChange = (data) => {
     const newChecked = data.checked
       ? this.state.totalChecked + 1
       : this.state.totalChecked - 1;
@@ -43,7 +42,7 @@ class CheckboxGroup extends React.PureComponent {
     }
 
     if (typeof this.props.onChange !== "undefined") {
-      this.props.onChange(event, data);
+      this.props.onChange(data);
     }
   };
 
