@@ -1,13 +1,13 @@
 The Radio component is a controlled component that must be used within the RadioGroup component. For more examples view the RadioGroup examples.
 
-###### Default radio:
+###### Default Radio:
 
     <RadioGroup name="radioTest">
 		<Radio label="Option 1" value="first"/>
 		<Radio label="Option 2" value="second"/>
 	</RadioGroup>
 
-###### Disabled radio:
+###### Disabled Radio:
 
     <RadioGroup name="disabledTest">
 		<Radio label="Option 1" value="first"/>
@@ -15,7 +15,7 @@ The Radio component is a controlled component that must be used within the Radio
 		<Radio label="Option 3" value="third"/>
 	</RadioGroup>
 
-###### Hidden radio:
+###### Hidden Radio:
 
     <RadioGroup name="hiddenTest">
 		<Radio label="Option 1" value="first"/>

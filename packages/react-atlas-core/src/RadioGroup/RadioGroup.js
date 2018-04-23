@@ -68,33 +68,26 @@ class RadioGroup extends React.PureComponent {
 
 RadioGroup.propTypes = {
   /**
-   * Anything that can be in a radio group. Almost always radio components alone.
+   * Child elements, typically Radio components.
    * @examples '<RadioGroup><Radio/><Radio/></RadioGroup>'
    */
   "children": PropTypes.node.isRequired,
-  /** An Object, array, or string of CSS classes to apply to RadioGroup.*/
+
+  /** An object, array, or string of CSS classes to apply to RadioGroup.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
+
   /**
-   * Form name for the element, this will set all Radio children the same form name (so they can't be selected at the same time).
-   * @examples '<RadioGroup name="test"></RadioGroup>'
-   */
-  "name": PropTypes.string,
-  /**
-   * Define the element title.
-   * @examples '<RadioGroup title="Test"></RadioGroup>'
-   */
-  "title": PropTypes.string,
-  /**
-   * Defines if the radio group should display as an inline element.
+   * When true, RadioGroup will display inline.
    * @examples '<RadioGroup inline></RadioGroup>'
    */
   "inline": PropTypes.bool,
+
   /**
-   * Defines if the radio group should display child Radio components inline.
+   * When true, children will display inline.
    * @examples '<RadioGroup inlineChildren></RadioGroup>'
    */
   "inlineChildren": PropTypes.bool,
@@ -105,13 +98,26 @@ RadioGroup.propTypes = {
   "onChange": PropTypes.func,
 
   /**
+   * Form name for the element, this will set all Radio children the same form name (so they can't be selected at the same time).
+   * @examples '<RadioGroup name="test"></RadioGroup>'
+   */
+  "name": PropTypes.string,
+
+  /**
    * Pass inline styling here.
    */
   "style": PropTypes.object,
+  
   /**
-   * Programatically set the selected/checked Radio component in the RadioGroup.
+   * Will define the selected/checked Radio component in the RadioGroup.
    */
-  "selectedIndex": PropTypes.number
+  "selectedIndex": PropTypes.number,
+  
+  /**
+   * Defines the element title.
+   * @examples '<RadioGroup title="Test"></RadioGroup>'
+   */
+  "title": PropTypes.string
 };
 
 RadioGroup.defaultProps = {

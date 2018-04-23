@@ -25,7 +25,7 @@ Inline RadioGroup:
 		</RadioGroup>
 	</div>
 
-RadioGroup with inline children:
+RadioGroup with inline Children:
 
     <RadioGroup title="Radio Group" inlineChildren name="inlineChildrenRadioGroupTest">
 		<Radio label="Option 1" value="first"/>

@@ -114,29 +114,27 @@ class Radio extends React.PureComponent {
 }
 
 Radio.propTypes = {
-  /** An Object, array, or string of CSS classes to apply to Radio.*/
+  /**
+   * When true, Radio will be checked.
+   * @examples '<Radio checked/>'
+   */
+  "checked": PropTypes.bool,
+
+  /** An object, array, or string of CSS classes to apply to Radio.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
+
   /**
-   * Define the element title.
-   * @examples '<Radio title="Test"/>'
-   */
-  "title": PropTypes.string,
-  /**
-   * Determines if the radio button is checked.
-   * @examples '<Radio checked/>'
-   */
-  "checked": PropTypes.bool,
-  /**
-   * Determines if the radio button is disabled.
+   * When true, Radio will be disabled.
    * @examples '<Radio disabled/>'
    */
   "disabled": PropTypes.bool,
+
   /**
-   * Determines if the radio button is hidden.
+   * When true, Radio will be hidden.
    * @examples '<Radio hidden/>'
    */
   "hidden": PropTypes.bool,
@@ -145,51 +143,66 @@ Radio.propTypes = {
   /** Represents the index of the Radio within the parent RadioGroup. */
   "index": PropTypes.number,
   /**
-   * Determines if the radio button is displayed as an inline element.
+   * When true, Radio will display inline.
    * @examples '<Radio inline/>'
    */
   "inline": PropTypes.bool,
+
   /**
-   * Define a label for the radio button.
+   * Function that will be used as a callback to send to RadioGroup component.
+   * @examples '<Radio groupSetChecked={...}/>'
+   */
+  "groupSetChecked": PropTypes.func,
+
+  /**
+   * Defines the text that will be displayed for Radio label.
    * @examples '<Radio label="test"/>'
    */
   "label": PropTypes.string,
+
   /**
    * Defines the label position.
    * @examples '<Radio labelPosition="top"/>'
    */
   "labelPosition": PropTypes.string,
+
   /**
-   * Define a name for the radio button. Not necessary if using radio group component as wrapper.
+   * Define a name for the Radio. Not necessary if using RadioGroup component as wrapper.
    * @examples '<Radio name="test"/>'
    */
   "name": PropTypes.string,
+
   /**
-   * Sets a handler function to be executed when onChange event occurs.
-   * @examples '<Radio onChange={onChangeHandler}/>'
-   */
-  "onChange": PropTypes.func,
-  /**
-   * Sets a handler function to be executed when onClick event occurs.
-   * @examples '<Radio onClick={onClickHandler}/>'
-   */
-  "onClick": PropTypes.func,
-  /**
-   * Sets a handler function to be executed before onChange event occurs.
+   * Function that will be executed before onChange event occurs.
    * @examples '<Radio onBeforeChange={onBeforeChangeHandler}/>'
    */
   "onBeforeChange": PropTypes.func,
+
   /**
-   * Inner function to be used as a callback to send to RadioGroup component.
-   * @examples '<Radio groupSetChecked={...}/>'
+   * Function that will be executed when onChange event occurs.
+   * @examples '<Radio onChange={onChangeHandler}/>'
    */
-  "groupSetChecked": PropTypes.func,
+  "onChange": PropTypes.func,
+
+  /**
+   * Function that will be executed when onClick event occurs.
+   * @examples '<Radio onClick={onClickHandler}/>'
+   */
+  "onClick": PropTypes.func,
+
   /**
    * Pass inline styling here.
    */
   "style": PropTypes.object,
+
   /**
-   * Define a value for the radio button.
+   * Defines the title attribute.
+   * @examples '<Radio title="Test"/>'
+   */
+  "title": PropTypes.string,
+
+  /**
+   * Defines a value for the radio button.
    * @examples '<Radio value="100"/>'
    */
   "value": PropTypes.any
