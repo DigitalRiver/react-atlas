@@ -1,18 +1,18 @@
-###### Default radio:
+###### Default Radio:
 
     <RadioGroup name="test">
 		<Radio label="Option 1" value="first"/>
 		<Radio label="Option 2" value="second"/>
 	</RadioGroup>
 
-###### Check radio by default:
+###### Check Radio by default:
 
     <RadioGroup name="test">
 		<Radio label="Option 1" value="first"/>
 		<Radio label="Option 2" value="second" defaultChecked/>
 	</RadioGroup>
 
-###### Disabled radio:
+###### Disabled Radio:
 
     <RadioGroup name="test">
 		<Radio label="Option 1" value="first"/>
@@ -20,7 +20,7 @@
 		<Radio label="Option 3" value="third"/>
 	</RadioGroup>
 
-###### Hidden radio:
+###### Hidden Radio:
 
     <RadioGroup name="test">
 		<Radio label="Option 1" value="first"/>
