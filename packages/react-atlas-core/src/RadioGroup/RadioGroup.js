@@ -7,29 +7,23 @@ class RadioGroup extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      "checkedRadio": this.props.selectedValue
+      "checkedRadio": this.props.selectedIndex || 0
     };
   }
 
-  componentWillMount() {
-    React.Children.map(this.props.children, (child, index) => {
-      if (
-        child.props.defaultChecked ||
-        !this.state.checkedRadio && index === 0
-      ) {
-        this.setState({ "checkedRadio": child.props.value });
-      }
-    });
-  }
-
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedValue) {
-      this.setState({ "checkedRadio": nextProps.selectedValue });
+    if (nextProps.selectedIndex) {
+      this.setState({ "checkedRadio": nextProps.selectedIndex });
     }
   }
 
-  groupSetChecked = value => {
-    this.setState({ "checkedRadio": value });
+  groupSetChecked = index => {
+    if (index !== this.state.checkedRadio) {
+      if (this.props.onChange) {
+        this.props.onChange(index);
+      }
+      this.setState({ "checkedRadio": index });
+    }
   };
 
   render() {
@@ -48,12 +42,13 @@ class RadioGroup extends React.PureComponent {
       "inline": inline
     });
 
-    const radioButtons = React.Children.map(children, child => {
+    const radioButtons = React.Children.map(children, (child, index) => {
       child = cloneElement(child, {
         "inline": inlineChildren,
         "name": name,
         "groupSetChecked": this.groupSetChecked,
-        "checked": this.state.checkedRadio === child.props.value
+        "checked": this.state.checkedRadio === index,
+        "index": index
       });
       return child;
     });
@@ -103,6 +98,11 @@ RadioGroup.propTypes = {
    * @examples '<RadioGroup inlineChildren></RadioGroup>'
    */
   "inlineChildren": PropTypes.bool,
+  /**
+   * Sets a handler function to be executed when the selected value of the RadioGroup changes.
+   * @examples '<RadioGroup onChange={onChangeHandler}>'
+   */
+  "onChange": PropTypes.func,
 
   /**
    * Pass inline styling here.
@@ -111,11 +111,11 @@ RadioGroup.propTypes = {
   /**
    * Programatically set the selected/checked Radio component in the RadioGroup.
    */
-  "selectedValue": PropTypes.string
+  "selectedIndex": PropTypes.number
 };
 
 RadioGroup.defaultProps = {
-  "selectedValue": null
+  "selectedIndex": null
 };
 
 export default RadioGroup;

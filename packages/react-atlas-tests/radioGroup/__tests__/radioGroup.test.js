@@ -23,14 +23,6 @@ describe("Test RadioGroup component render", () => {
   });
 });
 
-function _findRadio(node, label) {
-  return (
-    node.name() === "input" &&
-    node.props().type === "radio" &&
-    node.props().label === label
-  );
-}
-
 describe("Testing radio component", () => {
   it("RadioGroup - Basic test", function() {
     mount(
@@ -52,13 +44,19 @@ describe("Testing radio component", () => {
         <RadioCore label="Option 6" value="sixth" />
       </RadioGroupCore>
     );
-    expect(result.state().checkedRadio).toEqual("first");
+    expect(result.state().checkedRadio).toEqual(0);
 
-    result.findWhere(n => _findRadio(n, "Option 4")).simulate("click");
-    expect(result.state().checkedRadio).toEqual("fourth");
+    result
+      .find(RadioCore)
+      .last()
+      .simulate("click");
+    expect(result.state().checkedRadio).toEqual(5);
 
-    result.findWhere(n => _findRadio(n, "Option 2")).simulate("click");
-    expect(result.state().checkedRadio).toEqual("second");
+    result
+      .find(RadioCore)
+      .first()
+      .simulate("click");
+    expect(result.state().checkedRadio).toEqual(0);
   });
 
   it("RadioGroup - Change props ", function() {
@@ -74,10 +72,13 @@ describe("Testing radio component", () => {
     );
     result.setProps({ "name": "Name" });
 
-    result.findWhere(n => _findRadio(n, "Option 4")).simulate("click");
-    expect(result.state().checkedRadio).toEqual("fourth");
+    result
+      .find(RadioCore)
+      .last()
+      .simulate("click");
+    expect(result.state().checkedRadio).toEqual(5);
 
-    result.setProps({ "selectedValue": "second" });
-    expect(result.state().checkedRadio).toEqual("second");
+    result.setProps({ "selectedIndex": 1 });
+    expect(result.state().checkedRadio).toEqual(1);
   });
 });
