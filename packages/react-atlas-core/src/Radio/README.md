@@ -1,20 +1,15 @@
+The Radio component is a controlled component that must be used within the RadioGroup component. For more examples view the RadioGroup examples.
+
 ###### Default Radio:
 
-    <RadioGroup name="test">
+    <RadioGroup name="radioTest">
 		<Radio label="Option 1" value="first"/>
 		<Radio label="Option 2" value="second"/>
 	</RadioGroup>
 
-###### Check Radio by default:
-
-    <RadioGroup name="test">
-		<Radio label="Option 1" value="first"/>
-		<Radio label="Option 2" value="second" defaultChecked/>
-	</RadioGroup>
-
 ###### Disabled Radio:
 
-    <RadioGroup name="test">
+    <RadioGroup name="disabledTest">
 		<Radio label="Option 1" value="first"/>
 		<Radio label="Option 2" value="second" disabled/>
 		<Radio label="Option 3" value="third"/>
@@ -22,7 +17,7 @@
 
 ###### Hidden Radio:
 
-    <RadioGroup name="test">
+    <RadioGroup name="hiddenTest">
 		<Radio label="Option 1" value="first"/>
 		<Radio label="Option 2" value="second" hidden/>
 		<Radio label="Option 3" value="third"/>
@@ -30,24 +25,31 @@
 
 ###### Radio with left-positioned label:
 
-    <RadioGroup name="test">
+    <RadioGroup name="leftLabelTest">
 		<Radio label="Option 1" labelPosition="left" value="first"/>
 		<Radio label="Option 2" value="second"/>
 	</RadioGroup>
 
 ###### Custom onClick method:
 
-    <RadioGroup name="test">
-		<Radio label="Custom onClick" value="first" onClick={ () => { alert('clicked!') } }/>
+    <RadioGroup name="onClickTest">
+		<Radio label="Custom onClick" value="first" onClick={ (data) => { console.log(data.index, data.value) } }/>
+		<Radio label="Normal Radio" value="second"/>
+	</RadioGroup>
+
+###### Custom onChange method:
+
+    <RadioGroup name="onChangeTest">
+		<Radio label="Custom onChange" value="first" onChange={ (data) => { console.log(data.checked, data.value) } }/>
 		<Radio label="Normal Radio" value="second"/>
 	</RadioGroup>
 
 ###### Custom function before change:
 
-    <RadioGroup name="test">
+    <RadioGroup name="onBeforeChangeTest">
 		<Radio 
 			label="Custom onBeforeChange"
 			value="first" 
-			onBeforeChange={ function(value){ if (!value) { let accept = confirm("Do you want to check this?"); return accept; } return true; } }/>
+			onBeforeChange={ function(data){ if (!data.checked) { let accept = confirm("Do you want to check this?"); return accept; } return true; } }/>
 		<Radio label="Normal Radio" value="second"/>
 	</RadioGroup>

@@ -25,6 +25,10 @@
 	composes: silver-to-white-gradient from '../styles.css';
 	composes: default-border from '../styles.css';
 	composes: circle from '../styles.css';
+  background: -webkit-linear-gradient(#fff, #e6e6e6); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#fff, #e6e6e6); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#fff, #e6e6e6); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#fff, #e6e6e6); /* Standard syntax */
 }
 
 .disabled {
@@ -55,14 +59,6 @@
 
 .error {
   border: solid 1px #BD0A33;
-}
-
-.not_checked {
-  composes: radio;
-  background: -webkit-linear-gradient(#fff, #e6e6e6); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#fff, #e6e6e6); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#fff, #e6e6e6); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#fff, #e6e6e6); /* Standard syntax */
 }
 
 .label {
@@ -96,4 +92,10 @@
   float:right;
   padding-left: 3px;
   position: relative;
+}
+
+
+.input_style {
+  opacity: 0; /*this needs to stay here to avoid display issues in IE*/
+  width: 100%;
 }

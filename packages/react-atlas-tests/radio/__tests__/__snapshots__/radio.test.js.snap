@@ -11,6 +11,7 @@ exports[`Test Radio component render Render correctly 1`] = `
   >
     <label
       className="class"
+      htmlFor={undefined}
       styleName="label"
       title="TITLE"
     >
@@ -19,30 +20,19 @@ exports[`Test Radio component render Render correctly 1`] = `
     <div
       styleName="float_left"
     >
+      <input
+        checked={undefined}
+        defaultChecked={true}
+        disabled={false}
+        hidden={false}
+        id={undefined}
+        name="Mr radio"
+        styleName="input_style"
+        type="radio"
+        value="checkedRadio"
+      />
       <div
-        styleName="container"
-      >
-        <input
-          checked={undefined}
-          className="ra_Input__max ra_Input__opacity"
-          defaultChecked={true}
-          inline={true}
-          label="Checked Radio"
-          name="Mr radio"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onPaste={[Function]}
-          styleName=""
-          title="TITLE"
-          type="radio"
-          value="checkedRadio"
-        />
-      </div>
-      <div
-        styleName="not_checked"
+        styleName="radio"
       />
     </div>
   </div>
