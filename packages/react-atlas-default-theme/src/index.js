@@ -19,6 +19,8 @@ export { ListStyle } from "./List";
 export { ListGroupStyle } from "./ListGroup";
 export { ListItemStyle } from "./ListItem";
 export { ModalStyle } from "./Modal";
+export { NavStyle } from "./Nav";
+export { NavItemStyle } from "./NavItem";
 export { OverlayStyle } from "./Overlay";
 export { PanelStyle } from "./Panel";
 export { PortalStyle } from "./Portal";

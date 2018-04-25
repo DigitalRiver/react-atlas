@@ -19,6 +19,8 @@ export { ListCore } from "./List";
 export { ListGroupCore } from "./ListGroup";
 export { ListItemCore } from "./ListItem";
 export { ModalCore } from "./Modal";
+export { NavCore } from "./Nav";
+export { NavItemCore } from "./NavItem";
 export { PanelCore } from "./Panel";
 export { ProgressBarCore } from "./ProgressBar";
 export { RadioCore } from "./Radio";
