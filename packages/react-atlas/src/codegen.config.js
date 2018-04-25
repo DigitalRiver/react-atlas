@@ -169,6 +169,8 @@ let components = [
   "listGroup",
   "listItem",
   "modal",
+  "nav",
+  "navItem",
   "panel",
   "progressBar",
   "radio",

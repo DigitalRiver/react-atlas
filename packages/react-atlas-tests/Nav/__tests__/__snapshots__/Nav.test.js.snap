@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Nav component render Render correctly 1`] = `
+<ul
+  className={undefined}
+  style={undefined}
+  styleName="nav"
+>
+  <li
+    className=""
+    role="presentation"
+    style={undefined}
+    styleName="navItem"
+  >
+    <button
+      className=""
+      href={undefined}
+      id={undefined}
+      name={undefined}
+      onClick={[Function]}
+      style={undefined}
+      styleName="button uppercase default_btn default_btn_hover"
+      tabIndex={0}
+      type="button"
+    >
+      HOME
+      <i
+        styleName=""
+      />
+    </button>
+  </li>
+  <li
+    className=""
+    role="presentation"
+    style={undefined}
+    styleName="navItem"
+  >
+    <button
+      className=""
+      href={undefined}
+      id={undefined}
+      name={undefined}
+      onClick={[Function]}
+      style={undefined}
+      styleName="button uppercase default_btn default_btn_hover"
+      tabIndex={0}
+      type="button"
+    >
+      Catalog
+      <i
+        styleName=""
+      />
+    </button>
+  </li>
+  <li
+    className=""
+    role="presentation"
+    style={undefined}
+    styleName="navItem"
+  >
+    <button
+      className=""
+      href={undefined}
+      id={undefined}
+      name={undefined}
+      onClick={[Function]}
+      style={undefined}
+      styleName="button uppercase default_btn default_btn_hover"
+      tabIndex={0}
+      type="button"
+    >
+      Customer Service
+      <i
+        styleName=""
+      />
+    </button>
+  </li>
+  <li
+    className=""
+    role="presentation"
+    style={undefined}
+    styleName="navItem"
+  >
+    <button
+      className=""
+      href={undefined}
+      id={undefined}
+      name={undefined}
+      onClick={[Function]}
+      style={undefined}
+      styleName="button uppercase default_btn default_btn_hover"
+      tabIndex={0}
+      type="button"
+    >
+      Administration
+      <i
+        styleName=""
+      />
+    </button>
+  </li>
+  <li
+    className=""
+    role="presentation"
+    style={undefined}
+    styleName="navItem"
+  >
+    <button
+      className=""
+      href={undefined}
+      id={undefined}
+      name={undefined}
+      onClick={[Function]}
+      style={undefined}
+      styleName="button uppercase default_btn default_btn_hover"
+      tabIndex={0}
+      type="button"
+    >
+      Support
+      <i
+        styleName=""
+      />
+    </button>
+  </li>
+</ul>
+`;
