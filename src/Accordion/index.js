@@ -1,2 +1,1 @@
-import { default as AccordionCore } from "./Accordion";
-export { AccordionCore };
+export { Accordion } from "./Accordion";

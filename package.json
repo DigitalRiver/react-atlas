@@ -7,19 +7,10 @@
     "test": "jest",
     "updateSnapshot": "jest --updateSnapshot",
     "coverage": "jest --coverage",
-    "format": "prettier packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas/src/**/*.js packages/react-atlas-default-theme/src/**/*.js packages/react-atlas-tests/**/*.js --write",
-    "lint": "eslint packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas-default-theme/src/**/*.js --fix",
+    "format": "prettier src/**/*.js --write",
+    "lint": "eslintsrc/**/*.js --fix",
     "format-lint": "npm run format && npm run lint",
-    "lerna:init": "lerna init",
-    "lerna:bootstrap": "lerna bootstrap",
-    "lerna:updated": "lerna updated",
-    "audit": "node scripts/auditPackages.js",
-    "publish": "node scripts/publishPackages.js",
-    "clean": "node scripts/cleanPackages.js",
-    "packages:build": "node scripts/buildPackages.js",
-    "setup": "npm run lerna:bootstrap && npm run packages:build",
-    "codegen": "node packages/react-atlas/src/codegen.js",
-    "build": "npm run lerna:init && npm run lerna:bootstrap && npm run codegen && npm run packages:build",
+    "build": "webpack",
     "build:prd": "cross-env NODE_ENV=production npm run build",
     "build:dev": "cross-env NODE_ENV=development npm run build",
     "docs:prd": "cross-env NODE_ENV=production node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
@@ -31,15 +22,19 @@
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/scripts/enzymeConfig.js",
     "collectCoverageFrom": [
-      "packages/react-atlas-core/src/**/*.js"
+      "src/**/*.js"
     ],
     "moduleNameMapper": {
       "\\.(css|less)$": "identity-obj-proxy"
     }
   },
   "lint-staged": {
-       "*.js": ["prettier --write", "eslint --fix", "git add"]
-   },
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
   },
@@ -53,11 +48,13 @@
   "license": "MIT",
   "dependencies": {
     "react": "^16.2.0",
+    "react-css-modules": "^4.7.2",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "auditjs": "^2.2.2",
     "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -84,6 +81,7 @@
     "react-test-renderer": "^16.2.0",
     "rimraf": "^2.6.1",
     "sinon": "^4.0.1",
+    "url-loader": "^1.0.1",
     "webpack": "^3.8.1",
     "xml-parser": "^1.2.1"
   },
