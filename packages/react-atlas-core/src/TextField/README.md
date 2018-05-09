@@ -1,6 +1,6 @@
 ###### Default textfield:
 
-    <TextField onClick={e => { console.log("focus", e.currentTarget); }}/>
+    <TextField/>
 
 ###### TextField with label above:
 
