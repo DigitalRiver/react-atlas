@@ -1,250 +1,225 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { InputCore } from "../Input";
-import { TooltipCore } from "./../Tooltip";
-import { ButtonCore } from "./../Button";
 import cx from "classnames";
 
 class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    if (this.props.tooltip && !this.props.label) {
-      throw "Tooltip requires Label";
-    }
-
     // Initial state
     this.state = {
+      "value": this.props.value,
       "active": false,
-      "value":
-        typeof props.value === "undefined" || props.value === null
-          ? ""
-          : props.value
+      "status": this.props.status || null,
+      "message": this.props.message || null
     };
   }
 
-  componentDidMount() {
-    this.setState({ "isValid": this.props.isValid });
-  }
-
   componentWillReceiveProps(nextProps) {
-    if (
-      typeof nextProps.isValid !== "undefined" &&
-      nextProps.isValid !== this.state.isValid
-    ) {
-      this.setState({ "isValid": nextProps.isValid });
-    }
     if (nextProps.value && nextProps.value !== this.props.value) {
       this.setState({
         "value": nextProps.value
       });
     }
+    if (
+      typeof nextProps.status !== "undefined" &&
+        nextProps.status !== this.props.status ||
+      typeof nextProps.message !== "undefined" &&
+        nextProps.message !== this.props.message
+    ) {
+      this.setState({
+        "status": nextProps.status,
+        "message": nextProps.message
+      });
+    }
   }
 
-  _handleChange = (value, event, isValid) => {
-    event.persist();
+  _eventHandlers = (e, change) => {
+    const data = {
+      "value": this.state.value,
+      "status": this.state.status
+    };
 
-    if (this.props.maxLength) {
-      // Keep difference between maxlength and input value in state for count
-      this.setState({ "remaining": this.props.maxLength - value.length });
+    if (!change && this.props.onBlur) {
+      this.props.onBlur(e, data);
     }
 
-    this.setState({
-      "value": value,
-      "isValid": isValid
+    if (change && this.props.onChange) {
+      this.props.onChange(e, data);
+    }
+  };
+
+  _validate = (e, inputValue, change) => {
+    let status = null;
+    let message = null;
+
+    /* Execute custom validator and change state and error messages accordingly */
+    if (typeof this.props.valid === "function") {
+      let validationObject = this.props.valid(inputValue);
+      if (validationObject === false) {
+        validationObject = { "status": "error", "message": null };
+      }
+      if (typeof validationObject === "undefined") {
+        validationObject = { "status": null, "message": null };
+      }
+      status = validationObject.status;
+      message = validationObject.message;
+    } else if (
+      !inputValue.length &&
+      (this.props.required ||
+        typeof this.props.required === "string" && this.props.required === "")
+    ) {
+      /* If the field is required, and it has no value, change state and display error message */
+      message = "This field is required.";
+      status = "error";
+    }
+
+    this.setState(
+      {
+        "status": status,
+        "message": message,
+        "value": inputValue,
+        "active": change
+      },
+      () => {
+        this._eventHandlers(e, change);
+      }
+    );
+  };
+
+  _handleChange = e => {
+    e.persist();
+    let value = e.target.value;
+
+    if (this.props.uppercase) {
+      value = value.toUpperCase();
+    }
+
+    this._validate(e, value, true);
+  };
+
+  _handleFocus = e => {
+    e.persist();
+    this.setState({ "active": true }, function() {
+      if (typeof this.props.onFocus !== "undefined") {
+        this.props.onFocus(e, {
+          "value": this.state.value,
+          "status": this.state.status
+        });
+      }
     });
-
-    if (this.props.onChange) {
-      // Execute app code
-      this.props.onChange(value, event, isValid);
-    }
   };
 
-  _handleFocus = () => {
-    this.setState({ "active": true });
-  };
-
-  _handleBlur = () => {
-    if(typeof this.props.onBlur !== 'undefined') {
-      this.props.onBlur();
-    }
-    this.setState({ "active": false });
+  _handleBlur = e => {
+    e.persist();
+    const value = e.target.value;
+    this._validate(e, value, false);
   };
 
   render() {
     const {
-      name,
+      className,
+      disabled,
       id,
-      type,
+      inline,
       label,
       leftLabel,
-      placeholder,
-      maxLength,
-      small,
-      medium,
-      large,
       required,
-      requiredText,
-      validator,
-      errorText,
-      mask,
-      disabled,
-      hidden,
-      className,
-      inline,
       style,
       tooltip,
-      tooltipRight,
-      link,
-      linkRight,
-      linkText,
-      linkOnClick,
-      uppercase,
-      href,
+      tooltipPosition,
+      type,
       ...others
     } = this.props;
 
+    const reqText = typeof required === "string" ? required : "*";
+
+    let wrapperClasses = cx({
+      leftLabel,
+      inline,
+      "textfieldWrapper": true
+    });
+
     let labelClasses = cx({
-      "leftLabel": leftLabel,
-      "label": true,
-      "labelFont": true,
-      "labelSpacing": true
+      "labelSpacing": !leftLabel,
+      "label": true
     });
 
-    let tooltipClasses = cx({
-      "tooltipAlignment": true,
-      "tooltipRight": tooltipRight
+    let labelContainerClasses = cx({
+      "tooltipRight": tooltipPosition === "right",
+      "labelContainer": true
     });
 
-    let tooltipInternalClasses = cx({
-      "ra_Tooltip__tooltip": true,
-      "ra_Tooltip__active": true,
-      "ra_Tooltip__tooltip-right": true,
-      "ra_Tooltip__tooltipContent": true,
-      "ra_Tooltip__block": true
+    let labelPadding = cx({
+      "verticalPadding": !leftLabel,
+      "horizontalPadding": true
     });
 
-    let buttonClasses = cx({
-      "buttonAlignment": true,
-      "buttonAlignmentRight": linkRight
+    let inputClasses = cx({
+      "textfield": true,
+      "active": this.state.active,
+      "error": this.state.status === "error",
+      "success": this.state.status === "success",
+      "warning": this.state.status === "warning",
+      disabled
     });
 
-    let buttonInternalClasses = cx(
-      "ra_Button__button",
-      "ra_Button__base",
-      "ra_styles__button-marg-1",
-      "ra_styles__default-text",
-      "ra_styles__cursor-pointer",
-      "ra_styles__primary-button-border-width",
-      "ra_styles__default-font",
-      "ra_styles__rounded",
-      "ra_Button__link",
-      "ra_styles__border-none",
-      "ra_styles__sky-blue",
-      "ra_styles__border-transparent",
-      "ra_styles__bg-transparent"
-    );
+    let messageClasses = cx({
+      "success_message": this.state.status === "success",
+      "error_message": this.state.status === "error",
+      "warning_message": this.state.status === "warning"
+    });
 
-    const reqText = typeof requiredText !== "undefined" ? requiredText : "*";
+    const requiredClasses = cx({
+      "required": true,
+      "required_error": this.state.status === "error"
+    });
 
-    let textFieldLabel = label &&
-      <div styleName={labelClasses}>
-        <label styleName="labelPadding" htmlFor={id}>
-          {label}
-        </label>
-        {required && <span styleName={"error_text"}> {reqText}</span>}
-        {tooltip &&
-          <span styleName={tooltipClasses}>
-            <TooltipCore
-              className={tooltipInternalClasses}
-              text={tooltip}
-              position="top"
-            />
-          </span>
-        }
-        {link &&
-          <span styleName={buttonClasses}>
-            <ButtonCore
-              ignoreTab
-              className={buttonInternalClasses}
-              href={href}
-              onClick={linkOnClick}
-            >
-              {linkText}
-            </ButtonCore>
-          </span>
-        }
+    let textFieldLabel = (label || tooltip) && 
+      <div styleName={labelContainerClasses}>
+        <div styleName={cx(labelPadding)}>
+          {label && 
+            <label styleName={labelClasses} htmlFor={id}>
+              {label}
+            </label>
+          }
+          {required &&
+            required !== "" && 
+              <span styleName={requiredClasses}> {reqText}</span>
+            }
+        </div>
+        {tooltip}
       </div>
     ;
 
-    let wrapperClasses = cx(
-      {
-        hidden,
-        small,
-        medium,
-        large,
-        inline
-      },
-      "textfieldWrapper"
-    );
-
-    let textFieldClasses = cx(
-      {
-        disabled,
-        "active": this.state.active,
-        "invalid": !this.state.isValid
-      },
-      "textfield"
-    );
-
-    let fieldDisplayClasses = cx({
-      "leftLabelContent": leftLabel
-    });
-
     return (
-      <div
-        style={style}
-        styleName={wrapperClasses}
-        onFocus={this._handleFocus}
-        onBlur={this._handleBlur}
-        className={cx(className)}
-      >
+      <div styleName={wrapperClasses}>
         {textFieldLabel}
-        <div styleName={fieldDisplayClasses}>
-          <InputCore
-            {...others}
-            type={type}
-            name={name}
-            id={id}
-            placeholder={placeholder}
-            value={this.state.value}
-            maxLength={maxLength}
-            styleName={textFieldClasses}
-            onChange={(value, event, isValid) =>
-              this._handleChange(value, event, isValid)
-            }
-            required={required}
-            validator={validator}
-            errorText={errorText}
-            mask={mask}
-            uppercase={uppercase}
-            disabled={disabled}
-            isValid={this.state.isValid}
-            hidden={hidden}
-          />
-        </div>
+        <input
+          {...others}
+          id={id}
+          type={type}
+          value={this.state.value}
+          styleName={inputClasses}
+          style={style}
+          className={className}
+          required={required}
+          disabled={disabled}
+          onChange={this._handleChange}
+          onFocus={this._handleFocus}
+          onBlur={this._handleBlur}
+        />
+        {this.state.message !== null && 
+          <div>
+            <span styleName={messageClasses}>{this.state.message}</span>
+          </div>
+        }
       </div>
     );
   }
 }
 
 TextField.propTypes = {
-  /**
-   * Sets if the TextField is valid.
-   */
-  "isValid": PropTypes.bool,
-  /** Define an id for the text input.*/
-  "id": PropTypes.string,
   /** An Object, array, or string of CSS classes to apply to TextField.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
@@ -252,130 +227,81 @@ TextField.propTypes = {
     PropTypes.array
   ]),
   /**
-   * Define a name for the text input.
-   * @examples '<TextField name="test"/>'
+   * Determines if the TextField is disabled.
+   * @examples '<TextField disabled/>'
    */
-  "name": PropTypes.string,
-  /**
-   * Define a type for the text input. Default is "text".
-   * @examples '<TextField type="password"/>'
-   */
-  "type": PropTypes.string,
-  /**
-   * Define a default value for the text input.
-   * @examples '<TextField value="Textfield value here"/>'
-   */
-  "value": PropTypes.string,
-  /**
-   * Defines a small sized text input.
-   * @examples '<TextField small/>'
-   */
-  "small": PropTypes.bool,
+  "disabled": PropTypes.string,
+  /** Define an id for the text input.*/
+  "id": PropTypes.string,
+  /** Sets whether or not TextField will display as inline */
+  "inline": PropTypes.bool,
   /**
    * Define a label to be displayed above the textfield.
    * @examples '<TextField label="test"/>'
    */
   "label": PropTypes.string,
   /**
-   * Defines a medium sized text input.
-   * @examples '<TextField medium/>'
+   * Allows user to move the label to the left of the TextField instead of above it
    */
-  "medium": PropTypes.bool,
+  "leftLabel": PropTypes.bool,
   /**
-   * Defines a large sized text input.
-   * @examples '<TextField large/>'
+   * Sets the status message to display below the TextField. The color of the message will be determined by the value of the "status" property.
+   * @examples '<TextField message="Incorrect answer" status="error" />'
    */
-  "large": PropTypes.bool,
+  "message": PropTypes.string,
   /**
-   * Sets a maximum character length that will be validated onChange.
-   * @examples '<TextField maxLenght={25}/>'
+   * A callback that fires onBlur.
    */
-  "maxLength": PropTypes.number,
-  /**
-   * Sets a handler function to be executed and validate against. If it returns any falsy value, validation error will trigger.
-   * @examples '<TextField validator={this.customValidator}/>'
-   */
-  "validator": PropTypes.func,
-  /**
-   * Defines the error text to be shown when custom validation occurs.
-   * @examples '<TextField errorText="Custom error message."/>'
-   */
-  "errorText": PropTypes.string,
-  /**
-   * Sets a mask for the input field.
-   * @examples '<TextField mask="AAA 11111"/>'
-   */
-  "mask": PropTypes.string,
-  /**
-   * Defines placeholder text.
-   * @examples '<TextField placeholder="test input"/>'
-   */
-  "placeholder": PropTypes.string,
+  "onBlur": PropTypes.func,
   /**
    * Sets a handler function to be executed when onChange event occurs (at input element).
    * @examples <TextField onChange={this.customOnChangeFunc}/>
    */
   "onChange": PropTypes.func,
   /**
-   * Sets the field as required. Will be validated onChange.
+   * A callback that fires onFocus.
+   */
+  "onFocus": PropTypes.func,
+  /**
+   * Sets the TextField as required. Will be validated onChange. Accepts a boolean or a string. If a string is passed it will be displayed instead of the traditional * next to the field label.
    * @examples '<TextField required/>'
    */
-  "required": PropTypes.bool,
+  "required": PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /**
-   * Sets the text to show next to the label for a required TextField. If omitted will default to *.
-   * @examples '<TextField required requiredText="required"/>'
+   * Sets the status of the TextField. Options are null, "success", "error", and "warning".
+   * @examples '<TextField status="error" />'
    */
-  "requiredText": PropTypes.string,
-  /**
-   * Determines if the text input is disabled.
-   * @examples '<TextField disabled/>'
-   */
-  "disabled": PropTypes.bool,
-  /**
-   * Determines if the text input is hidden.
-   * @examples '<TextField hidden/>'
-   */
-  "hidden": PropTypes.bool,
-
+  "status": PropTypes.string,
   /** Pass inline styling here. */
   "style": PropTypes.object,
-
-  /** Sets whether or not TextField will display as inline */
-  "inline": PropTypes.bool,
-
-  /** passes tooltip as prop if added to textField */
-  "tooltip": PropTypes.string,
-
-  "tooltipRight": PropTypes.bool,
-
-  /** Set if you want a link button next to the textfield label. **/
-  "link": PropTypes.bool,
-  /** Set if you want the link button to the right of the textfield label. **/
-  "linkRight": PropTypes.bool,
-  /** The text of the link button. **/
-  "linkText": PropTypes.string,
-  /** Callback to call when link button is clicked. **/
-  "linkOnClick": PropTypes.func,
-  /** HREF to set on the link button. **/
-  "href": PropTypes.string,
+  /** Sets an element to be displayed along with the TextField. Traditionally used with the Tooltip component, but will accept any component or HTML element. */
+  "tooltip": PropTypes.node,
+  /** Sets the position of the embedded Tooltip. Defaults to "right", any other value will move it next to the label. */
+  "tooltipPosition": PropTypes.string,
+  /**
+   * Define a type for the text input. Default is "text".
+   * @examples '<TextField type="password"/>'
+   */
+  "type": PropTypes.string,
   /**
    * Converts all entered text to uppercase.
    */
   "uppercase": PropTypes.bool,
   /**
-   * Allows user to move the label to the left of the TextField instead of above it
+   * Sets a handler function to be executed and validate against. Will override the required property (you can still use the required prop to add a required indicator next to the label) and must return an object with a status (Options: null, "success", "error") and a message (Options: null or string)
+   * @examples '<TextField valid={this.customValidator}/>'
    */
-  "leftLabel": PropTypes.bool,
-
+  "valid": PropTypes.func,
   /**
-   * A callback that fires onBlur.
+   * Define a default value for the text input.
+   * @examples '<TextField value="Textfield value here"/>'
    */
-   "onBlur": PropTypes.func
+  "value": PropTypes.string
 };
 
 TextField.defaultProps = {
   "type": "text",
-  "isValid": true
+  "tooltipPosition": "right"
 };
 
 export default TextField;

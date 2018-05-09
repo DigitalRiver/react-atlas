@@ -18,6 +18,16 @@
 	border-color: rgba(189, 10, 51, 0.6); 
 }
 
+.text-input-valid { 
+	box-shadow: 0 0 4px var(--success);
+	border-color: rgba(168, 198, 40, 0.6); 
+}
+
+.text-input-warning { 
+	box-shadow: 0 0 4px var(--warning);
+	border-color: rgba(255, 91, 0, 0.6); 
+}
+
 .silver-to-white-gradient {
 	background: white;
 	background: -webkit-linear-gradient(#ffffff, #e6e6e6);

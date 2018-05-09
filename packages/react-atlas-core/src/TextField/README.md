@@ -1,6 +1,6 @@
 ###### Default textfield:
 
-    <TextField/>
+    <TextField onClick={e => { console.log("focus", e.currentTarget); }}/>
 
 ###### TextField with label above:
 
@@ -10,17 +10,9 @@
 
     <TextField label="This is a TextField" leftLabel/>
 
-###### Small textfield:
+###### TextField with modified width:
 
-    <TextField small/>
-
-###### Medium textfield:
-
-    <TextField medium/>
-
-###### Large textfield:
-
-    <TextField large/>
+    <TextField style={{ width: "250px" }} />
 
 ###### Inline textfields:
 
@@ -48,43 +40,66 @@
 
     <TextField disabled/>
 
-###### Required validation:
+###### Required validation. Pass a string instead of a boolean to change the required indicator from an asterisk:
 
-    <TextField required label="Email Address"/>
+    <div>
+        <TextField required label="Email Address" type="Email"/>
+        <TextField required="Required" label="Password" type="Password"/>
+        <TextField required="" label="Confirm Password" type="Password"/>
+    </div>
 
 ###### Maximum length validation:
 
     <TextField maxLength={20}/>
 
-###### Custom validation:
+###### Custom validation. Will override the required property (you can still use the required prop to add a required indicator next to the label) and must return either false (to display an error with no message) or an object with a status (Options: null, "success", "warning", "error") and a message (Options: null or string). Returning null or not returning anything will set both status and message to null:
 
-    <TextField
-        required
-    	errorText="Only numbers are allowed."
-    	validator={ (value) => { return /^\d+$/.test(value) } }
-    	label="Only numbers allowed"/>
+    <div>
+        <TextField
+            maxLength={1}
+            valid={ (value) => { 
+                if(value === "1") {
+                    return { status: "warning", message: "Warning"}
+                } else if(value === "2"){
+                    return { status: "success", message: "Success"}
+                } else if(value === "3"){
+                    return { status: "error", message: "Error"}
+                } else if(value === "4") {
+                    return false;
+                } else if(value === "5") {
+                    return { status: null, message: null}
+                }
+            } }
+            label="Only numbers allowed."
+        />
+        <Hint>1 = warning, 2 = success, 3 = error, 4 = false, 5 = null, Any other value = no return statement</Hint>
+    </div>
 
-###### Input Mask:
+###### Event handlers:
 
-	<div>
-	    <TextField
-	    	placeholder="(54) 111-1111"
-	    	mask="(54) 111-1111"
-	    	label="Phone"/>
-    	<TextField
-	    	placeholder="ABC 1234"
-	    	mask="AAA 1111"
-	    	label="License Plate"/>
-	</div>
-
-###### onChange handler:
-
-    <TextField onChange={ (value) => { console.log('onChange executed: ', value); } }/>
+    <TextField 
+        onChange={ (event, data) => { console.log('onChange: ', event, data); } }
+        onBlur={ (event, data) => { console.log('onBlur: ', event, data); } }
+        onFocus={ (event, data) => { console.log('onFocus: ', event, data); } }
+    />
 
 ###### Tooltip Textfield with Label:
 
-    <TextField required small tooltip="some test" label="key"/>
+    <TextField required small tooltip={<Tooltip text="Example"/>} label="key"/>
 
 ###### Textfield with uppercase prop:
 
     <TextField uppercase />
+
+###### Externally controlled status:
+
+    initialState = {status: "error", message: "Please enter a value."}
+    handleToggle = () => {
+        setState({ status: "success", message: "Thank you for entering a value." })
+    };
+    <div> 
+    <TextField status={state.status} label="Modify the TextField's value then click the button to change status from an external source"/><br />
+        <Button primary onClick={handleToggle}>Update State</Button>
+        <br /><br />
+        Status: {state.status}
+    </div>

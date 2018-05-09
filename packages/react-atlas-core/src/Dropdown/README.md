@@ -87,14 +87,14 @@ Disabled Dropdown:
 Inline Dropdowns:
 
     <div>
-      <Dropdown customLabel="Dropdown One" name="dropdown1" inline>
+      <Dropdown customLabel="Dropdown One" name="dropdown1" style={{ width: "200px" }} inline>
          <span value="bird">Bird</span>
          <span value="cow">Cow</span>
          <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
          <span value="monkey">Monkey</span>
          <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
       </Dropdown>
-      <Dropdown customLabel="Dropdown Two" name="dropdown2" inline>
+      <Dropdown customLabel="Dropdown Two" name="dropdown2" style={{ width: "200px" }} inline>
          <span value="bird">Bird</span>
          <span value="cow">Cow</span>
          <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
