@@ -30,13 +30,11 @@ let config =  {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: { modules: true }
-          },
-        ],
+        loaders: [
+            'style-loader?sourceMap',
+            'css-loader?modules&importLoaders=1&localIdentName=ra_[name]__[local]',
+            'postcss-loader'
+        ]
       },
       {
         test: /\.js$/,

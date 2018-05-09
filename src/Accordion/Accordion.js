@@ -232,4 +232,4 @@ Accordion.defaultProps = {
   "multiOpen": false
 };
 
-export default CSSModules(Accordion, styles);
+export default CSSModules(Accordion, styles, {"allowMultiple": true });

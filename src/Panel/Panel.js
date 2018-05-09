@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from 'react-css-modules';
+import styles from "./Panel.css";
 
 class Panel extends React.PureComponent {
   constructor(props) {
@@ -38,4 +40,4 @@ Panel.propTypes = {
   "style": PropTypes.object
 };
 
-export default Panel;
+export default CSSModules(Panel, styles, {"allowMultiple": true });

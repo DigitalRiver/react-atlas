@@ -43,7 +43,7 @@ const css = {
 // A specific test for font-awesome files
 const fontawesome = {
   test: /\.css$/,
-  include: path.resolve(__dirname, 'src/assets/font-awesome/css/'),
+  include: path.resolve(__dirname, 'assets/font-awesome/css/'),
   loader: 'style-loader!css-loader',
 }
 
@@ -79,18 +79,11 @@ const url = {
 }
 
 module.exports = {
-  require: [
-    path.join(__dirname, 'src/assets/font-awesome/css/font-awesome.min.css')
-  ],
   // Use this to test a single component.  Change it to the component you are testing and restart the styleguide server
   // Regex should be: 'src/components/NAME_OF_COMPONENT_FOLDER/[A-Z]*.js'
-  components: 'src/components/**/[A-Z]*.js',
+  components: 'src/**/**.js',
 
   ignore: ['**/__tests__/**', '**/*.test.js', '**/*.test.jsx', '**/*.spec.js', '**/*.spec.jsx', '**/index.js'],
-  contextDependencies: [
-    '../react-atlas-core/src',
-    '../react-atlas-theme/src'
-  ],
   showUsage: true,
   defaultExample: true,
   webpackConfig: {

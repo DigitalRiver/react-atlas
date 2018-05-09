@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import styles from "./Alert.css";
+import CSSModules from 'react-css-modules';
 
 class Alert extends React.PureComponent {
   constructor(props) {
@@ -102,4 +104,4 @@ Alert.defaultProps = {
   "type": "info"
 };
 
-export default Alert;
+export default CSSModules(Alert, styles, {"allowMultiple": true });

@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from 'react-css-modules';
+import styles from './Button.css';
 
 /**
  * A Generic button component.
@@ -229,4 +231,5 @@ Button.defaultProps = {
   "ignoreTab": false
 };
 
-export default Button;
+export default CSSModules(Button, styles, {"allowMultiple": true });
+
