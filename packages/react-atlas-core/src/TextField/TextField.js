@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import messages from "../utils/messages.js";
 
 class TextField extends React.PureComponent {
   constructor(props) {
@@ -70,7 +71,7 @@ class TextField extends React.PureComponent {
         typeof this.props.required === "string" && this.props.required === "")
     ) {
       /* If the field is required, and it has no value, change state and display error message */
-      message = "This field is required.";
+      message = messages.requiredMessage;
       status = "error";
     }
 
