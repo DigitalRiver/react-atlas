@@ -16,6 +16,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
     >
       <label
         className=""
+        htmlFor={undefined}
         styleName="label"
         title="Option 1"
       >
@@ -24,29 +25,20 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
       <div
         styleName="float_left"
       >
+        <input
+          checked={true}
+          disabled={false}
+          groupSetChecked={[Function]}
+          hidden={false}
+          id={undefined}
+          index={0}
+          name="test"
+          styleName="input_style"
+          type="radio"
+          value="first"
+        />
         <div
-          styleName="container"
-        >
-          <input
-            checked={true}
-            className="ra_Input__max ra_Input__opacity"
-            groupSetChecked={[Function]}
-            inline={false}
-            label="Option 1"
-            name="test"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onPaste={[Function]}
-            styleName=""
-            type="radio"
-            value="first"
-          />
-        </div>
-        <div
-          styleName="checked"
+          styleName="radio checked"
         >
           <div
             styleName="checkmark"
@@ -65,6 +57,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
     >
       <label
         className=""
+        htmlFor={undefined}
         styleName="label"
         title="Option 2"
       >
@@ -73,29 +66,20 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
       <div
         styleName="float_left"
       >
+        <input
+          checked={false}
+          disabled={false}
+          groupSetChecked={[Function]}
+          hidden={false}
+          id={undefined}
+          index={1}
+          name="test"
+          styleName="input_style"
+          type="radio"
+          value="second"
+        />
         <div
-          styleName="container"
-        >
-          <input
-            checked={false}
-            className="ra_Input__max ra_Input__opacity"
-            groupSetChecked={[Function]}
-            inline={false}
-            label="Option 2"
-            name="test"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onPaste={[Function]}
-            styleName=""
-            type="radio"
-            value="second"
-          />
-        </div>
-        <div
-          styleName="not_checked"
+          styleName="radio"
         />
       </div>
     </div>
@@ -110,6 +94,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
     >
       <label
         className=""
+        htmlFor={undefined}
         styleName="label"
         title="Option 3"
       >
@@ -118,29 +103,20 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
       <div
         styleName="float_left"
       >
+        <input
+          checked={false}
+          disabled={false}
+          groupSetChecked={[Function]}
+          hidden={false}
+          id={undefined}
+          index={2}
+          name="test"
+          styleName="input_style"
+          type="radio"
+          value="third"
+        />
         <div
-          styleName="container"
-        >
-          <input
-            checked={false}
-            className="ra_Input__max ra_Input__opacity"
-            groupSetChecked={[Function]}
-            inline={false}
-            label="Option 3"
-            name="test"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onPaste={[Function]}
-            styleName=""
-            type="radio"
-            value="third"
-          />
-        </div>
-        <div
-          styleName="not_checked"
+          styleName="radio"
         />
       </div>
     </div>
@@ -155,6 +131,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
     >
       <label
         className=""
+        htmlFor={undefined}
         styleName="label"
         title="Option 4"
       >
@@ -163,29 +140,20 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
       <div
         styleName="float_left"
       >
+        <input
+          checked={false}
+          disabled={false}
+          groupSetChecked={[Function]}
+          hidden={false}
+          id={undefined}
+          index={3}
+          name="test"
+          styleName="input_style"
+          type="radio"
+          value="fourth"
+        />
         <div
-          styleName="container"
-        >
-          <input
-            checked={false}
-            className="ra_Input__max ra_Input__opacity"
-            groupSetChecked={[Function]}
-            inline={false}
-            label="Option 4"
-            name="test"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onPaste={[Function]}
-            styleName=""
-            type="radio"
-            value="fourth"
-          />
-        </div>
-        <div
-          styleName="not_checked"
+          styleName="radio"
         />
       </div>
     </div>
@@ -200,6 +168,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
     >
       <label
         className=""
+        htmlFor={undefined}
         styleName="label"
         title="Option 5"
       >
@@ -208,29 +177,20 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
       <div
         styleName="float_left"
       >
+        <input
+          checked={false}
+          disabled={false}
+          groupSetChecked={[Function]}
+          hidden={false}
+          id={undefined}
+          index={4}
+          name="test"
+          styleName="input_style"
+          type="radio"
+          value="fifth"
+        />
         <div
-          styleName="container"
-        >
-          <input
-            checked={false}
-            className="ra_Input__max ra_Input__opacity"
-            groupSetChecked={[Function]}
-            inline={false}
-            label="Option 5"
-            name="test"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onPaste={[Function]}
-            styleName=""
-            type="radio"
-            value="fifth"
-          />
-        </div>
-        <div
-          styleName="not_checked"
+          styleName="radio"
         />
       </div>
     </div>
@@ -245,6 +205,7 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
     >
       <label
         className=""
+        htmlFor={undefined}
         styleName="label"
         title="Option 6"
       >
@@ -253,29 +214,20 @@ exports[`Test RadioGroup component render Render correctly 1`] = `
       <div
         styleName="float_left"
       >
+        <input
+          checked={false}
+          disabled={false}
+          groupSetChecked={[Function]}
+          hidden={false}
+          id={undefined}
+          index={5}
+          name="test"
+          styleName="input_style"
+          type="radio"
+          value="sixth"
+        />
         <div
-          styleName="container"
-        >
-          <input
-            checked={false}
-            className="ra_Input__max ra_Input__opacity"
-            groupSetChecked={[Function]}
-            inline={false}
-            label="Option 6"
-            name="test"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onPaste={[Function]}
-            styleName=""
-            type="radio"
-            value="sixth"
-          />
-        </div>
-        <div
-          styleName="not_checked"
+          styleName="radio"
         />
       </div>
     </div>

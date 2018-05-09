@@ -1,128 +1,107 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { InputCore } from "../Input";
 
 class Radio extends React.PureComponent {
   constructor(props) {
     super(props);
+  }
 
-    /* Classes and styles setup */
-    let inlineRadio = cx(
-      {
-        "inline_block": this.props.inline,
-        "hidden": this.props.hidden
-      },
-      "radio_padding"
-    );
-
-    let labelStyle = cx({
-      "label": this.props.labelPosition !== "left",
-      "label_left": this.props.labelPosition === "left"
-    });
-
-    let radioDisplay =
-      this.props.labelPosition === "left" ? "float_right" : "float_left";
-
-    let labelTitle = this.props.title ? this.props.title : this.props.label;
-
-    this.classes = {
-      inlineRadio,
-      labelStyle,
-      labelTitle,
-      radioDisplay
-    };
+  componentWillReceiveProps(nextProps) {
+    /* Since Radio is controlled, the only changes that can occur need to come from property updates */
+    if (this.props.onChange && nextProps.checked !== this.props.checked) {
+      this.props.onChange({
+        "checked": nextProps.checked,
+        "value": this.props.value
+      });
+    }
   }
 
   // Handles new radio clicks and sets value and checked status of hidden input
-  _clickHandler = event => {
-    if (!this.props.disabled) {
-      /* Check if onClick has been passed, if so call it. */
-      if (this.props.onClick) {
-        /* Pass the event object, and a data object to the click handler.
-         The data object contains a boolean for whether the radio was
-         clicked or not, plus all the props passed to the object.  */
-        this.props.onClick(event, {
-          "checked": this.props.checked,
-          "props": this.props
-        });
-      }
-
-      this._handleChange();
-
-      /* Check if onChange has been passed, if so call it. */
-      if (this.props.onChange) {
-        /* Pass the event object, and a data object to the change handler.
-         The data object contains a boolean for whether the radio was
-         clicked or not, plus all the props passed to the object.  */
-        this.props.onChange(event, {
-          "checked": this.props.checked,
-          "props": this.props
-        });
-      }
+  _clickHandler = () => {
+    if (this.props.disabled) {
+      return false;
     }
-  };
 
-  _handleChange = () => {
+    if (this.props.onClick) {
+      this.props.onClick({ "index": this.props.index, "value": this.props.value });
+    }
+
     if (
       typeof this.props.onBeforeChange === "undefined" ||
-      this.props.onBeforeChange(this.props.checked)
+      this.props.onBeforeChange({
+        "checked": this.props.checked,
+        "value": this.props.value
+      })
     ) {
-      if (!this.props.checked) {
-        this.props.groupSetChecked(this.props.value);
-      }
+      this.props.groupSetChecked(this.props.index);
     }
   };
 
   render() {
     const {
-      className,
-      value,
-      label,
-      name,
       checked,
+      className,
       disabled,
       hidden,
+      id,
+      inline,
+      label,
+      labelPosition,
       style,
+      title,
       ...others
     } = this.props;
 
-    const { inlineRadio, labelStyle, labelTitle, radioDisplay } = this.classes;
+    /* Classes and styles setup */
+    let wrapperStyles = cx(
+      {
+        "inline_block": inline,
+        "hidden": hidden
+      },
+      "radio_padding"
+    );
+
+    let labelStyle = cx(
+      {
+        "label_left": labelPosition === "left"
+      },
+      "label"
+    );
+
+    let radioDisplay = labelPosition === "left" ? "float_right" : "float_left";
+
+    let labelTitle = title || label;
 
     let radioClass = cx({
-      "checked": checked,
-      "not_checked": !checked
+      "radio": true,
+      "checked": checked
     });
 
-    let disabledClass = disabled
-      ? cx("disabled", "inline_block", "relative", "padding")
-      : cx("inline_block", "relative", "padding");
-
     return (
-      <div style={style} onClick={this._clickHandler} styleName={inlineRadio}>
-        <div styleName={disabledClass}>
+      <div style={style} onClick={this._clickHandler} styleName={wrapperStyles}>
+        <div
+          styleName={cx({ disabled }, "inline_block", "relative", "padding")}
+        >
           {label && 
             <label
               styleName={labelStyle}
               title={labelTitle}
               className={cx(className)}
+              htmlFor={id}
             >
               {label}
             </label>
           }
           <div styleName={radioDisplay}>
-            <InputCore
+            <input
               {...others}
-              label={label}
               type="radio"
               checked={checked}
               disabled={disabled}
               hidden={hidden}
-              name={name}
-              value={value}
-              /* Hardcode classes for InputCore because classes on styleName will not
-               * be evaluated because we are using InputCore rather than Input.  */
-              className={"ra_Input__max ra_Input__opacity"}
+              id={id}
+              styleName={cx("input_style")}
             />
             <div styleName={radioClass}>
               {checked && <div styleName={"checkmark"} />}
@@ -149,12 +128,6 @@ Radio.propTypes = {
   ]),
 
   /**
-   * When true, Radio will be checked by default.
-   * @examples '<Radio defaultChecked/>'
-   */
-  "defaultChecked": PropTypes.bool,
-
-  /**
    * When true, Radio will be disabled.
    * @examples '<Radio disabled/>'
    */
@@ -165,7 +138,10 @@ Radio.propTypes = {
    * @examples '<Radio hidden/>'
    */
   "hidden": PropTypes.bool,
-
+  /** Will set the html "id" property on the Radio. */
+  "id": PropTypes.string,
+  /** Represents the index of the Radio within the parent RadioGroup. */
+  "index": PropTypes.number,
   /**
    * When true, Radio will display inline.
    * @examples '<Radio inline/>'

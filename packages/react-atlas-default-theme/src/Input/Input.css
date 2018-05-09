@@ -2,11 +2,6 @@
 	clear: both;
 	display: table;
 }
-input.opacity[type="checkbox"], input.opacity[type="radio"] {
-	/*used by Radio and Checkbox modules, even though not used in Input itself */
-	/*this needs to stay here to avoid display issues with those modules in IE*/
-	opacity: 0;
-}
 .input {
 	composes: pad-1 from '../styles.css';
 	composes: default-border from '../styles.css';
