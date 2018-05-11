@@ -1,2 +1,1 @@
-import { default as DropdownCore } from "./Dropdown";
-export { DropdownCore };
+export { Dropdown } from "./Dropdown";

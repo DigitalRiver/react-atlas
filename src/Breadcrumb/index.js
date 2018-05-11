@@ -1,2 +1,1 @@
-import { default as BreadcrumbCore } from "./Breadcrumb";
-export { BreadcrumbCore };
+export { Breadcrumb } from "./Breadcrumb";

@@ -1,2 +1,1 @@
-import { default as CardCore } from "./Card";
-export { CardCore };
+export { Card } from "./Card";

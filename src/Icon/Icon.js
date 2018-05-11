@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Icon.css";
 
 /**
  * Master Icon component. Used as a stand alone component or in conjunction with button and avatar
  */
-class Icon extends React.PureComponent {
+export class Icon extends React.PureComponent {
   constructor(props) {
-    super(props);    
+    super(props);
 
     if (!this.props.icon) {
       console.warn(
@@ -17,21 +19,21 @@ class Icon extends React.PureComponent {
   }
 
   render() {
-    const {
-      className,
-      small,
-      large,
-      style,
-      onClick,
-      icon
-    } = this.props;
+    const { className, small, large, style, onClick, icon } = this.props;
 
     let iconClasses = cx({
       "large": large,
       "small": small
     });
 
-    return <i className={cx(className, icon)} onClick={onClick} styleName={iconClasses}  style={style}/>;
+    return (
+      <i
+        className={cx(className, icon)}
+        onClick={onClick}
+        styleName={iconClasses}
+        style={style}
+      />
+    );
   }
 }
 
@@ -68,4 +70,4 @@ Icon.propTypes = {
   "style": PropTypes.object
 };
 
-export default Icon;
+export default CSSModules(Icon, styles, { "allowMultiple": true });

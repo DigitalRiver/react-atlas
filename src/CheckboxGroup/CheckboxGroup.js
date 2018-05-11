@@ -1,8 +1,10 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./CheckboxGroup.css";
 
-class CheckboxGroup extends React.PureComponent {
+export class CheckboxGroup extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +25,7 @@ class CheckboxGroup extends React.PureComponent {
   }
 
   // When child <Checkbox /> component changes state, update "totalChecked" value and verify against min or max props value
-  handleChange = (data) => {
+  handleChange = data => {
     const newChecked = data.checked
       ? this.state.totalChecked + 1
       : this.state.totalChecked - 1;
@@ -187,4 +189,4 @@ CheckboxGroup.defaultProps = {
   "inline": false
 };
 
-export default CheckboxGroup;
+export default CSSModules(CheckboxGroup, styles, { "allowMultiple": true });
