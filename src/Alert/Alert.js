@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import styles from "./Alert.css";
-import CSSModules from 'react-css-modules';
+import CSSModules from "react-css-modules";
 
-class Alert extends React.PureComponent {
+export class Alert extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -35,11 +35,7 @@ class Alert extends React.PureComponent {
     return (
       <React.Fragment>
         {this.state.visible && 
-          <div
-            className={cx(className)}
-            style={style}
-            styleName={alertClasses}
-          >
+          <div className={cx(className)} style={style} styleName={alertClasses}>
             {children}
             {dismissible && 
               <div
@@ -104,4 +100,4 @@ Alert.defaultProps = {
   "type": "info"
 };
 
-export default CSSModules(Alert, styles, {"allowMultiple": true });
+export default CSSModules(Alert, styles, { "allowMultiple": true });

@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import CSSModules from 'react-css-modules';
-import styles from './Avatar.css';
+import CSSModules from "react-css-modules";
+import styles from "./Avatar.css";
 
 /**
  * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
  * **NOTE**: children will always take precedence over props passed into component.
  */
-class Avatar extends React.PureComponent {
+export class Avatar extends React.PureComponent {
   constructor(props) {
     super(props);
     let image = props.image ? props.image : props.defaultImage;
@@ -110,4 +110,4 @@ Avatar.propTypes = {
   "title": PropTypes.string
 };
 
-export default CSSModules(Avatar, styles, {"allowMultiple": true });
+export default CSSModules(Avatar, styles, { "allowMultiple": true });

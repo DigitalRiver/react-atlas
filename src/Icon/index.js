@@ -1,2 +1,1 @@
-import { default as IconCore } from "./Icon";
-export { IconCore };
+export { Icon } from "./Icon";

@@ -2,8 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import messages from "../utils/messages";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Form.css";
 
-class Form extends React.PureComponent {
+export class Form extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -291,4 +293,4 @@ Form.defaultProps = {
   "noValidate": true
 };
 
-export default Form;
+export default CSSModules(Form, styles, { "allowMultiple": true });

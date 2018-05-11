@@ -2,8 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import Dropzone from "react-dropzone";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./FileUpload.css";
 
-class FileUpload extends React.PureComponent {
+export class FileUpload extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -58,11 +60,11 @@ FileUpload.propTypes = {
    * Pass inline styling here.
    */
   "style": PropTypes.object,
-  
+
   /**
    * Ref for Dropzone element
    */
   "inputRef": PropTypes.func
 };
 
-export default FileUpload;
+export default CSSModules(FileUpload, styles, { "allowMultiple": true });

@@ -1,2 +1,1 @@
-import { default as FileUploadCore } from "./FileUpload";
-export { FileUploadCore };
+export { FileUpload } from "./FileUpload";
