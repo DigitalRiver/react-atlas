@@ -1,11 +1,13 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./TabList.css";
 
 /**
  * TabList component
  */
-class TabList extends React.PureComponent {
+export class TabList extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -50,46 +52,46 @@ class TabList extends React.PureComponent {
 }
 
 TabList.propTypes = {
-    /**
-     * Will be automatically set when bordered prop is passed to Tabs component.
-     *
-     * @ignore
-     */
-    "bordered": PropTypes.bool,
+  /**
+   * Will be automatically set when bordered prop is passed to Tabs component.
+   *
+   * @ignore
+   */
+  "bordered": PropTypes.bool,
 
-    /**
-     * An object, array, or string of CSS classes to apply to TabPanel.
-     */
-    "className": PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.object,
-        PropTypes.array
-    ]),
+  /**
+   * An object, array, or string of CSS classes to apply to TabPanel.
+   */
+  "className": PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array
+  ]),
 
-    /**
-     * Tab components that will be displayed in TabList.
-     */
-    "children": PropTypes.node.isRequired,
+  /**
+   * Tab components that will be displayed in TabList.
+   */
+  "children": PropTypes.node.isRequired,
 
-    /**
-     * Selected tab index (default 0 - first tab).
-     */
-    "selectedTab": PropTypes.number,
+  /**
+   * Selected tab index (default 0 - first tab).
+   */
+  "selectedTab": PropTypes.number,
 
-    /**
-     * Handler to execute when a tab is selected, in Tabs component.
-     */
-    "setSelectedIndex": PropTypes.func,
+  /**
+   * Handler to execute when a tab is selected, in Tabs component.
+   */
+  "setSelectedIndex": PropTypes.func,
 
-    /** 
-     * Pass inline styling here.
-     */
-    "style": PropTypes.object,
+  /**
+   * Pass inline styling here.
+   */
+  "style": PropTypes.object,
 
-    /**
-     * Will be automatically set when vertical prop is passed to Tabs component.
-     */
-    "vertical": PropTypes.bool
+  /**
+   * Will be automatically set when vertical prop is passed to Tabs component.
+   */
+  "vertical": PropTypes.bool
 };
 
-export default TabList;
+export default CSSModules(TabList, styles, { "allowMultiple": true });

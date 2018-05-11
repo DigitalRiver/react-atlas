@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import messages from "../utils/messages";
-import CSSModules from 'react-css-modules';
-import styles from './Accordion.css';
+import CSSModules from "react-css-modules";
+import styles from "./Accordion.css";
 
 /**
  * The Accordion component creates an expandable tab structure for displaying content. The traditional child element used within Accordion is the Panel component, but a regular div will work as well.
  * @examples <Accordion><Panel title="Accordion Title">Some text</Panel><Panel title="Accordion Title 2">Some more text</Panel></Accordion>
  *
  */
-class Accordion extends React.PureComponent {
+export class Accordion extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -232,4 +232,4 @@ Accordion.defaultProps = {
   "multiOpen": false
 };
 
-export default CSSModules(Accordion, styles, {"allowMultiple": true });
+export default CSSModules(Accordion, styles, { "allowMultiple": true });

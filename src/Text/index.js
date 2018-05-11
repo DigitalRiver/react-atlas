@@ -1,2 +1,1 @@
-import { default as TextCore } from "./Text";
-export { TextCore };
+export { Text } from "./Text";

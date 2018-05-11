@@ -1,7 +1,13 @@
-var ghpages = require('gh-pages');
-var pjson = require('../packages/react-atlas/package.json');
+let ghpages = require("gh-pages");
+let pjson = require("../package.json");
 
-ghpages.publish('../packages/react-atlas/styleguide', {
-  remote: 'origin',
-  message: 'Auto-generated commit for React Atlas version: ' + pjson.version
-}, function(err) {console.warn("Error publishing Styleguide: ", err)});
+ghpages.publish(
+  "../styleguide",
+  {
+    "remote": "origin",
+    "message": "Auto-generated commit for React Atlas version: " + pjson.version
+  },
+  function(err) {
+    console.warn("Error publishing Styleguide: ", err);
+  }
+);

@@ -1,2 +1,1 @@
-import { default as TabListCore } from "./TabList";
-export { TabListCore };
+export { TabList } from "./TabList";

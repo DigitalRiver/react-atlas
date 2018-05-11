@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import CSSModules from 'react-css-modules';
-import styles from './BreadCrumbItem.css';
+import CSSModules from "react-css-modules";
+import styles from "./BreadcrumbItem.css";
 
-class BreadcrumbItem extends React.PureComponent {
+export class BreadcrumbItem extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -47,5 +47,4 @@ BreadcrumbItem.defaultProps = {
   "active": false
 };
 
-export default CSSModules(BreadcrumbItem, styles, {"allowMultiple": true });
-
+export default CSSModules(BreadcrumbItem, styles, { "allowMultiple": true });

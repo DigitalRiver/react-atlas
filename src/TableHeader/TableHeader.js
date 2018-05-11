@@ -2,8 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import { TableHeaderColumn } from "react-bootstrap-table";
+import CSSModules from "react-css-modules";
+import styles from "./TableHeader.css";
 
-class TableHeader extends React.PureComponent {
+export class TableHeader extends React.PureComponent {
   render() {
     const {
       className,
@@ -50,4 +52,4 @@ TableHeader.defaultProps = {
   "searchable": true
 };
 
-export default TableHeader;
+export default CSSModules(TableHeader, styles, { "allowMultiple": true });

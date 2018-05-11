@@ -1,2 +1,1 @@
-import { default as ProgressBarCore } from "./ProgressBar";
-export { ProgressBarCore };
+export { ProgressBar } from "./ProgressBar";

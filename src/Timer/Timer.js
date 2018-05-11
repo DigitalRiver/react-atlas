@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Timer.css";
 
-class Timer extends React.PureComponent {
+export class Timer extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -54,4 +56,4 @@ Timer.propTypes = {
   "style": PropTypes.object
 };
 
-export default Timer;
+export default CSSModules(Timer, styles, { "allowMultiple": true });

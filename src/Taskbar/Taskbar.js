@@ -1,8 +1,10 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Taskbar.css";
 
-class Taskbar extends React.PureComponent {
+export class Taskbar extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -56,4 +58,4 @@ Taskbar.defaultProps = {
   "children": <p>Some taskbar item.</p>
 };
 
-export default Taskbar;
+export default CSSModules(Taskbar, styles, { "allowMultiple": true });

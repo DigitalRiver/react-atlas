@@ -1,11 +1,13 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Tabs.css";
 
 /**
  * Tabs component
  */
-class Tabs extends React.PureComponent {
+export class Tabs extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -23,35 +25,27 @@ class Tabs extends React.PureComponent {
     }
   };
 
+  render() {
+    const { className, children, vertical, bordered, style } = this.props;
 
-    render() {
-      const {
-          className,
-          children,
-          vertical,
-          bordered,
-          style
-      } = this.props;
+    const tabsChildren = React.Children.map(children, (child, index) => {
+      child = cloneElement(child, {
+        // todo
+        // there was once logic here to do these separately based on component name via utils.getComponentName,
+        // but webpack was changing the names so they were all named "t" in prod builds.
+        // This is a workaround for now so that Tabs won't break, but we should come back and
+        // find a better solution later so we don't have to send unnecessary props to components,
+        // and probably remove state from some of these at the same time.  stuller 3/13/18
 
-      const tabsChildren = React.Children.map(children, (child, index) => {
-
-        child = cloneElement(child, {
-          // todo
-          // there was once logic here to do these separately based on component name via utils.getComponentName,
-          // but webpack was changing the names so they were all named "t" in prod builds.
-          // This is a workaround for now so that Tabs won't break, but we should come back and
-          // find a better solution later so we don't have to send unnecessary props to components,
-          // and probably remove state from some of these at the same time.  stuller 3/13/18
-
-          // needed for TabList
-          "selectedTab": this.state.selectedIndex,
-          "setSelectedIndex": this._setSelectedIndex,
-          // needed for Tabs
-          "selected": this.state.selectedIndex === index - 1,
-          "bordered": bordered,
-          // needed for both
-          "vertical": vertical
-        });
+        // needed for TabList
+        "selectedTab": this.state.selectedIndex,
+        "setSelectedIndex": this._setSelectedIndex,
+        // needed for Tabs
+        "selected": this.state.selectedIndex === index - 1,
+        "bordered": bordered,
+        // needed for both
+        "vertical": vertical
+      });
 
       return child;
     });
@@ -118,4 +112,4 @@ Tabs.defaultProps = {
   "bordered": false
 };
 
-export default Tabs;
+export default CSSModules(Tabs, styles, { "allowMultiple": true });

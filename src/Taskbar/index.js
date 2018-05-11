@@ -1,2 +1,1 @@
-import { default as TaskbarCore } from "./Taskbar";
-export { TaskbarCore };
+export { Taskbar } from "./Taskbar";

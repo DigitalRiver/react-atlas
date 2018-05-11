@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Overlay.css";
 
-class Overlay extends React.PureComponent {
+export class Overlay extends React.PureComponent {
   componentDidMount() {
     const { active, lockScroll, onEscKeyDown } = this.props;
     if (onEscKeyDown) {
@@ -92,4 +94,4 @@ Overlay.defaultProps = {
   "lockScroll": false
 };
 
-export default Overlay;
+export default CSSModules(Overlay, styles, { "allowMultiple": true });

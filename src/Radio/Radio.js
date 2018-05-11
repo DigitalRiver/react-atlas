@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { InputCore } from "../Input";
+import Input from "../Input";
+import CSSModules from "react-css-modules";
+import styles from "./Radio.css";
 
-class Radio extends React.PureComponent {
+export class Radio extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -111,7 +113,7 @@ class Radio extends React.PureComponent {
             </label>
           }
           <div styleName={radioDisplay}>
-            <InputCore
+            <Input
               {...others}
               label={label}
               type="radio"
@@ -120,8 +122,8 @@ class Radio extends React.PureComponent {
               hidden={hidden}
               name={name}
               value={value}
-              /* Hardcode classes for InputCore because classes on styleName will not
-               * be evaluated because we are using InputCore rather than Input.  */
+              /* Hardcode classes for Input because classes on styleName will not
+               * be evaluated because we are using Input rather than Input.  */
               className={"ra_Input__max ra_Input__opacity"}
             />
             <div styleName={radioClass}>
@@ -239,4 +241,4 @@ Radio.defaultProps = {
   "inline": false
 };
 
-export default Radio;
+export default CSSModules(Radio, styles, { "allowMultiple": true });

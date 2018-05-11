@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Hint.css";
 
-class Hint extends React.PureComponent {
+export class Hint extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -50,4 +52,4 @@ Hint.defaultProps = {
   "className": ""
 };
 
-export default Hint;
+export default CSSModules(Hint, styles, { "allowMultiple": true });

@@ -3,13 +3,15 @@ import PropTypes from "prop-types";
 import InputMask from "inputmask-core";
 import { utils } from "../utils";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Input.css";
 
 /**
  * Master Input component. To be used as core for different input types
  * components. Accepts all input properties and also supports custom
  * and maxlenght/required validations. Allows input masking.
  */
-class Input extends React.PureComponent {
+export class Input extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -490,4 +492,4 @@ Input.defaultProps = {
   "isValid": true
 };
 
-export default Input;
+export default CSSModules(Input, styles, { "allowMultiple": true });

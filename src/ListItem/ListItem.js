@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import CSSModules from "react-css-modules";
+import styles from "./Hint.css";
 
-class ListItem extends React.PureComponent {
+export class ListItem extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -58,6 +60,4 @@ ListItem.propTypes = {
   "style": PropTypes.object
 };
 
-ListItem.defaultProps = {};
-
-export default ListItem;
+export default CSSModules(ListItem, styles, { "allowMultiple": true });

@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Task.css";
 
-class Task extends React.PureComponent {
+export class Task extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -83,4 +85,4 @@ Task.defaultProps = {
   "title": "Item One"
 };
 
-export default Task;
+export default CSSModules(Task, styles, { "allowMultiple": true });

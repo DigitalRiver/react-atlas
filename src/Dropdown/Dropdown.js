@@ -1,15 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { ButtonCore } from "../Button";
+import Button from "../Button";
 import messages from "../utils/messages.js";
+import CSSModules from "react-css-modules";
+import styles from "./Dropdown.css";
 
 /**
  * Master Dropdown Component
  * Only used for dropdown component
  * Supports required, disabled, custom width, custom error messaging, onclick and onchange functions
  */
-class Dropdown extends React.PureComponent {
+export class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -461,7 +463,7 @@ class Dropdown extends React.PureComponent {
     }
 
     let button = 
-      <ButtonCore
+      <Button
         onClick={e => {
           this._toggle(e);
         }}
@@ -471,7 +473,7 @@ class Dropdown extends React.PureComponent {
       >
         <span>{this.state.output}</span>
         <i styleName="arrow" />
-      </ButtonCore>
+      </Button>
     ;
 
     return (
@@ -492,7 +494,9 @@ class Dropdown extends React.PureComponent {
       >
         {label}
         <div style={style} styleName={contentClasses}>
-          <div style={style} styleName={"fullWidth"}>{button}</div>
+          <div style={style} styleName={"fullWidth"}>
+            {button}
+          </div>
           {list}
           <input type="hidden" value={this.state.value} />
         </div>
@@ -611,4 +615,4 @@ Dropdown.defaultProps = {
   "isValid": true
 };
 
-export default Dropdown;
+export default CSSModules(Dropdown, styles, { "allowMultiple": true });

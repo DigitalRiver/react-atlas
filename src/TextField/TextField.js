@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { InputCore } from "../Input";
-import { TooltipCore } from "./../Tooltip";
-import { ButtonCore } from "./../Button";
+import Input from "../Input";
+import Tooltip from "../Tooltip";
+import Button from "../Button";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./TextField.css";
 
-class TextField extends React.PureComponent {
+export class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -65,7 +67,7 @@ class TextField extends React.PureComponent {
   };
 
   _handleBlur = () => {
-    if(typeof this.props.onBlur !== 'undefined') {
+    if (typeof this.props.onBlur !== "undefined") {
       this.props.onBlur();
     }
     this.setState({ "active": false });
@@ -147,31 +149,31 @@ class TextField extends React.PureComponent {
 
     const reqText = typeof requiredText !== "undefined" ? requiredText : "*";
 
-    let textFieldLabel = label &&
+    let textFieldLabel = label && 
       <div styleName={labelClasses}>
         <label styleName="labelPadding" htmlFor={id}>
           {label}
         </label>
         {required && <span styleName={"error_text"}> {reqText}</span>}
-        {tooltip &&
+        {tooltip && 
           <span styleName={tooltipClasses}>
-            <TooltipCore
+            <Tooltip
               className={tooltipInternalClasses}
               text={tooltip}
               position="top"
             />
           </span>
         }
-        {link &&
+        {link && 
           <span styleName={buttonClasses}>
-            <ButtonCore
+            <Button
               ignoreTab
               className={buttonInternalClasses}
               href={href}
               onClick={linkOnClick}
             >
               {linkText}
-            </ButtonCore>
+            </Button>
           </span>
         }
       </div>
@@ -211,7 +213,7 @@ class TextField extends React.PureComponent {
       >
         {textFieldLabel}
         <div styleName={fieldDisplayClasses}>
-          <InputCore
+          <Input
             {...others}
             type={type}
             name={name}
@@ -370,7 +372,7 @@ TextField.propTypes = {
   /**
    * A callback that fires onBlur.
    */
-   "onBlur": PropTypes.func
+  "onBlur": PropTypes.func
 };
 
 TextField.defaultProps = {
@@ -378,4 +380,4 @@ TextField.defaultProps = {
   "isValid": true
 };
 
-export default TextField;
+export default CSSModules(TextField, styles, { "allowMultiple": true });

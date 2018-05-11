@@ -2,8 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import { BootstrapTable } from "react-bootstrap-table";
+import CSSModules from "react-css-modules";
+import styles from "./Table.css";
 
-class Table extends React.PureComponent {
+export class Table extends React.PureComponent {
   render() {
     const {
       className,
@@ -68,4 +70,4 @@ Table.defaultProps = {
   }
 };
 
-export default Table;
+export default CSSModules(Table, styles, { "allowMultiple": true });

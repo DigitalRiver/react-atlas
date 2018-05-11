@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./ListGroup.css";
 
-class ListGroup extends React.PureComponent {
+export class ListGroup extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -50,4 +52,4 @@ ListGroup.defaultProps = {
   "divider": true
 };
 
-export default ListGroup;
+export default CSSModules(ListGroup, styles, { "allowMultiple": true });

@@ -1,2 +1,1 @@
-import { default as OverlayCore } from "./Overlay";
-export { OverlayCore };
+export { Overlay } from "./Overlay";

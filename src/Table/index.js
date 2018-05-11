@@ -1,2 +1,1 @@
-import { default as TableCore } from "./Table";
-export { TableCore };
+export { Table } from "./Table";

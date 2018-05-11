@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./List.css";
 
-class List extends React.PureComponent {
+export class List extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -48,4 +50,4 @@ List.defaultProps = {
   "border": false
 };
 
-export default List;
+export default CSSModules(List, styles, { "allowMultiple": true });
