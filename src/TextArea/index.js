@@ -1,2 +1,1 @@
-import { default as TextAreaCore } from "./TextArea";
-export { TextAreaCore };
+export { default } from "./TextArea";

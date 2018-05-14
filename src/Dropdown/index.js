@@ -1,2 +1,1 @@
-export { Dropdown } from "./Dropdown";
-export { Option } from "./Option";
+export { default } from "./Dropdown";

@@ -85,6 +85,7 @@ module.exports = {
   ],
   "showUsage": true,
   "defaultExample": true,
+  "skipComponentsWithoutExample": true,
   "webpackConfig": {
     "module": {
       "loaders": [babel, css, fontawesome, json, url]

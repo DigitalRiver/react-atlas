@@ -111,7 +111,6 @@
   height: 1.77rem;
   line-height: normal;
   composes: default-font from '../styles.css';
-  border-radius: 2px;
 }
 .dropdown-button:hover {
   border-color: #bebebe;
@@ -181,12 +180,4 @@
 
 .leftLabelContent {
   display: table-cell;
-}
-
-
-
-
-
-.hidden {
-  display:none;
 }

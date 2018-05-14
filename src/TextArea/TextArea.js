@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { InputCore } from "../Input";
+import Input from "../Input";
 import cx from "classnames";
-import { TooltipCore } from "./../Tooltip";
+import Tooltip from "./../Tooltip";
 
-class TextArea extends React.PureComponent {
+export class TextArea extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -125,7 +125,7 @@ class TextArea extends React.PureComponent {
         {required && <span styleName={"error_text"}> *</span>}
         {tooltip && 
           <span styleName={tooltipClasses}>
-            <TooltipCore
+            <Tooltip
               className={tooltipInternalClasses}
               text={tooltip}
               position="top"
@@ -171,7 +171,7 @@ class TextArea extends React.PureComponent {
       >
         {textAreaLabel}
         <div styleName={contentClasses}>
-          <InputCore
+          <Input
             {...others}
             id={id}
             multiline

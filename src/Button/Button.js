@@ -7,7 +7,7 @@ import styles from "./Button.css";
 /**
  * A Generic button component.
  */
-class Button extends React.PureComponent {
+export class Button extends React.PureComponent {
   constructor(props) {
     super(props);
   }
