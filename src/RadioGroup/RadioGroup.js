@@ -1,6 +1,8 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./RadioGroup.css";
 
 class RadioGroup extends React.PureComponent {
   constructor(props) {
@@ -124,4 +126,4 @@ RadioGroup.defaultProps = {
   "selectedIndex": null
 };
 
-export default RadioGroup;
+export default CSSModules(RadioGroup, styles, { "allowMultiple": true });

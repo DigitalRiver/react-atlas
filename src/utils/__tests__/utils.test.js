@@ -8,10 +8,10 @@ describe("Testing utilities", () => {
     expect(utils.getComponentName(comp)).toBe("Input");
 
     /**
-    * Commented out due to linting error
-    * let comp2 = { "type": { "displayName": undefined, "name": "Input2" } };
-    * expect(utils.getComponentName(comp2)).toBe("Input2");
-    */
+     * Commented out due to linting error
+     * let comp2 = { "type": { "displayName": undefined, "name": "Input2" } };
+     * expect(utils.getComponentName(comp2)).toBe("Input2");
+     */
 
     let comp3 = { "type": "Input3" };
     expect(utils.getComponentName(comp3)).toBe("Input3");

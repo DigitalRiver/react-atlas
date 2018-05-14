@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Text.css";
 
 class Text extends React.PureComponent {
   constructor(props) {
@@ -84,4 +86,4 @@ Text.defaultProps = {
   "as": "span"
 };
 
-export default Text;
+export default CSSModules(Text, styles, { "allowMultiple": true });

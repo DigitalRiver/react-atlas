@@ -1,18 +1,12 @@
 Basic Dropdown:
 
-    <div>
       <Dropdown>
-        <span value="bird">Bird</span>
-        <span value="cow">Cow</span>
-        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
-        <span value="monkey">Monkey</span>
-        <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+        <Option text="Bird" />
       </Dropdown>
-    </div>
 
 Dropdown with label:
 
-      <Dropdown customLabel="Dropdown Example" >
+      <Dropdown label="Dropdown Example" >
         <span value="bird">Bird</span>
         <span value="cow">Cow</span>
         <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -22,7 +16,7 @@ Dropdown with label:
 
 Dropdown with label on the left:
 
-      <Dropdown customLabel="Dropdown Example:" leftLabel >
+      <Dropdown label="Dropdown Example:" leftLabel >
         <span value="bird">Bird</span>
         <span value="cow">Cow</span>
         <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -54,7 +48,7 @@ Dropdowns with custom widths:
 
     <div>
       <div>
-        <Dropdown customLabel="Choose" style={{width: "300px"}}>
+        <Dropdown label="Choose" style={{width: "300px"}}>
           <span value="bird">Bird</span>
           <span value="cow" selected>Cow</span>
           <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -64,7 +58,7 @@ Dropdowns with custom widths:
       </div>
       <br  />
       <div>
-        <Dropdown customLabel="Choose" style={{width: "7rem"}}>
+        <Dropdown label="Choose" style={{width: "7rem"}}>
           <span value="bird">Bird</span>
           <span value="cow" selected>Cow</span>
           <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -76,7 +70,7 @@ Dropdowns with custom widths:
 
 Disabled Dropdown:
 
-    <Dropdown customLabel="Disabled Dropdown" disabled>
+    <Dropdown label="Disabled Dropdown" disabled>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -87,14 +81,14 @@ Disabled Dropdown:
 Inline Dropdowns:
 
     <div>
-      <Dropdown customLabel="Dropdown One" name="dropdown1" style={{ width: "200px" }} inline>
+      <Dropdown label="Dropdown One" name="dropdown1" style={{ width: "200px" }} inline>
          <span value="bird">Bird</span>
          <span value="cow">Cow</span>
          <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
          <span value="monkey">Monkey</span>
          <span value="eee">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
       </Dropdown>
-      <Dropdown customLabel="Dropdown Two" name="dropdown2" style={{ width: "200px" }} inline>
+      <Dropdown label="Dropdown Two" name="dropdown2" style={{ width: "200px" }} inline>
          <span value="bird">Bird</span>
          <span value="cow">Cow</span>
          <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -105,7 +99,7 @@ Inline Dropdowns:
 
 Dropdown with required property:
 
-    <Dropdown defaultText="Select One ..." customLabel="Required Dropdown" required>
+    <Dropdown defaultText="Select One ..." label="Required Dropdown" required>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -115,7 +109,7 @@ Dropdown with required property:
 
 Dropdown with custom validation and error message:
 
-    <Dropdown customLabel="Error Message Dropdown" errorCallback={ function(event, value){ return {isValid: false , message: "Custom error message!"} } }>
+    <Dropdown label="Error Message Dropdown" errorCallback={ function(event, value){ return {isValid: false , message: "Custom error message!"} } }>
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -125,7 +119,7 @@ Dropdown with custom validation and error message:
 
 Dropdown with custom function before change:
 
-    <Dropdown customLabel="onBeforeChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } >
+    <Dropdown label="onBeforeChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } >
        <span value="bird">Bird</span>
        <span value="cow">Cow</span>
        <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -145,7 +139,7 @@ Dropdown with onClick function:
 
 Dropdown with onChange function:
 
-    <Dropdown customLabel="onChange Dropdown" onChange={(value, event) => {console.log("onChange: ", value, event)}} >
+    <Dropdown label="onChange Dropdown" onChange={(value, event) => {console.log("onChange: ", value, event)}} >
     <span value="bird">Bird</span>
     <span value="cow">Cow</span>
     <span value="cbpcdmh">Cow Bird Pick Cat Dog Monkey Human</span>
@@ -165,7 +159,7 @@ Update Dropdown options via state after initial render:
         setState({ items: ["Cow", "Horse", "Pig"] })
     };
     <div> 
-      <Dropdown defaultText="Select One ..." customLabel="Update State Dropdown" onChange={(value, event) => {console.log("onChange: ", value, event)}} >
+      <Dropdown defaultText="Select One ..." label="Update State Dropdown" onChange={(value, event) => {console.log("onChange: ", value, event)}} >
         {rows}
         </Dropdown><br />
         <Button primary onClick={handleToggle}>Update State</Button>

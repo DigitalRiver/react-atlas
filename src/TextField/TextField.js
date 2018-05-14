@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import messages from "../utils/messages.js";
+import CSSModules from "react-css-modules";
+import styles from "./TextField.css";
 
 class TextField extends React.PureComponent {
   constructor(props) {
@@ -9,10 +11,10 @@ class TextField extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "value": this.props.value,
+      "value": props.value,
       "active": false,
-      "status": this.props.status || null,
-      "message": this.props.message || null
+      "status": props.status || null,
+      "message": props.message || null
     };
   }
 
@@ -117,6 +119,26 @@ class TextField extends React.PureComponent {
     this._validate(e, value, false);
   };
 
+  _handleClick = e => {
+    e.persist();
+    if (typeof this.props.onClick !== "undefined") {
+      this.props.onClick(e, {
+        "value": this.state.value,
+        "status": this.state.status
+      });
+    }
+  };
+
+  _handleKeyPress = e => {
+    e.persist();
+    if (typeof this.props.onKeyPress !== "undefined") {
+      this.props.onKeyPress(e, {
+        "value": this.state.value,
+        "status": this.state.status
+      });
+    }
+  };
+
   render() {
     const {
       className,
@@ -209,6 +231,8 @@ class TextField extends React.PureComponent {
           onChange={this._handleChange}
           onFocus={this._handleFocus}
           onBlur={this._handleBlur}
+          onClick={this._handleClick}
+          onKeyPress={this._handleKeyPress}
         />
         {this.state.message !== null && 
           <div>
@@ -305,4 +329,4 @@ TextField.defaultProps = {
   "tooltipPosition": "right"
 };
 
-export default TextField;
+export default CSSModules(TextField, styles, { "allowMultiple": true });

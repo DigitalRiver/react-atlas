@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Radio.css";
 
 class Radio extends React.PureComponent {
   constructor(props) {
@@ -215,4 +217,4 @@ Radio.defaultProps = {
   "inline": false
 };
 
-export default Radio;
+export default CSSModules(Radio, styles, { "allowMultiple": true });
