@@ -114,7 +114,6 @@ RadioGroup.propTypes = {
    * Will define the selected/checked Radio component in the RadioGroup.
    */
   "selectedIndex": PropTypes.number,
-
   /**
    * Defines the element title.
    * @examples '<RadioGroup title="Test"></RadioGroup>'

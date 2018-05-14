@@ -1,9 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import messages from "../utils/messages.js";
-import Input from "../Input";
-import Tooltip from "../Tooltip";
-import Button from "../Button";
 import cx from "classnames";
 import CSSModules from "react-css-modules";
 import styles from "./TextField.css";
@@ -122,26 +119,6 @@ export class TextField extends React.PureComponent {
     this._validate(e, value, false);
   };
 
-  _handleClick = e => {
-    e.persist();
-    if (typeof this.props.onClick !== "undefined") {
-      this.props.onClick(e, {
-        "value": this.state.value,
-        "status": this.state.status
-      });
-    }
-  };
-
-  _handleKeyPress = e => {
-    e.persist();
-    if (typeof this.props.onKeyPress !== "undefined") {
-      this.props.onKeyPress(e, {
-        "value": this.state.value,
-        "status": this.state.status
-      });
-    }
-  };
-
   render() {
     const {
       className,
@@ -234,8 +211,6 @@ export class TextField extends React.PureComponent {
           onChange={this._handleChange}
           onFocus={this._handleFocus}
           onBlur={this._handleBlur}
-          onClick={this._handleClick}
-          onKeyPress={this._handleKeyPress}
         />
         {this.state.message !== null && 
           <div>

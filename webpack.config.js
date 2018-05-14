@@ -3,6 +3,7 @@ let webpack = require("webpack");
 
 let config = {
   "entry": [path.join(__dirname, "./src/index.js")],
+  "devtool": "source-map",
   "output": {
     "filename": "index.js",
     "path": path.join(__dirname, "lib"),
@@ -60,36 +61,4 @@ let config = {
   ]
 };
 
-if (process.env.NODE_ENV === "production") {
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      "mangle": true,
-      "compress": {
-        "warnings": false, // Suppress uglification warnings
-        "pure_getters": true,
-        "unsafe": true,
-        "unsafe_comps": true,
-        "screw_ie8": true
-      },
-      "output": {
-        "comments": false
-      },
-      "exclude": [/\.min\.js$/gi] // skip pre-minified libs
-    })
-  ),
-    config.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
-}
-
-module.exports = function(env) {
-  if (typeof env !== "undefined") {
-    let theme = env.theme;
-    config.externals = config.externals || {};
-    config.externals[theme] = {
-      "root": theme,
-      "commonjs2": theme,
-      "commonjs": theme,
-      "amd": theme
-    };
-  }
-  return config;
-};
+module.exports = config;

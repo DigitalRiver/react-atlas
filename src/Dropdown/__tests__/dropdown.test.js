@@ -493,11 +493,7 @@ describe("Test Dropdown component - Keyboard tests", () => {
 
   it("Test Dropdown component - Hit ENTER (disabled)", function() {
     const component = mount(
-      <DropdownCore
-        onChange={function() {}}
-        onClick={function() {}}
-        disabled
-      >
+      <DropdownCore onChange={function() {}} onClick={function() {}} disabled>
         <span value="May">May</span>
         <span value="the">the</span>
         <span value="force">force</span>

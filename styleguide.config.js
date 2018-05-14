@@ -1,8 +1,5 @@
 const path = require("path");
 
-// Based on create-react-app
-// https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/config/webpack.config.dev.js
-
 // Process JS with Babel.
 const babel = {
   "test": /\.(js|jsx)$/,
@@ -77,6 +74,7 @@ module.exports = {
 
   "ignore": [
     "**/__tests__/**",
+    "**/utils/**",
     "**/*.test.js",
     "**/*.test.jsx",
     "**/*.spec.js",
@@ -87,6 +85,7 @@ module.exports = {
   "defaultExample": true,
   "skipComponentsWithoutExample": true,
   "webpackConfig": {
+    "devtool": "source-map",
     "module": {
       "loaders": [babel, css, fontawesome, json, url]
     }

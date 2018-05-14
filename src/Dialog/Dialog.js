@@ -9,63 +9,22 @@ import styles from "./Dialog.css";
 export class Dialog extends React.PureComponent {
   _getButtonContent = () => {
     const { info, warning, onOk, onCancel } = this.props;
-    let warningClasses = {
-      "ra_Button__small": true,
-      "ra_Button__button": true,
-      "ra_Button__base": true,
-      "ra_styles__button-marg-1": true,
-      "ra_styles__button-pad-1": true,
-      "ra_styles__default-text": true,
-      "ra_styles__cursor-pointer": true,
-      "ra_styles__primary-button-border-width": true,
-      "ra_styles__default-font": true,
-      "ra_styles__rounded": true,
-      "ra_Button__warning": true
-    };
-    let primaryClasses = {
-      "ra_Button__small": true,
-      "ra_Button__button": true,
-      "ra_Button__base": true,
-      "ra_styles__button-marg-1": true,
-      "ra_styles__button-pad-1": true,
-      "ra_styles__default-text": true,
-      "ra_styles__cursor-pointer": true,
-      "ra_styles__primary-button-border-width": true,
-      "ra_styles__default-font": true,
-      "ra_styles__rounded": true,
-      "ra_Button__primary": true,
-      "ra_styles__bg-primary": true,
-      "ra_styles__hover-bg-primary": true,
-      "ra_styles__border-primary": true,
-      "ra_styles__hover-border-primary": true,
-      "ra_styles__white": true
-    };
+
     const okButton = warning ? 
-      <Button className={cx(warningClasses)} onClick={onOk}>
+      <Button warning small onClick={onOk}>
         OK
       </Button>
      : 
-      <Button className={cx(primaryClasses)} onClick={onOk}>
+      <Button primary small onClick={onOk}>
         OK
       </Button>
     ;
-    let okClasses = {
-      "ra_Button__small": true,
-      "ra_Button__button": true,
-      "ra_Button__base": true,
-      "ra_styles__button-marg-1": true,
-      "ra_styles__button-pad-1": true,
-      "ra_styles__default-text": true,
-      "ra_styles__cursor-pointer": true,
-      "ra_styles__primary-button-border-width": true,
-      "ra_styles__default-font": true,
-      "ra_styles__rounded": true
-    };
+
     return (
       <div>
         {okButton}
         {!info && 
-          <Button className={okClasses} onClick={onCancel}>
+          <Button primary small onClick={onCancel}>
             Cancel
           </Button>
         }
