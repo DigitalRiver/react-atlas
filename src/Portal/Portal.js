@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Portal.css";
 
-class Portal extends Component {
+export class Portal extends Component {
   componentDidMount() {
     this._renderOverlay();
   }
@@ -94,4 +96,4 @@ Portal.defaultProps = {
   "className": ""
 };
 
-export default Portal;
+export default CSSModules(Portal, styles, { "allowMultiple": true });

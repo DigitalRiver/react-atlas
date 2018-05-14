@@ -1,2 +1,1 @@
-import { default as DialogCore } from "./Dialog";
-export { DialogCore };
+export { Dialog } from "./Dialog";

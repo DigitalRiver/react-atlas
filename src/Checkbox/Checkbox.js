@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 import { utils } from "../utils";
 import messages from "../utils/messages.js";
+import CSSModules from "react-css-modules";
+import styles from "./Checkbox.css";
 
 /**
  * Simple component for a basic checkbox
  */
-class Checkbox extends React.PureComponent {
+export class Checkbox extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -275,4 +277,4 @@ Checkbox.defaultProps = {
   "required": false
 };
 
-export default Checkbox;
+export default CSSModules(Checkbox, styles, { "allowMultiple": true });

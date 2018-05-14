@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ButtonCore } from "../Button";
-import { ModalCore } from "../Modal";
+import Button from "../Button";
+import Modal from "../Modal";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Dialog.css";
 
-class Dialog extends React.PureComponent {
+export class Dialog extends React.PureComponent {
   _getButtonContent = () => {
     const { info, warning, onOk, onCancel } = this.props;
     let warningClasses = {
@@ -39,13 +41,13 @@ class Dialog extends React.PureComponent {
       "ra_styles__white": true
     };
     const okButton = warning ? 
-      <ButtonCore className={cx(warningClasses)} onClick={onOk}>
+      <Button className={cx(warningClasses)} onClick={onOk}>
         OK
-      </ButtonCore>
+      </Button>
      : 
-      <ButtonCore className={cx(primaryClasses)} onClick={onOk}>
+      <Button className={cx(primaryClasses)} onClick={onOk}>
         OK
-      </ButtonCore>
+      </Button>
     ;
     let okClasses = {
       "ra_Button__small": true,
@@ -63,9 +65,9 @@ class Dialog extends React.PureComponent {
       <div>
         {okButton}
         {!info && 
-          <ButtonCore className={okClasses} onClick={onCancel}>
+          <Button className={okClasses} onClick={onCancel}>
             Cancel
-          </ButtonCore>
+          </Button>
         }
       </div>
     );
@@ -85,7 +87,7 @@ class Dialog extends React.PureComponent {
     } = this.props;
     return (
       active && 
-        <ModalCore
+        <Modal
           className={cx(className, { "ra_Dialog__warning": warning })}
           style={style}
           active={active}
@@ -95,7 +97,7 @@ class Dialog extends React.PureComponent {
             {children}
             <div className="ra_Dialog__buttons">{this._getButtonContent()}</div>
           </div>
-        </ModalCore>
+        </Modal>
       
     );
   }
@@ -177,4 +179,4 @@ Dialog.defaultProps = {
   "info": false
 };
 
-export default Dialog;
+export default CSSModules(Dialog, styles, { "allowMultiple": true });

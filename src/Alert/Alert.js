@@ -4,7 +4,7 @@ import cx from "classnames";
 import styles from "./Alert.css";
 import CSSModules from "react-css-modules";
 
-class Alert extends React.PureComponent {
+export class Alert extends React.PureComponent {
   constructor(props) {
     super(props);
 

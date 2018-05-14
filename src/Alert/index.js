@@ -1,2 +1,1 @@
-import { default as AlertCore } from "./Alert";
-export { AlertCore };
+export { Alert } from "./Alert";

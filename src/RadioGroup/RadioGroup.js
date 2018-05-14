@@ -4,7 +4,7 @@ import cx from "classnames";
 import CSSModules from "react-css-modules";
 import styles from "./RadioGroup.css";
 
-class RadioGroup extends React.PureComponent {
+export class RadioGroup extends React.PureComponent {
   constructor(props) {
     super(props);
     // Initial state

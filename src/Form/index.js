@@ -1,2 +1,1 @@
-import { default as FormCore } from "./Form";
-export { FormCore };
+export { Form } from "./Form";

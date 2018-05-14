@@ -2,9 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import prefixer from "../utils/prefixer";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styleSheet from "./ProgressBar.css";
 
 //TODO Change this to a self contained component from the current version that requires too much logic in the parent component
-class ProgressBar extends React.PureComponent {
+export class ProgressBar extends React.PureComponent {
   calculateRatio(value) {
     if (value < this.props.min) {
       return 0;
@@ -206,4 +208,4 @@ ProgressBar.defaultProps = {
   "value": 0
 };
 
-export default ProgressBar;
+export default CSSModules(ProgressBar, styleSheet, { "allowMultiple": true });

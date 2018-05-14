@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Tab.css";
 
 /**
  * Tab component
  */
-class Tab extends React.PureComponent {
+export class Tab extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -111,4 +113,4 @@ Tab.defaultProps = {
   "disabled": false
 };
 
-export default Tab;
+export default CSSModules(Tab, styles, { "allowMultiple": true });

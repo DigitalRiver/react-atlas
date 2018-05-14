@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import CSSModules from "react-css-modules";
-import styles from "./BreadCrumbItem.css";
+import styles from "./BreadcrumbItem.css";
 
-class BreadcrumbItem extends React.PureComponent {
+export class BreadcrumbItem extends React.PureComponent {
   constructor(props) {
     super(props);
   }

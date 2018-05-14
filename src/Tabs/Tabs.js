@@ -1,11 +1,13 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Tabs.css";
 
 /**
  * Tabs component
  */
-class Tabs extends React.PureComponent {
+export class Tabs extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -110,4 +112,4 @@ Tabs.defaultProps = {
   "bordered": false
 };
 
-export default Tabs;
+export default CSSModules(Tabs, styles, { "allowMultiple": true });

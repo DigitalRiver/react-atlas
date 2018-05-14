@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { InputCore } from "../Input";
+import Input from "../Input";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styleSheet from "./Switch.css";
 
-class Switch extends React.PureComponent {
+export class Switch extends React.PureComponent {
   constructor(props) {
     super(props);
     // Initial state
@@ -155,7 +157,7 @@ class Switch extends React.PureComponent {
           styleName={switchClasses}
           style={style}
         >
-          <InputCore
+          <Input
             {...others}
             type="checkbox"
             name={name}
@@ -296,4 +298,4 @@ Switch.defaultProps = {
   "hidden": false
 };
 
-export default Switch;
+export default CSSModules(Switch, styleSheet, { "allowMultiple": true });

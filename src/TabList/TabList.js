@@ -1,11 +1,13 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./TabList.css";
 
 /**
  * TabList component
  */
-class TabList extends React.PureComponent {
+export class TabList extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -92,4 +94,4 @@ TabList.propTypes = {
   "vertical": PropTypes.bool
 };
 
-export default TabList;
+export default CSSModules(TabList, styles, { "allowMultiple": true });

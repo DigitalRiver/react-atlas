@@ -1,8 +1,10 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./CheckboxGroup.css";
 
-class CheckboxGroup extends React.PureComponent {
+export class CheckboxGroup extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -187,4 +189,4 @@ CheckboxGroup.defaultProps = {
   "inline": false
 };
 
-export default CheckboxGroup;
+export default CSSModules(CheckboxGroup, styles, { "allowMultiple": true });

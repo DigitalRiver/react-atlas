@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 import { default as Dp } from "react-datepicker";
 import moment from "moment";
+import CSSModules from "react-css-modules";
+import styles from "./DatePicker.css";
 
-class DatePicker extends React.PureComponent {
+export class DatePicker extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -83,4 +85,4 @@ DatePicker.propTypes = {
   "style": PropTypes.object
 };
 
-export default DatePicker;
+export default CSSModules(DatePicker, styles, { "allowMultiple": true });

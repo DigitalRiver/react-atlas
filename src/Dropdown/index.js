@@ -1,4 +1,2 @@
-import { Dropdown } from "./Dropdown";
-export { Dropdown };
-import { Option } from "./Option";
-export { Option };
+export { Dropdown } from "./Dropdown";
+export { Option } from "./Option";

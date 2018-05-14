@@ -10,7 +10,7 @@ import styles from "./Accordion.css";
  * @examples <Accordion><Panel title="Accordion Title">Some text</Panel><Panel title="Accordion Title 2">Some more text</Panel></Accordion>
  *
  */
-class Accordion extends React.PureComponent {
+export class Accordion extends React.PureComponent {
   constructor(props) {
     super(props);
 

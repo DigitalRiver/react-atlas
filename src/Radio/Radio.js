@@ -4,7 +4,7 @@ import cx from "classnames";
 import CSSModules from "react-css-modules";
 import styles from "./Radio.css";
 
-class Radio extends React.PureComponent {
+export class Radio extends React.PureComponent {
   constructor(props) {
     super(props);
   }

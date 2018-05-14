@@ -1,2 +1,1 @@
-import { default as PortalCore } from "./Portal";
-export { PortalCore };
+export { Portal } from "./Portal";

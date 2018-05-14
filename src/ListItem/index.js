@@ -1,2 +1,1 @@
-import { default as ListItemCore } from "./ListItem";
-export { ListItemCore };
+export { ListItem } from "./ListItem";

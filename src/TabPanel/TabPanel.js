@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./TabPanel.css";
 
 /**
  * TabPanel component
  */
-class TabPanel extends React.PureComponent {
+export class TabPanel extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -77,4 +79,4 @@ TabPanel.propTypes = {
   "vertical": PropTypes.bool
 };
 
-export default TabPanel;
+export default CSSModules(TabPanel, styles, { "allowMultiple": true });

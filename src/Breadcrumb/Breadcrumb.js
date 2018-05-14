@@ -4,7 +4,7 @@ import cx from "classnames";
 import CSSModules from "react-css-modules";
 import styles from "./Breadcrumb.css";
 
-class Breadcrumb extends React.PureComponent {
+export class Breadcrumb extends React.PureComponent {
   constructor(props) {
     super(props);
   }

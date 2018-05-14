@@ -1,2 +1,1 @@
-import { default as TabPanelCore } from "./TabPanel";
-export { TabPanelCore };
+export { TabPanel } from "./TabPanel";

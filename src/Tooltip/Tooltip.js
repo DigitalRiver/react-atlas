@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from "react-css-modules";
+import styles from "./Tooltip.css";
 
 /*
  * A CSS driven tooltip that gives more information when an element it wraps is hovered over.
  */
-class Tooltip extends React.PureComponent {
+export class Tooltip extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -132,4 +134,4 @@ Tooltip.defaultProps = {
   "delay": null
 };
 
-export default Tooltip;
+export default CSSModules(Tooltip, styles, { "allowMultiple": true });

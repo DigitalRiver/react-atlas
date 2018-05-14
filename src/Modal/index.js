@@ -1,2 +1,1 @@
-import { default as ModalCore } from "./Modal";
-export { ModalCore };
+export { Modal } from "./Modal";

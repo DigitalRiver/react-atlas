@@ -1,2 +1,1 @@
-import { default as RadioGroupCore } from "./RadioGroup";
-export { RadioGroupCore };
+export { RadioGroup } from "./RadioGroup";

@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { PortalCore } from "./../Portal";
-import { OverlayCore } from "./../Overlay";
+import Portal from "./../Portal";
+import Overlay from "./../Overlay";
+import CSSModules from "react-css-modules";
+import styles from "./Modal.css";
 
-class Modal extends React.PureComponent {
+export class Modal extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,9 +36,9 @@ class Modal extends React.PureComponent {
     });
     return (
       active && 
-        <PortalCore>
+        <Portal>
           {overlay && 
-            <OverlayCore
+            <Overlay
               active={active}
               onClick={onOverlayClick}
               onEscKeyDown={onEscKeyDown}
@@ -52,7 +54,7 @@ class Modal extends React.PureComponent {
               </div>
             </div>
           </div>
-        </PortalCore>
+        </Portal>
       
     );
   }
@@ -114,4 +116,4 @@ Modal.defaultProps = {
   "lockScroll": true
 };
 
-export default Modal;
+export default CSSModules(Modal, styles, { "allowMultiple": true });

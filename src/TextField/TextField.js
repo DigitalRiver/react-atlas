@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import cx from "classnames";
 import messages from "../utils/messages.js";
+import Input from "../Input";
+import Tooltip from "../Tooltip";
+import Button from "../Button";
+import cx from "classnames";
 import CSSModules from "react-css-modules";
 import styles from "./TextField.css";
 
-class TextField extends React.PureComponent {
+export class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
 

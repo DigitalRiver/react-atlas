@@ -4,7 +4,7 @@ import cx from "classnames";
 import CSSModules from "react-css-modules";
 import styles from "./Panel.css";
 
-class Panel extends React.PureComponent {
+export class Panel extends React.PureComponent {
   constructor(props) {
     super(props);
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import TextField from "../TextField/TextField.js";
+import TextField from "../TextField";
 import CSSModules from "react-css-modules";
 import styles from "./Dropdown.css";
 
