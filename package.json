@@ -13,10 +13,10 @@
     "build": "webpack",
     "build:prd": "cross-env NODE_ENV=production npm run build",
     "build:dev": "cross-env NODE_ENV=development npm run build",
-    "docs:prd": "cross-env NODE_ENV=production styleguidist",
+    "docs:prd": "cross-env NODE_ENV=production styleguidist build",
     "docs:dev": "cross-env NODE_ENV=development styleguidist server",
     "docs:build": "cross-env NODE_ENV=development",
-    "gh-pages:publish": "cd scripts && node gh-pages.js",
+    "docs:publish": "node scriptsgh-pages.js",
     "precommit": "lint-staged"
   },
   "jest": {

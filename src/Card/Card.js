@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import CSSModules from 'react-css-modules';
+import styles from './Card.css';
 
 /**
  * Simple Card component that wraps a div around content with card styling.
@@ -94,4 +96,4 @@ Card.propTypes = {
   "title": PropTypes.string
 };
 
-export default Card;
+export default CSSModules(Card, styles, {"allowMultiple": true });

@@ -1,71 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ButtonCore } from "../Button";
-import { ModalCore } from "../Modal";
+import Button from "../Button/Button.js";
+import Modal from "../Modal/Modal.js";
 import cx from "classnames";
+import CSSModules from 'react-css-modules';
+import styles from './Dialog.css';
+
+console.log("Button: ", Button);
+console.log("Modal: ", Modal);
 
 class Dialog extends React.PureComponent {
   _getButtonContent = () => {
     const { info, warning, onOk, onCancel } = this.props;
-    let warningClasses = {
-      "ra_Button__small": true,
-      "ra_Button__button": true,
-      "ra_Button__base": true,
-      "ra_styles__button-marg-1": true,
-      "ra_styles__button-pad-1": true,
-      "ra_styles__default-text": true,
-      "ra_styles__cursor-pointer": true,
-      "ra_styles__primary-button-border-width": true,
-      "ra_styles__default-font": true,
-      "ra_styles__rounded": true,
-      "ra_Button__warning": true
-    };
-    let primaryClasses = {
-      "ra_Button__small": true,
-      "ra_Button__button": true,
-      "ra_Button__base": true,
-      "ra_styles__button-marg-1": true,
-      "ra_styles__button-pad-1": true,
-      "ra_styles__default-text": true,
-      "ra_styles__cursor-pointer": true,
-      "ra_styles__primary-button-border-width": true,
-      "ra_styles__default-font": true,
-      "ra_styles__rounded": true,
-      "ra_Button__primary": true,
-      "ra_styles__bg-primary": true,
-      "ra_styles__hover-bg-primary": true,
-      "ra_styles__border-primary": true,
-      "ra_styles__hover-border-primary": true,
-      "ra_styles__white": true
-    };
+
     const okButton = warning ? 
-      <ButtonCore className={cx(warningClasses)} onClick={onOk}>
+      <Button warning small onClick={onOk}>
         OK
-      </ButtonCore>
+      </Button>
      : 
-      <ButtonCore className={cx(primaryClasses)} onClick={onOk}>
+      <Button primary small onClick={onOk}>
         OK
-      </ButtonCore>
+      </Button>
     ;
-    let okClasses = {
-      "ra_Button__small": true,
-      "ra_Button__button": true,
-      "ra_Button__base": true,
-      "ra_styles__button-marg-1": true,
-      "ra_styles__button-pad-1": true,
-      "ra_styles__default-text": true,
-      "ra_styles__cursor-pointer": true,
-      "ra_styles__primary-button-border-width": true,
-      "ra_styles__default-font": true,
-      "ra_styles__rounded": true
-    };
+
     return (
       <div>
         {okButton}
         {!info && 
-          <ButtonCore className={okClasses} onClick={onCancel}>
+          <Button primary small onClick={onCancel}>
             Cancel
-          </ButtonCore>
+          </Button>
         }
       </div>
     );
@@ -85,7 +49,7 @@ class Dialog extends React.PureComponent {
     } = this.props;
     return (
       active && 
-        <ModalCore
+        <Modal
           className={cx(className, { "ra_Dialog__warning": warning })}
           style={style}
           active={active}
@@ -95,7 +59,7 @@ class Dialog extends React.PureComponent {
             {children}
             <div className="ra_Dialog__buttons">{this._getButtonContent()}</div>
           </div>
-        </ModalCore>
+        </Modal>
       
     );
   }
@@ -177,4 +141,4 @@ Dialog.defaultProps = {
   "info": false
 };
 
-export default Dialog;
+export default CSSModules(Dialog, styles, {"allowMultiple": true });

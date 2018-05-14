@@ -1,8 +1,5 @@
 const path =  require('path');
 
-// Based on create-react-app
-// https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/config/webpack.config.dev.js
-
 // Process JS with Babel.
 const babel = {
   test: /\.(js|jsx)$/,
@@ -83,10 +80,11 @@ module.exports = {
   // Regex should be: 'src/components/NAME_OF_COMPONENT_FOLDER/[A-Z]*.js'
   components: 'src/**/**.js',
 
-  ignore: ['**/__tests__/**', '**/*.test.js', '**/*.test.jsx', '**/*.spec.js', '**/*.spec.jsx', '**/index.js'],
+  ignore: ['**/__tests__/**', '**/utils/**', '**/*.test.js', '**/*.test.jsx', '**/*.spec.js', '**/*.spec.jsx', '**/index.js'],
   showUsage: true,
   defaultExample: true,
   webpackConfig: {
+    devtool: "source-map",
     module: {
       loaders:
         [

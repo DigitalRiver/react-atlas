@@ -1,8 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { PortalCore } from "./../Portal";
-import { OverlayCore } from "./../Overlay";
+import Portal from "../Portal/Portal.js";
+import Overlay from "../Overlay/Overlay.js";
+import CSSModules from 'react-css-modules';
+import styles from './Modal.css';
+
+console.log("Portal: ", Portal);
+
+console.log("Overlay: ", Overlay);
 
 class Modal extends React.PureComponent {
   constructor(props) {
@@ -23,20 +29,12 @@ class Modal extends React.PureComponent {
       lockScroll,
       style
     } = this.props;
-    const classes = cx(
-      "ra_Modal__modal",
-      { "ra_Modal__active": active },
-      "ra_styles__default-font"
-    );
-    const overlayClasses = cx({
-      "overlayClass": true,
-      "overlayLeftStyle": this.state.isHaveScrollbar
-    });
+   
     return (
       active && 
-        <PortalCore>
+        <Portal>
           {overlay && 
-            <OverlayCore
+            <Overlay
               active={active}
               onClick={onOverlayClick}
               onEscKeyDown={onEscKeyDown}
@@ -52,7 +50,7 @@ class Modal extends React.PureComponent {
               </div>
             </div>
           </div>
-        </PortalCore>
+        </Portal>
       
     );
   }
@@ -114,4 +112,4 @@ Modal.defaultProps = {
   "lockScroll": true
 };
 
-export default Modal;
+export default CSSModules(Modal, styles, {"allowMultiple": true });
