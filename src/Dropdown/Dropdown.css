@@ -1,3 +1,4 @@
+/*
 .container {
   display: block;
   position: relative;
@@ -5,10 +6,6 @@
   margin: 0 .25rem calc(.25rem + 8px) 0;
   top: 8px;
   width: 100%;
-}
-
-.inline {
-  display: inline-block;
 }
 
 .content {
@@ -111,6 +108,7 @@
   height: 1.77rem;
   line-height: normal;
   composes: default-font from '../styles.css';
+  border-radius: 2px;
 }
 .dropdown-button:hover {
   border-color: #bebebe;
@@ -172,12 +170,73 @@
   z-index: 9998;
 }
 
-.leftLabel {
-  display: table-cell;
-  white-space: nowrap;
-  vertical-align: middle;
-}
-
 .leftLabelContent {
   display: table-cell;
+}
+
+*/
+
+.dropdown {
+  width: 100%;
+  position: relative;
+}
+
+.hidden {
+  display:none;
+}
+
+.options {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 0 0 2px 2px;
+  border: solid #BEBEBE;
+  border-width: 0 1px 1px 1px;
+  margin: -.25rem .25rem .25rem 0;
+  position: absolute;
+  background: #ffffff;
+  top: calc(1.96rem);
+  z-index: 9998;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+.leftLabel {
+	display: flex;
+  white-space: nowrap;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inline {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 4px 0 4px;
+  border-color: #000000 transparent transparent transparent;
+  float: right;
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+.setWidth {
+  width: inherit;
+  display: inline-block;
+}
+
+.arrowUp {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
