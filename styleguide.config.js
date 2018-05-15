@@ -71,7 +71,7 @@ module.exports = {
   // Use this to test a single component.  Change it to the component you are testing and restart the styleguide server
   // Regex should be: 'src/components/NAME_OF_COMPONENT_FOLDER/[A-Z]*.js'
   "components": "src/**/**.js",
-
+  "require": [path.resolve(__dirname, 'scripts/setup.js')],
   "ignore": [
     "**/__tests__/**",
     "**/utils/**",
