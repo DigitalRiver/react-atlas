@@ -1,7 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { TextFieldCore } from "../../../react-atlas-core/src/TextField/index";
-import renderer from "react-test-renderer";
+import { TextField } from "../index";
 
 describe("Test Input component render", () => {
   it("Render correctly", () => {

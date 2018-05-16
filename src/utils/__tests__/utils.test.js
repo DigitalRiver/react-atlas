@@ -1,4 +1,4 @@
-import utils from "../../../react-atlas-core/src/utils/utils";
+import utils from "../utils";
 
 describe("Testing utilities", () => {
   it("Test getCompName()", function() {

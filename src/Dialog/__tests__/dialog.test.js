@@ -1,6 +1,7 @@
 import React from "react";
-import { DialogCore } from "../../../react-atlas-core/src/Dialog/index";
-import { ButtonCore } from "../../../react-atlas-core/src/Button/index";
+import { mount } from "enzyme";
+import Dialog from "../index";
+import Button from "../../Button/index";
 
 import renderer from "react-test-renderer";
 
@@ -16,18 +17,79 @@ describe("Dialog component - Test correct render", () => {
   const tree = renderer
     .create(
       <div>
-        <ButtonCore primary onClick={handleToggle}>
+        <Button primary onClick={handleToggle}>
           Open Info Dialog
-        </ButtonCore>
-        <DialogCore active onOk={handleOk} title="Info" overlay info>
+        </Button>
+        <Dialog active onOk={handleOk} title="Info" overlay info>
           <div>
             This is Dialog example<br />Any child components could be put here.
           </div>
-        </DialogCore>
+        </Dialog>
       </div>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();
+});
+
+describe("Dialog component - Basic test", () => {
+  it("Dialog component(info) - Basic test", function() {
+    const dial = mount(
+      <div>
+        <Button primary onClick={handleToggle}>
+          Open Info Dialog
+        </Button>
+        <Dialog active onOk={handleOk} title="Info" overlay info>
+          <div>
+            This is Dialog example<br />Any child components could be put here.
+          </div>
+        </Dialog>
+      </div>
+    );
+  });
+
+  it("Dialog component(confirm) - Basic test", function() {
+    const dial = mount(
+      <div>
+        <Button primary onClick={handleToggle}>
+          Open confirm Dialog
+        </Button>
+        <Dialog
+          active
+          onOk={handleOk}
+          onCancel={handleCancel}
+          title="Confirm"
+          overlay
+          confirm
+        >
+          <div>
+            This is Dialog example<br />Any child components could be put here.
+          </div>
+        </Dialog>
+      </div>
+    );
+  });
+
+  it("Dialog component(warning) - Basic test", function() {
+    const dial = mount(
+      <div>
+        <Button primary onClick={handleToggle}>
+          Open warning Dialog
+        </Button>
+        <Dialog
+          active
+          onOk={handleOk}
+          onCancel={handleCancel}
+          title="Warning"
+          overlay
+          warning
+        >
+          <div>
+            This is Dialog example<br />Any child components could be put here.
+          </div>
+        </Dialog>
+      </div>
+    );
+  });
 });
 
 //dial.find('button').simulate('click');

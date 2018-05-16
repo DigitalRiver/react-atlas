@@ -2,14 +2,13 @@
 
 exports[`Test correct render Test correct render 1`] = `
 <div
-  className=""
-  styleName="avatar"
+  className="avatar"
   title="testTitle"
 >
   <img
+    className="image"
     onError={[Function]}
     src="picture.jpg"
-    styleName="image"
     title="testTitle"
   />
 </div>

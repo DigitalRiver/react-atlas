@@ -1,15 +1,97 @@
 import React from "react";
 import { mount } from "enzyme";
-import { FormCore } from "../../../react-atlas-core/src/Form/index";
-import { TextFieldCore } from "../../../react-atlas-core/src/TextField";
+import { Form } from "../index";
+import { Button } from "../../Button/index";
+import { TextField } from "../../TextField";
+
+describe("Test form component", () => {
+  it("Test default props", function() {
+    const result = mount(
+      <Form>
+        <span value="Adrian">Adrian</span>
+      </Form>
+    );
+  });
+
+  it("Test custom props", function() {
+    const result = mount(
+      <Form
+        buttonClasses={["classA", "classB"]}
+        /** Children components, Usually a Textfield, Dropdown, Input, etc */
+        className={"String"} // PropTypes.string, PropTypes.object, PropTypes.array
+        /** A callback that is fired when the form has passed validation
+         * and is ready to submit. Returns the form data and the event object.  */
+        onSubmit={() => {}}
+        /** A Callback that is called when there is a form error. */
+        onError={() => {}}
+        /** The URL of the server to send data to. */
+        action="http://happy-dude.evergreen-terrace.?n=742"
+        buttonText={" Submit "}
+        /** The HTTP method to use when action is set and
+         * the form is submitting. */
+        method={"POST"}
+        /** An Object, array, or string of CSS classes to
+         * apply to form children components.*/
+        childClasses={["classA", "classB"]}
+        /* Pass inline styles here. */
+        style={{ "backgroundColor": "#efefef" }}
+      />
+    );
+  });
+});
+
+describe("Test submit behavior", () => {
+  it("Test simple submit", function() {
+    const form = mount(
+      <Form onSubmit={() => {}}>
+        <span value="Adrian">Adrian</span>
+      </Form>
+    );
+    form.simulate("submit");
+  });
+
+  it("Test simple submit with action", function() {
+    const form = mount(
+      <Form
+        onSubmit={() => {}}
+        action="http://happy-dude.evergreen-terrace.?n=742"
+      >
+        <span value="Adrian">Adrian</span>
+      </Form>
+    );
+    form.simulate("submit");
+  });
+
+  it("Test simple submit without data", function() {
+    const form = mount(<Form onSubmit={() => {}} />);
+    form.simulate("submit");
+  });
+
+  it("Test simple submit with onError", function() {
+    const form = mount(<Form onSubmit={() => {}} onError={() => {}} />);
+    form.simulate("submit");
+  });
+});
 
 describe("Test data", () => {
+  it("Test simple submit", function() {
+    const form = mount(
+      <Form onSubmit={() => {}}>
+        <span value="Adrian">Adrian</span>
+        <Button />
+        <span value="Adrian">Adrian</span>
+        <span value="Adrian">Adrian</span>
+      </Form>
+    );
+    form.simulate("submit");
+  });
+
   it("Test submit data", function() {
     const onSubmit = jest.fn();
     const form = mount(
-      <FormCore onSubmit={onSubmit}>
-        <TextFieldCore name="UserField" value="Userdata" />
-      </FormCore>
+      <Form onSubmit={onSubmit}>
+        <TextField name="UserField" value="Userdata" />
+      </Form>
     );
     form.simulate("submit");
 
@@ -23,10 +105,10 @@ describe("Test data", () => {
   it("Test submit data with multiple fields", function() {
     const onSubmit = jest.fn();
     const form = mount(
-      <FormCore onSubmit={onSubmit}>
-        <TextFieldCore name="UserField" value="Userdata" />
-        <TextFieldCore name="UserField2" value="Userdata2" />
-      </FormCore>
+      <Form onSubmit={onSubmit}>
+        <TextField name="UserField" value="Userdata" />
+        <TextField name="UserField2" value="Userdata2" />
+      </Form>
     );
     form.simulate("submit");
 
@@ -41,12 +123,12 @@ describe("Test data", () => {
   it("Test submit with nested fields", function() {
     const onSubmit = jest.fn();
     const form = mount(
-      <FormCore onSubmit={onSubmit}>
-        <TextFieldCore name="UserField" value="Userdata" />
+      <Form onSubmit={onSubmit}>
+        <TextField name="UserField" value="Userdata" />
         <div>
-          <TextFieldCore name="NestedField" value="Userdata" />
+          <TextField name="NestedField" value="Userdata" />
         </div>
-      </FormCore>
+      </Form>
     );
     form.simulate("submit");
 
@@ -63,11 +145,11 @@ describe("Test data", () => {
   it("Test submit with a nested field", function() {
     const onSubmit = jest.fn();
     const form = mount(
-      <FormCore onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit}>
         <div>
-          <TextFieldCore name="NestedField" value="Userdata" />
+          <TextField name="NestedField" value="Userdata" />
         </div>
-      </FormCore>
+      </Form>
     );
     form.simulate("submit");
 
@@ -81,15 +163,11 @@ describe("Test data", () => {
   it("Test that field onChange is called", function() {
     const onChange = jest.fn();
     const form = mount(
-      <FormCore onSubmit={() => {}}>
+      <Form onSubmit={() => {}}>
         <div>
-          <TextFieldCore
-            name="NestedField"
-            value="Userdata"
-            onChange={onChange}
-          />
+          <TextField name="NestedField" value="Userdata" onChange={onChange} />
         </div>
-      </FormCore>
+      </Form>
     );
 
     form
@@ -108,11 +186,11 @@ describe("Test data", () => {
   it("Test onChangeHandler", function() {
     const onSubmit = jest.fn();
     const form = mount(
-      <FormCore onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit}>
         <div>
-          <TextFieldCore name="NestedField" value="Userdata" />
+          <TextField name="NestedField" value="Userdata" />
         </div>
-      </FormCore>
+      </Form>
     );
     form
       .find("input")
@@ -135,12 +213,12 @@ describe("Test data", () => {
   it("Test that onError is called when submitting an invalid field", function() {
     const onError = jest.fn();
     const form = mount(
-      <FormCore onSubmit={() => {}} onError={onError}>
-        <TextFieldCore name="UserField" value="Userdata" />
+      <Form onSubmit={() => {}} onError={onError}>
+        <TextField name="UserField" value="Userdata" />
         <div>
-          <TextFieldCore name="InvalidField" required value="" />
+          <TextField name="InvalidField" required value="" />
         </div>
-      </FormCore>
+      </Form>
     );
     form.simulate("submit");
 
@@ -150,12 +228,12 @@ describe("Test data", () => {
   it("Test that required validation updates state properly", function() {
     const onError = jest.fn();
     const form = mount(
-      <FormCore onSubmit={() => {}} onError={onError}>
-        <TextFieldCore name="UserField" value="Userdata" />
+      <Form onSubmit={() => {}} onError={onError}>
+        <TextField name="UserField" value="Userdata" />
         <div>
-          <TextFieldCore name="InvalidField" required value="" />
+          <TextField name="InvalidField" required value="" />
         </div>
-      </FormCore>
+      </Form>
     );
     expect(form.state().childState.InvalidField.isValid).toBeTruthy();
     form.simulate("submit");
@@ -166,10 +244,10 @@ describe("Test data", () => {
   // regression for https://github.com/DigitalRiver/react-atlas/issues/671
   it("Verify state is not lost on submission", function() {
     const form = mount(
-      <FormCore>
-        <TextFieldCore name="FieldOne" />
-        <TextFieldCore name="FieldTwo" />
-      </FormCore>
+      <Form>
+        <TextField name="FieldOne" />
+        <TextField name="FieldTwo" />
+      </Form>
     );
 
     expect(form.state().childState.FieldOne.value).toBeUndefined();
@@ -211,7 +289,7 @@ describe("Test data", () => {
     ).toEqual("data one");
 
     form.simulate("submit");
-    const children = form.prop("children").concat(<TextFieldCore />);
+    const children = form.prop("children").concat(<TextField />);
     form.setProps({ children });
 
     expect(form.state().childState.FieldOne.value).toEqual("data one");

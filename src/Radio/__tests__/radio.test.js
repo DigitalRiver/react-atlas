@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { RadioCore } from "../../../react-atlas-core/src/Radio/index";
+import { Radio } from "../index";
 
 import renderer from "react-test-renderer";
 
@@ -8,7 +8,7 @@ describe("Test Radio component render", () => {
   it("Render correctly", () => {
     const tree = renderer
       .create(
-        <RadioCore
+        <Radio
           label={"Checked Radio"}
           value={"checkedRadio"}
           defaultChecked
@@ -25,9 +25,34 @@ describe("Test Radio component render", () => {
 });
 
 describe("Testing radio component", () => {
+  it("Radio - Basic test", function() {
+    const result = mount(
+      <Radio
+        label={"Checked Radio"}
+        value={"checkedRadio"}
+        defaultChecked
+        className={"class"}
+        title={"TITLE"}
+        hidden={false}
+        inline
+        name={"Mr radio"}
+      />
+    );
+  });
+
+  it("Radio - Basic test", function() {
+    const result = mount(
+      <Radio
+        label="Checked Radio"
+        value="checkedRadio"
+        labelPosition={"left"}
+      />
+    );
+  });
+
   it("Radio - Default checked test", function() {
     const rad = mount(
-      <RadioCore
+      <Radio
         checked
         label="Checked Radio"
         value="checkedRadio"
@@ -39,7 +64,7 @@ describe("Testing radio component", () => {
 
   it("Radio - Simple click test", function() {
     const rad = mount(
-      <RadioCore
+      <Radio
         label="Checked Radio"
         value="checkedRadio"
         groupSetChecked={function() {}}
@@ -50,7 +75,7 @@ describe("Testing radio component", () => {
 
   it("Radio - Simple click test (disabled)", function() {
     const rad = mount(
-      <RadioCore
+      <Radio
         disabled
         label="Checked Radio"
         value="checkedRadio"
@@ -62,7 +87,7 @@ describe("Testing radio component", () => {
 
   it("Radio - Simple click test (with onBeforeChange)", function() {
     const rad = mount(
-      <RadioCore
+      <Radio
         label="Checked Radio"
         value="checkedRadio"
         groupSetChecked={function() {}}
@@ -82,7 +107,7 @@ describe("Testing radio component", () => {
 
   it("Radio - Simple click test (without onBeforeChange)", function() {
     const rad = mount(
-      <RadioCore
+      <Radio
         label="Checked Radio"
         value="checkedRadio"
         groupSetChecked={function() {}}
@@ -99,7 +124,7 @@ describe("Testing radio component", () => {
 
   it("Radio - Simple click test (without onBeforeChange) checked", function() {
     const rad = mount(
-      <RadioCore
+      <Radio
         checked
         label="Checked Radio"
         value="checkedRadio"
