@@ -5,6 +5,7 @@
   "main": "./lib",
   "scripts": {
     "test": "jest",
+    "testComponent": "jestIndividualComponent",
     "updateSnapshot": "jest --updateSnapshot",
     "coverage": "jest --coverage",
     "format": "prettier src/**/*.js --write",
@@ -23,6 +24,15 @@
     "setupTestFrameworkScriptFile": "<rootDir>/scripts/enzymeConfig.js",
     "collectCoverageFrom": [
       "src/**/*.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  },
+  "jestIndividualComponent": {
+    "setupTestFrameworkScriptFile": "<rootDir>/scripts/enzymeConfig.js",
+    "collectCoverageFrom": [
+      "src/Accordion/Accordion.js"
     ],
     "moduleNameMapper": {
       "\\.(css|less)$": "identity-obj-proxy"
@@ -79,6 +89,7 @@
     "gh-pages": "^1.1.0",
     "glob": "^7.1.1",
     "husky": "^0.14.3",
+    "identity-obj-proxy": "3.0.0",
     "jest": "^22.1.4",
     "lerna": "^2.8.0",
     "lint-staged": "^7.0.0",

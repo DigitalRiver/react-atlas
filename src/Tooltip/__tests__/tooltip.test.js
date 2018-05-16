@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { TooltipCore } from "../../../react-atlas-core/src/Tooltip/index";
+import { Tooltip } from "../index";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
@@ -10,7 +10,7 @@ describe("Test Tooltip component render", () => {
   it("Render correctly", () => {
     const tree = renderer
       .create(
-        <TooltipCore
+        <Tooltip
           tooltip={"Hey I'm a tooltip"}
           position={"top"}
           icon={"<i class='fa fa-github'></i>"}
@@ -24,10 +24,10 @@ describe("Test Tooltip component render", () => {
   });
 });
 
-describe("Testing TooltipCore component", () => {
+describe("Testing Tooltip component", () => {
   it("Tooltip component - Properties basic test", function() {
     const comp = mount(
-      <TooltipCore
+      <Tooltip
         tooltip={"Hey I'm a tooltip"}
         position={"top"}
         icon={"<i class='fa fa-github'></i>"}
@@ -48,9 +48,7 @@ describe("Testing TooltipCore component", () => {
   });
 
   it("Tooltip component - Mouse in with delays", function() {
-    const comp = mount(
-      <TooltipCore tooltip={"Hey I'm a tooltip"} delay={1000} />
-    );
+    const comp = mount(<Tooltip tooltip={"Hey I'm a tooltip"} delay={1000} />);
     jest.useFakeTimers();
     expect(comp.state().active).toEqual(false);
     comp.simulate("mouseEnter");
@@ -59,7 +57,7 @@ describe("Testing TooltipCore component", () => {
   });
 
   it("Tooltip component - Mouse in without delays", function() {
-    const comp = mount(<TooltipCore tooltip={"Hey I'm a tooltip"} />);
+    const comp = mount(<Tooltip tooltip={"Hey I'm a tooltip"} />);
     jest.useFakeTimers();
     expect(comp.state().active).toEqual(false);
     comp.simulate("mouseEnter");
@@ -68,7 +66,7 @@ describe("Testing TooltipCore component", () => {
   });
 
   it("Tooltip component - Mouse in/out", function() {
-    const comp = mount(<TooltipCore tooltip={"Hey I'm a tooltip"} />);
+    const comp = mount(<Tooltip tooltip={"Hey I'm a tooltip"} />);
 
     comp.simulate("mouseEnter");
     expect(comp.state().active).toEqual(true);

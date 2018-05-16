@@ -1,27 +1,75 @@
 import React from "react";
-import { mount } from "enzyme";
-import { TextAreaCore } from "../../../react-atlas-core/src/TextArea/index";
+import { mount, shallow } from "enzyme";
+import { TextArea } from "../index";
 
 describe("Testing TextArea component", () => {
+  it("TextArea component - Basic test", function() {
+    const textArea = mount(<TextArea />);
+  });
+
   it("TextArea component - Basic test (invalid)", function() {
-    const textArea = mount(<TextAreaCore isValid={false} />);
+    const textArea = mount(<TextArea isValid={false} />);
     textArea.update();
+  });
+
+  it("TextArea component - Custom properties", function() {
+    const textArea = mount(
+      <TextArea
+        isValid
+        className={""}
+        name={"TextAreaName"}
+        value={""}
+        resizable
+        small
+        medium={false}
+        large={false}
+        maxLength={10}
+        placeholder={"PlaceHolder"}
+        onChange={() => {
+          return true;
+        }}
+        required={false}
+        disabled={false}
+        hidden={false}
+        style={{ "marginRight": "em" }}
+        label="Label"
+        tooltip={"Tooltip text."}
+        tooltipRight={false}
+      />
+    );
   });
 
   it("TextArea component - Tooltip without header", function() {
     expect(() => {
-      mount(<TextAreaCore maxLength={10} tooltip={"Tooltiptext"} />);
+      mount(<TextArea maxLength={10} tooltip={"Tooltiptext"} />);
     }).toThrow();
+  });
+
+  it("TextArea component - Tooltip with header", function() {
+    const textArea = mount(
+      <TextArea
+        maxLength={10}
+        label="Label"
+        tooltip={"Tooltiptext"}
+        header={"Header text."}
+      />
+    );
   });
 
   it("TextArea component - Tooltip without label", function() {
     expect(() => {
-      mount(<TextAreaCore maxLength={10} tooltip={"Tooltiptext"} />);
+      mount(<TextArea maxLength={10} tooltip={"Tooltiptext"} />);
     }).toThrow();
   });
 
+  it("TextArea component - Tooltip with label", function() {
+    const textArea = mount(
+      <TextArea maxLength={10} label="Label" tooltip={"Tooltiptext"} />
+    );
+  });
+
   it("TextArea component - Focus event", function() {
-    const textArea = mount(<TextAreaCore />);
+    const textArea = mount(<TextArea />);
     expect(textArea.state().active).toEqual(false);
     textArea.simulate("focus");
     expect(textArea.state().active).toEqual(true);
@@ -30,7 +78,7 @@ describe("Testing TextArea component", () => {
   });
 
   it("TextArea component - Simple text inserted", function() {
-    const textArea = mount(<TextAreaCore maxLength={10} />);
+    const textArea = mount(<TextArea maxLength={10} />);
     textArea.state().value = "iou";
     let input = textArea.findWhere(n => {
       return n.props().styleName === "input max";
@@ -42,7 +90,7 @@ describe("Testing TextArea component", () => {
   });
 
   it("TextArea component - Simple text inserted(no maxLenght)", function() {
-    const textArea = mount(<TextAreaCore />);
+    const textArea = mount(<TextArea />);
     textArea.state().value = "iou";
     let input = textArea.findWhere(n => {
       return n.props().styleName === "input max";
@@ -54,7 +102,7 @@ describe("Testing TextArea component", () => {
 
   it("TextArea component - Simple text inserted(with onChange prop) ", function() {
     const textArea = mount(
-      <TextAreaCore
+      <TextArea
         maxLength={10}
         onChange={() => {
           console.log("[INFO]: Inside onChange");

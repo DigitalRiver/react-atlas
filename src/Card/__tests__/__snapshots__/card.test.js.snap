@@ -2,8 +2,7 @@
 
 exports[`Test Card component renders correctly 1`] = `
 <div
-  className="name"
+  className="name card"
   style={undefined}
-  styleName="card"
 />
 `;
