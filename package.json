@@ -8,7 +8,7 @@
     "updateSnapshot": "jest --updateSnapshot",
     "coverage": "jest --coverage",
     "format": "prettier src/**/*.js --write",
-    "lint": "eslintsrc/**/*.js --fix",
+    "lint": "eslint src/**/*.js --fix",
     "format-lint": "npm run format && npm run lint",
     "build": "webpack",
     "build:prd": "cross-env NODE_ENV=production npm run build",

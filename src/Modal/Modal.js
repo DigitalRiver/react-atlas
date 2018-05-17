@@ -35,12 +35,11 @@ export class Modal extends React.PureComponent {
               onClick={onOverlayClick}
               onEscKeyDown={onEscKeyDown}
               lockScroll={lockScroll}
-              styleName={overlayClasses}
             />
           }
           <div styleName={cx("dialogWrapper")} style={style}>
             <div styleName={cx("dialog")}>
-              <div style={style} className={cx(className, classes)}>
+              <div style={style} styleName={cx("modal", {"active": active})} className={cx(className)}>
                 {title && <h3 styleName={cx("title")}>{title}</h3>}
                 <div>{this.props.children}</div>
               </div>
