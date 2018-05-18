@@ -15,18 +15,6 @@
 
     <TextArea label="This is a TextArea"/>
 
-###### Small textarea:
-
-    <TextArea small/>
-
-###### Medium textarea:
-
-    <TextArea medium/>
-
-###### Large textarea:
-
-    <TextArea large/>
-
 ###### Placeholder text:
 
     <TextArea placeholder="Enter product details here..."/>
