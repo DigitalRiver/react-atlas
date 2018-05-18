@@ -2,7 +2,6 @@
 	composes: primary-gray-border from '../styles.css';
 	width: 100%;
 	padding: 5px;
-	resize: none;
 	transition: all 200ms ease-out;
 }
 
@@ -120,4 +119,28 @@
 .fullWidth{
 	min-width: 100px;
 	width:100%;
+}
+
+
+.verticalPadding {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.horizontalPadding {
+    padding-right: 1rem;
+}
+
+
+.labelContainer {
+    display: flex;
+    align-items: center;
+}
+
+.required {
+    composes: secondary-text from '../styles.css';
+}
+
+.required_error {
+    composes: error-text from '../styles.css';
 }
