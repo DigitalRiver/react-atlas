@@ -128,7 +128,7 @@ Tooltip.propTypes = {
 Tooltip.defaultProps = {
   "className": "",
   "children": "",
-  "icon": "fa fa-question-circle",
+  "icon": "fas fa-question-circle",
   "disabled": false,
   "text": "",
   "delay": null

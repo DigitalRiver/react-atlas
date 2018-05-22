@@ -2,6 +2,7 @@ export { Accordion } from "./Accordion";
 export { Alert } from "./Alert";
 export { Avatar } from "./Avatar";
 export { Button } from "./Button";
+console.log("ButtonIndex: ", Button);
 export { Breadcrumb } from "./Breadcrumb";
 export { BreadcrumbItem } from "./BreadcrumbItem";
 export { Card } from "./Card";

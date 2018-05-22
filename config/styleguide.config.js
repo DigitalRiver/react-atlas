@@ -20,7 +20,7 @@ const babel = {
 // The exclude section is put there because font-awesome can't be handed with these loaders
 const css = {
   "test": /\.css$/,
-  "exclude": [path.resolve(__dirname, "src/assets/font-awesome/css/")],
+  "exclude": [path.resolve(__dirname, "assets/fonts/fontawesome-5.0.13/web-fonts-with-css/css/")],
   "loaders": [
     "style-loader?sourceMap",
     "css-loader?modules&importLoaders=1&localIdentName=ra_[name]__[local]",
@@ -38,7 +38,7 @@ const css = {
 // A specific test for font-awesome files
 const fontawesome = {
   "test": /\.css$/,
-  "include": path.resolve(__dirname, "assets/font-awesome/css/"),
+  "include": path.resolve(__dirname, 'assets/fonts/fontawesome-5.0.13/web-fonts-with-css/css/fontawesome.min.css'),
   "loader": "style-loader!css-loader"
 };
 
@@ -87,7 +87,7 @@ module.exports = {
   "webpackConfig": {
     "devtool": "source-map",
     "module": {
-      "loaders": [babel, css, fontawesome, json, url]
+      "loaders": [babel, css, json, url]
     }
   },
   "theme": {
