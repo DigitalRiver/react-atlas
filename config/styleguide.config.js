@@ -84,12 +84,6 @@ module.exports = {
   "showUsage": true,
   "defaultExample": true,
   "skipComponentsWithoutExample": true,
-  "webpackConfig": {
-    "devtool": "source-map",
-    "module": {
-      "loaders": [babel, css, json, url]
-    }
-  },
   "theme": {
     "color": {
       "link": "#006e95",

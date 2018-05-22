@@ -73,28 +73,19 @@ let config = {
   "module": {
     "rules": [
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-                      fallback: 'style-loader',
-                      use: [ {
-                         loader: 'css-loader',
-                         query: {
-                             modules: true,
-                             importLoaders: 1,
-                             localIdentName: 'purify_ra_[name]__[local]',
-                             minimize: true
-                         }
-                       },
-                       {
-                        loader: 'postcss-loader',
-                        options: {
-                          config: {
-                            path: 'config/postcss.config.js'
-                          }
-                        }
-                      }
-                       ]
-                  })
+        "test": /\.css$/,
+        "loaders": [
+          "style-loader?sourceMap",
+          "css-loader?modules&importLoaders=1&localIdentName=ra_[name]__[local]",
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: 'config/postcss.config.js'
+              }
+            }
+          }
+        ]
       },
       {
         test: /.js?$/,
@@ -114,15 +105,6 @@ let config = {
       "process.env": {
         "NODE_ENV": JSON.stringify(process.env.NODE_ENV)
       }
-    }),
-    new ExtractTextPlugin("atlasThemes.min.css"),
-    // Must be after extract text plugin.
-    new PurifyCSSPlugin({
-      // Give paths to parse for rules. These should be absolute!
-      paths: glob.sync(path.join(__dirname, 'src/**/*.css')),
-      purifyOptions: {
-        whitelist: ['*purify*']
-      },
     })
   ]
 };
