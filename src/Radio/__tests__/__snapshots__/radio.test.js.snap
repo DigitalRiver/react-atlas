@@ -2,37 +2,36 @@
 
 exports[`Test Radio component render Render correctly 1`] = `
 <div
+  className="inline_block radio_padding"
   onClick={[Function]}
   style={undefined}
-  styleName="inline_block radio_padding"
 >
   <div
-    styleName="inline_block relative padding"
+    className="inline_block relative padding"
   >
     <label
-      className="class"
+      className="class label"
       htmlFor={undefined}
-      styleName="label"
       title="TITLE"
     >
       Checked Radio
     </label>
     <div
-      styleName="float_left"
+      className="float_left"
     >
       <input
         checked={undefined}
+        className="input_style"
         defaultChecked={true}
         disabled={false}
         hidden={false}
         id={undefined}
         name="Mr radio"
-        styleName="input_style"
         type="radio"
         value="checkedRadio"
       />
       <div
-        styleName="radio"
+        className="radio"
       />
     </div>
   </div>

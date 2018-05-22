@@ -3,13 +3,12 @@
 exports[` 1`] = `
 <div>
   <button
-    className=""
+    className="button uppercase primary primary_hover"
     href={undefined}
     id={undefined}
     name={undefined}
     onClick={[Function]}
     style={undefined}
-    styleName="button uppercase primary primary_hover"
     tabIndex={0}
     type="button"
   >

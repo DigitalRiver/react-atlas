@@ -2,9 +2,8 @@
 
 exports[`Test Alert component renders correctly 1`] = `
 <div
-  className=""
+  className="alert success"
   style={undefined}
-  styleName="alert success"
 >
   <strong>
     Success!

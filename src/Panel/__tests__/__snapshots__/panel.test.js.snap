@@ -2,9 +2,8 @@
 
 exports[`Test correct render Test correct render 1`] = `
 <div
-  className=""
+  className="panel"
   style={undefined}
-  styleName="panel"
 >
   Panel Text
 </div>

@@ -1,13 +1,14 @@
 import React from "react";
 import { mount } from "enzyme";
-import { TextFieldCore } from "../../../react-atlas-core/src/TextField/index";
+import TextField from "../index";
+
 import renderer from "react-test-renderer";
 
 describe("Test Input component render", () => {
   it("Render correctly", () => {
     const tree = renderer
       .create(
-        <TextFieldCore
+        <TextField
           className={"class"}
           type={"text"}
           id={"ID"}
@@ -34,7 +35,7 @@ describe("Test Input component render", () => {
 
 function _validate(input, positiveCase) {
   const component = mount(
-    <TextFieldCore
+    <TextField
       valid={function() {
         if (!isNaN(component.state().value)) {
           if (parseInt(component.state().value) > 0) {

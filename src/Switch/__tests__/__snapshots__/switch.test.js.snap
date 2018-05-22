@@ -2,18 +2,17 @@
 
 exports[`Test switch component render Render correctly 1`] = `
 <div
-  className="Class"
-  styleName="switch"
+  className="Class switch"
 >
   <div
+    className="sliderMedium sliderEnabledOffColor"
     onClick={[Function]}
     style={undefined}
-    styleName="sliderMedium sliderEnabledOffColor"
   >
     <input
       buttonColor="grey"
       checked={false}
-      className=""
+      className="inputMedium"
       id="ID"
       name="Name"
       offColor="white"
@@ -25,24 +24,23 @@ exports[`Test switch component render Render correctly 1`] = `
       onKeyPress={[Function]}
       onPaste={[Function]}
       style={undefined}
-      styleName="inputMedium"
       type="checkbox"
     />
     <div
+      className="handleMedium handleEnabledColor"
       style={
         Object {
           "background": "grey",
         }
       }
-      styleName="handleMedium handleEnabledColor"
     />
     <div
+      className="onColorMedium"
       style={
         Object {
           "background": "black",
         }
       }
-      styleName="onColorMedium"
     />
   </div>
 </div>

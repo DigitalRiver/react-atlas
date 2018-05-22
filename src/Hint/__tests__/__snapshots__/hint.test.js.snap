@@ -2,9 +2,8 @@
 
 exports[`Test Hint component render Render correctly 1`] = `
 <span
-  className=""
+  className="hintLabel"
   style={undefined}
-  styleName="hintLabel"
 >
   Some text
 </span>

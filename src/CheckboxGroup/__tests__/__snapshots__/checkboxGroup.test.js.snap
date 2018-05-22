@@ -2,33 +2,32 @@
 
 exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = `
 <div
-  className=""
+  className="checkboxGroup"
   style={undefined}
-  styleName="checkboxGroup"
 >
   <div
-    styleName="header"
+    className="header"
   >
     <span
-      styleName="headerFont"
+      className="headerFont"
     >
       CheckboxGroup test
     </span>
   </div>
   <div
-    className=""
+    className="checkbox_padding"
     onClick={[Function]}
     style={undefined}
-    styleName="checkbox_padding"
   >
     <div
-      styleName="inline_block relative padding"
+      className="inline_block relative padding"
     >
       <div
-        styleName="float_left"
+        className="float_left"
       >
         <input
           checked={false}
+          className="opacity"
           disabled={false}
           hidden={undefined}
           id={undefined}
@@ -36,29 +35,28 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           name={undefined}
           onChange={[Function]}
           required={false}
-          styleName="opacity"
           type="checkbox"
         />
         <div
-          styleName="not_checked"
+          className="not_checked"
         />
       </div>
     </div>
   </div>
   <div
-    className=""
+    className="checkbox_padding"
     onClick={[Function]}
     style={undefined}
-    styleName="checkbox_padding"
   >
     <div
-      styleName="inline_block relative padding"
+      className="inline_block relative padding"
     >
       <div
-        styleName="float_left"
+        className="float_left"
       >
         <input
           checked={false}
+          className="opacity"
           disabled={false}
           hidden={undefined}
           id={undefined}
@@ -66,29 +64,28 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           name={undefined}
           onChange={[Function]}
           required={false}
-          styleName="opacity"
           type="checkbox"
         />
         <div
-          styleName="not_checked"
+          className="not_checked"
         />
       </div>
     </div>
   </div>
   <div
-    className=""
+    className="checkbox_padding"
     onClick={[Function]}
     style={undefined}
-    styleName="checkbox_padding"
   >
     <div
-      styleName="inline_block relative padding"
+      className="inline_block relative padding"
     >
       <div
-        styleName="float_left"
+        className="float_left"
       >
         <input
           checked={false}
+          className="opacity"
           disabled={false}
           hidden={undefined}
           id={undefined}
@@ -96,29 +93,28 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           name={undefined}
           onChange={[Function]}
           required={false}
-          styleName="opacity"
           type="checkbox"
         />
         <div
-          styleName="not_checked"
+          className="not_checked"
         />
       </div>
     </div>
   </div>
   <div
-    className=""
+    className="checkbox_padding"
     onClick={[Function]}
     style={undefined}
-    styleName="checkbox_padding"
   >
     <div
-      styleName="inline_block relative padding"
+      className="inline_block relative padding"
     >
       <div
-        styleName="float_left"
+        className="float_left"
       >
         <input
           checked={false}
+          className="opacity"
           disabled={false}
           hidden={undefined}
           id={undefined}
@@ -126,11 +122,10 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           name={undefined}
           onChange={[Function]}
           required={false}
-          styleName="opacity"
           type="checkbox"
         />
         <div
-          styleName="not_checked"
+          className="not_checked"
         />
       </div>
     </div>

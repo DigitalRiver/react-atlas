@@ -5,6 +5,5 @@ exports[`Test correct render Test correct render 1`] = `
   className="icon={<i className=\\"fa fa-github\\"></i>}"
   onClick={undefined}
   style={undefined}
-  styleName=""
 />
 `;
