@@ -1,8 +1,11 @@
 .textarea {
 	composes: primary-gray-border from '../styles.css';
-	width: 100%;
 	padding: 5px;
 	transition: all 200ms ease-out;
+}
+
+.textareaWidth {
+	width: 100%;
 }
 
 .textareaWrapper {
@@ -11,20 +14,12 @@
 	composes: default-font from '../styles.css';
 }
 
-.small {
-	width: 30%;
-}
-
-.medium {
-	width: 60%;
-}
-
-.large {
-	width: 90%;
-}
-
 .resizable {
 	resize: vertical;
+}
+
+.unsizable{
+	resize: none;
 }
 
 .remainingCount {
@@ -81,13 +76,13 @@
 }
 
 .leftLabel {
-	 display: table-cell;
-	 white-space: nowrap;
-	 vertical-align: middle;
+	display: flex;
+	white-space: nowrap;
 }
 
 .label {
-	padding: 10px 0 5px 0;
+	display: inline-block;
+	composes: header-font from '../styles.css';
 }
 
 .labelFont {
@@ -96,7 +91,6 @@
 
 .labelSpacing {
 	margin-bottom: 0.35rem;
-	padding-right: 1rem;
 }
 
 .leftLabelContent {
@@ -133,8 +127,8 @@
 
 
 .labelContainer {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .required {

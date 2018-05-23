@@ -19,7 +19,7 @@ export class TextArea extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value && nextProps.value !== this.props.value) {
+    if (nextProps.value !== this.props.value) {
       this.setState({
         "value": nextProps.value
       });
@@ -128,10 +128,11 @@ export class TextArea extends React.PureComponent {
       label,
       leftLabel,
       required,
+      resizable,
       style,
       tooltip,
-      tooltipPosition,
       type,
+      tooltipPosition,
       ...others
     } = this.props;
 
@@ -160,10 +161,12 @@ export class TextArea extends React.PureComponent {
 
     let inputClasses = cx({
       "textarea": true,
+      "textareaWidth": !this.props.cols,
       "active": this.state.active,
       "error": this.state.status === "error",
       "success": this.state.status === "success",
       "warning": this.state.status === "warning",
+      "unsizable": resizable === false,
       disabled
     });
 
@@ -230,6 +233,11 @@ TextArea.propTypes = {
     PropTypes.array
   ]),
   /**
+   * The cols prop gets passed to <textarea> which specifies the visible width of the text area.
+   * @examples '<TextArea cols={50}
+   */
+  "cols": PropTypes.number,
+  /**
    * Determines if the TextArea is disabled.
    * @examples '<TextArea disabled/>'
    */
@@ -270,6 +278,11 @@ TextArea.propTypes = {
    * @examples '<TextArea required/>'
    */
   "required": PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  /**
+   * Allows TextArea to be resizable.  Accepts a boolean.
+   * @examples '<TextArea resizable={false}/>'
+   */
+  "resizable": PropTypes.bool,
   /**
    * Sets the status of the TextArea. Options are null, "success", "error", and "warning".
    * @examples '<TextArea status="error" />'
