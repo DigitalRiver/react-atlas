@@ -230,5 +230,4 @@ Button.defaultProps = {
   "type": "button",
   "ignoreTab": false
 };
-
 export default CSSModules(Button, styles, { "allowMultiple": true });

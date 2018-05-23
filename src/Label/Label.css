@@ -1,0 +1,38 @@
+.label {
+	display: inline-block;
+	composes: header-font from '../styles.css';
+}
+
+.labelSpacing {
+	margin-bottom: 0.35rem;
+}
+
+.labelContainer {
+	display: flex;
+	align-items: center;
+}
+
+.tooltipRight {
+	justify-content: space-between;
+}
+
+.verticalPadding {
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.horizontalPadding {
+	padding-right: 1rem;
+}
+
+.required {
+	composes: secondary-text from '../styles.css';
+}
+
+.required_error {
+	composes: error-text from '../styles.css';
+}
+
+.inline {
+	display: inline-block;
+}

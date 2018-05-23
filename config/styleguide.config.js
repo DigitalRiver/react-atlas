@@ -6,12 +6,10 @@ const babel = {
   "exclude": /node_modules/,
   "loader": "babel-loader",
   "query": {
-    // Don‘t try to find .babelrc because we want to force this configuration.
-    "babelrc": false,
-    "presets": [require.resolve("babel-preset-react-app")],
-    // This is a feature of `babel-loader` for webpack (not Babel itself).
-    // It enables caching results in ./node_modules/.cache/babel-loader/ directory for faster rebuilds.
-    "cacheDirectory": true
+    "presets": [
+      "react", "env"
+    ],
+    "plugins": ["transform-class-properties", "transform-object-rest-spread"]
   }
 };
 
@@ -70,8 +68,8 @@ const url = {
 module.exports = {
   // Use this to test a single component.  Change it to the component you are testing and restart the styleguide server
   // Regex should be: 'src/components/NAME_OF_COMPONENT_FOLDER/[A-Z]*.js'
-  "components": "src/**/**.js",
-  "require": [path.resolve(__dirname, 'scripts/setup.js')],
+  "components": "../src/**/**.js",
+  "require": [path.resolve(__dirname, '../scripts/setup.js')],
   "ignore": [
     "**/__tests__/**",
     "**/utils/**",
@@ -84,6 +82,12 @@ module.exports = {
   "showUsage": true,
   "defaultExample": true,
   "skipComponentsWithoutExample": true,
+  "webpackConfig": {
+    "devtool": "source-map",
+    "module": {
+      "loaders": [babel, css, fontawesome, json, url]
+    }
+},
   "theme": {
     "color": {
       "link": "#006e95",
