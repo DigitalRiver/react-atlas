@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import messages from "../utils/messages.js";
 import cx from "classnames";
+import Label from "../Label";
 import CSSModules from "react-css-modules";
 import styles from "./TextField.css";
 
@@ -19,7 +20,7 @@ export class TextField extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value && nextProps.value !== this.props.value) {
+    if (nextProps.value !== this.props.value) {
       this.setState({
         "value": nextProps.value
       });
@@ -59,16 +60,19 @@ export class TextField extends React.PureComponent {
     /* Execute custom validator and change state and error messages accordingly */
     if (typeof this.props.valid === "function") {
       let validationObject = this.props.valid(inputValue);
-      if (validationObject === false) {
+      if (validationObject === true) {
+        status = this.props.status;
+        message = this.props.message;
+      } else if (validationObject === false) {
         validationObject = { "status": "error", "message": null };
-      }
-      if (typeof validationObject === "undefined") {
+      } else if (typeof validationObject === "undefined") {
         validationObject = { "status": null, "message": null };
+      } else {
+        status = validationObject.status;
+        message = validationObject.message;
       }
-      status = validationObject.status;
-      message = validationObject.message;
     } else if (
-      !inputValue.length &&
+      (typeof inputValue === "undefined" || inputValue === "") &&
       (this.props.required ||
         typeof this.props.required === "string" && this.props.required === "")
     ) {
@@ -97,14 +101,13 @@ export class TextField extends React.PureComponent {
     if (this.props.uppercase) {
       value = value.toUpperCase();
     }
-
     this._validate(e, value, true);
   };
 
   _handleFocus = e => {
     e.persist();
     this.setState({ "active": true }, function() {
-      if (typeof this.props.onFocus !== "undefined") {
+      if (typeof this.props.onFocus === "function") {
         this.props.onFocus(e, {
           "value": this.state.value,
           "status": this.state.status
@@ -117,6 +120,26 @@ export class TextField extends React.PureComponent {
     e.persist();
     const value = e.target.value;
     this._validate(e, value, false);
+  };
+
+  _handleClick = e => {
+    e.persist();
+    if (typeof this.props.onClick === "function") {
+      this.props.onClick(e, {
+        "value": this.state.value,
+        "status": this.state.status
+      });
+    }
+  };
+
+  _handleKeyDown = e => {
+    e.persist();
+    if (typeof this.props.onKeyDown === "function") {
+      this.props.onKeyDown(e, {
+        "value": this.state.value,
+        "status": this.state.status
+      });
+    }
   };
 
   render() {
@@ -135,27 +158,10 @@ export class TextField extends React.PureComponent {
       ...others
     } = this.props;
 
-    const reqText = typeof required === "string" ? required : "*";
-
     let wrapperClasses = cx({
       leftLabel,
       inline,
       "textfieldWrapper": true
-    });
-
-    let labelClasses = cx({
-      "labelSpacing": !leftLabel,
-      "label": true
-    });
-
-    let labelContainerClasses = cx({
-      "tooltipRight": tooltipPosition === "right",
-      "labelContainer": true
-    });
-
-    let labelPadding = cx({
-      "verticalPadding": !leftLabel,
-      "horizontalPadding": true
     });
 
     let inputClasses = cx({
@@ -173,26 +179,17 @@ export class TextField extends React.PureComponent {
       "warning_message": this.state.status === "warning"
     });
 
-    const requiredClasses = cx({
-      "required": true,
-      "required_error": this.state.status === "error"
-    });
-
     let textFieldLabel = (label || tooltip) && 
-      <div styleName={labelContainerClasses}>
-        <div styleName={cx(labelPadding)}>
-          {label && 
-            <label styleName={labelClasses} htmlFor={id}>
-              {label}
-            </label>
-          }
-          {required &&
-            required !== "" && 
-              <span styleName={requiredClasses}> {reqText}</span>
-            }
-        </div>
-        {tooltip}
-      </div>
+      <Label
+        htmlFor={id}
+        inline={inline}
+        label={label}
+        leftLabel={leftLabel}
+        required={required}
+        status={this.state.status}
+        tooltip={tooltip}
+        tooltipPosition={tooltipPosition}
+      />
     ;
 
     return (
@@ -211,6 +208,8 @@ export class TextField extends React.PureComponent {
           onChange={this._handleChange}
           onFocus={this._handleFocus}
           onBlur={this._handleBlur}
+          onClick={this._handleClick}
+          onKeyDown={this._handleKeyDown}
         />
         {this.state.message !== null && 
           <div>
@@ -262,9 +261,19 @@ TextField.propTypes = {
    */
   "onChange": PropTypes.func,
   /**
+   * Sets a handler function to be executed when onClick event occurs (at input element).
+   * @examples <TextField onClick={this.customOnClickFunc}/>
+   */
+  "onClick": PropTypes.func,
+  /**
    * A callback that fires onFocus.
    */
   "onFocus": PropTypes.func,
+  /**
+   * Sets a handler function to be executed when onKeyDown event occurs (at input element).
+   * @examples <TextField onKeyDown={this.customOnKeyDownFunc}/>
+   */
+  "onKeyDown": PropTypes.func,
   /**
    * Sets the TextField as required. Will be validated onChange. Accepts a boolean or a string. If a string is passed it will be displayed instead of the traditional * next to the field label.
    * @examples '<TextField required/>'
@@ -291,7 +300,7 @@ TextField.propTypes = {
    */
   "uppercase": PropTypes.bool,
   /**
-   * Sets a handler function to be executed and validate against. Will override the required property (you can still use the required prop to add a required indicator next to the label) and must return an object with a status (Options: null, "success", "error") and a message (Options: null or string)
+   * Sets a handler function to be executed and validate against. Will override the required property (you can still use the required prop to add a required indicator next to the label) and must return an object with a status (Options: null, "success", "error", "warning") and a message (Options: null or string), or a boolean for simple validation.
    * @examples '<TextField valid={this.customValidator}/>'
    */
   "valid": PropTypes.func,

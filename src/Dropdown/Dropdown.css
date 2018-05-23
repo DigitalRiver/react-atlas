@@ -1,93 +1,41 @@
-.container {
-  display: block;
-  position: relative;
-  z-index: 0;
-  margin: 0 .25rem calc(.25rem + 8px) 0;
-  top: 8px;
+.dropdown {
   width: 100%;
+  position: relative;
+}
+
+.hidden {
+  display:none;
+}
+
+.options {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 0 0 2px 2px;
+  border: solid #BEBEBE;
+  border-width: 0 1px 1px 1px;
+  margin: -.25rem .25rem .25rem 0;
+  position: absolute;
+  background: #ffffff;
+  top: calc(1.96rem);
+  z-index: 9998;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+.leftLabel {
+	display: flex;
+  white-space: nowrap;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .inline {
   display: inline-block;
+  margin-right: 1rem;
 }
 
-.content {
-  composes: clearfix from '../styles.css';
-  composes: bg-white from '../styles.css';
-  composes: z4 from '../styles.css';
-  composes: cursor-pointer from '../styles.css';
-  composes: default-font from '../styles.css';
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  text-align: left;
-  left: 0;
-  position: relative;
-  width: 100%;
-}
-
-.content:hover {
-  text-decoration: none;
-  border: none;
-}
-
-.labelSpacing {
-  margin-bottom: 0.35rem;
-  padding-right: 5px;
-  composes: header-font from '../styles.css';
-}
-
-.buttonClass {
-  composes: cursor-pointer from '../styles.css';
-  min-width: 45px;
-}
-
-.focus {
-  composes: text-input-active from '../styles.css';
-}
-
-.list {
-  composes: pad-0 from '../styles.css';
-  composes: marg-0 from '../styles.css';
-  composes: bg-white from '../styles.css';
-  composes: default-border-left from '../styles.css';
-  composes: default-border-right from '../styles.css';
-  composes: default-border-bottom from '../styles.css';
-  composes: primary-border-top from '../styles.css';
-  composes: rounded-bottom from '../styles.css';
-  left: 0;
-  top: 1.8rem;
-  position: absolute;
-  list-style: none;
-  transition: height 1s;
-  max-height: 250px;
-  overflow: auto;
-}
-.fullWidth{
-  min-width: 45px;
-  width:100%;
-}
-.convertedWidth {
-  width:calc(100% - 2px);
-  min-width:43px;
-}
-.item {
-  padding: .5rem;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  composes: default-font from '../styles.css';
-}
-.item:hover {
-  text-decoration: none;
-  background-color: #E6E6E6;
-}
-.firstChild {
-  margin-top: 5px;
-}
-.lastChild {
-  margin-bottom: 5px;
-}
 .arrow {
   width: 0;
   height: 0;
@@ -97,87 +45,20 @@
   float: right;
   margin-top: 0.25rem;
   margin-left: 0.25rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
 }
 
-.dropdown-button {
-  color: #666;
-  border: 1px solid #bebebe;
-  background-color: white !important;
-  text-transform: none !important;
-  width: 100%;
-  padding-left: 0.5rem;
-  text-align: left;
-  white-space: nowrap;
-  height: 1.77rem;
-  line-height: normal;
-  composes: default-font from '../styles.css';
-}
-.dropdown-button:hover {
-  border-color: #bebebe;
-  background-color: #e6e6e6;
-  color: #666;
-}
-.dropdown-button span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 80%;
-  float: left;
-}
-
-.selected {
-  padding: .5rem;
-  background-color: #ccc;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.selected:hover {
-  background-color: #E6E6E6;
-}
-.emptyChild {
-  height: .65rem;
-}
-
-.error {
-  box-shadow: 0 0 4px #bd0a33;
-  border-color: rgba(189, 10, 51, 0.6); 
-}
-.error:hover {
-  box-shadow: 0 0 4px #bd0a33;
-  border-color: rgba(189, 10, 51, 0.6); 
-}
-.error_message {
-  color: #bd0a33;
-  margin-bottom: 8px;
+.setWidth {
+  width: inherit;
   display: inline-block;
-  composes: default-font from '../styles.css';
 }
 
-.disabledClass {
-  opacity: .5 !important;
-  cursor: default;
-}
-.disabledClass:hover {
-  border: 1px solid #999 !important;
-  background-color: white !important;
-  outline: none;
-}
-
-.requiredIndicator {
-  composes: red from '../styles.css';
-  margin-left: 5px;
-}
-
-.zIndex {
-  z-index: 9998;
-}
-
-.leftLabel {
-  display: table-cell;
-  white-space: nowrap;
-  vertical-align: middle;
-}
-
-.leftLabelContent {
-  display: table-cell;
+.arrowUp {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
