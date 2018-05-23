@@ -14,7 +14,6 @@ export { Dropdown } from "./Dropdown";
 export { FileUpload } from "./FileUpload";
 export { Hint } from "./Hint";
 export { Icon } from "./Icon";
-export { Input } from "./Input";
 export { Label } from "./Label";
 export { List } from "./List";
 export { ListGroup } from "./ListGroup";

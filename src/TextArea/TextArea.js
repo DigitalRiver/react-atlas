@@ -59,7 +59,9 @@ export class TextArea extends React.PureComponent {
     /* Execute custom validator and change state and error messages accordingly */
     if (typeof this.props.valid === "function") {
       let validationObject = this.props.valid(inputValue);
-      if (validationObject === false) {
+      if (validationObject === true) {
+        validationObject = { "status": this.props.status, "message": this.props.message };
+      } else if (validationObject === false) {
         validationObject = { "status": "error", "message": null };
       }
       if (typeof validationObject === "undefined") {
@@ -104,7 +106,7 @@ export class TextArea extends React.PureComponent {
   _handleFocus = e => {
     e.persist();
     this.setState({ "active": true }, function() {
-      if (typeof this.props.onFocus !== "undefined") {
+      if (typeof this.props.onFocus === "function") {
         this.props.onFocus(e, {
           "value": this.state.value,
           "status": this.state.status
@@ -182,20 +184,16 @@ export class TextArea extends React.PureComponent {
     });
 
     let textAreaLabel = (label || tooltip) && 
-      <div styleName={labelContainerClasses}>
-        <div styleName={cx(labelPadding)}>
-          {label && 
-            <label styleName={labelClasses} htmlFor={id}>
-              {label}
-            </label>
-          }
-          {required &&
-            required !== "" && 
-              <span styleName={requiredClasses}> {reqText}</span>
-            }
-        </div>
-        {tooltip}
-      </div>
+      <Label
+        htmlFor={id}
+        inline={inline}
+        label={label}
+        leftLabel={leftLabel}
+        required={required}
+        status={this.state.status}
+        tooltip={tooltip}
+        tooltipPosition={tooltipPosition}
+      />
     ;
 
     return (
@@ -233,7 +231,7 @@ TextArea.propTypes = {
     PropTypes.array
   ]),
   /**
-   * The cols prop gets passed to <textarea> which specifies the visible width of the text area.
+   * The cols prop gets passed to TextArea which specifies the visible width of the text area.
    * @examples '<TextArea cols={50}
    */
   "cols": PropTypes.number,

@@ -1,9 +1,6 @@
 import BreadcrumbItem from "../src/BreadcrumbItem";
 global.BreadcrumbItem = BreadcrumbItem;
 
-import Input from "../src/Input";
-global.Input = Input;
-
 import Label from "../src/Label";
 global.Label = Label;
 
