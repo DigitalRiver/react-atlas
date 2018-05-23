@@ -1,0 +1,1268 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test correct render Test correct render 1`] = `
+ReactWrapper {
+  "length": 1,
+  Symbol(enzyme.__unrendered__): <Form
+    method="POST"
+    noValidate={true}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__node__): Object {
+    "instance": WrappedComponent {
+      "_reactInternalFiber": FiberNode {
+        "_debugID": 5,
+        "_debugIsCurrentlyTiming": false,
+        "_debugOwner": FiberNode {
+          "_debugID": 4,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": null,
+          "_debugSource": null,
+          "alternate": null,
+          "child": [Circular],
+          "effectTag": 1,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {
+              "method": "POST",
+              "noValidate": true,
+            },
+          },
+          "memoizedState": Object {
+            "context": null,
+            "mount": true,
+            "props": Object {
+              "method": "POST",
+              "noValidate": true,
+            },
+          },
+          "mode": 0,
+          "nextEffect": null,
+          "pendingProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {
+              "method": "POST",
+              "noValidate": true,
+            },
+          },
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 1,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": [Circular],
+              "child": null,
+              "effectTag": 0,
+              "expirationTime": 1,
+              "firstEffect": null,
+              "index": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": null,
+              "memoizedState": null,
+              "mode": 0,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <form
+                    class=""
+                    method="POST"
+                    novalidate=""
+                  />
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "finishedWork": null,
+                "firstBatch": null,
+                "hydrate": false,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingCommitExpirationTime": 0,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": Object {
+                "baseState": null,
+                "callbackList": null,
+                "capturedValues": null,
+                "expirationTime": 1,
+                "first": Object {
+                  "callback": null,
+                  "capturedValue": null,
+                  "expirationTime": 1,
+                  "isForced": false,
+                  "isReplace": false,
+                  "next": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "method": "POST",
+                          "noValidate": true,
+                        }
+                      }
+                    />,
+                  },
+                },
+                "hasForceUpdate": false,
+                "isInitialized": false,
+                "isProcessing": false,
+                "last": Object {
+                  "callback": null,
+                  "capturedValue": null,
+                  "expirationTime": 1,
+                  "isForced": false,
+                  "isReplace": false,
+                  "next": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "method": "POST",
+                          "noValidate": true,
+                        }
+                      }
+                    />,
+                  },
+                },
+              },
+            },
+            "child": [Circular],
+            "effectTag": 32,
+            "expirationTime": 0,
+            "firstEffect": [Circular],
+            "index": 0,
+            "key": null,
+            "lastEffect": [Circular],
+            "memoizedProps": null,
+            "memoizedState": Object {
+              "element": <WrapperComponent
+                Component={[Function]}
+                context={null}
+                props={
+                  Object {
+                    "method": "POST",
+                    "noValidate": true,
+                  }
+                }
+              />,
+            },
+            "mode": 0,
+            "nextEffect": null,
+            "pendingProps": null,
+            "ref": null,
+            "return": null,
+            "sibling": null,
+            "stateNode": Object {
+              "containerInfo": <div>
+                <form
+                  class=""
+                  method="POST"
+                  novalidate=""
+                />
+              </div>,
+              "context": Object {},
+              "current": [Circular],
+              "finishedWork": null,
+              "firstBatch": null,
+              "hydrate": false,
+              "nextScheduledRoot": null,
+              "pendingChildren": null,
+              "pendingCommitExpirationTime": 0,
+              "pendingContext": null,
+              "remainingExpirationTime": 0,
+            },
+            "tag": 3,
+            "type": null,
+            "updateQueue": Object {
+              "baseState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={
+                    Object {
+                      "method": "POST",
+                      "noValidate": true,
+                    }
+                  }
+                />,
+              },
+              "callbackList": null,
+              "capturedValues": null,
+              "expirationTime": 0,
+              "first": null,
+              "hasForceUpdate": false,
+              "isInitialized": true,
+              "isProcessing": false,
+              "last": null,
+            },
+          },
+          "sibling": null,
+          "stateNode": WrapperComponent {
+            "_reactInternalFiber": [Circular],
+            "_reactInternalInstance": Object {},
+            "context": Object {},
+            "props": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "method": "POST",
+                "noValidate": true,
+              },
+            },
+            "refs": Object {},
+            "state": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "method": "POST",
+                "noValidate": true,
+              },
+            },
+            "updater": Object {
+              "enqueueForceUpdate": [Function],
+              "enqueueReplaceState": [Function],
+              "enqueueSetState": [Function],
+              "isMounted": [Function],
+            },
+          },
+          "tag": 2,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "_debugSource": null,
+        "alternate": null,
+        "child": FiberNode {
+          "_debugID": 6,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": [Circular],
+          "_debugSource": undefined,
+          "alternate": null,
+          "child": null,
+          "effectTag": 0,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "action": undefined,
+            "children": undefined,
+            "className": "",
+            "encType": undefined,
+            "method": "POST",
+            "name": undefined,
+            "noValidate": true,
+            "onSubmit": [Function],
+            "style": undefined,
+            "target": undefined,
+          },
+          "memoizedState": null,
+          "mode": 0,
+          "nextEffect": null,
+          "pendingProps": Object {
+            "action": undefined,
+            "children": undefined,
+            "className": "",
+            "encType": undefined,
+            "method": "POST",
+            "name": undefined,
+            "noValidate": true,
+            "onSubmit": [Function],
+            "style": undefined,
+            "target": undefined,
+          },
+          "ref": null,
+          "return": [Circular],
+          "sibling": null,
+          "stateNode": <form
+            class=""
+            method="POST"
+            novalidate=""
+          />,
+          "tag": 5,
+          "type": "form",
+          "updateQueue": null,
+        },
+        "effectTag": 1,
+        "expirationTime": 0,
+        "firstEffect": null,
+        "index": 0,
+        "key": null,
+        "lastEffect": null,
+        "memoizedProps": Object {
+          "method": "POST",
+          "noValidate": true,
+        },
+        "memoizedState": Object {
+          "childState": Object {},
+        },
+        "mode": 0,
+        "nextEffect": null,
+        "pendingProps": Object {
+          "method": "POST",
+          "noValidate": true,
+        },
+        "ref": null,
+        "return": FiberNode {
+          "_debugID": 4,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": null,
+          "_debugSource": null,
+          "alternate": null,
+          "child": [Circular],
+          "effectTag": 1,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {
+              "method": "POST",
+              "noValidate": true,
+            },
+          },
+          "memoizedState": Object {
+            "context": null,
+            "mount": true,
+            "props": Object {
+              "method": "POST",
+              "noValidate": true,
+            },
+          },
+          "mode": 0,
+          "nextEffect": null,
+          "pendingProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {
+              "method": "POST",
+              "noValidate": true,
+            },
+          },
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 1,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": [Circular],
+              "child": null,
+              "effectTag": 0,
+              "expirationTime": 1,
+              "firstEffect": null,
+              "index": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": null,
+              "memoizedState": null,
+              "mode": 0,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <form
+                    class=""
+                    method="POST"
+                    novalidate=""
+                  />
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "finishedWork": null,
+                "firstBatch": null,
+                "hydrate": false,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingCommitExpirationTime": 0,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": Object {
+                "baseState": null,
+                "callbackList": null,
+                "capturedValues": null,
+                "expirationTime": 1,
+                "first": Object {
+                  "callback": null,
+                  "capturedValue": null,
+                  "expirationTime": 1,
+                  "isForced": false,
+                  "isReplace": false,
+                  "next": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "method": "POST",
+                          "noValidate": true,
+                        }
+                      }
+                    />,
+                  },
+                },
+                "hasForceUpdate": false,
+                "isInitialized": false,
+                "isProcessing": false,
+                "last": Object {
+                  "callback": null,
+                  "capturedValue": null,
+                  "expirationTime": 1,
+                  "isForced": false,
+                  "isReplace": false,
+                  "next": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "method": "POST",
+                          "noValidate": true,
+                        }
+                      }
+                    />,
+                  },
+                },
+              },
+            },
+            "child": [Circular],
+            "effectTag": 32,
+            "expirationTime": 0,
+            "firstEffect": [Circular],
+            "index": 0,
+            "key": null,
+            "lastEffect": [Circular],
+            "memoizedProps": null,
+            "memoizedState": Object {
+              "element": <WrapperComponent
+                Component={[Function]}
+                context={null}
+                props={
+                  Object {
+                    "method": "POST",
+                    "noValidate": true,
+                  }
+                }
+              />,
+            },
+            "mode": 0,
+            "nextEffect": null,
+            "pendingProps": null,
+            "ref": null,
+            "return": null,
+            "sibling": null,
+            "stateNode": Object {
+              "containerInfo": <div>
+                <form
+                  class=""
+                  method="POST"
+                  novalidate=""
+                />
+              </div>,
+              "context": Object {},
+              "current": [Circular],
+              "finishedWork": null,
+              "firstBatch": null,
+              "hydrate": false,
+              "nextScheduledRoot": null,
+              "pendingChildren": null,
+              "pendingCommitExpirationTime": 0,
+              "pendingContext": null,
+              "remainingExpirationTime": 0,
+            },
+            "tag": 3,
+            "type": null,
+            "updateQueue": Object {
+              "baseState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={
+                    Object {
+                      "method": "POST",
+                      "noValidate": true,
+                    }
+                  }
+                />,
+              },
+              "callbackList": null,
+              "capturedValues": null,
+              "expirationTime": 0,
+              "first": null,
+              "hasForceUpdate": false,
+              "isInitialized": true,
+              "isProcessing": false,
+              "last": null,
+            },
+          },
+          "sibling": null,
+          "stateNode": WrapperComponent {
+            "_reactInternalFiber": [Circular],
+            "_reactInternalInstance": Object {},
+            "context": Object {},
+            "props": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "method": "POST",
+                "noValidate": true,
+              },
+            },
+            "refs": Object {},
+            "state": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "method": "POST",
+                "noValidate": true,
+              },
+            },
+            "updater": Object {
+              "enqueueForceUpdate": [Function],
+              "enqueueReplaceState": [Function],
+              "enqueueSetState": [Function],
+              "isMounted": [Function],
+            },
+          },
+          "tag": 2,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "sibling": null,
+        "stateNode": [Circular],
+        "tag": 2,
+        "type": [Function],
+        "updateQueue": null,
+      },
+      "_reactInternalInstance": Object {},
+      "context": Object {},
+      "onChangeHandler": [Function],
+      "props": Object {
+        "method": "POST",
+        "noValidate": true,
+      },
+      "refs": Object {},
+      "state": Object {
+        "childState": Object {},
+      },
+      "submitHandler": [Function],
+      "updater": Object {
+        "enqueueForceUpdate": [Function],
+        "enqueueReplaceState": [Function],
+        "enqueueSetState": [Function],
+        "isMounted": [Function],
+      },
+      "validate": [Function],
+    },
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "method": "POST",
+      "noValidate": true,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": <form
+        class=""
+        method="POST"
+        novalidate=""
+      />,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "action": undefined,
+        "children": undefined,
+        "className": "",
+        "encType": undefined,
+        "method": "POST",
+        "name": undefined,
+        "noValidate": true,
+        "onSubmit": [Function],
+        "style": undefined,
+        "target": undefined,
+      },
+      "ref": null,
+      "rendered": Array [
+        undefined,
+      ],
+      "type": "form",
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": WrappedComponent {
+        "_reactInternalFiber": FiberNode {
+          "_debugID": 5,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": FiberNode {
+            "_debugID": 4,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": null,
+            "child": [Circular],
+            "effectTag": 1,
+            "expirationTime": 0,
+            "firstEffect": null,
+            "index": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "method": "POST",
+                "noValidate": true,
+              },
+            },
+            "memoizedState": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "method": "POST",
+                "noValidate": true,
+              },
+            },
+            "mode": 0,
+            "nextEffect": null,
+            "pendingProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "method": "POST",
+                "noValidate": true,
+              },
+            },
+            "ref": null,
+            "return": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": FiberNode {
+                "_debugID": 1,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": null,
+                "_debugSource": null,
+                "alternate": [Circular],
+                "child": null,
+                "effectTag": 0,
+                "expirationTime": 1,
+                "firstEffect": null,
+                "index": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": null,
+                "memoizedState": null,
+                "mode": 0,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": null,
+                "sibling": null,
+                "stateNode": Object {
+                  "containerInfo": <div>
+                    <form
+                      class=""
+                      method="POST"
+                      novalidate=""
+                    />
+                  </div>,
+                  "context": Object {},
+                  "current": [Circular],
+                  "finishedWork": null,
+                  "firstBatch": null,
+                  "hydrate": false,
+                  "nextScheduledRoot": null,
+                  "pendingChildren": null,
+                  "pendingCommitExpirationTime": 0,
+                  "pendingContext": null,
+                  "remainingExpirationTime": 0,
+                },
+                "tag": 3,
+                "type": null,
+                "updateQueue": Object {
+                  "baseState": null,
+                  "callbackList": null,
+                  "capturedValues": null,
+                  "expirationTime": 1,
+                  "first": Object {
+                    "callback": null,
+                    "capturedValue": null,
+                    "expirationTime": 1,
+                    "isForced": false,
+                    "isReplace": false,
+                    "next": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "method": "POST",
+                            "noValidate": true,
+                          }
+                        }
+                      />,
+                    },
+                  },
+                  "hasForceUpdate": false,
+                  "isInitialized": false,
+                  "isProcessing": false,
+                  "last": Object {
+                    "callback": null,
+                    "capturedValue": null,
+                    "expirationTime": 1,
+                    "isForced": false,
+                    "isReplace": false,
+                    "next": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "method": "POST",
+                            "noValidate": true,
+                          }
+                        }
+                      />,
+                    },
+                  },
+                },
+              },
+              "child": [Circular],
+              "effectTag": 32,
+              "expirationTime": 0,
+              "firstEffect": [Circular],
+              "index": 0,
+              "key": null,
+              "lastEffect": [Circular],
+              "memoizedProps": null,
+              "memoizedState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={
+                    Object {
+                      "method": "POST",
+                      "noValidate": true,
+                    }
+                  }
+                />,
+              },
+              "mode": 0,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <form
+                    class=""
+                    method="POST"
+                    novalidate=""
+                  />
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "finishedWork": null,
+                "firstBatch": null,
+                "hydrate": false,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingCommitExpirationTime": 0,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": Object {
+                "baseState": Object {
+                  "element": <WrapperComponent
+                    Component={[Function]}
+                    context={null}
+                    props={
+                      Object {
+                        "method": "POST",
+                        "noValidate": true,
+                      }
+                    }
+                  />,
+                },
+                "callbackList": null,
+                "capturedValues": null,
+                "expirationTime": 0,
+                "first": null,
+                "hasForceUpdate": false,
+                "isInitialized": true,
+                "isProcessing": false,
+                "last": null,
+              },
+            },
+            "sibling": null,
+            "stateNode": WrapperComponent {
+              "_reactInternalFiber": [Circular],
+              "_reactInternalInstance": Object {},
+              "context": Object {},
+              "props": Object {
+                "Component": [Function],
+                "context": null,
+                "props": Object {
+                  "method": "POST",
+                  "noValidate": true,
+                },
+              },
+              "refs": Object {},
+              "state": Object {
+                "context": null,
+                "mount": true,
+                "props": Object {
+                  "method": "POST",
+                  "noValidate": true,
+                },
+              },
+              "updater": Object {
+                "enqueueForceUpdate": [Function],
+                "enqueueReplaceState": [Function],
+                "enqueueSetState": [Function],
+                "isMounted": [Function],
+              },
+            },
+            "tag": 2,
+            "type": [Function],
+            "updateQueue": null,
+          },
+          "_debugSource": null,
+          "alternate": null,
+          "child": FiberNode {
+            "_debugID": 6,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": [Circular],
+            "_debugSource": undefined,
+            "alternate": null,
+            "child": null,
+            "effectTag": 0,
+            "expirationTime": 0,
+            "firstEffect": null,
+            "index": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "action": undefined,
+              "children": undefined,
+              "className": "",
+              "encType": undefined,
+              "method": "POST",
+              "name": undefined,
+              "noValidate": true,
+              "onSubmit": [Function],
+              "style": undefined,
+              "target": undefined,
+            },
+            "memoizedState": null,
+            "mode": 0,
+            "nextEffect": null,
+            "pendingProps": Object {
+              "action": undefined,
+              "children": undefined,
+              "className": "",
+              "encType": undefined,
+              "method": "POST",
+              "name": undefined,
+              "noValidate": true,
+              "onSubmit": [Function],
+              "style": undefined,
+              "target": undefined,
+            },
+            "ref": null,
+            "return": [Circular],
+            "sibling": null,
+            "stateNode": <form
+              class=""
+              method="POST"
+              novalidate=""
+            />,
+            "tag": 5,
+            "type": "form",
+            "updateQueue": null,
+          },
+          "effectTag": 1,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "method": "POST",
+            "noValidate": true,
+          },
+          "memoizedState": Object {
+            "childState": Object {},
+          },
+          "mode": 0,
+          "nextEffect": null,
+          "pendingProps": Object {
+            "method": "POST",
+            "noValidate": true,
+          },
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 4,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": null,
+            "child": [Circular],
+            "effectTag": 1,
+            "expirationTime": 0,
+            "firstEffect": null,
+            "index": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "method": "POST",
+                "noValidate": true,
+              },
+            },
+            "memoizedState": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "method": "POST",
+                "noValidate": true,
+              },
+            },
+            "mode": 0,
+            "nextEffect": null,
+            "pendingProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "method": "POST",
+                "noValidate": true,
+              },
+            },
+            "ref": null,
+            "return": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": FiberNode {
+                "_debugID": 1,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": null,
+                "_debugSource": null,
+                "alternate": [Circular],
+                "child": null,
+                "effectTag": 0,
+                "expirationTime": 1,
+                "firstEffect": null,
+                "index": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": null,
+                "memoizedState": null,
+                "mode": 0,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": null,
+                "sibling": null,
+                "stateNode": Object {
+                  "containerInfo": <div>
+                    <form
+                      class=""
+                      method="POST"
+                      novalidate=""
+                    />
+                  </div>,
+                  "context": Object {},
+                  "current": [Circular],
+                  "finishedWork": null,
+                  "firstBatch": null,
+                  "hydrate": false,
+                  "nextScheduledRoot": null,
+                  "pendingChildren": null,
+                  "pendingCommitExpirationTime": 0,
+                  "pendingContext": null,
+                  "remainingExpirationTime": 0,
+                },
+                "tag": 3,
+                "type": null,
+                "updateQueue": Object {
+                  "baseState": null,
+                  "callbackList": null,
+                  "capturedValues": null,
+                  "expirationTime": 1,
+                  "first": Object {
+                    "callback": null,
+                    "capturedValue": null,
+                    "expirationTime": 1,
+                    "isForced": false,
+                    "isReplace": false,
+                    "next": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "method": "POST",
+                            "noValidate": true,
+                          }
+                        }
+                      />,
+                    },
+                  },
+                  "hasForceUpdate": false,
+                  "isInitialized": false,
+                  "isProcessing": false,
+                  "last": Object {
+                    "callback": null,
+                    "capturedValue": null,
+                    "expirationTime": 1,
+                    "isForced": false,
+                    "isReplace": false,
+                    "next": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "method": "POST",
+                            "noValidate": true,
+                          }
+                        }
+                      />,
+                    },
+                  },
+                },
+              },
+              "child": [Circular],
+              "effectTag": 32,
+              "expirationTime": 0,
+              "firstEffect": [Circular],
+              "index": 0,
+              "key": null,
+              "lastEffect": [Circular],
+              "memoizedProps": null,
+              "memoizedState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={
+                    Object {
+                      "method": "POST",
+                      "noValidate": true,
+                    }
+                  }
+                />,
+              },
+              "mode": 0,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <form
+                    class=""
+                    method="POST"
+                    novalidate=""
+                  />
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "finishedWork": null,
+                "firstBatch": null,
+                "hydrate": false,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingCommitExpirationTime": 0,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": Object {
+                "baseState": Object {
+                  "element": <WrapperComponent
+                    Component={[Function]}
+                    context={null}
+                    props={
+                      Object {
+                        "method": "POST",
+                        "noValidate": true,
+                      }
+                    }
+                  />,
+                },
+                "callbackList": null,
+                "capturedValues": null,
+                "expirationTime": 0,
+                "first": null,
+                "hasForceUpdate": false,
+                "isInitialized": true,
+                "isProcessing": false,
+                "last": null,
+              },
+            },
+            "sibling": null,
+            "stateNode": WrapperComponent {
+              "_reactInternalFiber": [Circular],
+              "_reactInternalInstance": Object {},
+              "context": Object {},
+              "props": Object {
+                "Component": [Function],
+                "context": null,
+                "props": Object {
+                  "method": "POST",
+                  "noValidate": true,
+                },
+              },
+              "refs": Object {},
+              "state": Object {
+                "context": null,
+                "mount": true,
+                "props": Object {
+                  "method": "POST",
+                  "noValidate": true,
+                },
+              },
+              "updater": Object {
+                "enqueueForceUpdate": [Function],
+                "enqueueReplaceState": [Function],
+                "enqueueSetState": [Function],
+                "isMounted": [Function],
+              },
+            },
+            "tag": 2,
+            "type": [Function],
+            "updateQueue": null,
+          },
+          "sibling": null,
+          "stateNode": [Circular],
+          "tag": 2,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "_reactInternalInstance": Object {},
+        "context": Object {},
+        "onChangeHandler": [Function],
+        "props": Object {
+          "method": "POST",
+          "noValidate": true,
+        },
+        "refs": Object {},
+        "state": Object {
+          "childState": Object {},
+        },
+        "submitHandler": [Function],
+        "updater": Object {
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+        },
+        "validate": [Function],
+      },
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "method": "POST",
+        "noValidate": true,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": <form
+          class=""
+          method="POST"
+          novalidate=""
+        />,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "action": undefined,
+          "children": undefined,
+          "className": "",
+          "encType": undefined,
+          "method": "POST",
+          "name": undefined,
+          "noValidate": true,
+          "onSubmit": [Function],
+          "style": undefined,
+          "target": undefined,
+        },
+        "ref": null,
+        "rendered": Array [
+          undefined,
+        ],
+        "type": "form",
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

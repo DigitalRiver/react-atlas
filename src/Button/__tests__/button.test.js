@@ -1,8 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
-import { ButtonCore } from "../../../react-atlas-core/src/Button/index";
+import Button from "../index";
 
-import { verifyPropsDefaultValue } from "../../utils/propsVerification";
+import { verifyPropsDefaultValue } from "../../utils/propsVerification.js";
 
 import renderer from "react-test-renderer";
 
@@ -10,7 +10,7 @@ describe("Test correct render", () => {
   it("Test correct render", function() {
     const tree = renderer
       .create(
-        <ButtonCore
+        <Button
           href={"http://www.google.com.are"}
           className={"aClass"}
           style={"Style"}
@@ -21,40 +21,40 @@ describe("Test correct render", () => {
   });
 });
 
-describe("Test ButtonCore component", () => {
+describe("Test Button component", () => {
   it("Test default props", function() {
-    const result = mount(<ButtonCore />);
+    const result = mount(<Button />);
     expect(result.props().children).toBe("Default Button");
     expect(result.props().outline).toBe(false);
   });
 
   it("Make sure main style is set correctly.", function() {
-    let result = mount(<ButtonCore />);
+    let result = mount(<Button />);
     expect(result.props().primary).toBe(false);
 
-    result = mount(<ButtonCore primary />);
+    result = mount(<Button primary />);
     expect(result.props().primary).toBe(true);
 
-    result = mount(<ButtonCore secondary />);
+    result = mount(<Button secondary />);
     expect(result.props().secondary).toBe(true);
 
-    result = mount(<ButtonCore success />);
+    result = mount(<Button success />);
     expect(result.props().success).toBe(true);
 
-    result = mount(<ButtonCore warning />);
+    result = mount(<Button warning />);
     expect(result.props().warning).toBe(true);
 
-    result = mount(<ButtonCore danger />);
+    result = mount(<Button danger />);
     expect(result.props().danger).toBe(true);
 
-    result = mount(<ButtonCore link />);
+    result = mount(<Button link />);
     expect(result.props().link).toBe(true);
   });
 });
 
 describe("Test Button component", () => {
   it("Base case - Button default properties", function() {
-    const comp = mount(<ButtonCore />);
+    const comp = mount(<Button />);
     const expected = new Map([
       ["children", "Default Button"],
       ["outline", false],
@@ -71,7 +71,7 @@ describe("Test Button component", () => {
   });
 
   it("Base case - Button custom properties", function() {
-    const comp = mount(<ButtonCore secondary warning large disabled />);
+    const comp = mount(<Button secondary warning large disabled />);
     const expected = new Map([
       ["children", "Default Button"],
       ["outline", false],
@@ -91,7 +91,7 @@ describe("Test Button component", () => {
     let buttonWasClicked = false;
 
     const comp = mount(
-      <ButtonCore
+      <Button
         onClick={function() {
           buttonWasClicked = true;
         }}

@@ -3,54 +3,47 @@
 exports[`Test correct render Test correct render 1`] = `
 <ol
   aria-label="breadcrumbs"
-  className=""
+  className="breadcrumb"
   role="navigation"
   style={undefined}
-  styleName="breadcrumb"
 >
   <li
-    className=""
+    className="breadcrumbItem"
     style={undefined}
-    styleName="breadcrumbItem"
   >
     <a
-      className={undefined}
+      className="defaultFont link"
       href="#"
       htmlFor={undefined}
       id={undefined}
       style={undefined}
-      styleName="defaultFont link"
     >
       Atlas
     </a>
   </li>
   <li
-    className=""
+    className="breadcrumbItem"
     style={undefined}
-    styleName="breadcrumbItem"
   >
     <a
-      className={undefined}
+      className="defaultFont link"
       href="#breadcrumb"
       htmlFor={undefined}
       id={undefined}
       style={undefined}
-      styleName="defaultFont link"
     >
       Breadcrumb
     </a>
   </li>
   <li
-    className=""
+    className="breadcrumbItem active"
     style={undefined}
-    styleName="breadcrumbItem active"
   >
     <span
-      className={undefined}
+      className="defaultFont"
       htmlFor={undefined}
       id={undefined}
       style={undefined}
-      styleName="defaultFont"
     >
       Breadcrumb Example
     </span>

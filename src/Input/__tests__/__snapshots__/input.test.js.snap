@@ -2,11 +2,11 @@
 
 exports[`Test Input component render Render correctly 1`] = `
 <div
-  styleName="container"
+  className="container"
 >
   <input
     checked={false}
-    className="class"
+    className="class input small"
     id="ID"
     maxLength={15}
     name="InputName"
@@ -19,7 +19,6 @@ exports[`Test Input component render Render correctly 1`] = `
     placeholder="Text here"
     required={false}
     requiredText={false}
-    styleName="input small"
     type="text"
     value="Value"
   />

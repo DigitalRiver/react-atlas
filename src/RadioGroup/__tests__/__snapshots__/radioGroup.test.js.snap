@@ -2,232 +2,225 @@
 
 exports[`Test RadioGroup component render Render correctly 1`] = `
 <div
-  className=""
+  className="inline"
   style={undefined}
-  styleName="inline"
 >
   <div
+    className="radio_padding"
     onClick={[Function]}
     style={undefined}
-    styleName="radio_padding"
   >
     <div
-      styleName="inline_block relative padding"
+      className="inline_block relative padding"
     >
       <label
-        className=""
+        className="label"
         htmlFor={undefined}
-        styleName="label"
         title="Option 1"
       >
         Option 1
       </label>
       <div
-        styleName="float_left"
+        className="float_left"
       >
         <input
           checked={true}
+          className="input_style"
           disabled={false}
           groupSetChecked={[Function]}
           hidden={false}
           id={undefined}
           index={0}
           name="test"
-          styleName="input_style"
           type="radio"
           value="first"
         />
         <div
-          styleName="radio checked"
+          className="radio checked"
         >
           <div
-            styleName="checkmark"
+            className="checkmark"
           />
         </div>
       </div>
     </div>
   </div>
   <div
+    className="radio_padding"
     onClick={[Function]}
     style={undefined}
-    styleName="radio_padding"
   >
     <div
-      styleName="inline_block relative padding"
+      className="inline_block relative padding"
     >
       <label
-        className=""
+        className="label"
         htmlFor={undefined}
-        styleName="label"
         title="Option 2"
       >
         Option 2
       </label>
       <div
-        styleName="float_left"
+        className="float_left"
       >
         <input
           checked={false}
+          className="input_style"
           disabled={false}
           groupSetChecked={[Function]}
           hidden={false}
           id={undefined}
           index={1}
           name="test"
-          styleName="input_style"
           type="radio"
           value="second"
         />
         <div
-          styleName="radio"
+          className="radio"
         />
       </div>
     </div>
   </div>
   <div
+    className="radio_padding"
     onClick={[Function]}
     style={undefined}
-    styleName="radio_padding"
   >
     <div
-      styleName="inline_block relative padding"
+      className="inline_block relative padding"
     >
       <label
-        className=""
+        className="label"
         htmlFor={undefined}
-        styleName="label"
         title="Option 3"
       >
         Option 3
       </label>
       <div
-        styleName="float_left"
+        className="float_left"
       >
         <input
           checked={false}
+          className="input_style"
           disabled={false}
           groupSetChecked={[Function]}
           hidden={false}
           id={undefined}
           index={2}
           name="test"
-          styleName="input_style"
           type="radio"
           value="third"
         />
         <div
-          styleName="radio"
+          className="radio"
         />
       </div>
     </div>
   </div>
   <div
+    className="radio_padding"
     onClick={[Function]}
     style={undefined}
-    styleName="radio_padding"
   >
     <div
-      styleName="inline_block relative padding"
+      className="inline_block relative padding"
     >
       <label
-        className=""
+        className="label"
         htmlFor={undefined}
-        styleName="label"
         title="Option 4"
       >
         Option 4
       </label>
       <div
-        styleName="float_left"
+        className="float_left"
       >
         <input
           checked={false}
+          className="input_style"
           disabled={false}
           groupSetChecked={[Function]}
           hidden={false}
           id={undefined}
           index={3}
           name="test"
-          styleName="input_style"
           type="radio"
           value="fourth"
         />
         <div
-          styleName="radio"
+          className="radio"
         />
       </div>
     </div>
   </div>
   <div
+    className="radio_padding"
     onClick={[Function]}
     style={undefined}
-    styleName="radio_padding"
   >
     <div
-      styleName="inline_block relative padding"
+      className="inline_block relative padding"
     >
       <label
-        className=""
+        className="label"
         htmlFor={undefined}
-        styleName="label"
         title="Option 5"
       >
         Option 5
       </label>
       <div
-        styleName="float_left"
+        className="float_left"
       >
         <input
           checked={false}
+          className="input_style"
           disabled={false}
           groupSetChecked={[Function]}
           hidden={false}
           id={undefined}
           index={4}
           name="test"
-          styleName="input_style"
           type="radio"
           value="fifth"
         />
         <div
-          styleName="radio"
+          className="radio"
         />
       </div>
     </div>
   </div>
   <div
+    className="radio_padding"
     onClick={[Function]}
     style={undefined}
-    styleName="radio_padding"
   >
     <div
-      styleName="inline_block relative padding"
+      className="inline_block relative padding"
     >
       <label
-        className=""
+        className="label"
         htmlFor={undefined}
-        styleName="label"
         title="Option 6"
       >
         Option 6
       </label>
       <div
-        styleName="float_left"
+        className="float_left"
       >
         <input
           checked={false}
+          className="input_style"
           disabled={false}
           groupSetChecked={[Function]}
           hidden={false}
           id={undefined}
           index={5}
           name="test"
-          styleName="input_style"
           type="radio"
           value="sixth"
         />
         <div
-          styleName="radio"
+          className="radio"
         />
       </div>
     </div>

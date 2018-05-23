@@ -6,37 +6,37 @@ exports[`Test correct render Test correct render 1`] = `
   style={undefined}
 >
   <div
+    className="accordion"
     style={
       Object {
         "width": "100%",
       }
     }
-    styleName="accordion"
   >
     <div>
       <div
+        className="accordion_header header-inactive"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        styleName="accordion_header header-inactive"
       >
         First
       </div>
       <div
-        styleName="inactive"
+        className="inactive"
       />
     </div>
     <div>
       <div
+        className="accordion_header header-inactive"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        styleName="accordion_header header-inactive"
       >
         Second
       </div>
       <div
-        styleName="inactive"
+        className="inactive"
       />
     </div>
   </div>

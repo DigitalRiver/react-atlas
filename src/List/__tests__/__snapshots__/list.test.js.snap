@@ -2,55 +2,50 @@
 
 exports[`Test List component renders correctly 1`] = `
 <div
-  className={undefined}
+  className="list border"
   id={undefined}
   style={undefined}
-  styleName="list border"
 >
   <div
-    className={undefined}
+    className="divider"
     id={undefined}
     style={undefined}
-    styleName="divider"
   >
     <div
-      styleName="groupTitle"
+      className="groupTitle"
     >
       Dinosaurs
     </div>
     <div
-      className={undefined}
+      className="listItem"
       id={undefined}
       onClick={undefined}
       style={undefined}
-      styleName="listItem"
     >
       <div
-        styleName="inlineBlock"
+        className="inlineBlock"
       >
         <div
-          className=""
-          styleName="avatar"
+          className="avatar"
           title="Blue"
         >
           <span
-            styleName="letter"
+            className="letter"
           >
             B
           </span>
         </div>
       </div>
       <div
-        styleName="inlineBlock"
+        className="inlineBlock"
       >
         <button
-          className=""
+          className="button link link_hover"
           href={undefined}
           id={undefined}
           name={undefined}
           onClick={undefined}
           style={undefined}
-          styleName="button link link_hover"
           tabIndex={0}
           type="button"
         >
@@ -58,20 +53,19 @@ exports[`Test List component renders correctly 1`] = `
         </button>
       </div>
       <div
-        styleName="rightItem"
+        className="rightItem"
       >
         <div
-          className=""
-          styleName="switch"
+          className="switch"
         >
           <div
+            className="sliderMedium sliderEnabledOffColor"
             onClick={[Function]}
             style={undefined}
-            styleName="sliderMedium sliderEnabledOffColor"
           >
             <input
               checked={false}
-              className=""
+              className="inputMedium"
               id={undefined}
               name={undefined}
               onBlur={[Function]}
@@ -81,62 +75,58 @@ exports[`Test List component renders correctly 1`] = `
               onKeyPress={[Function]}
               onPaste={[Function]}
               style={undefined}
-              styleName="inputMedium"
               type="checkbox"
             />
             <div
+              className="handleMedium handleEnabledColor"
               style={
                 Object {
                   "background": undefined,
                 }
               }
-              styleName="handleMedium handleEnabledColor"
             />
             <div
+              className="onColorMedium"
               style={
                 Object {
                   "background": undefined,
                 }
               }
-              styleName="onColorMedium"
             />
           </div>
         </div>
       </div>
     </div>
     <div
-      className={undefined}
+      className="listItem"
       id={undefined}
       onClick={undefined}
       style={undefined}
-      styleName="listItem"
     >
       <div
-        styleName="inlineBlock"
+        className="inlineBlock"
       >
         <div
-          className=""
-          styleName="avatar"
+          className="avatar"
           title="Earl"
         >
           <span
-            styleName="letter"
+            className="letter"
           >
             E
           </span>
         </div>
       </div>
       <div
-        styleName="inlineBlock"
+        className="inlineBlock"
       >
         <button
-          className=""
+          className="button link link_hover"
           href={undefined}
           id={undefined}
           name={undefined}
           onClick={undefined}
           style={undefined}
-          styleName="button link link_hover"
           tabIndex={0}
           type="button"
         >
@@ -144,20 +134,19 @@ exports[`Test List component renders correctly 1`] = `
         </button>
       </div>
       <div
-        styleName="rightItem"
+        className="rightItem"
       >
         <div
-          className=""
-          styleName="switch"
+          className="switch"
         >
           <div
+            className="sliderMedium sliderEnabledOffColor"
             onClick={[Function]}
             style={undefined}
-            styleName="sliderMedium sliderEnabledOffColor"
           >
             <input
               checked={false}
-              className=""
+              className="inputMedium"
               id={undefined}
               name={undefined}
               onBlur={[Function]}
@@ -167,24 +156,23 @@ exports[`Test List component renders correctly 1`] = `
               onKeyPress={[Function]}
               onPaste={[Function]}
               style={undefined}
-              styleName="inputMedium"
               type="checkbox"
             />
             <div
+              className="handleMedium handleEnabledColor"
               style={
                 Object {
                   "background": undefined,
                 }
               }
-              styleName="handleMedium handleEnabledColor"
             />
             <div
+              className="onColorMedium"
               style={
                 Object {
                   "background": undefined,
                 }
               }
-              styleName="onColorMedium"
             />
           </div>
         </div>

@@ -1,8 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
-import { InputCore } from "../../../react-atlas-core/src/Input/index";
+import Input from "../index";
 
-import { verifyPropsDefaultValue } from "../../utils/propsVerification";
+import { verifyPropsDefaultValue } from "../../utils/propsVerification.js";
 
 import renderer from "react-test-renderer";
 
@@ -10,7 +10,7 @@ describe("Test Input component render", () => {
   it("Render correctly", () => {
     const tree = renderer
       .create(
-        <InputCore
+        <Input
           isValid
           className={"class"}
           type={"text"}
@@ -50,7 +50,7 @@ describe("Test Input component render", () => {
 
 function _validate(input, positiveCase) {
   const component = mount(
-    <InputCore
+    <Input
       validator={function() {
         if (!isNaN(component.state().value)) {
           if (parseInt(component.state().value) > 0) {
@@ -81,7 +81,7 @@ function _pressOneByOne(comp, str) {
 }
 
 function _validateMask(msk, inputText, expText) {
-  const component = mount(<InputCore mask={msk} />);
+  const component = mount(<Input mask={msk} />);
 
   expect(component.state().value).toEqual("");
   _pressOneByOne(component, inputText);
@@ -170,7 +170,7 @@ describe("Check mask behavior ", () => {
   });
 
   it("Backspace key test 1", function() {
-    let comp = mount(<InputCore mask={"Aaaaaa"} />);
+    let comp = mount(<Input mask={"Aaaaaa"} />);
 
     expect(comp.state().value).toEqual("");
 
@@ -184,7 +184,7 @@ describe("Check mask behavior ", () => {
   });
 
   it("Backspace key test 2", function() {
-    let comp = mount(<InputCore mask={"Aaaaaa"} />);
+    let comp = mount(<Input mask={"Aaaaaa"} />);
 
     expect(comp.state().value).toEqual("");
 
@@ -198,7 +198,7 @@ describe("Check mask behavior ", () => {
   });
 
   it("Control & Enter keys test", function() {
-    let comp = mount(<InputCore mask={"Aaaaaa"} />);
+    let comp = mount(<Input mask={"Aaaaaa"} />);
 
     comp.find("input").simulate("keyPress", { "key": "Ctrl" });
 
@@ -214,14 +214,14 @@ describe("Suite - Basic functionality", () => {
       ["hidden", false],
       ["errorLocation", "right"]
     ]);
-    const component = mount(<InputCore />);
+    const component = mount(<Input />);
 
     expect(verifyPropsDefaultValue(component, expectedProps)).toEqual(true);
   });
 
   it("Simulate text entered", function() {
     const component = mount(
-      <InputCore
+      <Input
         onChange={function() {
           component.state().isValid = false;
         }}
@@ -240,13 +240,13 @@ describe("Suite - Basic functionality", () => {
   });
 
   it("Simulate text entered(keypressed)", function() {
-    const component = mount(<InputCore />);
+    const component = mount(<Input />);
 
     _pressOneByOne(component, "Text");
   });
 
   it("Backspace test last", function() {
-    let comp = mount(<InputCore />);
+    let comp = mount(<Input />);
 
     _pressOneByOne(comp, "Adrii");
     comp.find("input").simulate("keyDown", { "key": "Backspace" });
@@ -256,7 +256,7 @@ describe("Suite - Basic functionality", () => {
 
 describe("Suite - Max length limit", () => {
   it("Check text max-size - Text entered lower than maxsize", function() {
-    const component = mount(<InputCore maxLength={5} />);
+    const component = mount(<Input maxLength={5} />);
 
     component.find("input").simulate("change", { "target": { "value": "1234" } });
     expect(component.state().value).toEqual("1234");
@@ -264,7 +264,7 @@ describe("Suite - Max length limit", () => {
   });
 
   it("Check text max-size - Text entered equal to maxsize", function() {
-    const component = mount(<InputCore maxLength={5} />);
+    const component = mount(<Input maxLength={5} />);
 
     component.find("input").simulate("change", { "target": { "value": "12345" } });
     expect(component.state().value).toEqual("12345");
@@ -272,7 +272,7 @@ describe("Suite - Max length limit", () => {
   });
 
   it("Check text max-size - Text entered greater than maxsize", function() {
-    const component = mount(<InputCore maxLength={5} />);
+    const component = mount(<Input maxLength={5} />);
 
     component
       .find("input")
@@ -284,7 +284,7 @@ describe("Suite - Max length limit", () => {
 
 describe("Suite - Required field", () => {
   it("Check behavior when field is set to required - Negative case", () => {
-    const component = mount(<InputCore required />);
+    const component = mount(<Input required />);
 
     component.find("input").simulate("change", { "target": { "value": "" } });
     expect(component.state().isValid).toEqual(false);
@@ -292,7 +292,7 @@ describe("Suite - Required field", () => {
   });
 
   it("Check behavior when field is set to required - Positive case", () => {
-    const component = mount(<InputCore required />);
+    const component = mount(<Input required />);
 
     component
       .find("input")
@@ -301,7 +301,7 @@ describe("Suite - Required field", () => {
   });
 
   it("Check behavior when field is set to not required", () => {
-    const component = mount(<InputCore required={false} />);
+    const component = mount(<Input required={false} />);
 
     component.find("input").simulate("change", { "target": { "value": "" } });
     expect(component.state().isValid).toEqual(true);
@@ -309,7 +309,7 @@ describe("Suite - Required field", () => {
 
   it("Check behavior when field is set to required and validated - Positive case", () => {
     const component = mount(
-      <InputCore
+      <Input
         required
         validator={function() {
           return true;
@@ -326,7 +326,7 @@ describe("Suite - Required field", () => {
 
   it("Check behavior when field is set to required and validated - Negative case", () => {
     const component = mount(
-      <InputCore
+      <Input
         required
         validator={function() {
           return false;

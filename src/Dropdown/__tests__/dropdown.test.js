@@ -3,7 +3,7 @@ import { mount } from "enzyme";
 
 import renderer from "react-test-renderer";
 
-import { Dropdown } from "../../../react-atlas-core/src/Dropdown/index";
+import Dropdown from "../index";
 
 function _findItem(n, text) {
   if (n.props().children) {
