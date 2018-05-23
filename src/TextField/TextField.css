@@ -17,25 +17,7 @@
 
 .textfieldWrapper {
 	composes: default-font from '../styles.css';
-	margin: 0 .25rem .25rem 0;
-}
-
-.label {
-	display: inline-block;
-	composes: header-font from '../styles.css';
-}
-
-.labelSpacing {
-	margin-bottom: 0.35rem;
-}
-
-.verticalPadding {
-	padding-top: 10px;
-	padding-bottom: 5px;
-}
-
-.horizontalPadding {
-	padding-right: 1rem;
+	width: 100%;
 }
 
 .leftLabel {
@@ -45,15 +27,6 @@
 
 .inline {
   display: inline-block;
-}
-
-.labelContainer {
-	display: flex;
-	align-items: center;
-}
-
-.tooltipRight {
-	justify-content: space-between;
 }
 
 .disabled {
@@ -93,12 +66,4 @@
 
 .warning_message {
 	composes: warning-text from '../styles.css';
-}
-
-.required {
-	composes: secondary-text from '../styles.css';
-}
-
-.required_error {
-	composes: error-text from '../styles.css';
 }

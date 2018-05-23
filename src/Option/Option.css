@@ -1,0 +1,16 @@
+.optionWrapper {
+  padding: 5px;
+}
+
+.option {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selected {
+  background: #BEBEBE;
+}
+
+.hover {
+ background: #E9E9E9; 
+}
