@@ -1,11 +1,11 @@
 import React from "react";
 import { mount } from "enzyme";
-import { FileUploadCore } from "../../../react-atlas-core/src/FileUpload/index";
+import FileUpload from "../index";
 
 /*
 describe("Test correct render", () => {
   it("Test correct render", function() {
-		const tree = renderer.create(<FileUploadCore text={'Upload zone'} accept={"application/pdf"} onChange={()=> console.log('onChange triggered') }/>).toJSON();
+		const tree = renderer.create(<FileUpload text={'Upload zone'} accept={"application/pdf"} onChange={()=> console.log('onChange triggered') }/>).toJSON();
 		expect(tree).toMatchSnapshot(); 
   });
 });
@@ -14,7 +14,7 @@ describe("Test correct render", () => {
 describe("Testing File Upload component", () => {
   it("File Upload - Simulate drop event", function() {
     const fileU = mount(
-      <FileUploadCore
+      <FileUpload
         text={"Upload zone"}
         onChange={function(files) {
           console.log("files: ", files);
@@ -26,7 +26,7 @@ describe("Testing File Upload component", () => {
 
   it("File Upload - Simulate drop event(withou onChange func)", function() {
     const fileU = mount(
-      <FileUploadCore text={"Upload zone"} accept={"application/pdf"} />
+      <FileUpload text={"Upload zone"} accept={"application/pdf"} />
     );
     fileU.simulate("drop");
   });

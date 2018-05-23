@@ -2,11 +2,10 @@
 
 exports[`Test Text component renders correctly 1`] = `
 <span
-  className={undefined}
+  className="defaultFont"
   htmlFor={undefined}
   id={undefined}
   style={undefined}
-  styleName="defaultFont"
 >
   Hello World!
 </span>

@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
-import { RadioCore } from "../../../react-atlas-core/src/Radio/index";
-import { RadioGroupCore } from "../../../react-atlas-core/src/RadioGroup/index";
+import Radio from "../../Radio/index";
+import RadioGroup from "../index";
 
 import renderer from "react-test-renderer";
 
@@ -9,14 +9,14 @@ describe("Test RadioGroup component render", () => {
   it("Render correctly", () => {
     const tree = renderer
       .create(
-        <RadioGroupCore inline name="test">
-          <RadioCore label="Option 1" value="first" />
-          <RadioCore label="Option 2" value="second" />
-          <RadioCore label="Option 3" value="third" />
-          <RadioCore label="Option 4" value="fourth" />
-          <RadioCore label="Option 5" value="fifth" />
-          <RadioCore label="Option 6" value="sixth" />
-        </RadioGroupCore>
+        <RadioGroup inline name="test">
+          <Radio label="Option 1" value="first" />
+          <Radio label="Option 2" value="second" />
+          <Radio label="Option 3" value="third" />
+          <Radio label="Option 4" value="fourth" />
+          <Radio label="Option 5" value="fifth" />
+          <Radio label="Option 6" value="sixth" />
+        </RadioGroup>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
@@ -26,34 +26,34 @@ describe("Test RadioGroup component render", () => {
 describe("Testing radio component", () => {
   it("RadioGroup - Basic test", function() {
     mount(
-      <RadioGroupCore inline name="test" title="Title" classname="Class">
-        <RadioCore label="Option 1" value="first" />
-        <RadioCore label="Option 2" value="second" />
-      </RadioGroupCore>
+      <RadioGroup inline name="test" title="Title" classname="Class">
+        <Radio label="Option 1" value="first" />
+        <Radio label="Option 2" value="second" />
+      </RadioGroup>
     );
   });
 
   it("RadioGroup - Change selection test", function() {
     const result = mount(
-      <RadioGroupCore inline name="test">
-        <RadioCore label="Option 1" value="first" />
-        <RadioCore label="Option 2" value="second" />
-        <RadioCore label="Option 3" value="third" />
-        <RadioCore label="Option 4" value="fourth" />
-        <RadioCore label="Option 5" value="fifth" />
-        <RadioCore label="Option 6" value="sixth" />
-      </RadioGroupCore>
+      <RadioGroup inline name="test">
+        <Radio label="Option 1" value="first" />
+        <Radio label="Option 2" value="second" />
+        <Radio label="Option 3" value="third" />
+        <Radio label="Option 4" value="fourth" />
+        <Radio label="Option 5" value="fifth" />
+        <Radio label="Option 6" value="sixth" />
+      </RadioGroup>
     );
     expect(result.state().checkedRadio).toEqual(0);
 
     result
-      .find(RadioCore)
+      .find(Radio)
       .last()
       .simulate("click");
     expect(result.state().checkedRadio).toEqual(5);
 
     result
-      .find(RadioCore)
+      .find(Radio)
       .first()
       .simulate("click");
     expect(result.state().checkedRadio).toEqual(0);
@@ -61,19 +61,19 @@ describe("Testing radio component", () => {
 
   it("RadioGroup - Change props ", function() {
     const result = mount(
-      <RadioGroupCore inline name="test">
-        <RadioCore label="Option 1" value="first" />
-        <RadioCore label="Option 2" value="second" />
-        <RadioCore label="Option 3" value="third" />
-        <RadioCore label="Option 4" value="fourth" />
-        <RadioCore label="Option 5" value="fifth" />
-        <RadioCore label="Option 6" value="sixth" />
-      </RadioGroupCore>
+      <RadioGroup inline name="test">
+        <Radio label="Option 1" value="first" />
+        <Radio label="Option 2" value="second" />
+        <Radio label="Option 3" value="third" />
+        <Radio label="Option 4" value="fourth" />
+        <Radio label="Option 5" value="fifth" />
+        <Radio label="Option 6" value="sixth" />
+      </RadioGroup>
     );
     result.setProps({ "name": "Name" });
 
     result
-      .find(RadioCore)
+      .find(Radio)
       .last()
       .simulate("click");
     expect(result.state().checkedRadio).toEqual(5);

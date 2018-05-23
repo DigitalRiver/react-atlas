@@ -2,36 +2,35 @@
 
 exports[`Test checkbox component renders correctly 1`] = `
 <div
-  className=""
+  className="checkbox_padding"
   onClick={[Function]}
   style={undefined}
-  styleName="checkbox_padding"
 >
   <div
-    styleName="inline_block relative padding"
+    className="inline_block relative padding"
   >
     <label
+      className="label"
       htmlFor={undefined}
-      styleName="label"
       title="labelText"
     >
       labelText
     </label>
     <div
-      styleName="float_left"
+      className="float_left"
     >
       <input
         checked={false}
+        className="opacity"
         disabled={false}
         hidden={undefined}
         id={undefined}
         label="labelText"
         required={false}
-        styleName="opacity"
         type="checkbox"
       />
       <div
-        styleName="not_checked"
+        className="not_checked"
       />
     </div>
   </div>
