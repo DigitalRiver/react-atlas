@@ -1,8 +1,8 @@
 export { Accordion } from "./Accordion";
 export { Alert } from "./Alert";
 export { Avatar } from "./Avatar";
-export { Button } from "./Button";
-console.log("ButtonIndex: ", Button);
+import { Button } from "./Button";
+export { Button };
 export { Breadcrumb } from "./Breadcrumb";
 export { BreadcrumbItem } from "./BreadcrumbItem";
 export { Card } from "./Card";
@@ -11,7 +11,6 @@ export { CheckboxGroup } from "./CheckboxGroup";
 export { DatePicker } from "./DatePicker";
 export { Dialog } from "./Dialog";
 export { Dropdown } from "./Dropdown";
-export { Form } from "./Form";
 export { FileUpload } from "./FileUpload";
 export { Hint } from "./Hint";
 export { Icon } from "./Icon";
