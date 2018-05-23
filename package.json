@@ -14,7 +14,7 @@
     "build:prd": "cross-env NODE_ENV=production webpack -p --config config/webpack.config.js",
     "build:dev": "cross-env NODE_ENV=development npm run build",
     "docs:prd": "cross-env NODE_ENV=production styleguidist build",
-    "docs:dev": "cross-env NODE_ENV=development styleguidist server",
+    "docs:dev": "cross-env NODE_ENV=development styleguidist server --config config/styleguide.config.js",
     "docs:publish": "node scriptsgh-pages.js",
     "precommit": "lint-staged"
   },
