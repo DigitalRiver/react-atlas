@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import Text from "../Text";
+import { Text } from "../Text";
 import CSSModules from "react-css-modules";
 import styles from "./Label.css";
 

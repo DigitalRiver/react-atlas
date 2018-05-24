@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import messages from "../utils/messages.js";
 import cx from "classnames";
-import Label from "../Label";
+import { Label } from "../Label";
 import CSSModules from "react-css-modules";
 import styles from "./TextField.css";
 

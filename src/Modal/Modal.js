@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import Portal from "./../Portal";
-import Overlay from "./../Overlay";
+import { Portal } from "./../Portal";
+import { Overlay } from "./../Overlay";
 import CSSModules from "react-css-modules";
 import styles from "./Modal.css";
 
@@ -26,7 +26,7 @@ export class Modal extends React.PureComponent {
       style
     } = this.props;
 
-    const classes = cx("modal": true, { "active": active }, "default-font");
+    const classes = cx({ "modal": true, "active": active }, "default-font");
 
     const overlayClasses = cx({
       "overlayClass": true,
