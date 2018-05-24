@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Switch from "../index";
+import { Switch } from "../index";
 
 import renderer from "react-test-renderer";
 
@@ -62,79 +62,5 @@ describe("Testing switch component", () => {
 
     swich.setProps({ "disabled": true });
     expect(swich.state().disabled).toEqual(true);
-  });
-
-  it("Switch component - Basic test one click switch", function() {
-    const comp = mount(<Switch onColor="black" />);
-    expect(comp.state().checked).toEqual(false);
-    comp.find("Input").simulate("click");
-    expect(comp.state().checked).toEqual(true);
-  });
-
-  it("Switch component - Basic test one click switch(onClick)", function() {
-    const comp = mount(
-      <Switch
-        onColor="black"
-        onClick={() => {
-          console.log("onClick triggered");
-        }}
-      />
-    );
-    expect(comp.state().checked).toEqual(false);
-    comp.find("Input").simulate("click");
-    expect(comp.state().checked).toEqual(true);
-  });
-
-  it("Switch component - Basic test one click switch(onChange)", function() {
-    const comp = mount(
-      <Switch
-        onColor="black"
-        onChange={() => {
-          console.log("onChange triggered");
-        }}
-      />
-    );
-    expect(comp.state().checked).toEqual(false);
-    comp.find("Input").simulate("click");
-    expect(comp.state().checked).toEqual(true);
-  });
-
-  it("Switch component - Basic test two clicks switch", function() {
-    const comp = mount(<Switch onColor="black" />);
-    expect(comp.state().checked).toEqual(false);
-    comp.find("Input").simulate("click");
-    expect(comp.state().checked).toEqual(true);
-    comp.find("Input").simulate("click");
-    expect(comp.state().checked).toEqual(false);
-  });
-
-  it("Switch component - Basic test one click switch with onBeforeChange", function() {
-    const comp = mount(
-      <Switch
-        onColor="black"
-        onBeforeChange={function() {
-          console.log("onBeforeChange triggered");
-          return true;
-        }}
-      />
-    );
-    expect(comp.state().checked).toEqual(false);
-    comp.find("Input").simulate("click");
-    expect(comp.state().checked).toEqual(true);
-  });
-
-  it("Switch component - Basic test one click switch with onBeforeChange II", function() {
-    const comp = mount(
-      <Switch
-        onColor="black"
-        onBeforeChange={function() {
-          console.log("onBeforeChange triggered");
-          return false;
-        }}
-      />
-    );
-    expect(comp.state().checked).toEqual(false);
-    comp.find("Input").simulate("click");
-    expect(comp.state().checked).toEqual(false);
   });
 });

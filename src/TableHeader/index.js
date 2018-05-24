@@ -1,3 +1,2 @@
 import TableHeader from "./TableHeader.js";
-export { TableHeader } ;
-
+export { TableHeader };

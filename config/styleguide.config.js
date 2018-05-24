@@ -6,9 +6,7 @@ const babel = {
   "exclude": /node_modules/,
   "loader": "babel-loader",
   "query": {
-    "presets": [
-      "react", "env"
-    ],
+    "presets": ["react", "env"],
     "plugins": ["transform-class-properties", "transform-object-rest-spread"]
   }
 };
@@ -18,7 +16,12 @@ const babel = {
 // The exclude section is put there because font-awesome can't be handed with these loaders
 const css = {
   "test": /\.css$/,
-  "exclude": [path.resolve(__dirname, "assets/fonts/fontawesome-5.0.13/web-fonts-with-css/css/")],
+  "exclude": [
+    path.resolve(
+      __dirname,
+      "assets/fonts/fontawesome-5.0.13/web-fonts-with-css/css/"
+    )
+  ],
   "loaders": [
     "style-loader?sourceMap",
     "css-loader?modules&importLoaders=1&localIdentName=ra_[name]__[local]",
@@ -36,7 +39,10 @@ const css = {
 // A specific test for font-awesome files
 const fontawesome = {
   "test": /\.css$/,
-  "include": path.resolve(__dirname, 'assets/fonts/fontawesome-5.0.13/web-fonts-with-css/css/fontawesome.min.css'),
+  "include": path.resolve(
+    __dirname,
+    "assets/fonts/fontawesome-5.0.13/web-fonts-with-css/css/fontawesome.min.css"
+  ),
   "loader": "style-loader!css-loader"
 };
 
@@ -69,7 +75,7 @@ module.exports = {
   // Use this to test a single component.  Change it to the component you are testing and restart the styleguide server
   // Regex should be: 'src/components/NAME_OF_COMPONENT_FOLDER/[A-Z]*.js'
   "components": "../src/**/**.js",
-  "require": [path.resolve(__dirname, '../scripts/setup.js')],
+  "require": [path.resolve(__dirname, "../scripts/setup.js")],
   "ignore": [
     "**/__tests__/**",
     "**/utils/**",
@@ -87,7 +93,7 @@ module.exports = {
     "module": {
       "loaders": [babel, css, fontawesome, json, url]
     }
-},
+  },
   "theme": {
     "color": {
       "link": "#006e95",

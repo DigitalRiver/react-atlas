@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
-import Radio from "../../Radio/index";
-import RadioGroup from "../index";
+import { Radio } from "../../Radio/index";
+import { RadioGroup } from "../index";
 
 import renderer from "react-test-renderer";
 

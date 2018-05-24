@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Text from "../index";
+import { Text } from "../index";
 import renderer from "react-test-renderer";
 
 describe("Test Text component", () => {

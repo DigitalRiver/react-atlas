@@ -1,7 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-
-import Accordion from "../index";
+import { Accordion } from "../index";
 import renderer from "react-test-renderer";
 
 describe("Test correct render", () => {

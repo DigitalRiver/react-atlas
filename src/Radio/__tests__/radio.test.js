@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Radio from "../index";
+import { Radio } from "../index";
 
 import renderer from "react-test-renderer";
 

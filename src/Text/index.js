@@ -1,3 +1,2 @@
 import Text from "./Text.js";
-export { Text } ;
-
+export { Text };

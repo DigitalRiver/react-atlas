@@ -46,6 +46,8 @@ import { Overlay } from "./Overlay";
 export { Overlay };
 import { Panel } from "./Panel";
 export { Panel };
+import { Portal } from "./Portal";
+export { Portal };
 import { ProgressBar } from "./ProgressBar";
 export { ProgressBar };
 import { Radio } from "./Radio";
