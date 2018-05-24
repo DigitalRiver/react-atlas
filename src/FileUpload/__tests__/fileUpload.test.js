@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import FileUpload from "../index";
+import { FileUpload } from "../index";
 
 /*
 describe("Test correct render", () => {

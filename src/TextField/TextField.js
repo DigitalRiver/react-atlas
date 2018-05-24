@@ -155,6 +155,10 @@ export class TextField extends React.PureComponent {
       tooltip,
       tooltipPosition,
       type,
+      /*eslint-disable */
+      // Declaring the following variables so they don't get passed to the input element through the prop spread.
+      valid,
+      /*eslint-enable */
       ...others
     } = this.props;
 

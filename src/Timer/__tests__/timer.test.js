@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Timer from "../index";
+import { Timer } from "../index";
 
 import renderer from "react-test-renderer";
 

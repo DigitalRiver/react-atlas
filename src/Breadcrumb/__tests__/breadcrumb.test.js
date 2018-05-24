@@ -1,7 +1,7 @@
 import React from "react";
-import Breadcrumb from "../index";
-import BreadcrumbItem from "../../BreadcrumbItem/index";
-import Text from "../../Text/index";
+import { Breadcrumb } from "../index";
+import { BreadcrumbItem } from "../../BreadcrumbItem/index";
+import { Text } from "../../Text/index";
 
 import renderer from "react-test-renderer";
 

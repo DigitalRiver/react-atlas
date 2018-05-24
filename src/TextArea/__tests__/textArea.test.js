@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import TextArea from "../index";
+import { TextArea } from "../index";
 
 import renderer from "react-test-renderer";
 

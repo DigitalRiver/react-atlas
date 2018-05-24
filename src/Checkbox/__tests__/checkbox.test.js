@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Checkbox from "../index";
+import { Checkbox } from "../index";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
