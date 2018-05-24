@@ -28,8 +28,6 @@ import { Hint } from "./Hint";
 export { Hint };
 import { Icon } from "./Icon";
 export { Icon };
-import { Input } from "./Input";
-export { Input };
 import { Label } from "./Label";
 export { Label };
 import { List } from "./List";
