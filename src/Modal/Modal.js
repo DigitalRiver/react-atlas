@@ -26,13 +26,6 @@ export class Modal extends React.PureComponent {
       style
     } = this.props;
 
-    const classes = cx({ "modal": true, "active": active }, "default-font");
-
-    const overlayClasses = cx({
-      "overlayClass": true,
-      "overlayLeftStyle": this.state.isHaveScrollbar
-    });
-
     return (
       active && 
         <Portal>
@@ -46,7 +39,11 @@ export class Modal extends React.PureComponent {
           }
           <div styleName={cx("dialogWrapper")} style={style}>
             <div styleName={cx("dialog")}>
-              <div style={style} styleName={cx("modal", {"active": active})} className={cx(className)}>
+              <div
+                style={style}
+                styleName={cx("modal", { "active": active })}
+                className={cx(className)}
+              >
                 {title && <h3 styleName={cx("title")}>{title}</h3>}
                 <div>{this.props.children}</div>
               </div>

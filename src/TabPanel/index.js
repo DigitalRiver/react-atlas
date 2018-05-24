@@ -1,3 +1,2 @@
 import TabPanel from "./TabPanel.js";
-export { TabPanel } ;
-
+export { TabPanel };

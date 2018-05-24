@@ -1,3 +1,2 @@
 import Tabs from "./Tabs.js";
-export { Tabs } ;
-
+export { Tabs };

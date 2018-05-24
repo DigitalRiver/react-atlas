@@ -1,3 +1,2 @@
 import Dialog from "./Dialog.js";
-export { Dialog } ;
-
+export { Dialog };

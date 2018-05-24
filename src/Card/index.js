@@ -1,3 +1,2 @@
 import Card from "./Card.js";
-export { Card } ;
-
+export { Card };

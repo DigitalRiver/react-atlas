@@ -1,3 +1,2 @@
 import Taskbar from "./Taskbar.js";
-export { Taskbar } ;
-
+export { Taskbar };

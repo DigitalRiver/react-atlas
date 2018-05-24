@@ -1,3 +1,2 @@
 import TextArea from "./TextArea.js";
-export { TextArea } ;
-
+export { TextArea };
