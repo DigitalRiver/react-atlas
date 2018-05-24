@@ -1,3 +1,2 @@
 import Icon from "./Icon.js";
-export { Icon } ;
-
+export { Icon };

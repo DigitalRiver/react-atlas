@@ -1,3 +1,2 @@
 import Table from "./Table.js";
-export { Table } ;
-
+export { Table };

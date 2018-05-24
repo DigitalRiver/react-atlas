@@ -66,15 +66,10 @@ exports[`Test List component renders correctly 1`] = `
             <input
               checked={false}
               className="inputMedium"
+              disabled={false}
+              hidden={false}
               id={undefined}
               name={undefined}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onPaste={[Function]}
-              style={undefined}
               type="checkbox"
             />
             <div
@@ -147,15 +142,10 @@ exports[`Test List component renders correctly 1`] = `
             <input
               checked={false}
               className="inputMedium"
+              disabled={false}
+              hidden={false}
               id={undefined}
               name={undefined}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onPaste={[Function]}
-              style={undefined}
               type="checkbox"
             />
             <div

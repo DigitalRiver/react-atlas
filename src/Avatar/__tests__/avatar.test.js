@@ -1,6 +1,6 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
-import Avatar from "../index";
+import { Avatar } from "../index";
 
 import renderer from "react-test-renderer";
 

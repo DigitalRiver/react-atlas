@@ -1,3 +1,2 @@
 import Panel from "./Panel.js";
-export { Panel } ;
-
+export { Panel };
