@@ -1,3 +1,2 @@
 import Tooltip from "./Tooltip.js";
-export { Tooltip } ;
-
+export { Tooltip };

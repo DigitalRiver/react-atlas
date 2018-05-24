@@ -1,3 +1,2 @@
 import Hint from "./Hint.js";
-export { Hint } ;
-
+export { Hint };

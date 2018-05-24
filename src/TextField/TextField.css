@@ -11,10 +11,6 @@
 	outline: none;
 }
 
-.textfield:invalid {
-    box-shadow: none;
-}
-
 .textfieldWrapper {
 	composes: default-font from '../styles.css';
 	width: 100%;

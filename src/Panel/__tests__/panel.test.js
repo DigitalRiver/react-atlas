@@ -1,5 +1,5 @@
 import React from "react";
-import Panel from "../index";
+import { Panel } from "../index";
 
 import renderer from "react-test-renderer";
 

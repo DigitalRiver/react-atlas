@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
-import CheckboxGroup from "../index";
-import Checkbox from "../../Checkbox/index";
+import { CheckboxGroup } from "../index";
+import { Checkbox } from "../../Checkbox/index";
 
 import renderer from "react-test-renderer";
 

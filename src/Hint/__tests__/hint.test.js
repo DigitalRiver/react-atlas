@@ -1,5 +1,5 @@
 import React from "react";
-import Hint from "../index";
+import { Hint } from "../index";
 import renderer from "react-test-renderer";
 
 describe("Test Hint component render", () => {

@@ -21,7 +21,6 @@ exports[`Test Input component render Render correctly 1`] = `
     style={undefined}
     type="text"
     uppercase={false}
-    valid={[Function]}
     value="Value"
   />
 </div>

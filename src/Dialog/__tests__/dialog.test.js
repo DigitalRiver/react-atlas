@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
-import Dialog from "../index";
-import Button from "../../Button/index";
+import { Dialog } from "../index";
+import { Button } from "../../Button/index";
 
 import renderer from "react-test-renderer";
 

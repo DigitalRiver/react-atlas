@@ -1,8 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
-import Card from "../index";
-import Checkbox from "../../Checkbox/Checkbox";
-import CheckboxGroup from "../../CheckboxGroup/CheckboxGroup";
+import { Card } from "../index";
+import { Checkbox } from "../../Checkbox/Checkbox";
+import { CheckboxGroup } from "../../CheckboxGroup/CheckboxGroup";
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 
 import renderer from "react-test-renderer";
