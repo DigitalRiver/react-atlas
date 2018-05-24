@@ -1,1 +1,3 @@
-export { default } from "./Modal";
+import Modal from "./Modal.js";
+export { Modal } ;
+

@@ -1,1 +1,3 @@
-export { default } from "./TabList";
+import TabList from "./TabList.js";
+export { TabList } ;
+

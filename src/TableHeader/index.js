@@ -1,1 +1,3 @@
-export { default } from "./TableHeader";
+import TableHeader from "./TableHeader.js";
+export { TableHeader } ;
+

@@ -1,1 +1,3 @@
-export { default } from "./Panel";
+import Panel from "./Panel.js";
+export { Panel } ;
+

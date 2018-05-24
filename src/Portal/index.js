@@ -1,1 +1,3 @@
-export { default } from "./Portal";
+import Portal from "./Portal.js";
+export { Portal } ;
+

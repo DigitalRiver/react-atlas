@@ -1,1 +1,3 @@
-export { default } from "./TabPanel";
+import TabPanel from "./TabPanel.js";
+export { TabPanel } ;
+

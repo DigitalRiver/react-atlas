@@ -1,1 +1,3 @@
-export { default } from "./FileUpload";
+import FileUpload from "./FileUpload.js";
+export { FileUpload } ;
+

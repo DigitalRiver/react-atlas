@@ -1,1 +1,3 @@
-export { default } from "./Hint";
+import Hint from "./Hint.js";
+export { Hint } ;
+

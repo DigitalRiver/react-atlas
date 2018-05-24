@@ -1,1 +1,3 @@
-export { default } from "./Taskbar";
+import Taskbar from "./Taskbar.js";
+export { Taskbar } ;
+

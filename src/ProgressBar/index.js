@@ -1,1 +1,3 @@
-export { default } from "./ProgressBar";
+import ProgressBar from "./ProgressBar.js";
+export { ProgressBar } ;
+

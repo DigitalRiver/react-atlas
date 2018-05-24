@@ -1,1 +1,3 @@
-export { default } from "./Dialog";
+import Dialog from "./Dialog.js";
+export { Dialog } ;
+

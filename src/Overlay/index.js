@@ -1,1 +1,3 @@
-export { default } from "./Overlay";
+import Overlay from "./Overlay.js";
+export { Overlay } ;
+
