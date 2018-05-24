@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Switch from "../index";
+import { Switch } from "../index";
 
 import renderer from "react-test-renderer";
 

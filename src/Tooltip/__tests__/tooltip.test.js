@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Tooltip from "../index";
+import { Tooltip } from "../index";
 
 import { verifyPropsDefaultValue } from "../../utils/propsVerification";
 

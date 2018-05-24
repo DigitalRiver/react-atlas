@@ -41,8 +41,8 @@
 
 ###### TextArea Tooltip requires Label:
 
-    <TextArea label="tooltip label" tooltip="Example tooltip message"/>
+    <TextArea label="tooltip label" tooltip={<Tooltip text="Example"/>} />
     
 ###### TextArea tooltip right false:
 
-    <TextArea label="tooltip label" tooltip="Example tooltip message" tooltipRight={false} />
+    <TextArea label="tooltip label" tooltip={<Tooltip text="Example"/>} tooltipPostion="left" />
