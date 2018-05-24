@@ -8,4 +8,3 @@ script:
     - npm run build:dev
     - npm run lint
     - npm run test
-    - npm run audit
