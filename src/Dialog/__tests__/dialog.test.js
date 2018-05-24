@@ -1,7 +1,10 @@
 import React from "react";
 import { mount } from "enzyme";
-import Dialog from "../index";
-import Button from "../../Button/index";
+import { Dialog } from "../index";
+import { Modal } from "../../Modal/index";
+import { Overlay } from "../../Overlay/index";
+import { Portal } from "../../Portal/index";
+import { Button } from "../../Button/index";
 
 import renderer from "react-test-renderer";
 

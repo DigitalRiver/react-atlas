@@ -1,10 +1,10 @@
 import React from "react";
-import List from "../index";
-import ListGroup from "../../ListGroup/index";
-import ListItem from "../../ListItem/index";
-import Avatar from "../../Avatar/index";
-import Switch from "../../Switch/index";
-import Button from "../../Button/index";
+import { List } from "../index";
+import { ListGroup } from "../../ListGroup/index";
+import { ListItem } from "../../ListItem/index";
+import { Avatar } from "../../Avatar/index";
+import { Switch } from "../../Switch/index";
+import { Button } from "../../Button/index";
 import renderer from "react-test-renderer";
 
 describe("Test List component", () => {

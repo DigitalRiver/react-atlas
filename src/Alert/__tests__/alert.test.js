@@ -1,5 +1,5 @@
 import React from "react";
-import Alert from "../index";
+import { Alert } from "../index";
 import renderer from "react-test-renderer";
 
 describe("Test Alert component", () => {

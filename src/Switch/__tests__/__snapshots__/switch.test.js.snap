@@ -13,17 +13,18 @@ exports[`Test switch component render Render correctly 1`] = `
       buttonColor="grey"
       checked={false}
       className="inputMedium"
+      disabled={false}
+      hidden={false}
       id="ID"
+      large={false}
+      medium={true}
       name="Name"
       offColor="white"
-      onBlur={[Function]}
+      onBeforeChange={[Function]}
       onChange={[Function]}
       onClick={[Function]}
       onColor="black"
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onPaste={[Function]}
-      style={undefined}
+      small={false}
       type="checkbox"
     />
     <div

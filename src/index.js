@@ -10,6 +10,10 @@ import { BreadcrumbItem } from "./BreadcrumbItem";
 export { BreadcrumbItem };
 import { Button } from "./Button";
 export { Button };
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8a8f985... Fixing failing tests
 import { Card } from "./Card";
 export { Card };
 import { Checkbox } from "./Checkbox";
@@ -46,6 +50,8 @@ import { Overlay } from "./Overlay";
 export { Overlay };
 import { Panel } from "./Panel";
 export { Panel };
+import { Portal } from "./Portal";
+export { Portal };
 import { ProgressBar } from "./ProgressBar";
 export { ProgressBar };
 import { Radio } from "./Radio";
@@ -80,3 +86,49 @@ import { Timer } from "./Timer";
 export { Timer };
 import { Tooltip } from "./Tooltip";
 export { Tooltip };
+=======
+export { Breadcrumb } from "./Breadcrumb";
+export { BreadcrumbItem } from "./BreadcrumbItem";
+export { Card } from "./Card";
+export { Checkbox } from "./Checkbox";
+export { CheckboxGroup } from "./CheckboxGroup";
+export { DatePicker } from "./DatePicker";
+export { Dialog } from "./Dialog";
+import { Dropdown } from "./Button";
+export { Dropdown };
+export { FileUpload } from "./FileUpload";
+export { Hint } from "./Hint";
+export { Icon } from "./Icon";
+<<<<<<< HEAD
+export { Input } from "./Input";
+import { Label } from "./Label";
+export { Label };
+=======
+export { Label } from "./Label";
+>>>>>>> 42b2097... Removing Input from Switch and deleting it from the library
+export { List } from "./List";
+export { ListGroup } from "./ListGroup";
+export { ListItem } from "./ListItem";
+export { Modal } from "./Modal";
+import { Option } from "./Option";
+export { Option };
+export { Panel } from "./Panel";
+export { ProgressBar } from "./ProgressBar";
+export { Radio } from "./Radio";
+export { RadioGroup } from "./RadioGroup";
+export { Switch } from "./Switch";
+export { Tab } from "./Tab";
+export { Table } from "./Table";
+export { TableHeader } from "./TableHeader";
+export { TabList } from "./TabList";
+export { TabPanel } from "./TabPanel";
+export { Tabs } from "./Tabs";
+export { Task } from "./Task";
+export { Taskbar } from "./Taskbar";
+export { Text } from "./Text";
+export { TextArea } from "./TextArea";
+import { TextField } from "./TextField";
+export { TextField };
+export { Timer } from "./Timer";
+export { Tooltip } from "./Tooltip";
+>>>>>>> 069e0b6... Restarting Dropdown tests, fixing issues and console warnings as I go.

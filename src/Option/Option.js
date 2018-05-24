@@ -1,25 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { Text } from "../Text/Text.js";
+import { Text } from "../Text";
 import CSSModules from "react-css-modules";
 import styles from "./Option.css";
 
 export class Option extends React.PureComponent {
   _handleHover = e => {
-    this.props.onHover(e, this.props.index);
+    this.props.optionHover(e, this.props.index);
   };
 
   _clickHandler = e => {
-    this.props.onClick(e, this.props.value, this.props.index);
+    this.props.optionClick(e, this.props.value, this.props.index);
   };
 
   render() {
-    const { selected, text, value, ...others } = this.props;
+    const { 
+      selected, 
+      text, 
+      value, 
+      /*eslint-disable */
+      // Declaring the following variables so they don't get passed to the option element through the prop spread.
+      hover,
+      optionClick,
+      optionHover,
+      /*eslint-enable */
+      ...others 
+    } = this.props;
 
     const optionWrapper = cx({
       "optionWrapper": true,
-      "hover": this.props.hover && !selected,
+      "hover": hover && !selected,
       "selected": selected
     });
 

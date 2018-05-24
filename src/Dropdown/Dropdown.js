@@ -95,8 +95,8 @@ export class Dropdown extends React.PureComponent {
           (typeof autocomplete !== "undefined" && returnValue === value ||
             !autocomplete && setValue === value) ||
         viaIndex &&
-          (typeof updatedValues.selectedIndex !== "undefined" &&
-              i === updatedValues.selectedIndex)
+          ((typeof updatedValues.selectedIndex !== "undefined" &&
+              i === updatedValues.selectedIndex) || (typeof updatedValues.selectedIndex === "undefined" && i === this.state.selectedIndex))
       ) {
         returnDisplay = text;
         selectedIndex = i;
@@ -142,8 +142,8 @@ export class Dropdown extends React.PureComponent {
           }
           index={i}
           key={i}
-          onClick={this.optionOnClick}
-          onHover={this.optionOnMouseOver}
+          optionClick={this.optionOnClick}
+          optionHover={this.optionOnMouseOver}
           selected={checkValue(option.value, option.text, i)}
           text={option.text}
           value={option.value}
@@ -166,8 +166,8 @@ export class Dropdown extends React.PureComponent {
             i === updatedValues.tempIndex,
           "index": i,
           "key": i,
-          "onClick": this.optionOnClick,
-          "onHover": this.optionOnMouseOver,
+          "optionClick": this.optionOnClick,
+          "optionHover": this.optionOnMouseOver,
           "selected": checkValue(child.value, child.text, i)
         });
       });
@@ -597,7 +597,7 @@ Dropdown.propTypes = {
   /** A callback that fires onFocus. */
   "onFocus": PropTypes.func,
   /** A javascript array of objects containing both "value" and "text" attributes. */
-  "options": PropTypes.object,
+  "options": PropTypes.array,
   /** Sets the Dropdown as required. Will be validated onChange. Accepts a boolean or a string. If a string is passed it will be displayed instead of the traditional * next to the field label. */
   "required": PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Sets the status of the Dropdown. Options are null, "success", "error", and "warning". */

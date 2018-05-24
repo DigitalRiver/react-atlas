@@ -1,7 +1,6 @@
 .textarea {
 	composes: primary-gray-border from '../styles.css';
 	padding: 5px;
-	transition: all 200ms ease-out;
 }
 
 .textareaWidth {
@@ -137,4 +136,31 @@
 
 .required_error {
     composes: error-text from '../styles.css';
+}
+
+.success {
+	composes: text-input-valid from '../styles.css';
+	composes: marg-b-half from '../styles.css';
+}
+
+.error {
+	composes: text-input-invalid from '../styles.css';
+	composes: marg-b-half from '../styles.css';
+}
+
+.warning {
+	composes: text-input-warning from '../styles.css';
+	composes: marg-b-half from '../styles.css';
+}
+
+.success_message {
+	composes: success-text from '../styles.css';
+}
+
+.error_message {
+	composes: error-text from '../styles.css';
+}
+
+.warning_message {
+	composes: warning-text from '../styles.css';
 }

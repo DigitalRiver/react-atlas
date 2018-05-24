@@ -20,7 +20,6 @@ let config = {
     FileUpload: "./src/FileUpload",
     Hint: "./src/Hint",
     Icon: "./src/Icon",
-    Input: "./src/Input",
     List: "./src/List",
     ListGroup: "./src/ListGroup",
     ListItem: "./src/ListItem",

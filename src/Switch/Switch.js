@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Input from "../Input";
 import cx from "classnames";
 import CSSModules from "react-css-modules";
 import styleSheet from "./Switch.css";
@@ -119,35 +118,29 @@ export class Switch extends React.PureComponent {
 
     const classes = this.classes;
     const styles = this.styles;
-    const forId = id !== "" && name !== "" ? id : "";
 
     let switchWrapperClasses = cx({
       "switch": true,
+      "leftLabelContent": leftLabel,
       inline
     });
 
     let switchClasses = cx(
       {
         "disabled": this.state.disabled,
-        hidden,
-        "leftLabelContent": leftLabel
+        hidden
       },
       classes.offClassName
     );
 
-    let labelClasses = cx({
-      "leftLabel": leftLabel,
-      "label": true,
-      "labelFont": true,
-      "labelSpacing": true
-    });
-
     let switchLabel = label && 
-      <div styleName={labelClasses}>
-        <label htmlFor={forId}>
-          <span>{label}</span>
-        </label>
-      </div>
+      <Label
+        htmlFor={id}
+        inline={inline}
+        label={label}
+        leftLabel={leftLabel}
+        status={this.state.status}
+      />
     ;
     return (
       <div className={cx(className)} styleName={switchWrapperClasses}>
@@ -157,7 +150,7 @@ export class Switch extends React.PureComponent {
           styleName={switchClasses}
           style={style}
         >
-          <Input
+          <input
             {...others}
             type="checkbox"
             name={name}
