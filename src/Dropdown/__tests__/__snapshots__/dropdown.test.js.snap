@@ -13,6 +13,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
         disabled={undefined}
         id={undefined}
         message={null}
+        name={null}
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
