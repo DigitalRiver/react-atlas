@@ -87,7 +87,9 @@ export class Dropdown extends React.PureComponent {
           setValue = updatedValues.value;
         }
         if (autocomplete && !valueFound) {
-          returnValue = checkDisplay(text, value);
+          returnValue = this.props.valueOnly
+            ? checkDisplay(value, value)
+            : checkDisplay(text, value);
         }
       }
       if (
@@ -100,7 +102,7 @@ export class Dropdown extends React.PureComponent {
             typeof updatedValues.selectedIndex === "undefined" &&
               i === this.state.selectedIndex)
       ) {
-        returnDisplay = text;
+        returnDisplay = this.props.valueOnly ? value : text;
         selectedIndex = i;
         returnValue = value;
         return true;
@@ -112,14 +114,13 @@ export class Dropdown extends React.PureComponent {
     const getOptions = startObject => {
       let optionsArray = startObject;
       if (viaIndex) {
-        const optionElements = this.state.options;
+        const optionElements = optionsArray;
         optionsArray = [];
         optionElements.map((option, i) => {
-          const optionIndex = option.props.index || i;
           const optionObject = {
-            "text": option.props.text,
-            "value": option.props.value,
-            "index": optionIndex
+            "text": option.text,
+            "value": option.value,
+            "index": i
           };
           optionsArray.push(optionObject);
         });
@@ -128,13 +129,21 @@ export class Dropdown extends React.PureComponent {
           typeof updatedValues.display !== "undefined"
             ? updatedValues.display
             : this.state.display;
-        optionsArray = matchSorter(startObject, useDisplay, {
-          "keys": ["text"]
+        const key = this.props.valueOnly ? "value" : "text";
+        optionsArray = matchSorter(optionsArray, useDisplay, {
+          "keys": [key]
         });
       }
       return optionsArray;
     };
-    if (props.options) {
+    if (props.options && !viaIndex) {
+      const getDisplay = (text, value) => {
+        if (this.props.valueOnly) {
+          return value;
+        } else {
+          return text;
+        }
+      };
       // Sort and filter then options array if autocomplete is enabled, then render each remaining object as an Option component
       options = getOptions(props.options).map((option, i) => 
         <Option
@@ -147,22 +156,24 @@ export class Dropdown extends React.PureComponent {
           optionClick={this.optionOnClick}
           optionHover={this.optionOnMouseOver}
           selected={checkValue(option.value, option.text, i)}
-          text={option.text}
+          text={getDisplay(option.text, option.value)}
           value={option.value}
         />
       );
     } else {
       // Add props.children to an array, sort and filter if autocomplete is enabled, and then render the children in the correct order
       let childArray = [];
-      React.Children.map(props.children, (child, i) => {
+      const useChildren = viaIndex ? this.state.options : props.children;
+      React.Children.map(useChildren, (child, i) => {
         childArray.push({
           "text": child.props.text,
           "value": child.props.value,
           "index": i
         });
       });
+      const childList = viaIndex ? this.state.options : props.children;
       options = getOptions(childArray).map((child, i) => {
-        return cloneElement(props.children[child.index], {
+        return cloneElement(childList[child.index], {
           "hover":
             typeof updatedValues.tempIndex !== "undefined" &&
             i === updatedValues.tempIndex,
@@ -173,6 +184,7 @@ export class Dropdown extends React.PureComponent {
           "selected": checkValue(child.value, child.text, i)
         });
       });
+      console.log(options.length);
     }
     return {
       "options": options,
@@ -313,15 +325,23 @@ export class Dropdown extends React.PureComponent {
     e.persist();
     if (this.props.autocomplete) {
       const tempValue = returnData.value;
-      const updatedValues = {
+      let updatedValues = {
         "selectedIndex": null,
         "display": tempValue
       };
+      if (this.props.valueOnly) {
+        updatedValues.value = tempValue;
+      }
       const data = this.setOptions(updatedValues, this.props, true);
+      let setObject = {
+        "options": data.options
+      };
+      if (!this.props.valueOnly) {
+        setObject.value = data.value;
+      }
       this.setState(
         {
-          "options": data.options,
-          "value": data.value,
+          ...setObject,
           ...updatedValues
         },
         () => {
@@ -473,6 +493,7 @@ export class Dropdown extends React.PureComponent {
       style,
       tooltip,
       tooltipPosition,
+      valueOnly,
       /*eslint-disable */
       // Declaring the following variables so they don't get passed to TextField through the prop spread.
       children,
@@ -528,6 +549,9 @@ export class Dropdown extends React.PureComponent {
 
     const arrow = <i styleName={arrowStyles} />;
 
+    const textFieldValue = valueOnly ? this.state.value : this.state.display;
+    const textFieldName = valueOnly ? name : null;
+
     return (
       <div styleName={wrapperClasses}>
         {dropdownLabel}
@@ -537,6 +561,7 @@ export class Dropdown extends React.PureComponent {
             id={id}
             inline
             message={this.state.message}
+            name={textFieldName}
             onFocus={this._handleFocus}
             onBlur={this._handleBlur}
             onClick={this._handleClick}
@@ -547,7 +572,7 @@ export class Dropdown extends React.PureComponent {
             style={style}
             styleName={inputStyles}
             valid={this._alwaysTrue}
-            value={this.state.display}
+            value={textFieldValue}
             {...others}
           />
           {arrow}
@@ -555,7 +580,9 @@ export class Dropdown extends React.PureComponent {
             {this.state.options}
           </div>
         </div>
-        <input type="hidden" name={name} value={this.state.value || ""} />
+        {!valueOnly && 
+          <input type="hidden" name={name} value={this.state.value || ""} />
+        }
       </div>
     );
   }
@@ -613,7 +640,9 @@ Dropdown.propTypes = {
   /** Sets a handler function to be executed and validate against. Will override the required property (you can still use the required prop to add a required indicator next to the label) and must return an object with a status (Options: null, "success", "error", "warning") and a message (Options: null or string), or a boolean for simple validation. */
   "valid": PropTypes.func,
   /** Define a default value for the Dropdown.*/
-  "value": PropTypes.string
+  "value": PropTypes.string,
+  /** Define whether the Dropdown should display "value" or "text". If "value" is displayed, the visible input will be submitted directly and browser autofill should work. */
+  "valueOnly": PropTypes.bool
 };
 
 Dropdown.defaultProps = {

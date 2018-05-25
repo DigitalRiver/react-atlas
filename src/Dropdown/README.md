@@ -1,32 +1,8 @@
 Basic Dropdown:
 
-      <Dropdown autocomplete name="basicDropdown" id="basicDropdown">
-        <Option text="a1" value="a1" />
-        <Option text="b1" value="b1" />
-        <Option text="c1" value="c1" />
-        <Option text="d1" value="d1" />
-        <Option text="e1" value="e1" />
-        <Option text="f1" value="f1" />
-        <Option text="g1" value="g1" />
-        <Option text="h1" value="h1" />
-        <Option text="i1" value="i1" />
-        <Option text="j1" value="j1" />
-        <Option text="k1" value="k1" />
-        <Option text="l1" value="l1" />
-        <Option text="m1" value="m1" />
-        <Option text="a" value="a" />
-        <Option text="b" value="b" />
-        <Option text="c" value="c" />
-        <Option text="d" value="d" />
-        <Option text="e" value="e" />
-        <Option text="f" value="f" />
-        <Option text="g" value="g" />
-        <Option text="h" value="h" />
-        <Option text="i" value="i" />
-        <Option text="j" value="j" />
-        <Option text="k" value="k" />
-        <Option text="l" value="l" />
-        <Option text="m" value="m" />
+      <Dropdown name="basicDropdown" id="basicDropdown">
+        <Option value="true" text="Yes" />
+        <Option value="false" text="No" />
       </Dropdown>
 
 Dropdown with data object for options:
@@ -35,7 +11,74 @@ Dropdown with data object for options:
 
 Dropdown with autocomplete:
       
-      <Dropdown autocomplete name="autocompleteDropdown" id="autocompleteDropdown" label="Autocomplete Example" options={DropdownList} />
+      <div>
+        <Dropdown name="stateDropdown" id="stateDropdown" label="State" autocomplete>
+            <Option value="AL" text="Alabama" />
+            <Option value="AK" text="Alaska" />
+            <Option value="AS" text="American Samoa" />
+            <Option value="AZ" text="Arizona" />
+            <Option value="AR" text="Arkansas" />
+            <Option value="CA" text="California" />
+            <Option value="CO" text="Colorado" />
+            <Option value="CT" text="Connecticut" />
+            <Option value="DE" text="Delaware" />
+            <Option value="DC" text="District Of Columbia" />
+            <Option value="FM" text="Federated States Of Micronesia" />
+            <Option value="FL" text="Florida" />
+            <Option value="GA" text="Georgia" />
+            <Option value="GU" text="Guam" />
+            <Option value="HI" text="Hawaii" />
+            <Option value="ID" text="Idaho" />
+            <Option value="IL" text="Illinois" />
+            <Option value="IN" text="Indiana" />
+            <Option value="IA" text="Iowa" />
+            <Option value="KS" text="Kansas" />
+            <Option value="KY" text="Kentucky" />
+            <Option value="LA" text="Louisiana" />
+            <Option value="ME" text="Maine" />
+            <Option value="MH" text="Marshall Islands" />
+            <Option value="MD" text="Maryland" />
+            <Option value="MA" text="Massachusetts" />
+            <Option value="MI" text="Michigan" />
+            <Option value="MN" text="Minnesota" />
+            <Option value="MS" text="Mississippi" />
+            <Option value="MO" text="Missouri" />
+            <Option value="MT" text="Montana" />
+            <Option value="NE" text="Nebraska" />
+            <Option value="NV" text="Nevada" />
+            <Option value="NH" text="New Hampshire" />
+            <Option value="NJ" text="New Jersey" />
+            <Option value="NM" text="New Mexico" />
+            <Option value="NY" text="New York" />
+            <Option value="NC" text="North Carolina" />
+            <Option value="ND" text="North Dakota" />
+            <Option value="MP" text="Northern Mariana Islands" />
+            <Option value="OH" text="Ohio" />
+            <Option value="OK" text="Oklahoma" />
+            <Option value="OR" text="Oregon" />
+            <Option value="PW" text="Palau" />
+            <Option value="PA" text="Pennsylvania" />
+            <Option value="PR" text="Puerto Rico" />
+            <Option value="RI" text="Rhode Island" />
+            <Option value="SC" text="South Carolina" />
+            <Option value="SD" text="South Dakota" />
+            <Option value="TN" text="Tennessee" />
+            <Option value="TX" text="Texas" />
+            <Option value="UT" text="Utah" />
+            <Option value="VT" text="Vermont" />
+            <Option value="VI" text="Virgin Islands" />
+            <Option value="VA" text="Virginia" />
+            <Option value="WA" text="Washington" />
+            <Option value="WV" text="West Virginia" />
+            <Option value="WI" text="Wisconsin" />
+            <Option value="WY" text="Wyoming" />
+        </Dropdown>
+        <Dropdown autocomplete name="countryDropdown" id="countryDropdown" label="Country" options={DropdownList} />
+      </div>
+
+Dropdown that displays "value" instead of "text" so that browser autofill can function:
+      
+      <Dropdown valueOnly autocomplete name="valueOnlyDropdown" id="valueOnlyDropdown" label="Value Only Example" options={DropdownList} />
 
 Dropdown with label:
       
