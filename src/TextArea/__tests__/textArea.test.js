@@ -1,5 +1,4 @@
 import React from "react";
-import { mount } from "enzyme";
 import { TextArea } from "../index";
 
 import renderer from "react-test-renderer";
@@ -8,13 +7,6 @@ describe("Test Text component", () => {
   it("renders correctly", () => {
     const tree = renderer.create(<TextArea />).toJSON();
     expect(tree).toMatchSnapshot();
-  });
-});
-
-describe("Testing TextArea component", () => {
-  it("TextArea component - Basic test", function() {
-    const textArea = mount(<TextArea />);
-    expect(textArea).toMatchSnapshot();
   });
 });
 
