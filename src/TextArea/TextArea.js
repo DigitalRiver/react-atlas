@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import messages from "../utils/messages.js";
 import cx from "classnames";
 import { Label } from "../Label";
+import { utils } from "../utils";
 import CSSModules from "react-css-modules";
 import styles from "./TextArea.css";
 
@@ -54,39 +54,18 @@ export class TextArea extends React.PureComponent {
   };
 
   _validate = (e, inputValue, change) => {
-    let status = null;
-    let message = null;
-
-    /* Execute custom validator and change state and error messages accordingly */
-    if (typeof this.props.valid === "function") {
-      let validationObject = this.props.valid(inputValue);
-      if (validationObject === true) {
-        validationObject = {
-          "status": this.props.status,
-          "message": this.props.message
-        };
-      } else if (validationObject === false) {
-        validationObject = { "status": "error", "message": null };
-      }
-      if (typeof validationObject === "undefined") {
-        validationObject = { "status": null, "message": null };
-      }
-      status = validationObject.status;
-      message = validationObject.message;
-    } else if (
-      !inputValue.length &&
-      (this.props.required ||
-        typeof this.props.required === "string" && this.props.required === "")
-    ) {
-      /* If the field is required, and it has no value, change state and display error message */
-      message = messages.requiredMessage;
-      status = "error";
-    }
+    const validationObject = utils.validate(
+      inputValue,
+      this.props.valid,
+      this.props.status,
+      this.props.message,
+      this.props.required
+    );
 
     this.setState(
       {
-        "status": status,
-        "message": message,
+        "status": validationObject.status,
+        "message": validationObject.message,
         "value": inputValue,
         "active": change
       },
