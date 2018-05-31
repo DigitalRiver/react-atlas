@@ -1,10 +1,10 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
-import messages from "../utils/messages.js";
 import cx from "classnames";
 import { Label } from "../Label";
 import { TextField } from "../TextField";
 import { Option } from "../Option";
+import { utils } from "../utils";
 import matchSorter from "match-sorter";
 import CSSModules from "react-css-modules";
 import styles from "./Dropdown.css";
@@ -184,7 +184,6 @@ export class Dropdown extends React.PureComponent {
           "selected": checkValue(child.value, child.text, i)
         });
       });
-      console.log(options.length);
     }
     return {
       "options": options,
@@ -212,32 +211,17 @@ export class Dropdown extends React.PureComponent {
 
   // Validator function checks for required or custom validation
   _validate = (e, inputValue, change) => {
-    let status = null;
-    let message = null;
-    /* Execute custom validator and change state and error messages accordingly */
-    if (typeof this.props.valid === "function") {
-      let validationObject = this.props.valid(inputValue);
-      if (validationObject === false) {
-        validationObject = { "status": "error", "message": null };
-      }
-      if (typeof validationObject === "undefined") {
-        validationObject = { "status": null, "message": null };
-      }
-      status = validationObject.status;
-      message = validationObject.message;
-    } else if (
-      (typeof inputValue === "undefined" || inputValue === "") &&
-      (this.props.required ||
-        typeof this.props.required === "string" && this.props.required === "")
-    ) {
-      /* If the field is required, and it has no value, change state and display error message */
-      message = messages.requiredMessage;
-      status = "error";
-    }
+    const validationObject = utils.validate(
+      inputValue,
+      this.props.valid,
+      this.props.status,
+      this.props.message,
+      this.props.required
+    );
     this.setState(
       {
-        "status": status,
-        "message": message
+        "status": validationObject.status,
+        "message": validationObject.message
       },
       () => {
         this._eventHandlers(e, change);

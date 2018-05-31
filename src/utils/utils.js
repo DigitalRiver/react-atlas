@@ -1,4 +1,5 @@
 import React from "react";
+import messages from "./messages.js";
 
 export default {
   angleFromPositions(cx, cy, ex, ey) {
@@ -130,5 +131,39 @@ export default {
   },
   getErrorMessage(errorMessage) {
     return <div styleName={"error_message"}>{errorMessage}</div>;
+  },
+  validate(inputValue, validator, propStatus, propMessage, required) {
+    let status = null;
+    let message = null;
+    /* Execute custom validator and change state and error messages accordingly */
+    if (typeof validator === "function") {
+      let validationObject = validator(inputValue);
+      if (typeof validationObject !== "undefined") {
+        if (
+          typeof validationObject === "boolean" &&
+          validationObject === true
+        ) {
+          status = propStatus;
+          message = propMessage;
+        } else if (
+          typeof validationObject === "boolean" &&
+          validationObject === false
+        ) {
+          console.log("Yo!");
+          status = "error";
+        } else {
+          status = validationObject.status;
+          message = validationObject.message;
+        }
+      }
+    } else if (
+      (typeof inputValue === "undefined" || inputValue === "") &&
+      (required || typeof required === "string" && required === "")
+    ) {
+      /* If the field is required, and it has no value, change state and display error message */
+      message = messages.requiredMessage;
+      status = "error";
+    }
+    return { "status": status, "message": message };
   }
 };
