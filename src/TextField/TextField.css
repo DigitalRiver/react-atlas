@@ -26,6 +26,10 @@
 	white-space: nowrap;
 }
 
+.fillInput {
+  flex: 1;
+}
+
 .inline {
   display: inline-block;
   margin-right: 1rem;

@@ -503,6 +503,7 @@ export class Dropdown extends React.PureComponent {
 
     const dropdownClasses = cx({
       "dropdown": true,
+      "fillInput": leftLabel,
       "setWidth": typeof style !== "undefined" && style.width,
       inline
     });
