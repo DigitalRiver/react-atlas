@@ -147,6 +147,7 @@ export class TextField extends React.PureComponent {
     let wrapperClasses = cx({
       leftLabel,
       inline,
+      "setWidth": typeof style !== "undefined" && style.width,
       "textfieldWrapper": true
     });
 

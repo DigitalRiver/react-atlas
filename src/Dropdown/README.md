@@ -11,10 +11,8 @@ Dropdown with data object for options:
 
 Dropdown with filter:
       
-      <form action="" autoComplete="on">
-          <TextField name="fname" id="fname" value="" label="First Name" />
-          <TextField name="lname" id="lname" value="" label="Last Name" />
-          <Dropdown name="stateDropdown" id="stateDropdown" label="State" filter>
+      <div>
+        <Dropdown name="stateDropdown" id="stateDropdown" label="State" filter>
             <Option value="AL" text="Alabama" />
             <Option value="AK" text="Alaska" />
             <Option value="AS" text="American Samoa" />
@@ -76,8 +74,7 @@ Dropdown with filter:
             <Option value="WY" text="Wyoming" />
         </Dropdown>
         <Dropdown name="countryDropdown" id="countryDropdown" label="Country" options={DropdownList} readOnly /><br />
-        <Button primary type="submit" />
-      </form>
+      </div>
 
 Dropdown that displays "value" instead of "text" so that browser autofill can function:
       
