@@ -503,6 +503,7 @@ export class Dropdown extends React.PureComponent {
 
     const dropdownClasses = cx({
       "dropdown": true,
+      "fillInput": leftLabel,
       "setWidth": typeof style !== "undefined" && style.width,
       inline
     });
@@ -551,7 +552,7 @@ export class Dropdown extends React.PureComponent {
             className={className}
             disabled={disabled}
             id={id}
-            inline
+            inline={false}
             message={this.state.message}
             name={textFieldName}
             onFocus={this._handleFocus}

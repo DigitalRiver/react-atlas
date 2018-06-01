@@ -13,11 +13,21 @@
 
 .textfieldWrapper {
 	composes: default-font from '../styles.css';
+	width: 100%;
 }
+
+.setWidth {
+	width: inherit;
+	display: inline-block;
+  }
 
 .leftLabel {
 	display: flex;
 	white-space: nowrap;
+}
+
+.fillInput {
+  flex: 1;
 }
 
 .inline {
