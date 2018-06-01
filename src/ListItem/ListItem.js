@@ -53,7 +53,7 @@ ListItem.propTypes = {
   /** Text, any HTML element, or React Component. */
   "leftItem": PropTypes.node,
   /** Click event handler for the ListItem. */
-  "onClick": PropTypes.function,
+  "onClick": PropTypes.func,
   /** Text, any HTML element, or React Component. */
   "rightItem": PropTypes.node,
   /** Pass inline styling here. */

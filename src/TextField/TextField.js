@@ -138,6 +138,7 @@ export class TextField extends React.PureComponent {
       type,
       /*eslint-disable */
       // Declaring the following variables so they don't get passed to the input element through the prop spread.
+      uppercase,
       valid,
       /*eslint-enable */
       ...others

@@ -27,6 +27,7 @@ exports[`Test Radio component render Render correctly 1`] = `
         hidden={false}
         id={undefined}
         name="Mr radio"
+        onChange={[Function]}
         type="radio"
         value="checkedRadio"
       />
