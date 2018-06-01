@@ -17,8 +17,8 @@
 ###### Inline textfields:
 
     <div>
-        <TextField style={{width: "200px"}} inline label="TextField One"/>
-        <TextField style={{width: "200px"}} inline label="TextField Two"/>
+        <TextField leftLabel style={{width: "200px"}} inline label="TextField One:"/>
+        <TextField leftLabel style={{width: "200px"}} inline label="TextField Two:"/>
     </div>
 
 ###### Placeholder text:

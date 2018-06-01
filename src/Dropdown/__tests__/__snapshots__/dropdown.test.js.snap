@@ -6,10 +6,10 @@ exports[`Test dropdown component Test render correctly 1`] = `
     className="dropdown"
   >
     <div
-      className="inline textfieldWrapper"
+      className="textfieldWrapper"
     >
       <input
-        autoComplete="autocomplete"
+        autoComplete="off"
         className="pointer textfield"
         disabled={undefined}
         id={undefined}
