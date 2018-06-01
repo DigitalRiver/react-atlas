@@ -9,10 +9,12 @@ Dropdown with data object for options:
 
       <Dropdown name="dataDropdown" id="dataDropdown" options={[{"text": "Yes", "value": "true"}, {"text": "No", "value": "false"}]} />
 
-Dropdown with autocomplete:
+Dropdown with filter:
       
-      <div>
-        <Dropdown name="stateDropdown" id="stateDropdown" label="State" autocomplete>
+      <form action="" autoComplete="on">
+          <TextField name="fname" id="fname" value="" label="First Name" />
+          <TextField name="lname" id="lname" value="" label="Last Name" />
+          <Dropdown name="stateDropdown" id="stateDropdown" label="State" filter>
             <Option value="AL" text="Alabama" />
             <Option value="AK" text="Alaska" />
             <Option value="AS" text="American Samoa" />
@@ -73,12 +75,13 @@ Dropdown with autocomplete:
             <Option value="WI" text="Wisconsin" />
             <Option value="WY" text="Wyoming" />
         </Dropdown>
-        <Dropdown autocomplete name="countryDropdown" id="countryDropdown" label="Country" options={DropdownList} />
-      </div>
+        <Dropdown name="countryDropdown" id="countryDropdown" label="Country" options={DropdownList} readOnly /><br />
+        <Button primary type="submit" />
+      </form>
 
 Dropdown that displays "value" instead of "text" so that browser autofill can function:
       
-      <Dropdown valueOnly autocomplete name="valueOnlyDropdown" id="valueOnlyDropdown" label="Value Only Example" options={DropdownList} />
+      <Dropdown valueOnly filter name="valueOnlyDropdown" id="valueOnlyDropdown" label="Value Only Example" options={DropdownList} />
 
 Dropdown with label:
       
@@ -113,7 +116,7 @@ Dropdowns with custom widths:
 
 Disabled Dropdown:
 
-    <Dropdown label="Disabled Dropdown" disabled options={DropdownList} />
+    <Dropdown label="Disabled Dropdown" disabled="true" options={DropdownList} />
 
 Inline Dropdowns:
 
@@ -124,7 +127,7 @@ Inline Dropdowns:
 
 Dropdown with required property:
 
-    <Dropdown defaultText="Select One ..." label="Required Dropdown" placeholder="Select One ..." required options={[{"text": "None", value: ""}, {"text": "One", value: 1}, {"text": "Two", "value": 2}, {"text": "Three", "value": 3}, {"text": "Four", "value": 4}, {"text": "Five", "value": 5}]} />
+    <Dropdown label="Required Dropdown" placeholder="Select One ..." required options={[{"text": "None", value: ""}, {"text": "One", value: "1"}, {"text": "Two", "value": "2"}, {"text": "Three", "value": "3"}, {"text": "Four", "value": "4"}, {"text": "Five", "value": "5"}]} />
 
 Dropdown with custom validation and error message (will validate against the display text, not the hidden value):
 
