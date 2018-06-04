@@ -17,8 +17,8 @@
 ###### Inline textfields:
 
     <div>
-        <TextField small inline label="TextField One"/>
-        <TextField small inline label="TextField Two"/>
+        <TextField leftLabel style={{width: "200px"}} inline label="TextField One:"/>
+        <TextField leftLabel style={{width: "200px"}} inline label="TextField Two:"/>
     </div>
 
 ###### Placeholder text:
@@ -38,7 +38,7 @@
 
 ###### Disabled textfield:
 
-    <TextField disabled/>
+    <TextField disabled="true" />
 
 ###### Required validation. Pass a string instead of a boolean to change the required indicator from an asterisk:
 
@@ -85,7 +85,7 @@
 
 ###### Tooltip Textfield with Label:
 
-    <TextField required small tooltip={<Tooltip text="Example"/>} label="key"/>
+    <TextField required tooltip={<Tooltip text="Example"/>} label="key"/>
 
 ###### Textfield with uppercase prop:
 

@@ -20,7 +20,6 @@ exports[`Test Input component render Render correctly 1`] = `
     required={true}
     style={undefined}
     type="text"
-    uppercase={false}
     value="Value"
   />
 </div>

@@ -114,6 +114,15 @@ export class Switch extends React.PureComponent {
       style,
       inline,
       id,
+      /*eslint-disable */
+      // Declaring the following variables so they don't get passed to the input element through the prop spread.
+      large,
+      medium,
+      offColor,
+      onBeforeChange,
+      onColor,
+      small,
+      /*eslint-enable */
       ...others
     } = this.props;
 

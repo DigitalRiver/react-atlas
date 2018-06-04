@@ -90,7 +90,7 @@ Tab.propTypes = {
   /**
    * Function to be executed when a Tab is selected.
    */
-  "setSelectedTab": PropTypes.func.isRequired,
+  "setSelectedTab": PropTypes.func,
 
   /**
    * Pass inline styling here.
@@ -100,7 +100,7 @@ Tab.propTypes = {
   /**
    * Tab index.
    */
-  "tabIndex": PropTypes.number.isRequired,
+  "tabIndex": PropTypes.number,
 
   /**
    * When true, Tabs will display vertically.

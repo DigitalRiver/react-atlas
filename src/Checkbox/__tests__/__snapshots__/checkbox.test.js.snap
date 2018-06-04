@@ -26,6 +26,7 @@ exports[`Test checkbox component renders correctly 1`] = `
         hidden={undefined}
         id={undefined}
         label="labelText"
+        onChange={[Function]}
         required={false}
         type="checkbox"
       />
