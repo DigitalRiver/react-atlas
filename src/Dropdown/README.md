@@ -73,7 +73,7 @@ Dropdown with filter:
             <Option value="WI" text="Wisconsin" />
             <Option value="WY" text="Wyoming" />
         </Dropdown>
-        <Dropdown name="countryDropdown" id="countryDropdown" label="Country" options={DropdownList} readOnly /><br />
+        <Dropdown name="countryDropdown" id="countryDropdown" label="Country" options={DropdownList} filter /><br />
       </div>
 
 Dropdown that displays "value" instead of "text" so that browser autofill can function:
@@ -114,6 +114,10 @@ Dropdowns with custom widths:
 Disabled Dropdown:
 
     <Dropdown label="Disabled Dropdown" disabled="true" options={DropdownList} />
+
+Read-Only Dropdown:
+
+    <Dropdown label="Read-Only Dropdown" readOnly="true" options={DropdownList} />
 
 Inline Dropdowns:
 

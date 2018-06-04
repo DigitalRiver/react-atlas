@@ -267,7 +267,6 @@ export class Dropdown extends React.PureComponent {
 
   // Update active state onFocus or onBlur
   _handleActive = (e, focus) => {
-    console.log("hello");
     e.persist();
     const active = focus ? this.state.active : false;
     this.setState({ "focus": focus, "active": active }, () => {
@@ -540,7 +539,6 @@ export class Dropdown extends React.PureComponent {
 
     const textFieldValue = valueOnly ? this.state.value : this.state.display;
     const textFieldName = valueOnly ? name : null;
-    const htmlAutocomplete = autocomplete || "autocomplete";
 
     return (
       <div styleName={wrapperClasses}>
@@ -548,7 +546,7 @@ export class Dropdown extends React.PureComponent {
         <div styleName={dropdownClasses}>
           <TextField
             {...others}
-            autoComplete={htmlAutocomplete}
+            autoComplete={autocomplete}
             className={className}
             disabled={disabled}
             id={id}
@@ -647,6 +645,7 @@ Dropdown.propTypes = {
 };
 
 Dropdown.defaultProps = {
+  "autocomplete": "off",
   "tooltipPosition": "right"
 };
 
