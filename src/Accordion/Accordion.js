@@ -20,13 +20,36 @@ export class Accordion extends React.PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.children !== this.state.children) {
       this.setState({
         "activeChildArray": this._getExpandedPanels(nextProps.children)
       });
     }
   }
+
+  _setActiveChildArray = (activeArray, expandAll, index) => {
+    let newChildArray = [];
+    const isFalse = function(element) {
+      return element === false;
+    };
+
+    for (let i = 0; i < activeArray.length; i++) {
+      if (expandAll) {
+        const anyCollapsed = activeArray.some(isFalse);
+        newChildArray.push(anyCollapsed);
+      } else {
+        if (i === index) {
+          newChildArray.push(!activeArray[i]);
+        } else if (!this.props.multiOpen && !activeArray[index]) {
+          newChildArray.push(false);
+        } else {
+          newChildArray.push(activeArray[i]);
+        }
+      }
+    }
+    return newChildArray;
+  };
 
   _getExpandedPanels = children => {
     let childArray = [];
@@ -43,24 +66,18 @@ export class Accordion extends React.PureComponent {
   // click handler for header.  Sets activeChildArray value accordingly to expand and collapse the panels
   _click = (index, event) => {
     if (!this.props.disabled) {
-      let newChildArray = [];
-      for (let i = 0; i < this.state.activeChildArray.length; i++) {
-        if (i === index) {
-          newChildArray.push(!this.state.activeChildArray[i]);
-        } else if (
-          !this.props.multiOpen &&
-          !this.state.activeChildArray[index]
-        ) {
-          newChildArray.push(false);
-        } else {
-          newChildArray.push(this.state.activeChildArray[i]);
-        }
-      }
+      let newActiveChildArray = this._setActiveChildArray(
+        this.state.activeChildArray,
+        false,
+        index
+      );
+
       if (this.props.onClick) {
         this.props.onClick(index, event, this.props.children[index].props);
       }
+
       this.setState({
-        "activeChildArray": newChildArray
+        "activeChildArray": newActiveChildArray
       });
     }
   };
@@ -79,16 +96,12 @@ export class Accordion extends React.PureComponent {
 
   // expandAll function to expand all panels.  Sets value of all to true in activeChildArray
   _expandAll = () => {
-    let newChildArray = [];
-    const isFalse = function(element) {
-      return element === false;
-    };
-    const anyCollapsed = this.state.activeChildArray.some(isFalse);
-    for (let i = 0; i < this.state.activeChildArray.length; i++) {
-      newChildArray.push(anyCollapsed);
-    }
+    let newActiveChildArray = this._setActiveChildArray(
+      this.state.activeChildArray,
+      true
+    );
     this.setState({
-      "activeChildArray": newChildArray
+      "activeChildArray": newActiveChildArray
     });
   };
 

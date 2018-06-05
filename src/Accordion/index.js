@@ -1,2 +1,2 @@
-import Accordion from "./Accordion";
+import Accordion from "./Accordion.js";
 export { Accordion };
