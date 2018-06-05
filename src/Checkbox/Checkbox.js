@@ -64,6 +64,11 @@ export class Checkbox extends React.PureComponent {
     );
   };
 
+  // Added to remove console warning for controlled/uncontrolled component
+  _handleChange = () => {
+    return false;
+  };
+
   _validationHandler = callback => {
     // If custom validation callback is provided set validationObject with response, otherwise check if required
     const validationObject = callback
@@ -91,6 +96,11 @@ export class Checkbox extends React.PureComponent {
       requiredText,
       style,
       title,
+      /*eslint-disable */
+      // Declaring the following variables so they don't get passed to the input through the prop spread.
+      onBeforeChange,
+      validator,
+      /*eslint-enable */
       ...others
     } = this.props;
     const inlineCheckbox = cx({
@@ -155,6 +165,7 @@ export class Checkbox extends React.PureComponent {
               required={required}
               hidden={hidden}
               id={id}
+              onChange={this._handleChange}
               styleName={cx("opacity")}
             />
             <div styleName={checkboxClass}>

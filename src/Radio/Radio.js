@@ -40,6 +40,11 @@ export class Radio extends React.PureComponent {
     }
   };
 
+  // Added to remove console warning for controlled/uncontrolled component
+  _handleChange = () => {
+    return false;
+  };
+
   render() {
     const {
       checked,
@@ -52,6 +57,11 @@ export class Radio extends React.PureComponent {
       labelPosition,
       style,
       title,
+      /*eslint-disable */
+      // Declaring the following variables so they don't get passed to the DOM element through the prop spread.
+      groupSetChecked,
+      onBeforeChange,
+      /*eslint-enable */
       ...others
     } = this.props;
 
@@ -103,6 +113,7 @@ export class Radio extends React.PureComponent {
               disabled={disabled}
               hidden={hidden}
               id={id}
+              onChange={this._handleChange}
               styleName={cx("input_style")}
             />
             <div styleName={radioClass}>

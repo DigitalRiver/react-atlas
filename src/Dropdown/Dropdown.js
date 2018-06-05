@@ -62,7 +62,7 @@ export class Dropdown extends React.PureComponent {
    * The function used to render or update the options list
    * Checks for data vs. children, assigns a special prop to the selected option, and determines value and display text of selected item
    */
-  setOptions(updatedValues, props, autocomplete, propChange, viaIndex) {
+  setOptions(updatedValues, props, filter, propChange, viaIndex) {
     let returnDisplay = "";
     let returnValue = "";
     let valueFound = false;
@@ -86,7 +86,7 @@ export class Dropdown extends React.PureComponent {
         if (typeof updatedValues.value !== "undefined") {
           setValue = updatedValues.value;
         }
-        if (autocomplete && !valueFound) {
+        if (filter && !valueFound) {
           returnValue = this.props.valueOnly
             ? checkDisplay(value, value)
             : checkDisplay(text, value);
@@ -94,8 +94,8 @@ export class Dropdown extends React.PureComponent {
       }
       if (
         !viaIndex &&
-          (typeof autocomplete !== "undefined" && returnValue === value ||
-            !autocomplete && setValue === value) ||
+          (typeof filter !== "undefined" && returnValue === value ||
+            !filter && setValue === value) ||
         viaIndex &&
           (typeof updatedValues.selectedIndex !== "undefined" &&
             i === updatedValues.selectedIndex ||
@@ -124,7 +124,7 @@ export class Dropdown extends React.PureComponent {
           };
           optionsArray.push(optionObject);
         });
-      } else if (autocomplete) {
+      } else if (filter) {
         const useDisplay =
           typeof updatedValues.display !== "undefined"
             ? updatedValues.display
@@ -144,7 +144,7 @@ export class Dropdown extends React.PureComponent {
           return text;
         }
       };
-      // Sort and filter then options array if autocomplete is enabled, then render each remaining object as an Option component
+      // Sort and filter then options array if filter is enabled, then render each remaining object as an Option component
       options = getOptions(props.options).map((option, i) => 
         <Option
           hover={
@@ -161,7 +161,7 @@ export class Dropdown extends React.PureComponent {
         />
       );
     } else {
-      // Add props.children to an array, sort and filter if autocomplete is enabled, and then render the children in the correct order
+      // Add props.children to an array, sort and filter if filter is enabled, and then render the children in the correct order
       let childArray = [];
       const useChildren = viaIndex ? this.state.options : props.children;
       React.Children.map(useChildren, (child, i) => {
@@ -294,7 +294,10 @@ export class Dropdown extends React.PureComponent {
   // Fires when the Dropdown TextField is clicked
   _handleClick = e => {
     e.persist;
-    this.setState({ "active": !this.state.active }, () => {
+    const newActive = this.props.readOnly
+      ? this.state.active
+      : !this.state.active;
+    this.setState({ "active": newActive }, () => {
       if (this.props.onClick) {
         this.props.onClick(e, {
           "value": this.state.value,
@@ -304,10 +307,10 @@ export class Dropdown extends React.PureComponent {
     });
   };
 
-  // Used for autocomplete. Fires when the value changes whether by click or by typing characters
+  // Used for filter. Fires when the value changes whether by click or by typing characters
   _handleChange = (e, returnData) => {
     e.persist();
-    if (this.props.autocomplete) {
+    if (this.props.filter) {
       const tempValue = returnData.value;
       let updatedValues = {
         "selectedIndex": null,
@@ -440,7 +443,10 @@ export class Dropdown extends React.PureComponent {
       }
       if (e.key === "Enter") {
         e.preventDefault();
-        if (typeof this.props.disabled !== "undefined" && this.props.disabled) {
+        if (
+          typeof this.props.disabled !== "undefined" && this.props.disabled ||
+          typeof this.props.readOnly !== "undefined" && this.props.readOnly
+        ) {
           return false;
         }
         this.setState(
@@ -467,6 +473,8 @@ export class Dropdown extends React.PureComponent {
     let {
       autocomplete,
       className,
+      disabled,
+      filter,
       id,
       inline,
       label,
@@ -481,13 +489,8 @@ export class Dropdown extends React.PureComponent {
       /*eslint-disable */
       // Declaring the following variables so they don't get passed to TextField through the prop spread.
       children,
-      onBlur,
-      onChange,
-      onClick,
-      onFocus,
+      onBeforeChange,
       options,
-      valid,
-      value,
       /*eslint-enable */
       ...others
     } = this.props;
@@ -499,6 +502,7 @@ export class Dropdown extends React.PureComponent {
 
     const dropdownClasses = cx({
       "dropdown": true,
+      "fillInput": leftLabel,
       "setWidth": typeof style !== "undefined" && style.width,
       inline
     });
@@ -510,7 +514,7 @@ export class Dropdown extends React.PureComponent {
     });
 
     const inputStyles = cx({
-      "pointer": !autocomplete && !this.props.disabled
+      "pointer": !filter && !this.props.disabled
     });
 
     const arrowStyles = cx({
@@ -541,9 +545,12 @@ export class Dropdown extends React.PureComponent {
         {dropdownLabel}
         <div styleName={dropdownClasses}>
           <TextField
+            {...others}
+            autoComplete={autocomplete}
             className={className}
+            disabled={disabled}
             id={id}
-            inline
+            inline={false}
             message={this.state.message}
             name={textFieldName}
             onFocus={this._handleFocus}
@@ -551,13 +558,12 @@ export class Dropdown extends React.PureComponent {
             onClick={this._handleClick}
             onChange={this._handleChange}
             onKeyDown={this._handleKeyDown}
-            readOnly={!autocomplete}
+            readOnly={!filter}
             status={this.state.status}
             style={style}
             styleName={inputStyles}
             valid={this._alwaysTrue}
             value={textFieldValue}
-            {...others}
           />
           {arrow}
           <div styleName={optionsWrapper} style={listStyle || style}>
@@ -565,7 +571,12 @@ export class Dropdown extends React.PureComponent {
           </div>
         </div>
         {!valueOnly && 
-          <input type="hidden" name={name} value={this.state.value || ""} />
+          <input
+            type="hidden"
+            disabled={disabled}
+            name={name}
+            value={this.state.value || ""}
+          />
         }
       </div>
     );
@@ -573,8 +584,8 @@ export class Dropdown extends React.PureComponent {
 }
 
 Dropdown.propTypes = {
-  /** Define whether the Dropdown will have autocomplete functionality. */
-  "autocomplete": PropTypes.bool,
+  /** Define the value for the HTML5 autocomplete attribute. */
+  "autocomplete": PropTypes.string,
   /** Child elements, typically Option components. */
   "children": PropTypes.node,
   /** An Object, array, or string of CSS classes to apply to Dropdown. */
@@ -585,6 +596,8 @@ Dropdown.propTypes = {
   ]),
   /** Determines if the Dropdown is disabled. */
   "disabled": PropTypes.string,
+  /** Define whether the Dropdown will have filter functionality. */
+  "filter": PropTypes.bool,
   /** Define an id for the Dropdown. */
   "id": PropTypes.string,
   /** Sets whether or not Dropdown will display as inline. */
@@ -611,6 +624,8 @@ Dropdown.propTypes = {
   "onFocus": PropTypes.func,
   /** A javascript array of objects containing both "value" and "text" attributes. */
   "options": PropTypes.array,
+  /** Determines if the Dropdown is display only. */
+  "readOnly": PropTypes.bool,
   /** Sets the Dropdown as required. Will be validated onChange. Accepts a boolean or a string. If a string is passed it will be displayed instead of the traditional * next to the field label. */
   "required": PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Sets the status of the Dropdown. Options are null, "success", "error", and "warning". */
@@ -630,6 +645,7 @@ Dropdown.propTypes = {
 };
 
 Dropdown.defaultProps = {
+  "autocomplete": "off",
   "tooltipPosition": "right"
 };
 

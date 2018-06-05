@@ -4,12 +4,7 @@
 
 ###### Non-resizable textarea:
 
-	<div>
-	    <TextArea placeholder="Enter text here..." small resizable={false}/>
-	    <TextArea placeholder="Enter text here..." medium resizable={false}/>
-	    <TextArea placeholder="Enter text here..." large resizable={false}/>
-	    <TextArea placeholder="Enter text here..." resizable={false}/>
-    </div>
+	<TextArea placeholder="Enter text here..." resizable={false}/>
 
 ###### Textarea with label above:
 
@@ -21,7 +16,7 @@
 
 ###### Disabled textarea:
 
-    <TextArea disabled/>
+    <TextArea disabled="true" />
 
 ###### Required validation:
 
@@ -45,4 +40,4 @@
     
 ###### TextArea tooltip right false:
 
-    <TextArea label="tooltip label" tooltip={<Tooltip text="Example"/>} tooltipPostion="left" />
+    <TextArea label="tooltip label" tooltip={<Tooltip text="Example"/>} tooltipPosition="left" />
