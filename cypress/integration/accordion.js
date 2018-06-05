@@ -3,13 +3,13 @@ describe("Accordion clicks", () => {
     cy.visit("/");
     cy
       .get(
-        ":nth-child(2) > .rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__accordion_header"
+        "[data-testid=accordion-default] > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__accordion_header"
       )
       .click();
 
     cy
       .get(
-        ".rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__active"
+        "[data-testid=accordion-default] > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__active"
       )
       .should("have.class", "ra_Accordion__active");
   });
@@ -17,13 +17,13 @@ describe("Accordion clicks", () => {
   it("Closes the first Accordion tab", () => {
     cy
       .get(
-        ":nth-child(2) > .rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__accordion_header"
+        "[data-testid=accordion-default] > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__accordion_header"
       )
       .click();
 
     cy
       .get(
-        ".rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__inactive"
+        "[data-testid=accordion-default] > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__inactive"
       )
       .should("have.class", "ra_Accordion__inactive");
   });
@@ -31,13 +31,13 @@ describe("Accordion clicks", () => {
   it("Opens the second Accordion tab", () => {
     cy
       .get(
-        ":nth-child(2) > .rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__accordion_header"
+        "[data-testid=accordion-default] > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__accordion_header"
       )
       .click();
 
     cy
       .get(
-        ":nth-child(2) > .rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__active"
+        "[data-testid=accordion-default] > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__active"
       )
       .should("have.class", "ra_Accordion__active");
   });
@@ -45,13 +45,13 @@ describe("Accordion clicks", () => {
   it("Closes the second Accordion tab", () => {
     cy
       .get(
-        ":nth-child(2) > .rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__accordion_header"
+        "[data-testid=accordion-default] > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__accordion_header"
       )
       .click();
 
     cy
       .get(
-        ":nth-child(2) > .rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__inactive"
+        "[data-testid=accordion-default] > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__inactive"
       )
       .should("have.class", "ra_Accordion__inactive");
   });
@@ -61,13 +61,13 @@ describe("Accordion clicks", () => {
 
     cy
       .get(
-        ".rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__active"
+        "[data-testid=accordion-expandAll] > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__active"
       )
       .should("have.class", "ra_Accordion__active");
 
     cy
       .get(
-        ":nth-child(4) > .rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__active"
+        "[data-testid=accordion-expandAll] > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__active"
       )
       .should("have.class", "ra_Accordion__active");
   });
@@ -77,13 +77,13 @@ describe("Accordion clicks", () => {
 
     cy
       .get(
-        ".rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__inactive"
+        "[data-testid=accordion-expandAll] > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__inactive"
       )
       .should("have.class", "ra_Accordion__inactive");
 
     cy
       .get(
-        ":nth-child(4) > .rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__inactive"
+        "[data-testid=accordion-expandAll] > .ra_Accordion__accordion > :nth-child(2) > .ra_Accordion__inactive"
       )
       .should("have.class", "ra_Accordion__inactive");
   });
@@ -91,14 +91,31 @@ describe("Accordion clicks", () => {
   it("Doesn't expand when is disabled", () => {
     cy
       .get(
-        ":nth-child(14) > .rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__accordion_header"
+        "[data-testid=accordion-disabled] > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__accordion_header"
       )
       .click();
 
     cy
       .get(
-        ":nth-child(14) > .rsg--preview-53 > :nth-child(1) > :nth-child(1) > :nth-child(1) > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__accordion_header"
+        "[data-testid=accordion-disabled] > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__inactive"
       )
       .should("have.class", "ra_Accordion__inactive");
+  });
+  it("Has Label centered in the Accordion titles with centered prop", () => {
+    cy
+      .get(
+        "[data-testid=accordion-titleCentered] > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__accordion_header"
+      )
+      .should("have.class", "ra_Accordion__centerAlign");
+    cy
+      .get(
+        "[data-testid=accordion-titleCentered] > .ra_Accordion__accordion > :nth-child(3) > .ra_Accordion__accordion_header"
+      )
+      .should("have.class", "ra_Accordion__centerAlign");
+    cy
+      .get(
+        "[data-testid=accordion-titleCentered] > .ra_Accordion__accordion > :nth-child(3) > .ra_Accordion__accordion_header"
+      )
+      .should("have.class", "ra_Accordion__centerAlign");
   });
 });

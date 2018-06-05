@@ -151,7 +151,7 @@ export class Accordion extends React.PureComponent {
     });
 
     return (
-      <div className={cx(className)} style={style}>
+      <div className={cx(className)} style={style} {...this.props}>
         {this.props.expandAll && !this.props.disabled ? 
           <div
             styleName={"expandAll"}

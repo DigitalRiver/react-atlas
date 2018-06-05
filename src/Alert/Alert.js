@@ -35,7 +35,12 @@ export class Alert extends React.PureComponent {
     return (
       <React.Fragment>
         {this.state.visible && 
-          <div className={cx(className)} style={style} styleName={alertClasses}>
+          <div
+            className={cx(className)}
+            style={style}
+            styleName={alertClasses}
+            {...this.props}
+          >
             {children}
             {dismissible && 
               <div
