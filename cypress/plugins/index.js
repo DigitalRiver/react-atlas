@@ -15,3 +15,8 @@
 // `on` is used to hook into various events Cypress emits
 // `config` is the resolved Cypress config
 //};
+const cypressEslint = require("cypress-eslint-preprocessor");
+
+module.exports = on => {
+  on("file:preprocessor", cypressEslint());
+};
