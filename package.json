@@ -17,7 +17,8 @@
     "docs:prd": "cross-env NODE_ENV=production styleguidist build",
     "docs:dev": "cross-env NODE_ENV=development styleguidist server --config config/styleguide.config.js",
     "docs:publish": "node scriptsgh-pages.js",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "publish:next": "node ./scripts/publishNext.js"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/scripts/enzymeConfig.js",
