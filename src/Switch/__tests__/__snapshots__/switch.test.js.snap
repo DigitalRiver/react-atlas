@@ -16,15 +16,9 @@ exports[`Test switch component render Render correctly 1`] = `
       disabled={false}
       hidden={false}
       id="ID"
-      large={false}
-      medium={true}
       name="Name"
-      offColor="white"
-      onBeforeChange={[Function]}
       onChange={[Function]}
       onClick={[Function]}
-      onColor="black"
-      small={false}
       type="checkbox"
     />
     <div

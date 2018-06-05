@@ -149,7 +149,6 @@ export default {
           typeof validationObject === "boolean" &&
           validationObject === false
         ) {
-          console.log("Yo!");
           status = "error";
         } else {
           status = validationObject.status;
