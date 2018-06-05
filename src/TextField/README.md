@@ -38,7 +38,7 @@
 
 ###### Disabled textfield:
 
-    <TextField disabled/>
+    <TextField name="username" id="username" placeholder="Username"/>
 
 ###### Required validation. Pass a string instead of a boolean to change the required indicator from an asterisk:
 

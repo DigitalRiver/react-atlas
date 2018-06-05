@@ -71,14 +71,7 @@ let config = {
       {
         "test": /.js?$/,
         "loader": "babel-loader",
-        "exclude": /node_modules/,
-        "query": {
-          "presets": ["react", "env"],
-          "plugins": [
-            "transform-class-properties",
-            "transform-object-rest-spread"
-          ]
-        }
+        "exclude": /node_modules/
       }
     ]
   },
@@ -91,32 +84,33 @@ let config = {
   ]
 };
 
-if(process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
   config.module.rules.push({
-    test: /\.css$/,
-    loader: ExtractTextPlugin.extract({
-                  fallback: 'style-loader',
-                  use: [ {
-                     loader: 'css-loader',
-                     query: {
-                         modules: true,
-                         importLoaders: 1,
-                         localIdentName: 'ra_[name]__[local]',
-                         minimize: true
-                     }
-                   },
-                   {
-                    "loader": "postcss-loader",
-                    "options": {
-                      "config": {
-                        "path": "config/postcss.config.js"
-                      }
-                    }
-                  }
-                   ]
-              })
-});
-config.plugins.push(new ExtractTextPlugin("atlasThemes.min.css"));
+    "test": /\.css$/,
+    "loader": ExtractTextPlugin.extract({
+      "fallback": "style-loader",
+      "use": [
+        {
+          "loader": "css-loader",
+          "query": {
+            "modules": true,
+            "importLoaders": 1,
+            "localIdentName": "ra_[name]__[local]",
+            "minimize": true
+          }
+        },
+        {
+          "loader": "postcss-loader",
+          "options": {
+            "config": {
+              "path": "config/postcss.config.js"
+            }
+          }
+        }
+      ]
+    })
+  });
+  config.plugins.push(new ExtractTextPlugin("atlasThemes.min.css"));
 } else {
   config.module.rules.push({
     "test": /\.css$/,
