@@ -4,9 +4,6 @@
   "description": "Composable React components with CSS Modules.",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
@@ -20,8 +17,7 @@
     "docs:prd": "cross-env NODE_ENV=production styleguidist build",
     "docs:dev": "cross-env NODE_ENV=development styleguidist server --config config/styleguide.config.js",
     "docs:publish": "node scriptsgh-pages.js",
-    "precommit": "lint-staged",
-    "publish:next": "node ./scripts/publishNext.js"
+    "precommit": "lint-staged"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/scripts/enzymeConfig.js",
