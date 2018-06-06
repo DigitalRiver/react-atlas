@@ -2,7 +2,7 @@
 
 DatePicker with onChange:
 
-      <DatePicker onChange={function(date) {console.log("date: ", date._d)}}/>
+      <DatePicker onChange={function(date) {console.log("date: ", date._d)}} data-testid="datepicker-onChange"/>
 
 DatePicker with format:
 

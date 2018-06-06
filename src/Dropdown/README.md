@@ -1,18 +1,18 @@
 Basic Dropdown:
 
-      <Dropdown name="basicDropdown" id="basicDropdown">
+      <Dropdown name="basicDropdown" id="basicDropdown" data-testid="dropdown-basic">
         <Option value="true" text="Yes" />
         <Option value="false" text="No" />
       </Dropdown>
 
 Dropdown with data object for options:
 
-      <Dropdown name="dataDropdown" id="dataDropdown" options={[{"text": "Yes", "value": "true"}, {"text": "No", "value": "false"}]} />
+      <Dropdown name="dataDropdown" id="dataDropdown" options={[{"text": "Yes", "value": "true"}, {"text": "No", "value": "false"}]}  data-testid="dropdown-data-object" />
 
 Dropdown with filter:
       
       <div>
-        <Dropdown name="stateDropdown" id="stateDropdown" label="State" filter>
+        <Dropdown name="stateDropdown" id="stateDropdown" label="State" filter  data-testid="dropdown-filter">
             <Option value="AL" text="Alabama" />
             <Option value="AK" text="Alaska" />
             <Option value="AS" text="American Samoa" />
@@ -78,11 +78,11 @@ Dropdown with filter:
 
 Dropdown that displays "value" instead of "text" so that browser autofill can function:
       
-      <Dropdown valueOnly filter name="valueOnlyDropdown" id="valueOnlyDropdown" label="Value Only Example" options={DropdownList} />
+      <Dropdown valueOnly filter name="valueOnlyDropdown" id="valueOnlyDropdown" label="Value Only Example" options={DropdownList}  data-testid="dropdown-valueText"/>
 
 Dropdown with label:
       
-      <Dropdown name="labelDropdown" id="labelDropdown" label="Dropdown Example" options={DropdownList} />
+      <Dropdown name="labelDropdown" id="labelDropdown" label="Dropdown Example" options={DropdownList}  data-testid="dropdown-label"/>
 
 Dropdown with styled label:
       
@@ -93,15 +93,15 @@ Dropdown with styled label:
 
 Dropdown with label on the left:
 
-      <Dropdown leftLabel name="leftLabelDropdown" id="leftLabelDropdown" label="Dropdown Example: "  options={DropdownList} />
+      <Dropdown leftLabel name="leftLabelDropdown" id="leftLabelDropdown" label="Dropdown Example: "  options={DropdownList}  data-testid="dropdown-label-left"/>
 
 Dropdown with placeholder:
 
-      <Dropdown name="placeholderDropdown" id="placeholderDropdown" placeholder="Select One ..." options={DropdownList} />
+      <Dropdown name="placeholderDropdown" id="placeholderDropdown" placeholder="Select One ..." options={DropdownList}  data-testid="dropdown-placeholder"/>
 
 Dropdown with pre-set value:
 
-      <Dropdown name="presetDropdown" id="presetDropdown" value="US" options={DropdownList} />
+      <Dropdown name="presetDropdown" id="presetDropdown" value="US" options={DropdownList}  data-testid="dropdown-preset"/>
 
 Dropdowns with custom widths:
 
@@ -155,7 +155,7 @@ Dropdown with custom validation and error message (will validate against the dis
 
 Dropdown with custom function before change:
 
-    <Dropdown label="onBeforeChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } options={DropdownList} />
+    <Dropdown label="onBeforeChange Dropdown" onBeforeChange={ function(value){ let accept = confirm("Do you want to check this?"); return accept; } } options={DropdownList}  data-testid="dropdown-onBeforeChange"/>
 
 ###### Event handlers:
 

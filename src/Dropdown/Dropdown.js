@@ -541,7 +541,7 @@ export class Dropdown extends React.PureComponent {
     const textFieldName = valueOnly ? name : null;
 
     return (
-      <div styleName={wrapperClasses}>
+      <div styleName={wrapperClasses} {...this.props}>
         {dropdownLabel}
         <div styleName={dropdownClasses}>
           <TextField
