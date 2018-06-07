@@ -3,6 +3,10 @@
 	padding: 5px;
 }
 
+.textarea:-moz-ui-invalid:not(output) {/* fixes red border on required fields in FF */
+	box-shadow: none;
+}
+
 .textareaWidth {
 	width: 100%;
 }

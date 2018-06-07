@@ -11,6 +11,10 @@
 	outline: none;
 }
 
+.textfield:-moz-ui-invalid { /* fixes red border on required fields in FF */
+	box-shadow: none;
+}
+
 .textfieldWrapper {
 	composes: default-font from '../styles.css';
 	width: 100%;
