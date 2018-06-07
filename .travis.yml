@@ -5,9 +5,6 @@ node_js:
 install:
 - npm install
 script:
-- npm run build:dev
+- npm run build:prd
 - npm run lint
 - npm run test
-env:
-  global:
-    secure: FvjaNmwXqmAeJXom0F3XK1RMG0XxcO9xlF1JfhRi1N2ObAXN3DUSH2ILQicQCOX1Tt5cOqzXYd4233FysTYOku1bASo/24Gy85qKlVFZ8hzN+NXuogcMlR0D6BiC8uK3k5JNd6ugBeZAngv9l8vn3n7vGT01Mavnv7npY9/TIXUBzeJdNsAjLG3HQ6kxM/FVUYw+Qd06BuJRcrETpOuDC391p4Gmc/6pwqxK+0FX9dQb4NURoeCuAiIfc2TdshAiS4AWmetd1zuMtLHRxP7uhO4XgUi04GEOTpgFW9o0H9G0/AN0DMtjl1Ih8n32DIc1oMLzPtS6+OSgF4TmN1DaTu5SqAFSgteFq1FpxAcha3Choca62jSYW61wuXI8s8PXJjRk/2lsdyOsC1/CJKOj1Pz7qvrphp1CbS3/YKS4ZKNkmYchhjg83JJzWDE/3gzBd0IBmIbjnhbEulihfp8XAbBHqgAlvGnPP1JMs+HFruO++dcOpLGDAzEnCnola8afccwiyzkGLfXf3RFj89oIJSimvZFq1UkxVQ71J95UQoEB+L95121auCFHxj0YDoTLp4sklsaGgFsBAwT2V58ypSm9uVinEmQOuMXSAdXrRgK0dHRKLQZobV90MZltBO6kmoMrFJ8cCqme3j/WdunmISu0rujTsfe7VU5xBZIGKTk=

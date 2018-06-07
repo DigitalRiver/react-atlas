@@ -4,11 +4,7 @@ const path = require("path");
 const babel = {
   "test": /\.(js|jsx)$/,
   "exclude": /node_modules/,
-  "loader": "babel-loader",
-  "query": {
-    "presets": ["react", "env"],
-    "plugins": ["transform-class-properties", "transform-object-rest-spread"]
-  }
+  "loader": "babel-loader"
 };
 
 // "css" loader resolves paths in CSS and adds assets as dependencies.
