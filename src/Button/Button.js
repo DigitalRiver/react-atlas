@@ -114,6 +114,7 @@ export class Button extends React.PureComponent {
         tabIndex={ignoreTab ? -1 : 0}
         id={id}
         name={name}
+        {...this.props}
       >
         {icon ? <i className={cx(icon, iconClass)} /> : null}
         {text}
