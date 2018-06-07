@@ -1,6 +1,6 @@
 describe("Accordion clicks", () => {
   it("Expands the first Accordion tab", () => {
-    cy.visit("/");
+    cy.visit("http://pcsdemo.c141.digitalriverws.net:8080/example");
     cy
       .get(
         "[data-testid=accordion-default] > .ra_Accordion__accordion > :nth-child(1) > .ra_Accordion__accordion_header"

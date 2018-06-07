@@ -7,9 +7,10 @@ describe("Dropdown tests", () => {
 
   it("Dropdown should have cursor: pointer css", () => {
     cy
-      .get("[data-testid=dropdown-basic]")
+      .get(".ra_TextField__textfieldWrapper > [data-testid=dropdown-basic]")
       .should("have.css", "cursor")
-      .and("match", /pointer/);
+      .and("match", /pointer/)
+      .and("have.css", "color");
   });
 
   it("Clicking on Dropdown and selecting 'Yes' option should now set the value of Dropdown to 'Yes'", () => {

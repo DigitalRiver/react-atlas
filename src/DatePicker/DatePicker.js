@@ -44,7 +44,7 @@ export class DatePicker extends React.PureComponent {
         dateFormat={format}
         selected={this.state.startDate}
         onChange={this.handleChange}
-        {...this.props}
+        id={`datepicker`}
       />
     );
   }

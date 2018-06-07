@@ -1,4 +1,4 @@
-describe("Button tests", () => {
+describe("Avatar tests", () => {
   it("Default alerts renders default colors and text", () => {
     cy.visit("/");
 
