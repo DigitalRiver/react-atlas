@@ -76,7 +76,7 @@ Dropdown with filter:
         <Dropdown name="countryDropdown" id="countryDropdown" label="Country" options={DropdownList} filter /><br />
       </div>
 
-Dropdown that displays "value" instead of "text" so that browser autofill can function:
+Dropdown that displays "value" instead of "text":
       
       <Dropdown valueOnly filter name="valueOnlyDropdown" id="valueOnlyDropdown" label="Value Only Example" options={DropdownList} />
 
@@ -187,6 +187,5 @@ Update Dropdown options via state after initial render:
       <br /><br />
       <Text>List: {JSON.stringify(state.items)}</Text>
     </div>
-
 
 
