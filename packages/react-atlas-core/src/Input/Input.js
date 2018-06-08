@@ -18,9 +18,7 @@ class Input extends React.PureComponent {
       "value":
         typeof props.value === "undefined" || props.value === null
           ? ""
-          : props.value,
-
-      "errorText": "This field is required."
+          : props.value
     };
 
     // Configure input mask if required
@@ -31,13 +29,6 @@ class Input extends React.PureComponent {
       };
 
       this.mask = new InputMask(maskOptions);
-    }
-
-    // Display a console warning if custom validation is set w/o an error message
-    if (this.props.validator && !this.props.errorText) {
-      console.warn(
-        "You set a custom validator without error text message. Please use 'errorText' property to set it up."
-      );
     }
   }
 
@@ -185,7 +176,6 @@ class Input extends React.PureComponent {
     /* If the field is required, and it has no value, change state and display error message */
     if (!inputValue.length && this.props.required) {
       this.setState({
-        "errorText": this.props.errorText || "This field is required.",
         "isValid": false
       });
     } else if (this.props.validator) {
@@ -193,7 +183,6 @@ class Input extends React.PureComponent {
         this.setState({ "isValid": true });
       } else {
         this.setState({
-          "errorText": this.props.errorText,
           "isValid": false
         });
       }
@@ -262,6 +251,7 @@ class Input extends React.PureComponent {
       multiline,
       disabled,
       hidden,
+      errorText,
       errorLocation,
       style,
       rows,
@@ -325,10 +315,6 @@ class Input extends React.PureComponent {
       />
     ;
 
-    let errorTextElement = this.state.errorText && 
-      <span styleName={cx("error")}>{this.state.errorText}</span>
-    ;
-
     return isCheckbox ? 
       <input
         {...elementsProps}
@@ -340,7 +326,9 @@ class Input extends React.PureComponent {
      : 
       <div styleName={containerClasses}>
         {inputElement}
-        {this.state.isValid ? null : errorTextElement}
+        {this.state.isValid ? null : 
+          <span styleName={cx("error")}>{errorText}</span>
+        }
       </div>
     ;
   }
@@ -486,6 +474,7 @@ Input.defaultProps = {
   "className": "",
   "disabled": false,
   "hidden": false,
+  "errorText": "This field is required.",
   "errorLocation": "right",
   "isValid": true
 };
