@@ -22,7 +22,6 @@ let config = {
     "ListItem": "./src/ListItem",
     "Modal": "./src/Modal",
     "Overlay": "./src/Overlay",
-    "Panel": "./src/Panel",
     "Portal": "./src/Portal",
     "ProgressBar": "./src/ProgressBar",
     "Radio": "./src/Radio",

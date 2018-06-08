@@ -23,20 +23,6 @@ Accordion with multiOpen functionality:
           <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
 
-Accordion with width set in props as number (This is translated to NUMBERpx):
-
-     <Accordion width={400}>
-          <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
-          <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
-     </Accordion>
-
-Accordion with width set in props as a string:
-
-     <Accordion width='50rem'>
-          <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
-          <div title="Second">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
-     </Accordion>
-
 Accordion with expanded div:
 
      <Accordion>

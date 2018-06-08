@@ -67,34 +67,14 @@ describe("Test Accordion Component: Basic Tests", () => {
     expect(accMulti.props().multiOpen).toBe(true);
   });
 
-  it("Test width as number", () => {
-    const accWidth1 = mount(
-      <Accordion width={400}>
-        <div title="first">first</div>
-        <div title="second">second</div>
-      </Accordion>
-    );
-    expect(accWidth1.props().width).toEqual(400);
-  });
-
-  it("Test width as string", () => {
-    const accWidth2 = mount(
-      <Accordion width="50rem">
-        <div title="first">first</div>
-        <div title="second">second</div>
-      </Accordion>
-    );
-    expect(accWidth2.props().width).toEqual("50rem");
-  });
-
   it("Test component is disabled", () => {
-    const accWidth1 = mount(
+    const accDisabled = mount(
       <Accordion disabled>
         <div title="first">first</div>
         <div title="second">second</div>
       </Accordion>
     );
-    expect(accWidth1.props().disabled).toBe(true);
+    expect(accDisabled.props().disabled).toBe(true);
   });
 
   it("Test TitlePosition is centered", () => {
