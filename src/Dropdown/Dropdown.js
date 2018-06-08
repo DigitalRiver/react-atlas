@@ -210,22 +210,13 @@ export class Dropdown extends React.PureComponent {
   };
 
   // Validator function checks for required or custom validation
-  _validate = (e, inputValue, change) => {
-    const validationObject = utils.validate(
+  _validate = (inputValue) => {
+    return utils.validate(
       inputValue,
       this.props.valid,
       this.props.status,
       this.props.message,
       this.props.required
-    );
-    this.setState(
-      {
-        "status": validationObject.status,
-        "message": validationObject.message
-      },
-      () => {
-        this._eventHandlers(e, change);
-      }
     );
   };
 
@@ -243,14 +234,16 @@ export class Dropdown extends React.PureComponent {
         "value": value
       };
       const data = this.setOptions(updatedValues, this.props);
+      const validationObject = this._validate(value);
       this.setState(
         {
           "options": data.options,
           "display": data.display,
-          ...updatedValues
+          ...updatedValues,
+          ...validationObject
         },
         () => {
-          this._validate(e, value, true);
+          this._eventHandlers(e, true);
         }
       );
     }
@@ -269,9 +262,14 @@ export class Dropdown extends React.PureComponent {
   _handleActive = (e, focus) => {
     e.persist();
     const active = focus ? this.state.active : false;
-    this.setState({ "focus": focus, "active": active }, () => {
+    const validationObject = !focus ? this._validate(this.state.value) : {};
+    this.setState({ 
+      "focus": focus, 
+      "active": active,
+      ...validationObject 
+    }, () => {
       if (!focus) {
-        this._validate(e, this.state.value);
+        this._eventHandlers(e);
       } else if (this.props.onFocus) {
         this.props.onFocus(e, {
           "value": this.state.value,
@@ -323,16 +321,21 @@ export class Dropdown extends React.PureComponent {
       let setObject = {
         "options": data.options
       };
+      if (data.options.length > 1){
+        setObject.active = true;
+      }
       if (!this.props.valueOnly) {
         setObject.value = data.value;
       }
+      const validationObject = this._validate(data.value);
       this.setState(
         {
           ...setObject,
-          ...updatedValues
+          ...updatedValues,
+          ...validationObject
         },
         () => {
-          this._validate(e, data.value, true);
+          this._eventHandlers(e, true);
         }
       );
     }
@@ -353,15 +356,17 @@ export class Dropdown extends React.PureComponent {
             false,
             true
           );
+          const validationObject = this._validate(data.value);
           this.setState(
             {
               "display": data.display,
               "options": data.options,
               "value": data.value,
-              ...updatedValues
+              ...updatedValues,
+              ...validationObject
             },
             () => {
-              this._validate(e, data.value, true);
+              this._eventHandlers(e, true);
             }
           );
         };
