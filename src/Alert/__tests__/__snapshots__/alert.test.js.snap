@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Alert component renders correctly 1`] = `
+exports[`Test Alert component Test renders correctly 1`] = `
 <div
   className="alert success"
   style={undefined}
