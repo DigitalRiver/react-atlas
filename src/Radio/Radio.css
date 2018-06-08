@@ -1,101 +1,101 @@
 .disabled {
-  composes: default-text from '../styles.css';
+    composes: default-text from '../styles.css';
 }
 
 .relative {
-  position:relative;
+    position: relative;
 }
 
 .padding {
-  padding-bottom: 5px;
+    padding-bottom: 5px;
 }
 
 .input {
-  composes: relative;
-  top: 1px;
+    composes: relative;
+    top: 1px;
 }
 
 .radio {
-	position: absolute;
-	top: 0px;
-	height: 16px;
-	width: 16px;
-	display: inline-block;
-	composes: cursor-pointer from '../styles.css';
-	composes: silver-to-white-gradient from '../styles.css';
-	composes: default-border from '../styles.css';
-	composes: circle from '../styles.css';
-  background: -webkit-linear-gradient(#fff, #e6e6e6); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#fff, #e6e6e6); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#fff, #e6e6e6); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#fff, #e6e6e6); /* Standard syntax */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    composes: cursor-pointer from '../styles.css';
+    composes: silver-to-white-gradient from '../styles.css';
+    composes: default-border from '../styles.css';
+    composes: circle from '../styles.css';
+    background: -webkit-linear-gradient(#fff, #e6e6e6); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#fff, #e6e6e6); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#fff, #e6e6e6); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#fff, #e6e6e6); /* Standard syntax */
 }
 
 .disabled {
-opacity: 0.65;
-composes: cursor-not-allowed from '../styles.css'; 
-pointer-events: none;
+    opacity: 0.65;
+    composes: cursor-not-allowed from '../styles.css';
+    pointer-events: none;
 }
 
 .hidden {
-display: none;
-visibility: hidden;
+    display: none;
+    visibility: hidden;
 }
 
 .checked {
-composes: radio;
-composes: white-inset-shadow from '../styles.css';
-background: #007EB5;
+    composes: radio;
+    composes: white-inset-shadow from '../styles.css';
+    background: #007EB5;
 }
 
 .focus {
-box-shadow: 0 0 6px rgba(35, 173, 255, 1);
+    box-shadow: 0 0 6px rgba(35, 173, 255, 1);
 }
 
 .checkmark {
-composes: relative;
-top: 0px;
+    composes: relative;
+    top: 0px;
 }
 
 .error {
-  border: solid 1px #BD0A33;
+    border: solid 1px #BD0A33;
 }
 
 .label {
-composes: default-font from '../styles.css';
-cursor: pointer;
-white-space: nowrap;
-padding-right:5px;
-margin-left: 12px;
+    composes: default-font from '../styles.css';
+    cursor: pointer;
+    white-space: nowrap;
+    padding-right: 5px;
+    margin-left: 5px;
 }
 
 .label_left {
-composes: label;
-padding-right: 2px;
-margin-left: 0px;
+    composes: label;
+    padding-right: 5px;
+    margin-left: 0;
+    margin-right: 5px;
 }
 
 .inline_block {
-display: inline-block;
+    display: inline-block;
 }
 
 .radio_padding {
-padding: 7px 10px 0 0;
+    padding: 7px 10px 0 0;
 }
 
 .float_left {
-float:left;
-padding-right: 3px;
+    float: left;
+    padding-right: 3px;
 }
 
 .float_right {
-  float:right;
-  padding-left: 3px;
-  position: relative;
+    float: right;
+    padding-left: 3px;
+    position: relative;
 }
 
-
 .input_style {
-  opacity: 0; /*this needs to stay here to avoid display issues in IE*/
-  width: 100%;
+    opacity: 0; /*this needs to stay here to avoid display issues in IE*/
 }
