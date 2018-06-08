@@ -16,9 +16,6 @@ global.Option = Option;
 import { Overlay } from "../src/Overlay";
 global.Overlay = Overlay;
 
-import { Panel } from "../src/Panel";
-global.Panel = Panel;
-
 import { Portal } from "../src/Portal";
 global.Portal = Portal;
 

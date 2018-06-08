@@ -5,6 +5,7 @@
     composes: default-text from '../styles.css';
     composes: default-font from '../styles.css';
     cursor: default;
+    width: 100%;
 }
 .disabled {
     composes: cursor-not-allowed from '../styles.css';

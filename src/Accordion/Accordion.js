@@ -21,7 +21,7 @@ export class Accordion extends React.PureComponent {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.children !== this.state.children) {
+    if (nextProps.children !== this.props.children) {
       this.setState({
         "activeChildArray": this._getExpandedPanels(nextProps.children)
       });
@@ -106,14 +106,7 @@ export class Accordion extends React.PureComponent {
   };
 
   render() {
-    let {
-      className,
-      children,
-      disabled,
-      width,
-      titlePosition,
-      style
-    } = this.props;
+    let { className, children, disabled, titlePosition, style } = this.props;
 
     // A list of children of the Accordion component
     const accordion_panels = React.Children.map(children, (child, i) => {
@@ -175,9 +168,7 @@ export class Accordion extends React.PureComponent {
             {messages.expandAll}
           </div>
          : null}
-        <div styleName={"accordion"} style={{ "width": width }}>
-          {accordion_panels}
-        </div>
+        <div styleName={"accordion"}>{accordion_panels}</div>
       </div>
     );
   }
@@ -231,15 +222,10 @@ Accordion.propTypes = {
    * Will set the Accordion's title text position left, right, or center.
    * @examples <Accordion titlePosition={left}>{children}</Accordion>
    */
-  "titlePosition": PropTypes.string,
-  /**
-   * Will set the width of the Accordion.
-   */
-  "width": PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  "titlePosition": PropTypes.string
 };
 
 Accordion.defaultProps = {
-  "width": "100%",
   "disabled": false,
   "expandAll": false,
   "multiOpen": false
