@@ -62,6 +62,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
+    "babel-jest": "^23.0.1",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
