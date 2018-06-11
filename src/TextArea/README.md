@@ -34,6 +34,13 @@
 
     <TextArea onChange={ () => { alert('onChange executed!'); } }/>
 
+###### TextField onBeforeChange:
+
+    <TextField 
+        onBeforeChange={ (event, data) => { return false;} }
+    />
+
+
 ###### TextArea Tooltip requires Label:
 
     <TextArea label="tooltip label" tooltip={<Tooltip text="Example"/>} />

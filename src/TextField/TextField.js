@@ -47,7 +47,7 @@ export class TextField extends React.PureComponent {
     if (!change && this.props.onBlur) {
       this.props.onBlur(e, data);
     }
-    
+
     if (change && this.props.onChange) {
       this.props.onChange(e, data);
     }
@@ -72,19 +72,21 @@ export class TextField extends React.PureComponent {
       result = this.props.onBeforeChange(e, data);
     }
 
-    if(result === true) {
-      this.setState(
-        {
-          "status": validationObject.status,
-          "message": validationObject.message,
-          "value": inputValue,
-          "active": change
-        },
-        () => {
-          this._eventHandlers(e, change);
-        }
-      );
+    if (result === false) {
+      return;
     }
+
+    this.setState(
+      {
+        "status": validationObject.status,
+        "message": validationObject.message,
+        "value": inputValue,
+        "active": change
+      },
+      () => {
+        this._eventHandlers(e, change);
+      }
+    );
   };
 
   _handleChange = e => {
