@@ -34,9 +34,9 @@
 
     <TextArea onChange={ () => { alert('onChange executed!'); } }/>
 
-###### TextField onBeforeChange:
+###### TextArea onBeforeChange:
 
-    <TextField 
+    <TextArea 
         onBeforeChange={ (event, data) => { return false;} }
     />
 
