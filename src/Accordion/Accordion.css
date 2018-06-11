@@ -15,7 +15,7 @@
     composes: marg-0  from '../styles.css';
     composes: cursor-pointer from '../styles.css';
     composes: default-border-bottom from '../styles.css';
-    composes: default-border-left from '../styles.css';
+    composes: border-left-none from '../styles.css';
     composes: border-top-none from '../styles.css';
     composes: border-right-none from '../styles.css';
     composes: header-font from '../styles.css';
