@@ -12,7 +12,7 @@ export class TextField extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "value": props.value,
+      "value": props.value || "",
       "active": false,
       "status": props.status || null,
       "message": props.message || null
@@ -61,6 +61,20 @@ export class TextField extends React.PureComponent {
       this.props.message,
       this.props.required
     );
+
+    const data = {
+      "value": inputValue,
+      "status": validationObject.status
+    };
+
+    let result = true;
+    if (this.props.onBeforeChange) {
+      result = this.props.onBeforeChange(e, data);
+    }
+
+    if (result === false) {
+      return;
+    }
 
     this.setState(
       {
@@ -262,6 +276,12 @@ TextField.propTypes = {
    * @examples <TextField onKeyDown={this.customOnKeyDownFunc}/>
    */
   "onKeyDown": PropTypes.func,
+  /**
+   * Sets a handler function to be executed before change event occurs (at input element).
+   * return true if you want the chaneg to happen, pass false to deny the change.
+   * @examples <TextField onBeforeChange={this.onBeforeChange}/>
+   */
+  "onBeforeChange": PropTypes.func,
   /**
    * Sets the TextField as required. Will be validated onChange. Accepts a boolean or a string. If a string is passed it will be displayed instead of the traditional * next to the field label.
    * @examples '<TextField required/>'
