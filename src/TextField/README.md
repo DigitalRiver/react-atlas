@@ -83,11 +83,6 @@
         onFocus={ (event, data) => { console.log('onFocus: ', event, data); } }
         onBeforeChange={ (event, data) => { return false;} }
     />
-    
-###### TextField onBeforeChange:
-    <TextField 
-        onBeforeChange={ (event, data) => { return false;} }
-    />
 
 ###### Tooltip Textfield with Label:
 
