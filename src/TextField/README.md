@@ -81,6 +81,7 @@
         onChange={ (event, data) => { console.log('onChange: ', event, data); } }
         onBlur={ (event, data) => { console.log('onBlur: ', event, data); } }
         onFocus={ (event, data) => { console.log('onFocus: ', event, data); } }
+        onBeforeChange={ (event, data) => { return false;} }
     />
 
 ###### Tooltip Textfield with Label:
