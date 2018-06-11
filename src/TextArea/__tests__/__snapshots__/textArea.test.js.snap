@@ -14,7 +14,7 @@ exports[`Test Text component renders correctly 1`] = `
     required={undefined}
     style={undefined}
     type="text"
-    value={undefined}
+    value=""
   />
 </div>
 `;
