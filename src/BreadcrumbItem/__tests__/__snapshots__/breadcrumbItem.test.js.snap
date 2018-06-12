@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test BreadcrumbItem component Test correct render 1`] = `
+<li
+  className="breadcrumbItem"
+  style={undefined}
+>
+  <a
+    className="defaultFont link"
+    href="#"
+    htmlFor={undefined}
+    id={undefined}
+    style={undefined}
+  >
+    Atlas
+  </a>
+</li>
+`;
