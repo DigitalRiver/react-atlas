@@ -100,7 +100,7 @@ export class Button extends React.PureComponent {
       text = null;
     } else if (icon) {
       text = children;
-      iconClass = "ra_Button__icon-left";
+      iconClass = "icon-left";
     }
 
     let btn = 
@@ -115,7 +115,7 @@ export class Button extends React.PureComponent {
         id={id}
         name={name}
       >
-        {icon ? <i className={cx(icon, iconClass)} /> : null}
+        {icon ? <i className={icon} styleName={iconClass} /> : null}
         {text}
       </button>
     ;
