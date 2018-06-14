@@ -5,6 +5,13 @@ exports[`Test Timer component render Render correctly 1`] = `
   className="Class"
   style={undefined}
 >
-  20
+  <span
+    className="defaultFont"
+    htmlFor={undefined}
+    id={undefined}
+    style={undefined}
+  >
+    20
+  </span>
 </div>
 `;
