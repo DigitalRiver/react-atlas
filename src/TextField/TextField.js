@@ -53,13 +53,14 @@ export class TextField extends React.PureComponent {
     }
   };
 
-  _validate = (e, inputValue, change) => {
+  _validate = (event, inputValue, change) => {
     const validationObject = utils.validate(
       inputValue,
       this.props.valid,
       this.props.status,
       this.props.message,
-      this.props.required
+      this.props.required,
+      event
     );
 
     const data = {
@@ -69,7 +70,7 @@ export class TextField extends React.PureComponent {
 
     let result = true;
     if (this.props.onBeforeChange) {
-      result = this.props.onBeforeChange(e, data);
+      result = this.props.onBeforeChange(event, data);
     }
 
     if (result === false) {
@@ -84,7 +85,7 @@ export class TextField extends React.PureComponent {
         "active": change
       },
       () => {
-        this._eventHandlers(e, change);
+        this._eventHandlers(event, change);
       }
     );
   };
