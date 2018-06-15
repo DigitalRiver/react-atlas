@@ -25,7 +25,7 @@ describe("Testing utilities", () => {
 });
 
 describe("Test utils.validate() method", () => {
-  const validator = value => {
+  const validator = (event, value) => {
     if (value === "0") {
       return true;
     } else if (value === "1") {

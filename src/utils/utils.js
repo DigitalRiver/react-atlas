@@ -132,12 +132,12 @@ export default {
   getErrorMessage(errorMessage) {
     return <div styleName={"error_message"}>{errorMessage}</div>;
   },
-  validate(inputValue, validator, propStatus, propMessage, required) {
+  validate(inputValue, validator, propStatus, propMessage, required, event) {
     let status = null;
     let message = null;
     /* Execute custom validator and change state and error messages accordingly */
     if (typeof validator === "function") {
-      let validationObject = validator(inputValue);
+      let validationObject = validator(event, inputValue);
       if (typeof validationObject !== "undefined") {
         if (
           typeof validationObject === "boolean" &&
