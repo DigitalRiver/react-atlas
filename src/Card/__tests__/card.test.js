@@ -14,24 +14,47 @@ describe("Test Card component", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
+});
+
+describe("Test Card component: Basic Tests", () => {
+  let cardComponent = mount(
+    <Card className={"name"} legend={"lalala"}>
+      <div>Card Test</div>
+    </Card>
+  );
 
   it("Card - Basic properties test", function() {
-    const result = mount(<Card className={"name"} legend={"lalala"} />);
+    cardComponent = mount(<Card className={"name"} legend={"lalala"} />);
     const expected = new Map([["className", "name"], ["legend", "lalala"]]);
-    expect(verifyPropsDefaultValue(result, expected)).toEqual(true);
+    expect(verifyPropsDefaultValue(cardComponent, expected)).toEqual(true);
+  });
+
+  it("Basic Accordion", () => {
+    expect(
+      cardComponent.exists(
+        <Card>
+          <div>Child</div>
+        </Card>
+      )
+    ).toBe(true);
+  });
+
+  it("Contains No Child", () => {
+    cardComponent = mount(<Card />);
+    expect(cardComponent.props().children).toBeUndefined();
   });
 
   it("Card - Children test", function() {
-    const result = mount(
-      <Card legend="Card Example">
+    cardComponent = mount(
+      <Card className={"name"} legend={"lalala"}>
         <div>Card Test</div>
       </Card>
     );
-    expect(result.props().children.props.children).toEqual("Card Test");
+    expect(cardComponent.props()).toHaveProperty("children");
   });
 
-  it("Card - Standard Fieldset test", function() {
-    const result = mount(
+  it("Test Standard Fieldset", function() {
+    cardComponent = mount(
       <Card legend="Fieldset Example" standardFieldset>
         <CheckboxGroup title="Checkbox Group" name="checkboxGroup">
           <Checkbox label="Checkbox 1" checked />
@@ -40,6 +63,20 @@ describe("Test Card component", () => {
         </CheckboxGroup>
       </Card>
     );
-    expect(result.props().standardFieldset).toBe(true);
+    expect(cardComponent.props().standardFieldset).toBe(true);
+  });
+
+  it("Card - Image prop test", function() {
+    cardComponent = mount(
+      <Card image="https://static1.squarespace.com/static/5369465be4b0507a1fd05af0/5397d14be4b06a5454f5633c/5397d15ae4b06a5454f56351/1404441173879/neo_001126-02.jpg?format=1500w" />
+    );
+    expect(cardComponent.props().image).toBe(
+      "https://static1.squarespace.com/static/5369465be4b0507a1fd05af0/5397d14be4b06a5454f5633c/5397d15ae4b06a5454f56351/1404441173879/neo_001126-02.jpg?format=1500w"
+    );
+  });
+
+  it("Test Title prop", () => {
+    cardComponent = mount(<Card title="first">first</Card>);
+    expect(cardComponent.props().title).toBe("first");
   });
 });
