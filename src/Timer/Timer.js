@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 import CSSModules from "react-css-modules";
 import styles from "./Timer.css";
+import Text from "../Text/Text.js";
 
 export class Timer extends React.PureComponent {
   constructor(props) {
@@ -31,7 +32,7 @@ export class Timer extends React.PureComponent {
 
     return (
       <div style={style} className={cx(className)}>
-        {this.state.secondsRemaining}
+        <Text>{this.state.secondsRemaining}</Text>
       </div>
     );
   }
