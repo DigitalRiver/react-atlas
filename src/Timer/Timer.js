@@ -18,6 +18,10 @@ export class Timer extends React.PureComponent {
     this.interval = setInterval(this._renderTimer, 1000);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   _renderTimer = () => {
     this.setState({ "secondsRemaining": this.state.secondsRemaining - 1 });
     if (this.state.secondsRemaining <= 0) {
