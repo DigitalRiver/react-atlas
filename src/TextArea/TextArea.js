@@ -41,7 +41,8 @@ export class TextArea extends React.PureComponent {
   _eventHandlers = (e, change) => {
     const data = {
       "value": this.state.value,
-      "status": this.state.status
+      "status": this.state.status,
+      "message": this.state.message
     };
 
     if (!change && this.props.onBlur) {
@@ -246,7 +247,7 @@ TextArea.propTypes = {
    * A callback that fires onFocus.
    */
   "onFocus": PropTypes.func,
-   /**
+  /**
    * Sets a handler function to be executed before change event occurs (at input element).
    * return true if you want the chaneg to happen, pass false to deny the change.
    * @examples <TextField onBeforeChange={this.onBeforeChange}/>

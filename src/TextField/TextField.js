@@ -41,7 +41,8 @@ export class TextField extends React.PureComponent {
   _eventHandlers = (e, change) => {
     const data = {
       "value": this.state.value,
-      "status": this.state.status
+      "status": this.state.status,
+      "message": this.state.message
     };
 
     if (!change && this.props.onBlur) {
