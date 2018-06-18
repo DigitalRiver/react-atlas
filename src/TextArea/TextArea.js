@@ -65,7 +65,8 @@ export class TextArea extends React.PureComponent {
 
     const data = {
       "value": inputValue,
-      "status": validationObject.status
+      "status": validationObject.status,
+      "message": validationObject.message
     };
 
     let result = true;
@@ -107,7 +108,8 @@ export class TextArea extends React.PureComponent {
       if (typeof this.props.onFocus === "function") {
         this.props.onFocus(e, {
           "value": this.state.value,
-          "status": this.state.status
+          "status": this.state.status,
+          "message": this.state.message
         });
       }
     });
