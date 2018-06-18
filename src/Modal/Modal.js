@@ -14,6 +14,14 @@ export class Modal extends React.PureComponent {
     };
   }
 
+  /**
+   * This function cancels the click handler when clicking on the active modal and prevents bubbling up
+   * so that it avoids evoking the event handler of the outside <div> */
+  cancelClickHandler = event => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
   render() {
     const {
       active,
@@ -37,12 +45,17 @@ export class Modal extends React.PureComponent {
               lockScroll={lockScroll}
             />
           }
-          <div styleName={cx("dialogWrapper")} style={style}>
+          <div
+            styleName={cx("dialogWrapper")}
+            onClick={onOverlayClick}
+            style={style}
+          >
             <div styleName={cx("dialog")}>
               <div
                 style={style}
                 styleName={cx("modal", { "active": active })}
                 className={cx(className)}
+                onClick={this.cancelClickHandler}
               >
                 {title && <h3 styleName={cx("title")}>{title}</h3>}
                 <div>{this.props.children}</div>
