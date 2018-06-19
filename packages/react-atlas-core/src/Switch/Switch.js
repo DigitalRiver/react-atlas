@@ -38,7 +38,8 @@ class Switch extends React.PureComponent {
       "handleSmall": small,
       "handleMedium": medium,
       "handleLarge": large,
-      "handleDisabledColor": this.state.disabled,
+      "handleDisabledColor": this.state.disabled && !this.props.checked ,
+      "handleDisabledCheckedColor" : this.state.disabled && this.props.checked,
       "handleEnabledColor": !this.state.disabled
     });
 
