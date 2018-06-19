@@ -17,11 +17,7 @@ describe("Test Card component", () => {
 });
 
 describe("Test Card component: Basic Tests", () => {
-  let cardComponent = mount(
-    <Card className={"name"} legend={"lalala"}>
-      <div>Card Test</div>
-    </Card>
-  );
+  let cardComponent = null;
 
   it("Card - Basic properties test", function() {
     cardComponent = mount(<Card className={"name"} legend={"lalala"} />);
