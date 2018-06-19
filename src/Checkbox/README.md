@@ -66,6 +66,7 @@ Custom validation:
 
 	  <Checkbox
 	  	label="Required Example"
+	  	required="custom required message"
 	  	valid={ function(event, checked){ return {status: checked ? null : "error", message: "Checkbox is required"} } }
 	  />
 
