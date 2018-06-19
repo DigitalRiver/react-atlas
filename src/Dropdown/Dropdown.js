@@ -197,7 +197,8 @@ export class Dropdown extends React.PureComponent {
   _eventHandlers = (e, change) => {
     const data = {
       "value": this.state.value,
-      "status": this.state.status
+      "status": this.state.status,
+      "message": this.state.message
     };
 
     if (!change && typeof this.props.onBlur === "function") {
@@ -210,7 +211,7 @@ export class Dropdown extends React.PureComponent {
   };
 
   // Validator function checks for required or custom validation
-  _validate = (inputValue) => {
+  _validate = inputValue => {
     return utils.validate(
       inputValue,
       this.props.valid,
@@ -263,20 +264,24 @@ export class Dropdown extends React.PureComponent {
     e.persist();
     const active = focus ? this.state.active : false;
     const validationObject = !focus ? this._validate(this.state.value) : {};
-    this.setState({ 
-      "focus": focus, 
-      "active": active,
-      ...validationObject 
-    }, () => {
-      if (!focus) {
-        this._eventHandlers(e);
-      } else if (this.props.onFocus) {
-        this.props.onFocus(e, {
-          "value": this.state.value,
-          "status": this.state.status
-        });
+    this.setState(
+      {
+        "focus": focus,
+        "active": active,
+        ...validationObject
+      },
+      () => {
+        if (!focus) {
+          this._eventHandlers(e);
+        } else if (this.props.onFocus) {
+          this.props.onFocus(e, {
+            "value": this.state.value,
+            "status": this.state.status,
+            "message": this.state.message
+          });
+        }
       }
-    });
+    );
   };
 
   _handleBlur = e => {
@@ -299,7 +304,8 @@ export class Dropdown extends React.PureComponent {
       if (this.props.onClick) {
         this.props.onClick(e, {
           "value": this.state.value,
-          "status": this.state.status
+          "status": this.state.status,
+          "message": this.state.message
         });
       }
     });
@@ -321,7 +327,7 @@ export class Dropdown extends React.PureComponent {
       let setObject = {
         "options": data.options
       };
-      if (data.options.length > 1){
+      if (data.options.length > 1) {
         setObject.active = true;
       }
       if (!this.props.valueOnly) {
