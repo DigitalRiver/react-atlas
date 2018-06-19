@@ -97,6 +97,7 @@ export class Checkbox extends React.PureComponent {
       label,
       labelPosition,
       required,
+      status,
       style,
       title,
       /*eslint-disable */
