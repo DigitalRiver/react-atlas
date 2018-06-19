@@ -12,10 +12,12 @@ import styles from "./Checkbox.css";
 export class Checkbox extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    // Initial state
     this.state = {
       "checked": this.props.checked || false,
-      "valid": true,
-      "errorMessage": "",
+      "status": props.status || null,
+      "message": props.message || null,
       "focus": false
     };
   }
@@ -39,17 +41,17 @@ export class Checkbox extends React.PureComponent {
         return;
       }
     }
-    const validationObject = this._validationHandler(this.props.validator);
+    const validationObject = this._validationHandler(this.props.valid);
     this.setState(
       {
         "checked": !this.state.checked,
-        "valid": validationObject.valid,
-        "errorMessage": validationObject.message
+        "status": validationObject.status,
+        "message": validationObject.message
       },
       function() {
         const data = {
           "value": this.props.value,
-          "valid": this.state.valid,
+          "status": this.state.status,
           "checked": this.state.checked
         };
         /* Check if onClick has been passed, if so call it. */
@@ -74,9 +76,10 @@ export class Checkbox extends React.PureComponent {
     const validationObject = callback
       ? callback(event, !this.state.checked)
       : {
-          "valid":
-            this.props.required && !this.state.checked ||
-            !this.props.required,
+          "status":
+            this.props.required && !this.state.checked || !this.props.required
+              ? null
+              : "error",
           "message": this.props.requiredMessage || messages.requiredMessage
         };
     return validationObject;
@@ -99,7 +102,7 @@ export class Checkbox extends React.PureComponent {
       /*eslint-disable */
       // Declaring the following variables so they don't get passed to the input through the prop spread.
       onBeforeChange,
-      validator,
+      valid,
       /*eslint-enable */
       ...others
     } = this.props;
@@ -122,7 +125,7 @@ export class Checkbox extends React.PureComponent {
       "relative": true,
       "padding": !inline
     });
-    const error = groupError || !this.state.valid;
+    const error = groupError || this.state.status === "error";
     let checkboxClass = cx({
       "checked": this.state.checked,
       "error": error,
@@ -138,9 +141,7 @@ export class Checkbox extends React.PureComponent {
 
     // Gets the appropriate jsx to render an error message below the Checkbox.
     const errorMessage =
-      error && !groupError
-        ? utils.getErrorMessage(this.state.errorMessage)
-        : null;
+      error && !groupError ? utils.getErrorMessage(this.state.message) : null;
 
     return (
       <div
@@ -272,12 +273,27 @@ Checkbox.propTypes = {
   /**
    * Used to pass a function for custom validation. Should return either true or false.
    */
-  "validator": PropTypes.func,
+  "valid": PropTypes.func,
 
   /**
    * The value of the Checkbox.
    */
-  "value": PropTypes.string
+  "value": PropTypes.string,
+
+  /**
+   * Sets the status of the Checkbox. Options are null, "success", "error", and "warning".
+   * @examples '<Checkbox status="error" />'
+   */
+  "status": PropTypes.string,
+
+  /**
+   * Sets the status message of the Checkbox.
+   * @examples '<Checkbox
+   label="Required Example"
+   valid={ function(checked){ return {status: "success", message: "Checkbox is required"} } }
+   />'
+   */
+  "message": PropTypes.string
 };
 
 Checkbox.defaultProps = {

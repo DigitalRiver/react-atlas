@@ -33,7 +33,7 @@ Custom onClick method:
       <Checkbox
         label="Checkbox onClick"
         value="Bat"
-        onClick={function(data) { console.log(data.value, data.valid, data.checked); }}
+        onClick={function(data) { console.log(data.value, data.status, data.checked); }}
       />
 
 onChange callback:
@@ -41,7 +41,7 @@ onChange callback:
     <Checkbox
       label="Checkbox onChange"
       value="Duck"
-      onChange={function(data) { console.log(data.value, data.valid, data.checked); }}
+      onChange={function(data) { console.log(data.value, data.status, data.checked); }}
       />
 
 No label:
@@ -66,7 +66,7 @@ Custom validation:
 
 	  <Checkbox
 	  	label="Required Example"
-	  	validator={ function(checked){ return {valid: checked, message: "Checkbox is required"} } }
+	  	valid={ function(event, checked){ return {status: checked ? null : "error", message: "Checkbox is required"} } }
 	  />
 
 Custom function before change:

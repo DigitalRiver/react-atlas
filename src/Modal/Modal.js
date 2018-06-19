@@ -18,7 +18,6 @@ export class Modal extends React.PureComponent {
    * This function cancels the click handler when clicking on the active modal and prevents bubbling up
    * so that it avoids evoking the event handler of the outside <div> */
   cancelClickHandler = event => {
-    event.preventDefault();
     event.stopPropagation();
   };
 
