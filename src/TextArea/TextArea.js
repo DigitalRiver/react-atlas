@@ -249,6 +249,12 @@ TextArea.propTypes = {
    * A callback that fires onFocus.
    */
   "onFocus": PropTypes.func,
+   /**
+   * Sets a handler function to be executed before change event occurs (at input element).
+   * return true if you want the chaneg to happen, pass false to deny the change.
+   * @examples <TextField onBeforeChange={this.onBeforeChange}/>
+   */
+  "onBeforeChange": PropTypes.func,
   /**
    * Sets a handler function to be executed before change event occurs (at input element).
    * return true if you want the chaneg to happen, pass false to deny the change.
