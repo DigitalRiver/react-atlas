@@ -5,6 +5,7 @@ import { utils } from "../utils";
 import messages from "../utils/messages.js";
 import CSSModules from "react-css-modules";
 import styles from "./Checkbox.css";
+import { Text } from "../Text";
 
 /**
  * Simple component for a basic checkbox
@@ -12,10 +13,12 @@ import styles from "./Checkbox.css";
 export class Checkbox extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    // Initial state
     this.state = {
       "checked": this.props.checked || false,
-      "valid": true,
-      "errorMessage": "",
+      "status": props.status || null,
+      "message": props.message || null,
       "focus": false
     };
   }
@@ -39,17 +42,17 @@ export class Checkbox extends React.PureComponent {
         return;
       }
     }
-    const validationObject = this._validationHandler(this.props.validator);
+    const validationObject = this._validationHandler(this.props.valid);
     this.setState(
       {
         "checked": !this.state.checked,
-        "valid": validationObject.valid,
-        "errorMessage": validationObject.message
+        "status": validationObject.status,
+        "message": validationObject.message
       },
       function() {
         const data = {
           "value": this.props.value,
-          "valid": this.state.valid,
+          "status": this.state.status,
           "checked": this.state.checked
         };
         /* Check if onClick has been passed, if so call it. */
@@ -74,10 +77,11 @@ export class Checkbox extends React.PureComponent {
     const validationObject = callback
       ? callback(event, !this.state.checked)
       : {
-          "valid":
-            this.props.required && !this.state.checked ||
-            !this.props.required,
-          "message": this.props.requiredMessage || messages.requiredMessage
+          "status":
+            this.props.required && !this.state.checked || !this.props.required
+              ? null
+              : "error",
+          "message": messages.requiredMessage
         };
     return validationObject;
   };
@@ -93,13 +97,13 @@ export class Checkbox extends React.PureComponent {
       label,
       labelPosition,
       required,
-      requiredText,
+      status,
       style,
       title,
       /*eslint-disable */
       // Declaring the following variables so they don't get passed to the input through the prop spread.
       onBeforeChange,
-      validator,
+      valid,
       /*eslint-enable */
       ...others
     } = this.props;
@@ -122,7 +126,7 @@ export class Checkbox extends React.PureComponent {
       "relative": true,
       "padding": !inline
     });
-    const error = groupError || !this.state.valid;
+    const error = groupError || this.state.status === "error";
     let checkboxClass = cx({
       "checked": this.state.checked,
       "error": error,
@@ -131,16 +135,16 @@ export class Checkbox extends React.PureComponent {
     });
 
     // Gets the appropriate jsx to render a "required" identifier next to the Checkbox.
-    const reqText =
-      typeof requiredText !== "undefined"
-        ? utils.getRequiredText(requiredText)
-        : utils.getRequiredText("*");
+    const reqText = typeof required === "string" ? required : "*";
 
     // Gets the appropriate jsx to render an error message below the Checkbox.
     const errorMessage =
-      error && !groupError
-        ? utils.getErrorMessage(this.state.errorMessage)
-        : null;
+      error && !groupError ? utils.getErrorMessage(this.state.message) : null;
+
+    const requiredClasses = cx({
+      "required": true,
+      "required_error": status === "error"
+    });
 
     return (
       <div
@@ -172,7 +176,13 @@ export class Checkbox extends React.PureComponent {
               {this.state.checked && <div styleName={"checkmark"} />}
             </div>
           </div>
-          {required && reqText}
+          {required &&
+            required !== "" && 
+              <span styleName={requiredClasses}>
+                {" "}
+                <Text>{reqText}</Text>
+              </span>
+            }
         </div>
         {errorMessage}
       </div>
@@ -244,19 +254,11 @@ Checkbox.propTypes = {
   "onClick": PropTypes.func,
 
   /**
-   * When true, Checkbox will return an error onBlur or onChange if not checked.
+   * Sets the Checkbox as required. Will be validated in _validationHandler. Accepts a boolean or a string.
+   * If a string is passed it will be displayed instead of the traditional * next to the Checkbox.
+   * @examples '<TextField required/>'
    */
-  "required": PropTypes.bool,
-
-  /**
-   * A custom message that will be displayed if required property is set to true and user does not check Checkbox.
-   */
-  "requiredMessage": PropTypes.string,
-  /**
-   * Sets the text to show next to the label for a required TextField. If omitted will default to *.
-   * @examples '<TextField required requiredText="required"/>'
-   */
-  "requiredText": PropTypes.string,
+  "required": PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 
   /**
    * Pass inline styles here.
@@ -272,12 +274,27 @@ Checkbox.propTypes = {
   /**
    * Used to pass a function for custom validation. Should return either true or false.
    */
-  "validator": PropTypes.func,
+  "valid": PropTypes.func,
 
   /**
    * The value of the Checkbox.
    */
-  "value": PropTypes.string
+  "value": PropTypes.string,
+
+  /**
+   * Sets the status of the Checkbox. Options are null, "success", "error", and "warning".
+   * @examples '<Checkbox status="error" />'
+   */
+  "status": PropTypes.string,
+
+  /**
+   * Sets the status message of the Checkbox.
+   * @examples '<Checkbox
+   label="Required Example"
+   valid={ function(checked){ return {status: "success", message: "Checkbox is required"} } }
+   />'
+   */
+  "message": PropTypes.string
 };
 
 Checkbox.defaultProps = {

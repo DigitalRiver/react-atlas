@@ -239,7 +239,8 @@ export class Dropdown extends React.PureComponent {
   _eventHandlers = (e, change) => {
     const data = {
       "value": this.state.value,
-      "status": this.state.status
+      "status": this.state.status,
+      "message": this.state.message
     };
 
     if (!change && typeof this.props.onBlur === "function") {
@@ -317,7 +318,8 @@ export class Dropdown extends React.PureComponent {
         } else if (this.props.onFocus) {
           this.props.onFocus(e, {
             "value": this.state.value,
-            "status": this.state.status
+            "status": this.state.status,
+            "message": this.state.message
           });
         }
       }
@@ -344,7 +346,8 @@ export class Dropdown extends React.PureComponent {
       if (this.props.onClick) {
         this.props.onClick(e, {
           "value": this.state.value,
-          "status": this.state.status
+          "status": this.state.status,
+          "message": this.state.message
         });
       }
     });

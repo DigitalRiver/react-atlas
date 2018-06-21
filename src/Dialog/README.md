@@ -11,7 +11,8 @@ INFO Dialog:
         <Button primary onClick={handleToggle}>Open Info Dialog</Button>
         <Dialog 
             active={state.active} 
-            onOk={handleOk} 
+            onOk={handleOk}
+            onOverlayClick={handleOk}
             title="INFO"
             overlay
             info
