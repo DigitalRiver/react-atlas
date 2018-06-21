@@ -39,6 +39,7 @@ export class Dialog extends React.PureComponent {
       className,
       children,
       style,
+      onOverlayClick,
       /*eslint-disable */
       styles,
       /*eslint-enable */
@@ -50,6 +51,7 @@ export class Dialog extends React.PureComponent {
           className={cx(className, { "ra_Dialog__warning": warning })}
           style={style}
           active={active}
+          onOverlayClick={onOverlayClick}
           {...others}
         >
           <div className={cx("ra_Dialog__dialog", "ra_styles__default-font")}>
@@ -104,6 +106,11 @@ Dialog.propTypes = {
    * Function that will be executed when user clicks the Ok button.
    */
   "onOk": PropTypes.func,
+
+  /**
+   * Event handler for clicking on overlay, can be used to close modal if needed.
+   */
+  "onOverlayClick": PropTypes.func,
 
   /**
    * When true, Dialog will display as a modal overlay.

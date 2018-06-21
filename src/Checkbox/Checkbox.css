@@ -122,3 +122,11 @@
   /*this needs to stay here to avoid display issues with those modules in IE*/
   opacity: 0;
 }
+
+.required {
+  composes: secondary-text from '../styles.css';
+}
+
+.required_error {
+  composes: error-text from '../styles.css';
+}
