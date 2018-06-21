@@ -53,9 +53,12 @@ export class TextField extends React.PureComponent {
     }
   };
 
-  _validate = (e, inputValue, change) => {
+  _handleChange = e => {
+    e.persist();
+    let value = e.target.value;
+
     const validationObject = utils.validate(
-      inputValue,
+      value,
       this.props.valid,
       this.props.status,
       this.props.message,
@@ -63,8 +66,9 @@ export class TextField extends React.PureComponent {
     );
 
     const data = {
-      "value": inputValue,
-      "status": validationObject.status
+      "value": value,
+      "status": validationObject.status,
+      "message": validationObject.message
     };
 
     let result = true;
@@ -76,27 +80,23 @@ export class TextField extends React.PureComponent {
       return;
     }
 
+    if (this.props.uppercase) {
+      value = value.toUpperCase();
+    }
+
+    let change = true;
+
     this.setState(
       {
         "status": validationObject.status,
         "message": validationObject.message,
-        "value": inputValue,
+        "value": value,
         "active": change
       },
       () => {
         this._eventHandlers(e, change);
       }
     );
-  };
-
-  _handleChange = e => {
-    e.persist();
-    let value = e.target.value;
-
-    if (this.props.uppercase) {
-      value = value.toUpperCase();
-    }
-    this._validate(e, value, true);
   };
 
   _handleFocus = e => {
@@ -114,7 +114,25 @@ export class TextField extends React.PureComponent {
   _handleBlur = e => {
     e.persist();
     const value = e.target.value;
-    this._validate(e, value, false);
+    const validationObject = utils.validate(
+      value,
+      this.props.valid,
+      this.props.status,
+      this.props.message,
+      this.props.required
+    );
+    let change = false;
+    this.setState(
+      {
+        "status": validationObject.status,
+        "message": validationObject.message,
+        "value": value,
+        "active": change
+      },
+      () => {
+        this._eventHandlers(e, change);
+      }
+    );
   };
 
   _handleClick = e => {
@@ -194,6 +212,8 @@ export class TextField extends React.PureComponent {
       />
     ;
 
+    console.log("TF VALUE: ", this.state.value);
+
     return (
       <div styleName={wrapperClasses}>
         {textFieldLabel}
@@ -201,6 +221,7 @@ export class TextField extends React.PureComponent {
           {...others}
           id={id}
           type={type}
+          ref={this.props.input}
           value={this.state.value}
           styleName={inputClasses}
           style={style}
@@ -282,6 +303,10 @@ TextField.propTypes = {
    * @examples <TextField onBeforeChange={this.onBeforeChange}/>
    */
   "onBeforeChange": PropTypes.func,
+  /**
+   * A reference to the underlying input DOM node.
+   */
+  "input": PropTypes.func,
   /**
    * Sets the TextField as required. Will be validated onChange. Accepts a boolean or a string. If a string is passed it will be displayed instead of the traditional * next to the field label.
    * @examples '<TextField required/>'
