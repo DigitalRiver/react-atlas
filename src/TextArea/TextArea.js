@@ -65,6 +65,7 @@ export class TextArea extends React.PureComponent {
 
     const data = {
       "value": inputValue,
+
       "status": validationObject.status,
       "message": validationObject.message
     };
