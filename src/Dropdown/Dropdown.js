@@ -13,6 +13,9 @@ export class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    this.menuRef = React.createRef();
+    this.hoverRef = React.createRef();
+
     const data = this.setOptions({}, props);
 
     this.state = {
@@ -55,6 +58,34 @@ export class Dropdown extends React.PureComponent {
         "status": nextProps.status,
         "message": nextProps.message
       });
+    }
+  }
+
+  // the function was used for keyboard scrolling in dropdown menus
+  componentDidUpdate() {
+    const menuNode = this.menuRef.current;
+
+    if (this.hoverRef.current !== null) {
+      // keyboard scrolls takes options in view
+      const optionNode = this.hoverRef.current.optionDivRef.current;
+
+      const menuTop = menuNode.scrollTop;
+      const menuBottom = menuTop + menuNode.offsetHeight;
+      const optionTop = optionNode.offsetTop;
+      const optionBottom = optionTop + optionNode.offsetHeight;
+
+      if (menuTop > optionTop || menuBottom < optionBottom) {
+        menuNode.scrollTop = optionNode.offsetTop;
+      }
+
+      if (menuBottom < optionBottom) {
+        menuNode.scrollTop =
+          optionNode.offsetTop +
+          optionNode.clientHeight -
+          menuNode.offsetHeight;
+      } else if (menuTop > optionTop) {
+        menuNode.scrollTop = optionNode.offsetTop;
+      }
     }
   }
 
@@ -151,6 +182,12 @@ export class Dropdown extends React.PureComponent {
             typeof updatedValues.tempIndex !== "undefined" &&
             i === updatedValues.tempIndex
           }
+          ref={
+            typeof updatedValues.tempIndex !== "undefined" &&
+            i === updatedValues.tempIndex
+              ? this.hoverRef
+              : null
+          }
           index={i}
           key={i}
           optionClick={this.optionOnClick}
@@ -177,6 +214,11 @@ export class Dropdown extends React.PureComponent {
           "hover":
             typeof updatedValues.tempIndex !== "undefined" &&
             i === updatedValues.tempIndex,
+          "ref":
+            typeof updatedValues.tempIndex !== "undefined" &&
+            i === updatedValues.tempIndex
+              ? this.hoverRef
+              : null,
           "index": i,
           "key": i,
           "optionClick": this.optionOnClick,
@@ -197,7 +239,8 @@ export class Dropdown extends React.PureComponent {
   _eventHandlers = (e, change) => {
     const data = {
       "value": this.state.value,
-      "status": this.state.status
+      "status": this.state.status,
+      "message": this.state.message
     };
 
     if (!change && typeof this.props.onBlur === "function") {
@@ -210,7 +253,7 @@ export class Dropdown extends React.PureComponent {
   };
 
   // Validator function checks for required or custom validation
-  _validate = (inputValue) => {
+  _validate = inputValue => {
     return utils.validate(
       inputValue,
       this.props.valid,
@@ -263,20 +306,24 @@ export class Dropdown extends React.PureComponent {
     e.persist();
     const active = focus ? this.state.active : false;
     const validationObject = !focus ? this._validate(this.state.value) : {};
-    this.setState({ 
-      "focus": focus, 
-      "active": active,
-      ...validationObject 
-    }, () => {
-      if (!focus) {
-        this._eventHandlers(e);
-      } else if (this.props.onFocus) {
-        this.props.onFocus(e, {
-          "value": this.state.value,
-          "status": this.state.status
-        });
+    this.setState(
+      {
+        "focus": focus,
+        "active": active,
+        ...validationObject
+      },
+      () => {
+        if (!focus) {
+          this._eventHandlers(e);
+        } else if (this.props.onFocus) {
+          this.props.onFocus(e, {
+            "value": this.state.value,
+            "status": this.state.status,
+            "message": this.state.message
+          });
+        }
       }
-    });
+    );
   };
 
   _handleBlur = e => {
@@ -299,7 +346,8 @@ export class Dropdown extends React.PureComponent {
       if (this.props.onClick) {
         this.props.onClick(e, {
           "value": this.state.value,
-          "status": this.state.status
+          "status": this.state.status,
+          "message": this.state.message
         });
       }
     });
@@ -321,7 +369,7 @@ export class Dropdown extends React.PureComponent {
       let setObject = {
         "options": data.options
       };
-      if (data.options.length > 1){
+      if (data.options.length > 1) {
         setObject.active = true;
       }
       if (!this.props.valueOnly) {
@@ -343,110 +391,29 @@ export class Dropdown extends React.PureComponent {
 
   // For keyboard navigation
   _handleKeyDown = e => {
+    // helper method and variable
+    const updateTempIndex = i => {
+      const updatedValues = { "tempIndex": i };
+      const data = this.setOptions(
+        updatedValues,
+        this.props,
+        false,
+        false,
+        true
+      );
+      this.setState({
+        "options": data.options,
+        ...updatedValues
+      });
+    };
+    let newIndex;
+
     if (this.state.focus === true) {
-      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-        e.preventDefault();
-        let newIndex;
-        const updateIndex = i => {
-          const updatedValues = { "selectedIndex": i };
-          const data = this.setOptions(
-            updatedValues,
-            this.props,
-            false,
-            false,
-            true
-          );
-          const validationObject = this._validate(data.value);
-          this.setState(
-            {
-              "display": data.display,
-              "options": data.options,
-              "value": data.value,
-              ...updatedValues,
-              ...validationObject
-            },
-            () => {
-              this._eventHandlers(e, true);
-            }
-          );
-        };
-        const updateTempIndex = i => {
-          const updatedValues = { "tempIndex": i };
-          const data = this.setOptions(
-            updatedValues,
-            this.props,
-            false,
-            false,
-            true
-          );
-          this.setState({
-            "options": data.options,
-            ...updatedValues
-          });
-        };
-        if (e.key === "ArrowDown") {
-          if (!this.state.active) {
-            if (
-              this.state.selectedIndex === null ||
-              this.state.selectedIndex < this.state.options.length - 1
-            ) {
-              newIndex =
-                this.state.selectedIndex === null
-                  ? 0
-                  : this.state.selectedIndex + 1;
-              updateIndex(newIndex);
-            }
-          } else {
-            if (
-              this.state.tempIndex !== null &&
-              this.state.tempIndex < this.state.options.length - 1
-            ) {
-              newIndex = this.state.tempIndex + 1;
-            } else if (
-              this.state.tempIndex !== null &&
-              this.state.tempIndex === this.state.options.length - 1
-            ) {
-              newIndex = 0;
-            } else if (
-              this.state.selectedIndex !== null &&
-              this.state.selectedIndex < this.state.options.length - 1
-            ) {
-              newIndex = this.state.selectedIndex + 1;
-            } else {
-              newIndex = 0;
-            }
-            updateTempIndex(newIndex);
-          }
-        } else {
-          if (!this.state.active) {
-            if (
-              this.state.selectedIndex !== null &&
-              this.state.selectedIndex > 0
-            ) {
-              newIndex = this.state.selectedIndex - 1;
-              updateIndex(newIndex);
-            }
-          } else {
-            if (this.state.tempIndex !== null && this.state.tempIndex > 0) {
-              newIndex = this.state.tempIndex - 1;
-            } else if (
-              this.state.tempIndex !== null &&
-              this.state.tempIndex === 0
-            ) {
-              newIndex = this.state.options.length - 1;
-            } else if (
-              this.state.selectedIndex !== null &&
-              this.state.selectedIndex > 0
-            ) {
-              newIndex = this.state.selectedIndex - 1;
-            } else {
-              newIndex = this.state.options.length - 1;
-            }
-            updateTempIndex(newIndex);
-          }
-        }
-      }
-      if (e.key === "Enter") {
+      // if not active, action: expand the dropdown
+      if (
+        !this.state.active &&
+        (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Enter")
+      ) {
         e.preventDefault();
         if (
           typeof this.props.disabled !== "undefined" && this.props.disabled ||
@@ -466,6 +433,66 @@ export class Dropdown extends React.PureComponent {
             }
           }
         );
+      } else if (this.state.active) {
+        if (e.key === "ArrowDown") {
+          if (
+            this.state.tempIndex !== null &&
+            this.state.tempIndex < this.state.options.length - 1
+          ) {
+            newIndex = this.state.tempIndex + 1;
+          } else if (
+            this.state.tempIndex !== null &&
+            this.state.tempIndex === this.state.options.length - 1
+          ) {
+            newIndex = 0;
+          } else if (
+            this.state.selectedIndex !== null &&
+            this.state.selectedIndex < this.state.options.length - 1
+          ) {
+            newIndex = this.state.selectedIndex + 1;
+          } else {
+            newIndex = 0;
+          }
+          updateTempIndex(newIndex);
+        } else if (e.key === "ArrowUp") {
+          if (this.state.tempIndex !== null && this.state.tempIndex > 0) {
+            newIndex = this.state.tempIndex - 1;
+          } else if (
+            this.state.tempIndex !== null &&
+            this.state.tempIndex === 0
+          ) {
+            newIndex = this.state.options.length - 1;
+          } else if (
+            this.state.selectedIndex !== null &&
+            this.state.selectedIndex > 0
+          ) {
+            newIndex = this.state.selectedIndex - 1;
+          } else {
+            newIndex = this.state.options.length - 1;
+          }
+          updateTempIndex(newIndex);
+        } else if (e.key === "Enter") {
+          e.preventDefault();
+          if (
+            typeof this.props.disabled !== "undefined" &&
+              this.props.disabled ||
+            typeof this.props.readOnly !== "undefined" && this.props.readOnly
+          ) {
+            return false;
+          }
+          this.setState(
+            {
+              "active": !this.state.active
+            },
+            () => {
+              if (!this.state.active && this.state.tempIndex !== null) {
+                const newValue = this.state.options[this.state.tempIndex].props
+                  .value;
+                this.optionOnClick(null, newValue, this.state.tempIndex);
+              }
+            }
+          );
+        }
       }
     }
   };
@@ -571,7 +598,11 @@ export class Dropdown extends React.PureComponent {
             value={textFieldValue}
           />
           {arrow}
-          <div styleName={optionsWrapper} style={listStyle || style}>
+          <div
+            ref={this.menuRef}
+            styleName={optionsWrapper}
+            style={listStyle || style}
+          >
             {this.state.options}
           </div>
         </div>

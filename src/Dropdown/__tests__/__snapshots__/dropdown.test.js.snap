@@ -41,7 +41,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
         onMouseDown={[Function]}
         onMouseOver={[Function]}
       >
-        <option
+        <span
           className="option defaultFont"
           htmlFor={undefined}
           id={undefined}
@@ -50,7 +50,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
           value=""
         >
           May
-        </option>
+        </span>
       </div>
       <div
         className="optionWrapper"
@@ -58,7 +58,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
         onMouseDown={[Function]}
         onMouseOver={[Function]}
       >
-        <option
+        <span
           className="option defaultFont"
           htmlFor={undefined}
           id={undefined}
@@ -67,7 +67,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
           value="the"
         >
           the
-        </option>
+        </span>
       </div>
       <div
         className="optionWrapper"
@@ -75,7 +75,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
         onMouseDown={[Function]}
         onMouseOver={[Function]}
       >
-        <option
+        <span
           className="option defaultFont"
           htmlFor={undefined}
           id={undefined}
@@ -84,7 +84,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
           value="force"
         >
           force
-        </option>
+        </span>
       </div>
       <div
         className="optionWrapper"
@@ -92,7 +92,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
         onMouseDown={[Function]}
         onMouseOver={[Function]}
       >
-        <option
+        <span
           className="option defaultFont"
           htmlFor={undefined}
           id={undefined}
@@ -101,7 +101,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
           value="be"
         >
           be
-        </option>
+        </span>
       </div>
       <div
         className="optionWrapper"
@@ -109,7 +109,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
         onMouseDown={[Function]}
         onMouseOver={[Function]}
       >
-        <option
+        <span
           className="option defaultFont"
           htmlFor={undefined}
           id={undefined}
@@ -118,7 +118,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
           value="with"
         >
           with
-        </option>
+        </span>
       </div>
       <div
         className="optionWrapper"
@@ -126,7 +126,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
         onMouseDown={[Function]}
         onMouseOver={[Function]}
       >
-        <option
+        <span
           className="option defaultFont"
           htmlFor={undefined}
           id={undefined}
@@ -135,7 +135,7 @@ exports[`Test dropdown component Test render correctly 1`] = `
           value="you"
         >
           you
-        </option>
+        </span>
       </div>
     </div>
   </div>

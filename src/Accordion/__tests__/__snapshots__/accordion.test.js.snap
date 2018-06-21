@@ -7,11 +7,6 @@ exports[`Test Accordion component Test render correctly 1`] = `
 >
   <div
     className="accordion"
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
   >
     <div>
       <div

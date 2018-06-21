@@ -16,9 +16,6 @@ global.Option = Option;
 import { Overlay } from "../src/Overlay";
 global.Overlay = Overlay;
 
-import { Panel } from "../src/Panel";
-global.Panel = Panel;
-
 import { Portal } from "../src/Portal";
 global.Portal = Portal;
 
@@ -43,7 +40,7 @@ global.DropdownList = [
   { "text": "Albania", "value": "AL" },
   { "text": "Algeria", "value": "DZ" },
   { "text": "American Samoa", "value": "AS" },
-  { "text": "AndorrA", "value": "AD" },
+  { "text": "Andorra", "value": "AD" },
   { "text": "Angola", "value": "AO" },
   { "text": "Anguilla", "value": "AI" },
   { "text": "Antarctica", "value": "AQ" },

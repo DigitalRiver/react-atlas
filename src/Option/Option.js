@@ -6,6 +6,10 @@ import CSSModules from "react-css-modules";
 import styles from "./Option.css";
 
 export class Option extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.optionDivRef = React.createRef();
+  }
   _handleHover = e => {
     this.props.optionHover(e, this.props.index);
   };
@@ -16,12 +20,12 @@ export class Option extends React.PureComponent {
 
   render() {
     const {
+      hover,
       selected,
       text,
       value,
       /*eslint-disable */
       // Declaring the following variables so they don't get passed to the option element through the prop spread.
-      hover,
       optionClick,
       optionHover,
       /*eslint-enable */
@@ -39,9 +43,10 @@ export class Option extends React.PureComponent {
         onMouseOver={this._handleHover}
         onMouseDown={this._clickHandler}
         styleName={optionWrapper}
+        ref={hover ? this.optionDivRef : null}
         {...others}
       >
-        <Text as="option" title={text} styleName={cx("option")} value={value}>
+        <Text title={text} styleName={cx("option")} value={value}>
           {text}
         </Text>
       </div>
