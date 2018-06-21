@@ -128,7 +128,7 @@ MaskedTextField.propTypes = {
   "mask": PropTypes.string,
   /** The initial value. Characters that dont conform to the mask pattern will be rejected. */
   "value": PropTypes.string,
-   /**
+  /**
    * Sets a handler function to be executed when onClick event occurs (at input element).
    * @examples <MaskedTextField onClick={this.customOnClickFunc}/>
    */
