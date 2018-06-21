@@ -81,7 +81,7 @@ export class Checkbox extends React.PureComponent {
             this.props.required && !this.state.checked || !this.props.required
               ? null
               : "error",
-          "message": messages.requiredMessage
+          "message": this.props.requiredMessage || messages.requiredMessage
         };
     return validationObject;
   };
