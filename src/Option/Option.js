@@ -20,10 +20,10 @@ export class Option extends React.PureComponent {
 
   render() {
     const {
+      hover,
       selected,
       text,
       value,
-      hover,
       /*eslint-disable */
       // Declaring the following variables so they don't get passed to the option element through the prop spread.
       optionClick,
@@ -37,8 +37,6 @@ export class Option extends React.PureComponent {
       "hover": hover && !selected,
       "selected": selected
     });
-
-    // console.log('hover?', hover);
 
     return (
       <div
