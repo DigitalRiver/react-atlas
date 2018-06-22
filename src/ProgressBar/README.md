@@ -7,8 +7,18 @@ Basic ProgressBar with custom color:
     <ProgressBar color="red"/>
 
 Determinate ProgressBar:
-
-    <ProgressBar mode="determinate" value={60}/>
+    
+    initialState = {value: 30}
+    updateState = () => {
+        setState((prevState) => { 
+            return {value: prevState.value + 5}
+        });
+    }
+    <div>
+        <ProgressBar mode="determinate" value={state.value}/>
+        <br />
+        <Button primary onClick={updateState}>Update State</Button>
+    </div>
 
 ProgressBar with buffer:
 
