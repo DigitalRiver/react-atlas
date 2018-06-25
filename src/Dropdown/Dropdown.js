@@ -88,7 +88,7 @@ export class Dropdown extends React.PureComponent {
       }
     }
 
-    // put dropdown fully in view when expanded
+    // put dropdown menu fully in view when expanded
     const menuRect = menuNode.getBoundingClientRect();
     if (window.innerHeight < menuRect.bottom) {
       window.scrollBy(0, menuRect.bottom - window.innerHeight);
