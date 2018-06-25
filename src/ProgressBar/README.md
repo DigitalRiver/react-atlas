@@ -9,15 +9,24 @@ Basic ProgressBar with custom color:
 Determinate ProgressBar:
     
     initialState = {value: 30}
-    updateState = () => {
+    increase = () => {
         setState((prevState) => { 
             return {value: prevState.value + 5}
         });
     }
+    decrease = () => {
+            setState((prevState) => { 
+                return {value: prevState.value - 5}
+            });
+        }
     <div>
         <ProgressBar mode="determinate" value={state.value}/>
         <br />
-        <Button primary onClick={updateState}>Update State</Button>
+        <Button primary onClick={decrease} style={{marginRight: "3px"}}>Decrease</Button>
+        <Button primary onClick={increase} style={{marginRight: "3px"}}>Increase</Button>
+        <br />
+        <br />
+        <Text>Progress: {state.value}%</Text>
     </div>
 
 ProgressBar with buffer:
