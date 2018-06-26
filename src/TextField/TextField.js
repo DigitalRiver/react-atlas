@@ -160,7 +160,12 @@ export class TextField extends React.PureComponent {
       ...others
     } = this.props;
 
-    let othersFiltered = blacklist(others, "uppercase", "valid");
+    let othersFiltered = blacklist(
+      others,
+      "uppercase",
+      "valid",
+      "onBeforeChange"
+    );
 
     let wrapperClasses = cx({
       leftLabel,

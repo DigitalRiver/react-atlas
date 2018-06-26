@@ -5,6 +5,7 @@ import { Label } from "../Label";
 import { utils } from "../utils";
 import CSSModules from "react-css-modules";
 import styles from "./TextArea.css";
+import blacklist from "blacklist";
 
 export class TextArea extends React.PureComponent {
   constructor(props) {
@@ -138,6 +139,8 @@ export class TextArea extends React.PureComponent {
       ...others
     } = this.props;
 
+    let othersFiltered = blacklist(others, "onBeforeChange");
+
     let wrapperClasses = cx({
       leftLabel,
       inline,
@@ -178,7 +181,7 @@ export class TextArea extends React.PureComponent {
       <div styleName={wrapperClasses}>
         {textAreaLabel}
         <textarea
-          {...others}
+          {...othersFiltered}
           id={id}
           type={type}
           value={this.state.value}
