@@ -4,6 +4,7 @@ import cx from "classnames";
 import { Label } from "../Label";
 import CSSModules from "react-css-modules";
 import styleSheet from "./Switch.css";
+import blacklist from "blacklist";
 
 export class Switch extends React.PureComponent {
   constructor(props) {
@@ -114,17 +115,18 @@ export class Switch extends React.PureComponent {
       style,
       inline,
       id,
-      /*eslint-disable */
-      // Declaring the following variables so they don't get passed to the input element through the prop spread.
-      large,
-      medium,
-      offColor,
-      onBeforeChange,
-      onColor,
-      small,
-      /*eslint-enable */
       ...others
     } = this.props;
+
+    let othersFiltered = blacklist(
+      others,
+      "large",
+      "medium",
+      "offColor",
+      "onBeforeChange",
+      "onColor",
+      "small"
+    );
 
     const classes = this.classes;
     const styles = this.styles;
@@ -161,7 +163,7 @@ export class Switch extends React.PureComponent {
           style={style}
         >
           <input
-            {...others}
+            {...othersFiltered}
             type="checkbox"
             name={name}
             id={id}

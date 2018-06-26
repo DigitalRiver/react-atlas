@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 import CSSModules from "react-css-modules";
 import styles from "./Radio.css";
+import blacklist from "blacklist";
 
 export class Radio extends React.PureComponent {
   constructor(props) {
@@ -57,13 +58,10 @@ export class Radio extends React.PureComponent {
       labelPosition,
       style,
       title,
-      /*eslint-disable */
-      // Declaring the following variables so they don't get passed to the DOM element through the prop spread.
-      groupSetChecked,
-      onBeforeChange,
-      /*eslint-enable */
       ...others
     } = this.props;
+
+    let othersFiltered = blacklist(others, "groupSetChecked", "onBeforeChange");
 
     /* Classes and styles setup */
     let wrapperStyles = cx(
@@ -107,7 +105,7 @@ export class Radio extends React.PureComponent {
           }
           <div styleName={radioDisplay}>
             <input
-              {...others}
+              {...othersFiltered}
               type="radio"
               checked={checked}
               disabled={disabled}
