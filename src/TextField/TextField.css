@@ -1,0 +1,79 @@
+.textfield {
+	composes: primary-gray-border from '../styles.css';
+	composes: default-font from '../styles.css';
+	padding: 5px !important; /* !important designation added for conflict with legacy DR UI library styles */
+	composes: default-font from '../styles.css';
+	composes: pad-1 from '../styles.css';
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: 2px;
+	height: 1.77rem;
+	outline: none;
+}
+
+.textfield:-moz-ui-invalid { /* fixes red border on required fields in FF */
+	box-shadow: none;
+}
+
+.textfieldWrapper {
+	composes: default-font from '../styles.css';
+	width: 100%;
+}
+
+.setWidth {
+	width: inherit;
+	display: inline-block;
+  }
+
+.leftLabel {
+	display: flex;
+	white-space: nowrap;
+}
+
+.fillInput {
+  flex: 1;
+}
+
+.inline {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.disabled {
+	composes: cursor-not-allowed from '../styles.css';
+}
+
+.active {
+	composes: text-input-active from '../styles.css';
+}
+
+.hidden {
+	display: none;
+}
+
+.success {
+	composes: text-input-valid from '../styles.css';
+	composes: marg-b-half from '../styles.css';
+}
+
+.error {
+	composes: text-input-invalid from '../styles.css';
+	composes: marg-b-half from '../styles.css';
+}
+
+.warning {
+	composes: text-input-warning from '../styles.css';
+	composes: marg-b-half from '../styles.css';
+}
+
+.success_message {
+	composes: success-text from '../styles.css';
+}
+
+.error_message {
+	composes: error-text from '../styles.css';
+}
+
+.warning_message {
+	composes: warning-text from '../styles.css';
+}

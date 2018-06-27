@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = `
+<div
+  className="checkboxGroup"
+  style={undefined}
+>
+  <div
+    className="header"
+  >
+    <span
+      className="headerFont"
+    >
+      CheckboxGroup test
+    </span>
+  </div>
+  <div
+    className="checkbox_padding"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <div
+      className="inline_block relative padding"
+    >
+      <div
+        className="float_left"
+      >
+        <input
+          checked={false}
+          className="opacity"
+          disabled={false}
+          hidden={undefined}
+          id={undefined}
+          label={undefined}
+          name={undefined}
+          onChange={[Function]}
+          required={false}
+          type="checkbox"
+        />
+        <div
+          className="not_checked"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="checkbox_padding"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <div
+      className="inline_block relative padding"
+    >
+      <div
+        className="float_left"
+      >
+        <input
+          checked={false}
+          className="opacity"
+          disabled={false}
+          hidden={undefined}
+          id={undefined}
+          label={undefined}
+          name={undefined}
+          onChange={[Function]}
+          required={false}
+          type="checkbox"
+        />
+        <div
+          className="not_checked"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="checkbox_padding"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <div
+      className="inline_block relative padding"
+    >
+      <div
+        className="float_left"
+      >
+        <input
+          checked={false}
+          className="opacity"
+          disabled={false}
+          hidden={undefined}
+          id={undefined}
+          label={undefined}
+          name={undefined}
+          onChange={[Function]}
+          required={false}
+          type="checkbox"
+        />
+        <div
+          className="not_checked"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="checkbox_padding"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <div
+      className="inline_block relative padding"
+    >
+      <div
+        className="float_left"
+      >
+        <input
+          checked={false}
+          className="opacity"
+          disabled={false}
+          hidden={undefined}
+          id={undefined}
+          label={undefined}
+          name={undefined}
+          onChange={[Function]}
+          required={false}
+          type="checkbox"
+        />
+        <div
+          className="not_checked"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

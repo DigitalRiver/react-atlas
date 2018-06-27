@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test switch component render Render correctly 1`] = `
+<div
+  className="Class switch"
+>
+  <div
+    className="sliderMedium sliderEnabledOffColor"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <input
+      buttonColor="grey"
+      checked={false}
+      className="inputMedium"
+      disabled={false}
+      hidden={false}
+      id="ID"
+      name="Name"
+      onChange={[Function]}
+      onClick={[Function]}
+      type="checkbox"
+    />
+    <div
+      className="handleMedium handleEnabledColor"
+      style={
+        Object {
+          "background": "grey",
+        }
+      }
+    />
+    <div
+      className="onColorMedium"
+      style={
+        Object {
+          "background": "black",
+        }
+      }
+    />
+  </div>
+</div>
+`;

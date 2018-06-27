@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Input component render Render correctly 1`] = `
+<div
+  className="textfieldWrapper"
+>
+  <input
+    className="class textfield"
+    disabled={false}
+    hidden={false}
+    id="ID"
+    maxLength={15}
+    name="InputName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="Text here"
+    required={true}
+    style={undefined}
+    type="text"
+    value="Value"
+  />
+</div>
+`;

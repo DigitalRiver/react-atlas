@@ -1,0 +1,17 @@
+.dialog {
+	composes: default-font from '../styles.css';
+	display: inline-block;
+}
+
+.buttons {
+	float: right;
+	margin-top: 9px;
+}
+
+.buttons button {
+	margin: 3px;
+}
+
+.warning h3 {
+	color: #F07822;
+}

@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test RadioGroup component render Render correctly 1`] = `
+<div
+  className="inline"
+  style={undefined}
+>
+  <div
+    className="radio_padding"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <div
+      className="inline_block relative padding"
+    >
+      <label
+        className="label"
+        htmlFor={undefined}
+        title="Option 1"
+      >
+        Option 1
+      </label>
+      <div
+        className="float_left"
+      >
+        <input
+          checked={true}
+          className="input_style"
+          disabled={false}
+          hidden={false}
+          id={undefined}
+          index={0}
+          name="test"
+          onChange={[Function]}
+          type="radio"
+          value="first"
+        />
+        <div
+          className="radio checked"
+        >
+          <div
+            className="checkmark"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="radio_padding"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <div
+      className="inline_block relative padding"
+    >
+      <label
+        className="label"
+        htmlFor={undefined}
+        title="Option 2"
+      >
+        Option 2
+      </label>
+      <div
+        className="float_left"
+      >
+        <input
+          checked={false}
+          className="input_style"
+          disabled={false}
+          hidden={false}
+          id={undefined}
+          index={1}
+          name="test"
+          onChange={[Function]}
+          type="radio"
+          value="second"
+        />
+        <div
+          className="radio"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="radio_padding"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <div
+      className="inline_block relative padding"
+    >
+      <label
+        className="label"
+        htmlFor={undefined}
+        title="Option 3"
+      >
+        Option 3
+      </label>
+      <div
+        className="float_left"
+      >
+        <input
+          checked={false}
+          className="input_style"
+          disabled={false}
+          hidden={false}
+          id={undefined}
+          index={2}
+          name="test"
+          onChange={[Function]}
+          type="radio"
+          value="third"
+        />
+        <div
+          className="radio"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="radio_padding"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <div
+      className="inline_block relative padding"
+    >
+      <label
+        className="label"
+        htmlFor={undefined}
+        title="Option 4"
+      >
+        Option 4
+      </label>
+      <div
+        className="float_left"
+      >
+        <input
+          checked={false}
+          className="input_style"
+          disabled={false}
+          hidden={false}
+          id={undefined}
+          index={3}
+          name="test"
+          onChange={[Function]}
+          type="radio"
+          value="fourth"
+        />
+        <div
+          className="radio"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="radio_padding"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <div
+      className="inline_block relative padding"
+    >
+      <label
+        className="label"
+        htmlFor={undefined}
+        title="Option 5"
+      >
+        Option 5
+      </label>
+      <div
+        className="float_left"
+      >
+        <input
+          checked={false}
+          className="input_style"
+          disabled={false}
+          hidden={false}
+          id={undefined}
+          index={4}
+          name="test"
+          onChange={[Function]}
+          type="radio"
+          value="fifth"
+        />
+        <div
+          className="radio"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="radio_padding"
+    onClick={[Function]}
+    style={undefined}
+  >
+    <div
+      className="inline_block relative padding"
+    >
+      <label
+        className="label"
+        htmlFor={undefined}
+        title="Option 6"
+      >
+        Option 6
+      </label>
+      <div
+        className="float_left"
+      >
+        <input
+          checked={false}
+          className="input_style"
+          disabled={false}
+          hidden={false}
+          id={undefined}
+          index={5}
+          name="test"
+          onChange={[Function]}
+          type="radio"
+          value="sixth"
+        />
+        <div
+          className="radio"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

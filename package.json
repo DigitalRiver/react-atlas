@@ -1,45 +1,43 @@
 {
-  "name": "react-atlas-dev",
+  "name": "react-atlas",
+  "version": "0.1.0-rc0",
   "description": "Composable React components with CSS Modules.",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "updateSnapshot": "jest --updateSnapshot",
     "coverage": "jest --coverage",
-    "format": "prettier packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas/src/**/*.js packages/react-atlas-default-theme/src/**/*.js packages/react-atlas-tests/**/*.js --write",
-    "lint": "eslint packages/react-atlas-core/src/**/*.js packages/react-atlas-core/src/**/**/*.js packages/react-atlas-default-theme/src/**/*.js --fix",
+    "format": "prettier src/**/*.js config/*.js scripts/*.js --write",
+    "lint": "eslint src/**/*.js config/*.js scripts/*.js --fix",
     "format-lint": "npm run format && npm run lint",
-    "lerna:init": "lerna init",
-    "lerna:bootstrap": "lerna bootstrap",
-    "lerna:updated": "lerna updated",
-    "audit": "node scripts/auditPackages.js",
-    "publish": "node scripts/publishPackages.js",
-    "clean": "node scripts/cleanPackages.js",
-    "packages:build": "node scripts/buildPackages.js",
-    "setup": "npm run lerna:bootstrap && npm run packages:build",
-    "codegen": "node packages/react-atlas/src/codegen.js",
-    "build": "npm run lerna:init && npm run lerna:bootstrap && npm run codegen && npm run packages:build",
-    "build:prd": "cross-env NODE_ENV=production npm run build",
-    "build:dev": "cross-env NODE_ENV=development npm run build",
-    "docs:prd": "cross-env NODE_ENV=production node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
-    "docs:dev": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide",
-    "docs:build": "cross-env NODE_ENV=development node packages/react-atlas/src/codegen.js && cd packages/react-atlas && npm run styleguide:build",
-    "gh-pages:publish": "cd scripts && node gh-pages.js",
+    "build:prd": "cross-env NODE_ENV=production webpack -p --config config/webpack.config.js && webpack -p --config config/webpack.index.config.js",
+    "build:dev": "cross-env NODE_ENV=development webpack --config config/webpack.config.js && webpack --config config/webpack.index.config.js",
+    "docs:prd": "cross-env NODE_ENV=production styleguidist build",
+    "docs:dev": "cross-env NODE_ENV=development styleguidist server --config config/styleguide.config.js",
+    "docs:publish": "node scriptsgh-pages.js",
     "precommit": "lint-staged"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/scripts/enzymeConfig.js",
     "collectCoverageFrom": [
-      "packages/react-atlas-core/src/**/*.js"
+      "src/**/*.js"
     ],
     "moduleNameMapper": {
       "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
     }
   },
   "lint-staged": {
-       "*.js": ["prettier --write", "eslint --fix", "git add"]
-   },
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/DigitalRiver/react-atlas/issues"
   },
@@ -52,40 +50,47 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "inputmask-core": "^2.2.0",
+    "match-sorter": "^2.2.3",
+    "moment": "^2.22.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-bootstrap-table": "^4.3.1",
+    "react-css-modules": "^4.7.2",
+    "react-datepicker": "^1.4.1",
+    "react-dom": "^16.2.0",
+    "react-dropzone": "^4.2.9"
   },
   "devDependencies": {
-    "auditjs": "^2.2.2",
     "babel-eslint": "^8.0.1",
+    "babel-jest": "^23.0.1",
+    "babel-loader": "^7.1.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-constant-elements": "^6.23.0",
-    "babel-plugin-transform-react-inline-elements": "^6.22.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "cross-env": "^5.0.3",
-    "cross-spawn": "^5.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.9.0",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-react": "^7.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
     "gh-pages": "^1.1.0",
-    "glob": "^7.1.1",
+    "glob-all": "^3.1.0",
     "husky": "^0.14.3",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
-    "lerna": "^2.8.0",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^7.1.2",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.5",
     "prettier": "^1.6.1",
-    "react-styleguidist": "^6.0.31",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "react-styleguidist": "^7.0.2",
     "react-test-renderer": "^16.2.0",
-    "rimraf": "^2.6.1",
-    "sinon": "^4.0.1",
     "webpack": "^3.8.1",
-    "xml-parser": "^1.2.1"
+    "webpack-bundle-analyzer": "^2.13.0"
   },
   "repository": {
     "type": "git",

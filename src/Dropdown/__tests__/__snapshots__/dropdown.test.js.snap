@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test dropdown component Test render correctly 1`] = `
+<div>
+  <div
+    className="dropdown"
+  >
+    <div
+      className="textfieldWrapper"
+    >
+      <input
+        autoComplete="off"
+        className="pointer textfield"
+        disabled={undefined}
+        id={undefined}
+        message={null}
+        name={null}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        readOnly={true}
+        required={undefined}
+        status={null}
+        style={undefined}
+        type="text"
+        value=""
+      />
+    </div>
+    <i
+      className="arrow"
+    />
+    <div
+      className="hidden options pointer"
+      style={undefined}
+    >
+      <div
+        className="optionWrapper"
+        index={0}
+        onMouseDown={[Function]}
+        onMouseOver={[Function]}
+      >
+        <span
+          className="option defaultFont"
+          htmlFor={undefined}
+          id={undefined}
+          style={undefined}
+          title="May"
+          value=""
+        >
+          May
+        </span>
+      </div>
+      <div
+        className="optionWrapper"
+        index={1}
+        onMouseDown={[Function]}
+        onMouseOver={[Function]}
+      >
+        <span
+          className="option defaultFont"
+          htmlFor={undefined}
+          id={undefined}
+          style={undefined}
+          title="the"
+          value="the"
+        >
+          the
+        </span>
+      </div>
+      <div
+        className="optionWrapper"
+        index={2}
+        onMouseDown={[Function]}
+        onMouseOver={[Function]}
+      >
+        <span
+          className="option defaultFont"
+          htmlFor={undefined}
+          id={undefined}
+          style={undefined}
+          title="force"
+          value="force"
+        >
+          force
+        </span>
+      </div>
+      <div
+        className="optionWrapper"
+        index={3}
+        onMouseDown={[Function]}
+        onMouseOver={[Function]}
+      >
+        <span
+          className="option defaultFont"
+          htmlFor={undefined}
+          id={undefined}
+          style={undefined}
+          title="be"
+          value="be"
+        >
+          be
+        </span>
+      </div>
+      <div
+        className="optionWrapper"
+        index={4}
+        onMouseDown={[Function]}
+        onMouseOver={[Function]}
+      >
+        <span
+          className="option defaultFont"
+          htmlFor={undefined}
+          id={undefined}
+          style={undefined}
+          title="with"
+          value="with"
+        >
+          with
+        </span>
+      </div>
+      <div
+        className="optionWrapper"
+        index={5}
+        onMouseDown={[Function]}
+        onMouseOver={[Function]}
+      >
+        <span
+          className="option defaultFont"
+          htmlFor={undefined}
+          id={undefined}
+          style={undefined}
+          title="you"
+          value="you"
+        >
+          you
+        </span>
+      </div>
+    </div>
+  </div>
+  <input
+    disabled={undefined}
+    name={undefined}
+    type="hidden"
+    value=""
+  />
+</div>
+`;
