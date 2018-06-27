@@ -129,10 +129,10 @@ export class TextArea extends React.PureComponent {
         "status": validationObject.status,
         "message": validationObject.message,
         "value": value,
-        "active": change
+        "active": false
       },
       () => {
-        this._eventHandlers(e, change);
+        this._eventHandlers(e, false);
       }
     );
   };
