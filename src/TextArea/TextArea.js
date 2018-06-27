@@ -55,9 +55,16 @@ export class TextArea extends React.PureComponent {
     }
   };
 
-  _validate = (e, inputValue, change) => {
+  _handleChange = e => {
+    e.persist();
+    let value = e.target.value;
+
+    if (this.props.uppercase) {
+      value = value.toUpperCase();
+    }
+
     const validationObject = utils.validate(
-      inputValue,
+      value,
       this.props.valid,
       this.props.status,
       this.props.message,
@@ -65,7 +72,7 @@ export class TextArea extends React.PureComponent {
     );
 
     const data = {
-      "value": inputValue,
+      "value": value,
       "status": validationObject.status,
       "message": validationObject.message
     };
@@ -83,24 +90,13 @@ export class TextArea extends React.PureComponent {
       {
         "status": validationObject.status,
         "message": validationObject.message,
-        "value": inputValue,
-        "active": change
+        "value": value,
+        "active": true
       },
       () => {
         this._eventHandlers(e, change);
       }
     );
-  };
-
-  _handleChange = e => {
-    e.persist();
-    let value = e.target.value;
-
-    if (this.props.uppercase) {
-      value = value.toUpperCase();
-    }
-
-    this._validate(e, value, true);
   };
 
   _handleFocus = e => {
@@ -119,7 +115,26 @@ export class TextArea extends React.PureComponent {
   _handleBlur = e => {
     e.persist();
     const value = e.target.value;
-    this._validate(e, value, false);
+    const validationObject = utils.validate(
+      value,
+      this.props.valid,
+      this.props.status,
+      this.props.message,
+      this.props.required,
+      e
+    );
+
+    this.setState(
+      {
+        "status": validationObject.status,
+        "message": validationObject.message,
+        "value": value,
+        "active": change
+      },
+      () => {
+        this._eventHandlers(e, change);
+      }
+    );
   };
 
   render() {
