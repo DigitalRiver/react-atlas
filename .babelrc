@@ -1,20 +1,6 @@
 {
-  "presets": [
-    "env",
-    "react"
-  ],
-  "plugins": [
-    "transform-class-properties",
-    "transform-object-rest-spread",
-    "transform-export-extensions"
-  ],
-  "env": {
-    "production": {
-      "plugins": [
-        "transform-react-constant-elements",
-        "transform-react-inline-elements",
-        "transform-react-remove-prop-types"
-      ]
-    }
+    "presets": [
+      "react", "env"
+    ],
+    "plugins": ["transform-class-properties", "transform-object-rest-spread"]
   }
-}

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Text component renders correctly 1`] = `
+<div
+  className="textareaWrapper"
+>
+  <textarea
+    className="textarea textareaWidth"
+    disabled={undefined}
+    id={undefined}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    required={undefined}
+    style={undefined}
+    type="text"
+    value=""
+  />
+</div>
+`;

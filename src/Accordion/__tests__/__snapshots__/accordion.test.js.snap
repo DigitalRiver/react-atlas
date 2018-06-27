@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Accordion component Test render correctly 1`] = `
+<div
+  className=""
+  style={undefined}
+>
+  <div
+    className="accordion"
+  >
+    <div>
+      <div
+        className="accordion_header header-active"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+      <div
+        className="active"
+      >
+        <div
+          className="panel"
+        >
+          <div
+            expanded="true"
+            id={true}
+          >
+            Text for first accordion item
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="accordion_header header-active"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+      <div
+        className="active"
+      >
+        <div
+          className="panel"
+        >
+          <div
+            expanded="true"
+          >
+            Text for second accordion item
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="accordion_header header-active"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+      <div
+        className="active"
+      >
+        <div
+          className="panel"
+        >
+          <div
+            expanded="true"
+          >
+            Text for third accordion item
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

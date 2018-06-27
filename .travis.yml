@@ -1,11 +1,10 @@
 language: node_js
 sudo: false
 node_js:
-    - "6"
+- '6'
 install:
-    - npm install
+- npm install
 script:
-    - npm run build
-    - npm run lint
-    - npm run test
-    - npm run audit
+- npm run build:prd
+- npm run lint
+- npm run test

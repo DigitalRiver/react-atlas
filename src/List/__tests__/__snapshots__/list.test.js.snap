@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test List component renders correctly 1`] = `
+<div
+  className="list border"
+  id={undefined}
+  style={undefined}
+>
+  <div
+    className="divider"
+    id={undefined}
+    style={undefined}
+  >
+    <div
+      className="groupTitle"
+    >
+      Dinosaurs
+    </div>
+    <div
+      className="listItem"
+      id={undefined}
+      onClick={undefined}
+      style={undefined}
+    >
+      <div
+        className="inlineBlock"
+      >
+        <div
+          className="avatar"
+          title="Blue"
+        >
+          <span
+            className="letter"
+          >
+            B
+          </span>
+        </div>
+      </div>
+      <div
+        className="inlineBlock"
+      >
+        <button
+          className="button link link_hover"
+          href={undefined}
+          id={undefined}
+          name={undefined}
+          onClick={undefined}
+          style={undefined}
+          tabIndex={0}
+          type="button"
+        >
+          Blue
+        </button>
+      </div>
+      <div
+        className="rightItem"
+      >
+        <div
+          className="switch"
+        >
+          <div
+            className="sliderMedium sliderEnabledOffColor"
+            onClick={[Function]}
+            style={undefined}
+          >
+            <input
+              checked={false}
+              className="inputMedium"
+              disabled={false}
+              hidden={false}
+              id={undefined}
+              name={undefined}
+              type="checkbox"
+            />
+            <div
+              className="handleMedium handleEnabledColor"
+              style={
+                Object {
+                  "background": undefined,
+                }
+              }
+            />
+            <div
+              className="onColorMedium"
+              style={
+                Object {
+                  "background": undefined,
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="listItem"
+      id={undefined}
+      onClick={undefined}
+      style={undefined}
+    >
+      <div
+        className="inlineBlock"
+      >
+        <div
+          className="avatar"
+          title="Earl"
+        >
+          <span
+            className="letter"
+          >
+            E
+          </span>
+        </div>
+      </div>
+      <div
+        className="inlineBlock"
+      >
+        <button
+          className="button link link_hover"
+          href={undefined}
+          id={undefined}
+          name={undefined}
+          onClick={undefined}
+          style={undefined}
+          tabIndex={0}
+          type="button"
+        >
+          Earl Sinclair
+        </button>
+      </div>
+      <div
+        className="rightItem"
+      >
+        <div
+          className="switch"
+        >
+          <div
+            className="sliderMedium sliderEnabledOffColor"
+            onClick={[Function]}
+            style={undefined}
+          >
+            <input
+              checked={false}
+              className="inputMedium"
+              disabled={false}
+              hidden={false}
+              id={undefined}
+              name={undefined}
+              type="checkbox"
+            />
+            <div
+              className="handleMedium handleEnabledColor"
+              style={
+                Object {
+                  "background": undefined,
+                }
+              }
+            />
+            <div
+              className="onColorMedium"
+              style={
+                Object {
+                  "background": undefined,
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
