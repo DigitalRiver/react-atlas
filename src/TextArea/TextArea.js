@@ -139,7 +139,8 @@ export class TextArea extends React.PureComponent {
       ...others
     } = this.props;
 
-    let othersFiltered = blacklist(others, "onBeforeChange");
+    // Declaring the following variables so they don't get passed to the Textarea through the prop spread.
+    const othersFiltered = blacklist(others, "onBeforeChange");
 
     let wrapperClasses = cx({
       leftLabel,

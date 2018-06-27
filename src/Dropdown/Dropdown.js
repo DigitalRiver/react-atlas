@@ -528,7 +528,8 @@ export class Dropdown extends React.PureComponent {
       ...others
     } = this.props;
 
-    let othersFiltered = blacklist(
+    // Declaring the following variables so they don't get passed to TextField through the prop spread.
+    const othersFiltered = blacklist(
       others,
       "children",
       "onBeforeChange",

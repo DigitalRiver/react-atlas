@@ -44,7 +44,8 @@ export class Dialog extends React.PureComponent {
       ...others
     } = this.props;
 
-    let othersFiltered = blacklist(others, "styles");
+    // Declaring the following variables so they don't get passed to Modal through the prop spread.
+    const othersFiltered = blacklist(others, "styles");
 
     return (
       active && 

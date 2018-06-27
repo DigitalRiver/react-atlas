@@ -160,7 +160,8 @@ export class TextField extends React.PureComponent {
       ...others
     } = this.props;
 
-    let othersFiltered = blacklist(
+    // Declaring the following variables so they don't get passed to the input element through the prop spread.
+    const othersFiltered = blacklist(
       others,
       "uppercase",
       "valid",

@@ -61,7 +61,12 @@ export class Radio extends React.PureComponent {
       ...others
     } = this.props;
 
-    let othersFiltered = blacklist(others, "groupSetChecked", "onBeforeChange");
+    // Declaring the following variables so they don't get passed to the DOM element through the prop spread.
+    const othersFiltered = blacklist(
+      others,
+      "groupSetChecked",
+      "onBeforeChange"
+    );
 
     /* Classes and styles setup */
     let wrapperStyles = cx(

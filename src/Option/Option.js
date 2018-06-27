@@ -22,7 +22,8 @@ export class Option extends React.PureComponent {
   render() {
     const { hover, selected, text, value, ...others } = this.props;
 
-    let othersFiltered = blacklist(others, "optionClick", "optionHover");
+    // Declaring the following variables so they don't get passed to the option element through the prop spread.
+    const othersFiltered = blacklist(others, "optionClick", "optionHover");
 
     const optionWrapper = cx({
       "optionWrapper": true,
