@@ -67,7 +67,7 @@ export class Dropdown extends React.PureComponent {
     const menuNode = this.menuRef.current;
 
     if (this.hoverRef.current !== null) {
-      // keyboard scrolls takes options in view
+      // keyboard scrolls take options in view
       const optionNode = this.hoverRef.current.optionDivRef.current;
 
       const menuTop = menuNode.scrollTop;
@@ -89,7 +89,7 @@ export class Dropdown extends React.PureComponent {
       }
     }
 
-    // Drop options menu should be fully visible in view when expanded
+    // put dropdown menu fully in view when expanded
     const menuRect = menuNode.getBoundingClientRect();
     if (window.innerHeight < menuRect.bottom) {
       window.scrollBy(0, menuRect.bottom - window.innerHeight);
@@ -440,7 +440,11 @@ export class Dropdown extends React.PureComponent {
             }
           }
         );
-      } else if (this.state.active) {
+      } else if (
+        this.state.active &&
+        (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Enter")
+      ) {
+        e.preventDefault();
         if (e.key === "ArrowDown") {
           if (
             this.state.tempIndex !== null &&
@@ -479,7 +483,6 @@ export class Dropdown extends React.PureComponent {
           }
           updateTempIndex(newIndex);
         } else if (e.key === "Enter") {
-          e.preventDefault();
           if (
             typeof this.props.disabled !== "undefined" &&
               this.props.disabled ||
