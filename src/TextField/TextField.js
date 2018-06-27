@@ -103,7 +103,6 @@ export class TextField extends React.PureComponent {
 
   _handleFocus = e => {
     e.persist();
-    console.log("handle focus fired");
     this.setState({ "active": true }, function() {
       if (typeof this.props.onFocus === "function") {
         this.props.onFocus(e, {
@@ -116,14 +115,12 @@ export class TextField extends React.PureComponent {
   };
 
   _handleBlur = e => {
-    console.log("handle blur fired");
     e.persist();
     const value = e.target.value;
     this._validate(e, value, false);
   };
 
   _handleClick = e => {
-    console.log("handle click fired");
     e.persist();
     if (typeof this.props.onClick === "function") {
       this.props.onClick(e, {
@@ -135,7 +132,6 @@ export class TextField extends React.PureComponent {
   };
 
   _handleKeyDown = e => {
-    console.log("handle keydown fired");
     e.persist();
     if (typeof this.props.onKeyDown === "function") {
       this.props.onKeyDown(e, {
