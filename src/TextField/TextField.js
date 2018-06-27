@@ -11,30 +11,42 @@ export class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    // Initial state
+    let value = props.value || "";
+
+    if (this.props.mask) {
+      let maskOptions = {
+        "pattern": props.mask,
+        "value": value
+      };
+
+      this.mask = new InputMask(maskOptions);
+
+      if (props.value) {
+        value = this.mask.getValue();
+      }
+    }
+
     this.state = {
-      "value": props.value || "",
+      "value": value,
       "active": false,
       "status": props.status || null,
       "message": props.message || null
     };
-
-    // Configure input mask if required
-    if (this.props.mask) {
-      let maskOptions = {
-        "pattern": props.mask,
-        "value": props.value || ""
-      };
-
-      this.mask = new InputMask(maskOptions);
-    }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
+      let value = nextProps.value;
+      if (this.props.mask) {
+        this.mask.setValue(nextProps.value);
+        value = this.mask.getValue();
+      }
       this.setState({
-        "value": nextProps.value
+        "value": value
       });
+    }
+    if(nextProps.mask && nextProps.mask !== this.props.mask) {
+      this.mask.setPattern(nextProps.mask, {value: this.mask.getRawValue()});
     }
     if (
       typeof nextProps.status !== "undefined" &&
@@ -53,18 +65,25 @@ export class TextField extends React.PureComponent {
     this.mask.selection = utils.getSelection(this.input);
   };
 
-  _updateInputSelection = () => {
+  _updateMaskSelection = () => {
     let selection = this.mask.selection;
     utils.setSelection(this.input, selection);
   };
 
-  _getDisplayValue = () => {
+  _getMaskDisplayValue = () => {
     let value = this.mask.getValue();
     return value === this.mask.emptyValue ? "" : value;
   };
 
   _eventHandlers = (e, change) => {
+
+    let rawValue = null;
+    if(this.props.mask) {
+      rawValue = this.mask.getRawValue();
+    }
+
     const data = {
+      "rawValue": rawValue,
       "value": this.state.value,
       "status": this.state.status,
       "message": this.state.message
@@ -88,21 +107,6 @@ export class TextField extends React.PureComponent {
       this.props.required,
       event
     );
-
-    const data = {
-      "value": inputValue,
-      "status": validationObject.status,
-      "message": validationObject.message
-    };
-
-    let result = true;
-    if (this.props.onBeforeChange) {
-      result = this.props.onBeforeChange(event, data);
-    }
-
-    if (result === false) {
-      return;
-    }
 
     this.setState(
       {
@@ -134,13 +138,34 @@ export class TextField extends React.PureComponent {
           this.mask.backspace();
         }
         // Set new input value based on mask
-        let newValue = this._getDisplayValue();
+        let newValue = this._getMaskDisplayValue();
         value = newValue;
 
         if (newValue) {
-          this._updateInputSelection();
+          this._updateMaskSelection();
         }
       }
+    }
+
+    let rawValue = null;
+    if(this.props.mask) {
+      rawValue = this.mask.getRawValue();
+    }
+
+    const data = {
+      "rawValue": rawValue,
+      "value": value,
+      "status": this.state.status,
+      "message": this.state.message
+    };
+
+    let result = true;
+    if (this.props.onBeforeChange) {
+      result = this.props.onBeforeChange(e, data);
+    }
+
+    if (result === false) {
+      return;
     }
 
     if (this.props.uppercase) {
@@ -200,16 +225,14 @@ export class TextField extends React.PureComponent {
         this._updateMaskSelection();
 
         if (this.mask.backspace()) {
-          let value = this._getDisplayValue();
+          let value = this._getMaskDisplayValue();
           e.target.value = value;
           if (value) {
-            this._updateInputSelection();
+            this._updateMaskSelection();
           }
         }
+        this._handleChange(e);
       }
-
-      // Fire onChange event
-      this._handleChange(e);
     }
   };
 
@@ -231,11 +254,9 @@ export class TextField extends React.PureComponent {
       // Check if pressed key corresponds to mask pattern
       if (this.mask.input(event.key || event.data)) {
         event.target.value = this.mask.getValue();
-        this._updateInputSelection();
+        this._updateMaskSelection();
+        this._handleChange(event);
       }
-
-      // Fire onChange event
-      this._handleChange(event);
     }
   };
 
@@ -251,7 +272,7 @@ export class TextField extends React.PureComponent {
       if (this.mask.paste(event.clipboardData.getData("Text"))) {
         event.target.value = this.mask.getValue();
         // Timeout needed for IE
-        setTimeout(this._updateInputSelection, 0);
+        setTimeout(this._updateMaskSelection, 0);
       }
 
       // Fire onChange event
