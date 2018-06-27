@@ -5,6 +5,7 @@ import { Modal } from "../Modal";
 import cx from "classnames";
 import CSSModules from "react-css-modules";
 import styles from "./Dialog.css";
+import blacklist from "blacklist";
 
 export class Dialog extends React.PureComponent {
   _getButtonContent = () => {
@@ -40,11 +41,12 @@ export class Dialog extends React.PureComponent {
       children,
       style,
       onOverlayClick,
-      /*eslint-disable */
-      styles,
-      /*eslint-enable */
       ...others
     } = this.props;
+
+    // Declaring the following variables so they don't get passed to Modal through the prop spread.
+    const othersFiltered = blacklist(others, "styles");
+
     return (
       active && 
         <Modal
@@ -52,7 +54,7 @@ export class Dialog extends React.PureComponent {
           style={style}
           active={active}
           onOverlayClick={onOverlayClick}
-          {...others}
+          {...othersFiltered}
         >
           <div className={cx("ra_Dialog__dialog", "ra_styles__default-font")}>
             {children}

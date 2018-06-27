@@ -6,6 +6,7 @@ import messages from "../utils/messages.js";
 import CSSModules from "react-css-modules";
 import styles from "./Checkbox.css";
 import { Text } from "../Text";
+import blacklist from "blacklist";
 
 /**
  * Simple component for a basic checkbox
@@ -100,13 +101,12 @@ export class Checkbox extends React.PureComponent {
       status,
       style,
       title,
-      /*eslint-disable */
-      // Declaring the following variables so they don't get passed to the input through the prop spread.
-      onBeforeChange,
-      valid,
-      /*eslint-enable */
       ...others
     } = this.props;
+
+    // Declaring the following variables so they don't get passed to the input through the prop spread.
+    const othersFiltered = blacklist(others, "onBeforeChange", "valid");
+
     const inlineCheckbox = cx({
       "inline_block": inline,
       "checkbox_padding": !inline,
@@ -161,7 +161,7 @@ export class Checkbox extends React.PureComponent {
           }
           <div styleName={checkboxDisplay}>
             <input
-              {...others}
+              {...othersFiltered}
               label={label}
               type="checkbox"
               disabled={disabled}

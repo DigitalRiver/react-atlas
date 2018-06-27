@@ -5,6 +5,7 @@ import { Label } from "../Label";
 import { utils } from "../utils";
 import CSSModules from "react-css-modules";
 import styles from "./TextField.css";
+import blacklist from "blacklist";
 
 export class TextField extends React.PureComponent {
   constructor(props) {
@@ -156,13 +157,16 @@ export class TextField extends React.PureComponent {
       tooltip,
       tooltipPosition,
       type,
-      /*eslint-disable */
-      // Declaring the following variables so they don't get passed to the input element through the prop spread.
-      uppercase,
-      valid,
-      /*eslint-enable */
       ...others
     } = this.props;
+
+    // Declaring the following variables so they don't get passed to the input element through the prop spread.
+    const othersFiltered = blacklist(
+      others,
+      "uppercase",
+      "valid",
+      "onBeforeChange"
+    );
 
     let wrapperClasses = cx({
       leftLabel,
@@ -204,7 +208,7 @@ export class TextField extends React.PureComponent {
       <div styleName={wrapperClasses}>
         {textFieldLabel}
         <input
-          {...others}
+          {...othersFiltered}
           id={id}
           type={type}
           value={this.state.value}

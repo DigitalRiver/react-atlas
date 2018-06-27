@@ -4,6 +4,7 @@ import cx from "classnames";
 import { Text } from "../Text";
 import CSSModules from "react-css-modules";
 import styles from "./Option.css";
+import blacklist from "blacklist";
 
 export class Option extends React.PureComponent {
   constructor(props) {
@@ -19,18 +20,10 @@ export class Option extends React.PureComponent {
   };
 
   render() {
-    const {
-      hover,
-      selected,
-      text,
-      value,
-      /*eslint-disable */
-      // Declaring the following variables so they don't get passed to the option element through the prop spread.
-      optionClick,
-      optionHover,
-      /*eslint-enable */
-      ...others
-    } = this.props;
+    const { hover, selected, text, value, ...others } = this.props;
+
+    // Declaring the following variables so they don't get passed to the option element through the prop spread.
+    const othersFiltered = blacklist(others, "optionClick", "optionHover");
 
     const optionWrapper = cx({
       "optionWrapper": true,
@@ -44,7 +37,7 @@ export class Option extends React.PureComponent {
         onMouseDown={this._clickHandler}
         styleName={optionWrapper}
         ref={hover ? this.optionDivRef : null}
-        {...others}
+        {...othersFiltered}
       >
         <Text title={text} styleName={cx("option")} value={value}>
           {text}
