@@ -81,12 +81,11 @@
         onChange={ (event, data) => { console.log('onChange: ', event, data); } }
         onBlur={ (event, data) => { console.log('onBlur: ', event, data); } }
         onFocus={ (event, data) => { console.log('onFocus: ', event, data); } }
-        onBeforeChange={ (event, data) => { return true;} }
     />
     
 ###### TextField onBeforeChange:
     <TextField 
-        onBeforeChange={ (event, data) => { return false;} }
+        onBeforeChange={ (event, data) => { let accept = confirm(`Are you sure you want to change the value to ${data.value}?`); return accept; } }
     />
 
 ###### Tooltip Textfield with Label:
