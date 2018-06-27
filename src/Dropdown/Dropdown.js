@@ -440,6 +440,7 @@ export class Dropdown extends React.PureComponent {
           }
         );
       } else if (this.state.active) {
+        e.preventDefault();
         if (e.key === "ArrowDown") {
           if (
             this.state.tempIndex !== null &&
@@ -478,7 +479,6 @@ export class Dropdown extends React.PureComponent {
           }
           updateTempIndex(newIndex);
         } else if (e.key === "Enter") {
-          e.preventDefault();
           if (
             typeof this.props.disabled !== "undefined" &&
               this.props.disabled ||
