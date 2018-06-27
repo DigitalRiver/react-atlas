@@ -439,7 +439,10 @@ export class Dropdown extends React.PureComponent {
             }
           }
         );
-      } else if (this.state.active) {
+      } else if (
+        this.state.active &&
+        (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Enter")
+      ) {
         e.preventDefault();
         if (e.key === "ArrowDown") {
           if (
