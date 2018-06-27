@@ -7,11 +7,11 @@ describe("Test Accordion component", () => {
   it("Test render correctly", () => {
     const comp = 
       <Accordion>
-        <div expanded id>
+        <div expanded="true" id>
           Text for first accordion item
         </div>
-        <div expanded>Text for second accordion item</div>
-        <div expanded>Text for third accordion item</div>
+        <div expanded="true">Text for second accordion item</div>
+        <div expanded="true">Text for third accordion item</div>
       </Accordion>
     ;
     const tree = renderer.create(comp).toJSON();
@@ -22,9 +22,9 @@ describe("Test Accordion component", () => {
 describe("Test Accordion Component: Basic Tests", () => {
   const accordionComponent = shallow(
     <Accordion>
-      <div expanded>Text for first accordion item</div>
-      <div expanded>Text for second accordion item</div>
-      <div expanded>Text for third accordion item</div>
+      <div expanded="true">Text for first accordion item</div>
+      <div expanded="true">Text for second accordion item</div>
+      <div expanded="true">Text for third accordion item</div>
     </Accordion>
   );
 
@@ -182,7 +182,7 @@ describe("Test Accordion Component: Test _setActiveChildArray() method", () => {
 describe("Test Accordion Component: _getExpandedPanels() method", () => {
   const acc = mount(
     <Accordion>
-      <div expanded>Text for first accordion item</div>
+      <div expanded="true">Text for first accordion item</div>
       <div>Text for second accordion item</div>
       <div>Text for third accordion item</div>
       <div>Text for fourth accordion item</div>

@@ -8,6 +8,7 @@ import { utils } from "../utils";
 import matchSorter from "match-sorter";
 import CSSModules from "react-css-modules";
 import styles from "./Dropdown.css";
+import blacklist from "blacklist";
 
 export class Dropdown extends React.PureComponent {
   constructor(props) {
@@ -86,6 +87,12 @@ export class Dropdown extends React.PureComponent {
       } else if (menuTop > optionTop) {
         menuNode.scrollTop = optionNode.offsetTop;
       }
+    }
+
+    // Drop options menu should be fully visible in view when expanded
+    const menuRect = menuNode.getBoundingClientRect();
+    if (window.innerHeight < menuRect.bottom) {
+      window.scrollBy(0, menuRect.bottom - window.innerHeight);
     }
   }
 
@@ -518,14 +525,16 @@ export class Dropdown extends React.PureComponent {
       tooltip,
       tooltipPosition,
       valueOnly,
-      /*eslint-disable */
-      // Declaring the following variables so they don't get passed to TextField through the prop spread.
-      children,
-      onBeforeChange,
-      options,
-      /*eslint-enable */
       ...others
     } = this.props;
+
+    // Declaring the following variables so they don't get passed to TextField through the prop spread.
+    const othersFiltered = blacklist(
+      others,
+      "children",
+      "onBeforeChange",
+      "options"
+    );
 
     const wrapperClasses = cx({
       leftLabel,
@@ -577,7 +586,7 @@ export class Dropdown extends React.PureComponent {
         {dropdownLabel}
         <div styleName={dropdownClasses}>
           <TextField
-            {...others}
+            {...othersFiltered}
             autoComplete={autocomplete}
             className={className}
             disabled={disabled}
