@@ -97,6 +97,13 @@
 
     <TextField uppercase />
 
+###### Masked text input:
+
+    <div>
+        <TextField label="Phone Number" placeholder="(___) ___-____" mask="(111) 111-1111"/>
+        <TextField label="Expiration Date" placeholder="MM/YYYY" mask="11/1111"/>
+    </div>
+
 ###### Externally controlled status:
 
     initialState = {status: "error", message: "Please enter a value."}

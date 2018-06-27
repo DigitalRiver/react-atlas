@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import InputMask from "inputmask-core";
 import { Label } from "../Label";
 import { utils } from "../utils";
 import CSSModules from "react-css-modules";
@@ -17,6 +18,16 @@ export class TextField extends React.PureComponent {
       "status": props.status || null,
       "message": props.message || null
     };
+
+    // Configure input mask if required
+    if (this.props.mask) {
+      let maskOptions = {
+        "pattern": props.mask,
+        "value": props.value || ""
+      };
+
+      this.mask = new InputMask(maskOptions);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,6 +48,20 @@ export class TextField extends React.PureComponent {
       });
     }
   }
+
+  _updateMaskSelection = () => {
+    this.mask.selection = utils.getSelection(this.input);
+  };
+
+  _updateInputSelection = () => {
+    let selection = this.mask.selection;
+    utils.setSelection(this.input, selection);
+  };
+
+  _getDisplayValue = () => {
+    let value = this.mask.getValue();
+    return value === this.mask.emptyValue ? "" : value;
+  };
 
   _eventHandlers = (e, change) => {
     const data = {
@@ -96,6 +121,28 @@ export class TextField extends React.PureComponent {
     e.persist();
     let value = e.target.value;
 
+    /* Masked input validations */
+    if (this.props.mask) {
+      let maskValue = this.mask.getValue();
+
+      if (value !== maskValue) {
+        // Cut or delete operations will have shortened the value
+        if (value.length < maskValue.length) {
+          let sizeDiff = maskValue.length - value.length;
+          this._updateMaskSelection();
+          this.mask.selection.end = this.mask.selection.start + sizeDiff;
+          this.mask.backspace();
+        }
+        // Set new input value based on mask
+        let newValue = this._getDisplayValue();
+        value = newValue;
+
+        if (newValue) {
+          this._updateInputSelection();
+        }
+      }
+    }
+
     if (this.props.uppercase) {
       value = value.toUpperCase();
     }
@@ -140,6 +187,75 @@ export class TextField extends React.PureComponent {
         "status": this.state.status,
         "message": this.state.message
       });
+    }
+
+    /**
+     * Handle proper deletion of masked input characters.
+     * We do this onKeyDown because backspace key event
+     * won't reach onKeyPress event.
+     */
+    if (this.props.mask) {
+      if (e.key === "Backspace") {
+        e.preventDefault();
+        this._updateMaskSelection();
+
+        if (this.mask.backspace()) {
+          let value = this._getDisplayValue();
+          e.target.value = value;
+          if (value) {
+            this._updateInputSelection();
+          }
+        }
+      }
+
+      // Fire onChange event
+      this._handleChange(e);
+    }
+  };
+
+  _handleKeyPress = event => {
+    if (this.props.mask) {
+      // Ignore modified key presses and enter key to allow form submission
+      if (
+        event.metaKey ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.key === "Enter"
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+      this._updateMaskSelection();
+
+      // Check if pressed key corresponds to mask pattern
+      if (this.mask.input(event.key || event.data)) {
+        event.target.value = this.mask.getValue();
+        this._updateInputSelection();
+      }
+
+      // Fire onChange event
+      this._handleChange(event);
+    }
+  };
+
+  _handlePaste = event => {
+    /**
+     * Support pasting text in masked input. If text doesn't
+     * pass mask validation, it won't be pasted.
+     */
+    if (this.props.mask) {
+      event.preventDefault();
+      this._updateMaskSelection();
+
+      if (this.mask.paste(event.clipboardData.getData("Text"))) {
+        event.target.value = this.mask.getValue();
+        // Timeout needed for IE
+        setTimeout(this._updateInputSelection, 0);
+      }
+
+      // Fire onChange event
+      this._handleChange(event);
     }
   };
 
@@ -218,6 +334,11 @@ export class TextField extends React.PureComponent {
           onBlur={this._handleBlur}
           onClick={this._handleClick}
           onKeyDown={this._handleKeyDown}
+          onKeyPress={this._handleKeyPress}
+          onPaste={this._handlePaste}
+          ref={input => {
+            this.input = input;
+          }}
         />
         {this.state.message !== null && 
           <div>
@@ -254,6 +375,11 @@ TextField.propTypes = {
    * Allows user to move the label to the left of the TextField instead of above it
    */
   "leftLabel": PropTypes.bool,
+  /**
+   * Defines a pattern for masked input.
+   * @examples '<TextField mask="1111-1111-1111"/>'
+   */
+  "mask": PropTypes.string,
   /**
    * Sets the status message to display below the TextField. The color of the message will be determined by the value of the "status" property.
    * @examples '<TextField message="Incorrect answer" status="error" />'
