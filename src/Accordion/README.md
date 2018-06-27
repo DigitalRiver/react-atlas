@@ -27,7 +27,7 @@ Accordion with expanded div:
 
      <Accordion>
           <div title="First">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
-          <div title="Second" expanded>Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
+          <div title="Second" expanded="true">Lorem ipsum dolor sit amet, cum alienum splendide te, has ad possim equidem, ad novum insolens usu.</div>
      </Accordion>
 
 Accordion with disabled prop:
@@ -59,16 +59,16 @@ Accordion with onClick property:
 Updating Accordion divs by updating parent state:
 
       initialState = {plans: [
-        {id: 1, planDescription: "Plan One", expanded: true},
-        {id: 2, planDescription: "Plan Two", expanded: false}
+        {id: 1, planDescription: "Plan One", expanded: "true"},
+        {id: 2, planDescription: "Plan Two", expanded: "false"}
       ]}
 
       handleToggle = () => {
         setState({ 
           plans: [
-            {id: 1, planDescription: "Plan One", expanded: true},
-            {id: 2, planDescription: "Plan Two", expanded: false},
-            {id: 3, planDescription: "Plan Three", expanded: false}
+            {id: 1, planDescription: "Plan One", expanded: "true"},
+            {id: 2, planDescription: "Plan Two", expanded: "false"},
+            {id: 3, planDescription: "Plan Three", expanded: "false"}
           ] 
         })
       };

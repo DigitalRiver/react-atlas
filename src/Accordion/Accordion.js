@@ -54,7 +54,7 @@ export class Accordion extends React.PureComponent {
   _getExpandedPanels = children => {
     let childArray = [];
     React.Children.map(children, child => {
-      if (child.props.expanded) {
+      if (child.props.expanded === "true") {
         childArray.push(true);
       } else {
         childArray.push(false);
@@ -197,9 +197,9 @@ Accordion.propTypes = {
   "expandAll": PropTypes.bool,
   /**
    * Accordion will use the expanded prop from each child to determine if the child will be expanded on load.
-   * @examples <Accordion><div>value 1</div><div expanded>value 2</div></Accordion>
+   * @examples <Accordion><div>value 1</div><div expanded="true">value 2</div></Accordion>
    */
-  "expanded": PropTypes.bool,
+  "expanded": PropTypes.string,
   /**
    * When true, Accordion will allow multiple open panels.
    * @examples <Accordion multiOpen={true}>{children}</Accordion>
