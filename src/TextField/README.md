@@ -57,7 +57,7 @@
     <div>
         <TextField
             maxLength={1}
-            valid={ (value) => { 
+            valid={ (event, value) => { 
                 if(value === "1") {
                     return { status: "warning", message: "Warning"}
                 } else if(value === "2"){
@@ -81,7 +81,7 @@
         onChange={ (event, data) => { console.log('onChange: ', event, data); } }
         onBlur={ (event, data) => { console.log('onBlur: ', event, data); } }
         onFocus={ (event, data) => { console.log('onFocus: ', event, data); } }
-        onBeforeChange={ (event, data) => { return false;} }
+        onBeforeChange={ (event, data) => { return true;} }
     />
     
 ###### TextField onBeforeChange:
@@ -96,6 +96,13 @@
 ###### Textfield with uppercase prop:
 
     <TextField uppercase />
+
+###### Masked text input:
+
+    <div>
+        <TextField label="Phone Number" placeholder="(___) ___-____" mask="(111) 111-1111"/>
+        <TextField label="Expiration Date" placeholder="MM/YYYY" mask="11/1111"/>
+    </div>
 
 ###### Externally controlled status:
 
