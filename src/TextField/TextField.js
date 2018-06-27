@@ -152,28 +152,9 @@ export class TextField extends React.PureComponent {
     if(this.props.mask) {
       rawValue = this.mask.getRawValue();
     }
-
+    
     const data = {
       "rawValue": rawValue,
-      "value": value,
-      "status": this.state.status,
-      "message": this.state.message
-    };
-
-    let result = true;
-    if (this.props.onBeforeChange) {
-      result = this.props.onBeforeChange(e, data);
-    }
-
-    if (result === false) {
-      return;
-    }
-
-    if (this.props.uppercase) {
-      value = value.toUpperCase();
-    }
-
-    const data = {
       "value": value,
       "status": this.state.status,
       "message": this.state.message
@@ -184,6 +165,10 @@ export class TextField extends React.PureComponent {
       if (result === false) {
         return false;
       }
+    }
+
+    if (this.props.uppercase) {
+      value = value.toUpperCase();
     }
 
     this._validate(e, value, true);
