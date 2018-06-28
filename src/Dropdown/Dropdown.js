@@ -387,7 +387,8 @@ export class Dropdown extends React.PureComponent {
         {
           ...setObject,
           ...updatedValues,
-          ...validationObject
+          ...validationObject,
+          "tempIndex": null
         },
         () => {
           this._eventHandlers(e, true);
