@@ -313,11 +313,18 @@ export class Dropdown extends React.PureComponent {
     e.persist();
     const active = focus ? this.state.active : false;
     const validationObject = !focus ? this._validate(this.state.value) : {};
+    let updatedValues = {};
+    if (this.state.value === "" && !focus) {
+      updatedValues.display = "";
+      const data = this.setOptions(updatedValues, this.props);
+      updatedValues.options = data.options;
+    }
     this.setState(
       {
         "focus": focus,
         "active": active,
-        ...validationObject
+        ...validationObject,
+        ...updatedValues
       },
       () => {
         if (!focus) {
@@ -367,7 +374,8 @@ export class Dropdown extends React.PureComponent {
       const tempValue = returnData.value;
       let updatedValues = {
         "selectedIndex": null,
-        "display": tempValue
+        "display": tempValue,
+        "tempIndex": 0
       };
       if (this.props.valueOnly) {
         updatedValues.value = tempValue;
