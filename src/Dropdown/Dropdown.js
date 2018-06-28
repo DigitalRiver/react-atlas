@@ -395,7 +395,8 @@ export class Dropdown extends React.PureComponent {
         {
           ...setObject,
           ...updatedValues,
-          ...validationObject
+          ...validationObject,
+          "tempIndex": 0
         },
         () => {
           this._eventHandlers(e, true);
@@ -498,12 +499,17 @@ export class Dropdown extends React.PureComponent {
           ) {
             return false;
           }
+
           this.setState(
             {
               "active": !this.state.active
             },
             () => {
-              if (!this.state.active && this.state.tempIndex !== null) {
+              if (
+                !this.state.active &&
+                this.state.tempIndex !== null &&
+                this.state.options.length > 0
+              ) {
                 const newValue = this.state.options[this.state.tempIndex].props
                   .value;
                 this.optionOnClick(null, newValue, this.state.tempIndex);
