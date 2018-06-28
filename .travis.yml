@@ -3,6 +3,7 @@ sudo: false
 node_js:
 - '6'
 install:
+- npm install npm@6 -g
 - npm install
 script:
 - npm run build:prd
