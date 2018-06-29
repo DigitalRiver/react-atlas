@@ -86,14 +86,16 @@
     "prettier": "^1.6.1",
     "purify-css": "^1.2.5",
     "purifycss-webpack": "^0.7.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-styleguidist": "^7.0.2",
     "react-test-renderer": "^16.2.0",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.13.0"
   },
   "peerDependencies": {
-    "react": "^16.x",
-    "react-dom": "^16.x"
+    "react": "^16.3.x",
+    "react-dom": "^16.3.x"
   },
   "repository": {
     "type": "git",
