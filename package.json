@@ -15,7 +15,7 @@
     "build:prd": "cross-env NODE_ENV=production webpack -p --config config/webpack.config.js && webpack -p --config config/webpack.index.config.js",
     "build:dev": "cross-env NODE_ENV=development webpack --config config/webpack.config.js && webpack --config config/webpack.index.config.js",
     "docs:prd": "cross-env NODE_ENV=production styleguidist build",
-    "docs:dev": "cross-env NODE_ENV=development styleguidist server --config config/styleguide.config.js",
+    "docs:dev": "cross-env NODE_ENV=development npm install react react-dom && styleguidist server --config config/styleguide.config.js",
     "docs:publish": "node scriptsgh-pages.js",
     "precommit": "lint-staged"
   },
@@ -53,11 +53,11 @@
     "inputmask-core": "^2.2.0",
     "match-sorter": "^2.2.3",
     "moment": "^2.22.1",
-    "react": "^16.2.0",
+    "react": "^16.4.1",
     "react-bootstrap-table": "^4.3.1",
     "react-css-modules": "^4.7.2",
     "react-datepicker": "^1.4.1",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.4.1",
     "react-dropzone": "^4.2.9"
   },
   "devDependencies": {
@@ -92,6 +92,10 @@
     "react-test-renderer": "^16.2.0",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.13.0"
+  },
+  "peerDependencies": {
+    "react": "^16.x",
+    "react-dom": "^16.x"
   },
   "repository": {
     "type": "git",
