@@ -35,7 +35,7 @@ export class TextField extends React.PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
       let value = nextProps.value;
       if (this.props.mask) {
@@ -46,8 +46,8 @@ export class TextField extends React.PureComponent {
         "value": value
       });
     }
-    if(nextProps.mask && nextProps.mask !== this.props.mask) {
-      this.mask.setPattern(nextProps.mask, {value: this.mask.getRawValue()});
+    if (nextProps.mask && nextProps.mask !== this.props.mask) {
+      this.mask.setPattern(nextProps.mask, { "value": this.mask.getRawValue() });
     }
     if (
       typeof nextProps.status !== "undefined" &&
@@ -77,9 +77,8 @@ export class TextField extends React.PureComponent {
   };
 
   _eventHandlers = (e, change) => {
-
     let rawValue = null;
-    if(this.props.mask) {
+    if (this.props.mask) {
       rawValue = this.mask.getRawValue();
     }
 
@@ -149,10 +148,10 @@ export class TextField extends React.PureComponent {
     }
 
     let rawValue = null;
-    if(this.props.mask) {
+    if (this.props.mask) {
       rawValue = this.mask.getRawValue();
     }
-    
+
     const data = {
       "rawValue": rawValue,
       "value": value,

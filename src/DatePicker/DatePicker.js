@@ -15,7 +15,7 @@ export class DatePicker extends React.PureComponent {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       typeof nextProps.selected !== "undefined" &&
       nextProps.selected !== this.state.selected

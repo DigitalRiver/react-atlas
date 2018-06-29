@@ -15,7 +15,7 @@ export class Avatar extends React.PureComponent {
     this.state = { "image": image ? image : null };
   }
 
-  componentWillReceiveProps = nextProps => {
+  UNSAFE_componentWillReceiveProps = nextProps => {
     if (nextProps.image !== this.props.image) {
       this.setState({ "image": nextProps.image });
     }

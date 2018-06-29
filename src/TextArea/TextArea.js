@@ -20,7 +20,7 @@ export class TextArea extends React.PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
       this.setState({
         "value": nextProps.value

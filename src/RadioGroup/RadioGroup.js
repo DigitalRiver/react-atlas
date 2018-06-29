@@ -13,7 +13,7 @@ export class RadioGroup extends React.PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.selectedIndex) {
       this.setState({ "checkedRadio": nextProps.selectedIndex });
     }
