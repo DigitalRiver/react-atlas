@@ -504,6 +504,11 @@ export class Dropdown extends React.PureComponent {
           );
         }
       }
+
+      // check this.prop.filter to make sure the following code only appies for basic dropdown
+      else if (!this.props.filter) {
+        console.log("only for basic dropdown");
+      }
     }
   };
 
