@@ -33,7 +33,7 @@ export class Dropdown extends React.PureComponent {
   }
 
   // Watching to see if the user updates the list of options or the selected value. If they do, re-render the Dropdown accordingly
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       typeof nextProps.options !== "undefined" &&
         nextProps.options !== this.props.options ||

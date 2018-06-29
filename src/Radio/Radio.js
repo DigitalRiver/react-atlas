@@ -10,7 +10,7 @@ export class Radio extends React.PureComponent {
     super(props);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     /* Since Radio is controlled, the only changes that can occur need to come from property updates */
     if (this.props.onChange && nextProps.checked !== this.props.checked) {
       this.props.onChange({
