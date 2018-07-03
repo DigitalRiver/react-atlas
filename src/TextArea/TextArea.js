@@ -86,12 +86,14 @@ export class TextArea extends React.PureComponent {
       return;
     }
 
+    let change = true;
+
     this.setState(
       {
         "status": validationObject.status,
         "message": validationObject.message,
         "value": value,
-        "active": true
+        "active": change
       },
       () => {
         this._eventHandlers(e, change);
