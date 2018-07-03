@@ -11,6 +11,7 @@
     display: flex;
     white-space: pre-wrap;
     align-items: center;
+    word-break: break-all;
 }
 
 .success {
