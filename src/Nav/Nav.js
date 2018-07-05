@@ -90,7 +90,7 @@ export class Nav extends React.PureComponent {
           ) {
             active = true;
           }
-          if (child.type.name === "Nav" || child.type.displayName === "Nav") {
+          if (typeof child.props.children === "object") {
             return cloneElement(child, {
               "activeIndex": this.state.activeIndex,
               "subNav": true,
