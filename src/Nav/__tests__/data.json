@@ -1,0 +1,33 @@
+[
+  {
+    "navKey": 0,
+    "title": "Home"
+  },
+  {
+    "navKey": 1,
+    "title": "Catalog"
+  },
+  {
+    "navKey": 2,
+    "title": "Customer Service"
+  },
+  {
+    "navKey": 3,
+    "title": "Reports",
+    "collapsed": true,
+    "subNav": [
+      {
+        "navKey": 3.1,
+        "title": "Create a Report"
+      },
+      {
+        "navKey": 3.2,
+        "title": "Remove Report"
+      }
+    ]
+  },
+  {
+    "navKey": 4,
+    "title": "Administration"
+  }
+]
