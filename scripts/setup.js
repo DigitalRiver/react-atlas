@@ -10,6 +10,9 @@ global.ListGroup = ListGroup;
 import { ListItem } from "../src/ListItem";
 global.ListItem = ListItem;
 
+import { NavItem } from "../src/NavItem";
+global.NavItem = NavItem;
+
 import { Option } from "../src/Option";
 global.Option = Option;
 
