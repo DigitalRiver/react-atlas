@@ -1,0 +1,77 @@
+@import '../Button/Button.css';
+
+.base {
+    border-style: none;
+    border-top: 1px solid #ccc;
+}
+
+.subNav {
+    height: 40px;
+    transition: height .3s ease-in-out;
+}
+
+.subNav.collapsed {
+    height: 0;
+}
+
+.navItem button {
+    width: 100%;
+    border-color: #eee;
+    border-left: solid 5px transparent;
+    color: #555;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    background-color: #fff;
+    text-align: left;
+}
+
+.subNav button {
+    padding-left: 38px;
+}
+
+.subNav.collapsed button {
+    display: none;
+}
+
+.navItem button:hover {
+    background-color: #f4f8f9;
+    color: #555;
+}
+
+.active > button {
+    border-left-color: #003058;
+    background-color: #f4f8f9;
+    color: #003058;
+}
+
+.caret::before {
+    content: "";
+    border: solid #003058;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -5px;
+    left: 5px;
+}
+
+.caret {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 10px;
+    vertical-align: middle;
+    float: right;
+    clear: right;
+    border-color: #555;
+    transform: none;
+    margin: 5px 0 0;
+    transition: transform .3s;
+}
+
+
+.collapsed .caret {
+    transform: rotate(90deg);
+}
