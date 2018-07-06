@@ -28,7 +28,10 @@ export class Dropdown extends React.PureComponent {
       "selectedIndex": data.selectedIndex, // The index of the currently selected option within the rendered options list
       "status": props.status || null, // Used for error handling
       "tempIndex": null, // Used to keep track of which option is in a "hover" state, either by mouseOver or through keyboard navigation of an active Dropdown
-      "value": props.value // The actual value to submit to the form for the selected option
+      "value": props.value, // The actual value to submit to the form for the selected option
+      "pressedKey": null, // the key pressed for basic Dropdown to mimic HTML's select behavior: pressing key to scroll
+      "indexArr": this.props.options, // an array of numbers containing the indexes of Options whose text's first letter matches keyPressed prop.
+      "indexArrTracker": 0 // a number that tracks the current index in "indexArr" for selecting an option
     };
   }
 
@@ -505,9 +508,50 @@ export class Dropdown extends React.PureComponent {
         }
       }
 
-      // check this.prop.filter to make sure the following code only appies for basic dropdown
+      // check this.prop.filter to make sure the following code only appies for basic dropdown when other keys pressed
       else if (!this.props.filter) {
-        console.log("only for basic dropdown");
+        const optionsArr = this.state.options;
+        const filterIndexArr = function() {
+          return optionsArr.filter(
+            option =>
+              option.props.text &&
+              option.props.text[0].toLowerCase() === e.key.toLowerCase()
+          );
+        };
+
+        const indexArr = filterIndexArr().map(option => option.props.index);
+        let tempTracker;
+        if (this.state.active) {
+          if (this.state.pressedKey === e.key) {
+            this.optionOnMouseOver(e, indexArr[this.state.indexArrTracker]);
+            tempTracker = (this.state.indexArrTracker + 1) % indexArr.length;
+          } else {
+            this.optionOnMouseOver(e, indexArr[0]);
+            tempTracker = 1 % indexArr.length;
+          }
+        } else {
+          if (this.state.pressedKey === e.key) {
+            this.optionOnClick(
+              e,
+              this.state.options[indexArr[this.state.indexArrTracker]].props
+                .value,
+              indexArr[this.state.indexArrTracker]
+            );
+            tempTracker = (this.state.indexArrTracker + 1) % indexArr.length;
+          } else {
+            this.optionOnClick(
+              e,
+              this.state.options[indexArr[0]].props.value,
+              indexArr[0]
+            );
+            tempTracker = 1 % indexArr.length;
+          }
+        }
+        this.setState({
+          "pressedKey": e.key,
+          indexArr,
+          "indexArrTracker": tempTracker
+        });
       }
     }
   };
