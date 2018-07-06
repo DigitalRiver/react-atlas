@@ -451,7 +451,10 @@ export class Dropdown extends React.PureComponent {
         );
       } else if (
         this.state.active &&
-        (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Enter")
+        (e.key === "ArrowDown" ||
+          e.key === "ArrowUp" ||
+          e.key === "Enter" ||
+          e.key === "Tab")
       ) {
         e.preventDefault();
         if (e.key === "ArrowDown") {
@@ -491,7 +494,7 @@ export class Dropdown extends React.PureComponent {
             newIndex = this.state.options.length - 1;
           }
           updateTempIndex(newIndex);
-        } else if (e.key === "Enter") {
+        } else if (e.key === "Enter" || e.key === "Tab") {
           if (
             typeof this.props.disabled !== "undefined" &&
               this.props.disabled ||
