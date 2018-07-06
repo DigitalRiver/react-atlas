@@ -16,7 +16,7 @@
     "build:dev": "cross-env NODE_ENV=development webpack --config config/webpack.config.js && webpack --config config/webpack.index.config.js",
     "docs:prd": "cross-env NODE_ENV=production styleguidist build --config config/styleguide.config.js",
     "docs:dev": "cross-env NODE_ENV=development styleguidist server --config config/styleguide.config.js",
-    "docs:publish": "node scriptsgh-pages.js",
+    "docs:publish": "node scripts/gh-pages.js",
     "precommit": "lint-staged"
   },
   "jest": {
