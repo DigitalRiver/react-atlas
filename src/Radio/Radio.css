@@ -23,7 +23,6 @@
     width: 16px;
     display: inline-block;
     composes: cursor-pointer from '../styles.css';
-    composes: silver-to-white-gradient from '../styles.css';
     composes: default-border from '../styles.css';
     composes: circle from '../styles.css';
     background: -webkit-linear-gradient(#fff, #e6e6e6); /* For Safari 5.1 to 6.0 */
