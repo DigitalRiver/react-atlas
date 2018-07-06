@@ -117,7 +117,7 @@ Disabled Dropdown:
 
 Read-Only Dropdown:
 
-    <Dropdown label="Read-Only Dropdown" readOnly={true} options={DropdownList} />
+    <Dropdown label="Read-Only Dropdown" readOnly={true} value="US" options={DropdownList} />
 
 Inline Dropdowns:
 
