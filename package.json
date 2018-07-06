@@ -1,6 +1,6 @@
 {
   "name": "react-atlas",
-  "version": "0.1.0-rc0",
+  "version": "0.1.1",
   "description": "Composable React components with CSS Modules.",
   "author": "Digital River Experience Engineering (https://github.com/orgs/DigitalRiver/teams/experience-engineering)",
   "main": "./lib",
