@@ -1,17 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Timer component render Render correctly 1`] = `
-<div
-  className="Class"
-  style={undefined}
->
-  <span
-    className="defaultFont"
-    htmlFor={undefined}
-    id={undefined}
-    style={undefined}
-  >
-    20
-  </span>
-</div>
+exports[`Timer Component Supports render prop 1`] = `
+<span>
+  You have 
+  10
+   second(s) left
+</span>
 `;
