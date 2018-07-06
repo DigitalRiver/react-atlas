@@ -1,4 +1,6 @@
 const path = require("path");
+const MiniHtmlWebpackPlugin = require("mini-html-webpack-plugin");
+const { generateCSSReferences, generateJSReferences } = MiniHtmlWebpackPlugin;
 
 // Process JS with Babel.
 const babel = {
@@ -9,15 +11,8 @@ const babel = {
 
 // "css" loader resolves paths in CSS and adds assets as dependencies.
 // "style" loader turns CSS into JS modules that inject <style> tags.
-// The exclude section is put there because font-awesome can't be handed with these loaders
 const css = {
   "test": /\.css$/,
-  "exclude": [
-    path.resolve(
-      __dirname,
-      "assets/fonts/fontawesome-5.0.13/web-fonts-with-css/css/"
-    )
-  ],
   "loaders": [
     "style-loader?sourceMap",
     "css-loader?modules&importLoaders=1&localIdentName=ra_[name]__[local]",
@@ -30,16 +25,6 @@ const css = {
       }
     }
   ]
-};
-
-// A specific test for font-awesome files
-const fontawesome = {
-  "test": /\.css$/,
-  "include": path.resolve(
-    __dirname,
-    "assets/fonts/fontawesome-5.0.13/web-fonts-with-css/css/fontawesome.min.css"
-  ),
-  "loader": "style-loader!css-loader"
 };
 
 // JSON is not enabled by default in Webpack but both Node and Browserify allow it implicitly so we also enable it.
@@ -59,7 +44,7 @@ const json = {
 // smaller than specified limit in bytes as data URLs to avoid requests.
 // A missing `test` is equivalent to a match.
 const url = {
-  "exclude": [/\.html$/, babel.test, css.test, json.test, fontawesome.test],
+  "exclude": [/\.html$/, babel.test, css.test, json.test],
   "loader": "url-loader",
   "query": {
     "limit": 10000,
@@ -87,9 +72,23 @@ module.exports = {
   "webpackConfig": {
     "devtool": "source-map",
     "module": {
-      "loaders": [babel, css, fontawesome, json, url]
+      "loaders": [babel, css, json, url]
     }
   },
+  "template": ({ styles, js, title, publicPath }) =>
+    `<!DOCTYPE html>
+            <html>
+              <head>
+                <meta charset="UTF-8">
+                <title>${title}</title>
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+                ${generateCSSReferences(styles, publicPath)}
+              </head>
+              <body>
+                <div id="app"></div>
+                ${generateJSReferences(js, publicPath)}
+              </body>
+            </html>`,
   "theme": {
     "color": {
       "link": "#006e95",
