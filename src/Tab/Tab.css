@@ -35,14 +35,14 @@
 .selected {
   composes: bg-white from '../styles.css';
   color: #666;
-  border-color: #BEBEBE;
+  border-color: #BEBEBE !important; /* Important designation added for production build */
   bottom: -1px;
 }
 
 .vSelected {
   composes: bg-white from '../styles.css';
   color: #666;
-  border-color: #BEBEBE;
+  border-color: #BEBEBE !important; /* Important designation added for production build */
   right: -1px;
 }
 
