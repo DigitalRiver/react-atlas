@@ -54,8 +54,4 @@ Taskbar.propTypes = {
   "style": PropTypes.object
 };
 
-Taskbar.defaultProps = {
-  "children": <p>Some taskbar item.</p>
-};
-
 export default CSSModules(Taskbar, styles, { "allowMultiple": true });
