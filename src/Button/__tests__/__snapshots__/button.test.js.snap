@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Button render Test correct render 1`] = `
+<a
+  href="http://www.google.com.are"
+>
+  <button
+    className="aClass button uppercase default_btn default_btn_hover"
+    href="http://www.google.com.are"
+    id={undefined}
+    name={undefined}
+    onClick={undefined}
+    style="Style"
+    tabIndex={0}
+    type="button"
+  >
+    Default Button
+  </button>
+</a>
+`;

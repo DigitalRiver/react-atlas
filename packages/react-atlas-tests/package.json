@@ -1,8 +1,0 @@
-{
-  "name": "react-atlas-tests",
-  "description": "React-Atlas unit, integration and regression tests",
-  "license": "MIT",
-  "engines": {
-    "node": ">=4"
-  }
-}

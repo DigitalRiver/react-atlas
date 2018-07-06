@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Nav component render Render correctly 1`] = `
+<ul
+  className="nav"
+  style={undefined}
+>
+  <li
+    className="navItem"
+    role="presentation"
+    style={undefined}
+  >
+    <button
+      className="link button link link_hover"
+      href={undefined}
+      id={undefined}
+      name={undefined}
+      onClick={[Function]}
+      style={undefined}
+      tabIndex={0}
+      type="button"
+    >
+      HOME
+      <i />
+    </button>
+  </li>
+  <li
+    className="navItem"
+    role="presentation"
+    style={undefined}
+  >
+    <button
+      className="link button link link_hover"
+      href={undefined}
+      id={undefined}
+      name={undefined}
+      onClick={[Function]}
+      style={undefined}
+      tabIndex={0}
+      type="button"
+    >
+      Catalog
+      <i />
+    </button>
+  </li>
+  <li
+    className="navItem"
+    role="presentation"
+    style={undefined}
+  >
+    <button
+      className="link button link link_hover"
+      href={undefined}
+      id={undefined}
+      name={undefined}
+      onClick={[Function]}
+      style={undefined}
+      tabIndex={0}
+      type="button"
+    >
+      Customer Service
+      <i />
+    </button>
+  </li>
+  <li
+    className="navItem"
+    role="presentation"
+    style={undefined}
+  >
+    <button
+      className="link button link link_hover"
+      href={undefined}
+      id={undefined}
+      name={undefined}
+      onClick={[Function]}
+      style={undefined}
+      tabIndex={0}
+      type="button"
+    >
+      Administration
+      <i />
+    </button>
+  </li>
+  <li
+    className="navItem"
+    role="presentation"
+    style={undefined}
+  >
+    <button
+      className="link button link link_hover"
+      href={undefined}
+      id={undefined}
+      name={undefined}
+      onClick={[Function]}
+      style={undefined}
+      tabIndex={0}
+      type="button"
+    >
+      Support
+      <i />
+    </button>
+  </li>
+</ul>
+`;

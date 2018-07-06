@@ -1,7 +1,0 @@
-.*rc
-.eslintignore
-.editorconfig
-jsconfig.json
-CONTRIBUTING.md
-CODE_OF_CONDUCT.md
-src/**/README.md

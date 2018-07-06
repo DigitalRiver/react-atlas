@@ -1,0 +1,131 @@
+.disabled {
+    composes: default-text from '../styles.css';
+}
+
+.relative {
+    position:relative;
+}
+
+.padding {
+    padding-bottom: 5px;
+}
+
+.input {
+    composes: relative;
+    top: 1px;
+}
+
+.checkbox {
+  composes: rounded from '../styles.css';
+  composes: default-border from "../styles.css";
+  composes: relative;
+  position: absolute;
+  top: 0px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.65;
+  composes: cursor-not-allowed from '../styles.css'; 
+  pointer-events: none;
+}
+
+.checked {
+  composes: checkbox;
+  background-color: #00a7e1;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.focus {
+  box-shadow: 0 0 6px rgba(35, 173, 255, 1)
+}
+
+.checkmark {
+  composes: relative;
+  top: 0px;
+  left: 4px;
+  width: 4px;
+  height: 10px;
+  transform: rotate(45deg);
+  border: solid #fff;
+  border-width: 0 3px 3px 0;    
+}
+
+.error {
+  border: solid 1px #BD0A33;
+}
+
+/* Display checkbox with out the checkbox selected.  */
+.not_checked {
+  composes: checkbox;
+  background: -webkit-linear-gradient(#fff, #e6e6e6); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#fff, #e6e6e6); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#fff, #e6e6e6); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#fff, #e6e6e6); /* Standard syntax */
+}
+
+.label {
+  composes: default-font from '../styles.css';
+  cursor: pointer;
+  white-space: nowrap;
+  padding-right:5px;
+}
+
+/* label text */
+.label_left {
+  composes: label;
+  padding-right: 2px;
+  margin-left: 0px;
+}
+
+.error_text {
+  composes: default-font from '../styles.css';
+  color: #BD0A33;
+}
+
+.error_message {
+  composes: error_text;
+  margin-left:23px;
+}
+
+.inline_block {
+  display: inline-block;
+}
+
+.checkbox_padding {
+  padding: 10px 10px 0 0;
+}
+
+.inline_padding {
+  padding: 2px 10px 0 0;
+}
+
+.float_left {
+  float:left;
+  padding-right: 3px;
+}
+
+.float_right {
+  float:right;
+  padding-left: 3px;
+  position: relative;
+}
+
+.opacity {
+  /*this needs to stay here to avoid display issues with those modules in IE*/
+  opacity: 0;
+}
+
+.required {
+  composes: secondary-text from '../styles.css';
+}
+
+.required_error {
+  composes: error-text from '../styles.css';
+}

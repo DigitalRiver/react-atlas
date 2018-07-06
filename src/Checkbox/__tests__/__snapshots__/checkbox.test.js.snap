@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test checkbox component renders correctly 1`] = `
+<div
+  className="checkbox_padding"
+  onClick={[Function]}
+  style={undefined}
+>
+  <div
+    className="inline_block relative padding"
+  >
+    <label
+      className="label"
+      htmlFor={undefined}
+      title="labelText"
+    >
+      labelText
+    </label>
+    <div
+      className="float_left"
+    >
+      <input
+        checked={false}
+        className="opacity"
+        disabled={false}
+        hidden={undefined}
+        id={undefined}
+        label="labelText"
+        onChange={[Function]}
+        required={false}
+        type="checkbox"
+      />
+      <div
+        className="not_checked"
+      />
+    </div>
+  </div>
+</div>
+`;

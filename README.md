@@ -1,4 +1,4 @@
-# ![React-Atlas](https://github.com/DigitalRiver/react-atlas/blob/master/readme/images/logo_full_300.png)
+# ![React-Atlas](https://github.com/DigitalRiver/react-atlas/blob/master/docs/images/logo_full_300.png)
 
 React Atlas is a React component library, with a focus on supplying Admin Interface tools. The end-goal of this repo to is to eventually be the library that can power most of Digital River's complex admin interfaces and internal tooling projects. With this in mind, we need a fast, generic, composable library that can be dropped into a project and 'just work'.
 
@@ -21,7 +21,7 @@ React Atlas originally started off as a fork of [React Toolbox](https://github.c
 This project is licensed under the terms of the [MIT license](https://github.com/DigitalRiver/react-atlas/blob/master/LICENSE).
 
 ## Requirements
-This library only officially supports [Node 6.x.x+](https://nodejs.org/en/) and [React 15.x.x+](https://facebook.github.io/react/), on Windows, MacOS, Linux and FreeBSD.
+This library only officially supports [Node 6.x.x+](https://nodejs.org/en/) and [React 16.3+](https://facebook.github.io/react/), on Windows, MacOS, Linux and FreeBSD.
 
 ## Installation
 React Atlas can be installed as an [npm package](https://www.npmjs.com/package/react-atlas):
@@ -42,50 +42,25 @@ After referencing the stylesheet, import atlas components like you would any oth
 
 ```javascript
 import React from 'react';
-import { Button } from 'react-atlas';
+import ReactDom from 'react-dom';
+import Button from 'react-atlas/lib/Button/Button.js'; // Only imports the button component.
+// import { Button } from 'react-atlas'; # This will import all of atlas.
 
-const someButton = () => (
-  <Button>Some Text</Button>
-);
 
-export default someButton;
+let element = <Button>Some Text</Button>;
+
+ReactDOM.render(element, document.getElementById('root'));
 ```
 
 The previous code creates a React button component based on a React Atlas button default styling and logic.
 
-### Themeing
-There are several ways to style/theme react-atlas components.
-- [Style individual component instance.](readme/themeing.md#Instance)
-- [Creating themes.](readme/themeing.md#Create)
-- [Themeing whole library.](readme/themeing.md#Themeing)
-- [Themeing components.](readme/themeing.md#Components)
-
-### Docs
-To start documentation site locally you'd need to install dependencies from the main package, setup the monorepo and then just run the docs script.
-`npm run docsPrd` runs the production version of the docsite and will not hotload
-
-```bash
-$ git clone https://github.com/DigitalRiver/react-atlas.git
-$ npm install
-$ npm run build
-$ npm run docs:prd
-```
-## Development and Contributing
+## Setup docsite/development site
 To setup atlas for development, run the following commands:
 
 ```bash
 $ git clone https://github.com/DigitalRiver/react-atlas.git
 $ npm install
-$ npm run build
 $ npm run docs:dev
-```
-
-## Publishing to your own github page
-To publish your own build of react-atlas to your own fork, run the following commands:
-
-```bash
-$ npm run docs:build
-$ npm run gh-pages:publish
 ```
 
 There are other npm commands which may be of use in your development.
@@ -95,9 +70,6 @@ $ npm run test            // Runs test suite without coverage.
 $ npm run coverage        // Runs test suite with code coverage.
 $ npm run format          // Format all code with prettier.
 $ npm run lint            // Lint code with eslint.
-$ npm run setup           // Builds react-atlas.
-$ npm run codegen         // Runs just the code generator.
-$ npm run clean           // Clean all node_modules folders.
 
 ```
 For more in depth information on development check out our contributors [readme](readme/CONTRIBUTING.md#contributing).
