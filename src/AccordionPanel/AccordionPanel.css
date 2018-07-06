@@ -1,0 +1,4 @@
+.accordionPanel {    
+    composes: default-text from '../styles.css';
+    composes: default-font from '../styles.css';
+}

@@ -5,6 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 let config = {
   "entry": {
     "Accordion": "./src/Accordion",
+    "AccordionPanel": "./src/AccordionPanel",
     "Alert": "./src/Alert",
     "Avatar": "./src/Avatar",
     "Button": "./src/Button",

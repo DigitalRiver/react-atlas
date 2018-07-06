@@ -6,7 +6,7 @@ import CSSModules from "react-css-modules";
 import styles from "./Accordion.css";
 
 /**
- * The Accordion component creates an expandable tab structure for displaying content. The traditional child element used within Accordion is the Panel component, but a regular div will work as well.
+ * The Accordion component creates an expandable tab structure for displaying content. The traditional child element used within Accordion is the AccordionPanel component, but a regular div will work as well.
  * @examples <Accordion><Panel title="Accordion Title">Some text</Panel><Panel title="Accordion Title 2">Some more text</Panel></Accordion>
  *
  */
@@ -179,7 +179,7 @@ Accordion.propTypes = {
    * Children should be either a string, an icon/glyphicon, or an image tag.
    * @examples "SomeName", <Accordion>{child}{child}</Accordion>
    */
-  "children": PropTypes.node,
+  "children": PropTypes.node.isRequired,
   /** An object, array, or string of CSS classes to apply to Accordion.*/
   "className": PropTypes.oneOfType([
     PropTypes.string,
@@ -196,11 +196,6 @@ Accordion.propTypes = {
    */
   "expandAll": PropTypes.bool,
   /**
-   * Accordion will use the expanded prop from each child to determine if the child will be expanded on load.
-   * @examples <Accordion><div>value 1</div><div expanded="true">value 2</div></Accordion>
-   */
-  "expanded": PropTypes.string,
-  /**
    * When true, Accordion will allow multiple open panels.
    * @examples <Accordion multiOpen={true}>{children}</Accordion>
    */
@@ -213,11 +208,6 @@ Accordion.propTypes = {
    * Pass inline styles here.
    */
   "style": PropTypes.object,
-  /**
-   * Accordion will use title prop from each child as the title for that child's header.
-   * @examples <Accordion><div title={title 1}>value 1</div><div title={title 2}>value 2</div></Accordion>
-   */
-  "title": PropTypes.string,
   /**
    * Will set the Accordion's title text position left, right, or center.
    * @examples <Accordion titlePosition={left}>{children}</Accordion>

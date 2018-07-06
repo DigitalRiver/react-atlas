@@ -55,7 +55,68 @@ const url = {
 module.exports = {
   // Use this to test a single component.  Change it to the component you are testing and restart the styleguide server
   // Regex should be: 'src/components/NAME_OF_COMPONENT_FOLDER/[A-Z]*.js'
-  "components": "../src/**/**.js",
+  "sections": [
+    {
+      "name": "Form Components",
+      "components": [
+        "../src/Button/Button.js",
+        "../src/Checkbox/Checkbox.js",
+        "../src/CheckboxGroup/CheckboxGroup.js",
+        "../src/DatePicker/DatePicker.js",
+        "../src/Dropdown/Dropdown.js",
+        "../src/Option/Option.js",
+        "../src/FileUpload/FileUpload.js",
+        "../src/Label/Label.js",
+        "../src/Radio/Radio.js",
+        "../src/RadioGroup/RadioGroup.js",
+        "../src/Switch/Switch.js",
+        "../src/TextArea/TextArea.js",
+        "../src/TextField/TextField.js"
+      ]
+    },
+    {
+      "name": "Display Components",
+      "components": [
+        "../src/Accordion/Accordion.js",
+        "../src/AccordionPanel/AccordionPanel.js",
+        "../src/Avatar/Avatar.js",
+        "../src/Breadcrumb/Breadcrumb.js",
+        "../src/BreadcrumbItem/BreadcrumbItem.js",
+        "../src/Card/Card.js",
+        "../src/Hint/Hint.js",
+        "../src/Icon/Icon.js",
+        "../src/List/List.js",
+        "../src/ListGroup/ListGroup.js",
+        "../src/ListItem/ListItem.js",
+        "../src/Modal/Modal.js",
+        "../src/Overlay/Overlay.js",
+        "../src/Portal/Portal.js",
+        "../src/Nav/Nav.js",
+        "../src/NavItem/NavItem.js",
+        "../src/ProgressBar/ProgressBar.js",
+        "../src/Tabs/Tabs.js",
+        "../src/Tab/Tab.js",
+        "../src/TabList/TabList.js",
+        "../src/TabPanel/TabPanel.js",
+        "../src/Taskbar/Taskbar.js",
+        "../src/Task/Task.js",
+        "../src/Text/Text.js",
+        "../src/Timer/Timer.js"
+      ]
+    },
+    {
+      "name": "Messaging Components",
+      "components": [
+        "../src/Alert/Alert.js",
+        "../src/Dialog/Dialog.js",
+        "../src/Tooltip/Tooltip.js"
+      ]
+    },
+    {
+      "name": "Table Components",
+      "components": ["../src/Table/Table.js", "../src/TableHeader/TableHeader.js"]
+    }
+  ],
   "require": [path.resolve(__dirname, "../scripts/setup.js")],
   "ignore": [
     "**/__tests__/**",
