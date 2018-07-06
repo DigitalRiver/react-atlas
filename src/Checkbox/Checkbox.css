@@ -18,7 +18,6 @@
 .checkbox {
   composes: rounded from '../styles.css';
   composes: default-border from "../styles.css";
-  composes: bg-silver from "../styles.css"; /* For browsers that do not support gradients */
   composes: relative;
   position: absolute;
   top: 0px;
