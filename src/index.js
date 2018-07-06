@@ -1,5 +1,7 @@
 import { Accordion } from "./Accordion";
 export { Accordion };
+import { AccordionPanel } from "./AccordionPanel";
+export { AccordionPanel };
 import { Alert } from "./Alert";
 export { Alert };
 import { Avatar } from "./Avatar";
