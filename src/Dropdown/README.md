@@ -135,7 +135,7 @@ Dropdown with custom validation and error message (will validate against the dis
     <div>
       <Dropdown 
         label="Error Message Dropdown" 
-        valid={ (value) => { 
+        valid={ (event, value) => { 
           if(value === "1") {
               return { status: "warning", message: "Warning"}
           } else if(value === "2"){
