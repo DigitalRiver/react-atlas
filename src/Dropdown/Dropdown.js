@@ -547,7 +547,8 @@ export class Dropdown extends React.PureComponent {
             tempTracker = 1 % indexArr.length;
           }
         } else {
-          if (this.state.pressedKey === e.key) {
+          // not active
+          if (this.state.pressedKey === e.key && indexArr.length !== 0) {
             this.optionOnClick(
               e,
               this.state.options[indexArr[this.state.indexArrTracker]].props
@@ -555,7 +556,8 @@ export class Dropdown extends React.PureComponent {
               indexArr[this.state.indexArrTracker]
             );
             tempTracker = (this.state.indexArrTracker + 1) % indexArr.length;
-          } else {
+          } else if (indexArr.length !== 0 && this.state.pressedKey !== e.key) {
+            // if indexArr is empty, then there is no matching options for key pressed
             this.optionOnClick(
               e,
               this.state.options[indexArr[0]].props.value,
