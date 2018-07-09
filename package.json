@@ -84,8 +84,6 @@
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.5",
     "prettier": "^1.6.1",
-    "purify-css": "^1.2.5",
-    "purifycss-webpack": "^0.7.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-styleguidist": "^7.0.2",
