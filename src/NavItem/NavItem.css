@@ -39,6 +39,10 @@
     color: #555;
 }
 
+.navItem button:focus {
+    outline: none;
+}
+
 .active > button {
     border-left-color: #003058;
     background-color: #f4f8f9;
