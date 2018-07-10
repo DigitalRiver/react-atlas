@@ -21,7 +21,7 @@ Breadcrumb with icon:
             <Text as="a" href="#">Cat</Text>
         </BreadcrumbItem>
         <BreadcrumbItem>
-            <i className="fa fa-github"></i>
+            <i className="fab fa-github" style={{paddingRight:'5px'}}></i>
             <Text as="a" href="http://www.github.com">GitHub</Text>
         </BreadcrumbItem>
         <BreadcrumbItem active>

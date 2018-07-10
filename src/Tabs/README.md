@@ -114,8 +114,8 @@
     <Tabs>
         <TabList>
             <Tab icon="fa fa-star">Tab w/icon</Tab>
-            <Tab icon="fa fa-star-half-empty"/>
-            <Tab icon="fa fa-star-o"/>
+            <Tab icon="far fa-star-half"/>
+            <Tab icon="far fa-star"/>
         </TabList>
         <TabPanel>
             <h2>Tab with icon</h2>
