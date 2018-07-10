@@ -10,6 +10,9 @@ import CSSModules from "react-css-modules";
 import styles from "./Dropdown.css";
 import blacklist from "blacklist";
 
+/**
+ * More info on the filter prop and how it selects options can be found at: https://github.com/kentcdodds/match-sorter
+ */
 export class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);

@@ -5,6 +5,9 @@ import { BootstrapTable } from "react-bootstrap-table";
 import CSSModules from "react-css-modules";
 import styles from "./Table.css";
 
+/**
+ * The most common Table props are documented below. Documentation for the other props can be found at: https://github.com/AllenFang/react-bootstrap-table
+ */
 export class Table extends React.PureComponent {
   render() {
     const {
