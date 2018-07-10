@@ -5,7 +5,7 @@ Title prop gets truncated to 1st letter:
 
 Icon beats title:
 
-    <Avatar title="Nathan" icon="fa fa-github" />
+    <Avatar title="Nathan" icon="fab fa-github" />
 
 Image beats icon:
 
@@ -23,7 +23,7 @@ Child beats parameters:
 
     <div>
       <Avatar title="Nathan" image="https://octodex.github.com/images/codercat.jpg">
-        <i className="fa fa-github"></i>
+        <i className="fab fa-github"></i>
       </Avatar>
 
       <Avatar title="Nathan" icon="fa fa-github">
