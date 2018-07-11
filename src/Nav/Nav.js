@@ -34,19 +34,24 @@ export class Nav extends React.PureComponent {
     }
   };
   _buildNavByData = () => {
-    const { className, style, data } = this.props;
+    const { className, style, data, onClick } = this.props;
     return (
       <Nav
         styleName={cx("nav")}
         className={className}
         style={style}
         activeIndex={this.state.activeIndex}
+        onClick={onClick}
       >
         {data.map(nav => {
           const { navKey, title, collapsed } = nav;
           if (!nav.subNav) {
             return (
-              <NavItem key={`nav_${navKey}`} navKey={navKey}>
+              <NavItem
+                key={`nav_${navKey}`}
+                navKey={navKey}
+                onClick={this._handleClick}
+              >
                 {title}
               </NavItem>
             );
@@ -57,10 +62,15 @@ export class Nav extends React.PureComponent {
               styleName={cx("nav")}
               activeIndex={this.state.activeIndex}
               collapsed={collapsed}
+              onClick={onClick}
             >
               <NavItem navKey={navKey}>{title}</NavItem>
               {nav.subNav.map(subNav => 
-                <NavItem key={`sub_${subNav.navKey}`} navKey={subNav.navKey}>
+                <NavItem
+                  key={`sub_${subNav.navKey}`}
+                  navKey={subNav.navKey}
+                  onClick={this._handleClick}
+                >
                   {subNav.title}
                 </NavItem>
               )}
