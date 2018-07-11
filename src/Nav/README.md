@@ -67,7 +67,7 @@ Specify Nav container's width:
 
 Nav component onClick callback:
 
-    _handleClick = (selectedIndex) => console.log('Item: ' + selectedIndex + ' been selected.');
+    _handleClick = (selectedIndex) => console.log('Item ' + selectedIndex + ' has been selected.');
 
     <Nav activeIndex={1} onClick={_handleClick}>
             <NavItem navKey={0}>HOME</NavItem>
@@ -119,4 +119,5 @@ Build Nav Menu via data attribute:
        }
      ];
 
-    <Nav activeIndex={1} data={data} />
+    _handleClick = (selectedIndex) => console.log('Item ' + selectedIndex + ' has been selected.');
+    <Nav activeIndex={1} data={data} onClick={_handleClick} />
