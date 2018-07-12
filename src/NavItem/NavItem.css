@@ -43,7 +43,7 @@
     outline: none;
 }
 
-.active > button {
+.active > button, .active > a > button {
     border-left-color: #003058;
     background-color: #f4f8f9;
     color: #003058;
@@ -63,7 +63,6 @@
 
 .caret {
     position: relative;
-    display: inline-block;
     width: 18px;
     height: 10px;
     vertical-align: middle;
