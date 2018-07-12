@@ -2,7 +2,7 @@
 
 .base {
     border-style: none;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #eee !important; /* Important designation needed to overwrite Button styling in prod build */
 }
 
 .subNav {
@@ -43,7 +43,7 @@
     outline: none;
 }
 
-.active > button {
+.active > button, .active > a > button {
     border-left-color: #003058;
     background-color: #f4f8f9;
     color: #003058;
@@ -63,7 +63,6 @@
 
 .caret {
     position: relative;
-    display: inline-block;
     width: 18px;
     height: 10px;
     vertical-align: middle;
@@ -73,6 +72,7 @@
     transform: none;
     margin: 5px 0 0;
     transition: transform .3s;
+    top: -2px;
 }
 
 

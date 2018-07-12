@@ -4,6 +4,11 @@ global.Overlay = Overlay;
 import { Portal } from "../src/Portal";
 global.Portal = Portal;
 
+import { BrowserRouter as Router, HashRouter, NavLink } from "react-router-dom";
+global.NavLink = NavLink;
+global.Router = Router;
+global.HashRouter = HashRouter;
+
 global.DropdownList = [
   { "text": "Afghanistan", "value": "AF" },
   { "text": "land Islands", "value": "AX" },
