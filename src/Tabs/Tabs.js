@@ -17,6 +17,12 @@ export class Tabs extends React.PureComponent {
     };
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedIndex !== this.props.selectedIndex) {
+      this.setState({ "selectedIndex": nextProps.selectedIndex });
+    }
+  }
+
   _setSelectedIndex = (index, event) => {
     this.setState({ "selectedIndex": index });
 
