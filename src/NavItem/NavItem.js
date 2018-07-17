@@ -39,8 +39,7 @@ export class NavItem extends React.Component {
         <i styleName={cx({ "caret": parent })} />
       </Button>
     ;
-    const LinkElement =
-      typeof this.props.as === "function" ? this.props.as : `${this.props.as}`;
+    const LinkElement = this.props.as;
 
     if (typeof as !== "undefined" && !disabled) {
       return (

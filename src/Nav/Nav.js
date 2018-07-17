@@ -50,7 +50,7 @@ export class Nav extends React.Component {
           if (!nav.subNav) {
             return (
               // NavItems with no subNav
-              <NavItem key={`navItem_${nav.navKey}`} {...others}>
+              <NavItem key={"navItem_" + nav.navKey} {...others}>
                 {title}
               </NavItem>
             );
@@ -59,19 +59,19 @@ export class Nav extends React.Component {
           return (
             // If NavItem has a subNav, wrap it in a new Nav
             <Nav
-              key={"nav_" + `${nav.navKey}`}
+              key={"nav_" + nav.navKey}
               styleName={cx("nav")}
               collapsed={collapsed}
               onClick={onClick}
             >
               {/* The following NavItem component is the parent for a collapsible group. */}
-              <NavItem key={`navItem_${nav.navKey}`} {...others}>
+              <NavItem key={"navItem_" + nav.navKey} {...others}>
                 {title}
               </NavItem>
               {nav.subNav.map(subNav => {
                 const { ...otherArgs } = subNav;
                 return (
-                  <NavItem key={`navItem_${subNav.navKey}`} {...otherArgs}>
+                  <NavItem key={"navItem_" + subNav.navKey} {...otherArgs}>
                     {subNav.title}
                   </NavItem>
                 );
