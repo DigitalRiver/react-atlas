@@ -151,3 +151,30 @@
             <p>Tab content here</p>
         </TabPanel>
     </Tabs>
+
+###### Selected Tab updating with prop change:
+
+    initialState = {selectedIndex: 0}
+    handleToggle = () => {
+        setState({selectedIndex: 1})
+    };
+    <div> 
+    <Tabs selectedIndex={state.selectedIndex}>
+        <TabList>
+            <Tab>Tab 1</Tab>
+            <Tab>Tab 2</Tab>
+        </TabList>
+        <TabPanel>
+            <h2>Content 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet lorem sit amet finibus rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque habitant morbi tristique senectus et netus et malesuada <a href="http://lipsum.com">fames ac turpis egestas</a> et siem.</p>
+        </TabPanel>
+        <TabPanel>
+            <h2>Content 2</h2>
+            <p>Tab content here</p>
+        </TabPanel>
+    </Tabs>
+    <br />
+    <Button primary onClick={handleToggle}>Update State</Button>
+    <br /><br />
+    <Text>List: {JSON.stringify(state.selectedIndex)}</Text>
+    </div>

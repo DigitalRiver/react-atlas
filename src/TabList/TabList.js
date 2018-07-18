@@ -17,6 +17,12 @@ export class TabList extends React.PureComponent {
     };
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedTab !== this.props.selectedTab) {
+      this.setState({ "selectedTab": nextProps.selectedTab });
+    }
+  }
+
   _setSelectedTab = (index, event) => {
     this.setState({ "selectedTab": index });
     this.props.setSelectedIndex(index, event);
