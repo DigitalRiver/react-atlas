@@ -5,7 +5,7 @@ import { Button } from "../Button";
 import CSSModules from "react-css-modules";
 import styles from "./NavItem.css";
 
-export class NavItem extends React.PureComponent {
+export class NavItem extends React.Component {
   _handleClick = event => {
     if (this.props.onClick) {
       this.props.onClick(this.props.navKey, event);
@@ -14,6 +14,7 @@ export class NavItem extends React.PureComponent {
 
   render() {
     const {
+      as,
       className,
       style,
       active,
@@ -22,31 +23,56 @@ export class NavItem extends React.PureComponent {
       parent,
       subNav,
       collapsed,
-      children
+      children,
+      ...others
     } = this.props;
-    return (
-      <li
-        role="presentation"
-        styleName={cx("navItem", { active, disabled, collapsed, subNav })}
-        style={style}
-        className={className}
+
+    const button = 
+      <Button
+        disabled={disabled}
+        styleName={cx("link", { disabled, subNav })}
+        link
+        href={typeof to === "undefined" ? href : null}
+        onClick={typeof to === "undefined" ? this._handleClick : null}
       >
-        <Button
-          disabled={disabled}
-          styleName={cx("link", { disabled, subNav })}
-          link
-          href={href}
-          onClick={this._handleClick}
+        {children}
+        <i styleName={cx({ "caret": parent })} />
+      </Button>
+    ;
+    const LinkElement = this.props.as;
+
+    if (typeof as !== "undefined" && !disabled) {
+      return (
+        <li
+          role="presentation"
+          styleName={cx("navItem", { active, disabled, collapsed, subNav })}
+          style={style}
+          className={className}
         >
-          {children}
-          <i styleName={cx({ "caret": parent })} />
-        </Button>
-      </li>
-    );
+          <LinkElement {...others} onClick={this._handleClick}>
+            {button}
+          </LinkElement>
+        </li>
+      );
+    } else {
+      return (
+        <li
+          role="presentation"
+          styleName={cx("navItem", { active, disabled, collapsed, subNav })}
+          style={style}
+          className={className}
+        >
+          {button}
+        </li>
+      );
+    }
   }
 }
 
 NavItem.propTypes = {
+  /** Child elements, plain text or HTML/React element. */
+  "as": PropTypes.func,
+
   /** Child elements, plain text or HTML/React element. */
   "children": PropTypes.node.isRequired,
 

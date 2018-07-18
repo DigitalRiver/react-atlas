@@ -5,7 +5,7 @@ import styles from "./Nav.css";
 import cx from "classnames";
 import { NavItem } from "../NavItem";
 
-export class Nav extends React.PureComponent {
+export class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +14,7 @@ export class Nav extends React.PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.activeIndex !== this.props.activeIndex) {
       this.setState({ "activeIndex": nextProps.activeIndex });
     }
@@ -33,8 +33,9 @@ export class Nav extends React.PureComponent {
       this.props.onClick(index, event);
     }
   };
+
   _buildNavByData = () => {
-    const { className, style, data, onClick } = this.props;
+    const { className, data, ignoreActive, onClick, style } = this.props;
     return (
       <Nav
         styleName={cx("nav")}
@@ -42,38 +43,39 @@ export class Nav extends React.PureComponent {
         style={style}
         activeIndex={this.state.activeIndex}
         onClick={onClick}
+        ignoreActive={ignoreActive}
       >
         {data.map(nav => {
-          const { navKey, title, collapsed } = nav;
+          const { title, collapsed, ...others } = nav;
           if (!nav.subNav) {
             return (
-              <NavItem
-                key={`nav_${navKey}`}
-                navKey={navKey}
-                onClick={this._handleClick}
-              >
+              // NavItems with no subNav
+              <NavItem key={"navItem_" + nav.navKey} {...others}>
                 {title}
               </NavItem>
             );
           }
+
           return (
+            // If NavItem has a subNav, wrap it in a new Nav
             <Nav
-              key={`nav_${navKey}`}
+              key={"nav_" + nav.navKey}
               styleName={cx("nav")}
-              activeIndex={this.state.activeIndex}
               collapsed={collapsed}
               onClick={onClick}
             >
-              <NavItem navKey={navKey}>{title}</NavItem>
-              {nav.subNav.map(subNav => 
-                <NavItem
-                  key={`sub_${subNav.navKey}`}
-                  navKey={subNav.navKey}
-                  onClick={this._handleClick}
-                >
-                  {subNav.title}
-                </NavItem>
-              )}
+              {/* The following NavItem component is the parent for a collapsible group. */}
+              <NavItem key={"navItem_" + nav.navKey} {...others}>
+                {title}
+              </NavItem>
+              {nav.subNav.map(subNav => {
+                const { ...otherArgs } = subNav;
+                return (
+                  <NavItem key={"navItem_" + subNav.navKey} {...otherArgs}>
+                    {subNav.title}
+                  </NavItem>
+                );
+              })}
             </Nav>
           );
         })}
@@ -82,7 +84,14 @@ export class Nav extends React.PureComponent {
   };
 
   render() {
-    const { className, style, children, subNav, data } = this.props;
+    const {
+      children,
+      className,
+      data,
+      ignoreActive,
+      style,
+      subNav
+    } = this.props;
     let styleName;
     if (data) {
       return this._buildNavByData();
@@ -95,20 +104,23 @@ export class Nav extends React.PureComponent {
         {React.Children.map(children, (child, index) => {
           let active = false;
           if (
-            child.props.active ||
-            child.props.navKey === this.state.activeIndex
+            (child.props.active ||
+              child.props.navKey === this.state.activeIndex) &&
+            !ignoreActive
           ) {
             active = true;
           }
+          // Render a child Nav component with children, mark it as subNav
           if (typeof child.props.children === "object") {
             return cloneElement(child, {
               "activeIndex": this.state.activeIndex,
               "subNav": true,
-              "onClick": this._handleClick
+              "onClick": this._handleClick,
+              "ignoreActive": ignoreActive
             });
           }
           let isParent = subNav && index === 0;
-
+          // Render NavItem components, adding subNav and parent identifiers accordingly
           return cloneElement(child, {
             "subNav": subNav && !isParent,
             "parent": isParent,
@@ -137,6 +149,8 @@ Nav.propTypes = {
   "collapsed": PropTypes.bool,
   /** Json object which describes the shape of nav menu for rendering Nav menu. */
   "data": PropTypes.array,
+  /** Set to true if you intend to set an active style externally. */
+  "ignoreActive": PropTypes.bool,
   /** Function that will be executed when onClick event occurs. */
   "onClick": PropTypes.func,
   /** Pass inline styling here. */
@@ -149,8 +163,9 @@ Nav.propTypes = {
 
 Nav.defaultProps = {
   "className": "",
+  "collapsed": false,
   "data": null,
-  "collapsed": false
+  "ignoreActive": false
 };
 
 export default CSSModules(Nav, styles, { "allowMultiple": true });
