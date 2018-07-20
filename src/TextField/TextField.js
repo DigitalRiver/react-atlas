@@ -306,10 +306,12 @@ export class TextField extends React.PureComponent {
       "onBeforeChange"
     );
 
+    const hasCustomWidth = typeof style !== "undefined" && style.width;
+
     let wrapperClasses = cx({
       leftLabel,
       inline,
-      "setWidth": typeof style !== "undefined" && style.width,
+      "setWidth": hasCustomWidth,
       "textfieldWrapper": true
     });
 
@@ -319,7 +321,7 @@ export class TextField extends React.PureComponent {
       "error": this.state.status === "error",
       "success": this.state.status === "success",
       "warning": this.state.status === "warning",
-      "fillInput": leftLabel,
+      "fillInput": leftLabel && !hasCustomWidth,
       disabled
     });
 
