@@ -1,3 +1,5 @@
+@import '../styles/variables.css';
+
 .switch {
   composes: default-font from '../styles.css';
 }
@@ -17,16 +19,16 @@
 
 .sliderSmall{
   composes: slider;
-  width: 50px;
-  height: 28px;
+  width: 42px;
+  height: 22px;
   border-radius: 14px;
 }
 
 .sliderMedium{
   composes: slider;
-  width: 75px;
-  height: 40px;
-  border-radius: 20px;
+  width: 60px;
+  height: 34px;
+  border-radius: 34px;
 }
 
 .sliderLarge{
@@ -45,11 +47,12 @@
 }
 
 .sliderDisabledOnColor {
-  composes: bg-silver from '../styles.css';
+  composes: bg-gray from '../styles.css';
 }
 
 .sliderEnabledOffColor {
-  composes: bg-gray from '../styles.css';
+  composes: bg-white from '../styles.css';
+  box-shadow: inset 0 0 0 1px var(--gray);
 }
 
 /*
@@ -64,18 +67,18 @@
 
 .handleSmall{
   composes: handle;
-  top: 4px;
-  left: 4px;
-  width: 20px;
-  height: 20px;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
 }
 
 .handleMedium{
   composes: handle;
-  top: 5px;
-  left: 5px;
-  width: 30px;
-  height: 30px;
+  top: 4px;
+  left: 4px;
+  width: 26px;
+  height: 26px;
 }
 
 .handleLarge{
@@ -95,22 +98,33 @@
 }
 
 .handleEnabledColor{
-  composes: bg-white from '../styles.css';
+  composes: bg-gray from '../styles.css';
 }
 
 .input {
     display:none;
 }
 
+.inputSmall:checked + .handleEnabledColor,
+.inputMedium:checked + .handleEnabledColor,
+.inputLarge:checked + .handleEnabledColor {
+  background-color: var(--white);
+}
+
+.inputSmall:checked + .handleDisabledColor,
+.inputMedium:checked + .handleDisabledColor,
+.inputLarge:checked + .handleDisabledColor {
+  background-color: var(--silver);
+}
 /*
   Distance the button translates left to right
 */
 
 .inputSmall:checked + .handle{
-    left:25px;
+    left:23px;
 }
 .inputMedium:checked + .handle{
-    left:40px;
+    left:30px;
 }
 .inputLarge:checked + .handle{
     left:50px;
