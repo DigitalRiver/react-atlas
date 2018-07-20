@@ -8,7 +8,6 @@ import CSSModules from "react-css-modules";
 import styles from "./TextField.css";
 import blacklist from "blacklist";
 
-
 /**
  * TextField's documentation can be found below. Documentation on the mask prop can be found at: https://github.com/insin/inputmask-core
  */
@@ -344,7 +343,7 @@ export class TextField extends React.PureComponent {
     ;
 
     return (
-      <div styleName={wrapperClasses}>
+      <div styleName={wrapperClasses} style={style}>
         {textFieldLabel}
         <input
           {...othersFiltered}
