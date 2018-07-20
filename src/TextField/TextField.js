@@ -343,7 +343,7 @@ export class TextField extends React.PureComponent {
     ;
 
     return (
-      <div styleName={wrapperClasses} style={style}>
+      <div styleName={wrapperClasses}>
         {textFieldLabel}
         <input
           {...othersFiltered}
