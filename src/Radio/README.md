@@ -33,7 +33,7 @@ The Radio component is a controlled component that must be used within the Radio
 ###### Custom onClick method:
 
     <RadioGroup name="onClickTest">
-			<Radio label="Custom onClick" value="first" onClick={ (data) => { console.log(data.index, data.value) } }/>
+			<Radio label="Custom onClick" value="first" onClick={ (e, data) => { console.log(data.index, data.value) } }/>
 			<Radio label="Normal Radio" value="second"/>
 		</RadioGroup>
 
@@ -50,6 +50,6 @@ The Radio component is a controlled component that must be used within the Radio
 			<Radio 
 				label="Custom onBeforeChange"
 				value="first" 
-				onBeforeChange={ function(data){ if (!data.checked) { let accept = confirm("Do you want to check this?"); return accept; } return true; } }/>
+				onBeforeChange={ function(e, data){ if (!data.checked) { let accept = confirm("Do you want to check this?"); return accept; } return true; } }/>
 			<Radio label="Normal Radio" value="second"/>
 		</RadioGroup>

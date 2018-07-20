@@ -34,7 +34,7 @@ RadioGroup with inline Children:
 
 RadioGroup with custom onChange event:
 
-    <RadioGroup inline name="onChangeradioGroupTest" title="Radio Group" onChange={ (index) => { console.log(index) } }>
+    <RadioGroup inline name="onChangeradioGroupTest" title="Radio Group" onChange={ (e, index) => { console.log(index) } }>
 			<Radio label="Option 1" value="first"/>
 			<Radio label="Option 2" value="second"/>
 		</RadioGroup>

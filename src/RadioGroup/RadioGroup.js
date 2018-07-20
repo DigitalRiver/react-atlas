@@ -19,10 +19,11 @@ export class RadioGroup extends React.PureComponent {
     }
   }
 
-  groupSetChecked = index => {
+  groupSetChecked = (e, index) => {
+    e.persist();
     if (index !== this.state.checkedRadio) {
       if (this.props.onChange) {
-        this.props.onChange(index);
+        this.props.onChange(e, index);
       }
       this.setState({ "checkedRadio": index });
     }

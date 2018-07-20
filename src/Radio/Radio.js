@@ -11,7 +11,6 @@ export class Radio extends React.PureComponent {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    /* Since Radio is controlled, the only changes that can occur need to come from property updates */
     if (this.props.onChange && nextProps.checked !== this.props.checked) {
       this.props.onChange({
         "checked": nextProps.checked,
@@ -21,23 +20,27 @@ export class Radio extends React.PureComponent {
   }
 
   // Handles new radio clicks and sets value and checked status of hidden input
-  _clickHandler = () => {
+  _clickHandler = e => {
+    e.persist();
     if (this.props.disabled) {
       return false;
     }
 
     if (this.props.onClick) {
-      this.props.onClick({ "index": this.props.index, "value": this.props.value });
+      this.props.onClick(e, {
+        "index": this.props.index,
+        "value": this.props.value
+      });
     }
 
     if (
       typeof this.props.onBeforeChange === "undefined" ||
-      this.props.onBeforeChange({
+      this.props.onBeforeChange(e, {
         "checked": this.props.checked,
         "value": this.props.value
       })
     ) {
-      this.props.groupSetChecked(this.props.index);
+      this.props.groupSetChecked(e, this.props.index);
     }
   };
 
