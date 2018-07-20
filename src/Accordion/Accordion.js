@@ -54,7 +54,7 @@ export class Accordion extends React.PureComponent {
   _getExpandedPanels = children => {
     let childArray = [];
     React.Children.map(children, child => {
-      if (child.props.expanded === "true") {
+      if (child.props.expanded === "true" || child.props.expanded === true) {
         childArray.push(true);
       } else {
         childArray.push(false);

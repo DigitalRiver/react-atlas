@@ -1,6 +1,7 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 import { Accordion } from "../index";
+import { AccordionPanel } from "../../AccordionPanel/index";
 import renderer from "react-test-renderer";
 
 describe("Test Accordion component", () => {
@@ -183,13 +184,13 @@ describe("Test Accordion Component: _getExpandedPanels() method", () => {
   const acc = mount(
     <Accordion>
       <div expanded="true">Text for first accordion item</div>
-      <div>Text for second accordion item</div>
+      <AccordionPanel expanded>Text for second accordion item</AccordionPanel>
       <div>Text for third accordion item</div>
       <div>Text for fourth accordion item</div>
     </Accordion>
   );
 
-  const expectedObj = [true, false, false, false];
+  const expectedObj = [true, true, false, false];
 
   const instance = acc.instance();
   it("Test initial _getExpandedPanels() call", function() {
