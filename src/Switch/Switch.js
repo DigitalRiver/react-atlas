@@ -83,7 +83,8 @@ export class Switch extends React.PureComponent {
   };
 
   // Handles new checkbox clicks and sets value and checked status of hidden input
-  _clickHandler = () => {
+  _clickHandler = e => {
+    e.persist();
     if (!this.state.disabled) {
       if (typeof this.props.onBeforeChange !== "undefined") {
         let result = this.props.onBeforeChange(this.state.checked);
@@ -95,11 +96,17 @@ export class Switch extends React.PureComponent {
       this.setState({ "checked": !this.state.checked }, function() {
         /* Check if onClick has been passed, if so call it. */
         if (typeof this.props.onClick !== "undefined") {
-          this.props.onClick(this.state.checked, this.state.disabled);
+          this.props.onClick(e, {
+            "checked": this.state.checked,
+            "disabled": this.state.disabled
+          });
         }
         /* Check if onChange has been passed, if so call it. */
         if (typeof this.props.onChange !== "undefined") {
-          this.props.onChange(this.state.checked, this.state.disabled);
+          this.props.onChange(e, {
+            "checked": this.state.checked,
+            "disabled": this.state.disabled
+          });
         }
       });
     }
