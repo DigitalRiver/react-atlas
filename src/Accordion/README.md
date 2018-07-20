@@ -56,7 +56,7 @@ Accordion with onClick property:
           <AccordionPanel title="Third"><Button/></AccordionPanel>
     </Accordion>
 
-Updating Accordion divs by updating parent state:
+Updating AccordionPanels by updating parent state:
 
       initialState = {plans: [
         {id: 1, planDescription: "Plan One", expanded: true},
@@ -75,9 +75,9 @@ Updating Accordion divs by updating parent state:
        
       const Plan = ({ title, expanded }) => {
         return (
-          <div key={title} title={title} expanded={expanded}>
+          <AccordionPanel key={title} title={title} expanded={expanded}>
             Hello there.
-          </div>
+          </AccordionPanel>
         )
       }
        
