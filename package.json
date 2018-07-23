@@ -12,7 +12,7 @@
     "format": "prettier src/**/*.js config/*.js scripts/*.js --write",
     "lint": "eslint src/**/*.js config/*.js scripts/*.js --fix",
     "format-lint": "npm run format && npm run lint",
-    "build:prd": "cross-env NODE_ENV=production webpack -p --config config/webpack.config.js && webpack -p --config config/webpack.index.config.js",
+    "build:prd": "cross-env NODE_ENV=production webpack -p --config config/webpack.config.js && cross-env NODE_ENV=production webpack -p --config config/webpack.index.config.js",
     "build:dev": "cross-env NODE_ENV=development webpack --config config/webpack.config.js && webpack --config config/webpack.index.config.js",
     "docs:prd": "cross-env NODE_ENV=production styleguidist build --config config/styleguide.config.js",
     "docs:dev": "cross-env NODE_ENV=development styleguidist server --config config/styleguide.config.js",
