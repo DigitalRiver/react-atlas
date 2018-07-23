@@ -14,8 +14,10 @@ export class Nav extends React.Component {
     };
   }
 
+  // floyd: i don't think we need this function if we handle onClick properly
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.activeIndex !== this.props.activeIndex) {
+      console.log("check check");
       this.setState({ "activeIndex": nextProps.activeIndex });
     }
   }
@@ -46,6 +48,7 @@ export class Nav extends React.Component {
         ignoreActive={ignoreActive}
       >
         {data.map(nav => {
+          console.log("nav", nav);
           const { title, collapsed, ...others } = nav;
           if (!nav.subNav) {
             return (
