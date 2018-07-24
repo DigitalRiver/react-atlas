@@ -27,6 +27,6 @@
 
 .error_message {
   composes: default-font from '../styles.css';
-  color: #BD0A33;
+  composes: error-text from '../styles.css';
   padding-left: 5px;
 }

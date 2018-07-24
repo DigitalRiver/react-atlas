@@ -1,3 +1,5 @@
+@import '../styles/variables.css';
+
 .disabled {
     composes: default-text from '../styles.css';
 }
@@ -45,7 +47,7 @@
 .checked {
     composes: radio;
     composes: white-inset-shadow from '../styles.css';
-    background: #007EB5;
+    background: var(--primary);
 }
 
 .focus {
@@ -58,7 +60,7 @@
 }
 
 .error {
-    border: solid 1px #BD0A33;
+    border: solid 1px var(--error);
 }
 
 .label {
