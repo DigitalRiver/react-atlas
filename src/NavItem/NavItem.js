@@ -6,10 +6,39 @@ import CSSModules from "react-css-modules";
 import styles from "./NavItem.css";
 
 export class NavItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.NavItemRef = React.createRef();
+
+    this.state = {
+      "visible": false // indicate if this NavItem is visible in Nav or hidden in rightmost dropdown
+    };
+  }
+
+  componentDidMount() {
+    this.updateVisibility();
+    window.addEventListener("resize", this.updateVisibility);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateVisibility);
+  }
+
   _handleClick = event => {
     if (this.props.onClick) {
       this.props.onClick(this.props.navKey, event);
     }
+  };
+
+  updateVisibility = () => {
+    // console.log('right', this.NavItemRef.current.offsetWidth + this.NavItemRef.current.offsetLeft);
+    // console.log('window.innerWidth', window.innerWidth);
+    this.setState({
+      "visible":
+        this.NavItemRef.current.offsetWidth +
+          this.NavItemRef.current.offsetLeft <=
+        window.innerWidth
+    });
   };
 
   render() {
@@ -24,13 +53,18 @@ export class NavItem extends React.Component {
       subNav,
       collapsed,
       children,
+      horizontal,
       ...others
     } = this.props;
 
     const button = 
       <Button
         disabled={disabled}
-        styleName={cx("link", { disabled, subNav })}
+        styleName={
+          !horizontal || horizontal && subNav
+            ? cx("link", disabled, subNav)
+            : cx("link", "horizontal", disabled, subNav)
+        }
         link
         href={typeof to === "undefined" ? href : null}
         onClick={typeof to === "undefined" ? this._handleClick : null}
@@ -39,15 +73,26 @@ export class NavItem extends React.Component {
         <i styleName={cx({ "caret": parent })} />
       </Button>
     ;
+
     const LinkElement = this.props.as;
 
     if (typeof as !== "undefined" && !disabled) {
       return (
         <li
           role="presentation"
-          styleName={cx("navItem", { active, disabled, collapsed, subNav })}
+          styleName={
+            !horizontal || horizontal && subNav
+              ? cx("navItem", { active, disabled, collapsed, subNav })
+              : cx("navItem", "horizontal", {
+                  active,
+                  disabled,
+                  collapsed,
+                  subNav
+                })
+          }
           style={style}
           className={className}
+          ref={this.NavItemRef}
         >
           <LinkElement {...others} onClick={this._handleClick}>
             {button}
@@ -58,9 +103,19 @@ export class NavItem extends React.Component {
       return (
         <li
           role="presentation"
-          styleName={cx("navItem", { active, disabled, collapsed, subNav })}
+          styleName={
+            !horizontal || horizontal && subNav
+              ? cx("navItem", { active, disabled, collapsed, subNav })
+              : cx("navItem", "horizontal", {
+                  active,
+                  disabled,
+                  collapsed,
+                  subNav
+                })
+          }
           style={style}
           className={className}
+          ref={this.NavItemRef}
         >
           {button}
         </li>
@@ -112,11 +167,14 @@ NavItem.propTypes = {
   /** callback for Nav Component
    * @ignore
    */
-  "onClick": PropTypes.func
+  "onClick": PropTypes.func,
+  /** Define whether the NavItem is vertical or horizontal, NavItem is vertical by default */
+  "horizontal": PropTypes.bool
 };
 
 NavItem.defaultProps = {
-  "className": ""
+  "className": "",
+  "horizontal": false
 };
 
 export default CSSModules(NavItem, styles, { "allowMultiple": true });

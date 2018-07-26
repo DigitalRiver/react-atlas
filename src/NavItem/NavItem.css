@@ -2,7 +2,7 @@
 
 .base {
     border-style: none;
-    border-top: 1px solid #eee !important; /* Important designation needed to overwrite Button styling in prod build */
+    /*border-top: 1px solid #eee !important; !* Important designation needed to overwrite Button styling in prod build *!*/
 }
 
 .subNav {
@@ -24,7 +24,14 @@
     padding: 10px 15px;
     background-color: #fff;
     text-align: left;
+    white-space: nowrap;
 }
+
+.horizontal > button {
+    border-top: solid 5px transparent;
+    border-left: none;
+}
+
 
 .subNav button {
     padding-left: 38px;
@@ -47,6 +54,10 @@
     border-left-color: #003058;
     background-color: #f4f8f9;
     color: #003058;
+}
+
+.horizontal.active > button {
+    border-top: solid 5px #003058 !important;
 }
 
 .caret::before {

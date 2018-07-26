@@ -8,18 +8,42 @@ import { NavItem } from "../NavItem";
 export class Nav extends React.Component {
   constructor(props) {
     super(props);
+    this.NavRef = React.createRef();
     this.state = {
       "activeIndex": props.activeIndex, // The index of selected menu item.
-      "collapsed": props.collapsed // Whether or not sub-nav menu collapsed.
+      "collapsed": props.collapsed, // Whether or not sub-nav menu collapsed.
+      "width": window.innerWidth // the width of the Nav,
+      // "visibleNavItems":
     };
+  }
+
+  componentDidMount() {
+    if (this.props.horizontal && typeof this.props.subNav === "undefined") {
+      // console.log('width', this.NavRef.current.offsetWidth);
+      // console.log('left', this.NavRef.current.offsetLeft);
+      console.log(
+        "right",
+        this.NavRef.current.offsetLeft + this.NavRef.current.offsetWidth
+      );
+      console.log("window.innerWidth", window.innerWidth);
+      // const lastChildWidth = this.NavRef.current.children[this.NavRef.current.children.length - 1].offsetWidth;
+      // const lastChildLeft = this.NavRef.current.children[this.NavRef.current.children.length - 1].offsetLeft;
+      // console.log('last child\'s offset right', lastChildLeft + lastChildWidth);
+    }
+
+    window.addEventListener("resize", this.updateDimensions);
   }
 
   // floyd: i don't think we need this function if we handle onClick properly
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.activeIndex !== this.props.activeIndex) {
-      console.log("check check");
+      // console.log("check check");
       this.setState({ "activeIndex": nextProps.activeIndex });
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions);
   }
 
   _handleClick = (index, event) => {
@@ -36,11 +60,44 @@ export class Nav extends React.Component {
     }
   };
 
-  _buildNavByData = () => {
-    const { className, data, ignoreActive, onClick, style } = this.props;
+  updateNav = () => {
+    console.log("nav should shrink now!");
+  };
+
+  updateDimensions = () => {
+    this.setState({
+      "width": window.innerWidth
+    });
+    if (this.NavRef.current !== null) {
+      const lastChildWidth = this.NavRef.current.children[
+        this.NavRef.current.children.length - 1
+      ].offsetWidth;
+      const lastChildLeft = this.NavRef.current.children[
+        this.NavRef.current.children.length - 1
+      ].offsetLeft;
+      const lastChildRight = lastChildWidth + lastChildLeft;
+      if (window.innerWidth < lastChildRight) {
+        this.updateNav();
+      }
+    }
+  };
+
+  _buildNavByData = data => {
+    const {
+      className,
+      ignoreActive,
+      onClick,
+      style,
+      subNav,
+      horizontal
+    } = this.props;
     return (
       <Nav
-        styleName={cx("nav")}
+        styleName={
+          horizontal && typeof subNav === "undefined"
+            ? cx("nav", "horizontal")
+            : cx("nav")
+        }
         className={className}
         style={style}
         activeIndex={this.state.activeIndex}
@@ -48,12 +105,15 @@ export class Nav extends React.Component {
         ignoreActive={ignoreActive}
       >
         {data.map(nav => {
-          console.log("nav", nav);
           const { title, collapsed, ...others } = nav;
           if (!nav.subNav) {
             return (
               // NavItems with no subNav
-              <NavItem key={"navItem_" + nav.navKey} {...others}>
+              <NavItem
+                key={"navItem_" + nav.navKey}
+                horizontal={horizontal}
+                {...others}
+              >
                 {title}
               </NavItem>
             );
@@ -63,19 +123,31 @@ export class Nav extends React.Component {
             // If NavItem has a subNav, wrap it in a new Nav
             <Nav
               key={"nav_" + nav.navKey}
-              styleName={cx("nav")}
+              styleName={
+                horizontal && typeof subNav === "undefined"
+                  ? cx("nav", "horizontal")
+                  : cx("nav")
+              }
               collapsed={collapsed}
               onClick={onClick}
             >
               {/* The following NavItem component is the parent for a collapsible group. */}
-              <NavItem key={"navItem_" + nav.navKey} {...others}>
+              <NavItem
+                key={"navItem_" + nav.navKey}
+                horizontal={horizontal}
+                {...others}
+              >
                 {title}
               </NavItem>
-              {nav.subNav.map(subNav => {
-                const { ...otherArgs } = subNav;
+              {nav.subNav.map(subNavbar => {
+                const { ...otherArgs } = subNavbar;
                 return (
-                  <NavItem key={"navItem_" + subNav.navKey} {...otherArgs}>
-                    {subNav.title}
+                  <NavItem
+                    key={"navItem_" + subNavbar.navKey}
+                    horizontal={horizontal}
+                    {...otherArgs}
+                  >
+                    {subNavbar.title}
                   </NavItem>
                 );
               })}
@@ -86,6 +158,40 @@ export class Nav extends React.Component {
     );
   };
 
+  testData = [
+    {
+      "navKey": 0,
+      "title": "Home"
+    },
+    {
+      "navKey": 1,
+      "title": "Catalog"
+    },
+    {
+      "navKey": 2,
+      "title": "Customer Service"
+    },
+    {
+      "navKey": 3,
+      "title": "Reports",
+      "collapsed": true,
+      "subNav": [
+        {
+          "navKey": 3.1,
+          "title": "Create a Report"
+        },
+        {
+          "navKey": 3.2,
+          "title": "Remove Report"
+        }
+      ]
+    },
+    {
+      "navKey": 4,
+      "title": "Administration"
+    }
+  ];
+
   render() {
     const {
       children,
@@ -93,47 +199,153 @@ export class Nav extends React.Component {
       data,
       ignoreActive,
       style,
-      subNav
+      subNav,
+      horizontal,
+      hamburger
     } = this.props;
     let styleName;
     if (data) {
-      return this._buildNavByData();
+      return this._buildNavByData(data);
     }
     // Avoid to append styleName to ul if rendering from json data.
     styleName =
-      className.indexOf("ra_Nav__nav") === -1 ? { "styleName": cx("nav") } : {};
-    return (
-      <ul {...styleName} className={className} style={style}>
-        {React.Children.map(children, (child, index) => {
-          let active = false;
-          if (
-            (child.props.active ||
-              child.props.navKey === this.state.activeIndex) &&
-            !ignoreActive
-          ) {
-            active = true;
-          }
-          // Render a child Nav component with children, mark it as subNav
-          if (typeof child.props.children === "object") {
+      className.indexOf("ra_Nav__nav") === -1
+        ? horizontal && typeof subNav === "undefined"
+          ? { "styleName": cx("nav", "horizontal") }
+          : { "styleName": cx("nav") }
+        : {};
+
+    if (!hamburger) {
+      return (
+        <ul
+          {...styleName}
+          className={className}
+          style={style}
+          ref={horizontal && typeof subNav === "undefined" ? this.NavRef : null}
+        >
+          {React.Children.map(children, (child, index) => {
+            let active = false;
+            if (
+              (child.props.active ||
+                child.props.navKey === this.state.activeIndex) &&
+              !ignoreActive
+            ) {
+              active = true;
+            }
+            // Render a child Nav component with children, mark it as subNav
+            if (typeof child.props.children === "object") {
+              // console.log('child as a subNav', child);
+              return cloneElement(child, {
+                "activeIndex": this.state.activeIndex,
+                "subNav": true,
+                "onClick": this._handleClick,
+                "ignoreActive": ignoreActive,
+                horizontal
+              });
+            }
+            let isParent = subNav && index === 0;
+            // Render NavItem components, adding subNav and parent identifiers accordingly
             return cloneElement(child, {
-              "activeIndex": this.state.activeIndex,
-              "subNav": true,
-              "onClick": this._handleClick,
-              "ignoreActive": ignoreActive
+              "subNav": subNav && !isParent,
+              "parent": isParent,
+              "collapsed": this.state.collapsed,
+              active,
+              "onClick": isParent ? this._handleCollapse : this._handleClick,
+              horizontal
             });
-          }
-          let isParent = subNav && index === 0;
-          // Render NavItem components, adding subNav and parent identifiers accordingly
-          return cloneElement(child, {
-            "subNav": subNav && !isParent,
-            "parent": isParent,
-            "collapsed": this.state.collapsed,
-            active,
-            "onClick": isParent ? this._handleCollapse : this._handleClick
-          });
-        })}
-      </ul>
-    );
+          })}
+          <Nav
+            styleName={
+              horizontal && typeof subNav === "undefined"
+                ? cx("nav", "horizontal")
+                : cx("nav")
+            }
+            className={className}
+            style={style}
+            activeIndex={this.state.activeIndex}
+            onClick={this.props.onClick}
+            ignoreActive={ignoreActive}
+          >
+            {this.testData.map(nav => {
+              const { title, collapsed, ...others } = nav;
+              if (!nav.subNav) {
+                return (
+                  // NavItems with no subNav
+                  <NavItem
+                    key={"navItem_" + nav.navKey}
+                    horizontal={horizontal}
+                    {...others}
+                  >
+                    {title}
+                  </NavItem>
+                );
+              }
+
+              return (
+                // If NavItem has a subNav, wrap it in a new Nav
+                <Nav
+                  key={"nav_" + nav.navKey}
+                  styleName={
+                    horizontal && typeof subNav === "undefined"
+                      ? cx("nav", "horizontal")
+                      : cx("nav")
+                  }
+                  collapsed={collapsed}
+                  onClick={this.props.onClick}
+                >
+                  {/* The following NavItem component is the parent for a collapsible group. */}
+                  <NavItem
+                    key={"navItem_" + nav.navKey}
+                    horizontal={horizontal}
+                    {...others}
+                  >
+                    {title}
+                  </NavItem>
+                  {nav.subNav.map(subNavbar => {
+                    const { ...otherArgs } = subNavbar;
+                    return (
+                      <NavItem
+                        key={"navItem_" + subNavbar.navKey}
+                        horizontal={horizontal}
+                        {...otherArgs}
+                      >
+                        {subNavbar.title}
+                      </NavItem>
+                    );
+                  })}
+                </Nav>
+              );
+            })}
+          </Nav>
+        </ul>
+      );
+    } else {
+      return (
+        <ul {...styleName} className={className} style={style}>
+          {React.Children.map(children, (child, index) => {
+            // Render a child Nav component with children, mark it as subNav
+            if (typeof child.props.children === "object") {
+              return cloneElement(child, {
+                "activeIndex": this.state.activeIndex,
+                "subNav": true,
+                "onClick": this._handleClick,
+                "ignoreActive": ignoreActive,
+                horizontal
+              });
+            }
+            let isParent = subNav && index === 0;
+            // Render NavItem components, adding subNav and parent identifiers accordingly
+            return cloneElement(child, {
+              "subNav": subNav && !isParent,
+              "parent": isParent,
+              "collapsed": this.state.collapsed,
+              "onClick": isParent ? this._handleCollapse : this._handleClick,
+              horizontal
+            });
+          })}
+        </ul>
+      );
+    }
   }
 }
 
@@ -161,14 +373,20 @@ Nav.propTypes = {
   /** Set true If is a sub-Nav container, not a public prop.
    * @ignore
    */
-  "subNav": PropTypes.bool
+  "subNav": PropTypes.bool,
+  /** Define whether the Nav is vertical or horizontal, Nav is vertical by default */
+  "horizontal": PropTypes.bool,
+  /** This prop indicates if the current Nav is a hamburger Nav inside another */
+  "hamburger": PropTypes.bool
 };
 
 Nav.defaultProps = {
   "className": "",
   "collapsed": false,
   "data": null,
-  "ignoreActive": false
+  "ignoreActive": false,
+  "horizontal": false,
+  "hamburger": false
 };
 
 export default CSSModules(Nav, styles, { "allowMultiple": true });

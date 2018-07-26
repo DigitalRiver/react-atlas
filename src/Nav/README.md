@@ -1,4 +1,4 @@
-Basic Nav component:
+Basic Vertical Nav component:
     <Nav activeIndex={0}>
         <NavItem navKey={0}>Home</NavItem>
         <NavItem navKey={1}>Catalog</NavItem>
@@ -6,7 +6,31 @@ Basic Nav component:
         <NavItem navKey={3}>Administration</NavItem>
         <NavItem navKey={4}>Support</NavItem>
     </Nav>
-
+    
+Basic Horizontal Nav component:
+    <Nav activeIndex={0} horizontal>
+        <NavItem navKey={0}>Home</NavItem>
+        <NavItem navKey={1}>Catalog</NavItem>
+        <NavItem navKey={2}>Customer Service</NavItem>
+        <NavItem navKey={3}>Administration</NavItem>
+        <NavItem navKey={4}>Support</NavItem>
+    </Nav>
+    
+Horizontal Nav with sub-NavItems:
+    <Nav activeIndex={0} horizontal>
+        <NavItem navKey={0}>Home</NavItem>
+        <NavItem navKey={1}>Catalog</NavItem>
+        <NavItem navKey={2}>Customer Service</NavItem>
+        <Nav>
+            <NavItem navKey={3}>Reports</NavItem>
+            <NavItem navKey={3.1}>Create a Report</NavItem>
+            <NavItem navKey={3.2}>Edit a Report</NavItem>
+            <NavItem navKey={3.3}>Delete a Report</NavItem>
+        </Nav>
+        <NavItem navKey={4}>Administration</NavItem>
+        <NavItem navKey={5}>Support</NavItem>
+    </Nav>
+    
 Nav with sub-NavItems:
     <Nav activeIndex={0}>
         <NavItem navKey={0}>Home</NavItem>

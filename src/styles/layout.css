@@ -64,7 +64,7 @@
 
 .pad-0 { padding: 0 }
 
-.pad-0-25 {padding: var(--space-0-25) };
+.pad-0-25 {padding: var(--space-0-25) }
 .pad-v-0-25 {padding-top: var(--space-0-25); padding-bottom: var(--space-0-25) }
 .pad-h-0-25 {padding-left: var(--space-0-25); padding-right: var(--space-0-25) }
 
