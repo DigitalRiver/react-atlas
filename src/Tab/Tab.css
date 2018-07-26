@@ -10,7 +10,7 @@
   composes: pad-v-1 from '../styles.css';
   composes: pad-h-2 from '../styles.css';
   composes: cursor-pointer from '../styles.css';
-  border-top: 1px solid #fff;
+  border-top: 1px solid var(--white);
   display: inline-block;
   position: relative;
   list-style: none;
@@ -26,7 +26,7 @@
   composes: pad-v-2 from '../styles.css';
   composes: pad-h-1 from '../styles.css';
   composes: cursor-pointer from '../styles.css';
-  border-left: 1px solid #fff;
+  border-left: 1px solid var(--white);
   display: block;
   position: relative;
   list-style: none;
@@ -34,22 +34,22 @@
 
 .selected {
   composes: bg-white from '../styles.css';
-  color: #666;
-  border-color: #BEBEBE !important; /* Important designation added for production build */
+  composes: dark-gray from '../styles.css';
+  border-color: var(--gray) !important; /* Important designation added for production build */
   bottom: -1px;
 }
 
 .vSelected {
   composes: bg-white from '../styles.css';
-  color: #666;
-  border-color: #BEBEBE !important; /* Important designation added for production build */
+  composes: dark-gray from '../styles.css';
+  border-color: var(--gray) !important; /* Important designation added for production build */
   right: -1px;
 }
 
 .disabled {
   composes: bg-white from '../styles.css';
   composes: cursor-default from '../styles.css';
-  color: #666;
+  composes: dark-gray from '../styles.css';
 }
 
 .icon-left {

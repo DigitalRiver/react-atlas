@@ -1,3 +1,5 @@
+@import '../styles/variables.css';
+
 .disabled {
     composes: default-text from '../styles.css';
 }
@@ -34,7 +36,7 @@
 
 .checked {
   composes: checkbox;
-  background-color: #00a7e1;
+  composes: bg-primary from '../styles.css';
 }
 
 .hidden {
@@ -43,7 +45,7 @@
 }
 
 .focus {
-  box-shadow: 0 0 6px rgba(35, 173, 255, 1)
+  box-shadow: 0 0 6px var(--primary)
 }
 
 .checkmark {
@@ -53,12 +55,12 @@
   width: 4px;
   height: 10px;
   transform: rotate(45deg);
-  border: solid #fff;
+  border: solid var(--white);
   border-width: 0 3px 3px 0;    
 }
 
 .error {
-  border: solid 1px #BD0A33;
+  border: solid 1px var(--error);
 }
 
 /* Display checkbox with out the checkbox selected.  */
@@ -86,7 +88,7 @@
 
 .error_text {
   composes: default-font from '../styles.css';
-  color: #BD0A33;
+  composes: error-text from '../styles.css';
 }
 
 .error_message {

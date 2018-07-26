@@ -1,3 +1,5 @@
+@import '../styles/variables.css';
+
 .textarea {
 	composes: primary-gray-border from '../styles.css';
 	padding: 5px;
@@ -26,7 +28,7 @@
 }
 
 .remainingCount {
-	color: #999;
+	composes: med-gray from '../styles.css';
 	position: relative;
 	text-align: right;
 	left: 12px;
@@ -51,7 +53,7 @@
 }
 
 .invalid + span {
-	color: #bd0a33;
+	color: var(--error);
 	float: left;
 }
 
@@ -68,7 +70,7 @@
 
 .error_text {
   composes: header-font from '../styles.css';
-  color: #BD0A33;
+  composes: error-text from '../styles.css';
 }
 
 .tooltipAlignment {
