@@ -24,14 +24,16 @@
     padding: 10px 15px;
     background-color: #fff;
     text-align: left;
-    white-space: nowrap;
 }
 
-.horizontal > button {
+.horizontal button {
     border-top: solid 5px transparent;
     border-left: none;
 }
 
+.horizontal ~ li > button {
+    padding-left: 10px !important;
+}
 
 .subNav button {
     padding-left: 38px;
