@@ -8,35 +8,16 @@ import styles from "./NavItem.css";
 export class NavItem extends React.Component {
   constructor(props) {
     super(props);
-    this.NavItemRef = React.createRef();
 
     this.state = {
       "visible": false // indicate if this NavItem is visible in Nav or hidden in rightmost dropdown
     };
   }
 
-  componentDidMount() {
-    this.updateVisibility();
-    window.addEventListener("resize", this.updateVisibility);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateVisibility);
-  }
-
   _handleClick = event => {
     if (this.props.onClick) {
       this.props.onClick(this.props.navKey, event);
     }
-  };
-
-  updateVisibility = () => {
-    this.setState({
-      "visible":
-        this.NavItemRef.current.offsetWidth +
-          this.NavItemRef.current.offsetLeft <=
-        window.innerWidth
-    });
   };
 
   render() {
@@ -90,7 +71,6 @@ export class NavItem extends React.Component {
           }
           style={style}
           className={className}
-          ref={this.NavItemRef}
         >
           <LinkElement {...others} onClick={this._handleClick}>
             {button}
@@ -113,7 +93,6 @@ export class NavItem extends React.Component {
           }
           style={style}
           className={className}
-          ref={this.NavItemRef}
         >
           {button}
         </li>

@@ -8,7 +8,6 @@ import { NavItem } from "../NavItem";
 export class Nav extends React.Component {
   constructor(props) {
     super(props);
-    this.NavRef = React.createRef();
     this.state = {
       "activeIndex": props.activeIndex, // The index of selected menu item.
       "collapsed": props.collapsed // Whether or not sub-nav menu collapsed.
@@ -134,12 +133,7 @@ export class Nav extends React.Component {
         : {};
 
     return (
-      <ul
-        {...styleName}
-        className={className}
-        style={style}
-        ref={horizontal && typeof subNav === "undefined" ? this.NavRef : null}
-      >
+      <ul {...styleName} className={className} style={style}>
         {React.Children.map(children, (child, index) => {
           let active = false;
           if (

@@ -1,4 +1,5 @@
 @import '../Button/Button.css';
+@import '../styles/variables.css';
 
 .base {
     border-style: none;
@@ -16,13 +17,13 @@
 
 .navItem button {
     width: 100%;
-    border-color: #eee;
+    border-color: var(--silver);
     border-left: solid 5px transparent;
-    color: #555;
+    color: var(--dark-gray);
     position: relative;
     display: block;
     padding: 10px 15px;
-    background-color: #fff;
+    background-color: var(--white);
     text-align: left;
 }
 
@@ -44,8 +45,8 @@
 }
 
 .navItem button:hover {
-    background-color: #f4f8f9;
-    color: #555;
+    background-color: var(--silver);
+    color: var(--dark-gray);
 }
 
 .navItem button:focus {
@@ -53,18 +54,18 @@
 }
 
 .active > button, .active > a > button {
-    border-left-color: #003058;
-    background-color: #f4f8f9;
-    color: #003058;
+    border-left-color: var(--blue);
+    background-color: var(--silver);
+    color: var(--blue);
 }
 
 .horizontal.active > button {
-    border-top: solid 5px #003058 !important;
+    border-top: solid 5px var(--blue) !important;
 }
 
 .caret::before {
     content: "";
-    border: solid #003058;
+    border: solid var(--blue);
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 5px;
@@ -81,7 +82,7 @@
     vertical-align: middle;
     float: right;
     clear: right;
-    border-color: #555;
+    border-color: var(--dark-gray);
     transform: none;
     margin: 5px 0 0;
     transition: transform .3s;
