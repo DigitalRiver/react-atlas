@@ -11,39 +11,14 @@ export class Nav extends React.Component {
     this.NavRef = React.createRef();
     this.state = {
       "activeIndex": props.activeIndex, // The index of selected menu item.
-      "collapsed": props.collapsed, // Whether or not sub-nav menu collapsed.
-      "width": window.innerWidth // the width of the Nav,
-      // "visibleNavItems":
+      "collapsed": props.collapsed // Whether or not sub-nav menu collapsed.
     };
   }
 
-  componentDidMount() {
-    if (this.props.horizontal && typeof this.props.subNav === "undefined") {
-      // console.log('width', this.NavRef.current.offsetWidth);
-      // console.log('left', this.NavRef.current.offsetLeft);
-      console.log(
-        "right",
-        this.NavRef.current.offsetLeft + this.NavRef.current.offsetWidth
-      );
-      console.log("window.innerWidth", window.innerWidth);
-      // const lastChildWidth = this.NavRef.current.children[this.NavRef.current.children.length - 1].offsetWidth;
-      // const lastChildLeft = this.NavRef.current.children[this.NavRef.current.children.length - 1].offsetLeft;
-      // console.log('last child\'s offset right', lastChildLeft + lastChildWidth);
-    }
-
-    window.addEventListener("resize", this.updateDimensions);
-  }
-
-  // floyd: i don't think we need this function if we handle onClick properly
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.activeIndex !== this.props.activeIndex) {
-      // console.log("check check");
       this.setState({ "activeIndex": nextProps.activeIndex });
     }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
   }
 
   _handleClick = (index, event) => {
@@ -57,28 +32,6 @@ export class Nav extends React.Component {
     this.setState({ "collapsed": !this.state.collapsed });
     if (this.props.onClick) {
       this.props.onClick(index, event);
-    }
-  };
-
-  updateNav = () => {
-    console.log("nav should shrink now!");
-  };
-
-  updateDimensions = () => {
-    this.setState({
-      "width": window.innerWidth
-    });
-    if (this.NavRef.current !== null) {
-      const lastChildWidth = this.NavRef.current.children[
-        this.NavRef.current.children.length - 1
-      ].offsetWidth;
-      const lastChildLeft = this.NavRef.current.children[
-        this.NavRef.current.children.length - 1
-      ].offsetLeft;
-      const lastChildRight = lastChildWidth + lastChildLeft;
-      if (window.innerWidth < lastChildRight) {
-        this.updateNav();
-      }
     }
   };
 
@@ -198,7 +151,6 @@ export class Nav extends React.Component {
           }
           // Render a child Nav component with children, mark it as subNav
           if (typeof child.props.children === "object") {
-            // console.log('child as a subNav', child);
             return cloneElement(child, {
               "activeIndex": this.state.activeIndex,
               "subNav": true,

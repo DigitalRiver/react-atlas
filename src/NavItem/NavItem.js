@@ -31,8 +31,6 @@ export class NavItem extends React.Component {
   };
 
   updateVisibility = () => {
-    // console.log('right', this.NavItemRef.current.offsetWidth + this.NavItemRef.current.offsetLeft);
-    // console.log('window.innerWidth', window.innerWidth);
     this.setState({
       "visible":
         this.NavItemRef.current.offsetWidth +
