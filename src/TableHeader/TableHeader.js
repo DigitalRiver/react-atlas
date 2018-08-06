@@ -13,7 +13,8 @@ export class TableHeader extends React.PureComponent {
       dataSort,
       isKey,
       searchable,
-      style
+      style,
+      ...props
     } = this.props;
     return (
       <TableHeaderColumn
@@ -23,6 +24,7 @@ export class TableHeader extends React.PureComponent {
         searchable={searchable}
         className={cx(className)}
         tableHeaderClass={"row-hover"}
+        {...props}
       >
         {children}
       </TableHeaderColumn>
