@@ -8,10 +8,30 @@ import styles from "./NavItem.css";
 export class NavItem extends React.Component {
   constructor(props) {
     super(props);
-
+    this.liRef = React.createRef();
     this.state = {
-      "visible": false // indicate if this NavItem is visible in Nav or hidden in rightmost dropdown
+      "initial": true
     };
+  }
+
+  componentDidMount() {
+    if (this.liRef.current && this.props.horizontal && this.props.subNav) {
+      const div = window.getComputedStyle(this.liRef.current);
+      const navItemHeight = parseInt(
+        div
+          .getPropertyValue("height")
+          .substring(0, div.getPropertyValue("height").length - 2)
+      );
+      const navItemWidth = parseInt(
+        div
+          .getPropertyValue("width")
+          .substring(0, div.getPropertyValue("width").length - 2)
+      );
+      this.props.dimension(navItemHeight, navItemWidth);
+    }
+    this.setState({
+      "initial": false
+    });
   }
 
   _handleClick = event => {
@@ -36,6 +56,42 @@ export class NavItem extends React.Component {
       ...others
     } = this.props;
 
+    const styleNameHelper = (horizontalCond, subNavCond, initialCond) => {
+      if (!horizontalCond || horizontalCond && subNavCond) {
+        if (initialCond) {
+          return cx("navItem", "initial", {
+            active,
+            disabled,
+            collapsed,
+            subNav
+          });
+        } else {
+          return cx("navItem", "normal", {
+            active,
+            disabled,
+            collapsed,
+            subNav
+          });
+        }
+      } else {
+        if (initialCond) {
+          return cx("navItem", "initial", "horizontal", {
+            active,
+            disabled,
+            collapsed,
+            subNav
+          });
+        } else {
+          return cx("navItem", "normal", "horizontal", {
+            active,
+            disabled,
+            collapsed,
+            subNav
+          });
+        }
+      }
+    };
+
     const button = 
       <Button
         disabled={disabled}
@@ -49,7 +105,13 @@ export class NavItem extends React.Component {
         onClick={typeof to === "undefined" ? this._handleClick : null}
       >
         {children}
-        <i styleName={cx({ "caret": parent })} />
+        <i
+          styleName={cx({
+            "caret": parent,
+            "caretVertical": !horizontal,
+            "caretHorizontal": horizontal
+          })}
+        />
       </Button>
     ;
 
@@ -59,18 +121,22 @@ export class NavItem extends React.Component {
       return (
         <li
           role="presentation"
-          styleName={
-            !horizontal || horizontal && subNav
-              ? cx("navItem", { active, disabled, collapsed, subNav })
-              : cx("navItem", "horizontal", {
-                  active,
-                  disabled,
-                  collapsed,
-                  subNav
-                })
-          }
+          // keep the comment in case need to change it back
+
+          // styleName={
+          //   !horizontal || horizontal && subNav
+          //     ? cx("navItem", { active, disabled, collapsed, subNav })
+          //     : cx("navItem", "horizontal", {
+          //         active,
+          //         disabled,
+          //         collapsed,
+          //         subNav
+          //       })
+          // }
+          styleName={styleNameHelper(horizontal, subNav, this.state.initial)}
           style={style}
           className={className}
+          ref={parent && horizontal ? this.liRef : null}
         >
           <LinkElement {...others} onClick={this._handleClick}>
             {button}
@@ -81,18 +147,22 @@ export class NavItem extends React.Component {
       return (
         <li
           role="presentation"
-          styleName={
-            !horizontal || horizontal && subNav
-              ? cx("navItem", { active, disabled, collapsed, subNav })
-              : cx("navItem", "horizontal", {
-                  active,
-                  disabled,
-                  collapsed,
-                  subNav
-                })
-          }
+          // keep the comment in case need to change it back
+
+          // styleName={
+          //   !horizontal || horizontal && subNav
+          //     ? cx("navItem", { active, disabled, collapsed, subNav })
+          //     : cx("navItem", "horizontal", {
+          //         active,
+          //         disabled,
+          //         collapsed,
+          //         subNav
+          //       })
+          // }
+          styleName={styleNameHelper(horizontal, subNav, this.state.initial)}
           style={style}
           className={className}
+          ref={!parent && horizontal ? this.liRef : null}
         >
           {button}
         </li>
@@ -146,7 +216,9 @@ NavItem.propTypes = {
    */
   "onClick": PropTypes.func,
   /** Define whether the NavItem is vertical or horizontal, NavItem is vertical by default */
-  "horizontal": PropTypes.bool
+  "horizontal": PropTypes.bool,
+  /** callback for Nav Component for the height and width of the NavItem */
+  "dimension": PropTypes.func
 };
 
 NavItem.defaultProps = {

@@ -10,8 +10,11 @@ export class Nav extends React.Component {
     super(props);
     this.state = {
       "activeIndex": props.activeIndex, // The index of selected menu item.
-      "collapsed": props.collapsed // Whether or not sub-nav menu collapsed.
+      "collapsed": props.collapsed, // Whether or not sub-nav menu collapsed.
+      "subNavItemHeight": 0, // the NavItem's height in subNav
+      "subNavItemMaxWidth": 0
     };
+    this.subNavItemRef = React.createRef();
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -31,6 +34,49 @@ export class Nav extends React.Component {
     this.setState({ "collapsed": !this.state.collapsed });
     if (this.props.onClick) {
       this.props.onClick(index, event);
+    }
+  };
+
+  _setDimension = (height, width) => {
+    console.log("height", height);
+    console.log("width", width);
+    if (width > 0 && width > this.state.subNavItemMaxWidth) {
+      this.setState({
+        "subNavItemHeight": height,
+        "subNavItemMaxWidth": width
+      });
+    } else {
+      this.setState({
+        "subNavItemHeight": height
+      });
+    }
+  };
+
+  // use this ternary helper to avoid nested ternary in JSX
+  // not working for _buidNavByData
+  widthStyleTernaryHelper = (cond1, cond2, child, index, data) => {
+    let tempIndex = index;
+    if (cond1 && cond2) {
+      if (data) {
+        tempIndex += 2;
+      }
+      return {
+        "transform": `translateY(${(tempIndex - 1) *
+          this.state.subNavItemHeight}px)`,
+        "width": `${this.state.subNavItemMaxWidth}px`,
+        ...child.style
+      };
+    } else if (cond1 && !cond2) {
+      if (data) {
+        tempIndex += 2;
+      }
+      return {
+        "transform": `translateY(${(tempIndex - 1) *
+          this.state.subNavItemHeight}px)`,
+        ...child.style
+      };
+    } else {
+      return child.style;
     }
   };
 
@@ -55,10 +101,55 @@ export class Nav extends React.Component {
         activeIndex={this.state.activeIndex}
         onClick={onClick}
         ignoreActive={ignoreActive}
+        horizontal={horizontal}
       >
         {data.map(nav => {
           const { title, collapsed, ...others } = nav;
-          if (!nav.subNav) {
+          if (nav.subNavArray) {
+            return (
+              // If NavItem has a subNav, wrap it in a new Nav
+              <Nav
+                key={"nav_" + nav.navKey}
+                styleName={
+                  horizontal && typeof subNav === "undefined"
+                    ? cx("nav", "horizontal")
+                    : cx("nav")
+                }
+                collapsed={collapsed}
+                onClick={onClick}
+                horizontal={horizontal}
+              >
+                {/* The following NavItem component is the parent for a collapsible group. */}
+                <NavItem
+                  key={"navItem_" + nav.navKey}
+                  horizontal={horizontal}
+                  {...others}
+                >
+                  {title}
+                </NavItem>
+                {nav.subNavArray.map((subNavbar, index) => {
+                  const { ...otherArgs } = subNavbar;
+                  return (
+                    <NavItem
+                      key={"navItem_" + subNavbar.navKey}
+                      horizontal={horizontal}
+                      ref={horizontal && subNav ? this.subNavItemRef : null}
+                      style={this.widthStyleTernaryHelper(
+                        true,
+                        true,
+                        subNavbar,
+                        index,
+                        true
+                      )}
+                      {...otherArgs}
+                    >
+                      {subNavbar.title}
+                    </NavItem>
+                  );
+                })}
+              </Nav>
+            );
+          } else {
             return (
               // NavItems with no subNav
               <NavItem
@@ -70,41 +161,6 @@ export class Nav extends React.Component {
               </NavItem>
             );
           }
-
-          return (
-            // If NavItem has a subNav, wrap it in a new Nav
-            <Nav
-              key={"nav_" + nav.navKey}
-              styleName={
-                horizontal && typeof subNav === "undefined"
-                  ? cx("nav", "horizontal")
-                  : cx("nav")
-              }
-              collapsed={collapsed}
-              onClick={onClick}
-            >
-              {/* The following NavItem component is the parent for a collapsible group. */}
-              <NavItem
-                key={"navItem_" + nav.navKey}
-                horizontal={horizontal}
-                {...others}
-              >
-                {title}
-              </NavItem>
-              {nav.subNav.map(subNavbar => {
-                const { ...otherArgs } = subNavbar;
-                return (
-                  <NavItem
-                    key={"navItem_" + subNavbar.navKey}
-                    horizontal={horizontal}
-                    {...otherArgs}
-                  >
-                    {subNavbar.title}
-                  </NavItem>
-                );
-              })}
-            </Nav>
-          );
         })}
       </Nav>
     );
@@ -161,7 +217,19 @@ export class Nav extends React.Component {
             "collapsed": this.state.collapsed,
             active,
             "onClick": isParent ? this._handleCollapse : this._handleClick,
-            horizontal
+            horizontal,
+            "ref": horizontal && !isParent && subNav ? this.subNavItemRef : null,
+            "dimension": this._setDimension,
+            "style": this.widthStyleTernaryHelper(
+              horizontal && !isParent && subNav,
+              horizontal &&
+                !isParent &&
+                subNav &&
+                this.state.subNavItemMaxWidth > 0,
+              child.props,
+              index,
+              false
+            )
           });
         })}
       </ul>
@@ -186,7 +254,9 @@ Nav.propTypes = {
   "data": PropTypes.array,
   /** Set to true if you intend to set an active style externally. */
   "ignoreActive": PropTypes.bool,
-  /** Function that will be executed when onClick event occurs. */
+  /** Function that will be executed when onClick event occurs.
+   * @ignore
+   * */
   "onClick": PropTypes.func,
   /** Pass inline styling here. */
   "style": PropTypes.object,

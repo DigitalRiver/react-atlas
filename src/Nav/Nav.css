@@ -14,3 +14,8 @@
 .nav a {
     text-decoration: none;
 }
+
+.horizontal.nav .nav li:not(:first-child) {
+    position: absolute;
+    z-index: 9998;
+}

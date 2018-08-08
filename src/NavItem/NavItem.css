@@ -11,8 +11,23 @@
     transition: height .3s ease-in-out;
 }
 
-.subNav.collapsed {
+.subNav.collapsed.initial {
+    height: auto;
+}
+
+.subNav.collapsed.initial button {
+    display: list-item;
+    visibility: hidden;
+}
+
+.subNav.collapsed.normal {
     height: 0;
+}
+
+.subNav.collapsed.normal button {
+    display: none;
+    visibility: visible;
+    transition: height .3s ease-in-out;
 }
 
 .navItem button {
@@ -40,10 +55,6 @@
     padding-left: 38px;
 }
 
-.subNav.collapsed button {
-    display: none;
-}
-
 .navItem button:hover {
     background-color: var(--silver);
     color: var(--dark-gray);
@@ -69,10 +80,17 @@
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 5px;
-    transform: rotate(45deg);
     position: absolute;
     top: -5px;
     left: 5px;
+}
+
+.caretHorizontal::before {
+    transform: rotate(45deg);
+}
+
+.caretVertical::before {
+    transform: rotate(45deg);
 }
 
 .caret {
@@ -90,6 +108,6 @@
 }
 
 
-.collapsed .caret {
+.collapsed .caretVertical {
     transform: rotate(90deg);
 }

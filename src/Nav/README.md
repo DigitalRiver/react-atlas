@@ -21,7 +21,7 @@ Horizontal Nav with sub-NavItems:
         <NavItem navKey={0}>Home</NavItem>
         <NavItem navKey={1}>Catalog</NavItem>
         <NavItem navKey={2}>Customer Service</NavItem>
-        <Nav>
+        <Nav collapsed>
             <NavItem navKey={3}>Reports</NavItem>
             <NavItem navKey={3.1}>Create a Report</NavItem>
             <NavItem navKey={3.2}>Edit a Report</NavItem>
@@ -126,7 +126,7 @@ Build Nav Menu via data attribute:
          "navKey": 3,
          "title": "Reports",
          "collapsed": true,
-         "subNav": [
+         "subNavArray": [
            {
              "navKey": 3.1,
              "title": "Create a Report"
@@ -144,7 +144,7 @@ Build Nav Menu via data attribute:
      ];
 
     _handleClick = (selectedIndex) => console.log('Item ' + selectedIndex + ' has been selected.');
-    <Nav activeIndex={1} data={data} onClick={_handleClick} />
+    <Nav horizontal activeIndex={1} data={data} onClick={_handleClick} />
 
 Nav component with a routing library. Use the `as` property to define the component name (e.g. `Link` from react-router) and pass any router specific props to your NavItem component:
     
@@ -170,7 +170,7 @@ Nav component with React-Router using data instead of children:
          "navKey": 0,
          "title": "Form Components",
          "collapsed": true,
-         "subNav": [
+         "subNavArray": [
            {
              "navKey": 0.1,
              "to": "button",
