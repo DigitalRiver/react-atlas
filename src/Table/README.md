@@ -110,9 +110,95 @@
     };
 
     <Table data={[{id: 0, name: "Bear", type: "A", active: "Y", datetime:"2018/01/02"}, {id: 1, name: "Bear", type: "C", active: "Y", datetime:"2018/01/03"}, {id: 2, name: "Bear", type: "D", active: "N", datetime:"2018/03/05"}, {id: 3, name: "Bear", type: "B", active: "N", datetime:"2018/06/15"}, {id: 4, name: "Bear", type: "E", active: "Y", datetime:"2018/12/06"}]} cellEdit={ cellEditProp }>
-    <TableHeader width='50'  dataField='id' isKey={ true }>Job ID</TableHeader>
+    <TableHeader width='70' dataField='id' isKey={ true }>Job ID</TableHeader>
     <TableHeader width='250' dataField='name' editable={ { type: 'input' } }>Job Name</TableHeader>
     <TableHeader width='150' dataField='type' editable={ { type: 'select', options: { values: jobTypes } } }>Job Type</TableHeader>
     <TableHeader width='150' dataField='active' editable={ { type: 'checkbox', options: { values: 'Y:N' } } }>Active</TableHeader>
     <TableHeader width='150' dataField='datetime' editable={ { type: 'datetime' } }>Date Time</TableHeader>
     </Table>
+    
+##### Default Sorting
+    
+    <Table data={[{id: 0, name: "Bear", type: "A", active: "Y", datetime:"2018/01/02"}, {id: 1, name: "Corn", type: "C", active: "Y", datetime:"2018/01/03"}, {id: 2, name: "Shark Banana", type: "D", active: "N", datetime:"2018/03/05"}, {id: 3, name: "Bear", type: "B", active: "N", datetime:"2018/06/15"}, {id: 4, name: "Corn", type: "E", active: "Y", datetime:"2018/12/06"}]}>
+    <TableHeader width='70' dataField='id' isKey={ true } dataSort>Job ID</TableHeader>
+    <TableHeader width='250' dataField='name' dataSort>Job Name</TableHeader>
+    <TableHeader width='150' dataField='type' dataSort>Job Type</TableHeader>
+    <TableHeader width='150' dataField='active' dataSort>Active</TableHeader>
+    <TableHeader width='150' dataField='datetime' dataSort>Date Time</TableHeader>
+    </Table>
+    
+##### Custom Sorting Function
+    
+    function getYear(a) {
+        return parseInt(a.duration.substring(13, 17)) - parseInt(a.duration.substring(0, 4));
+    }
+    
+    function getMonth(a) {
+        return parseInt(a.duration.substring(18, 20)) - parseInt(a.duration.substring(5, 7));
+    }
+    
+    function getDate(a) {
+        return parseInt(a.duration.substring(21, 23)) - parseInt(a.duration.substring(8, 10));
+    }
+    
+    function helper(a, b) {
+        if (getYear(a) > getYear(b)) {
+            return 1;
+        }
+        else if (getYear(a) < getYear(b)) {
+            return -1;
+        }
+        else {
+            if (getMonth(a) > getMonth(b)) {
+                return 1;
+            } 
+            else if (getMonth(a) < getMonth(b)) {
+                return -1;
+            } 
+            else {
+                if (getDate(a) > getDate(b)) {
+                    return 1;
+                }
+                else if (getDate(a) < getDate(b)) {
+                    return -1;
+                }
+                else {
+                    return 0;
+                }
+            }
+        }
+    }
+    
+    function customDurationSort(a, b, order) {
+        if (order == 'desc') {
+            return helper(a, b);
+        } else {
+            return helper(b, a);
+        }
+    }
+                 
+    <Table data={[{id: 0, duration: "2017/04/13 - 2018/08/09"}, {id: 1, duration: "1998/12/18 - 2005/06/01"}, {id: 2, duration: "1987/02/28 - 1993/03/08"}, {id: 3, duration: "2002/07/30 - 2014/05/17"}]}>
+        <TableHeader width='70' dataField='id' isKey= { true }>Project ID</TableHeader>
+        <TableHeader width='250' dataField='duration' dataSort sortFunc={customDurationSort}>Duration</TableHeader>
+    </Table>
+
+##### Custom Sorting with External Data
+    const qualityType = {
+        0: 'good',
+        1: 'bad',
+        2: 'unkown'
+    };
+    
+    const inStockStatus = {
+        1: 'yes',
+        2: 'no'
+    };
+    
+    const enumFormatter = (cell, row, enumObject) => { return enumObject[cell]; }
+    
+    <Table data={[{id: 0, name: "0", price: "1"}, {id: 1, name: "1", price: "2"}, {id: 2, name: "2", price: "1"}, {id: 3, name: "1", price: "1"}]}>
+        <TableHeader dataField="id" isKey>Product ID</TableHeader>
+        <TableHeader dataField="name" dataSort dataFormat={enumFormatter} formatExtraData={qualityType}>Product Quality</TableHeader>
+        <TableHeader dataField="price" dataSort dataFormat={enumFormatter} formatExtraData={inStockStatus}>Out of stock</TableHeader>
+    </Table>
+    
