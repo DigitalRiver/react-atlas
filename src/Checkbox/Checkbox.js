@@ -73,17 +73,45 @@ export class Checkbox extends React.PureComponent {
     return false;
   };
 
+  _getStatus = preState => {
+    let status = "error";
+    if (
+      preState &&
+      (this.props.required && !this.state.checked || !this.props.required)
+    ) {
+      status = null;
+    } else if (
+      !preState &&
+      (this.props.required && this.state.checked || !this.props.required)
+    ) {
+      status = null;
+    }
+    return status;
+  };
+
   _validationHandler = callback => {
     // If custom validation callback is provided set validationObject with response, otherwise check if required
     const validationObject = callback
       ? callback(event, !this.state.checked)
       : {
-          "status":
-            this.props.required && !this.state.checked || !this.props.required
-              ? null
-              : "error",
+          "status": this._getStatus(true),
           "message": messages.requiredMessage
         };
+    return validationObject;
+  };
+
+  // Used from a parent Form component to validate only
+  _formValidate = () => {
+    const validationObject = this.props.valid
+      ? this.props.valid(event, !this.state.checked)
+      : {
+          "status": this._getStatus(false),
+          "message": messages.requiredMessage
+        };
+    this.setState({
+      "status": validationObject.status,
+      "message": validationObject.message
+    });
     return validationObject;
   };
 

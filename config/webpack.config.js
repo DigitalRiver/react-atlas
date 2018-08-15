@@ -16,6 +16,7 @@ let config = {
     "Dialog": "./src/Dialog",
     "Dropdown": "./src/Dropdown",
     "FileUpload": "./src/FileUpload",
+    "Form": "./src/Form",
     "Hint": "./src/Hint",
     "Icon": "./src/Icon",
     "List": "./src/List",
