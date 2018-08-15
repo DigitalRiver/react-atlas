@@ -12,6 +12,7 @@ export class Label extends React.PureComponent {
       inline,
       label,
       leftLabel,
+      message,
       required,
       status,
       style,
@@ -64,6 +65,12 @@ export class Label extends React.PureComponent {
                 <Text>{reqText}</Text>
               </span>
             }
+          {message && 
+            <span styleName={cx("required_error")}>
+              {" "}
+              <Text>{message}</Text>
+            </span>
+          }
         </div>
         {tooltip}
       </div>

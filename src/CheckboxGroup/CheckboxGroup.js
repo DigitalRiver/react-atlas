@@ -1,6 +1,7 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import { Label } from "../Label";
 import CSSModules from "react-css-modules";
 import styles from "./CheckboxGroup.css";
 
@@ -29,22 +30,31 @@ export class CheckboxGroup extends React.PureComponent {
     const newChecked = data.checked
       ? this.state.totalChecked + 1
       : this.state.totalChecked - 1;
-    if (data.checked) {
-      this.setState({ "totalChecked": newChecked });
-    } else {
-      this.setState({ "totalChecked": newChecked });
-    }
     if (
       this.props.max && newChecked > this.props.max ||
       this.props.min && newChecked < this.props.min
     ) {
-      this.setState({ "groupError": true });
+      this.setState({ "groupError": true, "totalChecked": newChecked });
     } else {
-      this.setState({ "groupError": false });
+      this.setState({ "groupError": false, "totalChecked": newChecked });
     }
 
     if (typeof this.props.onChange !== "undefined") {
       this.props.onChange(data);
+    }
+  };
+
+  // Used from a parent Form component to validate only
+  _formValidate = () => {
+    if (
+      this.props.max && this.state.totalChecked > this.props.max ||
+      this.props.min && this.state.totalChecked < this.props.min
+    ) {
+      this.setState({ "groupError": true });
+      return { "status": "error", "message": this.maxMinMessage() };
+    } else {
+      this.setState({ "groupError": false });
+      return { "status": null, "message": null };
     }
   };
 
@@ -88,24 +98,26 @@ export class CheckboxGroup extends React.PureComponent {
       "checkboxGroup": !inline,
       "inline": inline
     });
+    let checkboxGroupTitle = title && 
+      <div>
+        <Label
+          inline
+          label={title}
+          message={this.state.groupError ? this.maxMinMessage() : null}
+        />
+      </div>
+    ;
     return (
       <div
         style={style}
         className={cx(className)}
         styleName={checkboxGroupStyles}
       >
-        {title && 
-          <div styleName={"header"}>
-            <span styleName={"headerFont"}>{title}</span>
-            {this.state.groupError && 
-              <span styleName={"error_message"}>{this.maxMinMessage()}</span>
-            }
-          </div>
-        }
+        {checkboxGroupTitle}
         {React.Children.map(children, child => {
           child = cloneElement(child, {
             "inline": inlineChildren,
-            "name": name,
+            "name": name ? name : child.props.name,
             "onChange": this.handleChange,
             "groupError": this.state.groupError
           });
@@ -188,5 +200,7 @@ CheckboxGroup.propTypes = {
 CheckboxGroup.defaultProps = {
   "inline": false
 };
+
+CheckboxGroup.displayName = "CheckboxGroup"; // Used for identifying this component from a parent Form
 
 export default CSSModules(CheckboxGroup, styles, { "allowMultiple": true });
