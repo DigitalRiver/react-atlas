@@ -1,6 +1,7 @@
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import { Label } from "../Label";
 import CSSModules from "react-css-modules";
 import styles from "./RadioGroup.css";
 
@@ -33,11 +34,11 @@ export class RadioGroup extends React.PureComponent {
     const {
       className,
       children,
-      name,
       inline,
       inlineChildren,
-      title,
-      style
+      name,
+      style,
+      title
     } = this.props;
 
     const radioGroupStyles = cx({
@@ -48,7 +49,7 @@ export class RadioGroup extends React.PureComponent {
     const radioButtons = React.Children.map(children, (child, index) => {
       child = cloneElement(child, {
         "inline": inlineChildren,
-        "name": name,
+        "name": name ? name : child.props.name,
         "groupSetChecked": this.groupSetChecked,
         "checked": this.state.checkedRadio === index,
         "index": index
@@ -56,13 +57,11 @@ export class RadioGroup extends React.PureComponent {
       return child;
     });
 
+    let radioGroupTitle = title && <Label inline={inline} label={title} />;
+
     return (
       <div style={style} className={cx(className)} styleName={radioGroupStyles}>
-        {title && 
-          <div styleName={cx({ "header": !inline })}>
-            <span styleName={"headerFont"}>{title}</span>
-          </div>
-        }
+        {radioGroupTitle}
         {radioButtons}
       </div>
     );
@@ -125,5 +124,7 @@ RadioGroup.propTypes = {
 RadioGroup.defaultProps = {
   "selectedIndex": null
 };
+
+RadioGroup.displayName = "RadioGroup"; // Used for identifying this component from a parent Form
 
 export default CSSModules(RadioGroup, styles, { "allowMultiple": true });

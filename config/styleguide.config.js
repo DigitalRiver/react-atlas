@@ -71,7 +71,8 @@ module.exports = {
         "../src/RadioGroup/RadioGroup.js",
         "../src/Switch/Switch.js",
         "../src/TextArea/TextArea.js",
-        "../src/TextField/TextField.js"
+        "../src/TextField/TextField.js",
+        "../src/Form/Form.js"
       ]
     },
     {

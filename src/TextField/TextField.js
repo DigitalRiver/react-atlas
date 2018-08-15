@@ -101,7 +101,7 @@ export class TextField extends React.PureComponent {
     }
   };
 
-  _validate = (event, inputValue, change) => {
+  _validate = (inputValue, change, event) => {
     const validationObject = utils.validate(
       inputValue,
       this.props.valid,
@@ -122,6 +122,22 @@ export class TextField extends React.PureComponent {
         this._eventHandlers(event, change);
       }
     );
+  };
+
+  // Used from a parent Form component to validate only
+  _formValidate = inputValue => {
+    const validationObject = utils.validate(
+      inputValue,
+      this.props.valid,
+      this.props.status,
+      this.props.message,
+      this.props.required
+    );
+    this.setState({
+      "status": validationObject.status,
+      "message": validationObject.message
+    });
+    return validationObject;
   };
 
   _handleChange = e => {
@@ -173,7 +189,7 @@ export class TextField extends React.PureComponent {
       value = value.toUpperCase();
     }
 
-    this._validate(e, value, true);
+    this._validate(value, true, e);
   };
 
   _handleFocus = e => {
@@ -192,7 +208,7 @@ export class TextField extends React.PureComponent {
   _handleBlur = e => {
     e.persist();
     const value = e.target.value;
-    this._validate(e, value, false);
+    this._validate(value, false, e);
   };
 
   _handleClick = e => {

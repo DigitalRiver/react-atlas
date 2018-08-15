@@ -276,6 +276,16 @@ export class Dropdown extends React.PureComponent {
     );
   };
 
+  // Used from a parent Form component to validate only
+  _formValidate = inputValue => {
+    const validationObject = this._validate(inputValue);
+    this.setState({
+      "status": validationObject.status,
+      "message": validationObject.message
+    });
+    return validationObject;
+  };
+
   // Callback function passed to each option to register click events
   optionOnClick = (e, value, index) => {
     if (value !== this.state.value) {
