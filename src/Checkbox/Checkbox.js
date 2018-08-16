@@ -139,7 +139,9 @@ export class Checkbox extends React.PureComponent {
 
     // Gets the appropriate jsx to render an error message below the Checkbox.
     const errorMessage =
-      error && !groupError ? utils.getErrorMessage(this.state.message) : null;
+      this.state.status === "error"
+        ? utils.getErrorMessage(this.state.message)
+        : null;
 
     const requiredClasses = cx({
       "required": true,
