@@ -9,14 +9,14 @@
 }
 
 .bordered {
-  border: 1px solid #BEBEBE;
+  border: 1px solid var(--gray);
   border-top: none;
   padding: 1rem;
 }
 
 .vertical {
   flex-grow: 8;
-  border: 1px solid #BEBEBE;
+  border: 1px solid var(--gray);
   border-left: none;
   padding: 1rem;
 }

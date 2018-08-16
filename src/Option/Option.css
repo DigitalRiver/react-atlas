@@ -8,9 +8,9 @@
 }
 
 .selected {
-  background: #BEBEBE;
+  composes: bg-gray from '../styles.css';
 }
 
 .hover {
- background: #E9E9E9; 
+ composes: bg-silver from '../styles.css';
 }

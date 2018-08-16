@@ -1,3 +1,5 @@
+@import '../styles/variables.css';
+
 .dialog {
 	composes: default-font from '../styles.css';
 	display: inline-block;
@@ -13,5 +15,5 @@
 }
 
 .warning h3 {
-	color: #F07822;
+	color: var(--warning);
 }

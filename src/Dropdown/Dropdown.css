@@ -1,3 +1,5 @@
+@import '../styles/variables.css';
+
 .dropdown {
   width: 100%;
   position: relative;
@@ -11,15 +13,15 @@
   box-sizing: border-box;
   width: 100%;
   border-radius: 0 0 2px 2px;
-  border: solid #BEBEBE;
+  border: solid var(--gray);
   border-width: 0 1px 1px 1px;
   margin: -.25rem .25rem .25rem 0;
   position: absolute;
-  background: #ffffff;
   top: calc(1.96rem);
   z-index: 9998;
   max-height: 250px;
   overflow-y: scroll;
+  composes: bg-white from '../styles.css';
 }
 
 .leftLabel {
@@ -44,7 +46,7 @@
   height: 0;
   border-style: solid;
   border-width: 6px 4px 0 4px;
-  border-color: #000000 transparent transparent transparent;
+  border-color: var(--black) transparent transparent transparent;
   float: right;
   margin-top: 0.25rem;
   margin-left: 0.25rem;

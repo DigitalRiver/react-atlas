@@ -110,7 +110,7 @@ if (process.env.NODE_ENV === "production") {
       ]
     })
   });
-  config.plugins.push(new ExtractTextPlugin("atlasThemes.min.css"));
+  config.plugins.push(new ExtractTextPlugin("temp.css"));
 } else {
   config.module.rules.push({
     "test": /\.css$/,
