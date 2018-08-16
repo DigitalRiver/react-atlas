@@ -18,7 +18,7 @@
 }
 
 :global .order{
-  background: red;
+  background: transparent;
 }
 
 :global .react-bs-table-pagination .pagination > li {
