@@ -21,6 +21,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+@import '../styles/variables.css';
+
 .datepicker {
   font-size: 14px;
   font-family: 'MrEavesXLModOT', Arial, Helvetica, sans-serif;
@@ -138,7 +140,8 @@ SOFTWARE.
   position: absolute;
   top: 10px;
   width: 0;
-  border: 0.45rem solid transparent;
+  border: 0.45rem solid var(--white);
+  background: var(--white);
   z-index: 1; }
 :global .react-datepicker__navigation--previous {
     left: 10px;
