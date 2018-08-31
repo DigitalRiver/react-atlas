@@ -51,13 +51,13 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "inputmask-core": "2.2.0",
-    "match-sorter": "2.2.3",
-    "moment": "2.22.1",
-    "react-bootstrap-table": "4.3.1",
+    "inputmask-core": "^2.2.0",
+    "match-sorter": "^2.2.3",
+    "moment": "^2.22.1",
+    "react-bootstrap-table": "^4.3.1",
     "react-css-modules": "4.7.2",
-    "react-datepicker": "1.4.1",
-    "react-dropzone": "4.2.9"
+    "react-datepicker": "^1.4.1",
+    "react-dropzone": "^4.2.9"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
