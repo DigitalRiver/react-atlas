@@ -89,7 +89,7 @@
     "react-dom": "16.4.1",
     "react-router-dom": "^4.3.1",
     "react-styleguidist": "^7.0.2",
-    "react-test-renderer": "^16.2.0",
+    "react-test-renderer": "16.2.0",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.13.0"
   },
