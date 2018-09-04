@@ -180,52 +180,74 @@ export class Form extends React.PureComponent {
     }
   };
 
-  // Loop through all children of the Form. If an input is found, make sure it has a ref for future reference.
-  _addRefs = children => {
-    const elements = children.map(child => {
-      let kid;
-      // If child has a name property or is a CheckboxGroup then add a ref.
-      if (
-        child.props.name && !child.props.ref ||
+  // Inspect a specific child element. Add a ref if necessary.
+  _addRef = child => {
+    let kid;
+    // If child has a name property or is a CheckboxGroup then add a ref.
+    if (
+      typeof child.props !== "undefined" && child.props.name ||
+      typeof child.type !== "undefined" &&
         child.type.displayName === "CheckboxGroup"
-      ) {
-        // If child is a CheckboxGroup, continue to evaluate its children after adding the ref.
-        if (child.type.displayName === "CheckboxGroup") {
-          if (!child.props.ref) {
-            const newRef = React.createRef();
-            this.formRefs.push(newRef);
-            kid = cloneElement(
-              child,
-              {
-                "ref": newRef
-              },
-              this._addRefs(child.props.children)
-            );
-          } else {
-            kid = cloneElement(child, {}, this._addRefs(child.props.children));
-          }
+    ) {
+      // If child is a CheckboxGroup, continue to evaluate its children after adding the ref.
+      if (child.type.displayName === "CheckboxGroup") {
+        if (child.ref === null) {
+          const newRef = React.createRef();
+          this.formRefs.push(newRef);
+          kid = cloneElement(
+            child,
+            {
+              "ref": newRef
+            },
+            this._addRefs(child.props.children)
+          );
         } else {
+          kid = cloneElement(child, {}, this._addRefs(child.props.children));
+        }
+      } else {
+        if (child.ref === null) {
           // If child has a name property and is not a CheckboxGroup then give it a ref and ignore its children.
           const newRef = React.createRef();
           this.formRefs.push(newRef);
           kid = cloneElement(child, {
             "ref": newRef
           });
-        }
-      } else {
-        // If child is not an input and has children, evaluate those children for more inputs. If child does not have children, return child.
-        if (
-          child.props.children &&
-          typeof child.props.children !== "string" &&
-          child.props.children.length > 1
-        ) {
-          kid = cloneElement(child, {}, this._addRefs(child.props.children));
         } else {
+          this.formRefs.push(child.ref);
           kid = child;
         }
       }
-      return kid;
-    });
+    } else {
+      // If child is not an input and has children, evaluate those children for more inputs. If child does not have children, return child.
+      if (
+        typeof child.props !== "undefined" &&
+        typeof child.props.children !== "undefined" &&
+        typeof child.props.children !== "string"
+      ) {
+        kid = cloneElement(child, {}, this._addRefs(child.props.children));
+      } else {
+        kid = child;
+      }
+    }
+    return kid;
+  };
+
+  /*
+    Loop through all children of the Form. If an input is found, make sure it has a ref for future reference.
+    The second argument determines if the children are being re-generated and clears the list of Refs.
+  */
+  _addRefs = (children, first) => {
+    if (first) {
+      this.formRefs = [];
+    }
+    let elements;
+    if (typeof children !== "string" && children.length > 0) {
+      elements = children.map(child => {
+        return this._addRef(child);
+      });
+    } else {
+      elements = this._addRef(children);
+    }
     return elements;
   };
 
@@ -233,7 +255,7 @@ export class Form extends React.PureComponent {
     const { children, ...others } = this.props;
     // Declaring the following variables so they don't get passed to the Textarea through the prop spread.
     const othersFiltered = blacklist(others, "onSubmit");
-    const elements = this._addRefs(children);
+    const elements = this._addRefs(children, true);
     const errorList = this.state.errorList.length > 0 &&
       !this.props.hideErrors && 
         <Alert type="danger">

@@ -1,12 +1,15 @@
 ###### Example Form:
+    let address2ref = React.createRef();
     <Form action="/" onSubmit={(submitObject) => {console.log(submitObject)}}>
         <div style={{ width: "250px", paddingRight: "10px", display: "inline-block"}}>
             <TextField name="firstName" style={{width: "200px"}} label="First Name: " required/>
             <TextField name="phoneNumber" style={{width: "200px"}} label="Phone Number: " placeholder="(___) ___-____" mask="(111) 111-1111" />
             <TextField name="address1" style={{width: "200px"}} label="Address Line 1: " required />
-            <TextField name="address2" disabled style={{width: "200px"}} label="Address Line 2: "/>
-            <Hint>Disabled inputs will not be included in the submitObject</Hint>
+            <TextField ref={address2ref} name="address2" style={{width: "200px"}} label="Address Line 2: "/>
+            <Hint>You can still use your own refs to identify elements.</Hint>
             <TextField name="zipCode" style={{width: "200px"}} label="Zip Code: " required/>
+            <TextField name="disabledInput" style={{widht: "200px"}} label="Disabled Input: " disabled />
+            <Hint>Disabled inputs will not be included in the submitObject</Hint>
             <Label htmlFor="htmlInput" label="HTML Input"/>
             <input type="text" name="htmlInput" id="htmlInput" />
         </div>
