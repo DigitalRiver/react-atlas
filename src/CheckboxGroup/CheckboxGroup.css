@@ -1,5 +1,5 @@
 .checkboxGroup {
-	margin: 20px 0;
+	composes: marg-0 from '../styles.css';
 }
 
 .header {

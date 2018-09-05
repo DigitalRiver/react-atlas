@@ -26,6 +26,8 @@ import { Dropdown } from "./Dropdown";
 export { Dropdown };
 import { FileUpload } from "./FileUpload";
 export { FileUpload };
+import { Form } from "./Form";
+export { Form };
 import { Hint } from "./Hint";
 export { Hint };
 import { Icon } from "./Icon";

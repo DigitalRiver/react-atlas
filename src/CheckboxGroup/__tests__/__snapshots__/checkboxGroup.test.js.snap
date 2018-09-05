@@ -5,14 +5,23 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
   className="checkboxGroup"
   style={undefined}
 >
-  <div
-    className="header"
-  >
-    <span
-      className="headerFont"
+  <div>
+    <div
+      className="tooltipRight labelContainer"
     >
-      CheckboxGroup test
-    </span>
+      <div
+        className="verticalPadding horizontalPadding"
+      >
+        <label
+          className="labelSpacing label label"
+          htmlFor={undefined}
+          id={undefined}
+          style={undefined}
+        >
+          CheckboxGroup test
+        </label>
+      </div>
+    </div>
   </div>
   <div
     className="checkbox_padding"
@@ -32,7 +41,7 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           hidden={undefined}
           id={undefined}
           label={undefined}
-          name={undefined}
+          name="1"
           onChange={[Function]}
           required={false}
           type="checkbox"
@@ -61,7 +70,7 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           hidden={undefined}
           id={undefined}
           label={undefined}
-          name={undefined}
+          name="2"
           onChange={[Function]}
           required={false}
           type="checkbox"
@@ -90,7 +99,7 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           hidden={undefined}
           id={undefined}
           label={undefined}
-          name={undefined}
+          name="3"
           onChange={[Function]}
           required={false}
           type="checkbox"
@@ -119,7 +128,7 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
           hidden={undefined}
           id={undefined}
           label={undefined}
-          name={undefined}
+          name="4"
           onChange={[Function]}
           required={false}
           type="checkbox"

@@ -101,6 +101,22 @@ export class TextArea extends React.PureComponent {
     );
   };
 
+  // Used from a parent Form component to validate only
+  _formValidate = inputValue => {
+    const validationObject = utils.validate(
+      inputValue,
+      this.props.valid,
+      this.props.status,
+      this.props.message,
+      this.props.required
+    );
+    this.setState({
+      "status": validationObject.status,
+      "message": validationObject.message
+    });
+    return validationObject;
+  };
+
   _handleFocus = e => {
     e.persist();
     this.setState({ "active": true }, function() {
