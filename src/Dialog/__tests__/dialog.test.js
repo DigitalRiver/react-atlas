@@ -1,39 +1,12 @@
 import React from "react";
 import { mount } from "enzyme";
 import { Dialog } from "../index";
-import { Button } from "../../Button/index";
-
-import renderer from "react-test-renderer";
-
-function handleToggle() {
-  console.log("Inside handleToggle");
-}
-function handleOk() {
-  console("-.-");
-}
 
 // function handleCancel() {
 //   console(".-.");
 // }
 
-describe("Dialog component - Test correct render", () => {
-  it("Test correct render", function() {});
-  const tree = renderer
-    .create(
-      <div>
-        <Button primary onClick={handleToggle}>
-          Open Info Dialog
-        </Button>
-        <Dialog active onOk={handleOk} title="Info" overlay info>
-          <div>
-            This is Dialog example<br />Any child components could be put here.
-          </div>
-        </Dialog>
-      </div>
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
-});
+// TO-DO Add a snapshot test.
 
 describe("Dialog component - Basic test", () => {
   it("Dialog component(info) - Basic test", function() {
