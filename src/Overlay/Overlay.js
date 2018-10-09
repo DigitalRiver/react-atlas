@@ -43,13 +43,16 @@ export class Overlay extends React.PureComponent {
 
   render() {
     const { active, className, style } = this.props;
-    const classNames = cx(
-      "ra_Overlay__overlay",
-      { "ra_Overlay__active": active },
-      className
-    );
+    const overlayStyles = cx("overlay", {
+      active
+    });
     return (
-      <div style={style} onClick={this.handleClick} className={classNames} />
+      <div
+        style={style}
+        onClick={this.handleClick}
+        styleName={overlayStyles}
+        className={cx(className)}
+      />
     );
   }
 }
