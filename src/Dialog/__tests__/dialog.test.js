@@ -6,7 +6,10 @@ import { Dialog } from "../index";
 //   console(".-.");
 // }
 
-// TO-DO Add a snapshot test.
+it("Test renders correctly", () => {
+  const tree = mount(<Dialog />);
+  expect(tree).toMatchSnapshot();
+});
 
 describe("Dialog component - Basic test", () => {
   it("Dialog component(info) - Basic test", function() {
