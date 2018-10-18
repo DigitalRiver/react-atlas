@@ -21,10 +21,10 @@ ReactWrapper {
     "instance": WrappedComponent {
       "_getButtonContent": [Function],
       "_reactInternalFiber": FiberNode {
-        "_debugID": 5,
+        "_debugID": 9,
         "_debugIsCurrentlyTiming": false,
         "_debugOwner": FiberNode {
-          "_debugID": 4,
+          "_debugID": 8,
           "_debugIsCurrentlyTiming": false,
           "_debugOwner": null,
           "_debugSource": null,
@@ -72,14 +72,14 @@ ReactWrapper {
           },
           "ref": null,
           "return": FiberNode {
-            "_debugID": 1,
+            "_debugID": 6,
             "_debugIsCurrentlyTiming": false,
             "_debugOwner": null,
             "_debugSource": null,
             "actualDuration": 0,
             "actualStartTime": 0,
             "alternate": FiberNode {
-              "_debugID": 1,
+              "_debugID": 6,
               "_debugIsCurrentlyTiming": false,
               "_debugOwner": null,
               "_debugSource": null,
@@ -319,7 +319,7 @@ ReactWrapper {
         },
         "ref": null,
         "return": FiberNode {
-          "_debugID": 4,
+          "_debugID": 8,
           "_debugIsCurrentlyTiming": false,
           "_debugOwner": null,
           "_debugSource": null,
@@ -367,14 +367,14 @@ ReactWrapper {
           },
           "ref": null,
           "return": FiberNode {
-            "_debugID": 1,
+            "_debugID": 6,
             "_debugIsCurrentlyTiming": false,
             "_debugOwner": null,
             "_debugSource": null,
             "actualDuration": 0,
             "actualStartTime": 0,
             "alternate": FiberNode {
-              "_debugID": 1,
+              "_debugID": 6,
               "_debugIsCurrentlyTiming": false,
               "_debugOwner": null,
               "_debugSource": null,
@@ -628,10 +628,10 @@ ReactWrapper {
       "instance": WrappedComponent {
         "_getButtonContent": [Function],
         "_reactInternalFiber": FiberNode {
-          "_debugID": 5,
+          "_debugID": 9,
           "_debugIsCurrentlyTiming": false,
           "_debugOwner": FiberNode {
-            "_debugID": 4,
+            "_debugID": 8,
             "_debugIsCurrentlyTiming": false,
             "_debugOwner": null,
             "_debugSource": null,
@@ -679,14 +679,14 @@ ReactWrapper {
             },
             "ref": null,
             "return": FiberNode {
-              "_debugID": 1,
+              "_debugID": 6,
               "_debugIsCurrentlyTiming": false,
               "_debugOwner": null,
               "_debugSource": null,
               "actualDuration": 0,
               "actualStartTime": 0,
               "alternate": FiberNode {
-                "_debugID": 1,
+                "_debugID": 6,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": null,
                 "_debugSource": null,
@@ -926,7 +926,7 @@ ReactWrapper {
           },
           "ref": null,
           "return": FiberNode {
-            "_debugID": 4,
+            "_debugID": 8,
             "_debugIsCurrentlyTiming": false,
             "_debugOwner": null,
             "_debugSource": null,
@@ -974,14 +974,14 @@ ReactWrapper {
             },
             "ref": null,
             "return": FiberNode {
-              "_debugID": 1,
+              "_debugID": 6,
               "_debugIsCurrentlyTiming": false,
               "_debugOwner": null,
               "_debugSource": null,
               "actualDuration": 0,
               "actualStartTime": 0,
               "alternate": FiberNode {
-                "_debugID": 1,
+                "_debugID": 6,
                 "_debugIsCurrentlyTiming": false,
                 "_debugOwner": null,
                 "_debugSource": null,

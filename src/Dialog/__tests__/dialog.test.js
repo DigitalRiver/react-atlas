@@ -12,15 +12,19 @@ it("Test renders correctly", () => {
 });
 
 describe("Dialog component - Basic test", () => {
+  const dial = mount(
+    <Dialog>
+      <div>
+        This is Dialog example<br />Any child components could be put here.
+      </div>
+    </Dialog>
+  );
   it("Dialog component(info) - Basic test", function() {
-    const dial = mount(
-      <Dialog>
-        <div>
-          This is Dialog example<br />Any child components could be put here.
-        </div>
-      </Dialog>
-    );
     expect(dial.props().active).toEqual(false);
+  });
+
+  it("Test Dialog contains a child", () => {
+    expect(dial.props()).toHaveProperty("children");
   });
 
   // it("Dialog component(confirm) - Basic test", function() {
