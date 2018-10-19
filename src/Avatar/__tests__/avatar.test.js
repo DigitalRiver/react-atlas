@@ -31,12 +31,12 @@ describe("Testing Avatar component", () => {
     expect(result.props().children).toBe("AvatarText");
   });
 
-  it("If image is not set then state.image should be equal to defaultImage", function() {
-    const result = mount(<Avatar defaultImage={image} />);
+  it("If image is not set then state.image should be equal to fallbackImage", function() {
+    const result = mount(<Avatar fallbackImage={image} />);
     expect(result.state().image).toBe(image);
   });
 
-  it("If image and defaultImage are not set then state.image should be equal to null", function() {
+  it("If image and fallbackImage are not set then state.image should be equal to null", function() {
     const result = mount(<Avatar />);
     expect(result.state().image).toBe(null);
   });
@@ -50,14 +50,14 @@ describe("Testing Avatar component", () => {
 
   it("If image is set but fails to load fall back on the default image.", function() {
     const result = mount(
-      <Avatar image={"incorrect.jpg"} defaultImage={image} />
+      <Avatar image={"incorrect.jpg"} fallbackImage={image} />
     );
     let img = result.find("img");
     img.simulate("error");
     expect(result.state().image).toBe(image);
   });
 
-  it("The avatar component should fall back on the title prop if image and defaultImage props are not set or fail to load.", function() {
+  it("The avatar component should fall back on the title prop if image and fallbackImage props are not set or fail to load.", function() {
     const result = mount(<Avatar image={image} title={title} />);
     let img = result.find("img");
     img.simulate("error");

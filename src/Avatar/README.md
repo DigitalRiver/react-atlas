@@ -3,23 +3,23 @@ Title prop gets truncated to 1st letter:
 
     <Avatar title="Nathan" />
 
-Icon beats title:
+Icon takes precedence over title:
 
     <Avatar title="Nathan" icon="fab fa-github" />
 
-Image beats icon:
+Image takes precedence over icon:
 
     <Avatar
-        icon={"fa fa-github"}
+        icon={"fab fa-github"}
         image="https://upload.wikimedia.org/wikipedia/commons/c/cf/3818_-_Riffelberg_-_Matterhorn_viewed_from_Gornergratbahn.JPG"
         title="Matterhorn"
     />
 
-Image beats title:
+Image takes precedence over title:
 
     <Avatar title="Javier" image="https://i.ytimg.com/vi/cNycdfFEgBc/maxresdefault.jpg" />
 
-Child beats parameters:
+Child takes precedence over parameters:
 
     <div>
       <Avatar title="Nathan" image="https://octodex.github.com/images/codercat.jpg">
@@ -31,14 +31,14 @@ Child beats parameters:
       </Avatar>
     </div>
 
-Image beats defaultImage:
+Image takes precedence over fallbackImage:
 
-    <Avatar title="Nathan" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGNZh4ycC0G2UbBGDVgJ56hYbZ0j1mU9J05xLg9O5ZazV1GJTT" defaultImage="https://octodex.github.com/images/codercat.jpg" />
+    <Avatar title="Nathan" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGNZh4ycC0G2UbBGDVgJ56hYbZ0j1mU9J05xLg9O5ZazV1GJTT" fallbackImage="https://octodex.github.com/images/codercat.jpg" />
 
-DefaultImage beats title:
+fallbackImage takes precedence over title:
 
-    <Avatar title="Javier" defaultImage="https://timeincsecure-a.akamaihd.net/rtmp_uds/293884104/201703/2681/293884104_5360456295001_5360434467001-vs.jpg?pubId=293884104&videoId=5360434467001" />
+    <Avatar title="Javier" fallbackImage="https://timeincsecure-a.akamaihd.net/rtmp_uds/293884104/201703/2681/293884104_5360456295001_5360434467001-vs.jpg?pubId=293884104&videoId=5360434467001" />
 
-DefaultImage will replace a image that fails to load:
+fallbackImage will replace an image that fails to load:
 
-    <Avatar title="Fryxell" image="badImage.jpg" defaultImage="http://wikitravel.org/upload/shared//thumb/e/ea/Lake_Fryxell.jpg/510px-Lake_Fryxell.jpg" />
+    <Avatar title="Fryxell" image="badImage.jpg" fallbackImage="http://wikitravel.org/upload/shared//thumb/e/ea/Lake_Fryxell.jpg/510px-Lake_Fryxell.jpg" />

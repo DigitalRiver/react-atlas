@@ -7,11 +7,12 @@ import styles from "./Avatar.css";
 /**
  * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
  * **NOTE**: children will always take precedence over props passed into component.
+ * Precedence Order: image, fallbackImage, icon, title.
  */
 export class Avatar extends React.PureComponent {
   constructor(props) {
     super(props);
-    let image = props.image ? props.image : props.defaultImage;
+    let image = props.image ? props.image : props.fallbackImage;
     this.state = { "image": image ? image : null };
   }
 
@@ -25,24 +26,18 @@ export class Avatar extends React.PureComponent {
     /* If the default Image is equal to the bad image URL or the default image is undefined
         set this.state.image as null so avatar will fallback on a different prop. */
     if (
-      this.props.defaultImage &&
-      this.props.defaultImage !== this.state.image
+      this.props.fallbackImage &&
+      this.props.fallbackImage !== this.state.image
     ) {
-      this.setState({ "image": this.props.defaultImage });
+      this.setState({ "image": this.props.fallbackImage });
       return;
     }
     this.setState({ "image": null });
   };
 
   render() {
-    let { children, icon, title, className, ...others } = this.props;
+    let { children, icon, title, className, style, ...others } = this.props;
 
-    const filteredProps = Object.keys(others)
-      .filter(prop => !Avatar.propTypes[prop])
-      .reduce((obj, key) => {
-        obj[key] = others[key];
-        return obj;
-      }, {});
     let avatar = null;
     if (this.state.image) {
       avatar = 
@@ -61,10 +56,11 @@ export class Avatar extends React.PureComponent {
 
     return (
       <div
-        {...filteredProps}
+        {...others}
         title={title}
         className={cx(className)}
         styleName={"avatar"}
+        style={style}
       >
         {children}
         {avatar}
@@ -88,7 +84,7 @@ Avatar.propTypes = {
   /**
    * A URL for an image that will be displayed when the main image fails to load.
    */
-  "defaultImage": PropTypes.string,
+  "fallbackImage": PropTypes.string,
   /**
    * For displaying an icon/glphyicon. Usually another component or an element with a class on it.
    * @examples <GithubIcon />, <i class="fa fa-github"></i>
