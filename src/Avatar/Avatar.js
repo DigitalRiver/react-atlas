@@ -62,7 +62,13 @@ export class Avatar extends React.PureComponent {
     let { title, className, style, ...others } = this.props;
 
     // Declaring the following variables so they don't get passed to TextField through the prop spread.
-    const othersFiltered = blacklist(others, "children", "icon");
+    const othersFiltered = blacklist(
+      others,
+      "children",
+      "fallbackImage",
+      "icon",
+      "image"
+    );
 
     return (
       <div
