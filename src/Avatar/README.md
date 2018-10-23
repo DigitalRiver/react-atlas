@@ -42,3 +42,17 @@ fallbackImage takes precedence over title:
 fallbackImage will replace an image that fails to load:
 
     <Avatar title="Fryxell" image="badImage.jpg" fallbackImage="http://wikitravel.org/upload/shared//thumb/e/ea/Lake_Fryxell.jpg/510px-Lake_Fryxell.jpg" />
+
+Update Avatar options via state after initial render:
+
+    initialState = {image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGNZh4ycC0G2UbBGDVgJ56hYbZ0j1mU9J05xLg9O5ZazV1GJTT"}
+    handleToggle = () => {
+        setState({image: "https://octodex.github.com/images/codercat.jpg"})
+    };
+    <div> 
+      <Avatar title="Nathan" image={state.image} />
+      <br />
+      <Button primary onClick={handleToggle}>Update State</Button>
+      <br /><br />
+      <Text>Image path: {state.image}</Text>
+    </div>
