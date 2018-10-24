@@ -27,6 +27,7 @@ exports[`Test List component renders correctly 1`] = `
       >
         <div
           className="avatar"
+          style={undefined}
           title="Blue"
         >
           <span
@@ -103,6 +104,7 @@ exports[`Test List component renders correctly 1`] = `
       >
         <div
           className="avatar"
+          style={undefined}
           title="Earl"
         >
           <span

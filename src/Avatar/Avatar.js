@@ -3,21 +3,23 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 import CSSModules from "react-css-modules";
 import styles from "./Avatar.css";
+import blacklist from "blacklist";
 
 /**
  * Avatar component creates a circular area where an image, letter or icon/glyphicon can be presented. Great for user profiles and lists.
  * **NOTE**: children will always take precedence over props passed into component.
+ * Precedence Order: image, fallbackImage, icon, title.
  */
 export class Avatar extends React.PureComponent {
   constructor(props) {
     super(props);
-    let image = props.image ? props.image : props.defaultImage;
+    let image = props.image ? props.image : props.fallbackImage;
     this.state = { "image": image ? image : null };
   }
 
-  UNSAFE_componentWillReceiveProps = nextProps => {
-    if (nextProps.image !== this.props.image) {
-      this.setState({ "image": nextProps.image });
+  componentDidUpdate = prevProps => {
+    if (this.props.image !== prevProps.image) {
+      this.setState({ "image": this.props.image });
     }
   };
 
@@ -25,49 +27,58 @@ export class Avatar extends React.PureComponent {
     /* If the default Image is equal to the bad image URL or the default image is undefined
         set this.state.image as null so avatar will fallback on a different prop. */
     if (
-      this.props.defaultImage &&
-      this.props.defaultImage !== this.state.image
+      this.props.fallbackImage &&
+      this.props.fallbackImage !== this.state.image
     ) {
-      this.setState({ "image": this.props.defaultImage });
+      this.setState({ "image": this.props.fallbackImage });
       return;
     }
     this.setState({ "image": null });
   };
 
-  render() {
-    let { children, icon, title, className, ...others } = this.props;
-
-    const filteredProps = Object.keys(others)
-      .filter(prop => !Avatar.propTypes[prop])
-      .reduce((obj, key) => {
-        obj[key] = others[key];
-        return obj;
-      }, {});
+  _getContent = () => {
+    if (this.props.children) {
+      return this.props.children;
+    }
     let avatar = null;
     if (this.state.image) {
       avatar = 
         <img
           src={this.state.image}
-          title={title}
+          title={this.props.title}
           onError={this._handleBadImage}
           styleName={"image"}
         />
       ;
-    } else if (icon) {
-      avatar = <i className={icon} />;
-    } else if (title) {
-      avatar = <span styleName={"letter"}>{title[0]}</span>;
+    } else if (this.props.icon) {
+      avatar = <i className={this.props.icon} />;
+    } else if (this.props.title) {
+      avatar = <span styleName={"letter"}>{this.props.title[0]}</span>;
     }
+    return avatar;
+  };
+
+  render() {
+    let { title, className, style, ...others } = this.props;
+
+    // Declaring the following variables so they don't get passed to TextField through the prop spread.
+    const othersFiltered = blacklist(
+      others,
+      "children",
+      "fallbackImage",
+      "icon",
+      "image"
+    );
 
     return (
       <div
-        {...filteredProps}
+        {...othersFiltered}
         title={title}
         className={cx(className)}
         styleName={"avatar"}
+        style={style}
       >
-        {children}
-        {avatar}
+        {this._getContent()}
       </div>
     );
   }
@@ -88,7 +99,7 @@ Avatar.propTypes = {
   /**
    * A URL for an image that will be displayed when the main image fails to load.
    */
-  "defaultImage": PropTypes.string,
+  "fallbackImage": PropTypes.string,
   /**
    * For displaying an icon/glphyicon. Usually another component or an element with a class on it.
    * @examples <GithubIcon />, <i class="fa fa-github"></i>
