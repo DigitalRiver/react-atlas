@@ -62,7 +62,6 @@ module.exports = {
         "../src/Button/Button.js",
         "../src/Checkbox/Checkbox.js",
         "../src/CheckboxGroup/CheckboxGroup.js",
-        "../src/DatePicker/DatePicker.js",
         "../src/Dropdown/Dropdown.js",
         "../src/Option/Option.js",
         "../src/FileUpload/FileUpload.js",
