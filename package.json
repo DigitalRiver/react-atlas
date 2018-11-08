@@ -17,7 +17,9 @@
     "docs:prd": "cross-env NODE_ENV=production styleguidist build --config config/styleguide.config.js",
     "docs:dev": "cross-env NODE_ENV=development styleguidist server --config config/styleguide.config.js",
     "docs:publish": "node scripts/gh-pages.js",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "analyze": "cross-env NODE_ENV=production webpack --config config/webpack.analyze.config.js",
+    "analyze:index": "cross-env NODE_ENV=production webpack --config config/webpack.analyze.index.config.js"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/scripts/enzymeConfig.js",
@@ -89,7 +91,7 @@
     "react-styleguidist": "^7.0.2",
     "react-test-renderer": "^16.2.0",
     "webpack": "^3.8.1",
-    "webpack-bundle-analyzer": "^2.13.0"
+    "webpack-bundle-analyzer": "^2.13.1"
   },
   "peerDependencies": {
     "react": ">= 16.3.x < 17",
