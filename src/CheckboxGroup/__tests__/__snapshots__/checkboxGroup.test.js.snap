@@ -15,7 +15,6 @@ exports[`Test CheckboxGroup component - the basics Test renders correctly 1`] = 
         <label
           className="labelSpacing label label"
           htmlFor={undefined}
-          id={undefined}
           style={undefined}
         >
           CheckboxGroup test

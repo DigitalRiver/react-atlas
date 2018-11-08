@@ -45,9 +45,6 @@ exports[`Test dropdown component Test render correctly 1`] = `
       >
         <span
           className="option defaultFont"
-          htmlFor={undefined}
-          id={undefined}
-          style={undefined}
           title="May"
           value=""
         >
@@ -62,9 +59,6 @@ exports[`Test dropdown component Test render correctly 1`] = `
       >
         <span
           className="option defaultFont"
-          htmlFor={undefined}
-          id={undefined}
-          style={undefined}
           title="the"
           value="the"
         >
@@ -79,9 +73,6 @@ exports[`Test dropdown component Test render correctly 1`] = `
       >
         <span
           className="option defaultFont"
-          htmlFor={undefined}
-          id={undefined}
-          style={undefined}
           title="force"
           value="force"
         >
@@ -96,9 +87,6 @@ exports[`Test dropdown component Test render correctly 1`] = `
       >
         <span
           className="option defaultFont"
-          htmlFor={undefined}
-          id={undefined}
-          style={undefined}
           title="be"
           value="be"
         >
@@ -113,9 +101,6 @@ exports[`Test dropdown component Test render correctly 1`] = `
       >
         <span
           className="option defaultFont"
-          htmlFor={undefined}
-          id={undefined}
-          style={undefined}
           title="with"
           value="with"
         >
@@ -130,9 +115,6 @@ exports[`Test dropdown component Test render correctly 1`] = `
       >
         <span
           className="option defaultFont"
-          htmlFor={undefined}
-          id={undefined}
-          style={undefined}
           title="you"
           value="you"
         >
