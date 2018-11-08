@@ -12,7 +12,6 @@ let config = {
     "Card": "./src/Card",
     "Checkbox": "./src/Checkbox",
     "CheckboxGroup": "./src/CheckboxGroup",
-    "DatePicker": "./src/DatePicker",
     "Dialog": "./src/Dialog",
     "Dropdown": "./src/Dropdown",
     "FileUpload": "./src/FileUpload",
