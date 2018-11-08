@@ -18,8 +18,6 @@ import { Checkbox } from "./Checkbox";
 export { Checkbox };
 import { CheckboxGroup } from "./CheckboxGroup";
 export { CheckboxGroup };
-import { DatePicker } from "./DatePicker";
-export { DatePicker };
 import { Dialog } from "./Dialog";
 export { Dialog };
 import { Dropdown } from "./Dropdown";
