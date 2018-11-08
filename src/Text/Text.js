@@ -10,17 +10,9 @@ export class Text extends React.PureComponent {
   }
 
   render() {
-    const {
-      as,
-      body,
-      children,
-      className,
-      htmlFor,
-      id,
-      style,
-      ...other
-    } = this.props;
+    const { as, body, children, className, ...other } = this.props;
 
+    // Not all available elements are included below, only the ones needing custom styling.
     const textStyles = cx({
       "blockquote": as === "blockquote",
       "bodyFont": body,
@@ -40,14 +32,7 @@ export class Text extends React.PureComponent {
     const TextElement = `${this.props.as}`;
 
     let element = 
-      <TextElement
-        id={id}
-        htmlFor={htmlFor}
-        style={style}
-        className={className}
-        styleName={textStyles}
-        {...other}
-      >
+      <TextElement className={cx(className)} styleName={textStyles} {...other}>
         {children}
       </TextElement>
     ;
@@ -70,16 +55,7 @@ Text.propTypes = {
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
-  ]),
-  /** Adds a "for" attribute to your element. Intended to be used when setting the as property to "label". */
-  "htmlFor": PropTypes.string,
-  /**
-   * Defines an id for the input.
-   * @examples '<Text as="text" name="test"/>'
-   */
-  "id": PropTypes.string,
-  /** Pass inline styling here. */
-  "style": PropTypes.object
+  ])
 };
 
 Text.defaultProps = {

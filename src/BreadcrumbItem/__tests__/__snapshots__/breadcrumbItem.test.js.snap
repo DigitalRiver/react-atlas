@@ -8,9 +8,6 @@ exports[`Test BreadcrumbItem component Test correct render 1`] = `
   <a
     className="defaultFont link"
     href="#"
-    htmlFor={undefined}
-    id={undefined}
-    style={undefined}
   >
     Atlas
   </a>

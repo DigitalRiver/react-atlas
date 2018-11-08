@@ -3,9 +3,6 @@
 exports[`Test Text component renders correctly 1`] = `
 <span
   className="defaultFont"
-  htmlFor={undefined}
-  id={undefined}
-  style={undefined}
 >
   Hello World!
 </span>

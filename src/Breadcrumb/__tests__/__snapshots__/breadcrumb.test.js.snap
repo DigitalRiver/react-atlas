@@ -14,9 +14,6 @@ exports[`Test Breadcrumb component Test correct render 1`] = `
     <a
       className="defaultFont link"
       href="#"
-      htmlFor={undefined}
-      id={undefined}
-      style={undefined}
     >
       Atlas
     </a>
@@ -28,9 +25,6 @@ exports[`Test Breadcrumb component Test correct render 1`] = `
     <a
       className="defaultFont link"
       href="#breadcrumb"
-      htmlFor={undefined}
-      id={undefined}
-      style={undefined}
     >
       Breadcrumb
     </a>
@@ -41,9 +35,6 @@ exports[`Test Breadcrumb component Test correct render 1`] = `
   >
     <span
       className="defaultFont"
-      htmlFor={undefined}
-      id={undefined}
-      style={undefined}
     >
       Breadcrumb Example
     </span>
