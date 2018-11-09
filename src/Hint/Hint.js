@@ -10,17 +10,20 @@ export class Hint extends React.PureComponent {
   }
 
   render() {
-    const { className, children, text, style } = this.props;
+    const { className, children, text, style, ...others } = this.props;
 
-    return text ? 
-      <span style={style} className={cx(className)} styleName={"hintLabel"}>
-        {text}
+    const hintContent = text || children;
+
+    return (
+      <span
+        style={style}
+        className={cx(className)}
+        styleName={"hintLabel"}
+        {...others}
+      >
+        {hintContent}
       </span>
-     : 
-      <span className={cx(className)} styleName={"hintLabel"}>
-        {children}
-      </span>
-    ;
+    );
   }
 }
 
@@ -37,10 +40,10 @@ Hint.propTypes = {
     PropTypes.array
   ]),
   /**
-   * Text that will be displayed (will override children if passed).
-   * @examples '<Hint text="This is a text hint"/>'
+   * Content that will be displayed (will override children if passed).
+   * @examples '<Hint text="This is a text hint"/>' or '<Hint text={<div><Icon icon={"fab fa-github"}/> Your GitHub account ID</div>} />'
    */
-  "text": PropTypes.string,
+  "text": PropTypes.node,
 
   /**
    * Pass inline styling here.
