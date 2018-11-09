@@ -202,6 +202,7 @@ exports[`Test Hint component render Render correctly 1`] = `
     </div>
     <span
       className="hintLabel"
+      style={undefined}
     >
       Disabled inputs will not be included in the submitObject
     </span>
@@ -1727,6 +1728,7 @@ exports[`Test Hint component render Render correctly 1`] = `
     <br />
     <span
       className="hintLabel"
+      style={undefined}
     >
       Enter the words: shark banana
     </span>
