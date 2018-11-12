@@ -9,7 +9,6 @@ styleguide
 jsconfig.json
 lerna-debug.log
 coverage
-packages/react-atlas/src/components/
 atlas.config.js
 *reports/
 *.DS_Store

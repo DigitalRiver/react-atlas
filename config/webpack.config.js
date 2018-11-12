@@ -42,7 +42,6 @@ let config = {
     "Timer": "./src/Timer",
     "Tooltip": "./src/Tooltip"
   },
-  "devtool": "source-map",
   "output": {
     "path": path.join(__dirname, "../lib"),
     "filename": "[name]/[name].js",
@@ -83,6 +82,10 @@ let config = {
     })
   ]
 };
+
+if (process.env.NODE_ENV === "development") {
+  config.devtool = "source-map";
+}
 
 if (process.env.NODE_ENV === "production") {
   config.module.rules.push({
