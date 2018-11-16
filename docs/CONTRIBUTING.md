@@ -11,8 +11,7 @@ Go inside newly cloned directory and:
     npm install                                                                         # to install node modules
     npm run bootstrap:dev                                                               # to have lerna install and setup the different packages as well as generate atlas code
     npm run docs:dev                                                                    # to start a local docs server at port 6060
-Write tests & code in ES6 goodness :-)
- un the test suite:
+Write tests & code in ES6 goodness :-) and then run the test suite:
     npm run test
 
 If any snapshot tests need to be updated, run the following command:
