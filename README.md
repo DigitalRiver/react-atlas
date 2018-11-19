@@ -72,12 +72,12 @@ $ npm run format          // Format all code with prettier.
 $ npm run lint            // Lint code with eslint.
 
 ```
-For more in depth information on development check out our contributors [readme](readme/CONTRIBUTING.md#contributing).
+For more in depth information on development check out our contributors [readme](https://github.com/DigitalRiver/react-atlas/blob/master/docs/CONTRIBUTING.md).
 
 ## Authors and Contributors
-Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.com/DigitalRiver/react-atlas/blob/master/readme/CONTRIBUTING.md)***
+Before cloning or submitting a Pull Request, ***please read our [Contributing Guidelines](https://github.com/DigitalRiver/react-atlas/blob/master/docs/CONTRIBUTING.md)***
 
-Please note that this project is released with a [Contributor Code of Conduct](https://github.com/DigitalRiver/react-atlas/blob/master/readme/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/DigitalRiver/react-atlas/blob/master/docs/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 The project is being initially developed and maintained by the Digital River Experience Engineering team.
 
