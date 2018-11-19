@@ -45,7 +45,7 @@ export class Table extends React.PureComponent {
 
 Table.propTypes = {
   "search": PropTypes.bool,
-  "children": PropTypes.any,
+  "children": PropTypes.any.isRequired,
   "data": PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   "pagination": PropTypes.bool,
   "options": PropTypes.shape({
