@@ -17,7 +17,7 @@
 
 ###### Pagination Table:
 
-	<Table pagination={true} data={[{id: 0, name: "Bear", price: "$100"}, {id: 1, name: "Corn", price: "$2"}, {id: 2, name: "Shark Banana", price: "$125"}]}>
+	<Table pagination={true} data={[{id: 0, name: "Bear", price: "$100"}, {id: 1, name: "Corn", price: "$2"}, {id: 2, name: "Shark Banana", price: "$125"}, {id: 3, name: "Phone", price: "$35"}, {id: 4, name: "Toaster", price: "$4"}, {id: 5, name: "Wrench", price: "$62"}, {id: 6, name: "Rake", price: "$127"}, {id: 7, name: "Car", price: "$1520"}, {id: 8, name: "Fan", price: "$62"}, {id: 9, name: "Comb", price: "$3"}, {id: 10, name: "Keyboard", price: "$19"}, {id: 11, name: "Headphones", price: "$25"}]}>
       <TableHeader dataField='id' isKey={ true }>Product ID</TableHeader>
       <TableHeader dataField='name'>Product Name</TableHeader>
       <TableHeader dataField='price'>Product Price</TableHeader>
@@ -102,7 +102,7 @@
       <TableHeader dataField='price'>Product Price</TableHeader>
     </Table>
 
-###### Cell Editing Type
+###### Click to Edit Cell
     const jobTypes = [ 'A', 'B', 'C', 'D' ];
     const cellEditProp = {
       mode: 'click',
