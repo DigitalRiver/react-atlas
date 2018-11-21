@@ -1,9 +1,5 @@
 @import '../styles/variables.css';
 /* :global is needed for some classes to bypass */
-:global .order{
-  background: transparent;
-}
-
 :global .react-bs-table-pagination .pagination > li {
     display: inline;
 }
@@ -16,9 +12,9 @@
     text-decoration: none;
     color: var(--sky-blue);
     background-color: var(--white);
-    border-width: 1px;
+    border-width: var(--default-border-width);
     border-style: solid;
-    border-color: var(--light-gray);
+    border-color: var(--default-border-color);
     margin-left: -1px;
 }
 
@@ -102,7 +98,13 @@
     border-color: var(--light-gray);
     border-width: 1px 0 0 0;
     border-style: solid;
+    outline: none !important;
     padding-left: .8em;
+}
+
+:global .col-lg-6 {
+  width: 50%;
+  float: left;
 }
 
 :global .react-bs-table-pagination {
@@ -147,4 +149,20 @@
 :global td.react-bs-table-expand-cell,
 :global .react-bs-container-header .sort-column {
     cursor: pointer;
+}
+:global .form-control {
+  height:20px;
+  margin:0 0 10px 0;
+  padding-left: 5px;
+  border-style: solid;
+  border-width: var(--default-border-width);
+  border-color: var(--light-gray);
+}
+
+:global .form-control:hover {
+  border-style: solid;
+  border-width: var(--default-border-width);
+  border-color: var(--aqua);
+  outline: none;
+  box-shadow: 0 0 1px 1px var( --darken-1), 0 0 3px 1px rgba(102, 175, 233, .4);
 }
