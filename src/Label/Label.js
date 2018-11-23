@@ -87,6 +87,8 @@ Label.propTypes = {
   "label": PropTypes.string,
   /** Allows user to move the label to the left of the TextField instead of above it.*/
   "leftLabel": PropTypes.bool,
+  /** Message to be displayed below field */
+  "message": PropTypes.node,
   /** Sets the Label as required. Accepts a boolean or a string. If a string is passed it will be displayed instead of the traditional * next to the label text. */
   "required": PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Sets the status of the Label. Options are null, "success", "error", and "warning". */
