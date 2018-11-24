@@ -71,12 +71,45 @@ describe("Test Alert Component: Basic Tests", () => {
 
   it("Test Alert is dismissible and has onDismiss prop", () => {
     const alrt = mount(
-      <Alert type="danger" dismissible onDismiss={function() {}}>
+      <Alert
+        type="danger"
+        dismissible
+        onDismiss={function() {
+          console.log("closed");
+        }}
+      >
+        This is danger
+      </Alert>
+    );
+
+    global.console = {
+      "log": jest.fn()
+    };
+
+    expect(alrt.props().dismissible).toBe(true);
+    expect(alrt.props().onDismiss).toBeDefined();
+
+    alrt
+      .find("div")
+      .last()
+      .simulate("click");
+    expect(global.console.log).toBeCalled();
+    expect(alrt.find("div").length).toBe(0);
+  });
+
+  it("Test Alert is dismissible when onDismiss prop is not defined", () => {
+    const alrt = mount(
+      <Alert type="danger" dismissible>
         This is danger
       </Alert>
     );
 
     expect(alrt.props().dismissible).toBe(true);
-    expect(alrt.props().onDismiss).toBeDefined();
+
+    alrt
+      .find("div")
+      .last()
+      .simulate("click");
+    expect(alrt.find("div").length).toBe(0);
   });
 });
