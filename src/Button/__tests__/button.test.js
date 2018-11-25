@@ -40,14 +40,31 @@ describe("Test Button component: Basic Tests", () => {
     expect(result.props().primary).toBe(true);
   });
 
+  it("Primary styles are set appropriately", function() {
+    const button = renderer.create(<Button primary />);
+    expect(button.toJSON().props.className).toContain("primary_hover");
+    expect(button.toJSON().props.className).toContain("primary");
+    const disabledButton = renderer.create(<Button primary disabled />);
+    expect(disabledButton.toJSON().props.className).not.toContain(
+      "primary_hover"
+    );
+    expect(disabledButton.toJSON().props.className).toContain("primary");
+  });
+
   it("Main style is set to secondary.", function() {
     result = mount(<Button secondary />);
     expect(result.props().secondary).toBe(true);
   });
 
-  it("Main style is set to success.", function() {
-    result = mount(<Button success />);
-    expect(result.props().success).toBe(true);
+  it("Secondary styles are set appropriately", function() {
+    const button = renderer.create(<Button secondary />);
+    expect(button.toJSON().props.className).toContain("secondary_hover");
+    expect(button.toJSON().props.className).toContain("secondary");
+    const disabledButton = renderer.create(<Button secondary disabled />);
+    expect(disabledButton.toJSON().props.className).not.toContain(
+      "secondary_hover"
+    );
+    expect(disabledButton.toJSON().props.className).toContain("secondary");
   });
 
   it("Main style is set to warning.", function() {
@@ -55,14 +72,50 @@ describe("Test Button component: Basic Tests", () => {
     expect(result.props().warning).toBe(true);
   });
 
-  it("Main style is set to danger.", function() {
-    result = mount(<Button danger />);
-    expect(result.props().danger).toBe(true);
+  it("Warning styles are set appropriately", function() {
+    const button = renderer.create(<Button warning />);
+    expect(button.toJSON().props.className).toContain("warning_hover");
+    expect(button.toJSON().props.className).toContain("warning");
+    const disabledButton = renderer.create(<Button warning disabled />);
+    expect(disabledButton.toJSON().props.className).not.toContain(
+      "warning_hover"
+    );
+    expect(disabledButton.toJSON().props.className).toContain("warning");
+  });
+
+  it("Main style is set to error.", function() {
+    result = mount(<Button error />);
+    expect(result.props().error).toBe(true);
+  });
+
+  it("Error styles are set appropriately", function() {
+    const button = renderer.create(<Button error />);
+    expect(button.toJSON().props.className).toContain("error_hover");
+    expect(button.toJSON().props.className).toContain("error");
+    const disabledButton = renderer.create(<Button error disabled />);
+    expect(disabledButton.toJSON().props.className).not.toContain(
+      "error_hover"
+    );
+    expect(disabledButton.toJSON().props.className).toContain("error");
   });
 
   it("Main style is set to link.", function() {
     result = mount(<Button link />);
     expect(result.props().link).toBe(true);
+  });
+
+  it("Link styles are set appropriately", function() {
+    const button = renderer.create(<Button link />);
+    expect(button.toJSON().props.className).toContain("link_hover");
+    expect(button.toJSON().props.className).toContain("link");
+    const disabledButton = renderer.create(<Button link disabled />);
+    expect(disabledButton.toJSON().props.className).not.toContain("link_hover");
+    expect(disabledButton.toJSON().props.className).toContain("link");
+  });
+
+  it("IgnoreTab sets tabIndex to -1", function() {
+    const button = renderer.create(<Button ignoreTab />);
+    expect(button.toJSON().props.tabIndex).toBe(-1);
   });
 
   it("Size is set to large.", function() {
