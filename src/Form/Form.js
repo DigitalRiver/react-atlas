@@ -254,7 +254,7 @@ export class Form extends React.PureComponent {
   render() {
     const { children, ...others } = this.props;
     // Declaring the following variables so they don't get passed to the Textarea through the prop spread.
-    const othersFiltered = blacklist(others, "onSubmit");
+    const othersFiltered = blacklist(others, "onSubmit", "hideErrors");
     const elements = this._addRefs(children, true);
     const errorList = this.state.errorList.length > 0 &&
       !this.props.hideErrors && 
