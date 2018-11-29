@@ -14,7 +14,7 @@ export class Alert extends React.PureComponent {
     };
   }
 
-  _closeAlert = () => {
+  _closeAlert = event => {
     if (this.props.onDismiss) {
       this.props.onDismiss(event);
     }
