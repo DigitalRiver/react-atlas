@@ -8,7 +8,7 @@
             <TextField ref={address2ref} name="address2" style={{width: "200px"}} label="Address Line 2: "/>
             <Hint>You can still use your own refs to identify elements.</Hint>
             <TextField name="zipCode" style={{width: "200px"}} label="Zip Code: " required/>
-            <TextField name="disabledInput" style={{widht: "200px"}} label="Disabled Input: " disabled />
+            <TextField name="disabledInput" style={{widht: "200px"}} label="Disabled Input: " disabled="true" />
             <Hint>Disabled inputs will not be included in the submitObject</Hint>
             <Label htmlFor="htmlInput" label="HTML Input"/>
             <input type="text" name="htmlInput" id="htmlInput" />
