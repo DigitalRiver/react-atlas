@@ -4,7 +4,6 @@ exports[`Test Hint component render Render correctly 1`] = `
 <form
   action="/"
   autoComplete="off"
-  hideErrors={false}
   noValidate={true}
   onSubmit={[Function]}
   validate={true}
