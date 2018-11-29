@@ -18,4 +18,10 @@ describe("Testing Icon component", () => {
     const result = mount(<Icon icon={icon} />);
     expect(result.props().icon).toBe(icon);
   });
+
+  it("Should warn when no icon prop is passed", function() {
+    global.console = { warn: jest.fn() }; //eslint-disable-line
+    mount(<Icon />);
+    expect(console.warn).toBeCalled();
+  });
 });
