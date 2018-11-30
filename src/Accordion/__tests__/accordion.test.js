@@ -68,6 +68,106 @@ describe("Test Accordion Component: Basic Tests", () => {
     expect(accMulti.props().multiOpen).toBe(true);
   });
 
+  it("Test onclick", () => {
+    let clicks = 0;
+    const updateClicks = function() {
+      clicks++;
+    };
+    const acc = mount(
+      <Accordion onClick={updateClicks}>
+        <div title="first">first</div>
+        <div title="second">second</div>
+      </Accordion>
+    );
+    acc
+      .find(".accordion_header")
+      .first()
+      .simulate("click");
+    expect(clicks).toBe(1);
+  });
+
+  it("Test onclick when disabled", () => {
+    let clicks = 0;
+    const updateClicks = function() {
+      clicks++;
+    };
+    const acc = mount(
+      <Accordion disabled onClick={updateClicks}>
+        <div title="first">first</div>
+        <div title="second">second</div>
+      </Accordion>
+    );
+    acc
+      .find(".accordion_header")
+      .first()
+      .simulate("click");
+    expect(clicks).toBe(0);
+  });
+
+  it("Test only fire onClick when onClick prop exists", () => {
+    let clicks = 0;
+    const acc = mount(
+      <Accordion>
+        <div title="first">first</div>
+        <div title="second">second</div>
+      </Accordion>
+    );
+    acc
+      .find(".accordion_header")
+      .first()
+      .simulate("click");
+    expect(clicks).toBe(0);
+  });
+
+  it("mouseEnter sets hover", () => {
+    const acc = mount(
+      <Accordion>
+        <div title="first">first</div>
+        <div title="second">second</div>
+      </Accordion>
+    );
+    acc
+      .find(".accordion_header")
+      .first()
+      .simulate("mouseEnter");
+    expect(acc.state().hover).toBe(0);
+    acc
+      .find(".accordion_header")
+      .last()
+      .simulate("mouseEnter");
+    expect(acc.state().hover).toBe(1);
+  });
+
+  it("mouseLeave nullifies hover", () => {
+    const acc = mount(
+      <Accordion>
+        <div title="first">first</div>
+        <div title="second">second</div>
+      </Accordion>
+    );
+    acc
+      .find(".accordion_header")
+      .first()
+      .simulate("mouseEnter");
+    expect(acc.state().hover).toBe(0);
+    acc
+      .find(".accordion_header")
+      .first()
+      .simulate("mouseLeave");
+    expect(acc.state().hover).toBe(null);
+  });
+
+  it("expandAll click expands all", () => {
+    const acc = mount(
+      <Accordion expandAll>
+        <div title="first">first</div>
+        <div title="second">second</div>
+      </Accordion>
+    );
+    acc.find(".expandAll").simulate("click");
+    expect(acc.state().activeChildArray).toEqual([true, true]);
+  });
+
   it("Test component is disabled", () => {
     const accDisabled = mount(
       <Accordion disabled>
@@ -75,7 +175,10 @@ describe("Test Accordion Component: Basic Tests", () => {
         <div title="second">second</div>
       </Accordion>
     );
+    accDisabled._setActiveChildArray = jest.fn();
     expect(accDisabled.props().disabled).toBe(true);
+    accDisabled.simulate("click");
+    expect(accDisabled._setActiveChildArray).not.toBeCalled();
   });
 
   it("Test TitlePosition is centered", () => {
@@ -177,6 +280,21 @@ describe("Test Accordion Component: Test _setActiveChildArray() method", () => {
     expect(returnObject).toEqual(expectedObj);
     returnObject = instance._setActiveChildArray(returnObject, false, 3);
     expect(returnObject).toEqual(expectedCollapsedObj);
+  });
+
+  it("CWRP updates active child array if props.children is different", function() {
+    const newChildren = [
+      `<div expanded="false">Text for first accordion item</div>`,
+      `<div expanded="true">Text for second accordion item</div>`,
+      `<div expanded="false">Text for third accordion item</div>`
+    ];
+
+    instance._getExpandedPanels = jest.fn().mockImplementation(() => {
+      return [false, true, false];
+    });
+    instance.UNSAFE_componentWillReceiveProps({ "children": newChildren });
+    expect(instance._getExpandedPanels).toBeCalled();
+    expect(acc.state().activeChildArray).toEqual([false, true, false]);
   });
 });
 
