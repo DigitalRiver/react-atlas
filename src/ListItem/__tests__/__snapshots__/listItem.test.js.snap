@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test ListGroup component Test render correctly 1`] = `
+exports[`Test ListItem component Test render correctly 1`] = `
 <div
   className="listItem"
   id={undefined}

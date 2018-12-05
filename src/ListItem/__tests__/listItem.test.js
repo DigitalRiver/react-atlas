@@ -3,7 +3,7 @@ import { mount } from "enzyme";
 import { ListItem } from "../index";
 import renderer from "react-test-renderer";
 
-describe("Test ListGroup component", () => {
+describe("Test ListItem component", () => {
   it("Test render correctly", () => {
     const comp = <ListItem>Item one</ListItem>;
     const tree = renderer.create(comp).toJSON();
