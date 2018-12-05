@@ -13,7 +13,7 @@ describe("Test correct render", () => {
   });
 });
 
-describe("Testing NavItem component", () => {
+describe("Testing Overlay component", () => {
   it("unmount removes element", function() {
     const overlay = mount(<Overlay />);
     overlay.unmount();
