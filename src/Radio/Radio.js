@@ -14,8 +14,8 @@ export class Radio extends React.PureComponent {
     /* Since Radio is controlled, the only changes that can occur need to come from property updates */
     if (this.props.onChange && nextProps.checked !== this.props.checked) {
       this.props.onChange({
-        "checked": nextProps.checked,
-        "value": this.props.value
+        checked: nextProps.checked,
+        value: this.props.value
       });
     }
   }
@@ -29,16 +29,16 @@ export class Radio extends React.PureComponent {
 
     if (this.props.onClick) {
       this.props.onClick(e, {
-        "index": this.props.index,
-        "value": this.props.value
+        index: this.props.index,
+        value: this.props.value
       });
     }
 
     if (
       typeof this.props.onBeforeChange === "undefined" ||
       this.props.onBeforeChange(e, {
-        "checked": this.props.checked,
-        "value": this.props.value
+        checked: this.props.checked,
+        value: this.props.value
       })
     ) {
       this.props.groupSetChecked(e, this.props.index);
@@ -75,15 +75,15 @@ export class Radio extends React.PureComponent {
     /* Classes and styles setup */
     let wrapperStyles = cx(
       {
-        "inline_block": inline,
-        "hidden": hidden
+        inline_block: inline,
+        hidden: hidden
       },
       "radio_padding"
     );
 
     let labelStyle = cx(
       {
-        "label_left": labelPosition === "left"
+        label_left: labelPosition === "left"
       },
       "label"
     );
@@ -93,8 +93,8 @@ export class Radio extends React.PureComponent {
     let labelTitle = title || label;
 
     let radioClass = cx({
-      "radio": true,
-      "checked": checked
+      radio: true,
+      checked: checked
     });
 
     return (
@@ -102,7 +102,7 @@ export class Radio extends React.PureComponent {
         <div
           styleName={cx({ disabled }, "inline_block", "relative", "padding")}
         >
-          {label && 
+          {label && (
             <label
               styleName={labelStyle}
               title={labelTitle}
@@ -111,7 +111,7 @@ export class Radio extends React.PureComponent {
             >
               {label}
             </label>
-          }
+          )}
           <div styleName={radioDisplay}>
             <input
               {...othersFiltered}
@@ -138,10 +138,10 @@ Radio.propTypes = {
    * When true, Radio will be checked.
    * @examples '<Radio checked/>'
    */
-  "checked": PropTypes.bool,
+  checked: PropTypes.bool,
 
   /** An object, array, or string of CSS classes to apply to Radio.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -151,88 +151,88 @@ Radio.propTypes = {
    * When true, Radio will be disabled.
    * @examples '<Radio disabled/>'
    */
-  "disabled": PropTypes.bool,
+  disabled: PropTypes.bool,
 
   /**
    * When true, Radio will be hidden.
    * @examples '<Radio hidden/>'
    */
-  "hidden": PropTypes.bool,
+  hidden: PropTypes.bool,
   /** Will set the html "id" property on the Radio. */
-  "id": PropTypes.string,
+  id: PropTypes.string,
   /** Represents the index of the Radio within the parent RadioGroup. */
-  "index": PropTypes.number,
+  index: PropTypes.number,
   /**
    * When true, Radio will display inline.
    * @examples '<Radio inline/>'
    */
-  "inline": PropTypes.bool,
+  inline: PropTypes.bool,
 
   /**
    * Function that will be used as a callback to send to RadioGroup component.
    * @examples '<Radio groupSetChecked={...}/>'
    */
-  "groupSetChecked": PropTypes.func,
+  groupSetChecked: PropTypes.func,
 
   /**
    * Defines the text that will be displayed for Radio label.
    * @examples '<Radio label="test"/>'
    */
-  "label": PropTypes.string,
+  label: PropTypes.string,
 
   /**
    * Defines the label position.
    * @examples '<Radio labelPosition="top"/>'
    */
-  "labelPosition": PropTypes.string,
+  labelPosition: PropTypes.string,
 
   /**
    * Define a name for the Radio. Not necessary if using RadioGroup component as wrapper.
    * @examples '<Radio name="test"/>'
    */
-  "name": PropTypes.string,
+  name: PropTypes.string,
 
   /**
    * Function that will be executed before onChange event occurs.
    * @examples '<Radio onBeforeChange={onBeforeChangeHandler}/>'
    */
-  "onBeforeChange": PropTypes.func,
+  onBeforeChange: PropTypes.func,
 
   /**
    * Function that will be executed when onChange event occurs.
    * @examples '<Radio onChange={onChangeHandler}/>'
    */
-  "onChange": PropTypes.func,
+  onChange: PropTypes.func,
 
   /**
    * Function that will be executed when onClick event occurs.
    * @examples '<Radio onClick={onClickHandler}/>'
    */
-  "onClick": PropTypes.func,
+  onClick: PropTypes.func,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Defines the title attribute.
    * @examples '<Radio title="Test"/>'
    */
-  "title": PropTypes.string,
+  title: PropTypes.string,
 
   /**
    * Defines a value for the radio button.
    * @examples '<Radio value="100"/>'
    */
-  "value": PropTypes.any
+  value: PropTypes.any
 };
 
 Radio.defaultProps = {
-  "className": "",
-  "disabled": false,
-  "hidden": false,
-  "inline": false
+  className: "",
+  disabled: false,
+  hidden: false,
+  inline: false
 };
 
-export default CSSModules(Radio, styles, { "allowMultiple": true });
+export default CSSModules(Radio, styles, { allowMultiple: true });

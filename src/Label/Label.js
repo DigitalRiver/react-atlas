@@ -24,30 +24,30 @@ export class Label extends React.PureComponent {
     const reqText = typeof required === "string" ? required : "*";
 
     let labelClasses = cx({
-      "labelSpacing": !leftLabel,
-      "label": true
+      labelSpacing: !leftLabel,
+      label: true
     });
 
     let labelContainerClasses = cx({
-      "tooltipRight": tooltipPosition === "right",
-      "inline": leftLabel && inline,
-      "labelContainer": true
+      tooltipRight: tooltipPosition === "right",
+      inline: leftLabel && inline,
+      labelContainer: true
     });
 
     let labelPadding = cx({
-      "verticalPadding": !leftLabel,
-      "horizontalPadding": true
+      verticalPadding: !leftLabel,
+      horizontalPadding: true
     });
 
     const requiredClasses = cx({
-      "required": true,
-      "required_error": status === "error"
+      required: true,
+      required_error: status === "error"
     });
 
     return (
       <div styleName={labelContainerClasses}>
         <div styleName={cx(labelPadding)}>
-          {label && 
+          {label && (
             <Text
               {...others}
               as="label"
@@ -57,20 +57,20 @@ export class Label extends React.PureComponent {
             >
               {label}
             </Text>
-          }
+          )}
           {required &&
-            required !== "" && 
+            required !== "" && (
               <span styleName={requiredClasses}>
                 {" "}
                 <Text>{reqText}</Text>
               </span>
-            }
-          {message && 
+            )}
+          {message && (
             <span styleName={cx("required_error")}>
               {" "}
               <Text>{message}</Text>
             </span>
-          }
+          )}
         </div>
         {tooltip}
       </div>
@@ -80,29 +80,29 @@ export class Label extends React.PureComponent {
 
 Label.propTypes = {
   /** Define an id to be used as the htmlFor attribute in the Label. */
-  "htmlFor": PropTypes.string,
+  htmlFor: PropTypes.string,
   /** Sets whether or not Label will display as inline. */
-  "inline": PropTypes.bool,
+  inline: PropTypes.bool,
   /** The text to be displayed in the Label. */
-  "label": PropTypes.string,
+  label: PropTypes.string,
   /** Allows user to move the label to the left of the TextField instead of above it.*/
-  "leftLabel": PropTypes.bool,
+  leftLabel: PropTypes.bool,
   /** Message to be displayed below field */
-  "message": PropTypes.node,
+  message: PropTypes.node,
   /** Sets the Label as required. Accepts a boolean or a string. If a string is passed it will be displayed instead of the traditional * next to the label text. */
-  "required": PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  required: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Sets the status of the Label. Options are null, "success", "error", and "warning". */
-  "status": PropTypes.string,
+  status: PropTypes.string,
   /** Pass inline styling here. */
-  "style": PropTypes.object,
+  style: PropTypes.object,
   /** Sets an element to be displayed along with the Label. Traditionally used with the Tooltip component, but will accept any component or HTML element. */
-  "tooltip": PropTypes.node,
+  tooltip: PropTypes.node,
   /** Sets the position of the embedded Tooltip. Defaults to "right", any other value will move it next to the label. */
-  "tooltipPosition": PropTypes.string
+  tooltipPosition: PropTypes.string
 };
 
 Label.defaultProps = {
-  "tooltipPosition": "right"
+  tooltipPosition: "right"
 };
 
-export default CSSModules(Label, styles, { "allowMultiple": true });
+export default CSSModules(Label, styles, { allowMultiple: true });

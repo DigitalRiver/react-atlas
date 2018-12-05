@@ -39,9 +39,9 @@ ListItem.propTypes = {
   /**
    * Text, any HTML element, or React Component.
    */
-  "children": PropTypes.node,
+  children: PropTypes.node,
   /** An object, array, or string of CSS classes to apply to Input. */
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -49,15 +49,15 @@ ListItem.propTypes = {
   /**
    * Will set the html "id" property for ListItem.
    */
-  "id": PropTypes.string,
+  id: PropTypes.string,
   /** Text, any HTML element, or React Component. */
-  "leftItem": PropTypes.node,
+  leftItem: PropTypes.node,
   /** Click event handler for the ListItem. */
-  "onClick": PropTypes.func,
+  onClick: PropTypes.func,
   /** Text, any HTML element, or React Component. */
-  "rightItem": PropTypes.node,
+  rightItem: PropTypes.node,
   /** Pass inline styling here. */
-  "style": PropTypes.object
+  style: PropTypes.object
 };
 
-export default CSSModules(ListItem, styles, { "allowMultiple": true });
+export default CSSModules(ListItem, styles, { allowMultiple: true });

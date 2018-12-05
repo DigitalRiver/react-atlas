@@ -13,14 +13,14 @@ export class Tab extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "selected": this.props.selected,
-      "disabled": this.props.disabled
+      selected: this.props.selected,
+      disabled: this.props.disabled
     };
   }
 
   UNSAFE_componentWillReceiveProps = nextProps => {
     if (nextProps.selected !== this.props.selected) {
-      this.setState({ "selected": nextProps.selected });
+      this.setState({ selected: nextProps.selected });
     }
   };
 
@@ -36,11 +36,11 @@ export class Tab extends React.PureComponent {
     const { className, children, vertical, icon, style } = this.props;
 
     let tabClasses = cx({
-      "tab": !vertical,
-      "vTab": vertical,
-      "selected": this.state.selected && !vertical,
-      "vSelected": this.state.selected && vertical,
-      "disabled": this.state.disabled
+      tab: !vertical,
+      vTab: vertical,
+      selected: this.state.selected && !vertical,
+      vSelected: this.state.selected && vertical,
+      disabled: this.state.disabled
     });
 
     return (
@@ -61,12 +61,12 @@ Tab.propTypes = {
   /**
    * Child components or elements to be displayed as the title on Tab.
    */
-  "children": PropTypes.node,
+  children: PropTypes.node,
 
   /**
    * An object, array, or string of CSS classes to apply to Tab.
    */
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -75,42 +75,42 @@ Tab.propTypes = {
   /**
    * When true, Tab sill be disabled.
    */
-  "disabled": PropTypes.bool,
+  disabled: PropTypes.bool,
 
   /**
    * The CSS class name for the icon that will be displayed on Tab.
    */
-  "icon": PropTypes.string,
+  icon: PropTypes.string,
 
   /**
    * When true, Tab will be selected.
    */
-  "selected": PropTypes.bool,
+  selected: PropTypes.bool,
 
   /**
    * Function to be executed when a Tab is selected.
    */
-  "setSelectedTab": PropTypes.func,
+  setSelectedTab: PropTypes.func,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Tab index.
    */
-  "tabIndex": PropTypes.number,
+  tabIndex: PropTypes.number,
 
   /**
    * When true, Tabs will display vertically.
    */
-  "vertical": PropTypes.bool
+  vertical: PropTypes.bool
 };
 
 Tab.defaultProps = {
-  "selected": false,
-  "disabled": false
+  selected: false,
+  disabled: false
 };
 
-export default CSSModules(Tab, styles, { "allowMultiple": true });
+export default CSSModules(Tab, styles, { allowMultiple: true });

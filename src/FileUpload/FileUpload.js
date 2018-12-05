@@ -19,7 +19,7 @@ export class FileUpload extends React.PureComponent {
   render() {
     const { className, text, accept, style, inputRef } = this.props;
     let textClass = cx({
-      "text": true
+      text: true
     });
     return (
       <Dropzone
@@ -38,10 +38,10 @@ export class FileUpload extends React.PureComponent {
 FileUpload.propTypes = {
   /**
    * The MIME type of files that are accepted. */
-  "accept": PropTypes.string,
+  accept: PropTypes.string,
 
   /** An object, array, or string of CSS classes to apply to FileUpload.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -49,22 +49,22 @@ FileUpload.propTypes = {
 
   /** Function that will be called when a file is uploaded.
    * Returns an array of uploaded files. */
-  "onChange": PropTypes.func,
+  onChange: PropTypes.func,
 
   /**
    * Text that will be displayed on the FileUpload component.
    */
-  "text": PropTypes.string,
+  text: PropTypes.string,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Ref for Dropzone element
    */
-  "inputRef": PropTypes.func
+  inputRef: PropTypes.func
 };
 
-export default CSSModules(FileUpload, styles, { "allowMultiple": true });
+export default CSSModules(FileUpload, styles, { allowMultiple: true });

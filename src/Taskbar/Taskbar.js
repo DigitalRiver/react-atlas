@@ -12,8 +12,8 @@ export class Taskbar extends React.PureComponent {
   render() {
     const { center, children, className, onClick, style } = this.props;
     const taskbarContainerClasses = cx({
-      "taskbarContainer": true,
-      "center": center
+      taskbarContainer: true,
+      center: center
     });
 
     return (
@@ -21,8 +21,8 @@ export class Taskbar extends React.PureComponent {
         <div styleName={taskbarContainerClasses}>
           {React.Children.map(children, (child, index) => {
             child = cloneElement(child, {
-              "index": index,
-              "onClick": child.props.onClick || onClick // Child Task onClick overwrites Taskbar onClick
+              index: index,
+              onClick: child.props.onClick || onClick // Child Task onClick overwrites Taskbar onClick
             });
             return child;
           })}
@@ -34,14 +34,14 @@ export class Taskbar extends React.PureComponent {
 
 Taskbar.propTypes = {
   /** Determines if the Taskbar children should be centered */
-  "center": PropTypes.bool,
+  center: PropTypes.bool,
   /**
    * Any HTML element or React Component.
    * @examples <p>Some Text.</p>
    */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   /** An Object, array, or string of CSS classes to apply to CheckboxGroup.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -49,9 +49,9 @@ Taskbar.propTypes = {
   /**
    * Function that will be executed on click.
    */
-  "onClick": PropTypes.func,
+  onClick: PropTypes.func,
   /** Pass inline styling here. */
-  "style": PropTypes.object
+  style: PropTypes.object
 };
 
-export default CSSModules(Taskbar, styles, { "allowMultiple": true });
+export default CSSModules(Taskbar, styles, { allowMultiple: true });

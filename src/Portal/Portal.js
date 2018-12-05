@@ -77,10 +77,10 @@ Portal.propTypes = {
   /**
    * Text, any HTML element, or React Component.
    */
-  "children": PropTypes.node,
+  children: PropTypes.node,
 
   /** An object, array, or string of CSS classes to apply to Portal.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -89,11 +89,11 @@ Portal.propTypes = {
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object
+  style: PropTypes.object
 };
 
 Portal.defaultProps = {
-  "className": ""
+  className: ""
 };
 
-export default CSSModules(Portal, styles, { "allowMultiple": true });
+export default CSSModules(Portal, styles, { allowMultiple: true });

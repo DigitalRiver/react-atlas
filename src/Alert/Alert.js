@@ -10,7 +10,7 @@ export class Alert extends React.PureComponent {
 
     // component state
     this.state = {
-      "visible": true
+      visible: true
     };
   }
 
@@ -19,25 +19,25 @@ export class Alert extends React.PureComponent {
       this.props.onDismiss(event);
     }
     this.setState({
-      "visible": false
+      visible: false
     });
   };
 
   render() {
     let { hidden, children, dismissible, type, className, style } = this.props;
     const alertClasses = cx({
-      "alert": true,
-      "success": type === "success",
-      "warning": type === "warning",
-      "danger": type === "danger",
+      alert: true,
+      success: type === "success",
+      warning: type === "warning",
+      danger: type === "danger",
       hidden
     });
     return (
       <React.Fragment>
-        {this.state.visible && 
+        {this.state.visible && (
           <div className={cx(className)} style={style} styleName={alertClasses}>
             {children}
-            {dismissible && 
+            {dismissible && (
               <div
                 onClick={this._closeAlert}
                 type="button"
@@ -47,9 +47,9 @@ export class Alert extends React.PureComponent {
               >
                 <span aria-hidden="true">×</span>
               </div>
-            }
+            )}
           </div>
-        }
+        )}
       </React.Fragment>
     );
   }
@@ -59,12 +59,12 @@ Alert.propTypes = {
   /**
    * Any HTML element or React Component.
    */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 
   /**
    * An object, array, or string of CSS classes to apply to Button.
    */
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -73,31 +73,31 @@ Alert.propTypes = {
   /**
    * When true, the Alert can be dismissed.
    */
-  "dismissible": PropTypes.bool,
+  dismissible: PropTypes.bool,
 
   /**
    * A boolean to hide or show the alert component.
    */
-  "hidden": PropTypes.bool,
+  hidden: PropTypes.bool,
 
   /**
    * Function that will be executed on dismiss.
    */
-  "onDismiss": PropTypes.func,
+  onDismiss: PropTypes.func,
 
   /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Will set the Alert's style.  One of: 'info', 'success', 'warning', 'danger'
    */
-  "type": PropTypes.string
+  type: PropTypes.string
 };
 
 Alert.defaultProps = {
-  "type": "info"
+  type: "info"
 };
 
-export default CSSModules(Alert, styles, { "allowMultiple": true });
+export default CSSModules(Alert, styles, { allowMultiple: true });

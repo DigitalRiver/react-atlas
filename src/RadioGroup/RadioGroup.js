@@ -10,13 +10,13 @@ export class RadioGroup extends React.PureComponent {
     super(props);
     // Initial state
     this.state = {
-      "checkedRadio": this.props.selectedIndex || 0
+      checkedRadio: this.props.selectedIndex || 0
     };
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.selectedIndex) {
-      this.setState({ "checkedRadio": nextProps.selectedIndex });
+      this.setState({ checkedRadio: nextProps.selectedIndex });
     }
   }
 
@@ -26,7 +26,7 @@ export class RadioGroup extends React.PureComponent {
       if (this.props.onChange) {
         this.props.onChange(e, index);
       }
-      this.setState({ "checkedRadio": index });
+      this.setState({ checkedRadio: index });
     }
   };
 
@@ -42,17 +42,17 @@ export class RadioGroup extends React.PureComponent {
     } = this.props;
 
     const radioGroupStyles = cx({
-      "radioGroup": !inline,
-      "inline": inline
+      radioGroup: !inline,
+      inline: inline
     });
 
     const radioButtons = React.Children.map(children, (child, index) => {
       child = cloneElement(child, {
-        "inline": inlineChildren,
-        "name": name ? name : child.props.name,
-        "groupSetChecked": this.groupSetChecked,
-        "checked": this.state.checkedRadio === index,
-        "index": index
+        inline: inlineChildren,
+        name: name ? name : child.props.name,
+        groupSetChecked: this.groupSetChecked,
+        checked: this.state.checkedRadio === index,
+        index: index
       });
       return child;
     });
@@ -73,10 +73,10 @@ RadioGroup.propTypes = {
    * Child elements, typically Radio components.
    * @examples '<RadioGroup><Radio/><Radio/></RadioGroup>'
    */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 
   /** An object, array, or string of CSS classes to apply to RadioGroup.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -86,45 +86,45 @@ RadioGroup.propTypes = {
    * When true, RadioGroup will display inline.
    * @examples '<RadioGroup inline></RadioGroup>'
    */
-  "inline": PropTypes.bool,
+  inline: PropTypes.bool,
 
   /**
    * When true, children will display inline.
    * @examples '<RadioGroup inlineChildren></RadioGroup>'
    */
-  "inlineChildren": PropTypes.bool,
+  inlineChildren: PropTypes.bool,
   /**
    * Sets a handler function to be executed when the selected value of the RadioGroup changes.
    * @examples '<RadioGroup onChange={onChangeHandler}>'
    */
-  "onChange": PropTypes.func,
+  onChange: PropTypes.func,
 
   /**
    * Form name for the element, this will set all Radio children the same form name (so they can't be selected at the same time).
    * @examples '<RadioGroup name="test"></RadioGroup>'
    */
-  "name": PropTypes.string,
+  name: PropTypes.string,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Will define the selected/checked Radio component in the RadioGroup.
    */
-  "selectedIndex": PropTypes.number,
+  selectedIndex: PropTypes.number,
   /**
    * Defines the element title.
    * @examples '<RadioGroup title="Test"></RadioGroup>'
    */
-  "title": PropTypes.string
+  title: PropTypes.string
 };
 
 RadioGroup.defaultProps = {
-  "selectedIndex": null
+  selectedIndex: null
 };
 
 RadioGroup.displayName = "RadioGroup"; // Used for identifying this component from a parent Form
 
-export default CSSModules(RadioGroup, styles, { "allowMultiple": true });
+export default CSSModules(RadioGroup, styles, { allowMultiple: true });

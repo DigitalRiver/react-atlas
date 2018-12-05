@@ -11,24 +11,24 @@ export class Dialog extends React.PureComponent {
   _getButtonContent = () => {
     const { info, warning, onOk, onCancel } = this.props;
 
-    const okButton = warning ? 
+    const okButton = warning ? (
       <Button warning small onClick={onOk}>
         OK
       </Button>
-     : 
+    ) : (
       <Button primary small onClick={onOk}>
         OK
       </Button>
-    ;
+    );
 
     return (
       <div>
         {okButton}
-        {!info && 
+        {!info && (
           <Button primary small onClick={onCancel}>
             Cancel
           </Button>
-        }
+        )}
       </div>
     );
   };
@@ -48,9 +48,9 @@ export class Dialog extends React.PureComponent {
     const othersFiltered = blacklist(others, "styles");
 
     return (
-      active && 
+      active && (
         <Modal
-          className={cx(className, { "ra_Dialog__warning": warning })}
+          className={cx(className, { ra_Dialog__warning: warning })}
           style={style}
           active={active}
           onOverlayClick={onOverlayClick}
@@ -61,7 +61,7 @@ export class Dialog extends React.PureComponent {
             <div className="ra_Dialog__buttons">{this._getButtonContent()}</div>
           </div>
         </Modal>
-      
+      )
     );
   }
 }
@@ -70,15 +70,15 @@ Dialog.propTypes = {
   /**
    * When true, Dialog will display.
    */
-  "active": PropTypes.bool,
+  active: PropTypes.bool,
 
   /**
    * Child elements that will be displayed as Dialog content.
    */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 
   /** An object, array, or string of CSS classes to apply to Dialog.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -87,64 +87,64 @@ Dialog.propTypes = {
   /**
    * When true, Dialog will be a confirm type and display both an Ok button and a Cancel button.
    */
-  "confirm": PropTypes.bool,
+  confirm: PropTypes.bool,
 
   /**
    * When true, Dialog will be an info type and display an Ok button.
    */
-  "info": PropTypes.bool,
+  info: PropTypes.bool,
 
   /**
    * When true, scrolling will be disabled.
    */
-  "lockScroll": PropTypes.bool,
+  lockScroll: PropTypes.bool,
 
   /**
    * Function that will be executed when user clicks the Cancel button.
    */
-  "onCancel": PropTypes.func,
+  onCancel: PropTypes.func,
 
   /**
    * Function that will be executed when user clicks the Ok button.
    */
-  "onOk": PropTypes.func,
+  onOk: PropTypes.func,
 
   /**
    * Event handler for clicking on overlay, can be used to close modal if needed.
    */
-  "onOverlayClick": PropTypes.func,
+  onOverlayClick: PropTypes.func,
 
   /**
    * When true, Dialog will display as a modal overlay.
    */
-  "overlay": PropTypes.bool,
+  overlay: PropTypes.bool,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Pass inline styling here.
    */
-  "styles": PropTypes.object,
+  styles: PropTypes.object,
 
   /**
    * Text that will be displayed as title content in the Dialog.
    */
-  "title": PropTypes.string,
+  title: PropTypes.string,
 
   /**
    * When true, Dialog will be a warning type and display both an Ok button and a Cancel button.
    */
-  "warning": PropTypes.bool
+  warning: PropTypes.bool
 };
 
 Dialog.defaultProps = {
-  "active": false,
-  "className": "",
-  "overlay": false,
-  "info": false
+  active: false,
+  className: "",
+  overlay: false,
+  info: false
 };
 
-export default CSSModules(Dialog, styles, { "allowMultiple": true });
+export default CSSModules(Dialog, styles, { allowMultiple: true });

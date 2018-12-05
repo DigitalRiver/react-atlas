@@ -22,8 +22,8 @@ export class Task extends React.PureComponent {
     } = this.props;
 
     const taskLinkClasses = cx({
-      "taskLink": true,
-      "selected": selected
+      taskLink: true,
+      selected: selected
     });
 
     return (
@@ -47,7 +47,7 @@ export class Task extends React.PureComponent {
 
 Task.propTypes = {
   /** An Object, array, or string of CSS classes to apply to CheckboxGroup.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -55,34 +55,34 @@ Task.propTypes = {
   /**
    * Adds font-awesome icon to left of title
    */
-  "icon": PropTypes.string,
+  icon: PropTypes.string,
   /**
    * Will set the html "id" property on the Button.
    */
-  "id": PropTypes.string,
+  id: PropTypes.string,
   /**
    * The index of the Task within the parent Taskbar.
    */
-  "index": PropTypes.number,
+  index: PropTypes.number,
   /**
    * Function that will be executed on click.
    */
-  "onClick": PropTypes.func,
+  onClick: PropTypes.func,
   /**
    * Adds selected class if true
    */
-  "selected": PropTypes.bool,
+  selected: PropTypes.bool,
   /** Pass inline styling here. */
-  "style": PropTypes.object,
+  style: PropTypes.object,
   /**
    * Text for task
    * @examples 'Item One'
    */
-  "title": PropTypes.string
+  title: PropTypes.string
 };
 
 Task.defaultProps = {
-  "title": "Item One"
+  title: "Item One"
 };
 
-export default CSSModules(Task, styles, { "allowMultiple": true });
+export default CSSModules(Task, styles, { allowMultiple: true });

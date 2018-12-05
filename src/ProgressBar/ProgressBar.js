@@ -20,7 +20,7 @@ export class ProgressBar extends React.PureComponent {
   circularStyle() {
     if (this.props.mode !== "indeterminate") {
       return {
-        "strokeDasharray": `${2 *
+        strokeDasharray: `${2 *
           Math.PI *
           25 *
           this.calculateRatio(this.props.value)}, 400`
@@ -33,13 +33,13 @@ export class ProgressBar extends React.PureComponent {
   linearStyle() {
     if (this.props.mode !== "indeterminate") {
       return {
-        "buffer": prefixer({
-          "transform": `scaleX(${this.calculateRatio(this.props.buffer)})`,
-          "transitionDuration": this.props.transitionDuration
+        buffer: prefixer({
+          transform: `scaleX(${this.calculateRatio(this.props.buffer)})`,
+          transitionDuration: this.props.transitionDuration
         }),
-        "value": prefixer({
-          "transform": `scaleX(${this.calculateRatio(this.props.value)})`,
-          "transitionDuration": this.props.transitionDuration
+        value: prefixer({
+          transform: `scaleX(${this.calculateRatio(this.props.value)})`,
+          transitionDuration: this.props.transitionDuration
         })
       };
     } else {
@@ -53,7 +53,7 @@ export class ProgressBar extends React.PureComponent {
     let color = this.props.color;
 
     const styles = {
-      "stroke": color
+      stroke: color
     };
 
     const style = Object.assign(strokeDasharray, styles);
@@ -71,7 +71,7 @@ export class ProgressBar extends React.PureComponent {
 
     const styles = prefixer(
       {
-        "backgroundColor": color
+        backgroundColor: color
       },
       value
     );
@@ -86,7 +86,7 @@ export class ProgressBar extends React.PureComponent {
 
   renderRange() {
     let rangeStyle = prefixer({
-      "transform": `translateX(${this.calculateRatio(this.props.value.from) *
+      transform: `translateX(${this.calculateRatio(this.props.value.from) *
         100}%)
                    scaleX(${this.calculateRatio(
                      this.props.value.to - this.props.value.from
@@ -129,10 +129,10 @@ ProgressBar.propTypes = {
    * The value of a second progress bar
    * @examples ''
    */
-  "buffer": PropTypes.number,
+  buffer: PropTypes.number,
 
   /** An object, array, or string of CSS classes to apply to ProgressBar.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -142,70 +142,70 @@ ProgressBar.propTypes = {
    * Determines what color the ProgressBar will be.
    * @examples '<ProgressBar color="red"/>'
    */
-  "color": PropTypes.string,
+  color: PropTypes.string,
 
   /**
    * The max value of the ProgressBar
    */
-  "max": PropTypes.number,
+  max: PropTypes.number,
 
   /**
    * The min value of the ProgressBar
    */
-  "min": PropTypes.number,
+  min: PropTypes.number,
 
   /**
    * Mode can be one of: 'determinate', 'indeterminate'
    * indeterminate will show a cycling ProgressBar; determinate will show progress based on value.
    */
-  "mode": PropTypes.string,
+  mode: PropTypes.string,
 
   /**
    * If true, ProgressBar will change colors during transition
    *
    * @ignore
    */
-  "multicolor": PropTypes.bool,
+  multicolor: PropTypes.bool,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Length of time in seconds for the transition (can use decimals)
    * @examples '35'
    */
-  "transitionDuration": PropTypes.string,
+  transitionDuration: PropTypes.string,
 
   /**
    * Type of ProgressBar; 'circular' or 'linear'
    */
-  "type": PropTypes.oneOf(["linear", "circular"]),
+  type: PropTypes.oneOf(["linear", "circular"]),
 
   /**
    * The default value(s) of the progress bar.  Can be a number or an object containing keys of "from" and "to"
    * @examples '{"from": 10, "to": 80" }'
    */
-  "value": PropTypes.oneOfType([
+  value: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.shape({
-      "from": PropTypes.number,
-      "to": PropTypes.number
+      from: PropTypes.number,
+      to: PropTypes.number
     })
   ])
 };
 
 ProgressBar.defaultProps = {
-  "buffer": 0,
-  "className": "",
-  "max": 100,
-  "min": 0,
-  "transitionDuration": ".35s",
-  "mode": "indeterminate",
-  "multicolor": false,
-  "type": "linear",
-  "value": 0
+  buffer: 0,
+  className: "",
+  max: 100,
+  min: 0,
+  transitionDuration: ".35s",
+  mode: "indeterminate",
+  multicolor: false,
+  type: "linear",
+  value: 0
 };
 
-export default CSSModules(ProgressBar, styleSheet, { "allowMultiple": true });
+export default CSSModules(ProgressBar, styleSheet, { allowMultiple: true });

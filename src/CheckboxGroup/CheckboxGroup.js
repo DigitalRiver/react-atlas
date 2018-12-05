@@ -9,8 +9,8 @@ export class CheckboxGroup extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      "totalChecked": this.initialChecked(),
-      "groupError": false
+      totalChecked: this.initialChecked(),
+      groupError: false
     };
   }
 
@@ -31,12 +31,12 @@ export class CheckboxGroup extends React.PureComponent {
       ? this.state.totalChecked + 1
       : this.state.totalChecked - 1;
     if (
-      this.props.max && newChecked > this.props.max ||
-      this.props.min && newChecked < this.props.min
+      (this.props.max && newChecked > this.props.max) ||
+      (this.props.min && newChecked < this.props.min)
     ) {
-      this.setState({ "groupError": true, "totalChecked": newChecked });
+      this.setState({ groupError: true, totalChecked: newChecked });
     } else {
-      this.setState({ "groupError": false, "totalChecked": newChecked });
+      this.setState({ groupError: false, totalChecked: newChecked });
     }
 
     if (typeof this.props.onChange !== "undefined") {
@@ -47,14 +47,14 @@ export class CheckboxGroup extends React.PureComponent {
   // Used from a parent Form component to validate only
   _formValidate = () => {
     if (
-      this.props.max && this.state.totalChecked > this.props.max ||
-      this.props.min && this.state.totalChecked < this.props.min
+      (this.props.max && this.state.totalChecked > this.props.max) ||
+      (this.props.min && this.state.totalChecked < this.props.min)
     ) {
-      this.setState({ "groupError": true });
-      return { "status": "error", "message": this.maxMinMessage() };
+      this.setState({ groupError: true });
+      return { status: "error", message: this.maxMinMessage() };
     } else {
-      this.setState({ "groupError": false });
-      return { "status": null, "message": null };
+      this.setState({ groupError: false });
+      return { status: null, message: null };
     }
   };
 
@@ -95,10 +95,10 @@ export class CheckboxGroup extends React.PureComponent {
       style
     } = this.props;
     const checkboxGroupStyles = cx({
-      "checkboxGroup": !inline,
-      "inline": inline
+      checkboxGroup: !inline,
+      inline: inline
     });
-    let checkboxGroupTitle = title && 
+    let checkboxGroupTitle = title && (
       <div>
         <Label
           inline
@@ -106,7 +106,7 @@ export class CheckboxGroup extends React.PureComponent {
           message={this.state.groupError ? this.maxMinMessage() : null}
         />
       </div>
-    ;
+    );
     return (
       <div
         style={style}
@@ -116,10 +116,10 @@ export class CheckboxGroup extends React.PureComponent {
         {checkboxGroupTitle}
         {React.Children.map(children, child => {
           child = cloneElement(child, {
-            "inline": inlineChildren,
-            "name": name ? name : child.props.name,
-            "onChange": this.handleChange,
-            "groupError": this.state.groupError
+            inline: inlineChildren,
+            name: name ? name : child.props.name,
+            onChange: this.handleChange,
+            groupError: this.state.groupError
           });
           return child;
         })}
@@ -133,10 +133,10 @@ CheckboxGroup.propTypes = {
    * Anything that can be in a CheckboxGroup. Typically only includes Checkbox components and a header.
    * @examples '<CheckboxGroup><Checkbox/><Checkbox/></CheckboxGroup>'
    */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 
   /** An object, array, or string of CSS classes to apply to CheckboxGroup.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -146,61 +146,61 @@ CheckboxGroup.propTypes = {
    * When true, will display the CheckboxGroup inline.
    * @examples '<CheckboxGroup inline></CheckboxGroup>'
    */
-  "inline": PropTypes.bool,
+  inline: PropTypes.bool,
 
   /**
    * When true, will display child Checkbox components inline.
    * @examples '<CheckboxGroup inlineChildren></CheckboxGroup>'
    */
-  "inlineChildren": PropTypes.bool,
+  inlineChildren: PropTypes.bool,
 
   /**
    * Will define a custom message to display if either min or max properties are not met. {0} can be used in the message to be replaced by the appropriate min or max property.
    * @examples '<CheckboxGroup min="3" limitMessage="Please select at least {0} of the checkboxes below."></CheckboxGroup>'
    */
-  "limitMessage": PropTypes.string,
+  limitMessage: PropTypes.string,
 
   /**
    * Will define the maximum number of checkboxes the user is allowed to select before proceeding.
    * @examples '<CheckboxGroup max="3"></CheckboxGroup>'
    */
-  "max": PropTypes.number,
+  max: PropTypes.number,
 
   /**
    * Will define the minimum number of checkboxes the user must select in order to proceed.
    * @examples '<CheckboxGroup min="3"></CheckboxGroup>'
    */
-  "min": PropTypes.number,
+  min: PropTypes.number,
 
   /**
    * Form name for the element. This will set all Checkbox children the same form name.
    * @examples '<CheckboxGroup name="test"></CheckboxGroup>'
    */
-  "name": PropTypes.string,
+  name: PropTypes.string,
 
   /**
    * An optional callback that will be fired when any checkbox in the
    * CheckboxGroup changes value. The callback has four arguments.
    * function(value, event, isValid, checked).
    */
-  "onChange": PropTypes.func,
+  onChange: PropTypes.func,
 
   /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Text that will be displayed above the checkboxes in the CheckboxGroup.
    * @examples '<CheckboxGroup title="Options"></CheckboxGroup>'
    */
-  "title": PropTypes.string
+  title: PropTypes.string
 };
 
 CheckboxGroup.defaultProps = {
-  "inline": false
+  inline: false
 };
 
 CheckboxGroup.displayName = "CheckboxGroup"; // Used for identifying this component from a parent Form
 
-export default CSSModules(CheckboxGroup, styles, { "allowMultiple": true });
+export default CSSModules(CheckboxGroup, styles, { allowMultiple: true });

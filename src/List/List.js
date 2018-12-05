@@ -13,7 +13,7 @@ export class List extends React.PureComponent {
     const { border, children, className, id, style } = this.props;
 
     const listStyles = cx({
-      "list": true,
+      list: true,
       border
     });
 
@@ -27,13 +27,13 @@ export class List extends React.PureComponent {
 
 List.propTypes = {
   /** When true, List will display an outer border. */
-  "border": PropTypes.bool,
+  border: PropTypes.bool,
   /**
    * Text, any HTML element, or React Component.
    */
-  "children": PropTypes.node,
+  children: PropTypes.node,
   /** An object, array, or string of CSS classes to apply to Input. */
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -41,13 +41,13 @@ List.propTypes = {
   /**
    * Will set the html "id" property for List.
    */
-  "id": PropTypes.string,
+  id: PropTypes.string,
   /** Pass inline styling here. */
-  "style": PropTypes.object
+  style: PropTypes.object
 };
 
 List.defaultProps = {
-  "border": false
+  border: false
 };
 
-export default CSSModules(List, styles, { "allowMultiple": true });
+export default CSSModules(List, styles, { allowMultiple: true });

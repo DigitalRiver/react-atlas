@@ -10,7 +10,7 @@ export class Modal extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      "isHaveScrollbar": false
+      isHaveScrollbar: false
     };
   }
 
@@ -35,16 +35,16 @@ export class Modal extends React.PureComponent {
     } = this.props;
 
     return (
-      active && 
+      active && (
         <Portal>
-          {overlay && 
+          {overlay && (
             <Overlay
               active={active}
               onClick={onOverlayClick}
               onEscKeyDown={onEscKeyDown}
               lockScroll={lockScroll}
             />
-          }
+          )}
           <div
             styleName={cx("dialogWrapper")}
             onClick={onOverlayClick}
@@ -53,7 +53,7 @@ export class Modal extends React.PureComponent {
             <div styleName={cx("dialog")}>
               <div
                 style={style}
-                styleName={cx("modal", { "active": active })}
+                styleName={cx("modal", { active: active })}
                 className={cx(className)}
                 onClick={this.cancelClickHandler}
               >
@@ -63,7 +63,7 @@ export class Modal extends React.PureComponent {
             </div>
           </div>
         </Portal>
-      
+      )
     );
   }
 }
@@ -72,15 +72,15 @@ Modal.propTypes = {
   /**
    * When true, will display Modal.
    */
-  "active": PropTypes.bool,
+  active: PropTypes.bool,
 
   /**
    * Text, any HTML element, or React Component.
    */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 
   /** An object, array, or string of CSS classes to apply to Modal.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -89,39 +89,39 @@ Modal.propTypes = {
   /**
    * When true, will hide page scroll.
    */
-  "lockScroll": PropTypes.bool,
+  lockScroll: PropTypes.bool,
 
   /**
    * Event handler for esc key down, can be used to close modal if needed.
    */
-  "onEscKeyDown": PropTypes.func,
+  onEscKeyDown: PropTypes.func,
 
   /**
    * Event handler for clicking on overlay, can be used to close modal if needed.
    */
-  "onOverlayClick": PropTypes.func,
+  onOverlayClick: PropTypes.func,
 
   /**
    * When true, will display Modal with overlay.
    */
-  "overlay": PropTypes.bool,
+  overlay: PropTypes.bool,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Text that will be displayed as title content in the Modal.
    */
-  "title": PropTypes.string
+  title: PropTypes.string
 };
 
 Modal.defaultProps = {
-  "active": false,
-  "className": "",
-  "overlay": false,
-  "lockScroll": true
+  active: false,
+  className: "",
+  overlay: false,
+  lockScroll: true
 };
 
-export default CSSModules(Modal, styles, { "allowMultiple": true });
+export default CSSModules(Modal, styles, { allowMultiple: true });

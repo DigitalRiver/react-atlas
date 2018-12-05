@@ -13,18 +13,18 @@ export class Tabs extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "selectedIndex": this.props.selectedIndex
+      selectedIndex: this.props.selectedIndex
     };
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.selectedIndex !== this.props.selectedIndex) {
-      this.setState({ "selectedIndex": nextProps.selectedIndex });
+      this.setState({ selectedIndex: nextProps.selectedIndex });
     }
   }
 
   _setSelectedIndex = (index, event) => {
-    this.setState({ "selectedIndex": index });
+    this.setState({ selectedIndex: index });
 
     if (this.props.onSelect) {
       this.props.onSelect(index, event);
@@ -44,13 +44,13 @@ export class Tabs extends React.PureComponent {
         // and probably remove state from some of these at the same time.  stuller 3/13/18
 
         // needed for TabList
-        "selectedTab": this.state.selectedIndex,
-        "setSelectedIndex": this._setSelectedIndex,
+        selectedTab: this.state.selectedIndex,
+        setSelectedIndex: this._setSelectedIndex,
         // needed for Tabs
-        "selected": this.state.selectedIndex === index - 1,
-        "bordered": bordered,
+        selected: this.state.selectedIndex === index - 1,
+        bordered: bordered,
         // needed for both
-        "vertical": vertical
+        vertical: vertical
       });
 
       return child;
@@ -75,17 +75,17 @@ Tabs.propTypes = {
   /**
    * When true, a border will display around TabPanels.
    */
-  "bordered": PropTypes.bool,
+  bordered: PropTypes.bool,
 
   /**
    * TabList and TabPanel components.
    */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 
   /**
    * An object, array, or string of CSS classes to apply to Tabs.
    */
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -94,28 +94,28 @@ Tabs.propTypes = {
   /**
    * Function that will be executed when a Tab is selected.
    */
-  "onSelect": PropTypes.func,
+  onSelect: PropTypes.func,
 
   /**
    * The index of the Tab that will be selected. This is a zero-based index.
    */
-  "selectedIndex": PropTypes.number,
+  selectedIndex: PropTypes.number,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * When true, Tabs will display vertically.
    */
-  "vertical": PropTypes.bool
+  vertical: PropTypes.bool
 };
 
 Tabs.defaultProps = {
-  "selectedIndex": 0,
-  "vertical": false,
-  "bordered": false
+  selectedIndex: 0,
+  vertical: false,
+  bordered: false
 };
 
-export default CSSModules(Tabs, styles, { "allowMultiple": true });
+export default CSSModules(Tabs, styles, { allowMultiple: true });

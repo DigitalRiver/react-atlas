@@ -61,10 +61,10 @@ Overlay.propTypes = {
   /**
    * When true, Overlay will display
    */
-  "active": PropTypes.bool,
+  active: PropTypes.bool,
 
   /** An object, array, or string of CSS classes to apply to Overlay.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -73,28 +73,28 @@ Overlay.propTypes = {
   /**
    * Determines to hide page scroll
    */
-  "lockScroll": PropTypes.bool,
+  lockScroll: PropTypes.bool,
 
   /**
    * Event handler for esc key down
    */
-  "onEscKeyDown": PropTypes.func,
+  onEscKeyDown: PropTypes.func,
 
   /**
    * Click event handler.
    */
-  "onClick": PropTypes.func,
+  onClick: PropTypes.func,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object
+  style: PropTypes.object
 };
 
 Overlay.defaultProps = {
-  "active": false,
-  "className": "",
-  "lockScroll": false
+  active: false,
+  className: "",
+  lockScroll: false
 };
 
-export default CSSModules(Overlay, styles, { "allowMultiple": true });
+export default CSSModules(Overlay, styles, { allowMultiple: true });

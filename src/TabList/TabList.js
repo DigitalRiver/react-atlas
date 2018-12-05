@@ -13,18 +13,18 @@ export class TabList extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "selectedTab": this.props.selectedTab || 0
+      selectedTab: this.props.selectedTab || 0
     };
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.selectedTab !== this.props.selectedTab) {
-      this.setState({ "selectedTab": nextProps.selectedTab });
+      this.setState({ selectedTab: nextProps.selectedTab });
     }
   }
 
   _setSelectedTab = (index, event) => {
-    this.setState({ "selectedTab": index });
+    this.setState({ selectedTab: index });
     this.props.setSelectedIndex(index, event);
   };
 
@@ -33,10 +33,10 @@ export class TabList extends React.PureComponent {
 
     const tabs = React.Children.map(children, (child, index) => {
       child = cloneElement(child, {
-        "tabIndex": index,
-        "selected": this.state.selectedTab === index,
-        "setSelectedTab": this._setSelectedTab,
-        "vertical": vertical
+        tabIndex: index,
+        selected: this.state.selectedTab === index,
+        setSelectedTab: this._setSelectedTab,
+        vertical: vertical
       });
 
       return child;
@@ -63,12 +63,12 @@ TabList.propTypes = {
    *
    * @ignore
    */
-  "bordered": PropTypes.bool,
+  bordered: PropTypes.bool,
 
   /**
    * An object, array, or string of CSS classes to apply to TabPanel.
    */
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -77,27 +77,27 @@ TabList.propTypes = {
   /**
    * Tab components that will be displayed in TabList.
    */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 
   /**
    * Selected tab index (default 0 - first tab).
    */
-  "selectedTab": PropTypes.number,
+  selectedTab: PropTypes.number,
 
   /**
    * Handler to execute when a tab is selected, in Tabs component.
    */
-  "setSelectedIndex": PropTypes.func,
+  setSelectedIndex: PropTypes.func,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Will be automatically set when vertical prop is passed to Tabs component.
    */
-  "vertical": PropTypes.bool
+  vertical: PropTypes.bool
 };
 
-export default CSSModules(TabList, styles, { "allowMultiple": true });
+export default CSSModules(TabList, styles, { allowMultiple: true });

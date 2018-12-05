@@ -9,7 +9,7 @@ export class Timer extends React.PureComponent {
     super(props);
 
     this.state = {
-      "secondsRemaining": props.time || null
+      secondsRemaining: props.time || null
     };
   }
 
@@ -22,7 +22,7 @@ export class Timer extends React.PureComponent {
     if (this.props.time !== prevProps.time) {
       this.setState(
         {
-          "secondsRemaining": this.props.time || null
+          secondsRemaining: this.props.time || null
         },
         this.start()
       );
@@ -67,7 +67,7 @@ export class Timer extends React.PureComponent {
 
       if (this.props.loop) {
         this.setState({
-          "secondsRemaining": this.props.time
+          secondsRemaining: this.props.time
         });
         return;
       }
@@ -85,7 +85,7 @@ export class Timer extends React.PureComponent {
     }
 
     this.setState(prevState => ({
-      "secondsRemaining": prevState.secondsRemaining - 1
+      secondsRemaining: prevState.secondsRemaining - 1
     }));
   };
 
@@ -106,28 +106,28 @@ Timer.propTypes = {
   /**
    * Whether to loop the timer when it reaches zero or not
    */
-  "loop": PropTypes.bool,
+  loop: PropTypes.bool,
   /**
    * Pass a function you would like called on every tick (1 second interval)
    * @examples <Timer time={10} onTick={(remaining, elapsed) => { ... }/>
    */
-  "onTick": PropTypes.func,
+  onTick: PropTypes.func,
   /**
    * Pass a function you would like to be called when the timer reaches zero
    * @examples <Timer time={10} onZero={enableButton}/>
    */
-  "onZero": PropTypes.func,
+  onZero: PropTypes.func,
   /**
    * Render property receives func(remaining, elapsed) should return component to render
    * @examples <Timer time={30} render={(remaining, elapsed) => (<Text>You have {remaining} second(s) remaining.</Text>)}/>
    */
-  "render": PropTypes.func,
+  render: PropTypes.func,
   /**
    * Time Property
    * Number property.  Timer will allow input of a number which is converted to seconds
    * @examples <Timer time={60}/>
    */
-  "time": PropTypes.number
+  time: PropTypes.number
 };
 
 export default Timer;

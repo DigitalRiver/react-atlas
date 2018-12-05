@@ -22,7 +22,7 @@ export class BreadcrumbItem extends React.PureComponent {
 
 BreadcrumbItem.propTypes = {
   /** An object, array, or string of CSS classes to apply to BreadcrumbItem.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -31,20 +31,20 @@ BreadcrumbItem.propTypes = {
   /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
   /**
    * Text, any HTML element, or React Component.
    */
-  "children": PropTypes.node,
+  children: PropTypes.node,
   /**
    * Render active item style
    */
-  "active": PropTypes.bool
+  active: PropTypes.bool
 };
 
 BreadcrumbItem.defaultProps = {
-  "className": "",
-  "active": false
+  className: "",
+  active: false
 };
 
-export default CSSModules(BreadcrumbItem, styles, { "allowMultiple": true });
+export default CSSModules(BreadcrumbItem, styles, { allowMultiple: true });

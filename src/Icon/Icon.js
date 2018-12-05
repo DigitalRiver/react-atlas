@@ -22,8 +22,8 @@ export class Icon extends React.PureComponent {
     const { className, small, large, style, onClick, icon } = this.props;
 
     let iconClasses = cx({
-      "large": large,
-      "small": small
+      large: large,
+      small: small
     });
 
     return (
@@ -39,7 +39,7 @@ export class Icon extends React.PureComponent {
 
 Icon.propTypes = {
   /** An Object, array, or string of CSS classes to apply to Input.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -48,26 +48,26 @@ Icon.propTypes = {
    * Defines an icon for the icon.
    * @examples '<Icon icon={"fa fa-id-card"}/>'
    */
-  "icon": PropTypes.string,
+  icon: PropTypes.string,
   /**
    * Defines a large sized icon element.
    * @examples '<Icon large icon={"fa fa-id-card"}/>'
    */
-  "large": PropTypes.bool,
+  large: PropTypes.bool,
   /**
    * Defines an onclick for the icon.
    * @examples '<Icon onClick={ () => this._handleClick } icon={"fa fa-id-card"}/>'
    */
-  "onClick": PropTypes.func,
+  onClick: PropTypes.func,
   /**
    * Defines a small sized icon element.
    * @examples '<Icon small icon={"fa fa-id-card"}/>'
    */
-  "small": PropTypes.bool,
+  small: PropTypes.bool,
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object
+  style: PropTypes.object
 };
 
-export default CSSModules(Icon, styles, { "allowMultiple": true });
+export default CSSModules(Icon, styles, { allowMultiple: true });

@@ -32,9 +32,9 @@ Hint.propTypes = {
    * Text to be displayed can be passed as a child.
    * @examples '<Hint>This is a text hint</Hint>'
    */
-  "children": PropTypes.node,
+  children: PropTypes.node,
   /** An object, array, or string of CSS classes to apply to Hint.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -43,16 +43,16 @@ Hint.propTypes = {
    * Content that will be displayed (will override children if passed).
    * @examples '<Hint text="This is a text hint"/>' or '<Hint text={<div><Icon icon={"fab fa-github"}/> Your GitHub account ID</div>} />'
    */
-  "text": PropTypes.node,
+  text: PropTypes.node,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object
+  style: PropTypes.object
 };
 
 Hint.defaultProps = {
-  "className": ""
+  className: ""
 };
 
-export default CSSModules(Hint, styles, { "allowMultiple": true });
+export default CSSModules(Hint, styles, { allowMultiple: true });

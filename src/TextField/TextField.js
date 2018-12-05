@@ -19,8 +19,8 @@ export class TextField extends React.PureComponent {
 
     if (this.props.mask) {
       let maskOptions = {
-        "pattern": props.mask,
-        "value": value
+        pattern: props.mask,
+        value: value
       };
 
       this.mask = new InputMask(maskOptions);
@@ -31,10 +31,10 @@ export class TextField extends React.PureComponent {
     }
 
     this.state = {
-      "value": value,
-      "active": false,
-      "status": props.status || null,
-      "message": props.message || null
+      value: value,
+      active: false,
+      status: props.status || null,
+      message: props.message || null
     };
   }
 
@@ -46,21 +46,21 @@ export class TextField extends React.PureComponent {
         value = this.mask.getValue();
       }
       this.setState({
-        "value": value
+        value: value
       });
     }
     if (nextProps.mask && nextProps.mask !== this.props.mask) {
-      this.mask.setPattern(nextProps.mask, { "value": this.mask.getRawValue() });
+      this.mask.setPattern(nextProps.mask, { value: this.mask.getRawValue() });
     }
     if (
-      typeof nextProps.status !== "undefined" &&
-        nextProps.status !== this.props.status ||
-      typeof nextProps.message !== "undefined" &&
-        nextProps.message !== this.props.message
+      (typeof nextProps.status !== "undefined" &&
+        nextProps.status !== this.props.status) ||
+      (typeof nextProps.message !== "undefined" &&
+        nextProps.message !== this.props.message)
     ) {
       this.setState({
-        "status": nextProps.status,
-        "message": nextProps.message
+        status: nextProps.status,
+        message: nextProps.message
       });
     }
   }
@@ -86,10 +86,10 @@ export class TextField extends React.PureComponent {
     }
 
     const data = {
-      "rawValue": rawValue,
-      "value": this.state.value,
-      "status": this.state.status,
-      "message": this.state.message
+      rawValue: rawValue,
+      value: this.state.value,
+      status: this.state.status,
+      message: this.state.message
     };
 
     if (!change && this.props.onBlur) {
@@ -113,10 +113,10 @@ export class TextField extends React.PureComponent {
 
     this.setState(
       {
-        "status": validationObject.status,
-        "message": validationObject.message,
-        "value": inputValue,
-        "active": change
+        status: validationObject.status,
+        message: validationObject.message,
+        value: inputValue,
+        active: change
       },
       () => {
         this._eventHandlers(event, change);
@@ -134,8 +134,8 @@ export class TextField extends React.PureComponent {
       this.props.required
     );
     this.setState({
-      "status": validationObject.status,
-      "message": validationObject.message
+      status: validationObject.status,
+      message: validationObject.message
     });
     return validationObject;
   };
@@ -172,10 +172,10 @@ export class TextField extends React.PureComponent {
     }
 
     const data = {
-      "rawValue": rawValue,
-      "value": value,
-      "status": this.state.status,
-      "message": this.state.message
+      rawValue: rawValue,
+      value: value,
+      status: this.state.status,
+      message: this.state.message
     };
 
     if (typeof this.props.onBeforeChange !== "undefined") {
@@ -194,12 +194,12 @@ export class TextField extends React.PureComponent {
 
   _handleFocus = e => {
     e.persist();
-    this.setState({ "active": true }, function() {
+    this.setState({ active: true }, function() {
       if (typeof this.props.onFocus === "function") {
         this.props.onFocus(e, {
-          "value": this.state.value,
-          "status": this.state.status,
-          "message": this.state.message
+          value: this.state.value,
+          status: this.state.status,
+          message: this.state.message
         });
       }
     });
@@ -215,9 +215,9 @@ export class TextField extends React.PureComponent {
     e.persist();
     if (typeof this.props.onClick === "function") {
       this.props.onClick(e, {
-        "value": this.state.value,
-        "status": this.state.status,
-        "message": this.state.message
+        value: this.state.value,
+        status: this.state.status,
+        message: this.state.message
       });
     }
   };
@@ -226,9 +226,9 @@ export class TextField extends React.PureComponent {
     e.persist();
     if (typeof this.props.onKeyDown === "function") {
       this.props.onKeyDown(e, {
-        "value": this.state.value,
-        "status": this.state.status,
-        "message": this.state.message
+        value: this.state.value,
+        status: this.state.status,
+        message: this.state.message
       });
     }
 
@@ -327,27 +327,27 @@ export class TextField extends React.PureComponent {
     let wrapperClasses = cx({
       leftLabel,
       inline,
-      "setWidth": hasCustomWidth,
-      "textfieldWrapper": true
+      setWidth: hasCustomWidth,
+      textfieldWrapper: true
     });
 
     let inputClasses = cx({
-      "textfield": true,
-      "active": this.state.active,
-      "error": this.state.status === "error",
-      "success": this.state.status === "success",
-      "warning": this.state.status === "warning",
-      "fillInput": leftLabel && !hasCustomWidth,
+      textfield: true,
+      active: this.state.active,
+      error: this.state.status === "error",
+      success: this.state.status === "success",
+      warning: this.state.status === "warning",
+      fillInput: leftLabel && !hasCustomWidth,
       disabled
     });
 
     let messageClasses = cx({
-      "success_message": this.state.status === "success",
-      "error_message": this.state.status === "error",
-      "warning_message": this.state.status === "warning"
+      success_message: this.state.status === "success",
+      error_message: this.state.status === "error",
+      warning_message: this.state.status === "warning"
     });
 
-    let textFieldLabel = (label || tooltip) && 
+    let textFieldLabel = (label || tooltip) && (
       <Label
         htmlFor={id}
         inline={inline}
@@ -358,7 +358,7 @@ export class TextField extends React.PureComponent {
         tooltip={tooltip}
         tooltipPosition={tooltipPosition}
       />
-    ;
+    );
 
     return (
       <div styleName={wrapperClasses}>
@@ -384,11 +384,11 @@ export class TextField extends React.PureComponent {
             this.input = input;
           }}
         />
-        {this.state.message !== null && 
+        {this.state.message !== null && (
           <div>
             <span styleName={messageClasses}>{this.state.message}</span>
           </div>
-        }
+        )}
       </div>
     );
   }
@@ -396,7 +396,7 @@ export class TextField extends React.PureComponent {
 
 TextField.propTypes = {
   /** An Object, array, or string of CSS classes to apply to TextField.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -405,99 +405,99 @@ TextField.propTypes = {
    * Determines if the TextField is disabled.
    * @examples '<TextField disabled/>'
    */
-  "disabled": PropTypes.string,
+  disabled: PropTypes.string,
   /** Define an id for the text input.*/
-  "id": PropTypes.string,
+  id: PropTypes.string,
   /** Sets whether or not TextField will display as inline */
-  "inline": PropTypes.bool,
+  inline: PropTypes.bool,
   /**
    * Define a label to be displayed above the textfield.
    * @examples '<TextField label="test"/>'
    */
-  "label": PropTypes.string,
+  label: PropTypes.string,
   /**
    * Allows user to move the label to the left of the TextField instead of above it
    */
-  "leftLabel": PropTypes.bool,
+  leftLabel: PropTypes.bool,
   /**
    * Defines a pattern for masked input.
    * @examples '<TextField mask="1111-1111-1111"/>'
    */
-  "mask": PropTypes.string,
+  mask: PropTypes.string,
   /**
    * Sets the status message to display below the TextField. The color of the message will be determined by the value of the "status" property.
    * @examples '<TextField message="Incorrect answer" status="error" />'
    */
-  "message": PropTypes.string,
+  message: PropTypes.string,
   /**
    * A callback that fires onBlur.
    */
-  "onBlur": PropTypes.func,
+  onBlur: PropTypes.func,
   /**
    * Sets a handler function to be executed when onChange event occurs (at input element).
    * @examples <TextField onChange={this.customOnChangeFunc}/>
    */
-  "onChange": PropTypes.func,
+  onChange: PropTypes.func,
   /**
    * Sets a handler function to be executed when onClick event occurs (at input element).
    * @examples <TextField onClick={this.customOnClickFunc}/>
    */
-  "onClick": PropTypes.func,
+  onClick: PropTypes.func,
   /**
    * A callback that fires onFocus.
    */
-  "onFocus": PropTypes.func,
+  onFocus: PropTypes.func,
   /**
    * Sets a handler function to be executed when onKeyDown event occurs (at input element).
    * @examples <TextField onKeyDown={this.customOnKeyDownFunc}/>
    */
-  "onKeyDown": PropTypes.func,
+  onKeyDown: PropTypes.func,
   /**
    * Sets a handler function to be executed before change event occurs (at input element).
    * return true if you want the chaneg to happen, pass false to deny the change.
    * @examples <TextField onBeforeChange={this.onBeforeChange}/>
    */
-  "onBeforeChange": PropTypes.func,
+  onBeforeChange: PropTypes.func,
   /**
    * Sets the TextField as required. Will be validated onChange. Accepts a boolean or a string. If a string is passed it will be displayed instead of the traditional * next to the field label.
    * @examples '<TextField required/>'
    */
-  "required": PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  required: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /**
    * Sets the status of the TextField. Options are null, "success", "error", and "warning".
    * @examples '<TextField status="error" />'
    */
-  "status": PropTypes.string,
+  status: PropTypes.string,
   /** Pass inline styling here. */
-  "style": PropTypes.object,
+  style: PropTypes.object,
   /** Sets an element to be displayed along with the TextField. Traditionally used with the Tooltip component, but will accept any component or HTML element. */
-  "tooltip": PropTypes.node,
+  tooltip: PropTypes.node,
   /** Sets the position of the embedded Tooltip. Defaults to "right", any other value will move it next to the label. */
-  "tooltipPosition": PropTypes.string,
+  tooltipPosition: PropTypes.string,
   /**
    * Define a type for the text input. Default is "text".
    * @examples '<TextField type="password"/>'
    */
-  "type": PropTypes.string,
+  type: PropTypes.string,
   /**
    * Converts all entered text to uppercase.
    */
-  "uppercase": PropTypes.bool,
+  uppercase: PropTypes.bool,
   /**
    * Sets a handler function to be executed and validate against. Will override the required property (you can still use the required prop to add a required indicator next to the label) and must return an object with a status (Options: null, "success", "error", "warning") and a message (Options: null or string), or a boolean for simple validation.
    * @examples '<TextField valid={this.customValidator}/>'
    */
-  "valid": PropTypes.func,
+  valid: PropTypes.func,
   /**
    * Define a default value for the text input.
    * @examples '<TextField value="Textfield value here"/>'
    */
-  "value": PropTypes.string
+  value: PropTypes.string
 };
 
 TextField.defaultProps = {
-  "type": "text",
-  "tooltipPosition": "right"
+  type: "text",
+  tooltipPosition: "right"
 };
 
-export default CSSModules(TextField, styles, { "allowMultiple": true });
+export default CSSModules(TextField, styles, { allowMultiple: true });

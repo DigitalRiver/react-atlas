@@ -29,27 +29,27 @@ ListGroup.propTypes = {
   /**
    * Text, any HTML element, or React Component.
    */
-  "children": PropTypes.node,
+  children: PropTypes.node,
   /** An object, array, or string of CSS classes to apply to Input. */
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /** When true, will add a horizontal rule between the ListGroup and subsequent children. */
-  "divider": PropTypes.bool,
+  divider: PropTypes.bool,
   /**
    * Will set the html "id" property for ListGroup.
    */
-  "id": PropTypes.string,
+  id: PropTypes.string,
   /** Pass inline styling here. */
-  "style": PropTypes.object,
+  style: PropTypes.object,
   /** Will add a title to the ListGroup. */
-  "title": PropTypes.string
+  title: PropTypes.string
 };
 
 ListGroup.defaultProps = {
-  "divider": true
+  divider: true
 };
 
-export default CSSModules(ListGroup, styles, { "allowMultiple": true });
+export default CSSModules(ListGroup, styles, { allowMultiple: true });

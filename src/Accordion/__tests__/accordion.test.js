@@ -6,15 +6,15 @@ import renderer from "react-test-renderer";
 
 describe("Test Accordion component", () => {
   it("Test render correctly", () => {
-    const comp = 
+    const comp = (
       <Accordion>
         <div expanded="true" id>
-          Text for first accordion item
+          Text for first accordion item.
         </div>
         <div expanded="true">Text for second accordion item</div>
         <div expanded="true">Text for third accordion item</div>
       </Accordion>
-    ;
+    );
     const tree = renderer.create(comp).toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -292,7 +292,7 @@ describe("Test Accordion Component: Test _setActiveChildArray() method", () => {
     instance._getExpandedPanels = jest.fn().mockImplementation(() => {
       return [false, true, false];
     });
-    instance.UNSAFE_componentWillReceiveProps({ "children": newChildren });
+    instance.UNSAFE_componentWillReceiveProps({ children: newChildren });
     expect(instance._getExpandedPanels).toBeCalled();
     expect(acc.state().activeChildArray).toEqual([false, true, false]);
   });
