@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Label component Test render correctly 1`] = `
+<div
+  className="tooltipRight labelContainer"
+>
+  <div
+    className="verticalPadding horizontalPadding"
+  >
+    <label
+      className="labelSpacing label label"
+      htmlFor="someField"
+      style={undefined}
+    >
+      Some Field:
+    </label>
+    <span
+      className="required"
+    >
+       
+      <span
+        className="defaultFont"
+      >
+        *
+      </span>
+    </span>
+  </div>
+</div>
+`;
