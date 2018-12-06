@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Accordion Panel component Test render correctly 1`] = `
+<div
+  className="accordionPanel"
+  style={undefined}
+>
+  Some content for the first panel
+</div>
+`;

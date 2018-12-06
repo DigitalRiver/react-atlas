@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test ListGroup component Test render correctly 1`] = `
+<div
+  className="divider"
+  id={undefined}
+  style={undefined}
+>
+  <div
+    className="groupTitle"
+  />
+  <div>
+    Item 1
+  </div>
+  <div>
+    Item 2
+  </div>
+  <div>
+    Item 3
+  </div>
+</div>
+`;

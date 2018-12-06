@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test correct render Test correct render 1`] = `
+<div
+  className="overlay active"
+  onClick={[Function]}
+  style={undefined}
+/>
+`;

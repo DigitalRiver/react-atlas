@@ -1,12 +1,21 @@
 import React from "react";
 import { mount } from "enzyme";
 import { Dialog } from "../index";
+import renderer from "react-test-renderer";
 
-// function handleCancel() {
-//   console(".-.");
-// }
-
-// TO-DO Add a snapshot test.
+describe("Test Dialog component", () => {
+  it("Test render correctly", () => {
+    const comp = 
+      <Dialog>
+        <div>
+          This is Dialog example<br />Any child components could be put here.
+        </div>
+      </Dialog>
+    ;
+    const tree = renderer.create(comp).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
 
 describe("Dialog component - Basic test", () => {
   it("Dialog component(info) - Basic test", function() {
