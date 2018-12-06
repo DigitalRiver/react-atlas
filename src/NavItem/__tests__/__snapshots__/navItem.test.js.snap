@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test correct render Test correct render 1`] = `
+<li
+  className="navItem"
+  role="presentation"
+  style={undefined}
+>
+  <button
+    className="link button link link_hover"
+    href={undefined}
+    id={undefined}
+    name={undefined}
+    onClick={[Function]}
+    style={undefined}
+    tabIndex={0}
+    type="button"
+  >
+    HOME
+    <i />
+  </button>
+</li>
+`;

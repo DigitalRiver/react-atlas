@@ -32,8 +32,10 @@ export class NavItem extends React.Component {
         disabled={disabled}
         styleName={cx("link", { disabled, subNav })}
         link
-        href={typeof to === "undefined" ? href : null}
-        onClick={typeof to === "undefined" ? this._handleClick : null}
+        href={typeof this.props.to === "undefined" ? href : null}
+        onClick={
+          typeof this.props.to === "undefined" ? this._handleClick : null
+        }
       >
         {children}
         <i styleName={cx({ "caret": parent })} />
@@ -112,7 +114,11 @@ NavItem.propTypes = {
   /** callback for Nav Component
    * @ignore
    */
-  "onClick": PropTypes.func
+  "onClick": PropTypes.func,
+  /** to prop is from the react-router spec
+   * @ignore
+   */
+  "to": PropTypes.string
 };
 
 NavItem.defaultProps = {
