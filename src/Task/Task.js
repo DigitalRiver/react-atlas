@@ -46,7 +46,7 @@ export class Task extends React.PureComponent {
 }
 
 Task.propTypes = {
-  /** An Object, array, or string of CSS classes to apply to CheckboxGroup.*/
+  /** An Object, array, or string of CSS classes to apply to Task.*/
   className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
@@ -57,7 +57,7 @@ Task.propTypes = {
    */
   icon: PropTypes.string,
   /**
-   * Will set the html "id" property on the Button.
+   * Will set the html "id" property on the Task.
    */
   id: PropTypes.string,
   /**
