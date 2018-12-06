@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test correct render Test correct render 1`] = `
+<span
+  className="taskLink selected"
+  id={undefined}
+  onClick={[Function]}
+  style={undefined}
+>
+  <i
+    className="fa fa-id-card icon-left"
+  />
+  Item One
+</span>
+`;
