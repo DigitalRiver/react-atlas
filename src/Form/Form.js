@@ -8,7 +8,7 @@ export class Form extends React.PureComponent {
     super(props);
     this.formRefs = [];
     this.state = {
-      "errorList": [] // Array of errors to be displayed in Alert message.
+      errorList: [] // Array of errors to be displayed in Alert message.
     };
   }
 
@@ -19,8 +19,8 @@ export class Form extends React.PureComponent {
     const isRadio = isCheckboxOrRadio && !stateExists; // Is node Radio? Radio components do not have state.
     return (
       isCheckboxOrRadio &&
-      (isRadio && element.props.checked ||
-        !isRadio && element.state.checked)
+      ((isRadio && element.props.checked) ||
+        (!isRadio && element.state.checked))
     );
   };
 
@@ -45,8 +45,8 @@ export class Form extends React.PureComponent {
     const isChecked = this._isChecked(element, isCheckboxOrRadio); // Is node checked?
     if (
       !isCheckboxGroup &&
-      (isHtmlInput && !element.disabled ||
-        !isHtmlInput && !element.props.disabled) &&
+      ((isHtmlInput && !element.disabled) ||
+        (!isHtmlInput && !element.props.disabled)) &&
       (isChecked || !isCheckboxOrRadio)
     ) {
       if (typeof newObject[elementName] !== "undefined") {
@@ -77,10 +77,10 @@ export class Form extends React.PureComponent {
     // If validate is set to false, or if the element does not have a _formValidate method, is disabled, or set to readOnly return early.
     if (
       !this.props.validate ||
-      isHtmlInput && element.disabled ||
-      !isHtmlInput && element.props.disabled ||
-      isHtmlInput && element.readonly ||
-      !isHtmlInput && element.props.readOnly ||
+      (isHtmlInput && element.disabled) ||
+      (!isHtmlInput && element.props.disabled) ||
+      (isHtmlInput && element.readonly) ||
+      (!isHtmlInput && element.props.readOnly) ||
       typeof element._formValidate === "undefined"
     ) {
       return false;
@@ -104,8 +104,8 @@ export class Form extends React.PureComponent {
 
     // Create an object containing the human-readable name of the element and the error message for that element.
     const errorObject = {
-      "name": errorName,
-      "message": validationObject.message
+      name: errorName,
+      message: validationObject.message
     };
 
     return errorObject;
@@ -164,7 +164,7 @@ export class Form extends React.PureComponent {
       }
       this.setState(
         {
-          "errorList": [] // Reset the errorList to an empty array.
+          errorList: [] // Reset the errorList to an empty array.
         },
         () => {
           if (onSubmitExists) {
@@ -175,7 +175,7 @@ export class Form extends React.PureComponent {
     } else {
       e.preventDefault(); // There are errors, so stop form from submitting.
       this.setState({
-        "errorList": errorArray
+        errorList: errorArray
       });
     }
   };
@@ -185,9 +185,9 @@ export class Form extends React.PureComponent {
     let kid;
     // If child has a name property or is a CheckboxGroup then add a ref.
     if (
-      typeof child.props !== "undefined" && child.props.name ||
-      typeof child.type !== "undefined" &&
-        child.type.displayName === "CheckboxGroup"
+      (typeof child.props !== "undefined" && child.props.name) ||
+      (typeof child.type !== "undefined" &&
+        child.type.displayName === "CheckboxGroup")
     ) {
       // If child is a CheckboxGroup, continue to evaluate its children after adding the ref.
       if (child.type.displayName === "CheckboxGroup") {
@@ -197,7 +197,7 @@ export class Form extends React.PureComponent {
           kid = cloneElement(
             child,
             {
-              "ref": newRef
+              ref: newRef
             },
             this._addRefs(child.props.children)
           );
@@ -210,7 +210,7 @@ export class Form extends React.PureComponent {
           const newRef = React.createRef();
           this.formRefs.push(newRef);
           kid = cloneElement(child, {
-            "ref": newRef
+            ref: newRef
           });
         } else {
           this.formRefs.push(child.ref);
@@ -257,7 +257,7 @@ export class Form extends React.PureComponent {
     const othersFiltered = blacklist(others, "onSubmit", "hideErrors");
     const elements = this._addRefs(children, true);
     const errorList = this.state.errorList.length > 0 &&
-      !this.props.hideErrors && 
+      !this.props.hideErrors && (
         <Alert type="danger">
           <ul>
             {this.state.errorList.map(error => {
@@ -269,7 +269,7 @@ export class Form extends React.PureComponent {
             })}
           </ul>
         </Alert>
-      ;
+      );
     return (
       <React.Fragment>
         {errorList}
@@ -288,18 +288,18 @@ export class Form extends React.PureComponent {
 
 Form.propTypes = {
   /** Child elements, either React components or HTML elements. */
-  "children": PropTypes.node,
+  children: PropTypes.node,
   /** Sets whether or not to hide the Alert containing all input errors. */
-  "hideErrors": PropTypes.bool,
+  hideErrors: PropTypes.bool,
   /** A callback that fires onSubmit. */
-  "onSubmit": PropTypes.func,
+  onSubmit: PropTypes.func,
   /** Sets whether or not to use internal component validation. */
-  "validate": PropTypes.bool
+  validate: PropTypes.bool
 };
 
 Form.defaultProps = {
-  "hideErrors": false,
-  "validate": true
+  hideErrors: false,
+  validate: true
 };
 
 export default Form;

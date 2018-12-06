@@ -23,47 +23,47 @@ export class Dropdown extends React.PureComponent {
     const data = this.setOptions({}, props);
 
     this.state = {
-      "active": false, // Whether or not the options are visible
-      "display": data.display, // The text to be displayed for the selected option
-      "focus": false, // Whether or not the Dropdown has the browser's focus
-      "message": props.message || null, // Used for error handling
-      "options": data.options, // The available options for the Dropdown
-      "selectedIndex": data.selectedIndex, // The index of the currently selected option within the rendered options list
-      "status": props.status || null, // Used for error handling
-      "tempIndex": null, // Used to keep track of which option is in a "hover" state, either by mouseOver or through keyboard navigation of an active Dropdown
-      "value": props.value, // The actual value to submit to the form for the selected option
-      "pressedKey": null, // the key pressed for basic Dropdown to mimic HTML's select behavior: pressing key to scroll
-      "indexArr": this.props.options, // an array of numbers containing the indexes of Options whose text's first letter matches keyPressed prop.
-      "indexArrTracker": 0 // a number that tracks the current index in "indexArr" for selecting an option
+      active: false, // Whether or not the options are visible
+      display: data.display, // The text to be displayed for the selected option
+      focus: false, // Whether or not the Dropdown has the browser's focus
+      message: props.message || null, // Used for error handling
+      options: data.options, // The available options for the Dropdown
+      selectedIndex: data.selectedIndex, // The index of the currently selected option within the rendered options list
+      status: props.status || null, // Used for error handling
+      tempIndex: null, // Used to keep track of which option is in a "hover" state, either by mouseOver or through keyboard navigation of an active Dropdown
+      value: props.value, // The actual value to submit to the form for the selected option
+      pressedKey: null, // the key pressed for basic Dropdown to mimic HTML's select behavior: pressing key to scroll
+      indexArr: this.props.options, // an array of numbers containing the indexes of Options whose text's first letter matches keyPressed prop.
+      indexArrTracker: 0 // a number that tracks the current index in "indexArr" for selecting an option
     };
   }
 
   // Watching to see if the user updates the list of options or the selected value. If they do, re-render the Dropdown accordingly
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (
-      typeof nextProps.options !== "undefined" &&
-        nextProps.options !== this.props.options ||
-      typeof nextProps.children !== "undefined" &&
+      (typeof nextProps.options !== "undefined" &&
+        nextProps.options !== this.props.options) ||
+      (typeof nextProps.children !== "undefined" &&
         typeof nextProps.options === "undefined" &&
-        nextProps.children !== this.props.children ||
+        nextProps.children !== this.props.children) ||
       nextProps.value !== this.props.value
     ) {
       const data = this.setOptions({}, nextProps, false, true);
       this.setState({
-        "options": data.options,
-        "display": data.display,
-        "value": nextProps.value
+        options: data.options,
+        display: data.display,
+        value: nextProps.value
       });
     }
     if (
-      typeof nextProps.status !== "undefined" &&
-        nextProps.status !== this.props.status ||
-      typeof nextProps.message !== "undefined" &&
-        nextProps.message !== this.props.message
+      (typeof nextProps.status !== "undefined" &&
+        nextProps.status !== this.props.status) ||
+      (typeof nextProps.message !== "undefined" &&
+        nextProps.message !== this.props.message)
     ) {
       this.setState({
-        "status": nextProps.status,
-        "message": nextProps.message
+        status: nextProps.status,
+        message: nextProps.message
       });
     }
   }
@@ -137,14 +137,14 @@ export class Dropdown extends React.PureComponent {
         }
       }
       if (
-        !viaIndex &&
-          (typeof filter !== "undefined" && returnValue === value ||
-            !filter && setValue === value) ||
-        viaIndex &&
-          (typeof updatedValues.selectedIndex !== "undefined" &&
-            i === updatedValues.selectedIndex ||
-            typeof updatedValues.selectedIndex === "undefined" &&
-              i === this.state.selectedIndex)
+        (!viaIndex &&
+          ((typeof filter !== "undefined" && returnValue === value) ||
+            (!filter && setValue === value))) ||
+        (viaIndex &&
+          ((typeof updatedValues.selectedIndex !== "undefined" &&
+            i === updatedValues.selectedIndex) ||
+            (typeof updatedValues.selectedIndex === "undefined" &&
+              i === this.state.selectedIndex)))
       ) {
         returnDisplay = this.props.valueOnly ? value : text;
         selectedIndex = i;
@@ -162,9 +162,9 @@ export class Dropdown extends React.PureComponent {
         optionsArray = [];
         optionElements.map((option, i) => {
           const optionObject = {
-            "text": option.text,
-            "value": option.value,
-            "index": i
+            text: option.text,
+            value: option.value,
+            index: i
           };
           optionsArray.push(optionObject);
         });
@@ -175,7 +175,7 @@ export class Dropdown extends React.PureComponent {
             : this.state.display;
         const key = this.props.valueOnly ? "value" : "text";
         optionsArray = matchSorter(optionsArray, useDisplay, {
-          "keys": [key]
+          keys: [key]
         });
       }
       return optionsArray;
@@ -189,7 +189,7 @@ export class Dropdown extends React.PureComponent {
         }
       };
       // Sort and filter then options array if filter is enabled, then render each remaining object as an Option component
-      options = getOptions(props.options).map((option, i) => 
+      options = getOptions(props.options).map((option, i) => (
         <Option
           hover={
             typeof updatedValues.tempIndex !== "undefined" &&
@@ -209,51 +209,51 @@ export class Dropdown extends React.PureComponent {
           text={getDisplay(option.text, option.value)}
           value={option.value}
         />
-      );
+      ));
     } else {
       // Add props.children to an array, sort and filter if filter is enabled, and then render the children in the correct order
       let childArray = [];
       const useChildren = viaIndex ? this.state.options : props.children;
       React.Children.map(useChildren, (child, i) => {
         childArray.push({
-          "text": child.props.text,
-          "value": child.props.value,
-          "index": i
+          text: child.props.text,
+          value: child.props.value,
+          index: i
         });
       });
       const childList = viaIndex ? this.state.options : props.children;
       options = getOptions(childArray).map((child, i) => {
         return cloneElement(childList[child.index], {
-          "hover":
+          hover:
             typeof updatedValues.tempIndex !== "undefined" &&
             i === updatedValues.tempIndex,
-          "ref":
+          ref:
             typeof updatedValues.tempIndex !== "undefined" &&
             i === updatedValues.tempIndex
               ? this.hoverRef
               : null,
-          "index": i,
-          "key": i,
-          "optionClick": this.optionOnClick,
-          "optionHover": this.optionOnMouseOver,
-          "selected": checkValue(child.value, child.text, i)
+          index: i,
+          key: i,
+          optionClick: this.optionOnClick,
+          optionHover: this.optionOnMouseOver,
+          selected: checkValue(child.value, child.text, i)
         });
       });
     }
     return {
-      "options": options,
-      "display": returnDisplay,
-      "value": returnValue,
-      "selectedIndex": selectedIndex
+      options: options,
+      display: returnDisplay,
+      value: returnValue,
+      selectedIndex: selectedIndex
     };
   }
 
   // Events to be fired after validation
   _eventHandlers = (e, change) => {
     const data = {
-      "value": this.state.value,
-      "status": this.state.status,
-      "message": this.state.message
+      value: this.state.value,
+      status: this.state.status,
+      message: this.state.message
     };
 
     if (!change && typeof this.props.onBlur === "function") {
@@ -280,8 +280,8 @@ export class Dropdown extends React.PureComponent {
   _formValidate = inputValue => {
     const validationObject = this._validate(inputValue);
     this.setState({
-      "status": validationObject.status,
-      "message": validationObject.message
+      status: validationObject.status,
+      message: validationObject.message
     });
     return validationObject;
   };
@@ -295,16 +295,16 @@ export class Dropdown extends React.PureComponent {
         }
       }
       const updatedValues = {
-        "tempIndex": null,
-        "selectedIndex": index,
-        "value": value
+        tempIndex: null,
+        selectedIndex: index,
+        value: value
       };
       const data = this.setOptions(updatedValues, this.props);
       const validationObject = this._validate(value);
       this.setState(
         {
-          "options": data.options,
-          "display": data.display,
+          options: data.options,
+          display: data.display,
           ...updatedValues,
           ...validationObject
         },
@@ -316,10 +316,10 @@ export class Dropdown extends React.PureComponent {
   };
 
   optionOnMouseOver = (e, index) => {
-    const updatedValues = { "tempIndex": index };
+    const updatedValues = { tempIndex: index };
     const data = this.setOptions(updatedValues, this.props, false, false, true);
     this.setState({
-      "options": data.options,
+      options: data.options,
       ...updatedValues
     });
   };
@@ -337,8 +337,8 @@ export class Dropdown extends React.PureComponent {
     }
     this.setState(
       {
-        "focus": focus,
-        "active": active,
+        focus: focus,
+        active: active,
         ...validationObject,
         ...updatedValues
       },
@@ -347,9 +347,9 @@ export class Dropdown extends React.PureComponent {
           this._eventHandlers(e);
         } else if (this.props.onFocus) {
           this.props.onFocus(e, {
-            "value": this.state.value,
-            "status": this.state.status,
-            "message": this.state.message
+            value: this.state.value,
+            status: this.state.status,
+            message: this.state.message
           });
         }
       }
@@ -372,12 +372,12 @@ export class Dropdown extends React.PureComponent {
     const newActive = this.props.readOnly
       ? this.state.active
       : !this.state.active;
-    this.setState({ "active": newActive }, () => {
+    this.setState({ active: newActive }, () => {
       if (this.props.onClick) {
         this.props.onClick(e, {
-          "value": this.state.value,
-          "status": this.state.status,
-          "message": this.state.message
+          value: this.state.value,
+          status: this.state.status,
+          message: this.state.message
         });
       }
     });
@@ -389,16 +389,16 @@ export class Dropdown extends React.PureComponent {
     if (this.props.filter) {
       const tempValue = returnData.value;
       let updatedValues = {
-        "selectedIndex": null,
-        "display": tempValue,
-        "tempIndex": 0
+        selectedIndex: null,
+        display: tempValue,
+        tempIndex: 0
       };
       if (this.props.valueOnly) {
         updatedValues.value = tempValue;
       }
       const data = this.setOptions(updatedValues, this.props, true);
       let setObject = {
-        "options": data.options
+        options: data.options
       };
       if (data.options.length > 1) {
         setObject.active = true;
@@ -412,7 +412,7 @@ export class Dropdown extends React.PureComponent {
           ...setObject,
           ...updatedValues,
           ...validationObject,
-          "tempIndex": 0
+          tempIndex: 0
         },
         () => {
           this._eventHandlers(e, true);
@@ -425,7 +425,7 @@ export class Dropdown extends React.PureComponent {
   _handleKeyDown = e => {
     // helper method and variable
     const updateTempIndex = i => {
-      const updatedValues = { "tempIndex": i };
+      const updatedValues = { tempIndex: i };
       const data = this.setOptions(
         updatedValues,
         this.props,
@@ -434,7 +434,7 @@ export class Dropdown extends React.PureComponent {
         true
       );
       this.setState({
-        "options": data.options,
+        options: data.options,
         ...updatedValues
       });
     };
@@ -448,14 +448,14 @@ export class Dropdown extends React.PureComponent {
       ) {
         e.preventDefault();
         if (
-          typeof this.props.disabled !== "undefined" && this.props.disabled ||
-          typeof this.props.readOnly !== "undefined" && this.props.readOnly
+          (typeof this.props.disabled !== "undefined" && this.props.disabled) ||
+          (typeof this.props.readOnly !== "undefined" && this.props.readOnly)
         ) {
           return false;
         }
         this.setState(
           {
-            "active": !this.state.active
+            active: !this.state.active
           },
           () => {
             if (!this.state.active && this.state.tempIndex !== null) {
@@ -512,16 +512,16 @@ export class Dropdown extends React.PureComponent {
           updateTempIndex(newIndex);
         } else if (e.key === "Enter" || e.key === "Tab") {
           if (
-            typeof this.props.disabled !== "undefined" &&
-              this.props.disabled ||
-            typeof this.props.readOnly !== "undefined" && this.props.readOnly
+            (typeof this.props.disabled !== "undefined" &&
+              this.props.disabled) ||
+            (typeof this.props.readOnly !== "undefined" && this.props.readOnly)
           ) {
             return false;
           }
 
           this.setState(
             {
-              "active": !this.state.active
+              active: !this.state.active
             },
             () => {
               if (
@@ -580,9 +580,9 @@ export class Dropdown extends React.PureComponent {
           }
         }
         this.setState({
-          "pressedKey": e.key,
+          pressedKey: e.key,
           indexArr,
-          "indexArrTracker": tempTracker
+          indexArrTracker: tempTracker
         });
       }
     }
@@ -626,28 +626,28 @@ export class Dropdown extends React.PureComponent {
     });
 
     const dropdownClasses = cx({
-      "dropdown": true,
-      "fillInput": leftLabel,
-      "setWidth": typeof style !== "undefined" && style.width,
+      dropdown: true,
+      fillInput: leftLabel,
+      setWidth: typeof style !== "undefined" && style.width,
       inline
     });
 
     const optionsWrapper = cx({
-      "hidden": !this.state.active,
-      "options": true,
-      "pointer": true
+      hidden: !this.state.active,
+      options: true,
+      pointer: true
     });
 
     const inputStyles = cx({
-      "pointer": !filter && !this.props.disabled
+      pointer: !filter && !this.props.disabled
     });
 
     const arrowStyles = cx({
-      "arrow": true,
-      "arrowUp": this.state.active
+      arrow: true,
+      arrowUp: this.state.active
     });
 
-    const dropdownLabel = (label || tooltip) && 
+    const dropdownLabel = (label || tooltip) && (
       <Label
         htmlFor={id}
         inline={inline}
@@ -658,7 +658,7 @@ export class Dropdown extends React.PureComponent {
         tooltip={tooltip}
         tooltipPosition={tooltipPosition}
       />
-    ;
+    );
 
     const arrow = <i styleName={arrowStyles} />;
 
@@ -699,14 +699,14 @@ export class Dropdown extends React.PureComponent {
             {this.state.options}
           </div>
         </div>
-        {!valueOnly && 
+        {!valueOnly && (
           <input
             type="hidden"
             disabled={disabled}
             name={name}
             value={this.state.value || ""}
           />
-        }
+        )}
       </div>
     );
   }
@@ -714,68 +714,68 @@ export class Dropdown extends React.PureComponent {
 
 Dropdown.propTypes = {
   /** Define the value for the HTML5 autocomplete attribute. */
-  "autocomplete": PropTypes.string,
+  autocomplete: PropTypes.string,
   /** Child elements, typically Option components. */
-  "children": PropTypes.node,
+  children: PropTypes.node,
   /** An Object, array, or string of CSS classes to apply to Dropdown. */
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /** Determines if the Dropdown is disabled. */
-  "disabled": PropTypes.string,
+  disabled: PropTypes.string,
   /** Define whether the Dropdown will have filter functionality. */
-  "filter": PropTypes.bool,
+  filter: PropTypes.bool,
   /** Define an id for the Dropdown. */
-  "id": PropTypes.string,
+  id: PropTypes.string,
   /** Sets whether or not Dropdown will display as inline. */
-  "inline": PropTypes.bool,
+  inline: PropTypes.bool,
   /** Define a label to be displayed above the Dropdown.*/
-  "label": PropTypes.string,
+  label: PropTypes.string,
   /** Allows user to move the label to the left of the Dropdown instead of above it. */
-  "leftLabel": PropTypes.bool,
+  leftLabel: PropTypes.bool,
   /** Pass inline styling for the options list here. */
-  "listStyle": PropTypes.object,
+  listStyle: PropTypes.object,
   /** Sets the status message to display below the Dropdown. The color of the message will be determined by the value of the "status" property. */
-  "message": PropTypes.string,
+  message: PropTypes.string,
   /** Defines a name for the input. */
-  "name": PropTypes.string,
+  name: PropTypes.string,
   /** A callback that fires before the Dropdown changes values. Can be used with confirmation warnings. Should return true or false. */
-  "onBeforeChange": PropTypes.func,
+  onBeforeChange: PropTypes.func,
   /** A callback that fires onBlur. */
-  "onBlur": PropTypes.func,
+  onBlur: PropTypes.func,
   /** A callback that fires onChange. */
-  "onChange": PropTypes.func,
+  onChange: PropTypes.func,
   /** A callback that fires onClick. */
-  "onClick": PropTypes.func,
+  onClick: PropTypes.func,
   /** A callback that fires onFocus. */
-  "onFocus": PropTypes.func,
+  onFocus: PropTypes.func,
   /** A javascript array of objects containing both "value" and "text" attributes. */
-  "options": PropTypes.array,
+  options: PropTypes.array,
   /** Determines if the Dropdown is display only. */
-  "readOnly": PropTypes.bool,
+  readOnly: PropTypes.bool,
   /** Sets the Dropdown as required. Will be validated onChange. Accepts a boolean or a string. If a string is passed it will be displayed instead of the traditional * next to the field label. */
-  "required": PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  required: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Sets the status of the Dropdown. Options are null, "success", "error", and "warning". */
-  "status": PropTypes.string,
+  status: PropTypes.string,
   /** Pass inline styling here. */
-  "style": PropTypes.object,
+  style: PropTypes.object,
   /** Sets an element to be displayed along with the Dropdown. Traditionally used with the Tooltip component, but will accept any component or HTML element. */
-  "tooltip": PropTypes.node,
+  tooltip: PropTypes.node,
   /** Sets the position of the embedded Tooltip. Defaults to "right", any other value will move it next to the label. */
-  "tooltipPosition": PropTypes.string,
+  tooltipPosition: PropTypes.string,
   /** Sets a handler function to be executed and validate against. Will override the required property (you can still use the required prop to add a required indicator next to the label) and must return an object with a status (Options: null, "success", "error", "warning") and a message (Options: null or string), or a boolean for simple validation. */
-  "valid": PropTypes.func,
+  valid: PropTypes.func,
   /** Define a default value for the Dropdown.*/
-  "value": PropTypes.string,
+  value: PropTypes.string,
   /** Define whether the Dropdown should display "value" or "text". If "value" is displayed, the visible input will be submitted directly and browser autofill should work. */
-  "valueOnly": PropTypes.bool
+  valueOnly: PropTypes.bool
 };
 
 Dropdown.defaultProps = {
-  "autocomplete": "off",
-  "tooltipPosition": "right"
+  autocomplete: "off",
+  tooltipPosition: "right"
 };
 
-export default CSSModules(Dropdown, styles, { "allowMultiple": true });
+export default CSSModules(Dropdown, styles, { allowMultiple: true });

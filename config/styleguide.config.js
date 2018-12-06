@@ -4,23 +4,23 @@ const { generateCSSReferences, generateJSReferences } = MiniHtmlWebpackPlugin;
 
 // Process JS with Babel.
 const babel = {
-  "test": /\.(js|jsx)$/,
-  "exclude": /node_modules/,
-  "loader": "babel-loader"
+  test: /\.(js|jsx)$/,
+  exclude: /node_modules/,
+  loader: "babel-loader"
 };
 
 // "css" loader resolves paths in CSS and adds assets as dependencies.
 // "style" loader turns CSS into JS modules that inject <style> tags.
 const css = {
-  "test": /\.css$/,
-  "loaders": [
+  test: /\.css$/,
+  loaders: [
     "style-loader?sourceMap",
     "css-loader?modules&importLoaders=1&localIdentName=ra_[name]__[local]",
     {
-      "loader": "postcss-loader",
-      "options": {
-        "config": {
-          "path": path.join(__dirname, "postcss.config.js")
+      loader: "postcss-loader",
+      options: {
+        config: {
+          path: path.join(__dirname, "postcss.config.js")
         }
       }
     }
@@ -29,8 +29,8 @@ const css = {
 
 // JSON is not enabled by default in Webpack but both Node and Browserify allow it implicitly so we also enable it.
 const json = {
-  "test": /\.json$/,
-  "loader": "json-loader"
+  test: /\.json$/,
+  loader: "json-loader"
 };
 
 // Default loader: load all assets that are not handled by other loaders with the url loader.
@@ -44,21 +44,21 @@ const json = {
 // smaller than specified limit in bytes as data URLs to avoid requests.
 // A missing `test` is equivalent to a match.
 const url = {
-  "exclude": [/\.html$/, babel.test, css.test, json.test],
-  "loader": "url-loader",
-  "query": {
-    "limit": 10000,
-    "name": "static/media/[name].[hash:8].[ext]"
+  exclude: [/\.html$/, babel.test, css.test, json.test],
+  loader: "url-loader",
+  query: {
+    limit: 10000,
+    name: "static/media/[name].[hash:8].[ext]"
   }
 };
 
 module.exports = {
   // Use this to test a single component.  Change it to the component you are testing and restart the styleguide server
   // Regex should be: 'src/components/NAME_OF_COMPONENT_FOLDER/[A-Z]*.js'
-  "sections": [
+  sections: [
     {
-      "name": "Form Components",
-      "components": [
+      name: "Form Components",
+      components: [
         "../src/Button/Button.js",
         "../src/Checkbox/Checkbox.js",
         "../src/CheckboxGroup/CheckboxGroup.js",
@@ -75,8 +75,8 @@ module.exports = {
       ]
     },
     {
-      "name": "Display Components",
-      "components": [
+      name: "Display Components",
+      components: [
         "../src/Accordion/Accordion.js",
         "../src/AccordionPanel/AccordionPanel.js",
         "../src/Avatar/Avatar.js",
@@ -105,20 +105,20 @@ module.exports = {
       ]
     },
     {
-      "name": "Messaging Components",
-      "components": [
+      name: "Messaging Components",
+      components: [
         "../src/Alert/Alert.js",
         "../src/Dialog/Dialog.js",
         "../src/Tooltip/Tooltip.js"
       ]
     },
     {
-      "name": "Table Components",
-      "components": ["../src/Table/Table.js", "../src/TableHeader/TableHeader.js"]
+      name: "Table Components",
+      components: ["../src/Table/Table.js", "../src/TableHeader/TableHeader.js"]
     }
   ],
-  "require": [path.resolve(__dirname, "../scripts/setup.js")],
-  "ignore": [
+  require: [path.resolve(__dirname, "../scripts/setup.js")],
+  ignore: [
     "**/__tests__/**",
     "**/utils/**",
     "**/*.test.js",
@@ -127,16 +127,16 @@ module.exports = {
     "**/*.spec.jsx",
     "**/index.js"
   ],
-  "showUsage": true,
-  "defaultExample": true,
-  "skipComponentsWithoutExample": true,
-  "webpackConfig": {
-    "devtool": "source-map",
-    "module": {
-      "loaders": [babel, css, json, url]
+  showUsage: true,
+  defaultExample: true,
+  skipComponentsWithoutExample: true,
+  webpackConfig: {
+    devtool: "source-map",
+    module: {
+      loaders: [babel, css, json, url]
     }
   },
-  "template": ({ styles, js, title, publicPath }) =>
+  template: ({ styles, js, title, publicPath }) =>
     `<!DOCTYPE html>
             <html>
               <head>
@@ -150,13 +150,13 @@ module.exports = {
                 ${generateJSReferences(js, publicPath)}
               </body>
             </html>`,
-  "theme": {
-    "color": {
-      "link": "#006e95",
-      "linkHover": "#003058",
-      "light": "#006e95",
-      "name": "#558000",
-      "type": "#b03478"
+  theme: {
+    color: {
+      link: "#006e95",
+      linkHover: "#003058",
+      light: "#006e95",
+      name: "#558000",
+      type: "#b03478"
     }
   }
 };

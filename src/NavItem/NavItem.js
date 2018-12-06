@@ -27,7 +27,7 @@ export class NavItem extends React.Component {
       ...others
     } = this.props;
 
-    const button = 
+    const button = (
       <Button
         disabled={disabled}
         styleName={cx("link", { disabled, subNav })}
@@ -38,9 +38,9 @@ export class NavItem extends React.Component {
         }
       >
         {children}
-        <i styleName={cx({ "caret": parent })} />
+        <i styleName={cx({ caret: parent })} />
       </Button>
-    ;
+    );
     const LinkElement = this.props.as;
 
     if (typeof as !== "undefined" && !disabled) {
@@ -73,44 +73,44 @@ export class NavItem extends React.Component {
 
 NavItem.propTypes = {
   /** Child elements, plain text or HTML/React element. */
-  "as": PropTypes.func,
+  as: PropTypes.func,
 
   /** Child elements, plain text or HTML/React element. */
-  "children": PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 
   /** An object, array, or string of CSS classes to apply to NavItem.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
 
   /** When true, NavItem will be disabled. */
-  "disabled": PropTypes.bool,
+  disabled: PropTypes.bool,
 
   /** The URL that the NavItem will link to. */
-  "href": PropTypes.string,
+  href: PropTypes.string,
 
   /** Specify NavItem unique key */
-  "navKey": PropTypes.number.isRequired,
+  navKey: PropTypes.number.isRequired,
   /** Pass inline styling here. */
-  "style": PropTypes.object,
+  style: PropTypes.object,
   /** When true, NavItem will be set as active.
    * @ignore
    */
-  "active": PropTypes.bool,
+  active: PropTypes.bool,
   /** Only first NavItem in sub-Nav container will be true.
    * @ignore
    */
-  "parent": PropTypes.bool,
+  parent: PropTypes.bool,
   /** Each NavItem in sub-Nav container will be true except first one.
    * @ignore
    */
-  "subNav": PropTypes.bool,
+  subNav: PropTypes.bool,
   /** Only use in sub Nav container, defines parent NavItem caret and subNav show or not.
    * @ignore
    */
-  "collapsed": PropTypes.bool,
+  collapsed: PropTypes.bool,
   /** callback for Nav Component
    * @ignore
    */
@@ -122,7 +122,7 @@ NavItem.propTypes = {
 };
 
 NavItem.defaultProps = {
-  "className": ""
+  className: ""
 };
 
-export default CSSModules(NavItem, styles, { "allowMultiple": true });
+export default CSSModules(NavItem, styles, { allowMultiple: true });

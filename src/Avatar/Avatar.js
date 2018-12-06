@@ -14,12 +14,12 @@ export class Avatar extends React.PureComponent {
   constructor(props) {
     super(props);
     let image = props.image ? props.image : props.fallbackImage;
-    this.state = { "image": image ? image : null };
+    this.state = { image: image ? image : null };
   }
 
   componentDidUpdate = prevProps => {
     if (this.props.image !== prevProps.image) {
-      this.setState({ "image": this.props.image });
+      this.setState({ image: this.props.image });
     }
   };
 
@@ -30,10 +30,10 @@ export class Avatar extends React.PureComponent {
       this.props.fallbackImage &&
       this.props.fallbackImage !== this.state.image
     ) {
-      this.setState({ "image": this.props.fallbackImage });
+      this.setState({ image: this.props.fallbackImage });
       return;
     }
-    this.setState({ "image": null });
+    this.setState({ image: null });
   };
 
   _getContent = () => {
@@ -42,14 +42,14 @@ export class Avatar extends React.PureComponent {
     }
     let avatar = null;
     if (this.state.image) {
-      avatar = 
+      avatar = (
         <img
           src={this.state.image}
           title={this.props.title}
           onError={this._handleBadImage}
           styleName={"image"}
         />
-      ;
+      );
     } else if (this.props.icon) {
       avatar = <i className={this.props.icon} />;
     } else if (this.props.title) {
@@ -89,9 +89,9 @@ Avatar.propTypes = {
    * Children should be either a string, an icon/glyphicon, or an image tag.
    * @examples "SomeName", <SomeIcon />, <img src="/path/to/image.jpg"/>
    */
-  "children": PropTypes.node,
+  children: PropTypes.node,
   /** An object, array, or string of CSS classes to apply to Avatar.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -99,26 +99,26 @@ Avatar.propTypes = {
   /**
    * A URL for an image that will be displayed when the main image fails to load.
    */
-  "fallbackImage": PropTypes.string,
+  fallbackImage: PropTypes.string,
   /**
    * For displaying an icon/glphyicon. Usually another component or an element with a class on it.
    * @examples <GithubIcon />, <i class="fa fa-github"></i>
    */
-  "icon": PropTypes.string,
+  icon: PropTypes.string,
   /**
    * Path to an image.
    * @examples "http://path.to/an/image.jpg"
    */
-  "image": PropTypes.string,
+  image: PropTypes.string,
   /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
   /**
    * Avatar will use the first letter of the title string when children, image, and icon are not supplied.
    * @examples "Nathan" will output "N"
    */
-  "title": PropTypes.string
+  title: PropTypes.string
 };
 
-export default CSSModules(Avatar, styles, { "allowMultiple": true });
+export default CSSModules(Avatar, styles, { allowMultiple: true });

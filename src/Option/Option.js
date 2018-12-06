@@ -26,9 +26,9 @@ export class Option extends React.PureComponent {
     const othersFiltered = blacklist(others, "optionClick", "optionHover");
 
     const optionWrapper = cx({
-      "optionWrapper": true,
-      "hover": hover && !selected,
-      "selected": selected
+      optionWrapper: true,
+      hover: hover && !selected,
+      selected: selected
     });
 
     return (
@@ -49,21 +49,21 @@ export class Option extends React.PureComponent {
 
 Option.propTypes = {
   /** Define whether or not the Option should get hover styling.*/
-  "hover": PropTypes.bool,
+  hover: PropTypes.bool,
   /** Define an index for the Option.*/
-  "index": PropTypes.number,
+  index: PropTypes.number,
   /** Sets a handler function to be executed when onClick event occurs.*/
-  "optionClick": PropTypes.func,
+  optionClick: PropTypes.func,
   /** Sets a handler function to be executed when onMouseOver event occurs.*/
-  "optionHover": PropTypes.func,
+  optionHover: PropTypes.func,
   /** Define whether or not the Option should get selected styling.*/
-  "selected": PropTypes.bool,
+  selected: PropTypes.bool,
   /** Define display text for the Option.*/
-  "text": PropTypes.string,
+  text: PropTypes.string,
   /** Define a value for the Option.*/
-  "value": PropTypes.string
+  value: PropTypes.string
 };
 
 Option.defaultProps = {};
 
-export default CSSModules(Option, styles, { "allowMultiple": true });
+export default CSSModules(Option, styles, { allowMultiple: true });

@@ -17,17 +17,17 @@ export class Checkbox extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "checked": this.props.checked || false,
-      "status": props.status || null,
-      "message": props.message || null,
-      "focus": false
+      checked: this.props.checked || false,
+      status: props.status || null,
+      message: props.message || null,
+      focus: false
     };
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.checked !== this.props.checked) {
       this.setState({
-        "checked": nextProps.checked || false
+        checked: nextProps.checked || false
       });
     }
   }
@@ -46,15 +46,15 @@ export class Checkbox extends React.PureComponent {
     const validationObject = this._validationHandler(this.props.valid);
     this.setState(
       {
-        "checked": !this.state.checked,
-        "status": validationObject.status,
-        "message": validationObject.message
+        checked: !this.state.checked,
+        status: validationObject.status,
+        message: validationObject.message
       },
       function() {
         const data = {
-          "value": this.props.value,
-          "status": this.state.status,
-          "checked": this.state.checked
+          value: this.props.value,
+          status: this.state.status,
+          checked: this.state.checked
         };
         /* Check if onClick has been passed, if so call it. */
         if (typeof this.props.onClick !== "undefined") {
@@ -77,12 +77,12 @@ export class Checkbox extends React.PureComponent {
     let status = "error";
     if (
       preState &&
-      (this.props.required && !this.state.checked || !this.props.required)
+      ((this.props.required && !this.state.checked) || !this.props.required)
     ) {
       status = null;
     } else if (
       !preState &&
-      (this.props.required && this.state.checked || !this.props.required)
+      ((this.props.required && this.state.checked) || !this.props.required)
     ) {
       status = null;
     }
@@ -94,8 +94,8 @@ export class Checkbox extends React.PureComponent {
     const validationObject = callback
       ? callback(event, !this.state.checked)
       : {
-          "status": this._getStatus(true),
-          "message": messages.requiredMessage
+          status: this._getStatus(true),
+          message: messages.requiredMessage
         };
     return validationObject;
   };
@@ -105,12 +105,12 @@ export class Checkbox extends React.PureComponent {
     const validationObject = this.props.valid
       ? this.props.valid(event, !this.state.checked)
       : {
-          "status": this._getStatus(false),
-          "message": messages.requiredMessage
+          status: this._getStatus(false),
+          message: messages.requiredMessage
         };
     this.setState({
-      "status": validationObject.status,
-      "message": validationObject.message
+      status: validationObject.status,
+      message: validationObject.message
     });
     return validationObject;
   };
@@ -136,30 +136,30 @@ export class Checkbox extends React.PureComponent {
     const othersFiltered = blacklist(others, "onBeforeChange", "valid");
 
     const inlineCheckbox = cx({
-      "inline_block": inline,
-      "checkbox_padding": !inline,
-      "inline_padding": inline,
+      inline_block: inline,
+      checkbox_padding: !inline,
+      inline_padding: inline,
       hidden
     });
     const labelStyle = cx({
-      "label": labelPosition !== "left",
-      "label_left": labelPosition === "left"
+      label: labelPosition !== "left",
+      label_left: labelPosition === "left"
     });
     const checkboxDisplay =
       labelPosition === "left" ? "float_right" : "float_left";
     const title_label = title ? title : label;
     let disabledClass = cx({
       disabled,
-      "inline_block": true,
-      "relative": true,
-      "padding": !inline
+      inline_block: true,
+      relative: true,
+      padding: !inline
     });
     const error = groupError || this.state.status === "error";
     let checkboxClass = cx({
-      "checked": this.state.checked,
-      "error": error,
-      "not_checked": !this.state.checked,
-      "focus": this.state.focus
+      checked: this.state.checked,
+      error: error,
+      not_checked: !this.state.checked,
+      focus: this.state.focus
     });
 
     // Gets the appropriate jsx to render a "required" identifier next to the Checkbox.
@@ -172,8 +172,8 @@ export class Checkbox extends React.PureComponent {
         : null;
 
     const requiredClasses = cx({
-      "required": true,
-      "required_error": status === "error"
+      required: true,
+      required_error: status === "error"
     });
 
     return (
@@ -184,11 +184,11 @@ export class Checkbox extends React.PureComponent {
         className={cx(className)}
       >
         <div styleName={disabledClass}>
-          {label && 
+          {label && (
             <label styleName={labelStyle} title={title_label} htmlFor={id}>
               {label}
             </label>
-          }
+          )}
           <div styleName={checkboxDisplay}>
             <input
               {...othersFiltered}
@@ -207,12 +207,12 @@ export class Checkbox extends React.PureComponent {
             </div>
           </div>
           {required &&
-            required !== "" && 
+            required !== "" && (
               <span styleName={requiredClasses}>
                 {" "}
                 <Text>{reqText}</Text>
               </span>
-            }
+            )}
         </div>
         {errorMessage}
       </div>
@@ -224,10 +224,10 @@ Checkbox.propTypes = {
   /**
    * When true, Checkbox will be checked on load.
    */
-  "checked": PropTypes.bool,
+  checked: PropTypes.bool,
 
   /** An object, array, or string of CSS classes to apply to Checkbox.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -237,85 +237,85 @@ Checkbox.propTypes = {
    * If included, checkbox is disabled
    * @examples <Checkbox disabled />, <Checkbox disabled={true} />
    */
-  "disabled": PropTypes.bool,
+  disabled: PropTypes.bool,
 
   /**
    * For use when an error state has been passed down from the parent CheckboxGroup.
    */
-  "groupError": PropTypes.bool,
+  groupError: PropTypes.bool,
   /**
    * Determines if the Checkbox is hidden.
    * @examples '<Checkbox hidden/>'
    */
-  "hidden": PropTypes.bool,
+  hidden: PropTypes.bool,
 
   /** Will set the html "id" property on the Checkbox.*/
-  "id": PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * When true, will render the Checkbox and its label inline.
    */
-  "inline": PropTypes.bool,
+  inline: PropTypes.bool,
 
   /**
    * Text for Checkbox label.
    * @examples 'Some Label'
    */
-  "label": PropTypes.string,
+  label: PropTypes.string,
 
   /**
    * Will position the Checkbox label to the left or the right of the checkbox.
    */
-  "labelPosition": PropTypes.string,
+  labelPosition: PropTypes.string,
 
   /**
    * Function that will be executed before changing the "checked" state of the Checkbox.
    */
-  "onBeforeChange": PropTypes.func,
+  onBeforeChange: PropTypes.func,
 
   /**
    * Function that will be executed when the Checkbox state is changed.
    */
-  "onChange": PropTypes.func,
+  onChange: PropTypes.func,
 
   /**
    * Function that will be executed on click.
    */
-  "onClick": PropTypes.func,
+  onClick: PropTypes.func,
 
   /**
    * Sets the Checkbox as required. Will be validated in _validationHandler. Accepts a boolean or a string.
    * If a string is passed it will be displayed instead of the traditional * next to the Checkbox.
    * @examples '<TextField required/>'
    */
-  "required": PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  required: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 
   /**
    * Pass inline styles here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Text for Checkbox label title. (i.e. "alt-text" for checkboxes, useful for accessibility). If not provided, label text will be used.
    * @examples 'Some Title'
    */
-  "title": PropTypes.string,
+  title: PropTypes.string,
 
   /**
    * Used to pass a function for custom validation. Should return either true or false.
    */
-  "valid": PropTypes.func,
+  valid: PropTypes.func,
 
   /**
    * The value of the Checkbox.
    */
-  "value": PropTypes.string,
+  value: PropTypes.string,
 
   /**
    * Sets the status of the Checkbox. Options are null, "success", "error", and "warning".
    * @examples '<Checkbox status="error" />'
    */
-  "status": PropTypes.string,
+  status: PropTypes.string,
 
   /**
    * Sets the status message of the Checkbox.
@@ -324,15 +324,15 @@ Checkbox.propTypes = {
    valid={ function(checked){ return {status: "success", message: "Checkbox is required"} } }
    />'
    */
-  "message": PropTypes.string
+  message: PropTypes.string
 };
 
 Checkbox.defaultProps = {
-  "className": "",
-  "disabled": false,
-  "inline": false,
-  "checked": false,
-  "required": false
+  className: "",
+  disabled: false,
+  inline: false,
+  checked: false,
+  required: false
 };
 
-export default CSSModules(Checkbox, styles, { "allowMultiple": true });
+export default CSSModules(Checkbox, styles, { allowMultiple: true });

@@ -9,26 +9,26 @@ export class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      "activeIndex": props.activeIndex, // The index of selected menu item.
-      "collapsed": props.collapsed // Whether or not sub-nav menu collapsed.
+      activeIndex: props.activeIndex, // The index of selected menu item.
+      collapsed: props.collapsed // Whether or not sub-nav menu collapsed.
     };
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.activeIndex !== this.props.activeIndex) {
-      this.setState({ "activeIndex": nextProps.activeIndex });
+      this.setState({ activeIndex: nextProps.activeIndex });
     }
   }
 
   _handleClick = (index, event) => {
-    this.setState({ "activeIndex": index });
+    this.setState({ activeIndex: index });
     if (this.props.onClick) {
       this.props.onClick(index, event);
     }
   };
 
   _handleCollapse = (index, event) => {
-    this.setState({ "collapsed": !this.state.collapsed });
+    this.setState({ collapsed: !this.state.collapsed });
     if (this.props.onClick) {
       this.props.onClick(index, event);
     }
@@ -98,7 +98,7 @@ export class Nav extends React.Component {
     }
     // Avoid to append styleName to ul if rendering from json data.
     styleName =
-      className.indexOf("ra_Nav__nav") === -1 ? { "styleName": cx("nav") } : {};
+      className.indexOf("ra_Nav__nav") === -1 ? { styleName: cx("nav") } : {};
     return (
       <ul {...styleName} className={className} style={style}>
         {React.Children.map(children, (child, index) => {
@@ -113,20 +113,20 @@ export class Nav extends React.Component {
           // Render a child Nav component with children, mark it as subNav
           if (typeof child.props.children === "object") {
             return cloneElement(child, {
-              "activeIndex": this.state.activeIndex,
-              "subNav": true,
-              "onClick": this._handleClick,
-              "ignoreActive": ignoreActive
+              activeIndex: this.state.activeIndex,
+              subNav: true,
+              onClick: this._handleClick,
+              ignoreActive: ignoreActive
             });
           }
           let isParent = subNav && index === 0;
           // Render NavItem components, adding subNav and parent identifiers accordingly
           return cloneElement(child, {
-            "subNav": subNav && !isParent,
-            "parent": isParent,
-            "collapsed": this.state.collapsed,
+            subNav: subNav && !isParent,
+            parent: isParent,
+            collapsed: this.state.collapsed,
             active,
-            "onClick": isParent ? this._handleCollapse : this._handleClick
+            onClick: isParent ? this._handleCollapse : this._handleClick
           });
         })}
       </ul>
@@ -136,36 +136,36 @@ export class Nav extends React.Component {
 
 Nav.propTypes = {
   /** Define index of active NavItem component in the Nav. */
-  "activeIndex": PropTypes.number,
+  activeIndex: PropTypes.number,
   /** Child elements, typically NavItem component or Nav for grouping sub-NavItems. */
-  "children": PropTypes.node,
+  children: PropTypes.node,
   /** An object, array, or string of CSS classes to apply to Nav.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
   /** Define Nav container is collapsed or not when initialization, normally used in sub-Nav. */
-  "collapsed": PropTypes.bool,
+  collapsed: PropTypes.bool,
   /** Json object which describes the shape of nav menu for rendering Nav menu. */
-  "data": PropTypes.array,
+  data: PropTypes.array,
   /** Set to true if you intend to set an active style externally. */
-  "ignoreActive": PropTypes.bool,
+  ignoreActive: PropTypes.bool,
   /** Function that will be executed when onClick event occurs. */
-  "onClick": PropTypes.func,
+  onClick: PropTypes.func,
   /** Pass inline styling here. */
-  "style": PropTypes.object,
+  style: PropTypes.object,
   /** Set true If is a sub-Nav container, not a public prop.
    * @ignore
    */
-  "subNav": PropTypes.bool
+  subNav: PropTypes.bool
 };
 
 Nav.defaultProps = {
-  "className": "",
-  "collapsed": false,
-  "data": null,
-  "ignoreActive": false
+  className: "",
+  collapsed: false,
+  data: null,
+  ignoreActive: false
 };
 
-export default CSSModules(Nav, styles, { "allowMultiple": true });
+export default CSSModules(Nav, styles, { allowMultiple: true });

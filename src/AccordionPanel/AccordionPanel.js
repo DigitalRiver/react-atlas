@@ -10,7 +10,7 @@ export class AccordionPanel extends React.PureComponent {
   }
   render() {
     const panelStyles = cx({
-      "accordionPanel": true
+      accordionPanel: true
     });
     const { className, children, style } = this.props;
     return (
@@ -25,10 +25,10 @@ AccordionPanel.propTypes = {
   /**
    * Text, any HTML element, or React Component.
    */
-  "children": PropTypes.node,
+  children: PropTypes.node,
 
   /** An object, array, or string of CSS classes to apply to Panel.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -37,20 +37,20 @@ AccordionPanel.propTypes = {
    * Accordion will use the expanded prop from each child to determine if the child will be expanded on load.
    * @examples <Accordion><div>value 1</div><div expanded="true">value 2</div></Accordion>
    */
-  "expanded": PropTypes.bool,
+  expanded: PropTypes.bool,
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
   /**
    * Accordion will use title prop from each child as the title for that child's header.
    * @examples <AccordionPanel title={title 1}>value 1</div><div title={title 2}>value 2</AccordionPanel>
    */
-  "title": PropTypes.string
+  title: PropTypes.string
 };
 
 AccordionPanel.defaultProps = {
-  "expanded": false
+  expanded: false
 };
 
-export default CSSModules(AccordionPanel, styles, { "allowMultiple": true });
+export default CSSModules(AccordionPanel, styles, { allowMultiple: true });

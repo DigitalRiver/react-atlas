@@ -5,12 +5,12 @@ import renderer from "react-test-renderer";
 
 describe("Test Alert component", () => {
   it("Test renders correctly", () => {
-    const comp = 
+    const comp = (
       <Alert type="success">
         <strong>Success!</strong> This alert box indicates a successful or
         positive action.
       </Alert>
-    ;
+    );
     const tree = renderer.create(comp).toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -83,7 +83,7 @@ describe("Test Alert Component: Basic Tests", () => {
     );
 
     global.console = {
-      "log": jest.fn()
+      log: jest.fn()
     };
 
     expect(alrt.props().dismissible).toBe(true);

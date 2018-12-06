@@ -33,25 +33,25 @@ export class TableHeader extends React.PureComponent {
 }
 
 TableHeader.propTypes = {
-  "dataField": PropTypes.string,
-  "isKey": PropTypes.bool,
-  "dataSort": PropTypes.bool,
-  "searchable": PropTypes.bool,
+  dataField: PropTypes.string,
+  isKey: PropTypes.bool,
+  dataSort: PropTypes.bool,
+  searchable: PropTypes.bool,
   /** Pass inline styling here. */
-  "style": PropTypes.object,
+  style: PropTypes.object,
   /** An Object, array, or string of CSS classes to apply to TableHeader.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
-  "children": PropTypes.any
+  children: PropTypes.any
 };
 
 TableHeader.defaultProps = {
-  "isKey": false,
-  "dataSort": false,
-  "searchable": true
+  isKey: false,
+  dataSort: false,
+  searchable: true
 };
 
-export default CSSModules(TableHeader, styles, { "allowMultiple": true });
+export default CSSModules(TableHeader, styles, { allowMultiple: true });

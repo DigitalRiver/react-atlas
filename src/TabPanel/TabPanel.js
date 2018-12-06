@@ -13,13 +13,13 @@ export class TabPanel extends React.PureComponent {
 
     // Initial state
     this.state = {
-      "selected": this.props.selected || false
+      selected: this.props.selected || false
     };
   }
 
   UNSAFE_componentWillReceiveProps = nextProps => {
     if (nextProps.selected !== this.props.selected) {
-      this.setState({ "selected": nextProps.selected });
+      this.setState({ selected: nextProps.selected });
     }
   };
 
@@ -28,7 +28,7 @@ export class TabPanel extends React.PureComponent {
 
     let tabPanelClasses = cx(
       {
-        "selected": this.state.selected,
+        selected: this.state.selected,
         bordered,
         vertical
       },
@@ -47,17 +47,17 @@ TabPanel.propTypes = {
   /**
    * Will be automatically set when bordered prop is passed to Tabs component.
    */
-  "bordered": PropTypes.bool,
+  bordered: PropTypes.bool,
 
   /**
    * Text, components or elements that will be displayed as TabPanel content.
    */
-  "children": PropTypes.node,
+  children: PropTypes.node,
 
   /**
    * An object, array, or string of CSS classes to apply to TabPanel.
    */
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
@@ -66,17 +66,17 @@ TabPanel.propTypes = {
   /**
    * When true, TabPanel is selected.
    */
-  "selected": PropTypes.bool,
+  selected: PropTypes.bool,
 
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object,
+  style: PropTypes.object,
 
   /**
    * Will be automatically set when vertical prop is passed to Tabs component.
    */
-  "vertical": PropTypes.bool
+  vertical: PropTypes.bool
 };
 
-export default CSSModules(TabPanel, styles, { "allowMultiple": true });
+export default CSSModules(TabPanel, styles, { allowMultiple: true });

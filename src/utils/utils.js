@@ -4,7 +4,7 @@ import messages from "./messages.js";
 export default {
   angleFromPositions(cx, cy, ex, ey) {
     const theta = Math.atan2(ey - cy, ex - cx) + Math.PI / 2;
-    return theta * 180 / Math.PI;
+    return (theta * 180) / Math.PI;
   },
   angle360FromPositions(cx, cy, ex, ey) {
     const angle = this.angleFromPositions(cx, cy, ex, ey);
@@ -33,8 +33,8 @@ export default {
   },
   getViewport() {
     return {
-      "height": window.innerHeight || document.documentElement.offsetHeight,
-      "width": window.innerWidth || document.documentElement.offsetWidth
+      height: window.innerHeight || document.documentElement.offsetHeight,
+      width: window.innerWidth || document.documentElement.offsetWidth
     };
   },
   cloneObject(object) {
@@ -157,12 +157,12 @@ export default {
       }
     } else if (
       (typeof inputValue === "undefined" || inputValue === "") &&
-      (required || typeof required === "string" && required === "")
+      (required || (typeof required === "string" && required === ""))
     ) {
       /* If the field is required, and it has no value, change state and display error message */
       message = messages.requiredMessage;
       status = "error";
     }
-    return { "status": status, "message": message };
+    return { status: status, message: message };
   }
 };

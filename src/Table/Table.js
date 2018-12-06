@@ -44,33 +44,33 @@ export class Table extends React.PureComponent {
 }
 
 Table.propTypes = {
-  "search": PropTypes.bool,
-  "children": PropTypes.any.isRequired,
-  "data": PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-  "pagination": PropTypes.bool,
-  "options": PropTypes.shape({
-    "defaultSortName": PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-    "defaultSortOrder": PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+  search: PropTypes.bool,
+  children: PropTypes.any.isRequired,
+  data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  pagination: PropTypes.bool,
+  options: PropTypes.shape({
+    defaultSortName: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+    defaultSortOrder: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
   }),
   /** An Object, array, or string of CSS classes to apply to Table.*/
-  "className": PropTypes.oneOfType([
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
     PropTypes.array
   ]),
-  "maxHeight": PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
    * Pass inline styling here.
    */
-  "style": PropTypes.object
+  style: PropTypes.object
 };
 
 Table.defaultProps = {
-  "pagination": false,
-  "options": {
-    "defaultSortName": "",
-    "defaultSortOrder": ""
+  pagination: false,
+  options: {
+    defaultSortName: "",
+    defaultSortOrder: ""
   }
 };
 
-export default CSSModules(Table, styles, { "allowMultiple": true });
+export default CSSModules(Table, styles, { allowMultiple: true });
