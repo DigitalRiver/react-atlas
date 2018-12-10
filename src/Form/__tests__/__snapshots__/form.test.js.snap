@@ -179,7 +179,7 @@ exports[`Test Hint component render Render correctly 1`] = `
       </div>
       <input
         className="textfield disabled"
-        disabled={true}
+        disabled="true"
         id={undefined}
         name="address2"
         onBlur={[Function]}
