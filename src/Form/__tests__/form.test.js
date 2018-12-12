@@ -310,6 +310,14 @@ describe("Test Hint component render", () => {
           <Checkbox label="2-Day" name="deliveryMethod" value="2-Day" />
           <Checkbox label="1-Day" name="deliveryMethod" value="1-Day" />
         </CheckboxGroup>
+        <CheckboxGroup max={1} title="Pets" limitMessage="only one pet">
+          <Checkbox label="Cat" name="pets" value="cat" checked />
+          <Checkbox label="Dog" name="pets" value="dog" checked />
+        </CheckboxGroup>
+        <CheckboxGroup min={1} title="Pizza">
+          <Checkbox label="Pepperoni" name="pizza" value="pepperoni" />
+          <Checkbox label="Cheese" name="pizza" value="cheese" />
+        </CheckboxGroup>
         <Button primary type="submit">
           Submit
         </Button>
@@ -317,11 +325,15 @@ describe("Test Hint component render", () => {
     );
     form.find("form").simulate("submit", event);
     expect(event.preventDefault).toBeCalled();
-    expect(form.state().errorList.length).toBe(3);
+    expect(form.state().errorList.length).toBe(5);
     expect(form.find("Alert").exists()).toBe(true);
     expect(form.find("Alert").html()).toContain("First Name:");
     expect(form.find("Alert").html()).toContain("Shipping:");
     expect(form.find("Alert").html()).toContain("Standard:");
+    expect(form.find("Alert").html()).toContain("Pets:");
+    expect(form.find("Alert").html()).toContain(
+      "Pizza: Please select at least 1 of the options below"
+    );
     expect(handleSubmit).not.toBeCalled();
   });
 
