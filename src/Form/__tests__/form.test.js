@@ -323,7 +323,6 @@ describe("Test Hint component render", () => {
     expect(form.find("Alert").html()).toContain("Shipping:");
     expect(form.find("Alert").html()).toContain("Standard:");
     expect(handleSubmit).not.toBeCalled();
-    console.log(form.instance());
   });
 
   it("_validateAndSubmit validates, prevents default, calls onSubmit when no errors are found", function() {
@@ -341,13 +340,15 @@ describe("Test Hint component render", () => {
           value="John"
         />
         <input type="text" name="htmlInput" />
-        <Checkbox
-          label="Standard"
-          name="deliveryMethod"
-          value="standard"
-          required
-          checked
-        />
+        <CheckboxGroup>
+          <Checkbox
+            label="Standard"
+            name="deliveryMethod"
+            value="standard"
+            required
+            checked
+          />
+        </CheckboxGroup>
         <RadioGroup title="Address Type" selectedIndex={0}>
           <Radio name="homeBusiness" label="Home" value="home" />
           <Radio name="homeBusiness" label="Business" value="business" />

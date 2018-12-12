@@ -12,6 +12,13 @@ describe("Test checkbox component", () => {
     expect(result.props().className).toBe("");
     expect(result.props().disabled).toBe(false);
     expect(result.props().inline).toBe(false);
+    expect(
+      result
+        .find("input")
+        .props()
+        .onChange()
+    ).toBe(false);
+    expect(result.find(".float_left").exists()).toBe(true);
   });
 
   it("Make sure label is used as title when title is not set", function() {
@@ -95,29 +102,21 @@ describe("Test checkbox component - Default values", () => {
   });
 
   it("Test checkbox component - Click event (custom onClick callback)", function() {
-    const comp = mount(
-      <Checkbox
-        onClick={function() {
-          console.log("onClick callback trigered");
-        }}
-      />
-    );
+    const handleClick = jest.fn();
+    const comp = mount(<Checkbox onClick={handleClick} />);
     expect(comp.state().checked).toEqual(false);
     comp.simulate("click");
     expect(comp.state().checked).toEqual(true);
+    expect(handleClick).toBeCalled();
   });
 
   it("Test checkbox component - Click event (custom onChange callback)", function() {
-    const comp = mount(
-      <Checkbox
-        onChange={function() {
-          console.log("onChange callback trigered");
-        }}
-      />
-    );
+    const handleChange = jest.fn();
+    const comp = mount(<Checkbox onChange={handleChange} />);
     expect(comp.state().checked).toEqual(false);
     comp.simulate("click");
     expect(comp.state().checked).toEqual(true);
+    expect(handleChange).toBeCalled();
   });
 
   it("Test checkbox component - Click event (custom onBeforeChange)", function() {
@@ -132,14 +131,26 @@ describe("Test checkbox component - Default values", () => {
     comp.simulate("click");
     expect(comp.state().checked).toEqual(false);
   });
+
+  it("Test checkbox component - labelPosition left", function() {
+    const comp = mount(<Checkbox labelPosition="left" />);
+    expect(comp.find(".float_right").exists()).toBe(true);
+  });
+
+  it("Test checkbox component - required text", function() {
+    const comp = mount(
+      <Checkbox labelPosition="left" required="you must check this box" />
+    );
+    expect(comp.find(".required").html()).toContain("you must check this box");
+  });
 });
 describe("Test checkbox component - update from props", () => {
   it("update checked prop", function() {
     const component = mount(<Checkbox label="Checkbox" />);
     expect(component.state().checked).toEqual(false);
-    component.setProps({ "checked": true });
+    component.setProps({ checked: true });
     expect(component.state().checked).toEqual(true);
-    component.setProps({ "checked": false });
+    component.setProps({ checked: false });
     expect(component.state().checked).toEqual(false);
   });
 });
