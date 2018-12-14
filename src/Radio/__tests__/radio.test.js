@@ -38,80 +38,103 @@ describe("Testing radio component", () => {
   });
 
   it("Radio - Simple click test", function() {
+    const handleClick = jest.fn();
     const rad = mount(
       <Radio
         label="Checked Radio"
         value="checkedRadio"
         groupSetChecked={function() {}}
+        onClick={handleClick}
       />
     );
     rad.simulate("click");
+    expect(handleClick).toBeCalled();
   });
 
   it("Radio - Simple click test (disabled)", function() {
+    const handleClick = jest.fn();
     const rad = mount(
       <Radio
         disabled
         label="Checked Radio"
         value="checkedRadio"
+        onClick={handleClick}
         groupSetChecked={function() {}}
       />
     );
     rad.simulate("click");
+    expect(handleClick).not.toBeCalled();
   });
 
   it("Radio - Simple click test (with onBeforeChange)", function() {
+    const handleBeforeChange = jest.fn();
     const rad = mount(
       <Radio
         label="Checked Radio"
         value="checkedRadio"
         groupSetChecked={function() {}}
-        onClick={function() {
-          console.log("onclick");
-        }}
-        onChange={function() {
-          console.log("onchange");
-        }}
-        onBeforeChange={function() {
-          console.log("onbeforechange");
-        }}
+        onBeforeChange={handleBeforeChange}
       />
     );
     rad.simulate("click");
+    expect(handleBeforeChange).toBeCalled();
   });
 
-  it("Radio - Simple click test (without onBeforeChange)", function() {
+  it("Radio - labelPosition left", function() {
     const rad = mount(
       <Radio
+        checked
         label="Checked Radio"
+        labelPosition="left"
         value="checkedRadio"
-        groupSetChecked={function() {}}
-        onClick={function() {
-          console.log("onclick");
-        }}
-        onChange={function() {
-          console.log("onchange");
-        }}
       />
     );
-    rad.simulate("click");
+    expect(rad.find(".float_right").exists()).toBe(true);
   });
 
-  it("Radio - Simple click test (without onBeforeChange) checked", function() {
+  it("Radio - labelPosition default", function() {
+    const rad = mount(
+      <Radio checked label="Checked Radio" value="checkedRadio" />
+    );
+    expect(rad.find(".float_left").exists()).toBe(true);
+  });
+
+  it("Radio - input onChange returns false", function() {
+    const handleChange = jest.fn();
+    const handleClick = jest.fn();
     const rad = mount(
       <Radio
         checked
         label="Checked Radio"
         value="checkedRadio"
         groupSetChecked={function() {}}
-        onClick={function() {
-          console.log("onclick");
-        }}
-        onChange={function() {
-          console.log("onchange");
-        }}
+        onClick={handleClick}
+        onChange={handleChange}
       />
     );
-    rad.simulate("click");
+    expect(
+      rad
+        .find("input")
+        .props()
+        .onChange()
+    ).toBe(false);
+  });
+
+  it("Radio - CWRP calls onChange if new props checked does not equal old props and onChange exists", function() {
+    const handleChange = jest.fn();
+    const handleClick = jest.fn();
+    const rad = mount(
+      <Radio
+        checked
+        label="Checked Radio"
+        value="checkedRadio"
+        groupSetChecked={function() {}}
+        onClick={handleClick}
+        onChange={handleChange}
+      />
+    );
+    expect(rad.props().checked).toBe(true);
+    rad.setProps({ checked: false });
+    expect(handleChange).toBeCalled();
   });
 });

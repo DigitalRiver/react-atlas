@@ -24,7 +24,10 @@
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/scripts/enzymeConfig.js",
     "collectCoverageFrom": [
-      "src/**/*.js"
+      "src/**/*.js",
+      "!src/constants.js",
+      "!src/index.js",
+      "!src/utils/polyfills.js"
     ],
     "moduleNameMapper": {
       "\\.(css|less)$": "identity-obj-proxy"

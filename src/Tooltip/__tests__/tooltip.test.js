@@ -74,4 +74,14 @@ describe("Testing Tooltip component", () => {
     comp.simulate("mouseLeave");
     expect(comp.state().active).toEqual(false);
   });
+
+  it("Tooltip children overwrite icon", function() {
+    const comp = mount(
+      <Tooltip tooltip={"Hey I'm a tooltip"} icon="fa fa-github">
+        {" "}
+        <span>foo</span>
+      </Tooltip>
+    );
+    expect(comp.find("i").exists()).toBe(false);
+  });
 });

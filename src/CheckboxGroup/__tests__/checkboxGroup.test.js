@@ -47,14 +47,14 @@ describe("Test CheckboxGroup component - the basics", () => {
   });
 
   it("Test renders correctly", () => {
-    const comp = 
+    const comp = (
       <CheckboxGroup title={"CheckboxGroup test"}>
         <Checkbox name={"1"} />
         <Checkbox name={"2"} />
         <Checkbox name={"3"} />
         <Checkbox name={"4"} />
       </CheckboxGroup>
-    ;
+    );
     const tree = renderer.create(comp).toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -200,7 +200,7 @@ function _verifyMinMax(mi, ma, numberOfClicks, message, expectedResult) {
 
 describe("Test CheckboxGroup component - Min/Max tests", () => {
   it("Checkbox group - 5 checkboxes, max=4, min=2, 1 checked", function() {
-    _verifyMinMax(2, 4, 1, "Limit exceed!!", true);
+    _verifyMinMax(2, 4, 1, "Not enough!!", true);
   });
   it("Checkbox group - 5 checkboxes, max=4, min=2, 2 checked", function() {
     _verifyMinMax(2, 4, 2, "Limit exceed!!", false);
@@ -214,10 +214,10 @@ describe("Test CheckboxGroup component - Min/Max tests", () => {
   it("Checkbox group - 5 checkboxes, max=4, min=2, 5 checked", function() {
     _verifyMinMax(2, 4, 5, "Limit exceed!!", true);
   });
-  it("Checkbox group - 5 checkboxes, max=4, min=2, 1 checked no Limmit message", function() {
+  it("Checkbox group - 5 checkboxes, max=4, min=2, 1 checked no Limit message", function() {
     _verifyMinMax(2, 4, 1, "", true);
   });
-  it("Checkbox group - 5 checkboxes, max=4, min=2, 5 checked no Limmit message", function() {
+  it("Checkbox group - 5 checkboxes, max=4, min=2, 5 checked no Limit message", function() {
     _verifyMinMax(2, 4, 5, "", true);
   });
 
