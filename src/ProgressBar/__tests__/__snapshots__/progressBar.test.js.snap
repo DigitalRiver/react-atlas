@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test correct render Test correct render circular 1`] = `
+<div
+  aria-valuemax={100}
+  aria-valuemin={0}
+  aria-valuenow={0}
+  className="circular indeterminate"
+  style={undefined}
+>
+  <svg
+    className="circle"
+    viewBox="0 0 60 60"
+  >
+    <circle
+      className="path"
+      cx="30"
+      cy="30"
+      r="25"
+      style={
+        Object {
+          "stroke": undefined,
+        }
+      }
+    />
+  </svg>
+</div>
+`;
+
+exports[`Test correct render Test correct render default linear 1`] = `
+<div
+  aria-valuemax={100}
+  aria-valuemin={0}
+  aria-valuenow={0}
+  className="linear indeterminate"
+  style={undefined}
+>
+  <div>
+    <span
+      className="buffer"
+      data-ref="buffer"
+      style={undefined}
+    />
+    <span
+      className="value"
+      data-ref="value"
+      style={
+        Object {
+          "backgroundColor": undefined,
+        }
+      }
+    />
+  </div>
+</div>
+`;

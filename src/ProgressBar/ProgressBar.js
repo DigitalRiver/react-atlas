@@ -161,13 +161,6 @@ ProgressBar.propTypes = {
   mode: PropTypes.string,
 
   /**
-   * If true, ProgressBar will change colors during transition
-   *
-   * @ignore
-   */
-  multicolor: PropTypes.bool,
-
-  /**
    * Pass inline styling here.
    */
   style: PropTypes.object,
@@ -203,7 +196,6 @@ ProgressBar.defaultProps = {
   min: 0,
   transitionDuration: ".35s",
   mode: "indeterminate",
-  multicolor: false,
   type: "linear",
   value: 0
 };
