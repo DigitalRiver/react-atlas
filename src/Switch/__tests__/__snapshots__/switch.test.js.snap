@@ -10,7 +10,6 @@ exports[`Test switch component render Render correctly 1`] = `
     style={undefined}
   >
     <input
-      buttonColor="grey"
       checked={false}
       className="inputMedium"
       disabled={false}
