@@ -284,4 +284,179 @@ describe("Test Dropdown component - setOptions() method", () => {
         .html()
     ).toContain('name="dataDropdown"');
   });
+
+  it("handles focus and blur", function() {
+    const event = {
+      persist: jest.fn()
+    };
+    const handleFocus = jest.fn();
+    const handleBlur = jest.fn();
+    const dd = mount(
+      <Dropdown
+        name="dataDropdown"
+        id="dataDropdown"
+        options={[
+          { text: "Yes", value: "true" },
+          { text: "No", value: "false" }
+        ]}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        value=""
+      />
+    );
+    dd.find("input")
+      .first()
+      .simulate("focus", event);
+    expect(event.persist).toBeCalled();
+    expect(dd.state().focus).toBe(true);
+    expect(handleFocus).toBeCalled();
+    dd.find("input")
+      .first()
+      .simulate("blur", event);
+    expect(event.persist).toBeCalled();
+    expect(dd.state().focus).toBe(false);
+    expect(handleBlur).toBeCalled();
+    expect(dd.state().value).toBe("");
+  });
+
+  it("handles click", function() {
+    const event = {
+      persist: jest.fn()
+    };
+    const handleClick = jest.fn();
+    const dd = mount(
+      <Dropdown
+        name="dataDropdown"
+        id="dataDropdown"
+        options={[
+          { text: "Yes", value: "true" },
+          { text: "No", value: "false" }
+        ]}
+        onClick={handleClick}
+      />
+    );
+    dd.find("input")
+      .first()
+      .simulate("click", event);
+    expect(handleClick).toBeCalled();
+    expect(event.persist).toBeCalled();
+    expect(dd.state().active).toBe(true);
+  });
+
+  it("handles click with no onClick prop and readOnly", function() {
+    const event = {
+      persist: jest.fn()
+    };
+    const handleClick = jest.fn();
+    const dd = mount(
+      <Dropdown
+        name="dataDropdown"
+        id="dataDropdown"
+        options={[
+          { text: "Yes", value: "true" },
+          { text: "No", value: "false" }
+        ]}
+        readOnly
+      />
+    );
+    dd.find("input")
+      .first()
+      .simulate("click", event);
+    expect(handleClick).not.toBeCalled();
+    expect(event.persist).toBeCalled();
+    expect(dd.state().active).toBe(false);
+  });
+
+  it("handles change", function() {
+    const handleChange = jest.fn();
+    const dd = mount(
+      <Dropdown
+        name="dataDropdown"
+        id="dataDropdown"
+        options={[
+          { text: "Yes", value: "true" },
+          { text: "No", value: "false" }
+        ]}
+        onChange={handleChange}
+      />
+    );
+    dd.find("Option")
+      .first()
+      .simulate("mousedown");
+    expect(handleChange).toBeCalled();
+    expect(dd.state().value).toBe("true");
+    expect(dd.state().display).toBe("Yes");
+    //do it again to check the else branch
+    dd.find("Option")
+      .first()
+      .simulate("mousedown");
+    expect(handleChange).toBeCalled();
+    expect(dd.state().value).toBe("true");
+    expect(dd.state().display).toBe("Yes");
+  });
+
+  it("handles options mouseover", function() {
+    const dd = mount(
+      <Dropdown
+        name="dataDropdown"
+        id="dataDropdown"
+        options={[
+          { text: "Yes", value: "true" },
+          { text: "No", value: "false" }
+        ]}
+      />
+    );
+    dd.find("Option")
+      .first()
+      .simulate("mouseover");
+    expect(dd.state().options[0].props.value).toEqual(
+      dd.props().options[0].value
+    );
+  });
+
+  it("handles change via typing when focused", function() {
+    const event = {
+      persist: jest.fn(),
+      preventDefault: jest.fn(),
+      key: "ArrowDown"
+    };
+    const event2 = {
+      persist: jest.fn(),
+      preventDefault: jest.fn(),
+      key: "ArrowUp"
+    };
+
+    const event3 = {
+      persist: jest.fn(),
+      preventDefault: jest.fn(),
+      key: "Enter"
+    };
+
+    const handleChange = jest.fn();
+    const dd = mount(
+      <Dropdown
+        name="dataDropdown"
+        id="dataDropdown"
+        options={[
+          { text: "yes", value: "true" },
+          { text: "no", value: "false" }
+        ]}
+        onChange={handleChange}
+        valueOnly
+      />
+    );
+    dd.find("input")
+      .first()
+      .simulate("focus", event);
+    dd.find(".textfield").simulate("keydown", event);
+    expect(dd.state().active).toBe(true);
+    dd.find(".textfield").simulate("keydown", event2);
+    expect(dd.state().active).toBe(true);
+    dd.find(".textfield").simulate("keydown", event3);
+    expect(dd.state().active).toBe(false);
+    expect(dd.state().selectedIndex).toBe(1);
+    expect(dd.state().value).toBe("false");
+    expect(event.persist).toBeCalled();
+    expect(event.preventDefault).toBeCalled();
+  });
 });
