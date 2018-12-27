@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Taskbar component Test render correctly 1`] = `
+<div
+  className="taskbar"
+  style={undefined}
+>
+  <div
+    className="taskbarContainer"
+  >
+    <span
+      className="taskLink selected"
+      id={undefined}
+      onClick={[Function]}
+      style={undefined}
+    >
+      <i
+        className="fa fa-id-card icon-left"
+      />
+      Item One
+    </span>
+    <span
+      className="taskLink"
+      id={undefined}
+      onClick={[Function]}
+      style={undefined}
+    >
+      Item Two
+    </span>
+    <span
+      className="taskLink"
+      id={undefined}
+      onClick={[Function]}
+      style={undefined}
+    >
+      Item Three
+    </span>
+  </div>
+</div>
+`;
