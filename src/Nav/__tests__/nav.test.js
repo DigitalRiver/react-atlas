@@ -59,6 +59,7 @@ describe("Test Nav component - Basic tests", () => {
       3.1
     );
   });
+
   it("Nav - Click to changing active NavItem", function() {
     const result = mount(
       <Nav activeIndex={1}>
@@ -86,6 +87,31 @@ describe("Test Nav component - Basic tests", () => {
     expect(result.findWhere(n => _findActiveItem(n)).props().navKey).toEqual(
       3.1
     );
+  });
+
+  it("Nav - handle collapse", function() {
+    const nav = mount(
+      <Nav activeIndex={1}>
+        <NavItem navKey={0}>HOME</NavItem>
+        <NavItem navKey={1}>Catalog</NavItem>
+        <NavItem navKey={2}>Customer Service</NavItem>
+        <Nav className="myNav">
+          <NavItem navKey={3}>Reports</NavItem>
+          <NavItem navKey={3.1}>Create a Report</NavItem>
+          <NavItem navKey={3.2}>Edit a Report</NavItem>
+        </Nav>
+        <NavItem navKey={4}>Support</NavItem>
+      </Nav>
+    );
+    const myNav = nav.find(".myNav").first();
+    expect(myNav.instance().state.collapsed).toBe(false);
+    nav
+      .find(".myNav")
+      .first()
+      .find("button")
+      .first()
+      .simulate("click");
+    expect(myNav.instance().state.collapsed).toBe(true);
   });
 });
 
