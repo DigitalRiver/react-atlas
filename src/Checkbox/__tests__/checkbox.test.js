@@ -30,6 +30,24 @@ describe("Test checkbox component", () => {
     const tree = renderer.create(<Checkbox label={"labelText"} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it("get status returns null if prestate is true, required and not checked", () => {
+    const prestate = true;
+    const cb = mount(<Checkbox label={"labelText"} required />);
+    expect(cb.instance()._getStatus(prestate)).toBe(null);
+  });
+
+  it("get status returns null if prestate is true, not required", () => {
+    const prestate = true;
+    const cb = mount(<Checkbox label={"labelText"} />);
+    expect(cb.instance()._getStatus(prestate)).toBe(null);
+  });
+
+  it("get status returns error if prestate is false, required", () => {
+    const prestate = false;
+    const cb = mount(<Checkbox label={"labelText"} required />);
+    expect(cb.instance()._getStatus(prestate)).toBe("error");
+  });
 });
 
 describe("Test checkbox component - Default values", () => {
@@ -119,7 +137,7 @@ describe("Test checkbox component - Default values", () => {
     expect(handleChange).toBeCalled();
   });
 
-  it("Test checkbox component - Click event (custom onBeforeChange)", function() {
+  it("Test checkbox component - Click event (custom onBeforeChange returns false)", function() {
     const comp = mount(
       <Checkbox
         onBeforeChange={function() {
@@ -130,6 +148,19 @@ describe("Test checkbox component - Default values", () => {
     expect(comp.state().checked).toEqual(false);
     comp.simulate("click");
     expect(comp.state().checked).toEqual(false);
+  });
+
+  it("Test checkbox component - Click event (custom onBeforeChange returns true)", function() {
+    const comp = mount(
+      <Checkbox
+        onBeforeChange={function() {
+          return true;
+        }}
+      />
+    );
+    expect(comp.state().checked).toEqual(false);
+    comp.simulate("click");
+    expect(comp.state().checked).toEqual(true);
   });
 
   it("Test checkbox component - labelPosition left", function() {

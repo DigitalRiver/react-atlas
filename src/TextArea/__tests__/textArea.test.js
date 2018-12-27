@@ -149,4 +149,17 @@ describe("Test Text component", () => {
       "this field is required"
     );
   });
+
+  it("_formValidate sets state and returns validationObject", function() {
+    const expectedValidationObject = {
+      status: null,
+      message: null
+    };
+    const ta = mount(<TextArea id="myTextArea" />);
+    expect(ta.instance()._formValidate("foo")).toEqual(
+      expectedValidationObject
+    );
+    expect(ta.state().status).toBe(expectedValidationObject.status);
+    expect(ta.state().message).toBe(expectedValidationObject.message);
+  });
 });
