@@ -3,7 +3,7 @@ import { mount } from "enzyme";
 import { Tab } from "../index";
 import renderer from "react-test-renderer";
 
-describe("Test dropdown component", () => {
+describe("Test Tab component", () => {
   it("Test render correctly", () => {
     const comp = <Tab>My Tab</Tab>;
     const tree = renderer.create(comp).toJSON();
