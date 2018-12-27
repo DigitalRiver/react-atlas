@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test dropdown component Test render correctly 1`] = `
+<div
+  className="tabs"
+  style={undefined}
+>
+  <ul
+    className="tabList"
+    style={undefined}
+  >
+    <li
+      className="tab selected"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Tab 1
+    </li>
+    <li
+      className="tab"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Tab 2
+    </li>
+    <li
+      className="tab"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Tab 3
+    </li>
+    <li
+      className="tab"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Tab 4
+    </li>
+    <li
+      className="tab"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Tab 5
+    </li>
+  </ul>
+  <div
+    className="selected tabPanel"
+    style={undefined}
+  >
+    <h2>
+      Content 1
+    </h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet lorem sit amet finibus rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque habitant morbi tristique senectus et netus et malesuada
+       
+      <a
+        href="http://lipsum.com"
+      >
+        fames ac turpis egestas
+      </a>
+       et siem.
+    </p>
+  </div>
+  <div
+    className="tabPanel"
+    style={undefined}
+  >
+    <h2>
+      Content 2
+    </h2>
+    <p>
+      Tab content here
+    </p>
+  </div>
+  <div
+    className="tabPanel"
+    style={undefined}
+  >
+    <h2>
+      Content 3
+    </h2>
+    <p>
+      Tab content here
+    </p>
+  </div>
+  <div
+    className="tabPanel"
+    style={undefined}
+  >
+    <h2>
+      Content 4
+    </h2>
+    <p>
+      Tab content here
+    </p>
+  </div>
+  <div
+    className="tabPanel"
+    style={undefined}
+  >
+    <h2>
+      Content 5
+    </h2>
+    <p>
+      Tab content here
+    </p>
+  </div>
+</div>
+`;

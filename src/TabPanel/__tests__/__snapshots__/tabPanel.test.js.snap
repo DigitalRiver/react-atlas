@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test dropdown component Test render correctly 1`] = `
+<div
+  className="tabPanel"
+  style={undefined}
+>
+  <h2>
+    Content 1
+  </h2>
+  <p>
+    Tab content here
+  </p>
+</div>
+`;

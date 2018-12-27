@@ -72,7 +72,7 @@ describe("Timer Component", () => {
     let timer = mount(<Timer time={5} />);
     jest.advanceTimersByTime(2 * 1000);
     expect(timer.state().secondsRemaining).toBe(3);
-    timer.setProps({ "time": 10 });
+    timer.setProps({ time: 10 });
     expect(timer.state().secondsRemaining).toBe(10);
   });
 
@@ -88,6 +88,16 @@ describe("Timer Component", () => {
     mount(<Timer time={0} onTick={callback} />);
     jest.advanceTimersByTime(2 * 1000);
     expect(callback).not.toBeCalled();
+  });
+
+  it("stops on unmount", () => {
+    const timer = mount(<Timer time={0} />);
+    jest.spyOn(window, "clearInterval").mockImplementationOnce(() => {
+      return;
+    });
+
+    timer.unmount();
+    expect(window.clearInterval).toBeCalled();
   });
 
   it("Supports render prop", () => {

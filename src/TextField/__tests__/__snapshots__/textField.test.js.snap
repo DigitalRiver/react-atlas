@@ -5,8 +5,8 @@ exports[`Test Input component render Render correctly 1`] = `
   className="textfieldWrapper"
 >
   <input
-    className="class textfield"
-    disabled={false}
+    className="class textfield disabled"
+    disabled="false"
     hidden={false}
     id="ID"
     maxLength={15}
