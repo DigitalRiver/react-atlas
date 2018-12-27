@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test dropdown component Test render correctly 1`] = `
+exports[`Test Tab component Test render correctly 1`] = `
 <li
   className="tab"
   onClick={[Function]}
