@@ -459,4 +459,26 @@ describe("Test Dropdown component - setOptions() method", () => {
     expect(event.persist).toBeCalled();
     expect(event.preventDefault).toBeCalled();
   });
+
+  it("_formValidate sets state & returns validationObject", () => {
+    const expectedValidationObject = {
+      status: null,
+      message: null
+    };
+    const dd = mount(
+      <Dropdown
+        name="dataDropdown"
+        id="dataDropdown"
+        options={[
+          { text: "yes", value: "true" },
+          { text: "no", value: "false" }
+        ]}
+      />
+    );
+    expect(dd.instance()._formValidate("true")).toEqual(
+      expectedValidationObject
+    );
+    expect(dd.state().status).toBe(expectedValidationObject.status);
+    expect(dd.state().message).toBe(expectedValidationObject.message);
+  });
 });

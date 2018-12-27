@@ -103,6 +103,30 @@ describe("Suite - events", () => {
     expect(handleFocus).toBeCalled();
   });
 
+  it("focus does not call onFocus if onFocus is not a function", () => {
+    const handleFocus = jest.fn();
+    const tf = mount(<TextField label="name" />);
+
+    tf.find("input").simulate("focus");
+    expect(handleFocus).not.toBeCalled();
+  });
+
+  it("click calls onClick if onClick is a function", () => {
+    const handleClick = jest.fn();
+    const tf = mount(<TextField label="name" onClick={handleClick} />);
+
+    tf.find("input").simulate("click");
+    expect(handleClick).toBeCalled();
+  });
+
+  it("click does not call onClick if onClick is not a function", () => {
+    const handleClick = jest.fn();
+    const tf = mount(<TextField label="name" />);
+
+    tf.find("input").simulate("click");
+    expect(handleClick).not.toBeCalled();
+  });
+
   it("handle paste with no mask", () => {
     const event = {
       preventDefault: jest.fn(),
